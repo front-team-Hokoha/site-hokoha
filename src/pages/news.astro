@@ -1,7 +1,5 @@
 ---
 
-const basePath = import.meta.env.BASE_PATH; 
-
 // Layout
 import LayoutClassic from '../layouts/LayoutClassic.astro'; // Import du layout
 
@@ -23,6 +21,7 @@ function generateUrl(article) {
   return `/news/${slugFromFile}`;
 }
 
+const basePath = import.meta.env.BASE_PATH; 
 ---
 <LayoutClassic title="News">
 <h1>Actualités</h1>
