@@ -1,3 +1,6 @@
+---
+const basePath = import.meta.env.BASE_PATH; 
+---
 
 <!-- HEADER -->
 <header class="oka-appbar layout-app__header">
@@ -29,7 +32,8 @@
                     <!-- Contenu -->
                     <nav class="oka-burger__content">
                         
-                        <a href="/home" class="oka-bt -ghost {{ pageAccueil ? '-focus'  }}">
+                        
+                        <a href={`${basePath}`} class="oka-bt -ghost {{ pageAccueil ? '-focus'  }}">
                             <div class="oka-bt__lbl">Accueil</div>
                             <div class="oka-spinner"></div>
                         </a>

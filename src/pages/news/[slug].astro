@@ -1,4 +1,5 @@
 ---
+
 import LayoutClassic from '../../layouts/LayoutClassic.astro'; // Import du layout
 
 // import { Markdown } from 'astro/components'; // Importer le composant Markdown
@@ -18,6 +19,9 @@ export async function getStaticPaths() {
 // Récupération de l'article depuis le contexte
 const { article } = Astro.props;
 const { frontmatter, Content } = article; // Extraire le frontmatter et le contenu compilé
+
+
+const basePath = import.meta.env.BASE_PATH; 
 ---
 
 <LayoutClassic title="À propos">
@@ -28,8 +32,9 @@ const { frontmatter, Content } = article; // Extraire le frontmatter et le conte
 
     <!-- Affichage de la vignette, si disponible -->
     {frontmatter.image && (
-        <img src={frontmatter.image} alt={`Vignette de ${frontmatter.title}`} width="300" height="200" />
-      )}
+      <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${frontmatter.title}`} width="300" height="200" />
+    )}
+
 
     <!-- Afficher directement le contenu de l'article en Markdown -->
     <Content />

@@ -1,4 +1,7 @@
 ---
+
+const basePath = import.meta.env.BASE_PATH; 
+
 // Layout
 import LayoutClassic from '../layouts/LayoutClassic.astro'; // Import du layout
 
@@ -29,7 +32,7 @@ function generateUrl(article) {
     <li>
       <a href={generateUrl(article)}>
         {article.frontmatter.image && (
-        <img src={article.frontmatter.image} alt={`Vignette de ${article.frontmatter.title}`} width="150" height="100" />
+        <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${article.frontmatter.title}`} width="150" height="100" />
         )}
         <h2>{article.frontmatter.title}</h2>
         <p>{article.frontmatter.description}</p>

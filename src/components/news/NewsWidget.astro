@@ -1,5 +1,6 @@
 ---
-//import { LayoutClassic } from '../../layouts/LayoutClassic.astro'; // Optionnel si tu utilises un layout global
+const basePath = import.meta.env.BASE_PATH; 
+
 
 // Charger les 3 derniers articles
 const articles = await Astro.glob('../../content/news/*.md');
@@ -13,11 +14,11 @@ const latestArticles = articles.slice(0, 3);
 // Fonction pour générer une URL basée sur le nom du fichier ou le slug
 function generateUrl(article) {
   if (article.frontmatter.slug) {
-    return `/news/${article.frontmatter.slug}`;
+    return `./news/${article.frontmatter.slug}`;
   }
   
   const slugFromFile = article.file.split('/').pop().replace('.md', '');
-  return `/news/${slugFromFile}`;
+  return `./news/${slugFromFile}`;
 }
 ---
 
@@ -28,7 +29,7 @@ function generateUrl(article) {
       <li>
         <a href={generateUrl(article)}>
           {article.frontmatter.image && (
-            <img src={article.frontmatter.image} alt={`Vignette de ${article.frontmatter.title}`} width="100" height="75" />
+            <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${article.frontmatter.title}`} width="100" height="75" />
           )}
           <h3>{article.frontmatter.title}</h3>
           <p>{article.frontmatter.description}</p>
