@@ -13,15 +13,14 @@ articles.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.da
 function generateUrl(article) {
   // Si un slug est défini dans le frontmatter, utilise-le
   if (article.frontmatter.slug) {
-    return `/news/${article.frontmatter.slug}`;
+    return `news/${article.frontmatter.slug}`;
   }
   
   // Sinon, utiliser le nom de fichier pour générer le slug (en retirant le chemin et l'extension)
   const slugFromFile = article.file.split('/').pop().replace('.md', '');
-  return `/news/${slugFromFile}`;
+  return `news/${slugFromFile}`;
 }
 
-const basePath = import.meta.env.BASE_PATH; 
 ---
 <LayoutClassic title="News">
 <h1>Actualités</h1>
@@ -31,7 +30,7 @@ const basePath = import.meta.env.BASE_PATH;
     <li>
       <a href={generateUrl(article)}>
         {article.frontmatter.image && (
-        <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${article.frontmatter.title}`} width="150" height="100" />
+        <img src={article.frontmatter.image} alt={`Vignette de ${article.frontmatter.title}`} width="150" height="100" />
         )}
         <h2>{article.frontmatter.title}</h2>
         <p>{article.frontmatter.description}</p>

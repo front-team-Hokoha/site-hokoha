@@ -20,8 +20,6 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { frontmatter, Content } = article; // Extraire le frontmatter et le contenu compilé
 
-
-const basePath = import.meta.env.BASE_PATH; 
 ---
 
 <LayoutClassic title="À propos">
@@ -32,7 +30,7 @@ const basePath = import.meta.env.BASE_PATH;
 
     <!-- Affichage de la vignette, si disponible -->
     {frontmatter.image && (
-      <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${frontmatter.title}`} width="300" height="200" />
+      <img src={article.frontmatter.image} alt={`Vignette de ${frontmatter.title}`} width="300" height="200" />
     )}
 
 
