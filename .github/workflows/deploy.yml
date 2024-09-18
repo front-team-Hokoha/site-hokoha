@@ -1,0 +1,30 @@
+name: Deploy Astro to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Ou une autre branche que vous souhaitez utiliser
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21  # Assurez-vous d'utiliser la version correcte de Node.js
+
+      - name: Install dependencies using Yarn
+        run: yarn install
+
+      - name: Build Astro site
+        run: yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ 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 }}
+          publish_dir: dist
