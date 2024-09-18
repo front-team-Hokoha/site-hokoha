@@ -1,6 +1,4 @@
 ---
-const basePath = import.meta.env.BASE_PATH; 
-
 
 // Charger les 3 derniers articles
 const articles = await Astro.glob('../../content/news/*.md');
@@ -24,18 +22,23 @@ function generateUrl(article) {
 
 <div class="news-widget">
   <h5>Dernières actualités</h5>
+  <a class="oka-bt -outlined" href="news">
+    <div class="oka-bt__lbl">lire</div>
+</a>
   <ul>
     {latestArticles.map((article) => (
       <li>
-        <a href={generateUrl(article)}>
-          {article.frontmatter.image && (
-            <img src={`${basePath}${article.frontmatter.image}`} alt={`Vignette de ${article.frontmatter.title}`} width="100" height="75" />
-            <img src={article.frontmatter.image} alt={`Vignette de ${article.frontmatter.title}`} width="100" height="75" />
-          )}
+        
+          
+          <small>{new Date(article.frontmatter.date).toLocaleDateString()}</small>
           <h3>{article.frontmatter.title}</h3>
           <p>{article.frontmatter.description}</p>
-          <small>{new Date(article.frontmatter.date).toLocaleDateString()}</small>
-        </a>
+          {article.frontmatter.image && (
+            <img src={article.frontmatter.image} alt={`Vignette de ${article.frontmatter.title}`} width="100" height="75" />
+          )}
+            <a class="oka-bt -outlined" href={generateUrl(article)}>
+                <div class="oka-bt__lbl">lire</div>
+            </a>
       </li>
     ))}
   </ul>
