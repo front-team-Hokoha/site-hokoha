@@ -1,0 +1,72 @@
+
+/** OKA BADGES
+//
+| 0.0.2 | 01/09/2022 | ajout modifier info (corridor)  |
+| 0.0.1 | 08/10/2021 | création (pottok)  |
+
+*/
+
+
+$oka-badge-border-color   : var(--color--accent) ;
+$oka-badge-border-width   : 0 0 1px 0 ;
+$oka-badge-border-style   : solid ;
+
+
+
+.oka-badge {
+
+    // TAILLE
+    width:1rem;
+    height:1rem;
+    border-radius: 1rem;
+    
+    //
+    outline-width: $oka-badge-border-width ;
+    outline-style: $oka-badge-border-width ;
+    outline-color: $oka-badge-border-color ;
+
+    // ANIMATION D'APPARITION
+    animation: oka-pulse 0.13s linear;
+
+
+    background:var(--color--skeleton);
+
+    // MODIFIERS : ASPECT
+    &--warning,
+    &.-warning {
+        background:var(--oka-color-feedback-warning-base , var(--color--warning));
+    }
+
+    &--error,
+    &.-error {
+        background:var(--oka-color-feedback-error-base , var(--color--error));
+    }
+
+    &--success,
+    &.-success {
+        background:var(--oka-color-feedback-success-base , var(--color--success));
+    }
+
+    &--info,
+    &.-info {
+        background:var(--oka-color-feedback-info-base , var(--color--info));
+    }
+
+    // MODIFIERS : SIZE
+
+    &--xs,
+    &.-xs {
+        width:0.5rem;
+        height:0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &--sm,
+    &.-sm {
+        width:0.75rem;
+        height:0.75rem;
+        border-radius: 0.75rem;
+    }
+
+}
+      

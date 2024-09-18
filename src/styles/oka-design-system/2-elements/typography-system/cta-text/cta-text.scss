@@ -1,0 +1,145 @@
+// ==================================================
+// LIBELLES DE BOUTONS / TABS / ACCORDIONS
+//
+/*
+| 3.1.2 | 03/09/2022 | Ajout Weight - Creation de l'atome oka-ctaText |
+| 3.1.1 | 14/10/2021 | Revision nommage Tokens |
+| 3.1.0 | 02/06/2021 | Revision nommage Tokens : Modifiers de taille |
+| 3.0.0 |            | Design-tokens |
+*/
+
+
+//
+
+//
+// =========================================
+// =========================================
+// CTA : LIBELLE de BUTTONS / LIBELLE de TABS BUTTON / LIBELLE de ACCORDION BUTTON
+$oka-cta-font-family: $system-font-family;
+$oka-cta-font-baseline: $system-font-baseline;
+
+$oka-cta-font-weight: $system-font-weight-strong;
+$oka-cta-font-size: $oka-fontsize-body;
+$oka-cta-line-height: $oka-lineheight-xs;
+
+$oka-cta-letter-spacing: -0.005em;
+$oka-cta-word-spacing: $system-word-spacing;
+
+$oka-cta-text-transform: none;
+
+
+// Crop line Height
+$oka-cta-margin-bottom-crop: -0.405rem;
+$oka-cta-margin-top-crop: -0.5rem;
+
+//MODIFIER small
+$oka-cta-font-family-sm: $system-font-family;
+$oka-cta-font-baseline-sm: $system-font-baseline;
+$oka-cta-font-weight-sm: $system-font-weight-strong;
+
+$oka-cta-font-size-sm:  $oka-fontsize-xxs; // [ 0.75rem ]
+$oka-cta-line-height-sm: $oka-lineheight-xxs;  // [ 1rem ]
+$oka-cta-text-transform-sm: none;
+$oka-cta-letter-spacing-sm: $system-letter-spacing;
+
+// Crop line Height
+$oka-cta-margin-bottom-crop-sm: -0.405rem;
+$oka-cta-margin-top-crop-sm: -0.5rem;
+
+
+// --------------------------------------
+// Labels de BUTTON / TABS / ACCORDIONS / 
+//
+
+@mixin typo-buttons-core {
+
+    font-family: $oka-cta-font-family;
+    font-weight : $oka-cta-font-weight; // 3.1.2
+
+    letter-spacing: $oka-cta-letter-spacing;
+    word-spacing: $oka-cta-word-spacing; // 3.1.2
+    
+
+    text-transform : $oka-cta-text-transform;
+    
+    user-select: none;
+
+}
+
+
+@mixin typo-buttons {
+    
+    @include typo-buttons-core;
+
+    @include plumber(
+        $baseline: $oka-cta-font-baseline,
+        $font-size: $oka-cta-font-size,
+        $line-height: $oka-cta-line-height,
+    );
+
+
+
+
+    // CORRECTION PADDING SUPERIEUR ET INFERIEUR
+    // https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+    
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom: $oka-cta-margin-bottom-crop;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: $oka-cta-margin-top-crop;
+    }
+}
+
+
+@mixin cta-text {
+    @include typo-buttons;
+} 
+
+// 3.1.2
+.oka-ctaText {
+    @include cta-text;
+}
+
+
+
+@mixin typo-buttons--sm {
+    
+    @include typo-buttons-core;
+
+
+    @include plumber(
+        $baseline: $oka-cta-font-baseline-sm,
+        $font-size: $oka-cta-font-size-sm,
+        $line-height: $oka-cta-line-height-sm,
+    );
+
+    
+    // CORRECTION PADDING SUPERIEUR ET INFERIEUR
+    // https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+    
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom: $oka-cta-margin-bottom-crop-sm;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: $oka-cta-margin-top-crop-sm;
+    }
+}

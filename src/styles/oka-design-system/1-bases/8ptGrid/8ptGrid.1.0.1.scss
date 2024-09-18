@@ -1,0 +1,89 @@
+
+
+// 8points GRID Vertical
+//
+/**
+|  1.0.1 | 10/01/2022 | Modification du pas : 1rem puis reprise de plumber our permettre les interlignage à 1.5rem |
+|  0.0.1 | | |
+*/
+
+
+
+/* GRILLE VERTICALE */
+@include plumber-set-defaults(
+    $use-baseline-origin: true,
+    $grid-height: 1rem, //0.5rem,
+    // Leadings - on utlisera <p> comme reference
+    //  !!!!!!!!!!!!!!
+    //  !!!!!!!!!!!!!!
+    //  Les leadings sont supprimés dans la librairie (vendor/plumber)
+    //
+    $leading-top: 1,
+    $leading-bottom: 1
+    );
+
+
+.showGrid:after,
+.showGridCtnr:after,
+body:not(.sb-show-main):after//,
+//html:after
+{
+    content   : '';
+    position  : absolute;
+    width:100%;
+    //height:100%;
+    top       :0 ;
+    bottom   : 0;
+    left     : 0;
+    z-index   : -1;
+
+    padding   : 0;
+ 
+    opacity   : 0   ;
+    font-size: 8px;
+
+    // 8Pt GRILLE VERTICALE
+    background-repeat: repeat-y;
+    background-size: 100% 0.5rem;
+    background-image: linear-gradient(to bottom,$oka-grid-color-preview 0,rgba(255, 255, 255, 0) 1px),
+    linear-gradient(to left,$oka-grid-color-preview 0,rgba(255, 255, 255, 0) 1px);
+    line-height: 0;
+
+    pointer-events: none;
+
+
+
+
+/*
+    background-repeat: repeat;  
+    background-size:  16px 16px, 16px 16px;
+    background-position:  0px 0px, 0px 0px;
+    background-image: linear-gradient(rgba(255, 0, 0, 0.542) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255, 0, 0, 0.3) 1px, transparent 1px);
+        
+*/
+
+
+
+
+
+
+
+}
+
+body:not(.sb-show-main).showGrid:after 
+{
+    z-index   : 100000000000;
+    opacity   : 0.40   ;
+}
+
+.showGridCtnr:after,
+.showGrid:after {
+    z-index   : 100000000000;
+    opacity   : 0.20   ;
+}
+
+.showGridCtnr,
+.showGrid{
+    position:relative;
+}

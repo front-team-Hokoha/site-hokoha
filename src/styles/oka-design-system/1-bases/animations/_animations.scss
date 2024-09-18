@@ -1,0 +1,59 @@
+/**
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+|  3.1.1 | 21/10/2022 | Ouverture Fermeture (y) Effect |
+|  3.1.0 | 03/06/2021 | Supression ref MaterialDesign |
+*/
+
+// PULSATIONS
+@keyframes oka-pulse {
+    0% {
+        transform: scale(0.75);
+        opacity:0.6;
+    }
+
+    70% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+// ROTATION SPIN 
+// @keyframes oka-spin {
+//     0% {
+//         transform: rotate(0deg);
+//     }
+//     100% {
+//         transform: rotate(360deg);
+//     }
+// }
+
+
+//
+
+
+// Effet : Slide Ouverture
+//
+// @extend %okaSlideOuverture--initial;
+// @extend %okaSlideOuverture--open;
+
+
+// Effet de slide ouverture - Position initiale
+%okaSlideOuverture--initial{
+    max-height:0;
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    transition:transform 0.2s ease;
+    overflow: hidden;
+    position: relative; 
+}
+
+// Effet de slide ouverture - Ouverture
+%okaSlideOuverture--open{
+    max-height:50000px;
+    transform: scaleY(1);
+    overflow: visible;
+}

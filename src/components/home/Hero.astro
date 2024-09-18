@@ -1,0 +1,120 @@
+<style>
+.oka-hero{
+    
+    position:relative;
+    z-index:-1;
+    width: 100%;
+    margin-top:4rem;
+    /*min-height: 100%;*/
+    flex-basis:100ch;
+    overflow: hidden;
+
+    background: var(--oka-color-app-bg-default);
+    background: #000;
+}
+#video_background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    /*z-index: -100;*/
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 8%;
+    filter: brightness(1.5) grayscale(1);
+}
+</style>
+<div class="oka-hero oka-darkMode">
+    
+    <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="" volume="0" poster="">
+        <!-- <source src="/assets/video/video0.mp4" type="video/mp4"> -->
+        <!-- <source src="/assets/video/fondCodeSource.mp4" type="video/mp4"> -->
+    </video>
+
+
+    <style>
+    .heightPointGrid {
+        position: absolute;
+        top: 32rem;
+        left: 8%;
+        width : 100%;
+        height: 100%;
+        background-color: transparent;
+        opacity: 0.8;
+        background-image: linear-gradient(0deg, transparent 50%, #ffffff0a 50%);
+        background-size: 16px 16px;
+        }
+
+    </style>
+
+    <!-- <div class="heightPointGrid"></div> -->
+
+    <img src="/assets/svg/points-blur-10.svg"  style="position:absolute ; filter:blur(10px)"/>
+    
+    <svg width="1916" height="674" viewBox="0 0 1916 674" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute ; filter:blur(10px)">
+        <circle cx="480.5" cy="136.5" r="12.5" fill="#29B0FF"/>
+        <path d="M474 142L605.5 1.5" stroke="#29B0FF" stroke-width="6"/>
+        <circle cx="652.5" cy="460.5" r="12.5" fill="#29B0FF"/>
+        <path d="M410.5 1.5L651.5 461L871.5 294.5L947 2.5" stroke="#29B0FF" stroke-width="6"/>
+        <circle cx="812.5" cy="39.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="63.5" cy="51.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="925.5" cy="90.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="677.5" cy="97.5" r="12.5" fill="#29B0FF"/>
+        <rect x="0.5" y="0.5" width="1915" height="673" stroke="transparent"/>
+        <path d="M655 461.5L670.5 252.5M670.5 252.5L679 100.5M670.5 252.5L927 93.5L815.5 40.5M670.5 252.5L481 136.5L679 100.5M679 100.5L815.5 40.5M874 290L815.5 40.5M815.5 40.5L670.5 1.5" stroke="#29B0FF" stroke-width="6"/>
+    </svg>
+
+    <svg width="1916" height="674" viewBox="0 0 1916 674" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute ; filter:blur(6px)">
+        <circle cx="480.5" cy="136.5" r="12.5" fill="#29B0FF"/>
+        <path d="M474 142L605.5 1.5" stroke="#29B0FF" stroke-width="4"/>
+        <circle cx="1636.5" cy="176.5" r="12.5" fill="#29B0FF"/>
+        <path d="M677.5 97L1281.5 389L1638.5 173.5L1867.5 606" stroke="#29B0FF" stroke-width="4"/>
+        <circle cx="1867.5" cy="605.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="925.5" cy="90.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="677.5" cy="97.5" r="12.5" fill="#29B0FF"/>
+        <rect x="0.5" y="0.5" width="1915" height="673" stroke="transparent"/>
+    </svg>
+
+    <svg width="1916" height="674" viewBox="0 0 1916 674" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute ; filter:blur(1px)">
+        <circle cx="666.5" cy="252.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="110.5" cy="450.5" r="12.5" fill="#29B0FF"/>
+        <path d="M10 529C47.8809 498.539 69.1191 481.461 107 451" stroke="#29B0FF" stroke-width="4"/>
+        <circle cx="870.5" cy="293.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="1061.5" cy="119.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="1272.5" cy="398.5" r="12.5" fill="#29B0FF"/>
+        <circle cx="4.5" cy="533.5" r="12.5" fill="#29B0FF"/>
+        <path d="M676 254.5L870 294L1059.5 122.5C1143.07 230.675 1189.93 291.325 1273.5 399.5" stroke="#29B0FF" stroke-width="4"/>
+        <rect x="0.5" y="0.5" width="1915" height="673" stroke="transparent"/>
+    </svg>
+
+
+    <div id="video_pattern"></div>
+
+
+    <div class="oka-app-wrap ">
+        <div class="oka-spacer -xl"></div>
+        <div class="oka-spacer -xl"></div>
+        <div class="oka-spacer -xl"></div>
+
+        <div class="flex-grid">
+            <div class="col-10">
+                <img src="/assets/img/Logokoha-couv.png" style="height:5rem"/>
+                <div class="oka-spacer -lg"></div>
+                <hr style="width:8rem"/>
+                <div class="oka-h -lg -secondary">Votre partenaire</div>
+                <h1 class="oka-h -xl">Développement informatique.</h1>
+                <h2 class="oka-text--lg">Pour la conception de vos logiciels, application mobiles, web et prestations de conseil.</h2>
+            
+            </div>
+
+            <div>
+            </div>
+        </div>
+        <div class="oka-spacer -xl"></div>
+        <div class="oka-spacer -xl"></div>
+    
+    </div>
+
+</div>

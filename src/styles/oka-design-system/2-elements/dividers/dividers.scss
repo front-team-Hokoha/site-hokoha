@@ -1,0 +1,117 @@
+// DIVIDERS
+//
+/**
+|  4.0.0 | 23/05/2022 | Compatible figma Token + Modifiers de 'Contrast' + Epaisseur + vertical |
+|  3.1.0 | 03/06/2021 | Révision nomage modifiers de Taille |
+*/
+
+
+
+/*
+variants : system / primary / secondary
+contrast : medium / low / high
+orientation : horizontal / vertical
+epaisseur : / fat
+*/
+
+
+hr,
+.oka-divider {
+
+    --divider-color : var(--oka-color-system-contrast-medium);
+    --divider-gradient-direction : bottom;
+    --divider-weight: 1px;
+    --divider-margin: -1px;
+
+
+    position:relative;
+    //
+    height: var(--divider-weight);
+    width:100%; // requis pour les parents flex
+
+    margin-top:0;
+    margin-bottom:var(--divider-margin);
+    overflow: hidden;
+
+    border: 0;
+    background-color: transparent;
+
+    // Ligne Horizontale centrée verticalement
+    background-repeat: repeat-y;
+    background-size: 100% 1rem;
+    background-image: linear-gradient(to var(--divider-gradient-direction),var(--divider-color) var(--divider-weight), var(--divider-color) 3px, rgba(255, 255, 255, 0) var(--divider-weight));
+
+
+    line-height: 0;
+
+    pointer-events: none;
+
+    // EPAISSEUR
+    &.-fat {
+        --divider-weight: 4px;
+        --divider-margin: -4px;
+    }
+
+    // ORIENTATION MODIFIERS
+    &.-vrt {
+        --divider-gradient-direction : right;
+
+        align-self: stretch;
+
+        display: block;
+
+        width: var(--divider-weight);
+        height: auto;
+        min-height: 100%;
+        
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right:var(--divider-margin);
+    
+        flex: 0 0 var(--divider-weight);
+
+    }
+
+
+    // COLORS MODIFIERS
+
+    &.-light{
+        --divider-color : var(--oka-color-light);
+    }
+    &.-dark{
+        --divider-color : var(--oka-color-dark);
+    }
+    
+    &.-low{
+        --divider-color : var(--oka-color-system-contrast-low);
+
+        &.-primary{
+            --divider-color : var(--oka-color-primary-contrast-low);
+        }
+        &.-secondary{
+            --divider-color : var(--oka-color-secondary-contrast-low);
+        }
+    }
+
+    &.-primary{
+        --divider-color : var(--oka-color-primary-contrast-medium);
+    }
+    &.-secondary{
+        --divider-color : var(--oka-color-secondary-contrast-medium);
+    }
+    
+
+    &.-high{
+        --divider-color : var(--oka-color-system-contrast-hight);
+
+        &.-primary{
+            --divider-color : var(--oka-color-primary-contrast-hight);
+        }
+        &.-secondary{
+            --divider-color : var(--oka-color-secondary-contrast-hight);
+        }
+    }
+
+}
+
+

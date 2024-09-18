@@ -1,0 +1,76 @@
+
+// ==================================================
+// BODY
+
+/**
+| 4.0.1 | 05/08/2024 | user select none |
+| 4.0.0 | 17/05/2022 | utilise tokens figma |
+| 3.1.0 | 03/06/2021 | Revue |
+
+// 0.0.1
+*/
+
+body{
+    user-select: none;
+    pointer-events: all;
+}
+
+
+body,
+#storybook-root {
+    //
+    // Hack pour iphone ipad -> Smooth scroll
+    -webkit-overflow-scrolling: touch;
+    //
+    //
+    //min-height  : 100%; // permet l'affichage de la grille sur la totalité de la page 
+    height: 100%; // permet la taille de root sur toute la hauteur
+
+    margin      : 0;
+    padding     : 0;
+    //
+    background-color: var(--oka-color-app-ground);
+    // propagation de la couleur
+    color : var(--oka-color-app-fg-default);
+
+    // !!! provoque l'annulation de overflow et des enfants fixed
+    // On doit déporter cette regle sur un autre composant (#root ???]
+    // container-type: inline-size; 
+
+
+    
+    &:has(.layout-app){
+        /* permet à l'enfant direct (#root) de prendre la totalité de la hauteur disponnible */
+        display: flex !important;
+        flex-direction: column; 
+    }
+}
+
+//
+// BARRE DE DEFILEMENT
+//
+// *::-webkit-scrollbar {
+//     width: 8px;
+//     position: absolute;
+//     right: 6px;
+//
+//     &:hover {
+//         width: 6px !important;
+//     }
+// }
+//
+// *::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,1);
+//     background-color: red;
+// }
+//
+// *::-webkit-scrollbar-thumb {
+//     background-color: blue;
+//     outline: 1px solid black;
+//     //border-radius: 8px;
+//     width: 6px;
+//
+//     &:hover {
+//         width: 6px !important;
+//     }
+// }

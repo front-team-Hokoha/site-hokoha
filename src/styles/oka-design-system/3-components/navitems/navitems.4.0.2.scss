@@ -1,0 +1,247 @@
+/** OKA NAV ITEMS
+//
+| 4.0.2 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.1 | 23/11/2022 | ajout de -disabled + ABEM |
+| 4.0.0 | 08/06/2022 | figma token  + css var tokens  |
+| 3.1.2 | 23/04/2022 | renomage : navitems  |
+| 3.1.1 | 18/09/2021 | corrections comportement des Icones + state Disabled  |
+| 3.1.0 | 02/06/2021 | Dépendance typo Nav 3.1.0 / Active Border Colors  |
+| 3.0.2 | 15/12/2020 | Ajout bg Couleurs / corner Radius |
+| 3.0.1 | 02/12/2020 | Héritage de couleurs des libellés |
+| 3.0.0 |            | tokens                            |
+
+*/
+
+
+
+
+// Dépendance 
+// Tokens
+:root {
+    --oka-nav-height             : 2.5rem ;
+    --oka-nav-border-width       : 1px ;
+    --oka-nav-border-radius      : 0.25rem ;
+}
+//
+// Libellé de nav
+// @import "../../2-elements/typography-system/navs/navs.3.1.0.scss";
+
+
+
+// MODIFIERS : 
+// défini : les teintes 
+@mixin navitemVariant ( $variant:'primary' , $mode:'on-light' ) {
+    //
+    $navitem-background-color           : var(--oka-color-action-bg-primary-default-alt);
+    $navitem-background-color-hover          : var(--oka-color-action-bg-primary-hover-alt);
+    $navitem-background-color-active         : var(--oka-color-action-bg-primary-press-alt);
+    $navitem-background-color-disabled       : var(--oka-color-action-bg-primary-disabled);
+    //
+    $navitem-text-color                      : var(--oka-color-action-fg-primary-default);
+    $navitem-text-color-hover                : var(--oka-color-action-fg-primary-hover);
+    $navitem-text-color-active               : var(--oka-color-action-fg-primary-on-solid);
+    $navitem-text-color-disabled             : var(--oka-color-action-fg-alt-primary-disabled);
+    //
+    $navitem-border-color                : var(--oka-color-action-border-primary-default);
+    $navitem-border-color-hover          : var(--oka-color-action-border-primary-hover);
+    $navitem-border-color-active         : var(--oka-color-action-border-primary-press);
+    $navitem-border-color-disabled       : var(--oka-color-action-border-primary-disabled);
+
+   
+
+    @if $variant == 'secondary' and $mode == 'on-light'  {
+        //
+        $navitem-background-color                : var(--oka-color-action-bg-secondary-default-alt);
+        $navitem-background-color-hover          : var(--oka-color-action-bg-secondary-hover-alt);
+        $navitem-background-color-active         : var(--oka-color-action-bg-secondary-press-alt);
+        $navitem-background-color-disabled       : var(--oka-color-action-bg-secondary-disabled);
+        //
+        $navitem-text-color                      : var(--oka-color-action-fg-secondary-default);
+        $navitem-text-color-hover                : var(--oka-color-action-fg-secondary-hover);
+        $navitem-text-color-active               : var(--oka-color-action-fg-secondary-on-solid);
+        $navitem-text-color-disabled             : var(--oka-color-action-fg-alt-secondary-disabled);
+        //
+        $navitem-border-color                : var(--oka-color-action-border-secondary-default);
+        $navitem-border-color-hover          : var(--oka-color-action-border-secondary-hover);
+        $navitem-border-color-active         : var(--oka-color-action-border-secondary-press);
+        $navitem-border-color-disabled       : var(--oka-color-action-border-secondary-disabled);
+    } 
+
+    
+
+
+
+
+
+    background  : $navitem-background-color;
+    color       : $navitem-text-color  ;
+    border-color : $navitem-border-color ;
+
+
+
+    &:hover {
+        background  : $navitem-background-color-hover;
+        color       : $navitem-text-color-hover  ;
+        border-color : $navitem-border-color-hover ;
+    }
+
+    &--active,
+    &.-active {
+        background  : $navitem-background-color-active;
+        color       : $navitem-text-color-active  ;
+        border-color : $navitem-border-color-active ;
+
+    }
+
+
+} 
+
+
+
+
+@mixin nav {
+ 
+
+    @include label-reset;
+    
+
+    height  :   calc( var(--oka-nav-height) -  var(--oka-nav-border-width) );
+    //
+    display:inline-flex;
+    align-items: center;
+
+
+    //background: $navitem-background-color;
+
+    border-radius :var(--oka-nav-border-radius);
+    //border-color : $oka-nav-border-color ;
+    border-width : var(--oka-nav-border-width) ;
+    border-style : solid ; 
+
+
+    //color   : $oka-nav-text-color  ;
+    text-decoration: none;
+
+    cursor:pointer;
+
+    //@include ripple;
+    @extend %oka-ripple; // 4.0.2
+
+
+    &--active,
+    &.-active{
+        //background  : $oka-nav-background-color-active;
+        //color       : $oka-nav-text-color-active;
+
+        //border-color : $oka-nav-border-color-active ;
+        //border-width : $oka-nav-border-width-active ;
+        //border-style : $oka-nav-border-style-active ; 
+
+
+        pointer-events: none;
+        cursor: none;
+    }
+
+    &:hover {
+
+        //background  : $oka-nav-background-color-hover;
+        //color       : $oka-nav-text-color-hover;
+
+        //border-color : $oka-nav-border-color-hover ;
+        //border-width : $oka-nav-border-width-hover ;
+        //border-style : $oka-nav-border-style-hover ; 
+
+    }
+
+
+    // DISABLED (primary / secondary)
+    &:disabled,
+    &--disabled,
+    &.-disabled {
+        @extend .u-cta-disabled;
+    }
+
+
+
+    // ............................
+    // ICONES
+    &__ico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        //
+        width: 2.5rem;
+        height:2.5rem;
+        //
+        flex-shrink: 0; // 3.1.1
+        //
+        font-size:1rem;
+        text-align: center;
+        //
+        color : inherit;
+        //
+        user-select: none;
+    }
+
+    // ............................
+    // LIBELLE
+    &__lbl {
+        //min-width: 8rem;
+        //padding:$space-inset-squish-m ;
+        margin-left:1.5rem;
+        margin-right:1.5rem;
+        //
+        // TYPOGRAPHIE Géré par  : @import "../../2-elements/typography-system/navs/navs.3.0.0.scss";
+        //
+        // Supprime le Crop (->conflit avec alignement vertical via flexbox )
+        padding-top:0;
+        padding-bottom:0;
+
+        color : inherit;
+    }
+
+    //
+    // Decalage lié à Icone gauche
+    &__ico  + &__lbl {
+        //margin-left:0.5rem; // 3.1.1
+        margin-left: 0rem; // 3.1.1
+    }
+
+
+}
+
+.oka-navitem,
+.oka-nav,
+.e-oka-navitem {
+    @include nav;
+
+    transition: background-color ease 0.2s; // Effet smooth transformation / position / background / Colors
+    // =========================================
+    // MODIFIERS LEVEL
+    @include navitemVariant('primary'  , 'on-light');
+
+    &--primary,
+    &.-primary {
+        @include navitemVariant('primary'  , 'on-light');
+            
+    }
+    &.-onDark,
+    .oka-on-dark & {
+        @include navitemVariant('primary' , 'on-dark' );
+    }
+    
+
+
+    &--secondary,
+    &.-secondary {
+        @include navitemVariant('secondary'  , 'on-light');
+        
+        &.-onDark,
+        .oka-on-dark & {
+            @include navitemVariant('secondary' , 'on-dark' );
+        }
+
+    }
+
+
+}

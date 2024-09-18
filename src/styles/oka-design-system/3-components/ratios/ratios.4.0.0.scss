@@ -1,0 +1,63 @@
+/**  ASPECT-RATIO 
+
+| 4.0.0 | 23/11/2022 | ABEM  |
+| 0.0.1 | 04/03/2022 | création  |
+*/
+
+
+// https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
+//
+//aspect ratio  | padding-bottom value
+//--------------|----------------------
+//    16:9      |       56.25%
+//    4:3       |       75%
+//    3:2       |       66.66%
+//    8:5       |       62.5%
+//   carre      |       100%
+//
+// Aspect suivant largeur du parent.
+// !!! parent : relative 
+
+// .oka-ratio{
+//     //position :relative;
+// }
+
+.oka-ratio {
+    position:relative;
+    width: 100%;
+
+    > div {
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+    }
+
+    //utiliser un \ pour echapper le -16 considéré comme nombre négatif
+    // et sass n'aime pas >:(
+    &--16-9,
+    &.\-16-9 {
+        padding-bottom: 56.25%;
+    }
+
+    &--4-3,
+    &.\-4-3 {
+        padding-bottom: 75%;
+    }
+
+    &--3-2,
+    &.\-3-2 {
+        padding-bottom: 66.66%;
+    }
+
+    &--8-5,
+    &.\-8-5 {
+        padding-bottom: 62.5%;
+    }
+
+    &--square,
+    &.-square {
+        padding-bottom: 100%;
+    }
+}

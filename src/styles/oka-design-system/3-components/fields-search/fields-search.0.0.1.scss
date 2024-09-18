@@ -1,0 +1,52 @@
+
+
+
+ 
+
+// Design champs de recherches
+.oka-field--search{
+
+    &:before{
+        content:'search';
+    
+        position:absolute;
+        left:0;
+    
+        height:2.5rem;
+        width:2.5rem;
+    
+        line-height:2.5rem;
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 16px;
+        
+        text-align:center;
+        pointer-events: none;
+        //cursor:pointer;
+    }
+
+
+    input {
+        padding-left:2.5rem;
+    }
+}                                                                                                                                                                                                                           
+                                                                                                                                                                                                                       
+
+
+
+// Design des Bouton de vide champ
+.emptyField {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+
+    &:hover{
+        transform: translate3d(0, 0, 0); // Annule l'effets 3D des boutons
+    }
+
+}
+input:placeholder-shown ~ .emptyField{
+    display:none;
+}
+

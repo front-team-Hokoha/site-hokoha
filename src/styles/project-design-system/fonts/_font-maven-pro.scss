@@ -1,0 +1,50 @@
+//Chemin des polices
+$fonts-path: $oka-brand-font-path;
+$maven-pro-folder : 'maven-pro-v22-latin';
+
+// https://jamonserrano.github.io/plumber-sass/baselines/
+$maven-pro-baseline : 0.158203; // !!!! Faux Chiffre pour TEST
+
+
+/* maven-problack */
+
+$maven-pro-black-weight:900;
+
+@font-face {
+  font-family: 'maven-pro-black';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Maven Pro Black'), local('Maven Pro Black'),
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+/* maven-probold */
+$maven-pro-bold-weight:700;
+
+@font-face {
+  font-family: 'maven-pro-bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Maven Pro Bold'), local('Maven Pro Bold'),
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+/* maven-proregular */
+
+$maven-pro-regular-weight:700;
+
+@font-face {
+  font-family: 'maven-pro-regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Maven Pro Regular'), local('Maven Pro Regular'),
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('#{$fonts-path}/#{$maven-pro-folder}/maven-pro-v22-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}

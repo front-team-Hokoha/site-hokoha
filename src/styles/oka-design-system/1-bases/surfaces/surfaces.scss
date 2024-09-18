@@ -1,0 +1,125 @@
+
+
+
+
+/*
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+
+
+
+$system : system / brand 
+$variant :  primary / secondary
+$presence : default / soft / medium / heavy
+
+*/
+
+
+
+%oka-surface {
+
+    --surface-color-bg : var(--oka-color-app-bg-default);
+    --surface-color-fg : var(--oka-color-app-fg-default);
+
+    background-color :  var(--surface-color-bg);
+    color : var(--surface-color-fg);
+
+
+    &SystemSoft{
+        --surface-color-bg : var(--oka-color-system-bg-soft);
+        --surface-color-fg : var(--oka-color-system-fg-on-soft);
+    }
+    &SystemMedium{
+        --surface-color-bg : var(--oka-color-system-bg-medium);
+        --surface-color-fg : var(--oka-color-system-fg-on-medium);
+    }
+    &SystemHeavy{
+        --surface-color-bg : var(--oka-color-system-bg-heavy);
+        --surface-color-fg : var(--oka-color-system-fg-on-heavy);
+    }
+
+    &PrimarySoft{
+        --surface-color-bg : var(--oka-color-primary-bg-soft);
+        --surface-color-fg : var(--oka-color-primary-fg-on-soft);
+    }
+    &PrimaryMedium{
+        --surface-color-bg : var(--oka-color-primary-bg-medium);
+        --surface-color-fg : var(--oka-color-primary-fg-on-medium);
+    }
+    &PrimaryHeavy{
+        --surface-color-bg : var(--oka-color-primary-bg-heavy);
+        --surface-color-fg : var(--oka-color-primary-fg-on-heavy);
+    }
+
+    &SecondarySoft{
+        --surface-color-bg : var(--oka-color-secondary-bg-soft);
+        --surface-color-fg : var(--oka-color-secondary-fg-on-soft);
+    }
+    &SecondaryMedium{
+        --surface-color-bg : var(--oka-color-secondary-bg-medium);
+        --surface-color-fg : var(--oka-color-secondary-fg-on-medium);
+    }
+    &SecondaryHeavy{
+        --surface-color-bg : var(--oka-color-secondary-bg-heavy);
+        --surface-color-fg : var(--oka-color-secondary-fg-on-heavy);
+    }
+}
+
+
+
+
+
+.oka-surface {
+
+    @extend %oka-surface;
+
+    &.-system.-soft{
+        @extend %oka-surfaceSystemSoft;
+    }
+
+    &.-system.-medium{
+        @extend %oka-surfaceSystemMedium;
+    }
+ 
+    &.-system.-heavy{
+        @extend %oka-surfaceSystemHeavy;
+    }
+
+    // Brand Primary
+
+    &.-primary.-soft{
+        @extend %oka-surfacePrimarySoft;
+    }
+
+    &.-primary.-medium{
+        @extend %oka-surfacePrimaryMedium;
+    }
+ 
+    &.-primary.-heavy{
+        @extend %oka-surfacePrimaryHeavy;
+    }
+
+    // Brand Secondary
+
+    &.-secondary.-soft{
+        @extend %oka-surfaceSecondarySoft;
+    }
+
+    &.-secondary.-medium{
+        @extend %oka-surfaceSecondaryMedium;
+    }
+ 
+    &.-secondary.-heavy{
+        @extend %oka-surfaceSecondaryHeavy;
+    }
+    
+
+
+    &.-preview{
+        width : 300px;
+        height:200px;
+        border:1px solid var(--oka-color-system-contrast-medium);
+        padding:1rem;
+        margin-right:3rem;
+    }
+}
+

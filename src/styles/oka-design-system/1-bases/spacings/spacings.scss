@@ -1,0 +1,282 @@
+
+/** 
+// SPACINGS
+//
+//
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+| 3.1.1  | 06/09/2021 | Ajout !important au class utilitaires |
+| 3.1.0  | 03/06/2021 | Nommage des modifiers Taille |
+| 1.0.0 | 28/02/2021 | Utilitaires d'empilement (u-stack--lg) |
+
+*/
+
+// D'après Nathan Curtis / Space in Design Systems (medium)
+//
+// tokens
+//
+// paddings (square)
+$space-inset-default : 1rem 1rem 1rem 1rem;
+$space-inset-xs : 0.25rem 0.25rem 0.25rem 0.25rem;
+$space-inset-sm : 0.5rem 0.5rem 0.5rem 0.5rem;
+$space-inset-md : 1rem 1rem 1rem 1rem;
+$space-inset-lg : 2rem 2rem 2rem 2rem;
+$space-inset-xl : 4rem 4rem 4rem 4rem;
+//
+// paddings (squish)
+$space-inset-squish-default : 0.5rem 1rem 0.5rem 1rem;
+$space-inset-squish-xs : 0.125rem 0.25rem 0.125rem 0.25rem;
+$space-inset-squish-sm : 0.25rem 0.5rem 0.25rem 0.5rem;
+$space-inset-squish-md : 0.5rem 1rem 0.5rem 1rem;
+$space-inset-squish-lg : 1rem 2rem 1rem 2rem;
+$space-inset-squish-xl : 2rem 4rem 2rem 4rem;
+//
+// paddings (stretch)
+$space-inset-stretch-default : 1rem 0.5rem 1rem 0.5rem;
+$space-inset-stretch-xs : 0.25rem 0.125rem 0.25rem 0.125rem;
+$space-inset-stretch-sm : 0.5rem 0.25rem 0.5rem 0.25rem;
+$space-inset-stretch-md : 1rem 0.5rem 1rem 0.5rem;
+$space-inset-stretch-lg : 2rem 1rem 2rem 1rem;
+$space-inset-stretch-xl : 4rem 2rem 4rem 2rem;
+//
+// marges d'emplilements
+$space-stack-default : 0 0 1rem 0;
+$space-stack-xs : 0 0 0.25rem 0;
+$space-stack-sm : 0 0 0.5rem 0;
+$space-stack-md : 0 0 1rem 0;
+$space-stack-lg : 0 0 2rem 0;
+$space-stack-xl : 0 0 4rem 0;
+//
+// marges inline
+$space-inline-default : 0 1rem 0 0;
+$space-inline-xs : 0 0.25rem 0 0;
+$space-inline-sm : 0 0.5rem 0 0;
+$space-inline-md : 0 1rem 0 0;
+$space-inline-lg : 0 2rem 0 0;
+$space-inline-xl : 0 4rem 0 0;
+//
+// Libres
+$space-default : 1rem;
+$space-xs : 0.25rem;
+$space-sm : 0.5rem;
+$space-md : 1rem;
+$space-lg : 2rem;
+$space-xl : 4rem;
+
+
+// // D'après codyhouse
+// :root {
+//   --space-unit:  1em;
+//   --space-xxxxs: calc(0.125 * var(--space-unit));
+//   --space-xxxs:  calc(0.25 * var(--space-unit));
+//   --space-xxs:   calc(0.375 * var(--space-unit));
+//   --space-xs:    calc(0.5 * var(--space-unit));
+//   --space-sm:    calc(0.75 * var(--space-unit));
+//   --space-md:    calc(1.25 * var(--space-unit));
+//   --space-lg:    calc(2 * var(--space-unit));
+//   --space-xl:    calc(3.25 * var(--space-unit));
+//   --space-xxl:   calc(5.25 * var(--space-unit));
+//   --space-xxxl:  calc(8.5 * var(--space-unit));
+//   --space-xxxxl: calc(13.75 * var(--space-unit));
+//   --component-padding: var(--space-md);
+// }
+
+// D'après OKA
+:root {
+  --space:        1rem;
+  --space--sm:     0.5rem;
+  --space--md:     1rem;
+  --space--lg:     1.5rem;
+  --space--xl:    2rem;
+  --space--xxl:   3.5rem;
+  --space--xxxl:  7rem;
+  --space--xxxxl: 14rem;
+  // (squish)
+  --space-squish : 0.5rem 1rem 0.5rem 1rem;
+  --space-squish--sm : 0.25rem 0.5rem 0.25rem 0.5rem;
+  --space-squish--md : 0.5rem 1rem 0.5rem 1rem;
+  --space-squish--lg : 1rem 2rem 1rem 2rem;
+  --space-squish--xl : 2rem 4rem 2rem 4rem;
+}
+
+
+// --------------------------------------------
+// UTILITAIRES PADDING: 
+//
+@mixin padding--sm {
+  padding: var(--space--sm) !important;
+}
+.u-padding--sm {
+  @include padding--sm;
+}
+//--------------
+@mixin padding--md {
+  padding: var(--space--md) !important;
+}
+.u-padding--md {
+  @include padding--md;
+}
+//--------------
+@mixin padding--lg {
+  padding: var(--space--lg) !important;
+}
+.u-padding--lg {
+  @include padding--lg;
+}
+//--------------
+@mixin padding--xl {
+  padding: var(--space--xl) !important;
+}
+.u-padding--xl {
+  @include padding--xl;
+}
+//---------------
+@mixin padding--xxl {
+  padding: var(--space--xxl) !important;
+}
+.u-padding--xxl {
+  @include padding--xxl;
+}
+//----------------
+@mixin padding--xxxl {
+  padding: var(--space--xxxl) !important;
+}
+.u-padding--xxxl {
+  @include padding--xxxl;
+}
+
+// --- SQUISH
+@mixin padding-squish--sm {
+  padding: var(--space-squish--sm) !important;
+}
+.u-padding-squish--sm {
+  @include padding-squish--sm;
+}
+//--------------
+@mixin padding-squish--md {
+  padding: var(--space-squish--md) !important;
+}
+.u-padding-squish--md {
+  @include padding-squish--md;
+}
+//--------------
+@mixin padding-squish--lg {
+  padding: var(--space-squish--lg) !important;
+}
+.u-padding-squish--lg {
+  @include padding-squish--lg;
+}
+//--------------
+@mixin padding-squish--xl {
+  padding: var(--space-squish--xl) !important;
+}
+.u-padding-squish--xl {
+  @include padding-squish--xl;
+}
+//---------------
+// @mixin padding-squish--xxl {
+//   padding: var(--space-squish--xxl);
+// }
+// .u-padding-squish--xxl {
+//   @include padding-squish--xxl;
+// }
+// //----------------
+// @mixin padding-squish--xxxl {
+//   padding: var(--space-squish--xxxl);
+// }
+// .u-padding-squish--xxxl {
+//   @include padding-squish--xxxl;
+// }
+
+
+
+// --------------------------------------------
+// UTILITAIRES MARGIN: 
+//
+@mixin margin--sm {
+  margin: var(--space--sm) !important;
+}
+.u-margin--sm {
+  @include margin--sm;
+}
+//--------------
+@mixin margin--md {
+  margin: var(--space--md) !important;
+}
+.u-margin--md {
+  @include margin--md;
+}
+//--------------
+
+@mixin margin--lg {
+  margin: var(--space--lg) !important;
+}
+.u-margin--lg {
+  @include margin--lg;
+}
+//--------------
+@mixin margin--xl {
+  margin: var(--space--xl) !important;
+}
+.u-margin--xl {
+  @include margin--xl;
+}
+//---------------
+@mixin margin--xxl {
+  margin: var(--space--xxl) !important;
+}
+.u-margin--xxl {
+  @include margin--xxl;
+}
+//----------------
+@mixin margin--xxxl {
+  margin: var(--space--xxxl) !important;
+}
+.u-margin--xxxl {
+  @include margin--xxxl;
+}
+
+// EMPILEMENTS - STACK
+
+@mixin stack--sm {
+  margin-bottom: var(--space--sm) !important;
+}
+.u-stack--sm {
+  @include stack--sm;
+}
+//--------------
+@mixin stack--md {
+  margin-bottom: var(--space--md) !important;
+}
+.u-stack--md {
+  @include stack--md;
+}
+//--------------
+
+@mixin stack--lg {
+  margin-bottom: var(--space--lg) !important;
+}
+.u-stack--lg {
+  @include stack--lg;
+}
+//--------------
+@mixin stack--xl {
+  margin-bottom: var(--space--xl) !important;
+}
+.u-stack--xl {
+  @include stack--xl;
+}
+//---------------
+@mixin stack--xxl {
+  margin-bottom: var(--space--xxl) !important;
+}
+.u-stack--xxl {
+  @include stack--xxl;
+}
+//----------------
+@mixin stack--xxxl {
+  margin-bottom: var(--space--xxxl) !important;
+}
+.u-stack--xxxl {
+  @include stack--xxxl;
+}
+

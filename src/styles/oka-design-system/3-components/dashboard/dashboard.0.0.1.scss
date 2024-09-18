@@ -1,0 +1,230 @@
+
+/* OKA DASHBOARD 
+
+| 0.0.1 | 01/09/2022 | Creation (corridor / hugo) |
+*/
+
+
+// Tokens mediaqueries breakpoints
+/*
+$oka-breakpoint-xxs    : 320px;
+$oka-breakpoint-xs     : 480px;
+$oka-breakpoint-sm     : 768px;
+$oka-breakpoint-md     : 1024px;
+$oka-breakpoint-lg     : 1280px;
+$oka-breakpoint-xl     : 1440px;
+*/
+
+
+%dashboardRow {
+    display:flex;
+    align-items: center;
+}
+
+
+@mixin smGrid {
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto; 
+    gap: 1rem 1rem;
+}
+
+@mixin mdGrid {
+    --oka-dashboard-border-width  : 0 1px 0 0;
+    --oka-dashboard-margin        : 0 1rem 0 0;    
+    --oka-dashboard-padding       : 0 ;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr;  
+}
+
+.oka-dashboards {
+
+    --oka-dashboard-border-width  : 0 0 1px 0;
+    --oka-dashboard-border-color  : var(--oka-color-system-contrast-medium);
+    --oka-dashboard-margin        : 0 0 calc(0.5rem - 1px) 0;
+    --oka-dashboard-padding       : 0 0 0.5rem 0 ;
+
+    display: grid;
+
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+
+    
+
+
+    // xs
+    @container (min-width: 480px) {
+        @include smGrid;
+    }
+
+    // SM
+    // @container (min-width: 768px) {
+    //     //@include mdGrid;
+    // }
+
+    // MD
+    @container (min-width: 1024px) {
+        @include mdGrid;
+    }
+   
+}
+
+
+.oka-dashboard {
+
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+
+    margin: var(--oka-dashboard-margin);
+    padding : var(--oka-dashboard-padding);
+
+    border-width : var(--oka-dashboard-border-width);
+    border-style : solid;
+    border-color : var(--oka-dashboard-border-color);
+
+
+    &:last-child{
+        
+        @container (min-width: 1024px) {
+            --oka-dashboard-border-width  : 0;
+        }
+    }
+
+
+    // ENTETE ---------
+    &__head{
+        @extend %dashboardRow;
+    }
+
+
+    &__ico {
+
+        width:1.5rem;
+        margin-top: -0.5rem;
+
+        font-size:14px;
+    }
+
+    &__lbl {
+
+        @extend %oka-data-sm !optional;
+        @extend .oka-cropLineHeight;
+
+        flex-grow: 1;
+    }
+
+    // BODY ---------
+
+    &__body {
+        @extend %dashboardRow;
+    }
+
+    &__value {
+
+        //@extend .oka-h, .-md !optional;
+        @extend .oka-cropLineHeight;
+
+        width: 100%;
+        margin-bottom:1rem;
+        padding-left: 1.5rem;
+
+    }
+
+
+    &__unit {
+        //@extend .oka-h, .-md !optional;
+        @extend .oka-cropLineHeight;
+
+        display:inline-block;
+        
+        margin-left: 0.25rem;
+    }
+
+
+    // FOOT ---------
+
+    &__foot {
+        @extend %dashboardRow;
+    }
+
+    &__indic {
+
+        --oka-dashboard-indic-positif :  var(--oka-color-feedback-success-base, var(--color--success, green));
+        --oka-dashboard-indic-negatif : var(--oka-color-feedback-error-base, var(--color--error, red));
+        --oka-dashboard-indic-neutre : var(--oka-color-system-contrast-medium);
+
+        transform: translateY(-25%);
+
+        position: relative;
+        
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+    
+        background-color: var(--oka-dashboard-indic-positif);
+        color: white;
+
+        
+        &.-revert{
+            background-color: var(--oka-dashboard-indic-negatif);
+        }
+    
+        &.-neutre {
+            background-color: var(--oka-dashboard-indic-neutre);
+        }
+
+
+
+        &.-negatif {
+
+            background-color: var(--oka-dashboard-indic-negatif);
+
+            &:after {
+                content: "trending_down";
+            }
+            
+            &.-revert{
+                background-color: var(--oka-dashboard-indic-positif);
+            }
+        
+            &.-neutre {
+                background-color: var(--oka-dashboard-indic-neutre);
+            }
+        }
+
+        &:after {
+            
+            @extend .material-icons;
+            
+            content: "trending_up";
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            font-size:14px;
+            line-height: 1rem;
+            
+        }
+
+        
+        &.-equal {
+            background-color: var(--oka-dashboard-indic-neutre);
+        }
+
+
+    }
+
+    &__rapport {
+        @extend %oka-data-xs;
+        @extend .oka-cropLineHeight;
+    }
+}

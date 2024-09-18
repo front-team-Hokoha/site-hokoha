@@ -1,0 +1,72 @@
+
+/** OKA BTGROUP
+
+| 0.0.1 | 11/10/2022 | création  |
+*/
+
+
+/*
+Par default : horizontale 
+
+ |_______|________|________|
+
+*/ 
+
+
+.oka-btGroup {
+
+    //border:1px solid red;
+    display:flex;
+
+    flex-direction: row; 
+
+    flex-shrink:1;
+    flex-grow:1;
+    //max-width: 100%;
+    //width:100%;
+    
+
+    .oka-bt{
+        // supprime les effets au survol vertical
+        &:hover{
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    // autorise la compression de taille des items
+    .oka-bt{
+        flex-shrink:0;
+        flex-grow:0;
+        justify-content: center;
+
+        min-width:200px;
+    }
+
+    // Les boutons du milieu : on supprime les arrondis
+    .oka-bt:not(:first-child):not(:last-child){
+        border-radius: 0;
+    }
+    // Les boutons du milieu : on supprime les filets
+    .oka-bt:not(:first-child):not(:last-child){
+        border-right:0;
+    }
+
+    // le premier : supprime l'arrondis de droite
+    .oka-bt:first-child {
+        border-bottom-right-radius: 0 ;
+        border-top-right-radius: 0 ;
+        border-right:0 ;
+    }
+    // le premier : supprime l'arrondis de droite
+    .oka-bt:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+    
+    // Cas particulier :
+    // Les boutons focus dans un groupe , on ne peut pas agir dessus
+    .oka-bt--focus {
+        pointer-events: none;
+        z-index:2;
+    }
+
+}

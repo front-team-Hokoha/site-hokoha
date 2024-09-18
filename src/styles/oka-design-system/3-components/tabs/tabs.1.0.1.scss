@@ -1,0 +1,128 @@
+
+/** OKA TABS 
+
+| 1.0.1 | 18/12/2020 | passage en grid |
+| 1.0.0 | 04/11/2020 | creations|
+
+*/
+
+
+// Dépendances :
+//
+// Tokens
+@import "../../../design-tokens/oka-tabs-tokens.scss";
+
+// ripple
+//@import "../../1-bases/ripple";
+
+.oka-tab {
+    margin:0;
+    //outline:1px solid blue;
+
+
+    display:grid;
+    grid-template-columns: repeat();
+    grid-template-rows: auto;
+
+
+
+    //
+    &__head{
+        display: flex;
+
+        background: $oka-tab-head-color-background ;
+        padding:$oka-tab-head-space-inset;
+    }
+    // Inputs radios Pilot
+    &__pilot{
+        display:none;
+    }
+
+    // label
+    &__button{
+
+        display:flex;
+        align-items: center;
+        
+        height: $oka-tab-button-height;
+        margin-left:$oka-tab-button-space-inline;
+        padding : $oka-tab-button-space-inset  ;
+      
+
+        background :$oka-tab-button-color-background ;
+        color :$oka-tab-button-color-text ;
+
+        cursor: pointer;
+
+        @include ripple;
+
+        &:hover{
+            background:$oka-tab-button-color-background-over;
+            color:$oka-tab-button-color-text-over;
+        }
+
+        &--disabled {
+            opacity:0.5;
+            cursor:not-allowed;
+            pointer-events:none;
+        }
+
+
+    }
+
+    &__lbl {
+        @include typo-buttons;
+        color:inherit;
+    }
+
+
+    &__panel {
+        display:none;
+        z-index: 2;
+        position: relative;
+
+        margin-top:-($oka-tab-head-space-inset-bottom);
+        border-top: $oka-tab-head-space-inset-bottom solid $oka-tab-head-color-background ;
+
+        // !!!!
+        // Le padding dans le panel doit etre
+        // géré par un container interne;
+        //padding:1.5rem 0.5rem;
+    }
+
+}
+
+// INTERACTIONS
+//
+// Activer les Buttons Tabs
+#pilot-panel-1:checked ~ .oka-tab__head label[for=pilot-panel-1] ,
+#pilot-panel-2:checked ~ .oka-tab__head label[for=pilot-panel-2] ,
+#pilot-panel-3:checked ~ .oka-tab__head label[for=pilot-panel-3] ,
+#pilot-panel-4:checked ~ .oka-tab__head label[for=pilot-panel-4] ,
+#pilot-panel-5:checked ~ .oka-tab__head label[for=pilot-panel-5] ,
+#pilot-panel-1:checked ~ .oka-tab__head label[for=pilot-panel-6] ,
+#pilot-panel-2:checked ~ .oka-tab__head label[for=pilot-panel-7] ,
+#pilot-panel-3:checked ~ .oka-tab__head label[for=pilot-panel-8] ,
+#pilot-panel-4:checked ~ .oka-tab__head label[for=pilot-panel-9] ,
+#pilot-panel-5:checked ~ .oka-tab__head label[for=pilot-panel-10] {
+    background:$oka-tab-button-color-background-active;
+    color:$oka-tab-button-color-text-active;
+    z-index:1;
+}
+
+
+
+#pilot-panel-1:checked ~ [data-tab="panel-1"] ,
+#pilot-panel-2:checked ~ [data-tab="panel-2"] ,
+#pilot-panel-3:checked ~ [data-tab="panel-3"] ,
+#pilot-panel-4:checked ~ [data-tab="panel-4"] ,
+#pilot-panel-5:checked ~ [data-tab="panel-5"] ,
+#pilot-panel-1:checked ~ [data-tab="panel-6"] ,
+#pilot-panel-2:checked ~ [data-tab="panel-7"] ,
+#pilot-panel-3:checked ~ [data-tab="panel-8"] ,
+#pilot-panel-4:checked ~ [data-tab="panel-9"] ,
+#pilot-panel-5:checked ~ [data-tab="panel-10"]{
+    background:$oka-tab-panel-color-background;
+    display:block;
+}
+

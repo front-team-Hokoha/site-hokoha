@@ -1,0 +1,371 @@
+// ==================================================
+// HEADINGS
+
+/*
+
+| 4.0.0 | 02/12/2022 | Nomage conforme ABEM  |
+| 3.1.3 | 25/04/2022 | Supression des cropLineHeight -  |
+| 3.1.2 | 10/01/2022 | Marge inférieure uniquement sur <h1><h2>etc... avec modifier oka-h--autostack |
+| 3.1.1 | 06/09/2021 | Marge inférieure uniquement sur <h1><h2>etc... / Ajout Nomage oka-h-(size) et oka-h--(size) |
+| 3.1.0 | 02/06/2021 | Revision nommage : Modifiers de taille |
+| 3.0.2 | 28/02/2021 | gestion stackings - Révision Nomage |
+| 3.0.1 |            | suppression dependances base / tokens externes
+| 3.0.0 |
+*/
+
+
+// tokens
+// XXL ---------------------------------
+$oka-brand-heading-font-size-xxl: $oka-fontsize-xxl ; // 4.209;
+$oka-brand-heading-line-height-xxl: $oka-lineheight-xxl ; // 5;
+
+// XL -H1----------------------------------
+$oka-brand-heading-font-size-xl: $oka-fontsize-xl ; // 3.157; 
+$oka-brand-heading-line-height-xl: $oka-lineheight-xl ; // 4;
+
+// L -H2-----------------------------------
+$oka-brand-heading-font-size-lg: $oka-fontsize-lg ; // 2.369;
+$oka-brand-heading-line-height-lg: $oka-lineheight-lg ; // 3;
+
+// M -H3-----------------------------------
+$oka-brand-heading-font-size-md: $oka-fontsize-md ; // 1.777;
+$oka-brand-heading-line-height-md: $oka-lineheight-sm ; // 2;
+
+// S -H4-----------------------------------
+$oka-brand-heading-font-size-sm: $oka-fontsize-sm ; // 1.333;
+$oka-brand-heading-line-height-sm: $oka-lineheight-sm ; // 2;
+
+// XS -H5-----------------------------------
+$oka-brand-heading-font-size-xs: $oka-fontsize-xs ; // 1;
+$oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
+
+
+
+
+
+
+%oka-crop {
+    //
+    &:before {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom: var(--crop-top);
+    }
+    //
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: var(--crop-bottom);
+    }
+}
+
+
+// ==================================================
+// HEADINGS
+//
+
+%oka-h{
+
+    font-family: $oka-brand-heading-font-family;
+    font-weight: $oka-brand-heading-font-weight;
+    letter-spacing: $oka-brand-heading-letter-spacing;
+
+    display: block;
+
+    // Reset stack
+    margin-top: 0;
+    margin-bottom:0 ;
+
+    color :   var(--oka-color-app-fg-default);
+
+    // !!!! Attention correctif sur lineHeight des enfants
+    span,
+    strong,
+    em {
+        line-height: 0;
+    }
+    
+
+    // =======================================
+    // Modifier : Type
+    &.-secondary,
+    .-secondary {
+        font-weight: 300;
+    }
+
+    // =======================================
+    // Modifier : Crop (line Height)
+    &.-crop {
+
+        @extend %oka-crop;
+        
+        // //
+        // &:before {
+        //     content: '';
+        //     display: block;
+        //     height: 0;
+        //     width: 0;
+        //     margin-bottom: var(--crop-top);
+        // }
+        // //
+        // &:after {
+        //     content: '';
+        //     display: block;
+        //     height: 0;
+        //     width: 0;
+        //     margin-top: var(--crop-bottom);
+        // }
+    }
+
+    // =======================================
+    // Modifier de graisse
+    &.-strong,
+    strong {
+        //outline:1px solid red;
+        font-family: $oka-brand-heading-font-family-strong;
+        font-weight: $oka-brand-heading-font-weight-strong;
+    }
+}
+
+// --------------------------------------
+// TITRAGE XXL
+%oka-h-xxl {
+    @include plumber-set-defaults($use-baseline-origin: true);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline,
+        $font-size: $oka-brand-heading-font-size-xxl, 
+        $line-height: $oka-brand-heading-line-height-xxl, 
+        );
+}
+
+// --------------------------------------
+// TITRAGE XL (h1)
+%oka-h-xl {
+    --crop-top : -1.5rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-xl, 
+        $line-height: $oka-brand-heading-line-height-xl, 
+    );
+}
+
+// --------------------------------------
+// TITRAGE L (h2)
+%oka-h-lg {
+    --crop-top : -1.0rem;
+    --crop-bottom : -1.0rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-lg, 
+        $line-height: $oka-brand-heading-line-height-lg, );  
+}
+
+// --------------------------------------
+// TITRAGE M (h3)
+%oka-h-md {
+    --crop-top : -0.5rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-md, 
+        $line-height: $oka-brand-heading-line-height-md, );
+}
+
+
+// --------------------------------------
+// TITRAGE S (h4)
+%oka-h-sm {
+    --crop-top : -1rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-sm, 
+        $line-height: $oka-brand-heading-line-height-sm, );
+}
+
+// --------------------------------------
+// TITRAGE XS (h5)
+%oka-h-xs {
+    --crop-top : -0.25rem;
+    --crop-bottom : -0.75rem;
+    
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-xs, 
+        $line-height: $oka-brand-heading-line-height-xs, );
+}
+
+
+@mixin cropLineHeight {
+    //
+    &:before {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom: var(--crop-top);
+    }
+    //
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: var(--crop-bottom);
+    }
+}
+
+.oka-cropLineHeight{
+    @include cropLineHeight;
+}
+
+
+// --------------------------------------
+// TITRAGE DEFAULT
+
+.oka-h {
+    @extend %oka-h;
+}
+
+
+// --------------------------------------
+// TITRAGE XXL
+//.oka-h--xxl,// deprecated
+//.oka-h-xxl,// deprecated
+.oka-h.-xxl {
+    @extend %oka-h-xxl;
+}
+
+
+// --------------------------------------
+// TITRAGE XL
+//.oka-h--xl, // deprecated
+//.oka-h-xl, // deprecated
+.oka-h.-xl {
+    @extend %oka-h-xl;
+}
+
+h1 {
+   @extend %oka-h;
+   @extend %oka-h-xl;
+}
+
+
+// --------------------------------------
+// TITRAGE L
+//.oka-h--lg, // deprecated
+//.oka-h-lg, // deprecated
+.oka-h.-lg{
+    @extend %oka-h-lg;
+}
+h2 {
+    @extend %oka-h;
+    @extend %oka-h-lg;
+}
+
+
+// --------------------------------------
+// TITRAGE M
+//.oka-h--md, // deprecated
+//.oka-h-md,// deprecated
+.oka-h:not(.-xxl):not(.-xl):not(.-lg):not(.-sm):not(.-xs),
+.oka-h.-md{
+    @extend %oka-h-md;
+}
+h3 {
+    @extend %oka-h;
+    @extend %oka-h-md;
+}
+
+// --------------------------------------
+// TITRAGE S
+//.oka-h--sm,// deprecated
+//.oka-h-sm,// deprecated
+.oka-h.-sm{
+    @extend %oka-h-sm;
+}
+h4 {
+    @extend %oka-h;
+    @extend %oka-h-sm;
+}
+
+// --------------------------------------
+// TITRAGE XS
+//.oka-h--xs,// deprecated
+//.oka-h-xs,// deprecated
+.oka-h.-xs{
+    @extend %oka-h-xs;
+}
+
+h5 {
+    @extend %oka-h;
+    @extend %oka-h-xs;
+}
+
+
+// !!!! RECUP Ancien 
+//
+// -----------------------------------
+//
+h1,
+h2,
+h3,
+h4,
+h5 {
+    //margin-top: 0;
+    //margin-bottom:0 ; // 3.1.2
+
+    &.oka-h--autostack { // 3.1.2
+
+        //outline : 1px solid red;
+
+        // Marge supérieur des titres dans le flux
+        &:not(:first-child) {
+            margin-top: 1.5rem;
+        }
+        // Les titres seuls ou en derniers n'ont pas de marge inférieures
+        &:last-child {
+            margin-bottom: 0;
+        }
+        // La marge supérieurs des filets suivants est réduite.
+        +hr {
+            margin-top: -1rem;
+        }
+    }
+}
+
+// Stack
+//
+h1.oka-h--autostack  {
+    margin-bottom: 2.5rem;
+}
+
+h2.oka-h--autostack  {
+    margin-bottom: 1.5rem;
+}
+
+h3.oka-h--autostack  {
+    margin-bottom: 1rem;
+}
+
+h4.oka-h--autostack  {
+    margin-bottom: 0.5rem;
+}
+
+h5.oka-h--autostack  {
+    margin-bottom: 0.0rem;
+}

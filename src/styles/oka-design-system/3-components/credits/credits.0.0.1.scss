@@ -1,0 +1,89 @@
+/* OKA CREDITS */
+//
+// 0.0.1 : versionning - tokens
+
+
+
+// Dépendances :
+//
+// Tokens
+@import "../../../design-tokens/oka-credits-tokens.scss";
+
+
+
+.oka-credits {
+
+    padding:0.5rem 0 0 0;
+
+    color: $oka-credits-color-text;
+
+
+
+
+    // &--inline{
+
+       
+
+        
+    // }
+
+     // Positionne stack  pour view small
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     align-items: flex-end;
+
+
+     //  marges des enfants par defaut
+     > *  {
+         margin:0 0 1rem 0 ;    
+     }
+
+
+     // Positionne enligne  pour view medium
+     @include breakpoint(sm) {
+         flex-direction: row;
+         justify-content : flex-end;
+         flex-wrap: wrap;
+         > *  {
+             margin:0 0 0.5rem 0.5rem;
+             padding: 0 0 0 0.5rem;
+             border-left:1px solid $oka-credits-color-separators;
+         }
+     }
+
+
+
+
+
+    
+    &--stack{
+        flex-direction: column;
+        justify-content : flex-end;
+        flex-wrap: wrap;
+
+        // pousse en bas (cas ou sidebar : flex column)
+        margin-top: auto;
+
+        //  marges des enfants
+        > *  {
+            //margin:0 0 0.5rem 0 !important;
+            margin:0 0 1rem 0 ;   
+            border:none;
+        }
+    }
+
+
+
+    &__context,
+    &__version,
+    &__date,
+    &__auteur {
+        @include text--xs;
+    }
+
+    &__version,
+    &__date{
+        @include text--xs;
+    }
+}

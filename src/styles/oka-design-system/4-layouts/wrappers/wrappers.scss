@@ -1,0 +1,49 @@
+/** ==================================================
+* WRAPPERS
+
+| 1.0.2    | 10/02/2021 | Simplification + Modifiers de padding - Séparation avec oka-app-wrapper |
+| 1.0.1    | 21/12/2020 | ajout du wrapper de composant |
+ 1.0.0
+
+*/
+
+// Dépendances
+
+
+// WRAPPER DE COMPOSANT
+// Destiner au grid d'interieur de compoasnts (tabs / accordions / modals / etc ...)
+// le padding de ce wrapper est à gerer avec les modifiers 
+
+
+//// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Trucks
+// Wrappers OKA
+.oka-wrap {
+    position:relative ; // requis pour Grid
+    
+    &--compact{
+        padding:0 !important;
+    }
+
+    &--sm{
+        padding:0.5rem !important;
+    }
+    &--md{
+        padding:1rem !important;
+    }
+
+    &-squish--lg {
+        padding : $space-inset-squish-lg !important;
+    }
+    &-squish--xl {
+        padding : $space-inset-squish-xl !important;
+    }
+
+}
+
+
+
+// // Preview
+// body.showGrid .oka-wrap{
+//     //outline: 1px solid $oka-grid-color-preview;
+// }

@@ -1,0 +1,117 @@
+
+// ====================================================
+//  POPOVER
+//
+
+// 3.0.0
+
+
+// Tokens
+// Tokens popovers
+
+$background-popovers : var(--color-1--darkest);
+$border-color-popovers :  var(--color-1--light);
+$border-radius-popovers : 0;
+$border-width-popovers : 1px;
+$color-popovers : var(--color-1--lightest);
+$min-width-popovers : 340px;
+$padding-popovers : var(--space);
+
+// Ombres
+// @import "../../1-bases/shadows/shadows.3.0.0";
+
+.oka-popover{
+    position: relative;
+
+
+    // Bouton d'ouverture
+    &__openner{
+        cursor:help;
+        user-select: none;
+    }
+
+    // le input checkbox declancheurs
+    &__pilot{
+        display:none;
+    }
+
+    // Popover
+    &__ctnr {
+        display:none;
+        position: absolute;
+        top:0;
+        right:0;
+        z-index: 4000;
+
+        min-width : $min-width-popovers;
+
+        flex-direction: column;
+
+        padding: $padding-popovers;
+
+        background: $background-popovers;
+                
+        border-color : $border-color-popovers;
+        border-width : $border-width-popovers;
+        border-style:solid;
+        
+        color: $color-popovers;
+
+        @include shadow-4;
+
+
+        // Supprime les interactions sur tous les elements contenu
+        pointer-events:none;
+
+        // reactive les interactions sur les elements interactifs
+        a,button,label,input {
+            user-select: all;
+            pointer-events:all; 
+        }
+    }
+
+
+
+    // Le declencheur de fermeture
+    // Label transparent sur toute la surface (viewport)
+    &__closer{
+
+        pointer-events:all; 
+
+
+        // !!!!! on surcharge un label
+        // donc on reinit tout et  on force
+        //
+        display:none !important;
+        //
+        position:fixed  !important;
+        z-index: 30 !important;
+
+        top:0 !important; // v2.0.2
+        right:0 !important; // v2.0.2
+        bottom:0 !important; // v2.0.2
+        left:0 !important; // v2.0.2
+
+        //width:100vw !important;// NON : Probleme de taille sur les mobiles
+        //height:100vh !important;// NON : Probleme de taille sur les mobiles
+
+        margin: 0 !important;
+        background:transparent !important;
+        
+
+        &:after,
+        &:before {
+            display:none !important;
+        }
+    }
+}
+
+
+//
+//
+// System d'ouverture (pure css)
+//
+.oka-popover__pilot:checked ~ .oka-popover__ctnr,
+.oka-popover__pilot:checked ~ .oka-popover__closer{
+    display:flex !important;
+}

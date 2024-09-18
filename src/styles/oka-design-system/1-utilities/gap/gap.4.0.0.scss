@@ -1,0 +1,20 @@
+// UTILITAIRE GAP
+// pour les grid et flex
+
+/*
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+| 0.0.1 | 24/11/2022 | Création |
+*/
+.u-oka-gap {
+    &--sm {
+        gap: var(--space-sm);
+    }
+
+    &--md {
+        gap: var(--space-md);
+    }
+
+    &--lg {
+        gap: var(--space-lg);
+    }
+}

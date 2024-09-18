@@ -1,0 +1,70 @@
+
+/**
+*  CHAMPS RECHERCHER
+*
+
+|  4.0.0 | 11/09/2023 | Icone FontAwesome + Suppression du bouton de réinitialisation sous webkit |
+|  0.0.1 |            | Création |
+*/
+
+
+
+/* https://medium.com/@rion.mrk/how-to-remove-x-icon-from-search-input-field-or-input-type-search-db3c808405fb */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-search-cancel-button */
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+ 
+
+// Design champs de recherches
+.oka-field--search{
+
+    &:before{
+        content:'\f002';
+    
+        position:absolute;
+        left:0;
+    
+        height:2.5rem;
+        width:2.5rem;
+    
+        line-height:2.5rem;
+        font-family: "Font Awesome 6 Pro";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 16px;
+        
+        text-align:center;
+        pointer-events: none;
+        //cursor:pointer;
+    }
+
+
+    input {
+        padding-left:2.5rem;
+    }
+}                                                                                                                                                                                                                           
+                                                                                                                                                                                                                       
+
+
+
+// Design des Bouton de vide champ
+.emptyField {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+
+    &:hover{
+        transform: translate3d(0, 0, 0); // Annule l'effets 3D des boutons
+    }
+
+}
+input:placeholder-shown ~ .emptyField{
+    display:none;
+}
+

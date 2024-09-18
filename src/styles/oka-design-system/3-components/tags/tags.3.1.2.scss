@@ -1,0 +1,381 @@
+/** TAGS OKA
+//
+//
+|  3.1.2 | 26/08/2022 | reprise espacement des enfants / color Warning |
+|  3.1.1 | 01/02/2022 | Supression crop des libellés (centrage vertical) |
+|  3.1.0 | 04/06/2021 | Révision nommage Modifiers Taille |
+|  3.0.1 | 18/12/2020 | Supression de dépendances stricts (@include b-oka-corner--l / @include user-select-none)
+//  3.0.0 : 
+
+
+// Dépendances
+*/
+
+@mixin tag {
+
+    display: inline-flex;
+    align-items: center;
+
+    vertical-align: middle;
+
+    width: auto;
+
+    //@include b-oka-corner--l; // 3.0.1
+    border-radius:3rem; // 3.0.1
+
+    pointer-events: none;
+    cursor:none;
+
+    // 3.1.2 : gestion des espacements des enfants
+    > * {
+        margin-right:0.25rem;
+
+        &:first-child{
+            margin-left: 0.25rem;
+        }
+    }
+
+    
+}
+
+
+@mixin tag-lbl {
+
+    color:inherit;
+
+    // 3.1.2 // margin-right:0.75rem;
+    // 3.1.2 // margin-left:0.75rem;
+ 
+    cursor:none;
+    //@include user-select-none; // 3.0.1
+    user-select: none; // 3.0.1
+
+    // 3.1.1 // padding-top: 0.45em !important; // Récupe centrage vertical à l'oeil
+    padding-top: 0 !important; // 3.1.1
+    padding-bottom: 0 !important; // 3.1.1
+
+    &:first-child{
+        margin-left:0.75rem;
+    }
+    &:last-child{
+        margin-right:0.75rem;
+    }
+}
+
+
+// Container d'icones
+@mixin tag-ico {
+    display: flex;
+    
+    overflow: hidden;
+    
+    // 3.1.2 // margin-right:0;
+    // 3.1.2 // margin-left:0.25rem;
+
+    justify-content: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    text-align: center;
+
+    background-color: var(--gray--base);
+
+    // Affichage de l'icone
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+@mixin tag-remove {
+
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+
+    background: var(--gray--base);
+
+
+    text-align: center;
+   
+    // 3.1.2 // margin-right:0.25rem;
+    // 3.1.2 // margin-left:0;
+
+    color:transparent;
+
+    // Affichage de l'icone
+    background-image:  url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+    pointer-events:all;
+    cursor:pointer;
+
+    &:hover{
+        background-color: var(--color-1--base);
+    }
+}
+
+
+
+@mixin tagSize( $type:'default') {
+
+    @if $type == 'default' {
+       height:1.5rem;
+    
+       .oka-tag{
+            &__ico,
+            &__remove {
+                height:1rem;
+                width:1rem;
+                border-radius: 1rem;
+                background-size: .5rem; // Taille des icones
+            }
+
+            &__lbl{
+                @include label--sm;
+            }
+        }
+    }
+    
+    
+
+    @if $type == 'lg' {
+        height:2rem;
+
+        .oka-tag{
+            &__ico,
+            &__remove {
+                height:1.5rem;
+                width:1.5rem;
+                border-radius: 1.5rem;
+                background-size: .75rem; // Taille des icones
+            }
+
+            &__lbl{
+                @include label--md;
+            }
+        }
+    }
+}
+
+
+
+@mixin tagType( $type:'default') {
+
+    @if $type == 'default' {
+        background: var(--gray--darker);
+        color:var(--gray--lightest);
+    }
+
+
+    @if $type == 'outline' {   
+        background: transparent !important;
+        // border et colors dans mixin Color
+    }
+
+
+    @if $type == 'ghost' {   
+        background: transparent !important;
+        border: none !important;
+        // border et colors dans mixin Color
+    }
+
+}
+
+
+
+
+@mixin tagColor( $type:'default') {
+
+    @if $type == 'default' {
+
+
+        background: var(--gray--darker);
+        color:var(--gray--lightest);
+
+        &.oka-tag {
+            &--outline,
+            &--ghost {
+                border:1px solid  var(--gray--base);
+                background: transparent;
+                color: var(--gray--darker);
+            }
+        }
+    }
+
+    @if $type == 'secondary' {
+        background: var(--color-2--base);
+        color:var(--gray--lightest);
+
+        &.oka-tag {
+            &--outline,
+            &--ghost {
+                border:1px solid  var(--color-2--base);
+                background: transparent;
+                color: var(--color-2--base);
+            }
+
+        }
+
+        .oka-tag{
+            &__ico {
+                 // Couleur de fond pour version Outilne
+                background-color: var(--color-2--base);
+            }
+        }
+    }
+
+    @if $type == 'success' {
+        background: var(--color--success);
+        color:var(--gray--lightest);
+
+        &.oka-tag {
+            &--outline,
+            &--ghost {
+                border:1px solid  var(--color--success);
+                background: transparent;
+                color: var(--color--success);
+            }
+        }
+
+        .oka-tag{
+            &__ico {
+                 // Couleur de fond pour version Outilne
+                background-color: var(--color--success);
+            }
+        }
+    }
+
+    @if $type == 'error' {
+        background: var(--color--error);
+        color:var(--gray--lightest);
+
+        &.oka-tag {
+            &--outline,
+            &--ghost {
+                border:1px solid  var(--color--error);
+                background: transparent;
+                color: var(--color--error);
+            }
+        }
+
+        
+        .oka-tag{
+            &__ico {
+                 // Couleur de fond pour version Outilne
+                background-color: var(--color--error);
+            }
+        }
+    }
+
+
+
+    @if $type == 'warning' {
+        background: var(--oka-color-feedback-warning-base);
+        color:var(--gray--lightest);
+
+        &.oka-tag {
+            &--outline,
+            &--ghost {
+                border:1px solid  var(--oka-color-feedback-warning-base);
+                background: transparent;
+                color: var(--oka-color-feedback-warning-base);
+            }
+        }
+
+        
+        .oka-tag{
+            &__ico {
+                 // Couleur de fond pour version Outilne
+                background-color: var(--oka-color-feedback-warning-base);
+            }
+        }
+    }
+
+
+}
+
+
+.oka-tag,
+.e-oka-tag {
+
+    @include tag;
+
+    &__ico {
+        @include tag-ico;
+    }
+
+    &__remove{
+        @include tag-remove;
+    }
+
+    &__lbl {
+        @include tag-lbl;
+    }
+
+
+    //Icone gauche
+    // .oka-tag__ico +  .oka-tag__lbl {
+    //     margin-left:0.25rem;
+    // }
+
+
+    
+    // MODIFIER TYPE
+    @include tagType;
+
+    &--outline {
+        @include tagType($type:"outline");
+    }
+    &--ghost {
+        @include tagType($type:"ghost");
+    }
+
+    // =========================================
+    // MODIFIERS COLORS
+    @include tagColor;
+
+    &--success {
+        @include tagColor($type:"success");
+    }
+
+    &--error {
+        @include tagColor($type:"error");
+    }
+
+    &--warning {
+        @include tagColor($type:"warning");
+    }
+
+
+    &--primary{
+    }
+
+    &--secondary{
+        @include tagColor($type:"secondary");
+    }
+
+    &--neutral{
+    }
+
+    &--light{
+    }
+
+    &--dark{
+    }
+
+
+    // MODIFIER TYPE
+    @include tagSize;
+
+
+    // Modifiers Taille
+    &--lg{
+        @include tagSize($type:"lg");
+    }
+}

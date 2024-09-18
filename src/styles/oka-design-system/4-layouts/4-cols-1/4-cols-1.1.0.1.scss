@@ -1,0 +1,40 @@
+.oka-4cols-1{
+
+
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto auto auto; 
+    gap: var(--grid-gap-y) var(--grid-gap-x); 
+    grid-template-areas: 
+      "col1"
+      "col2"
+      "col3"
+      "col4"; 
+
+      width : 100%;
+
+
+    @include breakpoint(sm) {
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-template-rows: auto auto; 
+      gap: var(--grid-gap-y) var(--grid-gap-x); 
+      grid-template-areas: 
+        "col1 col1 col1"
+        "col2 col3 col4"; 
+    }
+
+    @include breakpoint(md) {
+      grid-template-columns:  1fr 1fr 1fr 1fr ; 
+      grid-template-areas: "col1 col2 col3 col4"; 
+      gap: 0 var(--grid-gap-x);
+    }
+
+
+
+    :first-child{
+      @include breakpoint(sm) {
+        grid-area: col1;
+      }
+    }
+
+}

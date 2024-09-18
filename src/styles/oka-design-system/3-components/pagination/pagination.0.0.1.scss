@@ -1,0 +1,21 @@
+
+/* OKA-PAGINATION ========================================= 
+
+| 0.0.1 | 03/11/2022 | création  |
+*/
+
+
+.oka-pagination{
+
+
+    display: flex;
+    justify-content: center;
+
+    .oka-bt:not(:last-child) {
+        margin-right:0.5rem;
+    }
+    .oka-bt__lbl{
+        min-width: 0px;
+        padding:0;
+    }
+}

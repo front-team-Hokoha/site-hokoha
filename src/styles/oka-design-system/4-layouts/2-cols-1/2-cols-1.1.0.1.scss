@@ -1,0 +1,163 @@
+
+
+
+
+/**
+* Calcul la taille de la première colonne;
+*
+* --columns : (calc( var(--span) *  ( ( (100% / var(--grid-columns)) - ( (var(--grid-columns) - 1) * var(--grid-gap-x) )) + (var(--span) - 1 * var(--grid-gap-x) )  ) )) 2fr ;
+*/
+
+// $nbCol : 16;
+// $gap : 2%;
+// $mygap : 2;
+
+
+@function colSize($span, $gridGap) {
+
+  @debug "----------------------";
+  
+  $nbColonnes : $span ;
+  @debug "Nb Colonnes: #{$nbColonnes}";
+
+  $nbGouttieres : $span - 1 ;
+  @debug "Nb Gouttières: #{$nbGouttieres}";
+
+
+  $colonneWidth : calc((100% - (($nbCol - 1) * $gridGap)) / $nbCol);
+  @debug "Colonne width: #{$colonneWidth}";
+  
+  $divWidth : calc(($nbColonnes * $colonneWidth) + ($nbGouttieres * $gridGap ));
+  @debug "Div width: #{$divWidth}";
+
+  $result : $divWidth;
+
+  @return $result;
+}
+
+
+.oka-cols {
+
+  // Deux colonnes
+  &.-two{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2";
+
+    @include breakpoint(sm) {
+      --columns : 1fr 1fr; 
+      //--rows : auto auto;
+      //--gap: var(--grid-gap-y) var(--grid-gap-x);
+      --areas : "col1 col2";
+    }
+    @include breakpoint(md) {
+      --gap: 0 var(--grid-gap-x); 
+    }
+
+    &.-gold {
+      @include breakpoint(sm) {
+        grid-template-columns: colSize(6, #{$grid-gap-on-small} ) 2fr; 
+      }
+      @include breakpoint(md) {
+        grid-template-columns: colSize(5, #{$grid-gap-on-medium}) 2fr; 
+      }
+      @include breakpoint(lg) {
+        grid-template-columns: colSize(4, #{$grid-gap-on-large}) 2fr; 
+      }
+    }
+  }
+
+  &.-three{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2"
+                "col3";
+
+    @include breakpoint(sm) {
+      --columns : 1fr 1fr 1fr; 
+      //--rows : auto auto;
+      //--gap: var(--grid-gap-y) var(--grid-gap-x);
+      --areas : "col1 col2 col3";
+      --gap: 0 var(--grid-gap-x);
+    }
+    @include breakpoint(md) {
+      // --columns : 23.5% 3fr; 
+      //--rows : auto auto;
+      --gap: 0 var(--grid-gap-x); 
+    }
+
+    &.-gold {
+
+      @include breakpoint(sm) {
+        --columns : 35.275% 2fr;
+        --areas : "col1 col1"
+                  "col2 col3"; 
+      }
+      @include breakpoint(md) {
+        --columns : 23.5% 1.5fr 1.5fr; 
+        --areas : "col1 col2 col3"; 
+      }
+
+    }
+  }
+
+
+  &.-four{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2"
+                "col2";
+
+    @include breakpoint(sm) {
+      --columns : 1fr 1fr 1fr; 
+      //--rows : auto auto;
+      //--gap: var(--grid-gap-y) var(--grid-gap-x);
+      --areas : "col1 col2 col3";
+      --gap: 0 var(--grid-gap-x);
+    }
+    @include breakpoint(md) {
+      // --columns : 23.5% 3fr; 
+      //--rows : auto auto;
+      --gap: 0 var(--grid-gap-x); 
+    }
+
+    &.-gold {
+
+      @include breakpoint(sm) {
+        --columns : 35.275% 2fr;
+        --areas : "col1 col1"
+                  "col2 col3"; 
+      }
+      @include breakpoint(md) {
+        --columns : 23.5% 1.5fr 1.5fr; 
+        --areas : "col1 col2 col3"; 
+      }
+
+    }
+  }
+
+
+
+
+  display: grid; 
+  grid-template-columns: var(--columns); 
+  grid-template-rows: var(--rows) ; 
+  gap: var(--gap); 
+  grid-template-areas:  var(--areas); 
+
+  width : 100%;
+
+
+  > :first-child{
+    @include breakpoint(sm) {
+      grid-area: col1;
+      //outline: 1px solid red;
+    }
+  }
+}

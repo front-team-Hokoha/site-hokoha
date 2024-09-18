@@ -1,0 +1,119 @@
+
+// FORMS OKA (MISE EN PAGE DES FORMULAIRES)
+//
+//
+// 2.0.5 | 09/08/2021 | Révision des marges des label (HRZ) !!! Checkebox et Radios
+// 2.0.4 | 02/03/2021 | Nomage de encapsuleur et ses elements -> oka-field
+// 2.0.3 : Ajout du oka-field--group !!!!!!!!!!!!!!!!!!!!!! -> Embarque Js-requied / oka-field__ico-state etc ....
+// 2.0.2 : Evite la derniere marge de row (position en pied)
+// 2.0.1
+
+
+/* MISE EN PAGES */
+
+/* Default */
+.l-form-row {
+    ////border:1px solid red;
+    margin-bottom:1rem;
+
+    // Evite la derniere marge (position en pied)
+    &:last-child{
+        margin-bottom:0;
+    }
+
+    // Le label principal
+    // !!! Attention : groupes de radios // Les marges de labels sont redefini plus tard
+    // label {
+    //     //margin-bottom:0.5rem;
+    // }
+}
+
+
+
+/* Horizontal  */
+// .l-form-row-hrz {
+//    // NON align-items: center; // Centrage verticaldes Label avec l'input suivants
+// }
+
+.l-form-row-hrz ,
+.l-form-row-hrz .oka-field--group {
+    display:flex;
+    
+    margin-bottom:0.5rem;
+
+    // Evite la derniere marge (position en pied)
+    &:last-child{
+        margin-bottom:0;
+    }
+
+    > label{
+        //border:1px solid red;
+        width:8rem;
+        flex-shrink: 0;
+        margin-right:0.5rem;
+        text-align:right;
+
+
+        // &:after{
+        //     // content:" :"; // Conflit avec Cropping
+        // }
+    }
+
+
+    // 2.0.5 Marge top pour label des input text
+    > .oka-label {
+        //border:1px solid red;
+        margin-top: 0.5rem;
+    }
+    // 2.0.5 Marge top pour champs radios/checkbox
+    .oka-field--radios,
+    .oka-field--checkboxs {
+        margin-top: 0.5rem;
+    }
+}
+
+
+
+
+
+.l-form-row-group{
+    align-items: flex-start;
+
+    // > label {
+    //     //margin-top:0.5rem;
+    // }
+}
+
+
+.l-form-row__group {
+    //border:1px solid blue;
+    display: flex;
+    flex-direction: column;
+
+    min-width: 100%;
+
+    // marge inferieure sur  Tous les elements
+    label   {
+        margin-bottom:0.5rem
+    }
+
+    .oka-field{
+        flex-direction: column;
+        margin-bottom:0.5rem
+    }
+}
+
+.l-form-row__group--inline {
+    //border:1px solid orange;
+    display: flex;
+
+    .oka-field{
+        > *  {
+            //border:1px solid blue;
+            margin-right:0.5rem;
+        }
+    }
+}
+
+
+

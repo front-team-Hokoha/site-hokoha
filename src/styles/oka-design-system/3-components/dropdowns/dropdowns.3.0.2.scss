@@ -1,0 +1,108 @@
+/** OKA DROPDOWN 
+
+| 3.0.2 | 26/01/2022 | tokens |
+| 3.0.1 | 30/11/2020 | Z-index pour multi dropdown / surbrillance bt declancheur |
+| 3.0.0 | 01/11/2020 | Révision / nomage |
+| 2.0.0 | | |
+
+*/
+
+// Dépendances :
+//
+// Tokens
+@import "../../../design-tokens/oka-dropdowns-tokens.scss";
+
+
+
+
+.oka-dropdown {
+    position:relative;
+
+    // Le input checkbox de control
+    &__ctrl{
+        display:none;
+    }
+    // Containeur
+    &__ctnr {
+        //display:none;
+
+        // Effet de slide ouverture
+        max-height:0;
+        transform: scaleY(0);
+        transform-origin: 50% 0;
+        transition:transform 0.20s ease;
+        overflow: hidden;
+        //
+
+        flex-direction:column;
+        position : fixed;
+        top: $oka-dropdown-position-top;
+        right: $oka-dropdown-position-right;
+        @include shadow-dreamy;
+
+
+        @include breakpoint(sm) {
+            position : absolute;
+        }
+    }
+
+    &__overlay{
+        display:none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        // background-color: red;
+        // opacity:0.5;
+    }
+
+}
+
+// Affichage
+.oka-dropdown__ctrl:checked + .oka-dropdown {
+    z-index : $oka-dropdown-zindex;
+}
+
+// Surbrillance du bouton déclencheur
+.oka-dropdown__ctrl:checked + .oka-dropdown > label:first-child{
+    //border:1px solid  oka-alpha(var(--color--accent), 0.6);
+    border : 1px solid var(--oka-color-accent-primary-active , oka-alpha(var(--color--accent), 0.6));
+    //background :  oka-alpha(var(--color-1--darker), 0.1);
+}
+
+
+// Affichage du Container
+// Affichage de l'overlay
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__ctnr,
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__overlay {
+    display:flex;
+    z-index: 1 ; // requis pour multi-dpdown
+}
+
+
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__ctnr {
+    // Effet de slide ouverture
+    max-height:50000px;
+    transform: scaleY(1);
+}
+
+
+
+// Design du container
+//
+.oka-dropdown__ctnr {
+    //background: var(--gray--darkest);
+    background : $oka-dropdown-container-bg ;
+    color: $oka-dropdown-container-fg;
+    border-radius: $oka-dropdown-border-radius;
+    min-width:$oka-dropdown-container-minwidth;
+}
+
+.oka-dropdown__ctnr > :first-child {
+    border-radius: $oka-dropdown-border-radius $oka-dropdown-border-radius 0 0;
+}
+
+.oka-dropdown__ctnr > :last-child {
+    border-radius: 0 0 $oka-dropdown-border-radius $oka-dropdown-border-radius;
+}

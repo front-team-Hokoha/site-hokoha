@@ -1,0 +1,201 @@
+
+/** ==================================================
+// UI DATAS
+| 4.0.2 |  |    |
+| 4.0.1 | 21/09/2023 | placeholder pour strong   |
+| 4.0.0 | 17/01/2023 | Nomage conforme ABEM  |
+| 3.1.1 | 02/09/2021 | reprise du nomage oka-data-(size) |
+| 3.1.0 | 02/06/2021 | Revision nommage Tokens : Modifiers de taille |
+| 1.0.2 | 22/03/2021 | simplification de nomage |
+| 1.0.1 | 25/02/2021 | supression des crops top et bottom |
+| 1.0.0 |
+*/
+
+/* dépendance ===================
+/home/yann/web/oka-design-system/_assets/oka-design-system/1-bases/typo/typo-scale.4.0.0.scss
+/home/yann/web/oka-design-system/_assets/oka-design-system/1-bases/typo/typo-system.4.0.0.scss
+*/
+
+// =========================================
+// =========================================
+// DATA
+$oka-data-font-family: $system-font-family;
+$oka-data-font-baseline: $system-font-baseline;
+
+$oka-data-font-weight: $system-font-weight-regular;
+
+$oka-data-font-family-bold: $system-font-family;
+$oka-data-font-weight-bold: $system-font-weight-strong;
+
+$oka-data-font-family-light: $system-font-family;
+$oka-data-font-weight-light: $system-font-weight-light;
+
+$oka-data-letter-spacing: $system-letter-spacing;
+$oka-data-word-spacing: $system-word-spacing;
+
+
+// size l
+$oka-data-font-size-lg: $oka-fontsize-xs ; // [ 1rem ]
+$oka-data-line-height-lg: $oka-lineheight-xs ; // [1.5rem]
+
+// Size m
+$oka-data-font-size-md: $oka-fontsize-body ;    // [ 0.875rem ]   
+$oka-data-line-height-md: $oka-lineheight-xxs; //[ 1rem ]
+
+// Size s
+$oka-data-font-size-sm: $oka-fontsize-xxs; // [0.75rem] 
+$oka-data-line-height-sm: $oka-lineheight-xxs;  // [ 1rem ]
+
+//Size xs
+$oka-data-font-size-xs: $oka-fontsize-xxxs; // [0.64rem]
+$oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
+
+
+
+
+// ==================================================
+// DATAS
+//
+
+%oka-data-strong {
+    font-family: $oka-data-font-family-bold !important;
+    font-weight: $oka-data-font-weight-bold !important;
+}
+
+%oka-data {
+
+    letter-spacing: $oka-data-letter-spacing;
+    word-spacing : $oka-data-word-spacing ;
+
+    display:block;
+
+    // =======================================
+    // Modifier de graisse
+    &.-strong ,
+    strong {
+        font-family: $oka-data-font-family-bold !important;
+        font-weight: $oka-data-font-weight-bold !important;
+    }
+
+    // =======================================
+    // Modifier : Crop (line Height)
+    &.-crop {
+        @extend %oka-crop;
+    }
+ 
+}
+
+
+//--------------------------------
+// DATA MD
+%oka-data-md {
+    
+    --crop-top : -0.5rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: true);
+    @include plumber(
+        $baseline: $oka-data-font-baseline  ,
+        $font-size: $oka-data-font-size-md,
+        $line-height: $oka-data-line-height-md,
+    );
+    font-family: $oka-data-font-family-light;
+    font-weight: $oka-data-font-weight-light;
+}
+
+
+
+// ------------------
+// Small
+%oka-data-sm {
+
+    --crop-top : -0.5rem;
+    --crop-bottom : -1.0rem;
+
+    @include plumber-set-defaults($use-baseline-origin: true);
+    @include plumber(
+        $baseline: $oka-data-font-baseline  ,
+        $font-size: $oka-data-font-size-sm,
+        $line-height: $oka-data-line-height-sm,
+    );
+    font-family: $oka-data-font-family;
+    font-weight: $oka-data-font-weight;
+}
+
+
+// ------------------
+// Extra Small
+%oka-data-xs {
+
+    --crop-top : -0.5rem;
+    --crop-bottom : -1.0rem;
+
+    @include plumber-set-defaults($use-baseline-origin: true);
+    @include plumber(
+        $baseline: $oka-data-font-baseline  ,
+        $font-size: $oka-data-font-size-xs,
+        $line-height: $oka-data-line-height-xs,
+    );
+    font-family: $oka-data-font-family;
+    font-weight: $oka-data-font-weight;
+}
+
+
+// ------------------
+// large
+%oka-data-lg {
+
+    --crop-top : -0.5rem;
+    --crop-bottom : -1.0rem;
+
+    @include plumber-set-defaults($use-baseline-origin: true);
+    @include plumber(
+        $baseline: $oka-data-font-baseline  ,
+        $font-size: $oka-data-font-size-lg,
+        $line-height: $oka-data-line-height-lg,
+    );
+
+    font-family: $oka-data-font-family-light;
+    font-weight: $oka-data-font-weight-light;
+}
+
+
+// --------------------------------------
+// DATA Default 
+.oka-data {
+    @extend %oka-data;
+}
+
+// --------------------------------------
+// DATA L
+//.oka-data--lg,// deprecated
+//.oka-data-lg,// deprecated
+.oka-data.-lg {
+    @extend %oka-data-lg;
+}
+
+// --------------------------------------
+// DATA M
+//.oka-data--md,// deprecated
+//.oka-data-md,// deprecated
+.oka-data:not(.-lg):not(.-sm):not(.-xs),
+.oka-data.-md{
+    @extend %oka-data-md;
+}
+
+// --------------------------------------
+// DATA S
+//.oka-data--sm,// deprecated
+//.oka-data-sm,// deprecated
+.oka-data.-sm {
+    @extend %oka-data-sm;
+}
+
+// --------------------------------------
+// DATA XS
+//.oka-data--xs,// deprecated
+//.oka-data-xs,// deprecated
+.oka-data.-xs {
+    @extend %oka-data-xs;
+}
+

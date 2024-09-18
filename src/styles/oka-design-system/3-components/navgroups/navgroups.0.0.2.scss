@@ -1,0 +1,91 @@
+/** OKA NAVGROUPS
+//
+| 0.0.2 | 02/03/2022 | modifier vertical  |
+| 0.0.1 | 07/10/2021 | création  |
+*/
+
+
+/*
+Par default : horizontale 
+
+ |_______|________|________|
+
+*/ 
+
+
+.oka-navgroup {
+
+    //border:1px solid red;
+    display:flex;
+
+    flex-shrink:1;
+    flex-grow:1;
+    //max-width: 100%;
+    //width:100%;
+    
+
+    .oka-nav{
+        // supprime les effets au survol vertical
+        &:hover{
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    // Les boutons du milieu : on supprime les arrondis
+    .oka-nav:not(:first-child):not(:last-child){
+        border-radius: 0;
+    }
+
+
+    &--hrz {
+        flex-direction: row; 
+    
+        // autorise la compression de taille des items
+        .oka-nav{
+            flex-shrink:1;
+            flex-grow:1;
+            justify-content: center;
+        }
+
+        
+        // Les boutons du milieu : on supprime les filets
+        .oka-nav:not(:first-child):not(:last-child){
+            border-right:0;
+        }
+
+        // le premier : supprime l'arrondis de droite
+        .oka-nav:first-child {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border-right:0;
+        }
+        // le premier : supprime l'arrondis de droite
+        .oka-nav:last-child {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+
+    // 0.0.2 : orientation Verticale
+    &--vrt {
+        flex-direction: column; 
+
+        // Les boutons du milieu : on supprime les filets
+        .oka-nav:not(:first-child):not(:last-child){
+            border-bottom:0;
+        }
+
+        // le premier : supprime l'arrondis de droite
+        .oka-nav:first-child {
+            //border-radius: 4rem 0 0 4rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom:0;
+        }
+        // le Dernier : supprime l'arrondis de droite
+        .oka-nav:last-child {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}

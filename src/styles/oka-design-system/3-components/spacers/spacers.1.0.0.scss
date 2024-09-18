@@ -1,0 +1,96 @@
+
+/** OKA-SPACER : inline et horizontal responsive spacer =================================
+ 
+| 1.0.0 | 03/04/2024 | ajout -full  |
+| 0.0.1 | 18/10/2022 | création  |
+*/
+
+:root {
+    --space-sm : 0.5rem;
+    --space-md : 1rem;
+    --space-lg : 1.5rem;
+    --space-xl : 2.5rem;
+
+    @include breakpoint(sm) {
+        --space-sm : 0.5rem;
+        --space-md : 1rem;
+        --space-lg : 1.5rem;
+        --space-xl : 3rem;
+    }
+    @include breakpoint(md) {
+        --space-sm : 0.5rem;
+        --space-md : 1rem;
+        --space-lg : 2rem;
+        --space-xl : 4rem;
+    }
+    @include breakpoint(lg) {
+        --space-sm : 1rem;
+        --space-md : 2rem;
+        --space-lg : 3rem;
+        --space-xl : 6rem;
+    }
+}
+
+
+// Par défaut le spacer (.-stack)
+
+.oka-spacer {
+    
+    flex-grow:0;
+    flex-shrink:0;
+
+    .showGrid & {
+        border-width:0 2px 0 0;
+        border-style: dotted;
+    }
+
+    height:var(--space-sm);
+
+
+
+    &.-inline{
+        width:var(--space-sm);
+    }
+
+
+
+    &.-md{
+        border-color: green;
+        height:var(--space-md);
+
+        &.-inline{  
+            width:var(--space-md);
+        }
+    }
+
+    &.-lg{
+        border-color: blue;
+        height:var(--space-lg);
+
+        &.-inline{
+            width:var(--space-lg);
+        }
+    }
+
+    &.-xl{
+        border-color: red;
+        height:var(--space-xl);
+
+        &.-inline{
+            width:var(--space-xl);
+        }
+    }
+
+
+    &.-inline{
+        height:0;
+
+        .showGrid & {
+            border-width:2px 0 0 0 ;
+        }
+    }
+
+    &.-full{
+        flex-grow:1;
+    }
+}

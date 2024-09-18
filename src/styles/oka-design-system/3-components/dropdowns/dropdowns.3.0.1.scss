@@ -1,0 +1,96 @@
+/** OKA DROPDOWN 
+
+| 3.0.1 | 30/11/2020 | Z-index pour multi dropdown / surbrillance bt declancheur |
+| 3.0.0 | 01/11/2020 | Révision / nomage |
+| 2.0.0 | | |
+
+*/
+
+
+$oka-dropdown-border-radius : 0 ;
+
+
+.oka-dropdown {
+    position:relative;
+    //border:1px solid red;
+
+    // Le input checkbox de control
+    &__ctrl{
+        display:none;
+
+    }
+    // Containeur
+    &__ctnr {
+        //display:none;
+// Effet de slide ouverture
+max-height:0;
+transform: scaleY(0);
+transform-origin: 50% 0;
+transition:transform 0.20s ease;
+overflow: hidden;
+//
+
+
+
+        flex-direction:column;
+        position : absolute;
+        top:0;
+        right:0;
+        @include shadow-dreamy;
+    }
+
+    &__overlay{
+        display:none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+}
+
+// Affichage
+.oka-dropdown__ctrl:checked + .oka-dropdown {
+    z-index:1000;
+}
+
+// Surbrillance du bouton déclencheur
+.oka-dropdown__ctrl:checked + .oka-dropdown label:first-child{
+    border:1px solid  oka-alpha(var(--color--accent), 0.6);
+    background :  oka-alpha(var(--color-1--darker), 0.1);
+}
+
+
+// Affichage du Container
+// Affichage de l'overlay
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__ctnr,
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__overlay {
+    display:flex;
+    z-index: 1 ; // requis pour multi-dpdown
+}
+
+.oka-dropdown__ctrl:checked + .oka-dropdown .oka-dropdown__ctnr{
+    // Effet de slide ouverture
+    max-height:50000px;
+    transform: scaleY(1);
+}
+
+
+
+// Design du container
+//
+.oka-dropdown__ctnr {
+    background: var(--gray--darkest);
+    color:#fff;
+    border-radius: $oka-dropdown-border-radius;
+    min-width:18rem;
+}
+
+.oka-dropdown__ctnr > :first-child {
+    border-radius: $oka-dropdown-border-radius $oka-dropdown-border-radius 0 0;
+}
+
+.oka-dropdown__ctnr > :last-child {
+    border-radius: 0 0 $oka-dropdown-border-radius $oka-dropdown-border-radius;
+}

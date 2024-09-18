@@ -1,0 +1,131 @@
+//
+// Generation des couleurs
+//
+/**
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+|  3.1.0 | 03/06/2021 | Revue |
+// 3.0.3 : tokens / multi-themes
+// 3.0.2 : ajout --color--accent-secondary
+// 3.0.1 : ajout skeleton
+// 3.0.0
+// 1.0.1 : ajout --color--accent
+// 1.0.0
+//
+*/
+// Dépendance 
+// Tokens
+
+
+
+@each $themeName , $colorTheme in $themes {
+
+    // Defini l'index du tableau
+    // Thanks : https://shayhowe.com/finding-index-position-sass-map-loop/
+    $i: index(($themes), ($themeName  $colorTheme) );
+
+
+    // Si 1er theme (index = 1) , on ajout les couleurs à :root
+    //
+    @if $i == 1 {
+       :root,[data-theme="#{$themeName}"]{
+
+            @each $colorName,$colorDetails in $colorTheme {
+                $h: map-get($colorDetails, 'h');
+                $s: map-get($colorDetails, 's');
+                $l: map-get($colorDetails, 'l');
+                @include defineColorHSL($colorName, $h, $s, $l);
+            }
+       } 
+    } @else {
+        /// 
+        [data-theme="#{$themeName}"]{
+            @each $colorName,$colorDetails in $colorTheme {
+                $h: map-get($colorDetails, 'h');
+                $s: map-get($colorDetails, 's');
+                $l: map-get($colorDetails, 'l');
+                @include defineColorHSL($colorName, $h, $s, $l);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+@function set-color($lightness) {
+    @if ( $lightness  > 40) {
+      @return var(--gray--darkest);
+    }
+    @else {
+      @return var(--gray--lightest);
+    }
+}
+
+
+:root {
+    --color--skeleton : var(--color-1--lightest);
+}
+
+
+#styleguide-colors  {
+
+    .gamme{
+        //border:1px solid red;
+        display:flex;
+        flex-direction: column;
+
+        width:250px;
+    }
+
+
+
+    // POUR CHAQUE COULEURS
+    // Créer une class
+    @each $colorName,$colorDetails in $colors {
+        $h: map-get($colorDetails, 'h');
+        $s: map-get($colorDetails, 's');
+        $l: map-get($colorDetails, 'l');
+
+        .#{$colorName} {
+            position:relative;
+            display:inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+
+            height : 2rem;
+            padding:0.5rem  1rem ;
+
+
+            background: var(#{$colorName});
+            color : set-color($l);
+
+            font-size:10px;
+
+            &:before{
+                content : '#{$colorName}';
+                //position:relative;
+                //width:100%;
+                //top:-20px;
+                //color:#000;
+            }
+            &:after{
+                content : 'hsl : #{$h} #{$s} #{$l}';
+                //position:relative;
+                //bottom:-20px;
+            }
+        }
+    }
+
+
+    // On fait ressortir les couleurs de Base
+    span[class$="--base"]{
+        height:8rem;
+    }
+
+
+}

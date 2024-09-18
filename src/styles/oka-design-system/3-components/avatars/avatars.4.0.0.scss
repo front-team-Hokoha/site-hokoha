@@ -1,0 +1,115 @@
+// AVATAR OKA
+/*
+| 4.0.0 | 25/10/2022 | Figma tokens |
+|  3.1.0 | 02/06/2021 | Révision |
+// 3.0.2 : Utilisation d'image en background
+// 3.0.1 : corr shrink /grow pour parent flex
+// 3.0.0 : Nomage / Dépendances
+// 2.0.2 : intégration icones base64
+*/
+
+/* DEPENDANCES */
+@import "../../1-bases/animations/animations";
+
+/** Application
+
+<div class="e-oka-avatar e-oka-avatar--s e-oka-avatar--online"  style="background-image:url('/mentorDoc/avatarlocalisation.pdf')"></div>
+
+ */
+
+//https://stackoverflow.com/questions/64790082/combine-hexadecimal-css-variables-with-alpha-values
+
+ @function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
+
+.oka-avatar {
+
+    --my-color-red-rgb: #{hexToRGB(#ff0000)};
+
+
+    display:flex;
+    width:2.5rem;
+    height:2.5rem;
+
+    flex-grow: 0;   // 3.0.1
+    flex-shrink: 0;     // 3.0.1
+
+    //overflow: hidden; // Non Pour les pastilles
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+
+    background-color: var(--oka-color-system-contrast-medium , var(--color-1--lightest));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    //@include background-svg-fill($svg-avatar, '#000000',  '#ffffff');
+    @include background-svg-fill($svg-avatar, '#000000',  '#{var(--oka-color-app-fg-reverse)}' );
+
+
+
+    // Deprecated : on utilise un background Image 
+    // &__img{
+    //     overflow: hidden;
+    //     border-radius: 50%;
+    //     background : var(--color-1--lightest);
+    // }
+
+    // Deprecated : on utilise un background Image  
+    // img {
+    //     height:100%;
+    //     width:auto;
+    // }
+
+
+    &--sm{
+        width:2rem;
+        height:2rem;
+    }
+
+    &--md{
+        width:2.5rem;
+        height:2.5rem;
+    }
+    &--lg{
+        width:4rem;
+        height:4rem;
+    }
+    &--xl{
+        width:8rem;
+        height:8rem;
+    }
+    &--xxl{
+        width:9rem;
+        height:9rem;
+    }
+
+    // PASTILLE JANUS ONLINE
+
+    &--online {
+    position:relative;
+    &:after{
+        content: ' ';
+        width:16px;
+        height:16px;
+        border-radius: 8px;
+
+
+
+        position:absolute;
+        right:-8px;
+
+        background:var(--color--success);
+        border: 3px solid #fff;
+
+        animation: oka-pulse 0.13s linear;
+
+        }
+    }
+
+}

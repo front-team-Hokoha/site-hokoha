@@ -1,0 +1,285 @@
+
+/** ==================================================
+// LES LABELS
+//
+| 4.0.0 | 23/03/2022 | Figma tokens / font Size / line Height du design system |
+| 3.1.2 | 07/09/2021 | gestion Label-lg pour Checkbox |
+| 3.1.1 | 09/08/2021 | Supression du tag label et label:not() |
+| 3.1.0 | 02/06/2021 | Revision nommage Tokens : Modifiers de taille / Ajout du tag label et label:not() |
+| 3.0.2 | 22/03/2021 | standardisation des nomages |
+| 3.0.1 | 25/02/2021 | supression des crop top et bottom |
+| 3.0.0 | 25/10/2020 | centralisation Tokens : typo system |
+| 2.0.1 |            |  gestion par tokens |
+
+*/
+
+// =========================================
+// =========================================
+//  LABELS
+//
+$oka-label-font-family: $system-font-family;
+$oka-label-font-baseline:  $system-font-baseline;
+
+$oka-label-font-weight: $system-font-weight-regular;
+
+$oka-label-letter-spacing: $system-letter-spacing;
+$oka-label-word-spacing: $system-word-spacing;
+
+$oka-label-text-transform: none;
+
+// size l
+$oka-label-font-size-lg:  $oka-fontsize-xs; // [ 1rem ] - [ 16px ]
+$oka-label-line-height-lg: $oka-lineheight-xs; // [ 1.5rem ] - [ 24px ] 
+
+// Size m
+$oka-label-font-size-md:  $oka-fontsize-body ;    // [ 0.875rem ] - [ 14px ]
+$oka-label-line-height-md: $oka-lineheight-xxs; // [ 1rem ] 
+
+// Size s
+$oka-label-font-size-sm: $oka-fontsize-xxs; // [ 0.75rem]
+$oka-label-line-height-sm: $oka-lineheight-xxs; // [ 1rem ] 
+
+
+
+
+@mixin label-communs {
+    display: inline-block;
+    font-family: $oka-label-font-family ;
+    font-weight: $oka-label-font-weight;
+
+    letter-spacing: $oka-label-letter-spacing;
+    word-spacing : $oka-label-word-spacing ;
+    
+    user-select: none;
+
+    text-transform: $oka-label-text-transform;
+
+    box-sizing: border-box;
+
+}
+
+
+@mixin label--md {
+    @include plumber(
+        $baseline: $oka-label-font-baseline,
+        $font-size: $oka-label-font-size-md ,
+        $line-height: $oka-label-line-height-md ,
+    );
+
+    @include label-communs ;
+
+    // https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+    //
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom:0;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top:-1rem;
+    }
+}
+
+// |  3.0.2 | 22/03/2021 | standardisation des nomages |
+// @mixin label--md {
+//     @include label--m;
+// }
+
+// |  3.0.2 | 22/03/2021 | standardisation des nomages |
+@mixin label--sm {
+    @include plumber(
+        $baseline: $oka-label-font-baseline,
+        $font-size: $oka-label-font-size-sm,
+        $line-height: $oka-label-line-height-sm,
+    );
+    @include label-communs;
+
+    // https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+    //
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top:-0.5rem;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top:-1rem;
+    }
+
+}
+
+
+// |  3.0.2 | 22/03/2021 | standardisation des nomages |
+@mixin label--lg {
+    @include plumber(
+        $baseline: $oka-label-font-baseline,
+        $font-size: $oka-label-font-size-lg,
+        $line-height: $oka-label-line-height-lg,
+    );
+    @include label-communs;
+
+    // https://medium.com/eightshapes-llc/cropping-away-negative-impacts-of-line-height-84d744e016ce
+    //
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom:-0.5rem;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top:-1rem;
+    }
+}
+
+
+
+// CHECKBOX
+
+@mixin label--checkbox {
+    // @include plumber(
+    //     $baseline: $oka-label-font-baseline,
+    //     $font-size: $oka-label-font-size-md ,
+    //     //$line-height: $oka-label-line-height-md ,
+    //     $line-height: 1 ,
+    // );
+
+    // on 8pt Grid
+    line-height: height 1rem;
+    padding-top:0.25rem;
+    padding-bottom : 0.2rem;
+
+
+    @include label-communs;
+    text-transform: none;
+
+    // Reset les caractéristiques de taille pour l.form-row-hrz
+    width:auto;
+    text-align: left;
+    //
+    // &:before{
+    //     content:'';
+    //     display: block;
+    //     height: 0;
+    //     width: 0;
+    //     margin-bottom:-0.5rem;
+    // }
+    // //
+    // &:after{
+    //     content:'';
+    //     display: block;
+    //     height: 0;
+    //     width: 0;
+    //     margin-top:-1rem; // !!!!! IMPORTANT POUR CHECKBOX SUR DEUX LIGNE
+    // }
+}
+
+
+@mixin label--checkbox--lg {
+    @include plumber(
+        $baseline: $oka-label-font-baseline,
+        $font-size: $oka-label-font-size-lg ,
+        $line-height: $oka-label-line-height-lg ,
+    );
+
+    @include label-communs;
+    text-transform: none;
+    // Reset les caractéristiques de taille pour l.form-row-hrz
+    width:auto;
+    text-align: left;
+    //
+    &:before{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-bottom:-0.5rem;
+    }
+    //
+    &:after{
+        content:'';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top:0; // !!!!! IMPORTANT POUR CHECKBOX SUR DEUX LIGNE
+    }
+}
+
+
+
+// ==================================================
+// LES LABELS
+//
+
+//label:not(.u-not-label):not(.oka-nav):not(.oka-bt):not(.oka-accordion__button):not(.oka-tab__button):not(.oka-burger__openner):not(.oka-flip__flipper):not(.oka-popover__openner):not(.oka-popover__closer):not(.oka-dropdown__overlay), // 3.1.0 Ajout de label et :not
+.oka-label, 
+.oka-label-md, 
+.oka-label--m, 
+.oka-label--md {
+    @include label--md;
+}
+
+.oka-label-sm,
+.oka-label--sm,
+.oka-label--s {
+    @include label--sm;
+}
+
+.oka-label-lg,
+.oka-label--lg,
+.oka-label--l {
+    @include label--lg;
+}
+
+input[type="radio"].oka-radio + label:not(.oka-label--lg) ,
+input[type="checkbox"].oka-checkbox + label:not(.oka-label--lg),
+input[type="radio"].oka-radio + label:not(.oka-label-lg) ,
+input[type="checkbox"].oka-checkbox + label:not(.oka-label-lg) {
+    @include label--checkbox;
+}
+
+input[type="radio"].oka-radio + label.oka-label--lg ,
+input[type="checkbox"].oka-checkbox + label.oka-label--lg ,
+input[type="radio"].oka-radio + label.oka-label-lg ,
+input[type="checkbox"].oka-checkbox + label.oka-label-lg {
+    @include label--checkbox--lg;
+ 
+}
+
+
+
+
+// Mixin de Reset
+// Destiné au bt déclencheur basé sur label
+@mixin label-reset{
+    font-size: inherit;
+    line-height: inherit;
+    padding-top: initial;
+    padding-bottom: initial;
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight:initial;
+    letter-spacing: initial;
+    word-spacing: initial;
+    user-select: initial;
+    text-transform: initial;
+    box-sizing: initial;
+}
