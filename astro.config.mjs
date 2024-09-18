@@ -4,7 +4,8 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 
   output: 'static',
-  base: '/site-hokoha/',  //  nom de votre dépôt GitHub
+  //base: '/site-hokoha/',  //  nom de votre dépôt GitHub
+  base: process.env.BASE_PATH || '/',
     
   // Options Astro et Vite par défaut
   vite: {
