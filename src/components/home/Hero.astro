@@ -1,3 +1,10 @@
+---
+import Image from '../../components/Image.astro';
+
+import logoImage from '../../assets/img/Logokoha-couv.png';
+---
+
+
 <style>
 .oka-hero{
     
@@ -101,7 +108,9 @@
 
         <div class="flex-grid">
             <div class="col-10">
-                <img src="assets/img/Logokoha-couv.png" style="height:5rem"/>
+           
+                <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" />
+
                 <div class="oka-spacer -lg"></div>
                 <hr style="width:8rem"/>
                 <div class="oka-h -lg -secondary">Votre partenaire</div>
@@ -110,6 +119,7 @@
             
             </div>
 
+            
             <div>
             </div>
         </div>

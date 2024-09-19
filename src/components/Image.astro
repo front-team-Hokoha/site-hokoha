@@ -1,0 +1,39 @@
+---
+/**
+ * ImageComponent: Composant pour afficher une image optimisée avec des options de largeur, hauteur, classes CSS, styles en ligne et support du lazy loading.
+ * 
+ * @prop {string} src - Chemin de l'image (URL ou import Astro).
+ * @prop {string} alt - Texte alternatif pour l'image (obligatoire pour l'accessibilité).
+ * @prop {number[]} [widths=[400, 800, 1200]] - Tailles à générer pour le srcset (facultatif).
+ * @prop {string} [format="webp"] - Format d'image optimisé, comme "webp" ou "avif" (facultatif).
+ * @prop {number} [quality=80] - Qualité de l'image (0-100), plus haute = meilleure qualité mais taille plus grande (facultatif).
+ * @prop {number} [imgWidth] - Largeur de l'image affichée (facultatif).
+ * @prop {number} [imgHeight] - Hauteur de l'image affichée (facultatif).
+ * @prop {string} [className] - Classes CSS à ajouter à l'image pour le style (facultatif).
+ * @prop {string} [style] - Styles en ligne pour personnaliser l'apparence de l'image (facultatif).
+ */
+
+import { getImage } from 'astro:assets';
+
+const { src, alt, widths, format, quality, imgWidth, imgHeight, className, style } = Astro.props;
+
+// Générer l'image optimisée avec plusieurs largeurs pour le srcset
+const image = await getImage({
+  src,  // Import ou URL de l'image
+  widths: widths || [400, 800, 1200], // Largeurs pour le srcset
+  format: format || 'webp',           // Format d'image
+  quality: quality || 80,             // Qualité de l'image
+});
+---
+
+<img
+  src={image.src}                    // Source de l'image
+  srcset={image.srcset}              // Liste des sources optimisées
+  sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"  // Tailles d'écran
+  width={imgWidth || image.width}    // Largeur spécifiée ou générée automatiquement
+  height={imgHeight || 'auto'}       // Hauteur spécifiée ou auto
+  alt={alt}                          // Texte alternatif
+  loading="lazy"                     // Lazy loading activé
+  class={className}                  // Classe CSS passée en prop
+  style={style}                      // Styles en ligne passés en prop
+/>
