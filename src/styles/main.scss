@@ -93,3 +93,14 @@ $grid-gap-on-large  : 1.5rem;
 //@import "oka-design-system/_artboards/artboard.scss";
 //@import "oka-design-system/_artboards/typography/typography.scss";
 
+.noto-serif {
+  font-family: "Noto Serif", serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  font-variation-settings:
+      "wdth" 100;
+
+  color:var(--oka-color-primary-contrast-medium);
+  border-bottom:1px solid var(--oka-color-primary-contrast-medium);
+  }

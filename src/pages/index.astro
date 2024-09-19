@@ -14,56 +14,69 @@ import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le wid
 <LayoutClassic title="Développement informatique">
 
   <div class="oka-spacer -xl"></div>
+  <div class="flex-grid">
+    <div class="col col-6">
+      <h2 class="oka-text -lg -secondary">HOKOHA est une société de développement informatique, engagée à rendre les technologies numériques plus accessibles. Nous développons des solutions simples, efficaces et sur mesure, parfaitement adaptées aux besoins spécifiques des entreprises.</h2>
 
-  <!-- <h2>HOKOHA est une société de développement informatique ayant pour ambition de rendre les technologies numériques plus accessibles, en développant des solutions simples, efficaces et adaptées à l’usage des entreprises qu’elle rencontre.</h2> -->
 
-  <Argument
-    title="Nous <strong>développons</strong> et <strong>interconnectons</strong> vos outils."
-    body="Nous développons vos outils sur mesure et les interconnectons pour créer un écosystème numérique fluide et performant. Notre approche garantit une intégration harmonieuse, optimisant vos processus et renforçant l'efficacité de vos systèmes."
-  />
+    </div>
+
+    <div class="col col-10">
+
+      <Argument
+        title="Nous <strong class='noto-serif'>développons</strong> et <strong class='noto-serif'>interconnectons</strong> vos outils."
+        body="Nous développons vos outils sur mesure et les interconnectons pour créer un écosystème numérique fluide et performant. Notre approche garantit une intégration harmonieuse, optimisant vos processus et renforçant l'efficacité de vos systèmes."
+      />
+
+      <Argument
+        title="Nous concrétisons vos <strong class='noto-serif'>innovations</strong> et relevons vos <strong class='noto-serif'>défis</strong>."
+        body="Nous concrétisons vos idées les plus innovantes en alliant créativité et pragmatisme. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
+      />
+
+      <Argument
+        title="Nous <strong class='noto-serif'>collectons</strong> vos données et nous les <strong class='noto-serif'>valorisons</strong>."
+        body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
+      />
+    </div>
   
-  <Argument
-    title="Nous concrétisons vos <strong>innovations</strong> et relevons vos <strong>défis</strong>."
-    body="Nous concrétisons vos idées les plus innovantes en alliant créativité et pragmatisme. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
-  />
+  </div>
+
+  <div class="oka-spacer -xl"></div>
   
-  <Argument
-    title="Nous <strong>collectons</strong> vos données et nous les <strong>valorisons</strong>."
-    body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
-  />
-  
+  <div class="oka-cols -four oka-darkMode">
 
+    <Focus
+      title="Accompagnement"
+      body="360°"
+      baseLine="Vous n’êtes jamais seul."
+      baseLineMini=""
+    />
+    
+    <Focus
+      title="développement au"
+      body="forfait"
+      baseLine="Sans surprise, comme convenu."
+      baseLineMini=""
+    />
 
-  <Focus
-    title="Accompagnement"
-    body="360°"
-    baseLine="Vous n’êtes jamais seul."
-    baseLineMini=""
-  />
+    <Focus
+      title="une garantie"
+      body="à vie"
+      baseLine=""
+      baseLineMini="Maintenance corrective garantie durant toute la durée d’exécution de votre contrat de maintenance."
+    />
 
-  <Focus
-    title="développement au"
-    body="forfait"
-    baseLine="Sans surprise, comme convenu."
-    baseLineMini=""
-  />
-
-  <Focus
-    title="une garantie"
-    body="à vie"
-    baseLine=""
-    baseLineMini="Maintenance corrective garantie durant toute la durée d’exécution de votre contrat de maintenance."
-  />
-
-  <Focus
-    title="satisfaction client"
-    body="85%"
-    baseLine=""
-    baseLineMini="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet."
-  />
+    <Focus
+      title="satisfaction client"
+      body="85%"
+      baseLine=""
+      baseLineMini="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet."
+    />
+  </div>
+  <div class="oka-spacer -xl"></div>
 
   <!-- Intégration du widget des actualités -->
-  <NewsWidget />
+  <!-- <NewsWidget /> -->
 
 
   <!-- "Hero" -->
