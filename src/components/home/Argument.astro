@@ -9,14 +9,15 @@ const { title, body } = Astro.props;
 
 <div class="flex-grid">
     <div class="col col-5">
-      <p class="oka-h -xs -secondary z-crop">Notre métier</p>
-      <h2 class="oka-h -lg -crop">{title}</h2>
+      <!-- <p class="oka-h -xs -secondary ">Notre métier</p> -->
+      <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
     </div>
 
     <div class="col col-2"></div>
 
-    <div class="col col-9">
-        <div class="oka-spacer -lg"></div>
-        <p class="oka-text">{body}</p>
+    <div class="col col-7">
+        <!-- <div class="oka-spacer -sm"></div> -->
+        <p class="oka-text -lg">{body}</p>
     </div>
 </div>
+<div class="oka-spacer -lg"></div>

@@ -6,30 +6,64 @@ import LayoutClassic from '../layouts/LayoutClassic.astro'; // Import du layout
 // Composants
 import Hero from '../components/home/Hero.astro';
 import Argument from '../components/home/Argument.astro';
+import Focus from '../components/home/Focus.astro';
 import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le widget des actualités
 
 ---
 
-<LayoutClassic title="À propos">
-<!-- 
-  <Argument
-    title="Nous développons et interconnectons vos outils."
-    body="HOKOHA est une société de développement informatique ayant pour ambition de rendre les technologies numériques plus accessibles, en développant des solutions simples, efficaces et adaptées à l’usage des entreprises qu’elle rencontre."
-  />
+<LayoutClassic title="Développement informatique">
+
   <div class="oka-spacer -xl"></div>
+
+  <!-- <h2>HOKOHA est une société de développement informatique ayant pour ambition de rendre les technologies numériques plus accessibles, en développant des solutions simples, efficaces et adaptées à l’usage des entreprises qu’elle rencontre.</h2> -->
+
   <Argument
-    title="Nous concrétisons vos innovations et relevons vos défis."
-    body=""
+    title="Nous <strong>développons</strong> et <strong>interconnectons</strong> vos outils."
+    body="Nous développons vos outils sur mesure et les interconnectons pour créer un écosystème numérique fluide et performant. Notre approche garantit une intégration harmonieuse, optimisant vos processus et renforçant l'efficacité de vos systèmes."
   />
-  <div class="oka-spacer -xl"></div>
+  
   <Argument
-    title="Nous collectons vos données et nous les valorisons."
-    body=""
+    title="Nous concrétisons vos <strong>innovations</strong> et relevons vos <strong>défis</strong>."
+    body="Nous concrétisons vos idées les plus innovantes en alliant créativité et pragmatisme. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
   />
-  <div class="oka-spacer -xl"></div> -->
+  
+  <Argument
+    title="Nous <strong>collectons</strong> vos données et nous les <strong>valorisons</strong>."
+    body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
+  />
+  
+
+
+  <Focus
+    title="Accompagnement"
+    body="360°"
+    baseLine="Vous n’êtes jamais seul."
+    baseLineMini=""
+  />
+
+  <Focus
+    title="développement au"
+    body="forfait"
+    baseLine="Sans surprise, comme convenu."
+    baseLineMini=""
+  />
+
+  <Focus
+    title="une garantie"
+    body="à vie"
+    baseLine=""
+    baseLineMini="Maintenance corrective garantie durant toute la durée d’exécution de votre contrat de maintenance."
+  />
+
+  <Focus
+    title="satisfaction client"
+    body="85%"
+    baseLine=""
+    baseLineMini="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet."
+  />
 
   <!-- Intégration du widget des actualités -->
-  <!-- <NewsWidget /> -->
+  <NewsWidget />
 
 
   <!-- "Hero" -->

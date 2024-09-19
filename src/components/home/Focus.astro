@@ -1,0 +1,19 @@
+---
+interface Props {
+	title: string;
+	body: string;
+    baseLine: string;
+    baseLineMini: string;
+}
+
+const { title, body ,baseLine, baseLineMini } = Astro.props;
+---
+
+<div class="oka-surface oka-flex -vrt -center">
+
+    <div class="oka-h -sm">{title}</div>
+    <div class="oka-h -lg">{body}</div>
+    <div class="oka-data">{baseLine}</div>
+    <div class="oka-data -xs">{baseLineMini}</div>
+
+</div>
