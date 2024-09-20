@@ -1,0 +1,38 @@
+
+
+
+.noto-serif {
+    font-family: "Noto Serif", serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings:
+        "wdth" 100;
+  
+    color:var(--oka-color-primary-contrast-medium);
+    // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
+    }
+
+
+.oka-argument__title {
+   
+    @extend %oka-h;
+    @extend %oka-h-md;
+
+    @include breakpoint(lg) {
+        @include oka-h-lg;
+    }
+
+    strong{}
+
+}
+
+.oka-hero__logo{
+    width:auto;
+    height:4rem;
+
+}
+
+.u-noLineBreak {
+    white-space: nowrap;
+}

@@ -1,7 +1,7 @@
 ---
 import Image from '../../components/Image.astro';
 
-import logoImage from '../../assets/img/Logokoha-couv.png';
+import logoImage from '../../assets/img/Logokoha-couv-simple.png';
 ---
 
 
@@ -103,31 +103,35 @@ import logoImage from '../../assets/img/Logokoha-couv.png';
 
 
     <div class="oka-app-wrap ">
-        <div class="oka-spacer -xl"></div>
-
-        <div class="oka-spacer -xl"></div>
-       
-  
-
+        
         <div class="flex-grid">
-            <div class="col col-11">
+            <div class="col col-12">
+                <div class="oka-spacer -xl"></div>
+                <div class="oka-spacer -xl"></div>
                 <div class="oka-spacer -xl"></div>
            
-                <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" />
+                <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" className="oka-hero__logo" />
 
-                <div class="oka-spacer -lg"></div>
-                <hr style="display:inline-block;width:8rem"/>
                 <div class="oka-spacer -sm"></div>
-                <div class="oka-h -md -secondary -crop">Votre partenaire</div>
+                <hr style="display:inline-block;width:10.5rem"/>
+                <div class="oka-spacer -sm"></div>
+                <div class="oka-h -md -secondary -crop">Apporteur de solutions</div>
                 <h1 class="oka-h -lg">Développement informatique</h1>
-                <h2 class="oka-h -sm -secondary" style="color:var(--oka-color-primary-contrast-hight)">Logiciels métiers / Applications Mobiles / Applications Web / IoT Objets connectés / Prestations de conseil.</h2>
+                <div class="oka-spacer -md"></div>
+                <h2 class="oka-h -sm -secondary" style="color:var(--oka-color-primary-contrast-hight)">
+                    <span class='u-noLineBreak'>Logiciels métiers / </span>
+                    <span class='u-noLineBreak'>Applications Mobiles / </span>
+                    <span class='u-noLineBreak'>Applications Web / </span>
+                    <span class='u-noLineBreak'>IoT Objets connectés /</span> 
+                    <span class='u-noLineBreak'>Prestations de conseil.</span></h2>
             
             </div>
 
-            <div class="col col-2"></div>
+            <div class="col col-1"></div>
 
             <div class="col col-3">
-                <hr class="oka-divider ">
+                <div class="oka-spacer -xl"></div>
+                <hr style="display:inline-block;width:10.5rem"/>
                 <div class="oka-spacer -ms"></div>
                 <div class="oka-h -xs">Sté. HOKOHA</div>
                 <div class="oka-h -xs -secondary">19 rue Engène Messmer</div>
@@ -136,6 +140,7 @@ import logoImage from '../../assets/img/Logokoha-couv.png';
                 <div class="oka-h -xs">+33 2 43 49 75 18</div>
             </div>
         </div>
+        <div class="oka-spacer -xl"></div>
         <div class="oka-spacer -xl"></div>
         
     

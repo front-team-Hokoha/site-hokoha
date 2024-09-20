@@ -158,7 +158,8 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
 
 // --------------------------------------
 // TITRAGE L (h2)
-%oka-h-lg {
+
+@mixin oka-h-lg {
     --crop-top : -1.0rem;
     --crop-bottom : -1.0rem;
 
@@ -168,6 +169,22 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
         $font-size: $oka-brand-heading-font-size-lg, 
         $line-height: $oka-brand-heading-line-height-lg, );  
 }
+
+%oka-h-lg {
+    @include oka-h-lg;
+}
+
+
+// %oka-h-lg {
+//     --crop-top : -1.0rem;
+//     --crop-bottom : -1.0rem;
+
+//     @include plumber-set-defaults($use-baseline-origin: false);
+//     @include plumber( 
+//         $baseline: $oka-brand-heading-font-baseline, 
+//         $font-size: $oka-brand-heading-font-size-lg, 
+//         $line-height: $oka-brand-heading-line-height-lg, );  
+// }
 
 // --------------------------------------
 // TITRAGE M (h3)
