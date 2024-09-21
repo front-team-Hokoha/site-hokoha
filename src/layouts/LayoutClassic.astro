@@ -7,6 +7,7 @@ import Credits from '../components/Credits.astro';
 
 // Recevoir les props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
+const { pageName } = Astro.props;
 
 
 ---
@@ -34,19 +35,19 @@ const { title } = Astro.props;
 
 
     </head>
-    <body class="showGrid zzoka-darkMode">
+    <body class="zzshowGrid zzoka-darkMode">
         <div id="root" class="layout-app">
             
             <div class="heightPointGrid"></div>
 
-            <slot name="hero" />
+         
 
             <!-- Header -->
             <header>
-                <Header />
+                <Header  currentPage={pageName} />
             </header>
 
-
+            <slot name="hero" />
             
 
             <!-- Corps de page -->

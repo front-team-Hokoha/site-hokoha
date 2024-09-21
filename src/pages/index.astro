@@ -1,17 +1,19 @@
 
 ---
-// Ceci est une section "frontmatter" Astro pour importer des composants ou ajouter de la logique JavaScript
-import LayoutClassic from '../layouts/LayoutClassic.astro'; // Import du layout
+// Layout
+import LayoutClassic from '../layouts/LayoutClassic.astro'; 
 
 // Composants
 import Hero from '../components/home/Hero.astro';
 import Argument from '../components/home/Argument.astro';
 import Focus from '../components/home/Focus.astro';
-import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le widget des actualités
+import NewsWidget from '../components/news/NewsWidget.astro';
 
+// Pour menu Focus
+const pageName = "Accueil";
 ---
 
-<LayoutClassic title="Développement informatique">
+<LayoutClassic title="Développement informatique" pageName={pageName}>
 
 
   

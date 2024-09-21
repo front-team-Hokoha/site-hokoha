@@ -87,11 +87,11 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
-    width: 30rem;
-    height: 30rem;
+    right: 0;
+    width: 0.25rem;
+    height: 50vh;
     background-color: transparent;
-    opacity: 0.05;
+    opacity: 1;
     background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-primary-bg-medium) 50%);
     background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-app-bg-default) 50%);
     background-size: 16px 16px;

@@ -1,6 +1,7 @@
 ---
-
+const { currentPage } = Astro.props; // Récupérer le nom de la page courante
 ---
+
 
 <!-- HEADER -->
 <div class="oka-appbar layout-app__header" style="position:relative">
@@ -32,18 +33,19 @@
                     <label for="display-burger" class="oka-burger__closer"></label>
                     <!-- Contenu -->
                     <nav class="oka-burger__content">
-                    
-                        <a href="index.html" class="oka-bt -ghost {{ pageAccueil ? '-focus'  }}">
+                        
+                        <a href="index.html" class={`oka-bt -ghost ${currentPage === 'Accueil' ? '-focus' : ''}`}>
+                            
                             <div class="oka-bt__lbl">Accueil</div>
                             <div class="oka-spinner"></div>
                         </a>
 
-                        <a href="#" class="oka-bt -ghost {{ pageEntreprise ? '-focus'  }}">
-                            <div class="oka-bt__lbl">L'Entreprise</div>
+                        <a href="entreprise" class={`oka-bt -ghost ${currentPage === 'Entreprise' ? '-focus' : ''}`}>
+                            <div class="oka-bt__lbl">L'entreprise</div>
                             <div class="oka-spinner"></div>
                         </a>
 
-                        <a href="#" class="oka-bt -ghost {{ pageSavoir ? '-focus'  }}">
+                        <a href="#" class={`oka-bt -ghost ${currentPage === 'Savoir' ? '-focus' : ''}`}>
                             <div class="oka-bt__lbl">Savoir-Faire</div>
                             <div class="oka-spinner"></div>
                         </a>

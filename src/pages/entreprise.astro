@@ -1,0 +1,63 @@
+
+
+---
+// Layout
+import LayoutClassic from '../layouts/LayoutClassic.astro'; 
+
+// Composants
+import Valeur from '../components/entreprise/Valeur.astro';
+
+
+const pageName = "Entreprise";
+---
+
+<LayoutClassic title="Développement informatique" pageName={pageName}>
+    page entreprise
+    <div class="flex-grid">
+
+
+        <div class="col col-10">
+        </div>
+      
+    
+        <div class="col col-1"></div>
+    
+        <div class="col col-5">
+            <div class="oka-h">Les valeurs qui nous caractérisent.</div>
+            <h2 class="oka-text -lg">Nos valeurs allient respect de l'humain, innovation, agilité, expertise en développement et en design.</h2>
+
+            <Valeur
+                title="Humain"
+                body="Nous faisons de la transparence, de la confiance et du respect, un devoir envers nos collaborateurs. Mais aussi envers nos fournisseurs et nos clients !"
+            />
+
+            <Valeur
+                title="Pragmatisme"
+                body="Le pragmatisme guide chacune de nos actions : dans la conception de nos solutions, dans notre gestion de projets, dans les relations avec nos clients et partenaires, ainsi que dans notre approche du développement."
+            />
+
+            <Valeur
+                title="Innovation"
+                body="L’innovation doit être présente à tous les niveaux : dans nos produits, mais aussi dans notre organisation, dans les relations avec nos clients, dans nos méthodes de travail …"
+            />
+
+            <Valeur
+                title="Digital"
+                body="Nous croyons que les solutions numériques et digitales participeront à créer un futur meilleur."
+            />
+
+            <Valeur
+                title="Agilité"
+                body="Nous faisons nôtre le manifeste de développement Agile de logiciels (agilemanifesto.org)."
+            />
+
+            <Valeur
+                title="Amélioration continue"
+                body="Nous améliorer sans cesse et viser l’excellence sont au cœur de nos motivations !"
+            />
+        </div>
+        
+    </div>
+
+
+</LayoutClassic>
