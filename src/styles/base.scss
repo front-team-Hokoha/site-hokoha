@@ -17,7 +17,7 @@ $oka-system-font-path: 'assets/fonts' !default;
 @import "oka-design-system/0-abstracts/functions-svg";
 
 // BASE / NEUTRONS -----------------------------------
-//@import "oka-design-system/1-bases/8ptGrid/8ptGrid";
+@import "oka-design-system/1-bases/8ptGrid/8ptGrid";
 //@import "oka-design-system/1-bases/animations/animations";
 @import "oka-design-system/1-bases/body/body";
 @import "oka-design-system/1-bases/html/html";

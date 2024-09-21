@@ -29,17 +29,25 @@ const { title } = Astro.props;
 
         <base href="/site-hokoha/">
 
+        <!-- {# FONTAWESOME #} -->
+        <script src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
+
+
     </head>
-    <body class="zzshowGrid zzoka-darkMode">
+    <body class="showGrid zzoka-darkMode">
         <div id="root" class="layout-app">
             
+            <div class="heightPointGrid"></div>
+
+            <slot name="hero" />
+
             <!-- Header -->
-            <header class="layout-app__header">
+            <header>
                 <Header />
             </header>
 
 
-            <slot name="hero" />
+            
 
             <!-- Corps de page -->
             <div class="layout-app__body oka-surface" style="margin-top:0">
@@ -56,7 +64,9 @@ const { title } = Astro.props;
                         <Credits />
                     </div>
                 </footer>
-            </div>  
+            </div> 
+            
+            <slot name="modal" />
            
             <!-- Grid Preview -->
             <div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">

@@ -1,22 +1,24 @@
 ---
 interface Props {
+  theme: string;
 	title: string;
 	body: string;
 }
 
-const { title, body } = Astro.props;
+const { theme, title, body } = Astro.props;
 ---
 
-<div class="flex-grid">
-  <div class="col col-6"></div>
 
-    <div class="col col-5">
+<p class="oka-h -xs -secondary -crop">{theme}</p>
+<div class="flex-grid">
+
+    <div class="col col-3 col--md-5 ">
       <h2 class="oka-argument__title -secondary -crop" set:html={title}></h2>
     </div>
 
     <div class="col col-5">
         <!-- <div class="oka-spacer -sm"></div> -->
-        <p class="oka-text -md">{body}</p>
+        <p class="oka-text -md "  set:html={body}></p>
     </div>
 </div>
 <div class="oka-spacer -lg"></div>

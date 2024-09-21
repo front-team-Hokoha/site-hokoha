@@ -13,28 +13,42 @@ import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le wid
 
 <LayoutClassic title="Développement informatique">
 
+
+  
   <div class="oka-spacer -xl"></div>
   <div class="flex-grid">
-    <div class="col col-6">
+    <div class="col col-5">
       <h2 class="oka-text -lg -secondary">HOKOHA est une société de développement informatique, engagée à rendre les technologies numériques plus accessibles. Nous développons des solutions simples, efficaces et sur mesure, parfaitement adaptées aux besoins spécifiques des entreprises.</h2>
 
+      <div class="oka-spacer -xl"></div>
+
+        <!-- Label déclencheur -->
+      <label class="oka-bt -outlined" for="display-modal-default">
+        <div class="oka-bt__ico"><i class="fa-light fa-weight-hanging"></i></div>
+        <div class="oka-bt__lbl">Mesurez l'impact</div>
+        <div class="oka-spinner"></div>
+      </label>
 
     </div>
+    <div class="col col-1"></div>
 
     <div class="col col-10">
 
       <Argument
-        title="Nous <strong class='noto-serif'>développons</strong> et <strong class='noto-serif'>interconnectons</strong> <span class='u-noLineBreak'>vos outils.</span>"
+        theme="Notre métier"
+        title="<strong class='noto-serif'>Développement</strong> et <strong class='noto-serif'>interconnexions</strong> <span class='u-noLineBreak'>de vos outils.</span>"
         body="Nous développons vos outils sur mesure et les interconnectons pour créer un écosystème numérique fluide et performant. Notre approche garantit une intégration harmonieuse, optimisant vos processus et renforçant l'efficacité de vos systèmes."
       />
 
       <Argument
-        title="Nous concrétisons vos <strong class='noto-serif'>innovations</strong> et relevons <span class='u-noLineBreak'>vos <strong class='noto-serif'>défis</strong>.</span>"
-        body="Nous concrétisons vos idées les plus innovantes en alliant créativité et pragmatisme. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
+        theme="Notre métier"
+        title="Concrétiser vos <strong class='noto-serif'>innovations</strong> et relever <span class='u-noLineBreak'><strong class='noto-serif'>vos défis</strong>.</span>"
+        body="Nous concrétisons vos idées les plus innovantes en alliant <strong>créativité et pragmatisme</strong>. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
       />
 
       <Argument
-        title="Nous <strong class='noto-serif'>collectons</strong> vos données et <span class='u-noLineBreak'>nous les <strong class='noto-serif'>valorisons</strong>.</span>"
+        theme="Notre métier"
+        title="Nous <strong class='noto-serif'>collectons</strong> vos données et nous <span class='u-noLineBreak'>les <strong class='noto-serif'>valorisons</strong>.</span>"
         body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
       />
     </div>
@@ -73,6 +87,9 @@ import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le wid
       baseLineMini="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet."
     />
   </div>
+
+ 
+
   <div class="oka-spacer -xl"></div>
 
   <!-- Intégration du widget des actualités -->
@@ -83,6 +100,53 @@ import NewsWidget from '../components/news/NewsWidget.astro'; // Importer le wid
   <div slot="hero">
     <Hero />
   </div>
+
+
+
+<!-- "Modals" -->
+<div slot="modal">
+  <!-- modal -->
+  <div  class="oka-modal -lg ">
+    <!-- Pilot d'affichage du modal -->
+    <input type='checkbox' id="display-modal-default" name="display-modal" class="oka-modal__pilot noVerifForm"  onchange="this.checked ? window.location.hash='default' : window.location.hash=''" />
+    <!-- Fond Overlay et pilot de fermeture -->
+    <label class="oka-modal__bg "></label>
+    <!-- Container -->
+    <div id="modal-default" class="oka-modal__ctnr">
+        <div class="oka-modal__head oka-head">
+
+            <div class="oka-head__title">
+                <div class="oka-UI-h -sm">
+                    Component Heading 
+                </div>
+            </div>
+
+            <label class="oka-head__action oka-bt oka-bt--rounded oka-bt--ghost "  for="display-modal-default">
+                <span class="oka-bt__lbl">Fermer</span>
+                <span class="oka-bt__ico">✕</span>
+            </label>
+        </div>
+        <div class="oka-modal__body oka-wrap oka-wrap--md">
+
+            !!! En cas d'utilisation d'un formulaire dans le modal.
+            Il faut utiliser la balise form comme  oka-modal__ctnr
+
+        </div>
+        <div class="oka-modal__footer">
+            <label for="display-modal-default" class="oka-bt oka-bt--outlined modal-close">
+                <span class="oka-bt__lbl">Annuler</span>
+                <span class="oka-bt__spinner"></span>
+            </label>
+            <a href="#!" class="oka-bt oka-bt--primary" onclick='this.classList.add("js-ajaxInProgress")'>
+                <span class="oka-bt__lbl">Supprimer</span>
+                <span class="oka-bt__spinner"></span>
+            </a>
+        </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 </LayoutClassic>

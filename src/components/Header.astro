@@ -3,7 +3,7 @@
 ---
 
 <!-- HEADER -->
-<header class="oka-appbar layout-app__header">
+<div class="oka-appbar layout-app__header" style="position:relative">
     <div class="oka-appbar__row oka-app-wrap">
         <section class="oka-appbar__left">
             HOKOHA
@@ -22,6 +22,7 @@
                     <span class="oka-bt__ico -isClose"><i class="fa-sharp fa-solid fa-bars"></i></span>
                     <span class="oka-bt__ico -isOpen"><i class="fa-sharp fa-solid fa-xmark"></i></span>
                 </label>
+                
                 <!-- Pilot d'ouverture du menu -->
                 <input type='checkbox' id="display-burger"  class="oka-burger__pilot"/>
 
@@ -31,8 +32,7 @@
                     <label for="display-burger" class="oka-burger__closer"></label>
                     <!-- Contenu -->
                     <nav class="oka-burger__content">
-                        
-                        
+                    
                         <a href="index.html" class="oka-bt -ghost {{ pageAccueil ? '-focus'  }}">
                             <div class="oka-bt__lbl">Accueil</div>
                             <div class="oka-spinner"></div>
@@ -61,7 +61,6 @@
                     </nav>
                 </div>
             </nav>
-
         </section>
     </div>
-</header>
+</div>
