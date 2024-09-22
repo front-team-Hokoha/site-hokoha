@@ -1,19 +1,5 @@
 
-.appear {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
-  
-.appear.visible {
-opacity: 1;
-transform: translateY(0);
-}
 
-
-.layout-app__footer{
-    z-index:2;
-}
 
 .page-accueil {
 --oka-color-app-bg-muted : #EEF1F6;
@@ -25,10 +11,6 @@ transform: translateY(0);
 
 }
 
-hr.filet{
-    display:inline-block;
-    width:10.5rem
-}
 
 
 .noto-serif {
@@ -42,92 +24,5 @@ hr.filet{
     //color:var(--oka-color-primary-contrast-medium);
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
     }
-
-
-.oka-argument__title {
-   
-    @extend %oka-h;
-    @extend %oka-h-md;
-
-    @include breakpoint(lg) {
-        @include oka-h-lg;
-    }
-
-    strong{}
-
-}
-
-.oka-hero__logo{
-    width:auto;
-    height:3rem;
-
-    @include breakpoint(lg) {
-        height:4rem;
-    }
-
-}
-
-.u-noLineBreak {
-    white-space: nowrap;
-}
-
-#video_pattern {
-    background-image: url(/site-hokoha/assets/img/trame-video.jpg);
-    background-size: cover;
-    background-position: top;
-    mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
-
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.7;
-
-}
-
-.oka-hero{
-    
-    position:relative;
-    z-index:-1;
-    width: 100%;
-    //margin-top:4rem;
-    /*min-height: 100%;*/
-    flex-basis:100ch;
-    overflow: hidden;
-
-    background: var(--oka-color-app-bg-default);
- 
-    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-medium) 60%,var(--oka-color-primary-contrast-hight) 95%);
-
-  
-}
-
-#video_background {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    /*z-index: -100;*/
-    transform: translateX(-50%) translateY(-50%);
-    opacity: 12%;
-    filter: brightness(1.8) grayscale(1); ;
-    /* filter: brightness(1.5) grayscale(1); */
-}
-
-.heightPointGrid {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    width: 0.25rem;
-    height: 50vh;
-    background-color: transparent;
-    opacity: 1;
-    background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-primary-bg-medium) 50%);
-    background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-app-bg-default) 50%);
-    background-size: 16px 16px;
-}
 
 

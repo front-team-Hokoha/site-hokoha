@@ -1,0 +1,82 @@
+
+
+// Animations d'apparition
+
+.appear {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+.appear.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+// Reprise du footer
+.layout-app__footer{
+    z-index:2;
+}
+
+// Filet séparateur
+hr.filet{
+    display:inline-block;
+    width:10.5rem
+}
+
+// Anti Line Break
+.u-noLineBreak {
+    white-space: nowrap;
+}
+
+// Deco  8pt
+
+.heightPointGrid {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 0.25rem;
+    height: 50vh;
+    background-color: transparent;
+    opacity: 1;
+    background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-primary-bg-medium) 50%);
+    background-image: linear-gradient(0deg, transparent 50%, var(--oka-color-app-bg-default) 50%);
+    background-size: 16px 16px;
+}
+
+
+// Bouton toggle Mode
+// Utilitaire toggle suivant mode
+
+.u-showOnDark {
+    display:none;
+}
+body.oka-darkMode {
+    .u-showOnDark {
+        display:flex;
+        justify-content: center;
+    }
+    .u-showOnLight {
+        display:none;
+    }
+}
+body.oka-lightMode {
+    .u-showOnDark {
+        display:none;
+    }
+    .u-showOnLight {
+        display:flex;
+        justify-content: center;
+    }
+}
+
+// ZoomText
+
+html{
+    transition: font-size 0.5s ease-out;
+}
+html:has(.zoomText) {
+    font-size:19px;
+}

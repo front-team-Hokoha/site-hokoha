@@ -1,0 +1,64 @@
+
+.oka-hero{
+    
+    position:relative;
+    z-index:0;
+    width: 100%;
+    //margin-top:4rem;
+    /*min-height: 100%;*/
+    flex-basis:100ch;
+    overflow: hidden;
+
+    background: var(--oka-color-app-bg-default);
+ 
+    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-medium) 60%,var(--oka-color-primary-contrast-hight) 95%);
+
+  
+}
+
+
+
+.oka-hero__logo{
+    width:auto;
+    height:3rem;
+
+    @include breakpoint(lg) {
+        height:4rem;
+    }
+
+}
+
+
+
+#video_pattern {
+    background-image: url(/site-hokoha/assets/img/trame-video.jpg);
+    background-size: cover;
+    background-position: top;
+    mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+
+    pointer-events: none;
+
+}
+
+
+#video_background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    /*z-index: -100;*/
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 12%;
+    filter: brightness(1.8) grayscale(1); ;
+    /* filter: brightness(1.5) grayscale(1); */
+
+    pointer-events: none;
+}
