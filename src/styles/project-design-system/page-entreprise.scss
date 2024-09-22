@@ -1,0 +1,40 @@
+
+
+.page-entreprise {
+
+
+
+    .layout-app__main {
+        background-color: var(--oka-color-app-bg-muted) !important;
+    }
+
+
+}
+
+.cartoucheMembre {
+    &.-rvrs {
+        flex-direction: row-reverse;
+    }
+}
+
+.membre {
+    &__attributs {
+        display:flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+
+        .-rvrs & {
+            align-items: flex-end; 
+        }
+    }
+}
+
+.membresStagiaires{
+    display: flex;
+    flex-wrap: wrap;
+    gap:0 3rem;
+
+    p {
+        margin:0 !important;
+    }
+}

@@ -1,0 +1,26 @@
+---
+interface Props {
+    nom: string
+    role: string;
+	mission: string;
+	portrait: string;
+    orientation: string
+}
+
+const { nom, role, mission, portrait, orientation } = Astro.props;
+---
+<div class="col col-5">
+    <div class={`cartoucheMembre flex-grid ${orientation}`}>
+
+        <div class="col col-2 ">
+            <div class="membre__portrait oka-ratio -square" style={`background-image: url(${portrait});background-size:contain`}>
+            </div>
+        </div>
+
+        <div class="col col-3 membre__attributs">
+            <h3 class="oka-h -sm -secondary -crop">{mission}</h3>
+            <p class="oka-h -sm  -crop">{role}</p>
+            <p class="oka-h -sm  -crop">{nom}</p>
+        </div>
+    </div>
+</div>

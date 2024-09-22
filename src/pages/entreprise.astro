@@ -6,17 +6,48 @@ import LayoutClassic from '../layouts/LayoutClassic.astro';
 
 // Composants
 import Valeur from '../components/entreprise/Valeur.astro';
+import Membre from '../components/equipe/Membre.astro';
 
 
+import Image from '../components/Image.astro';
+
+import logoImage from '../assets/img/Logokoha-couv-simple.png';
+
+// Liste des Stagiaires et anciens membres
+const articles = await Astro.glob('../content/team/anciens.md');
+const article = articles[0];
+
+
+
+// Variables Globales passées au Layout
 const pageName = "Entreprise";
+const pageClass = "entreprise";
 ---
 
-<LayoutClassic title="Développement informatique" pageName={pageName}>
-    page entreprise
+<LayoutClassic 
+    title="Développement informatique" 
+    pageName={pageName} 
+    pageClass={pageClass}>
+
+
+
+
     <div class="flex-grid">
 
 
         <div class="col col-10">
+            <p>Hokoha est une société lavalloise composée de profils expérimentés, spécialisée dans le développement de solutions sur mesure. Grâce à un savoir-faire pointu, nous répondons aux besoins spécifiques de chaque entreprise avec efficacité et précision.
+            </p>
+            
+            <p>Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.
+            </p>
+            
+            <p>Forts de parcours diversifiés — en informatique, électronique, graphisme ou commerce — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes, nous avons uni nos compétences avec un objectif commun : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.
+            </p>
+
+
+            <p>Nous collaborons avec des entreprises issues de tous types de secteurs d'activité, qu'il s'agisse de l'industrie, des services, de la santé ou encore du commerce. Grâce à notre expertise diversifiée, nous sommes en mesure de comprendre et d'adapter nos solutions aux spécificités et aux exigences propres à chaque domaine.
+            </p>
         </div>
       
     
@@ -58,6 +89,133 @@ const pageName = "Entreprise";
         </div>
         
     </div>
+
+
+    <!-- "Contenu Secondaire" -->
+    <div slot="secondary">
+       
+        <div class="equipe oka-surface oka-darkMode">
+            
+            <div class="oka-appWrap">
+               
+                <div class="oka-spacer -xl"></div>
+
+                <div class="flex-grid">
+                    <div class="col col-6">
+
+                        <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" className="oka-hero__logo" />
+                        <div class="oka-h -md -secondary">Notre équipe</div>
+                        <h2 class="oka-h -xl">Développeurs,<br />
+                            ingénieurs, <br />
+                            designer.</h2>
+                            <div class="oka-spacer -xl"></div>
+
+                    </div>
+                    <div class="col col-10">
+
+                        <div class="flex-grid">
+                        <Membre
+                        nom="Laurent"
+                        role="Fondateur"
+                        mission="Innovation"
+                        portrait="/site-hokoha/images/team/Laurent.png"
+                        orientation =" "   
+                    />
+
+                    <Membre
+                        nom="Franck"
+                        role="Fondateur"
+                        mission="Gestion de projets"
+                        portrait="/site-hokoha/images/team/Franck.png"
+                        orientation =""   
+                    />
+
+                    <Membre
+                        nom="Yann"
+                        role="Co-gérant"
+                        mission="Design UI/UX"
+                        portrait="/site-hokoha/images/team/Yann.png"
+                        orientation =" "   
+                    />
+
+                    <Membre
+                        nom="Thomas"
+                        role=""
+                        mission="Développement mobile"
+                        portrait="/site-hokoha/images/team/Thomas.png"
+                        orientation =" "   
+                    />
+                
+                    <Membre
+                        nom="Kévin"
+                        role=""
+                        mission="Développement web"
+                        portrait="/site-hokoha/images/team/Kevin.png"
+                        orientation =" "   
+                    />
+                
+                    <Membre
+                        nom="Kévin"
+                        role=""
+                        mission="Développement web"
+                        portrait="/site-hokoha/images/team/KevinA.png"
+                        orientation =" "   
+                    />
+                    <Membre
+                        nom="Alexandre"
+                        role=""
+                        mission="Développement Python / Odoo"
+                        portrait="/site-hokoha/images/team/Alexandre.png"
+                        orientation =" "   
+                    />
+                    <Membre
+                        nom="Yannis"
+                        role=""
+                        mission="Développement Python / Odoo"
+                        portrait="/site-hokoha/images/team/Yannis.png"
+                        orientation =" "   
+                    />
+                    <Membre
+                        nom="Ewen"
+                        role=""
+                        mission="Développement web"
+                        portrait="/site-hokoha/images/team/Ewen.png"
+                        orientation =" "   
+                    />
+</div>  
+
+
+                        
+                    </div>
+
+                   
+                    
+                </div>
+                <div class="oka-spacer -xl"></div>
+
+
+
+
+                <div class="membresStagiaires">
+                    
+                    <article.Content />
+                    
+                </div>
+
+                <div class="oka-spacer -xl"></div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
 
 
 </LayoutClassic>

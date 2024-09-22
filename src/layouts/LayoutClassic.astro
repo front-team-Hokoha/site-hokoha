@@ -8,6 +8,7 @@ import Credits from '../components/Credits.astro';
 // Recevoir les props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
 const { pageName } = Astro.props;
+const { pageClass } = Astro.props;
 
 
 ---
@@ -35,7 +36,7 @@ const { pageName } = Astro.props;
 
 
     </head>
-    <body class="zzshowGrid zzoka-darkMode">
+    <body class={`zzshowGrid zzoka-darkMode page-${pageClass}`} >
         <div id="root" class="layout-app">
             
             <div class="heightPointGrid"></div>
@@ -54,9 +55,14 @@ const { pageName } = Astro.props;
             <div class="layout-app__body oka-surface" style="margin-top:0">
             
                 <main class="layout-app__main">
+                    
+                    <!-- Contenu principal -->
                     <div class="oka-appWrap">
                         <slot  />
                     </div>
+                    
+                    <slot name="secondary" />
+
                 </main> 
                 
                 <!-- Footer -->
@@ -66,6 +72,9 @@ const { pageName } = Astro.props;
                     </div>
                 </footer>
             </div> 
+
+
+           
             
             <slot name="modal" />
            
