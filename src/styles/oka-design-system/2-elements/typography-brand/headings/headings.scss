@@ -131,91 +131,11 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     }
 }
 
-// --------------------------------------
-// TITRAGE XXL
-%oka-h-xxl {
-    @include plumber-set-defaults($use-baseline-origin: true);
-    @include plumber( 
-        $baseline: $oka-brand-heading-font-baseline,
-        $font-size: $oka-brand-heading-font-size-xxl, 
-        $line-height: $oka-brand-heading-line-height-xxl, 
-        );
-}
 
-// --------------------------------------
-// TITRAGE XL (h1)
-%oka-h-xl {
-    --crop-top : -1.5rem;
-    --crop-bottom : -1rem;
-
-    @include plumber-set-defaults($use-baseline-origin: false);
-    @include plumber( 
-        $baseline: $oka-brand-heading-font-baseline, 
-        $font-size: $oka-brand-heading-font-size-xl, 
-        $line-height: $oka-brand-heading-line-height-xl, 
-    );
-}
-
-// --------------------------------------
-// TITRAGE L (h2)
-
-@mixin oka-h-lg {
-    --crop-top : -1.0rem;
-    --crop-bottom : -1.0rem;
-
-    @include plumber-set-defaults($use-baseline-origin: false);
-    @include plumber( 
-        $baseline: $oka-brand-heading-font-baseline, 
-        $font-size: $oka-brand-heading-font-size-lg, 
-        $line-height: $oka-brand-heading-line-height-lg, );  
-}
-
-%oka-h-lg {
-    @include oka-h-lg;
-}
-
-
-// %oka-h-lg {
-//     --crop-top : -1.0rem;
-//     --crop-bottom : -1.0rem;
-
-//     @include plumber-set-defaults($use-baseline-origin: false);
-//     @include plumber( 
-//         $baseline: $oka-brand-heading-font-baseline, 
-//         $font-size: $oka-brand-heading-font-size-lg, 
-//         $line-height: $oka-brand-heading-line-height-lg, );  
-// }
-
-// --------------------------------------
-// TITRAGE M (h3)
-%oka-h-md {
-    --crop-top : -0.5rem;
-    --crop-bottom : -1rem;
-
-    @include plumber-set-defaults($use-baseline-origin: false);
-    @include plumber( 
-        $baseline: $oka-brand-heading-font-baseline, 
-        $font-size: $oka-brand-heading-font-size-md, 
-        $line-height: $oka-brand-heading-line-height-md, );
-}
-
-
-// --------------------------------------
-// TITRAGE S (h4)
-%oka-h-sm {
-    --crop-top : -1rem;
-    --crop-bottom : -1rem;
-
-    @include plumber-set-defaults($use-baseline-origin: false);
-    @include plumber( 
-        $baseline: $oka-brand-heading-font-baseline, 
-        $font-size: $oka-brand-heading-font-size-sm, 
-        $line-height: $oka-brand-heading-line-height-sm, );
-}
 
 // --------------------------------------
 // TITRAGE XS (h5)
-%oka-h-xs {
+@mixin oka-h-xs {
     --crop-top : -0.25rem;
     --crop-bottom : -0.75rem;
     
@@ -226,6 +146,176 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
         $line-height: $oka-brand-heading-line-height-xs, );
 }
 
+%oka-h-xs {
+    @include oka-h-xs;
+}
+
+// --------------------------------------
+// TITRAGE S (h4)
+@mixin oka-h-sm {
+     
+    // mobile -> XS 
+    --crop-top : -0.25rem;
+    --crop-bottom : -0.75rem;
+    
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-xs, 
+        $line-height: $oka-brand-heading-line-height-xs, );
+
+    // desktop -> SM
+    @include breakpoint(lg) {
+        --crop-top : -1rem;
+        --crop-bottom : -1rem;
+    
+        @include plumber-set-defaults($use-baseline-origin: false);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline, 
+            $font-size: $oka-brand-heading-font-size-sm, 
+            $line-height: $oka-brand-heading-line-height-sm, );
+    }
+
+}
+
+%oka-h-sm {
+    @include oka-h-sm;
+}
+
+
+// --------------------------------------
+// TITRAGE M (h3)
+@mixin oka-h-md {
+    
+    // mobile -> SM 
+    --crop-top : -1rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-sm, 
+        $line-height: $oka-brand-heading-line-height-sm, );
+
+    // desktop -> MD
+    @include breakpoint(lg) {
+        --crop-top : -0.5rem;
+        --crop-bottom : -1rem;
+    
+        @include plumber-set-defaults($use-baseline-origin: false);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline, 
+            $font-size: $oka-brand-heading-font-size-md, 
+            $line-height: $oka-brand-heading-line-height-md, );
+    }
+
+}
+
+
+%oka-h-md {
+    @include oka-h-md;
+}
+
+// --------------------------------------
+// TITRAGE L (h2)
+
+@mixin oka-h-lg {
+    
+    // mobile -> MD   
+    --crop-top : -0.5rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-md, 
+        $line-height: $oka-brand-heading-line-height-md, );
+    
+    
+    // desktop -> LG
+    @include breakpoint(lg) {
+        --crop-top : -1.0rem;
+        --crop-bottom : -1.0rem;
+
+        @include plumber-set-defaults($use-baseline-origin: false);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline, 
+            $font-size: $oka-brand-heading-font-size-lg, 
+            $line-height: $oka-brand-heading-line-height-lg, );
+    }
+
+}
+
+%oka-h-lg {
+    @include oka-h-lg;
+}
+
+
+
+// --------------------------------------
+// TITRAGE XL (h1)
+@mixin oka-h-xl {
+
+    // mobile -> LG
+    --crop-top : -1.0rem;
+    --crop-bottom : -1.0rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-lg, 
+        $line-height: $oka-brand-heading-line-height-lg, );
+
+    // desktop -> XL
+    @include breakpoint(lg) {
+    
+        --crop-top : -1.5rem;
+        --crop-bottom : -1rem;
+
+        @include plumber-set-defaults($use-baseline-origin: false);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline, 
+            $font-size: $oka-brand-heading-font-size-xl, 
+            $line-height: $oka-brand-heading-line-height-xl, 
+        );
+    }
+}
+
+%oka-h-xl {
+    @include oka-h-xl;
+}
+
+// --------------------------------------
+// TITRAGE XXL
+@mixin oka-h-xxl {
+    
+    // mobile -> XL
+    --crop-top : -1.5rem;
+        --crop-bottom : -1rem;
+
+        @include plumber-set-defaults($use-baseline-origin: false);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline, 
+            $font-size: $oka-brand-heading-font-size-xl, 
+            $line-height: $oka-brand-heading-line-height-xl, 
+        );
+        
+    // desktop -> XXL
+    @include breakpoint(lg) {
+    
+        @include plumber-set-defaults($use-baseline-origin: true);
+        @include plumber( 
+            $baseline: $oka-brand-heading-font-baseline,
+            $font-size: $oka-brand-heading-font-size-xxl, 
+            $line-height: $oka-brand-heading-line-height-xxl, 
+            );
+        }  
+}
+
+%oka-h-xxl {
+    @include oka-h-xxl;
+}
+// --------------------------------------
 
 @mixin cropLineHeight {
     //
