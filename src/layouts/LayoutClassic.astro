@@ -107,5 +107,30 @@ const { pageClass } = Astro.props;
             </div>
 
       </div>
+
+      <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.appear');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Ajoute un décalage entre les animations avec setTimeout
+                        setTimeout(() => {
+                        entry.target.classList.add('visible');
+                        }, index * 200); // 200ms de décalage entre chaque élément
+                        observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
+                    }
+                    });
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+            });
+
+
+
+      </script>
   </body>
 </html>
