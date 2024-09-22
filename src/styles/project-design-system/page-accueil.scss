@@ -59,10 +59,9 @@ hr.filet{
 }
 
 #video_pattern {
-    background-image: url(assets/img/101702.jpg);
-    background-image: url(assets/img/2148121725.jpg);
+    background-image: url(assets/img/trame-video.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: top;
     mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
 
     position: absolute;
@@ -84,7 +83,7 @@ hr.filet{
 
     background: var(--oka-color-app-bg-default);
  
-    background-image: linear-gradient(-43deg, var(--oka-color-primary-bg-medium) 00% , var(--oka-color-app-bg-default) 20%, var(--oka-color-primary-bg-medium) 60% , var(--oka-color-primary-contrast-hight) 80% , #fff 100%);
+    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-medium) 60%,var(--oka-color-primary-contrast-hight) 95%);
 
   
 }
