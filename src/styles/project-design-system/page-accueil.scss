@@ -1,4 +1,21 @@
+.layout-app__footer{
+    z-index:2;
+}
 
+.page-accueil {
+--oka-color-app-bg-muted : #EEF1F6;
+
+
+    .layout-app__main {
+        background-color: var(--oka-color-app-bg-muted) !important;
+    }
+
+}
+
+hr.filet{
+    display:inline-block;
+    width:10.5rem
+}
 
 
 .noto-serif {
@@ -9,7 +26,7 @@
     font-variation-settings:
         "wdth" 100;
   
-    color:var(--oka-color-primary-contrast-medium);
+    //color:var(--oka-color-primary-contrast-medium);
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
     }
 
@@ -29,7 +46,11 @@
 
 .oka-hero__logo{
     width:auto;
-    height:4rem;
+    height:3rem;
+
+    @include breakpoint(lg) {
+        height:4rem;
+    }
 
 }
 

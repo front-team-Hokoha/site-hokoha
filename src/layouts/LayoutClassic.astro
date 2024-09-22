@@ -36,19 +36,19 @@ const { pageClass } = Astro.props;
 
 
     </head>
-    <body class={`showGrid zzoka-darkMode page-${pageClass}`} >
+    <body class={`zzshowGrid zzoka-darkMode page-${pageClass}`} >
         <div id="root" class="layout-app">
             
             <div class="heightPointGrid"></div>
 
-         
+            <slot name="hero" />
 
             <!-- Header -->
-            <header>
+            <header style="position:sticky; top:0 ; z-index:20 ">
                 <Header  currentPage={pageName} />
             </header>
 
-            <slot name="hero" />
+            
             
 
             <!-- Corps de page -->

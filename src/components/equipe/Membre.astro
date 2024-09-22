@@ -9,7 +9,7 @@ interface Props {
 
 const { nom, role, mission, portrait, orientation } = Astro.props;
 ---
-<div class="col col-2 col--sm-4 col--md-5">
+<div class="col col-3 col--sm-4 col--md-5">
     <div class={`cartoucheMembre flex-grid ${orientation}`}>
 
         <div class="col col-1 col--md-2">
@@ -17,10 +17,12 @@ const { nom, role, mission, portrait, orientation } = Astro.props;
             </div>
         </div>
 
-        <div class="col col-1 col--sm-2 col--md-3 membre__attributs">
-            <h3 class="oka-h -sm -secondary -crop">{mission}</h3>
-            <p class="oka-h -sm  ">{role}</p>
-            <p class="oka-h -sm  -crop">{nom}</p>
+        <div class="col col-2 col--sm-2 col--md-3 membre__attributs">
+            {mission && <h3 class="oka-h -sm -secondary -crop">{mission}</h3>}
+            {role && <p class="oka-h -sm -crop ">{role}</p>}
+            {nom && <p class="oka-h -sm  -crop">{nom}</p>}
+
+
         </div>
     </div>
 </div>

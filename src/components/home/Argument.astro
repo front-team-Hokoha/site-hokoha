@@ -9,18 +9,19 @@ const { theme, title, body } = Astro.props;
 ---
 
 
-<!-- <p class="oka-h -xs -secondary -crop">{theme}</p> -->
+<p class="oka-h -xs -secondary -crop">{theme}</p>
+<div class="oka-spacer -sm"></div>
 <div class="flex-grid">
 
-    <div class="col col-3 col--md-5 ">
-      <h2 class="oka-argument__title -secondary -crop" set:html={title}></h2>
+    <div class="col col-3 col--md-6 ">
+      <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
     </div>
 
-    <div class="col col-5">
+    <div class="col col-4">
         <!-- <div class="oka-spacer -sm"></div> -->
         <p class="oka-text -md "  set:html={body}></p>
     </div>
 </div>
-<div class="oka-spacer -lg"></div>
-<hr class="oka-divider -low">
-<div class="oka-spacer -lg"></div>
+<div class="oka-spacer -md"></div>
+<hr class="oka-divider -medium">
+<div class="oka-spacer -md"></div>
