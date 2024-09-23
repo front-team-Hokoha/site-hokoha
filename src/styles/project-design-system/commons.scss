@@ -1,5 +1,10 @@
 
 
+html {
+    scroll-behavior: smooth;
+  }
+
+// Effet 
 .oka-spacer{
     position: relative;
     border-color : var(--oka-color-specs-low) !important;
@@ -55,11 +60,11 @@ body.showGrid .oka-appWrap {
 
 
 .oka-spacer {
-    transition: all 3s ease-out,
+    transition: opacity 3s ease-out,
 }
 body:not(.sb-show-main).showGrid #root:after ,
 .flex-grid-bg-fx{
-    transition: all 2.5s ease-out,
+    transition: opacity 2.5s ease-out,
 }
 
 // Animations d'apparition
@@ -142,3 +147,4 @@ html{
 html:has(.zoomText) {
     font-size:19px;
 }
+

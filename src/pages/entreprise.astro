@@ -29,23 +29,48 @@ const pageClass = "entreprise";
     pageClass={pageClass}>
 
 
+<div class="oka-spacer -xl"></div>
+
+<div style="position:sticky;top : 4rem; height: 4rem;background: linear-gradient(to bottom, var(--oka-color-app-bg-muted) 0% , var(--oka-color-app-bg-muted) 50% , transparent 100%);">
+
+    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
+        <div class="oka-bt__lbl">Historique</div>
+        <div class="oka-spinner"></div>
+    </a>
+
+    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
+        <div class="oka-bt__lbl">Nos Valeurs</div>
+        <div class="oka-spinner"></div>
+    </a>
+
+    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
+        <div class="oka-bt__lbl">L'équipe</div>
+        <div class="oka-spinner"></div>
+    </a>
+
+
+</div>
+    <div class="oka-spacer -xl"></div>
 
 
     <div class="flex-grid">
 
 
-        <div class="col col-10">
-            <p>Hokoha est une société lavalloise composée de profils expérimentés, spécialisée dans le développement de solutions sur mesure. Grâce à un savoir-faire pointu, nous répondons aux besoins spécifiques de chaque entreprise avec efficacité et précision.
+        <div class="col col-8">
+
+            <h1>Titre principal</h1>
+
+            <p class="oka-text">Hokoha est une société lavalloise composée de profils expérimentés, spécialisée dans le développement de solutions sur mesure. Grâce à un savoir-faire pointu, nous répondons aux besoins spécifiques de chaque entreprise avec efficacité et précision.
             </p>
             
-            <p>Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.
+            <p class="oka-text">Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.
             </p>
             
-            <p>Forts de parcours diversifiés — en informatique, électronique, graphisme ou commerce — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes, nous avons uni nos compétences avec un objectif commun : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.
+            <p class="oka-text">Forts de parcours diversifiés — en informatique, électronique, graphisme ou commerce — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes, nous avons uni nos compétences avec un objectif commun : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.
             </p>
 
 
-            <p>Nous collaborons avec des entreprises issues de tous types de secteurs d'activité, qu'il s'agisse de l'industrie, des services, de la santé ou encore du commerce. Grâce à notre expertise diversifiée, nous sommes en mesure de comprendre et d'adapter nos solutions aux spécificités et aux exigences propres à chaque domaine.
+            <p class="oka-text">Nous collaborons avec des entreprises issues de tous types de secteurs d'activité, qu'il s'agisse de l'industrie, des services, de la santé ou encore du commerce. Grâce à notre expertise diversifiée, nous sommes en mesure de comprendre et d'adapter nos solutions aux spécificités et aux exigences propres à chaque domaine.
             </p>
         </div>
       
@@ -106,7 +131,7 @@ const pageClass = "entreprise";
     <!-- "Contenu Secondaire" -->
     <div slot="secondary">
        
-        <div class="equipe oka-surface oka-darkMode">
+        <div id="equipe" class="equipe oka-surface oka-darkMode">
             
             <div class="oka-appWrap">
                
@@ -216,6 +241,7 @@ const pageClass = "entreprise";
                 <div class="oka-spacer -xl"></div>
 
                 <hr class="filet"/>
+
                 <div class="flex-grid">
                     <div class="col col-6">
                         <p class="oka-text -md" style="padding-right:3rem;">Chez Hokoha, nous accordons une grande importance à la transmission de notre savoir-faire. En accueillant régulièrement des stagiaires, nous nous engageons à former la prochaine génération de professionnels en partageant notre expertise technique et nos valeurs.<br/><br /> Cet engagement envers l’apprentissage et le partage de connaissances fait partie intégrante de notre culture.</p>

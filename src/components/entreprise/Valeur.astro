@@ -7,13 +7,12 @@ interface Props {
 const { title, body } = Astro.props;
 ---
 
-<div class="col col-4 appear" style="padding:1rem;outline:1px solid var(--oka-color-system-contrast-medium">
+<div class="col col-4 appear oka-shadow-2" style="background:#fff; padding:1rem 1rem 1rem 3rem;border:0px solid var(--oka-color-system-contrast-medium); border-radius:0.5rem; margin-bottom:0px;">
   
-  <div class="oka-spacer -sm"></div>
+  <div class="oka-spacer -md"></div>
 
-  <div class="oka-h -md noto-serif   -crop" set:html={title} ></div>
-  <div class="oka-spacer -xs"></div>
-  <p class="oka-text -md"  set:html={body} ></p>
+  <div class="oka-h -sm noto-serif   -crop" set:html={title} ></div>
+  <p class="oka-text -sm"  set:html={body} ></p>
         
  
  
