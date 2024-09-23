@@ -16,12 +16,13 @@
 .noto-serif {
     font-family: "Noto Serif", serif !important;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 700;
     font-style: italic;
     font-variation-settings:
         "wdth" 100;
   
-    //color:var(--oka-color-primary-contrast-medium);
+    color:var(--oka-color-system-contrast-hard);
+    letter-spacing: -0.02em;
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
     }
 

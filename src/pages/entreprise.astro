@@ -7,9 +7,8 @@ import LayoutClassic from '../layouts/LayoutClassic.astro';
 // Composants
 import Valeur from '../components/entreprise/Valeur.astro';
 import Membre from '../components/equipe/Membre.astro';
-
-
 import Image from '../components/Image.astro';
+import NextPage from '../components/Nextpage.astro';
 
 import logoImage from '../assets/img/Logokoha-couv-simple.png';
 
@@ -256,7 +255,16 @@ const pageClass = "entreprise";
 
 
 
-
+<!-- "Next" -->
+<div slot="next">
+    <NextPage
+      titre="En savoir plus sur HOKOHA"
+      contenu="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet.%"
+      url="/entreprise"
+      bouton="En savoir plus sur HOKOHA"
+      image=""
+    />
+  </div>
 
 
 </LayoutClassic>
