@@ -1,5 +1,43 @@
 
 
+.oka-spacer{
+    border-color : var(--oka-color-specs-low) !important;
+    border-width: 0 0.5px 0 0 !important;
+    opacity:0;
+}
+
+
+.showGrid .oka-spacer {
+    opacity:1;
+}
+
+.oka-appWrap{
+   
+    outline: 0px solid var(--oka-color-specs-low) !important;
+}
+.showGrid .oka-appWrap {
+ 
+    outline: 0px solid var(--oka-color-specs-low) !important;
+}
+
+
+.flex-grid-bg-fx{
+    display: flex !important;
+    opacity:0;
+}
+.showGrid .flex-grid-bg-fx, .showGrid .grid-bg-fx {
+    opacity:1;
+}
+
+.oka-appWrap,
+.oka-spacer {
+    transition: all 3s ease-out,
+}
+body:not(.sb-show-main).showGrid #root:after ,
+.flex-grid-bg-fx{
+    transition: all 2.5s ease-out,
+}
+
 // Animations d'apparition
 
 .appear {

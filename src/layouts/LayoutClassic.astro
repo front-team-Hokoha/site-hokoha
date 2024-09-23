@@ -41,7 +41,7 @@ const { pageClass } = Astro.props;
     <body class={`oka-lightMode page-${pageClass}`} >
         <div id="root" class="layout-app">
             
-            <div class="heightPointGrid"></div>
+            <!-- <div class="heightPointGrid"></div> -->
 
             <slot name="hero" />
 
@@ -63,7 +63,11 @@ const { pageClass } = Astro.props;
                         <slot  />
                     </div>
                     
+                    <!-- Contenu Secondaire -->
                     <slot name="secondary" />
+
+                    <!--  -->
+                    <slot name="next" />
 
                 </main> 
                 
@@ -71,8 +75,6 @@ const { pageClass } = Astro.props;
                 <footer class="layout-app__footer">
                     <div class="oka-appWrap oka-darkMode">
                         <Credits />
-                        
-                    
                     </div>
                 </footer>
             </div> 
