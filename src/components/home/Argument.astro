@@ -9,9 +9,9 @@ const { theme, title, body } = Astro.props;
 ---
 
 
-<p class="oka-h -xs -secondary -crop">{theme}</p>
-<div class="oka-spacer -sm"></div>
+
 <div class="flex-grid appear">
+    <div class="col"><p class="oka-h -xs -secondary ">{theme}</p></div>
 
     <div class="col col-3 col--md-6 ">
       <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
@@ -21,7 +21,7 @@ const { theme, title, body } = Astro.props;
         <!-- <div class="oka-spacer -sm"></div> -->
         <p class="oka-text -md "  set:html={body}></p>
     </div>
+
+    <div class="oka-spacer -sm"></div>
 </div>
-<div class="oka-spacer -md"></div>
-<hr class="oka-divider -medium">
-<div class="oka-spacer -md"></div>
+
