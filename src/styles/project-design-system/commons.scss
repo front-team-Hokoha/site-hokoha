@@ -1,22 +1,45 @@
 
 
 .oka-spacer{
+    position: relative;
     border-color : var(--oka-color-specs-low) !important;
-    border-width: 0 0.5px 0 0 !important;
+    border-style: solid !important;
+    border-width: 0 0 0 0.5px !important;
     opacity:0;
+    &:before,
+    &:after{
+        content:"";
+        display: block;
+        width:0.5rem;
+        height:1px;
+
+        position: absolute;
+        left:-0.25rem;
+
+        border-style: solid ;
+        border-color : var(--oka-color-specs-low) !important;
+        border-width: 0.5px 0 0 0 !important;
+
+        opacity: 0;
+
+    }
+    &:after{
+        bottom:0;
+    }
 }
 
 
-.showGrid .oka-spacer {
+.showGrid .oka-spacer,
+.showGrid .oka-spacer:before,
+.showGrid .oka-spacer:after {
     opacity:1;
 }
 
 .oka-appWrap{
-   
     outline: 0px solid var(--oka-color-specs-low) !important;
 }
-.showGrid .oka-appWrap {
- 
+body.showGrid .oka-app-wrap,
+body.showGrid .oka-appWrap {
     outline: 0px solid var(--oka-color-specs-low) !important;
 }
 
@@ -25,11 +48,12 @@
     display: flex !important;
     opacity:0;
 }
+
 .showGrid .flex-grid-bg-fx, .showGrid .grid-bg-fx {
     opacity:1;
 }
 
-.oka-appWrap,
+
 .oka-spacer {
     transition: all 3s ease-out,
 }
