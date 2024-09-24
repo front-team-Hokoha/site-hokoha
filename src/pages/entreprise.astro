@@ -5,6 +5,7 @@
 import LayoutClassic from '../layouts/LayoutClassic.astro'; 
 
 // Composants
+import Ancres from '../components/entreprise/Ancres.astro';
 import Valeur from '../components/entreprise/Valeur.astro';
 import Membre from '../components/equipe/Membre.astro';
 import Image from '../components/Image.astro';
@@ -29,31 +30,11 @@ const pageClass = "entreprise";
     pageClass={pageClass}>
 
 
-<div class="oka-spacer -xl"></div>
+    
+    <Ancres />
 
-<div style="position:sticky;top : 4rem; height: 4rem;background: linear-gradient(to bottom, var(--oka-color-app-bg-muted) 0% , var(--oka-color-app-bg-muted) 50% , transparent 100%);">
-
-    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">Historique</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">Nos Valeurs</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">L'équipe</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-
-</div>
-    <div class="oka-spacer -xl"></div>
-
-
-    <div class="flex-grid">
+    <div id="historique" class="oka-spacer -xl"></div>
+    <div  class="flex-grid">
 
 
         <div class="col col-8">
@@ -81,7 +62,7 @@ const pageClass = "entreprise";
         
     </div>
 
-    <div class="oka-spacer -xl"></div>
+    <div id="valeurs" class="oka-spacer -xl"></div>
     <div class="flex-grid">
 
 
@@ -131,11 +112,14 @@ const pageClass = "entreprise";
     <!-- "Contenu Secondaire" -->
     <div slot="secondary">
        
-        <div id="equipe" class="equipe oka-surface oka-darkMode">
+        <div  class="equipe oka-surface oka-darkMode">
             
+           
+
             <div class="oka-appWrap">
                
-                <div class="oka-spacer -xl"></div>
+                <Ancres />
+                <div id="equipe" class="oka-spacer -xl"></div>
 
                 <div class="flex-grid">
                     <div class="col col-6">

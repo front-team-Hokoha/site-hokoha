@@ -1,9 +1,23 @@
 
+:root,.oka-lightMode  {
+    --oka-color-app-bg-default : var(--oka-color-neutral-lightest) ;
+}
+
+
 
 html {
     scroll-behavior: smooth;
   }
-//
+
+
+// Ancrage
+:target {
+    scroll-margin-top: 4rem; /* Ajuste cette valeur selon la hauteur de ton header */
+}
+
+
+
+  //
 
 .oka-appbar__left {
     padding-left:0;
