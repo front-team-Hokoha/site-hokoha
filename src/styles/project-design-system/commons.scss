@@ -3,8 +3,16 @@
 html {
     scroll-behavior: smooth;
   }
+//
 
-// Effet 
+.oka-appbar__left {
+    padding-left:0;
+}
+.oka-appbar__right {
+    padding-right:0;
+}
+//
+//  affichage grille technique
 .oka-spacer{
     position: relative;
     border-color : var(--oka-color-specs-low) !important;
