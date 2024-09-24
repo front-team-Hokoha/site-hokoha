@@ -86,7 +86,7 @@ $grid-gap-on-large  : 1.5rem;
 @import "oka-design-system/4-layouts/cols/cols.4.0.0";
 //
 
-@import "oka-design-system/4-layouts/oka-filters/oka-filters.4.0.0";
+//@import "oka-design-system/4-layouts/oka-filters/oka-filters.4.0.0";
 
 // PAGES -----------------------------------
 // ARTBOARDS -> AFFICHAGE DES VALEURS DE VARIABLES
@@ -98,6 +98,8 @@ $grid-gap-on-large  : 1.5rem;
 
 @import "project-design-system/commons.scss";
 @import "project-design-system/oka-hero.scss";
+@import "project-design-system/oka-logo.scss";
+@import "project-design-system/oka-ancres.scss";
 @import "project-design-system/page-accueil.scss";
 @import "project-design-system/page-entreprise.scss";
 

@@ -1,0 +1,25 @@
+.oka-logo {
+    position : relative;
+
+    display : flex;
+    align-items: flex-end;
+    gap : 0.5rem;
+
+    text-decoration: none; // Cas logo lien
+
+    &__picto{
+        height : 2rem;
+        width : auto;
+    }
+
+    &__typo{
+
+        @extend %oka-h;
+        @extend %oka-h-sm;
+        @extend %oka-crop;
+        
+        color : inherit;
+
+       
+    }
+}

@@ -1,0 +1,30 @@
+.oka-ancres{
+    position:sticky;
+    z-index:10;
+    top : 4rem; 
+
+    height: 4rem;
+
+    display:flex;
+    align-items: center;
+
+    
+
+    //background: linear-gradient(to bottom, var(--oka-color-app-bg-muted) 0% , var(--oka-color-app-bg-muted) 90% , transparent 100%);
+
+    //border-bottom : 1px solid var(--oka-color-system-contrast-medium);
+
+
+    &:before {
+        content:'';
+        position:absolute;
+        left:-1rem;
+        right:-1rem;
+        height:100%;
+
+        background-color: var(--oka-color-app-bg-default);
+        opacity: 0.8;
+        backdrop-filter: blur(30px); /* Applique le flou à l'arrière-plan */
+    }
+
+}
