@@ -7,13 +7,11 @@
 
     display:flex;
     align-items: center;
+    gap:0.5rem;
 
+    backdrop-filter: blur(3px); /* Applique le flou à l'arrière-plan */
     
-
-    //background: linear-gradient(to bottom, var(--oka-color-app-bg-muted) 0% , var(--oka-color-app-bg-muted) 90% , transparent 100%);
-
-    //border-bottom : 1px solid var(--oka-color-system-contrast-medium);
-
+    //overflow: auto;
 
     &:before {
         content:'';
@@ -23,8 +21,8 @@
         height:100%;
 
         background-color: var(--oka-color-app-bg-default);
-        opacity: 0.8;
-        backdrop-filter: blur(30px); /* Applique le flou à l'arrière-plan */
+        opacity: 0.9;
+       
     }
 
 }
