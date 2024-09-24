@@ -1,8 +1,20 @@
 
 :root,.oka-lightMode  {
+
+    --oka-color-neutral-darker : #1e2637;
+
     --oka-color-app-bg-default : var(--oka-color-neutral-lightest) ;
 }
 
+.oka-darkMode  {
+
+    --oka-color-neutral-darker : #1e2637;
+
+    // Semantic
+    --oka-color-app-shadows : #000;
+
+    --oka-color-system-bg-soft: var(--oka-color-neutral-darker);
+}
 
 
 html {
@@ -12,7 +24,7 @@ html {
 
 // Ancrage
 :target {
-    scroll-margin-top: 4rem; /* Ajuste cette valeur selon la hauteur de ton header */
+    scroll-margin-top: 8rem; /* Ajuste cette valeur selon la hauteur de ton header */
 }
 
 

@@ -1,0 +1,19 @@
+
+
+.oka-valeur {
+    //@extend .oka-shadow-2;
+
+    
+    margin-bottom:0px;
+    padding:1rem 1rem 1rem 3rem;
+
+    background:#fff; 
+
+    border:0px solid var(--oka-color-system-contrast-medium); 
+    border-radius:0.5rem; 
+
+
+    .oka-darkMode & {
+        background: var(--oka-color-neutral-darker);
+    }
+}

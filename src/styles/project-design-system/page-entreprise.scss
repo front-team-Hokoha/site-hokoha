@@ -22,10 +22,22 @@
             background-repeat: no-repeat;
             background-position: bottom;
             opacity: 0.6;
+
+            
+
         }
     }
 
 
+}
+
+
+.page-entreprise.oka-darkMode {
+    .layout-app__main {
+        &:before{
+            background-image: url(assets/img/Logokoha-xxl-noir.png);
+        }
+    }
 }
 
 .equipe {
