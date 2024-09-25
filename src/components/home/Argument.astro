@@ -1,16 +1,17 @@
 ---
 interface Props {
+  nb: string;
   theme: string;
 	title: string;
 	body: string;
 }
 
-const { theme, title, body } = Astro.props;
+const { nb, theme, title, body } = Astro.props;
 ---
 
 
 
-<div class="flex-grid appear">
+<!-- <div class="flex-grid appear">
     <div class="col"><p class="oka-h -xs -secondary ">{theme}</p></div>
 
     <div class="col col-3 col--md-6 ">
@@ -18,10 +19,32 @@ const { theme, title, body } = Astro.props;
     </div>
 
     <div class="col col-4">
-        <!-- <div class="oka-spacer -sm"></div> -->
+       
         <p class="oka-text -md "  set:html={body}></p>
     </div>
 
     <div class="oka-spacer -sm"></div>
+</div> -->
+
+
+
+<div class="oka-flip appear">
+    <input type="checkbox" id={`flip-${nb}`} class="oka-flip__pilot" />       
+    <div class="oka-flip__inner">
+        <div class="oka-flip__front" style="background:#fff;">
+            <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-regular fa-ellipsis"></i></label>
+           
+            <p class="oka-h -xs -secondary ">{theme}</p>
+            <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
+
+            <div class="oka-spacer -lg"></div>
+        </div>
+
+        <div class="oka-flip__back">
+          <label for={`flip-${nb}`} class="oka-flip__flipper"></label>
+          <p class="oka-text -md "  set:html={body}></p>  
+        </div>
+
+    </div> 
 </div>
 

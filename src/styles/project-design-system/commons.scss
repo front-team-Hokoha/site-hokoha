@@ -21,15 +21,47 @@ html {
     scroll-behavior: smooth;
   }
 
+// Flip
+
+.oka-flip__inner {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "flipInner";
+  }
+  
+.oka-flip__front,
+.oka-flip__back { 
+    grid-area: flipInner; 
+
+    position:relative;
+}
+
+.oka-flip__front,
+.oka-flip__back { 
+    padding : 3rem 1rem 1rem 3rem;
+}
+
+  
+.oka-flip__flipper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem;
+    color:var(--oka-color-action-fg-primary-default);
+}
+
+
 
 // Ancrage
 :target {
     scroll-margin-top: 8rem; /* Ajuste cette valeur selon la hauteur de ton header */
 }
 
-
-
-  //
+//
 
 .oka-appbar__left {
     padding-left:0;
