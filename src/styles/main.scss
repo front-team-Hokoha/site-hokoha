@@ -10,35 +10,35 @@
 @import "oka-design-system/1-utilities/oka-utilities";
 
 // COMPONENTS (ORGANISMES)-----------------------------------
-@import "oka-design-system/3-components/accept-terms/accept-terms.4.0.0";
+//@import "oka-design-system/3-components/accept-terms/accept-terms.4.0.0";
 // -> présent dans base  @import "oka-design-system/3-components/appbar/appbar.4.0.1";
-@import "oka-design-system/3-components/avatars/avatars.4.0.0";
-@import "oka-design-system/3-components/badges/badges.4.0.0";
+//@import "oka-design-system/3-components/avatars/avatars.4.0.0";
+//@import "oka-design-system/3-components/badges/badges.4.0.0";
 @import "oka-design-system/3-components/burgers/burgers.4.0.0.scss";
-@import "oka-design-system/3-components/buttonsGroup/buttonsGroup.0.0.1.scss";
+//@import "oka-design-system/3-components/buttonsGroup/buttonsGroup.0.0.1.scss";
 @import "oka-design-system/3-components/cards/cards.4.0.3";
 // -> présent dans base  @import "oka-design-system/3-components/credits/credits.4.0.1";
-@import "oka-design-system/3-components/dropdowns/dropdowns.4.0.0";
-@import "oka-design-system/3-components/inset/inset.4.0.0";
-@import "oka-design-system/3-components/fields-password/fields-password.0.0.1";
-@import "oka-design-system/3-components/fields-search/fields-search.4.0.0";
-@import "oka-design-system/3-components/filters/filters.3.1.0.scss";
+//@import "oka-design-system/3-components/dropdowns/dropdowns.4.0.0";
+//@import "oka-design-system/3-components/inset/inset.4.0.0";
+//@import "oka-design-system/3-components/fields-password/fields-password.0.0.1";
+//@import "oka-design-system/3-components/fields-search/fields-search.4.0.0";
+//@import "oka-design-system/3-components/filters/filters.3.1.0.scss";
 @import "oka-design-system/3-components/flips/flips.1.0.3";
-@import "oka-design-system/3-components/heads/heads.1.0.0";
-@import "oka-design-system/3-components/input-checklist/input-checklist.0.0.2";
+//@import "oka-design-system/3-components/heads/heads.1.0.0";
+//@import "oka-design-system/3-components/input-checklist/input-checklist.0.0.2";
 // -> présent dans base  @import "oka-design-system/3-components/messages/messages.4.0.0";
 @import "oka-design-system/3-components/modals/modals.4.0.2";
-@import "oka-design-system/3-components/navitems/navitems.4.0.2";
-@import "oka-design-system/3-components/navgroups/navgroups.4.0.0";
-@import "oka-design-system/3-components/pagination/pagination.0.0.1";
-@import "oka-design-system/3-components/popovers/popovers.3.0.0";
+//@import "oka-design-system/3-components/navitems/navitems.4.0.2";
+//@import "oka-design-system/3-components/navgroups/navgroups.4.0.0";
+//@import "oka-design-system/3-components/pagination/pagination.0.0.1";
+//@import "oka-design-system/3-components/popovers/popovers.3.0.0";
 @import "oka-design-system/3-components/ratios/ratios.4.0.0";
 // -> présent dans base  @import "oka-design-system/3-components/spacers/spacers.1.0.0.scss";
-@import "oka-design-system/3-components/tables/tables.4.0.4";
-@import "oka-design-system/3-components/tabsToAccordions/tabsToAccordions.4.0.2";
-@import "oka-design-system/3-components/tags/tags.4.0.0";
-@import "oka-design-system/3-components/tooltips/tooltips.4.0.0";
-@import "oka-design-system/3-components/tree/tree.0.0.1";
+//@import "oka-design-system/3-components/tables/tables.4.0.4";
+//@import "oka-design-system/3-components/tabsToAccordions/tabsToAccordions.4.0.2";
+//@import "oka-design-system/3-components/tags/tags.4.0.0";
+//@import "oka-design-system/3-components/tooltips/tooltips.4.0.0";
+//@import "oka-design-system/3-components/tree/tree.0.0.1";
 //
 // LAYOUT (TEMPLATES) -----------------------------------
 //@import "oka-design-system/4-layouts/2-cols-1/2-cols-1.1.0.1";
@@ -97,10 +97,12 @@ $grid-gap-on-large  : 1.5rem;
 
 
 @import "project-design-system/commons.scss";
+@import "project-design-system/oka-ancres.scss";
 @import "project-design-system/oka-hero.scss";
 @import "project-design-system/oka-logo.scss";
-@import "project-design-system/oka-ancres.scss";
+@import "project-design-system/oka-mosaic.scss";
 @import "project-design-system/oka-valeur.scss";
+
 @import "project-design-system/page-accueil.scss";
 @import "project-design-system/page-entreprise.scss";
 
