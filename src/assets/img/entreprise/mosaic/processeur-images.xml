@@ -1,0 +1,31 @@
+﻿<Processeurdimages>
+	<version>1</version>
+	<useopen>false</useopen>
+	<includesub>false</includesub>
+	<source>C:\xampp\htdocs\WWW\hokoha-astro\dark-disk\src\assets\img\entreprise\mosaic</source>
+	<open>true</open>
+	<saveinsame>false</saveinsame>
+	<dest>C:\xampp\htdocs\WWW\hokoha-astro\dark-disk\src\assets\img\entreprise\mosaic</dest>
+	<jpeg>true</jpeg>
+	<psd>false</psd>
+	<tiff>false</tiff>
+	<lzw>false</lzw>
+	<converticc>false</converticc>
+	<q>8</q>
+	<max>true</max>
+	<jpegresize>true</jpegresize>
+	<jpegw>600</jpegw>
+	<jpegh>600</jpegh>
+	<psdresize>false</psdresize>
+	<psdw>1</psdw>
+	<psdh>1</psdh>
+	<tiffresize>false</tiffresize>
+	<tiffw>1</tiffw>
+	<tiffh>1</tiffh>
+	<runaction>false</runaction>
+	<actionset>Actions par défaut</actionset>
+	<action>Vignette (sélection)</action>
+	<info>HOKOHA</info>
+	<icc>true</icc>
+	<keepstructure>false</keepstructure>
+</Processeurdimages>

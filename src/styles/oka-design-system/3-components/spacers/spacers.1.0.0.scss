@@ -10,21 +10,21 @@
     --space-md : 1rem;
     --space-lg : 1.5rem;
     --space-xl : 2.5rem;
-    --space-xxl : 3.5rem;
+    --space-xxl : 5rem;
 
     @include breakpoint(sm) {
         --space-sm : 0.5rem;
         --space-md : 1rem;
         --space-lg : 1.5rem;
         --space-xl : 3rem;
-        --space-xxl : 4.5rem;
+        --space-xxl : 6rem;
     }
     @include breakpoint(md) {
         --space-sm : 0.5rem;
         --space-md : 1rem;
         --space-lg : 2rem;
         --space-xl : 4rem;
-        --space-xxl : 6rem;
+        --space-xxl : 7rem;
     }
     @include breakpoint(lg) {
         --space-sm : 1rem;
@@ -32,6 +32,13 @@
         --space-lg : 3rem;
         --space-xl : 6rem;
         --space-xxl : 9rem;
+    }
+    @include breakpoint(xl) {
+        --space-sm : 1rem;
+        --space-md : 2rem;
+        --space-lg : 3rem;
+        --space-xl : 6rem;
+        --space-xxl : 10rem;
     }
 }
 

@@ -10,12 +10,14 @@ import Valeur from '../components/entreprise/Valeur.astro';
 import Membre from '../components/equipe/Membre.astro';
 import Image from '../components/Image.astro';
 import NextPage from '../components/Nextpage.astro';
+import Mosaic from '../components/entreprise/Mosaic.astro';
 
 import logoImage from '../assets/img/Logokoha-couv-simple.png';
 
 // Liste des Stagiaires et anciens membres
 const articles = await Astro.glob('../content/team/anciens.md');
 const article = articles[0];
+
 
 
 
@@ -272,6 +274,10 @@ const pageClass = "entreprise";
 
 <!-- "Next" -->
 <div slot="next">
+
+
+    <Mosaic  />
+
     <NextPage
       titre="En savoir plus sur HOKOHA"
       contenu="Indice de satisfaction calculé sur le CA des clients ayant manifesté une suite à leur projet.%"

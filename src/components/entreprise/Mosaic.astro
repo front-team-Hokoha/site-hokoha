@@ -1,0 +1,27 @@
+---
+
+const images = import.meta.glob('/src/assets/img/entreprise/mosaic/JPEG/*.{png,jpg,jpeg,gif}');
+
+// Convertir l'objet en tableau et mélanger
+const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
+
+---
+
+<section class="mosaic">
+
+    {shuffledImages.map((imagePath) => {
+
+        // Extraire le nom de l'image à partir du chemin
+        const imageName = imagePath.split('/').pop().split('.')[0]; // Récupère le nom sans extension
+
+        // Générer une classe aléatoirement
+        const hasMixBlend = Math.random() < 0.8; // 70 % de probabilité d'ajouter la classe 'nette'
+
+        return (
+        <div class={`item ${hasMixBlend ? '-mixBlend' : ''}`} >   
+            <img src={imagePath} alt={`Hokoha Développement : ${imageName}`} />
+        </div> 
+        );
+    
+    })}
+</section>
