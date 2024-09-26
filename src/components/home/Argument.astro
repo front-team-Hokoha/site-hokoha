@@ -41,8 +41,16 @@ const { nb, theme, title, body } = Astro.props;
         </div>
 
         <div class="oka-argument__detail oka-flip__back">
-          <label for={`flip-${nb}`} class="oka-flip__flipper"></label>
-          <p class="oka-text -md "  set:html={body}></p>  
+          <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-light fa-xmark"></i></label>
+          <p class="oka-text -md "  set:html={body}></p> 
+          
+          <!-- Label déclencheur  -->
+          <label class="oka-bt -outlined" for="display-modal-default">
+            <div class="oka-bt__ico"><i class="fa-light fa-weight-hanging"></i></div>
+            <div class="oka-bt__lbl">Mesurez l'impact</div>
+            <div class="oka-spinner"></div>
+          </label>
+         
         </div>
 
     </div> 

@@ -77,12 +77,13 @@ html {
 }
 //
 //  affichage grille technique
-.oka-spacer{
+.oka-spacer:not(.-inline){
     position: relative;
     border-color : var(--oka-color-specs-low) !important;
     border-style: solid !important;
     border-width: 0 0 0 0.5px !important;
     opacity:0;
+    
     &:before,
     &:after{
         content:"";
@@ -102,8 +103,43 @@ html {
     }
     &:after{
         bottom:0;
+        border-width: 0 0 0.5px 0 !important;
     }
 }
+
+
+.oka-spacer.-inline {
+    position: relative;
+    border-color : var(--oka-color-specs-low) !important;
+    border-style: solid !important;
+    border-width: 0.5px 0 0 0  !important;
+    opacity:0;
+
+   
+    &:before,
+    &:after{
+        content:"";
+        display: block;
+        width:1px;
+        height:0.5rem;
+
+        position: absolute;
+        top:-0.25rem;
+
+        border-style: solid ;
+        border-color : var(--oka-color-specs-low) !important;
+        border-width: 0 0 0 0.5px !important;
+
+        opacity: 0;
+
+    }
+    &:after{
+        right:0;
+        border-width: 0 0.5px  0 0 !important;
+    }
+}
+
+
 
 
 .showGrid .oka-spacer,
