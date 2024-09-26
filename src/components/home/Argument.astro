@@ -28,10 +28,10 @@ const { nb, theme, title, body } = Astro.props;
 
 
 
-<div class="oka-flip appear">
+<div class="oka-argument appear oka-flip">
     <input type="checkbox" id={`flip-${nb}`} class="oka-flip__pilot" />       
     <div class="oka-flip__inner">
-        <div class="oka-flip__front" style="background:#fff;">
+        <div class="oka-argument__intro oka-flip__front" >
             <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-regular fa-ellipsis"></i></label>
            
             <p class="oka-h -xs -secondary ">{theme}</p>
@@ -40,7 +40,7 @@ const { nb, theme, title, body } = Astro.props;
             <div class="oka-spacer -lg"></div>
         </div>
 
-        <div class="oka-flip__back">
+        <div class="oka-argument__detail oka-flip__back">
           <label for={`flip-${nb}`} class="oka-flip__flipper"></label>
           <p class="oka-text -md "  set:html={body}></p>  
         </div>

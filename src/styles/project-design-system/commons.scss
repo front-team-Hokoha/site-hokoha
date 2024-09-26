@@ -4,6 +4,10 @@
     --oka-color-neutral-darker : #1e2637;
 
     --oka-color-app-bg-default : var(--oka-color-neutral-lightest) ;
+
+    --oka-color-surface-level1-bg : var(--oka-color-white);
+
+
 }
 
 .oka-darkMode  {
@@ -14,9 +18,11 @@
     --oka-color-app-shadows : #000;
 
     --oka-color-system-bg-soft: var(--oka-color-neutral-darker);
+
+    --oka-color-surface-level1-bg : var(--oka-color-neutral-darker);
 }
 
-
+//
 html {
     scroll-behavior: smooth;
   }
@@ -42,7 +48,7 @@ html {
 
 .oka-flip__front,
 .oka-flip__back { 
-    padding : 3rem 1rem 1rem 3rem;
+    align-items: flex-start;
 }
 
   
@@ -214,3 +220,15 @@ html:has(.zoomText) {
     font-size:19px;
 }
 
+
+
+// Vignette logo Clients
+.logoClient {
+   // mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
+   mix-blend-mode: luminosity;
+
+    img {
+        width:100%;
+        height:auto;
+    }
+}

@@ -2,7 +2,7 @@
 
 
 .page-accueil {
---oka-color-app-bg-muted : #EEF1F6;
+//--oka-color-app-bg-muted : #EEF1F6;
 
 
     // .layout-app__main {
@@ -26,4 +26,18 @@
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
     }
 
+.oka-argument {
 
+    &__intro {
+        // border : 1px solid red;
+        padding : 3rem 1rem 1rem 3rem;
+
+        background-color: var(--oka-color-surface-level1-bg);
+    }
+
+    &__detail{
+        padding : 3rem 1rem 1rem 3rem;
+
+        background-color: var(--oka-color-surface-level1-bg);
+    }
+}   

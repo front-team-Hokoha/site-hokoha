@@ -73,29 +73,38 @@ const { currentPage } = Astro.props; // Récupérer le nom de la page courante
                             <div class="oka-spinner"></div>
                         </a>
 
-                        <div class="oka-spacer -sm -inline"></div>
-                        <hr class="oka-divider -vrt">
-                        <div class="oka-spacer -sm -inline"></div>
+                        <div class="oka-show--md">
+                            <div class="oka-spacer -sm -inline"></div>
+                            <hr class="oka-divider -vrt ">
+                            <div class="oka-spacer -sm -inline"></div>
+                        </div>
+                        <div class="oka-hide--md">
+                            <div class="oka-spacer -sm"></div>
+                            <hr class="oka-divider  ">
+                            <div class="oka-spacer -sm"></div>
+                        </div>
                         
-                        <!-- Toogle DARK/LIGHT MODE  -->
-                        <button onclick="document.body.classList.toggle('oka-darkMode'); document.body.classList.toggle('oka-lightMode'); setCookieMode();" class="oka-bt -ghost" >
-                            <div class="oka-bt__ico">
-                                <span class="u-showOnDark"><i class="fa-regular fa-sun-bright"></i></span>
-                                <span class="u-showOnLight"><i class="fa-solid fa-moon"></i></span>
-                            </div>
-                            <div class="oka-spinner"></div>
-                        </button>  
+                        
+                        <div class="oka-flex -center -gap-sm">
+                            <!-- Toogle DARK/LIGHT MODE  -->
+                            <button onclick="document.body.classList.toggle('oka-darkMode'); document.body.classList.toggle('oka-lightMode'); setCookieMode();" class="oka-bt -ghost" >
+                                <div class="oka-bt__ico">
+                                    <span class="u-showOnDark"><i class="fa-regular fa-sun-bright"></i></span>
+                                    <span class="u-showOnLight"><i class="fa-solid fa-moon"></i></span>
+                                </div>
+                                <div class="oka-spinner"></div>
+                            </button>  
 
-                        <button onclick="document.body.classList.toggle('showGrid');  setCookieShowGrid()" class="oka-bt -ghost"  >
-                            <div class="oka-bt__ico"><i class="fa-solid fa-grid-round-5"></i></div>
-                            <div class="oka-spinner"></div>
-                        </button> 
+                            <button onclick="document.body.classList.toggle('showGrid');  setCookieShowGrid()" class="oka-bt -ghost"  >
+                                <div class="oka-bt__ico"><i class="fa-solid fa-grid-round-5"></i></div>
+                                <div class="oka-spinner"></div>
+                            </button> 
 
-                        <button onclick="document.body.classList.toggle('zoomText');  setCookieZoomText()" class="oka-bt -ghost"  >
-                            <div class="oka-bt__ico"><i class="fa-regular fa-text-size"></i></div>
-                            <div class="oka-spinner"></div>
-                        </button> 
-
+                            <button onclick="document.body.classList.toggle('zoomText');  setCookieZoomText()" class="oka-bt -ghost"  >
+                                <div class="oka-bt__ico"><i class="fa-regular fa-text-size"></i></div>
+                                <div class="oka-spinner"></div>
+                            </button> 
+                        </div>
 
 
                     </nav>

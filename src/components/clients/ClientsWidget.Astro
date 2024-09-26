@@ -1,0 +1,52 @@
+---
+//import Image from '../../components/Image.astro';
+
+
+// Charger les clients
+const clients = await Astro.glob('../../content/clients/*.md');
+
+// Sélectionner les 10 derniers clients
+const listeClients = clients.slice(0, 5);
+
+
+---
+
+<div class="clients-widget">
+    <h4>Ils nous font confiances</h4>
+    
+    <div class="oka-flex -gap-sm">
+        <label class="oka-switch -sm">
+            <input class="noVerifForm" type="checkbox" id="switch-etat-licence" checked="checked"  onchange="licence.disabledLicence(this)">
+            <span class="oka-switch__switcher"></span>
+            <span class="oka-switch__label">Industrie</span>
+        </label>
+        <label class="oka-switch -sm">
+            <input class="noVerifForm" type="checkbox" id="switch-etat-licence" checked="checked"  onchange="licence.disabledLicence(this)">
+            <span class="oka-switch__switcher"></span>
+            <span class="oka-switch__label">Commerce</span>
+        </label>
+        <label class="oka-switch -sm">
+            <input class="noVerifForm" type="checkbox" id="switch-etat-licence" checked="checked"  onchange="licence.disabledLicence(this)">
+            <span class="oka-switch__switcher"></span>
+            <span class="oka-switch__label">Association</span>
+        </label>
+        <label class="oka-switch -sm">
+            <input class="noVerifForm" type="checkbox" id="switch-etat-licence" checked="checked"  onchange="licence.disabledLicence(this)">
+            <span class="oka-switch__switcher"></span>
+            <span class="oka-switch__label">Particulier</span>
+        </label>
+    </div>
+    <div class="oka-spacer -sm"></div>
+    
+    
+
+    <div class="grid-240">
+        {listeClients.map((client) => (
+        <div class={`logoClient -${client.frontmatter.categorie}`}>
+            {client.frontmatter.logo && (<img src={client.frontmatter.logo} alt={`logo de ${client.frontmatter.client}`} blazyload="true" />)}
+        </div>
+        ))}
+    </div>
+</div>
+
+<div class="oka-spacer -xl"></div>
