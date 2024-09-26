@@ -1,6 +1,4 @@
 ---
-//import Image from '../../components/Image.astro';
-
 
 // Charger les clients
 const clients = await Astro.glob('../../content/clients/*.md');
@@ -8,8 +6,8 @@ const clients = await Astro.glob('../../content/clients/*.md');
 // Sélectionner les 10 derniers clients
 const listeClients = clients.slice(0, 5);
 
-
 ---
+
 
 <div class="clients-widget">
     <h4>Ils nous font confiances</h4>
