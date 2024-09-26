@@ -310,7 +310,7 @@ html:has(.zoomText) {
   .item {
     break-inside: avoid;
     aspect-ratio: 4 / 3;
-    background: var(--oka-color-primary-bg-medium);
+    background: var(--oka-color-system-bg-medium);
     //padding: 1rem;
     border-radius: 0.75rem;
 
@@ -324,11 +324,11 @@ html:has(.zoomText) {
   
   .item:nth-child(3n) {
     aspect-ratio: 1;
-    background: var(--oka-color-primary-bg-soft);
+    background: var(--oka-color-system-bg-medium);
   }
   
   .item:nth-child(3n - 1) {
     aspect-ratio: 2 / 3;
-    background: var(--oka-color-primary-bg-heavy);
+    background: var(--oka-color-system-bg-heavy);
   }
 }
