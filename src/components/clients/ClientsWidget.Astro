@@ -43,7 +43,7 @@ const listeClients = clients.slice(0, 5);
     <div class="grid-240">
         {listeClients.map((client) => (
         <div class={`logoClient -${client.frontmatter.categorie}`}>
-            {client.frontmatter.logo && (<img src={client.frontmatter.logo} alt={`logo de ${client.frontmatter.client}`} blazyload="true" />)}
+            {client.frontmatter.logo && (<img src={client.frontmatter.logo} alt={`logo de ${client.frontmatter.client}`}  />)}
         </div>
         ))}
     </div>
