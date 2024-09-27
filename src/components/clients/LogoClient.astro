@@ -22,5 +22,6 @@ if (!logos[logoPath]) throw new Error(`"${logoPath}" does not exist in glob: "sr
 
 <Image 
     src={logos[logoPath]()} 
-    widths={[345, 200, 246, 345]}
+    widths={[345, 200, 246 , logos[logoPath]().width ]}
+    sizes={`(max-width: 360px) 345px, (max-width: 720px) 200px, (max-width: 1600px) 246px, ${logos[logoPath]().width}px`}
     alt={altText} />
