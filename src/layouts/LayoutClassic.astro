@@ -2,6 +2,9 @@
 ---
 // Layout global 
 
+import { ViewTransitions } from 'astro:transitions';
+
+// Composant Communs
 import Header from '../components/Header.astro';
 import Credits from '../components/Credits.astro';
 
@@ -38,9 +41,10 @@ const { pageClass } = Astro.props;
         <base href="/site-hokoha/">
 
         <!-- {# FONTAWESOME #} -->
-        <script src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
+        <script is:inline data-astro-rerun src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
 
 
+        <ViewTransitions />
     </head>
     <body class={`oka-lightMode page-${pageClass}`} >
         <div id="root" class="layout-app">
@@ -118,8 +122,12 @@ const { pageClass } = Astro.props;
 
       </div>
 
-      <script >
-            document.addEventListener("DOMContentLoaded", () => {
+      <script  is:inline data-astro-rerun >
+
+        // Script de  déclencgement d'affichage des elements par apparition
+        document.addEventListener('astro:page-load', () => {
+            
+            //document.addEventListener("DOMContentLoaded", () => {
             const elements = document.querySelectorAll('.appear');
 
             const observer = new IntersectionObserver((entries, observer) => {
@@ -137,13 +145,13 @@ const { pageClass } = Astro.props;
             elements.forEach(element => {
                 observer.observe(element);
             });
-            });
+            //});
 
-
+        })
 
       </script>
 
-        <script is:inline>
+        <script  is:inline data-astro-rerun >
             /**
             * Get the value of a cookie
             * Source: https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
@@ -224,7 +232,7 @@ const { pageClass } = Astro.props;
         </script>
 
 
-<script>
+<script  is:inline data-astro-rerun >
     // util_scroll-v1.js
     // UTILITAIRE : autour du scroll
     // version : 2
@@ -233,7 +241,9 @@ const { pageClass } = Astro.props;
 
     // Améliore les performance de scroll : evite des evennement de souris lors du scroll
     // livre : Css3 Pratique du design web (Eyrolles) pag : 180
-    (function() {
+    
+    document.addEventListener('astro:page-load', () => {
+    //(function() {
         var body = document.body
         var defaultPE = body.style.pointerEvents
         var timer
@@ -249,7 +259,8 @@ const { pageClass } = Astro.props;
             }, 500)
 
         }, false)
-    }())
+    //}())
+    });
 
     </script>
 
@@ -263,6 +274,9 @@ const { pageClass } = Astro.props;
     // Fonction Spécifique pour Safari
     // https://markus.oberlehner.net/blog/simple-solution-to-prevent-body-scrolling-on-ios/
     // src/utils/scroll-lock.js
+    
+    document.addEventListener('astro:page-load', () => {
+    
     const $body = document.querySelector('body');
     let scrollPosition = 0;
  
@@ -329,11 +343,14 @@ const { pageClass } = Astro.props;
         }, false);
     });
 
+})
 
     </script>
-    <script>
+    
+    
+    <script  is:inline data-astro-rerun>
     // Scripts d'interactions des Modals
-
+    document.addEventListener('astro:page-load', () => {
     // Ouverture/Fermeture suivant l'historique du navigateur
     function modalsHistory() {
         // si un noeud d'ouverture/fermeture de modal correspond au hash on l'active
@@ -351,9 +368,10 @@ const { pageClass } = Astro.props;
 
     window.onhashchange = modalsHistory;
 
+})
     </script>
 
-    <script>
+    <script  is:inline data-astro-rerun>
       // Interactions de clavier
       function KeyPress(e) {
           var evtobj = window.event? event : e;

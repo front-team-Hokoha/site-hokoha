@@ -2,7 +2,7 @@
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
-// const images = import.meta.glob('/src/assets/img/entreprise/mosaic/JPEG/*.{png,jpg,jpeg,gif}');
+
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/entreprise/mosaic/JPEG/*.{png,jpg,jpeg,gif}')
 // Convertir l'objet en tableau et mélanger
 const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
@@ -17,11 +17,11 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
         const imageName = imagePath.split('/').pop().split('.')[0]; // Récupère le nom sans extension
 
         // Générer une classe aléatoirement
-        const hasMixBlend = Math.random() < 0.8; // 70 % de probabilité d'ajouter la classe 'nette'
+        const hasMixBlend = Math.random() < 0.8; // 80 % de probabilité d'ajouter la classe 'nette'
 
         return (
         <div class={`item ${hasMixBlend ? '-mixBlend' : ''}`} >   
-            
+        
             <Image src={images[imagePath]()} alt={`Hokoha Développement : ${imageName}`} />
             
         </div> 
