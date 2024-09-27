@@ -20,4 +20,7 @@ if (!logos[logoPath]) throw new Error(`"${logoPath}" does not exist in glob: "sr
 ---
 
 
-<Image src={logos[logoPath]()} alt={altText} />
+<Image 
+    src={logos[logoPath]()} 
+    widths={[345, 200, 246]}
+    alt={altText} />
