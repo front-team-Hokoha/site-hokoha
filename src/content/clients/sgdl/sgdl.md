@@ -2,7 +2,7 @@
 client: "SGDL"
 categorie: "association"
 description: "Un résumé de ce client."
-logo: "images/clients/sgdl/logo.png"  # Chemin du logo
+logoPath: "/src/content/clients/sgdl/logo.png"  # Chemin du logo
 ---
 
 # Contenu de l'article 2

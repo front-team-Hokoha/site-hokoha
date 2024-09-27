@@ -189,13 +189,3 @@ html:has(.zoomText) {
 
 
 
-// Vignette logo Clients
-.logoClient {
-   // mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
-   mix-blend-mode: luminosity;
-
-    img {
-        width:100%;
-        height:auto;
-    }
-}

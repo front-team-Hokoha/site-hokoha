@@ -1,0 +1,12 @@
+// Vignette logo Clients
+.oka-logoClient {
+    // mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
+    
+ 
+    img {
+    width:100%;
+    height:auto;
+    
+    mix-blend-mode: luminosity;
+    }
+}

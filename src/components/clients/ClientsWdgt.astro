@@ -1,16 +1,18 @@
 ---
+//COmposant
+import LogoClient from '../clients/LogoClient.astro';
 
 // Charger les clients
-const clients = await Astro.glob('../../content/clients/*.md');
+const clients = await Astro.glob('../../content/clients/**/*.md');
 
-// Sélectionner les 10 derniers clients
+// Sélectionner 5 clients
 const listeClients = clients.slice(0, 5);
 
 ---
 
 
 <div class="clients-widget">
-    <h4>Ils nous font confiances</h4>
+    <h3>Ils nous font confiances</h3>
     
     <div class="oka-flex -gap-sm">
         <label class="oka-switch -sm">
@@ -40,8 +42,14 @@ const listeClients = clients.slice(0, 5);
 
     <div class="flex-grid">
         {listeClients.map((client) => (
-        <div class={`col col-3 logoClient -${client.frontmatter.categorie}`}>
-            {client.frontmatter.logo && (<img src={client.frontmatter.logo} alt={`logo de ${client.frontmatter.client}`}  />)}
+        <div class={`col col-2 col--md-3 oka-logoClient -${client.frontmatter.categorie}`}>
+            {client.frontmatter.logoPath && (
+            <LogoClient
+                logoPath={client.frontmatter.logoPath}
+                altText={`Logo de ${client.frontmatter.client}`}
+            />
+            )}
+
         </div>
         ))}
     </div>

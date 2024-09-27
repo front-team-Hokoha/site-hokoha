@@ -18,9 +18,6 @@ import logoImage from '../assets/img/Logokoha-couv-simple.png';
 const articles = await Astro.glob('../content/team/anciens.md');
 const article = articles[0];
 
-
-
-
 // Variables Globales passées au Layout
 const pageName = "Entreprise";
 const pageClass = "entreprise";
@@ -31,20 +28,15 @@ const pageClass = "entreprise";
     description="Explorez Hokoha, société lavalloise spécialisée dans le développement de solutions logicielles sur-mesure pour répondre aux besoins spécifiques des entreprises. Innovation et expertise au service de votre croissance."
     pageName={pageName} 
     pageClass={pageClass}>
-
-
     
     <Ancres />
 
     <div id="historique" class="oka-spacer -md"></div>
     <div  class="flex-grid">
 
-
         <div class="col col-8">
 
             <h1>Hokoha, ...en bref.</h1>
-
-        
 
             <p class="oka-text">Depuis plusieurs années, les fondateurs d'HOKOHA partageaient l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.
             </p>
@@ -55,16 +47,12 @@ const pageClass = "entreprise";
             <p class="oka-text">Forts de parcours diversifiés — en informatique, électronique, graphisme ou commerce — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes, nous avons uni nos compétences avec un objectif commun : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.
             </p>
 
-
             <p class="oka-text -lg">Nous collaborons avec des entreprises issues de tous types de secteurs d'activité, qu'il s'agisse de l'industrie, des services, de la santé ou encore du commerce. Grâce à notre expertise diversifiée, nous sommes en mesure de comprendre et d'adapter nos solutions aux spécificités et aux exigences propres à chaque domaine.
             </p>
         </div>
       
-    
         <div class="col col-1"></div>
     
-        
-        
     </div>
 
     <div id="valeurs" class="oka-spacer -xl"></div>
@@ -75,10 +63,7 @@ const pageClass = "entreprise";
             <!-- <div class="oka-h">Les valeurs qui nous caractérisent.</div> -->
             <hr class="filet">
             <h2 class="oka-h -secondary -md">Nos valeurs allient respect de l'humain, innovation, agilité, expertise en développement et en design.</h2>
-
-           
         </div>
-
 
         <Valeur
             title="Humain"
@@ -111,8 +96,6 @@ const pageClass = "entreprise";
         />
     </div>
     <div class="oka-spacer -xl"></div>
-
-
 
     <!-- "Contenu Secondaire" -->
     <div slot="secondary">
@@ -225,9 +208,8 @@ const pageClass = "entreprise";
                         </div>  
                     </div>
                 </div>
-                <div class="oka-spacer -xl"></div>
 
-               
+                <div class="oka-spacer -xl"></div>
 
                 <div class="flex-grid">
                     
@@ -255,26 +237,15 @@ const pageClass = "entreprise";
                     </div>
                 </div>
 
-
-
-                
-
                 <div class="oka-spacer -xl"></div>
 
-
             </div>
-
         </div>
-
-
-
     </div>
-
 
 
 <!-- "Next" -->
 <div slot="next">
-
 
     <Mosaic  />
 
@@ -286,6 +257,5 @@ const pageClass = "entreprise";
       image=""
     />
   </div>
-
 
 </LayoutClassic>
