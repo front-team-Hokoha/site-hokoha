@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 
 interface Props {
     logoPath: string;
-   altText: string;
+    altText: string;
 }
 
 // Expose les props
@@ -14,7 +14,6 @@ const { logoPath, altText } = Astro.props;
 // Liste tous les logos clients
 const logos = import.meta.glob<{ default: ImageMetadata }>('/src/content/clients/**/*.{jpeg,jpg,png,gif}')
 
-console.log(logos)
 // 
 if (!logos[logoPath]) throw new Error(`"${logoPath}" does not exist in glob: "src/content/clients*.{jpeg,jpg,png,gif}"`);
 ---

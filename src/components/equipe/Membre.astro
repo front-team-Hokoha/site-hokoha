@@ -1,4 +1,5 @@
 ---
+
 interface Props {
     nom: string
     role: string;
@@ -8,14 +9,35 @@ interface Props {
 }
 
 const { nom, role, mission, portrait, orientation } = Astro.props;
----
 
+
+
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/team/**/*.{png,jpg,jpeg,gif}')
+const imageImport = Object.entries(images).find(([path]) => path.includes(portrait));
+const imageMetadata = imageImport ? await imageImport[1]() : null;
+
+
+
+
+---
 
 <div class="col col-3 col--sm-4 col--md-5 appear">
     <div class={`cartoucheMembre flex-grid ${orientation}`}>
 
         <div class="col col-1 col--md-2">
-            <div class="membre__portrait oka-ratio -square" style={`background-image: url(${portrait});background-size:contain`}>
+           
+            <div class="membre__portrait">
+            {imageMetadata && (
+                <Image  
+                src={imageMetadata.default}
+                widths={[127, 107, 156 , imageMetadata.default.width ]}
+                sizes={`(max-width: 480px) 127px, (max-width: 768px) 107px, (max-width: 1600px) 156px, ${imageMetadata.default.width}px`}
+                quality='max'
+                alt={`${nom}, Membre d'Hokoha Développement : ${mission}`} />
+              )}
             </div>
         </div>
 
@@ -23,8 +45,67 @@ const { nom, role, mission, portrait, orientation } = Astro.props;
             {mission && <h3 class="oka-h -sm -secondary -crop">{mission}</h3>}
             {role && <p class="oka-h -sm -crop ">{role}</p>}
             {nom && <p class="oka-h -sm  -crop">{nom}</p>}
-
-
         </div>
     </div>
 </div>
+
+
+<style lang="scss">
+
+    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+    
+       
+    .cartoucheMembre {
+        &.-rvrs {
+            flex-direction: row-reverse;
+        }
+    }
+    
+    .membre {
+        
+        &__portrait {
+    
+            overflow:hidden;
+    
+            border-radius:0.5rem;
+            background: var(--oka-color-system-bg-heavy);
+    
+            img {
+                display:block;
+                width:100%;
+                height: 5rem;
+    
+                object-fit: cover;
+    
+                mix-blend-mode: luminosity;
+    
+                @include breakpoint(xs) {
+                    height: 6.5rem;
+                }
+                @include breakpoint(sm) {
+                    height: 5.5rem;
+                }
+                @include breakpoint(md) {
+                    height: 6.5rem;
+                }
+                @include breakpoint(lg) {
+                    height: 8rem;
+                }
+                @include breakpoint(xl) {
+                    height: 9.5rem;
+                }
+            }
+        }
+    
+        &__attributs {
+            display:flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap:0.5rem;
+    
+            .-rvrs & {
+                align-items: flex-end; 
+            }
+        }
+    }
+    </style>
