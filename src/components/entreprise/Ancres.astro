@@ -1,8 +1,28 @@
+<style lang="scss">
+
+@function transparentize-css-var($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+
+    .oka-bt {
+        background : rgba(255,255,255,0.4);
+        background-color: var(--oka-color-action-bg-primary-hover-alpha, green);
+        //background-color: transparentize-css-var(var(--oka-color-action-bg-primary-hover-alpha), 0.95);
+    }
+
+    .oka-darkMode .oka-bt {
+        background : rgba(0,0,0,0.4) !important;
+    }
+
+</style>
+
+
 <div class="oka-spacer -lg"></div>
 
 <div class="oka-ancres">
 
-    <span class="oka-divider -vrt"></span>
+   
     
     <a href="entreprise/#historique" class="oka-bt -ghost -sm">
         <div class="oka-bt__lbl">/ Historique</div>

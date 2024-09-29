@@ -46,38 +46,35 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
     <div class="col col-4">
       <div class="oka-spacer -md"></div>
       <p class="oka-text -sm" >{theme}</p>
-      <div class="oka-h -lg noto-serif  -crop" set:html={titre} ></div>
+      <h3 class="oka-h -lg noto-serif  -crop">{titre}</h3>
       <div class="oka-spacer -xs"></div>
-      <p class="oka-text -lg"  set:html={description} ></p>
-      
+      <p class="oka-text -lg">{description}</p>
     </div>
 
-    <div class="col col-8" >
-      
-      {imageMetadata && (
-        <Image src={imageMetadata.default} alt={`Hokoha Développement : ${titre}`} />
-      )} 
-
+    <div class="col col-5" >
+      {imageMetadata && (<Image src={imageMetadata.default} alt={`Hokoha Développement : ${titre}`} />)} 
     </div>
+
   </div>
-
-     
-  <div class="oka-spacer -md"></div>
+  
+  <div class="oka-spacer -lg"></div>
 
   <div class="flex-grid">
 
     <div class="col col-1"></div>
+    
     <div class="col col-4">
-       
-      {stitre1 && ( <p class="oka-h -xs">{stitre1}</p>)}
+      {stitre1 && ( <p class="oka-h -xs -crop">{stitre1}</p>)}
       {contenu1 && ( <p class="oka-text">{contenu1}</p>)}
     </div>
     <div class="col col-4">
-      {stitre2 && ( <p class="oka-h -xs">{stitre2}</p>)}
+      {stitre2 && ( <p class="oka-h -xs -crop">{stitre2}</p>)}
       {contenu2 && ( <p class="oka-text">{contenu2}</p>)}
     </div>
+    <div class="col col-1"></div>
+    <div class="col col-1"></div>
     <div class="col col-4">
-      {stitre3 && ( <p class="oka-h -xs">{stitre3}</p>)}
+      {stitre3 && ( <p class="oka-h -xs -crop">{stitre3}</p>)}
       {contenu3 && ( <p class="oka-text">{contenu3}</p>)}
     </div>
   </div>
