@@ -42,9 +42,9 @@ const { pageClass } = Astro.props;
 
         <base href="/site-hokoha/">
 
-        <!-- {# FONTAWESOME #} -->
+        <!-- {# FONTAWESOME #} 
         <script is:inline data-astro-rerun src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
-
+        -->
 
         <ViewTransitions />
     </head>
@@ -55,10 +55,9 @@ const { pageClass } = Astro.props;
 
             <slot name="hero" />
 
-            <!-- Header -->
-            <header style="position:sticky; top:0 ; z-index:20 ">
-                <Header  currentPage={pageName} />
-            </header>
+            
+            <Header  currentPage={pageName} />
+            
 
             
             

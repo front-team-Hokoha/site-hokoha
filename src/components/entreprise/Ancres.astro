@@ -1,20 +1,61 @@
 <style lang="scss">
 
+@import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+
 @function transparentize-css-var($color, $alpha) {
   @return rgba($color, $alpha);
 }
 
 
-    .oka-bt {
-        background : rgba(255,255,255,0.4);
-        background-color: var(--oka-color-action-bg-primary-hover-alpha, green);
-        //background-color: transparentize-css-var(var(--oka-color-action-bg-primary-hover-alpha), 0.95);
+.oka-bt {
+    background : rgba(255,255,255,0.4);
+    background-color: var(--oka-color-action-bg-primary-hover-alpha, green);
+    //background-color: transparentize-css-var(var(--oka-color-action-bg-primary-hover-alpha), 0.95);
+}
+
+.oka-darkMode .oka-bt {
+    background : rgba(0,0,0,0.4) !important;
+}
+
+
+
+.oka-ancres{
+    position:sticky;
+    z-index:10;
+    top:calc(100% - 8rem);
+ 
+
+  
+
+    height: 4rem;
+
+    display:flex;
+    align-items: center;
+    gap:0.5rem;
+
+    backdrop-filter: blur(3px); /* Applique le flou à l'arrière-plan */
+    
+    //overflow: auto;
+
+
+    @include breakpoint(md) {
+        top:4rem;
     }
 
-    .oka-darkMode .oka-bt {
-        background : rgba(0,0,0,0.4) !important;
+
+    &:before {
+        content:'';
+        position:absolute;
+        left:-1rem;
+        right:-1rem;
+        height:100%;
+
+        background-color: var(--oka-color-app-bg-default);
+        opacity: 0.9;
+       
     }
 
+}
 </style>
 
 
