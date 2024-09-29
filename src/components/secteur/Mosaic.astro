@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/secteur/mosaic/*.{png,jpg,jpeg,gif}')
+// Convertir l'objet en tableau et mélanger
+const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
+
+---
+
+<section  id="album" class="mosaic">
+
+    {shuffledImages.map((imagePath) => {
+
+        // Extraire le nom de l'image à partir du chemin
+        const imageName = imagePath.split('/').pop().split('.')[0]; // Récupère le nom sans extension
+
+        // Générer une classe aléatoirement
+        const hasMixBlend = Math.random() < 0.8; // 80 % de probabilité d'ajouter la classe 'nette'
+
+        return (
+        <div class={`item ${hasMixBlend ? '-mixBlend' : ''}`} >   
+        
+            <Image src={images[imagePath]()} alt={`Hokoha Développement : ${imageName}`} />
+            
+        </div> 
+        );
+    
+    })}
+</section>
