@@ -26,6 +26,8 @@ const { pageClass } = Astro.props;
 
         <meta name="description" content={description} />
 
+          <!-- Activer la mise en cache pour 1 jour (86400 secondes) -->
+  <meta http-equiv="Cache-Control" content="public, max-age=86400">
 
         <link rel="icon" type="image/svg+xml" href="assets/img/pictokoha.svg">
 
