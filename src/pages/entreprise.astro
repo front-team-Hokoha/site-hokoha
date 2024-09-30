@@ -9,7 +9,7 @@ import Ancres from '../components/entreprise/Ancres.astro';
 //import Valeur from '../components/entreprise/Valeur.astro';
 
 import Expertises from '../components/expertise/Expertises.astro';
-import Membre from '../components/equipe/Membre.astro';
+import Membre from '../components/equipe/MembreSmall.astro';
 import Membres from '../components/equipe/Membres.astro';
 import Image from '../components/Image.astro';
 import NextPage from '../components/Nextpage.astro';
@@ -34,75 +34,84 @@ const pageClass = "entreprise";
     
 
 
-    <div id="historique" class="oka-spacer -md"></div>
+    <Ancres />
+
+
+
+    <div id="historique" class="oka-spacer -lg"></div>
 
 
 
     <div  class="flex-grid">
 
         
-        <div class="col col-6">
-            <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" className="oka-hero__logo" />
-            <h1 class="oka-h -lg">Une fondation solide, alliant expertise et passion du développement.</h1>
+        <div class="col col-5">
+            <h1 class="oka-h -xl">Expertise et passion du développement.</h1>
         </div>
-      
+        <div class="col col-1"></div>
         <div class="col col-10">
+            <div class="oka-spacer -xl"></div>
+            <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" className="oka-hero__logo" />
+        </div>
+    </div>
+   
+
+    <div  class="flex-grid">
+
+        <div class="col col-5">
+            <p class="oka-text -lg">Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.</p> 
+        </div>
+        <div class="col col-1"></div>
+        <div class="col col-10" style="background:#fff; padding:1rem 0; border-radius:0.5rem">
+
+           
+                <div  class="flex-grid">
+                    <div class="col col-1"></div>
+                    <div class="col col-5">
+                        <p class="oka-text">Forts de parcours diversifiés — en informatique, électronique, graphisme — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes,<strong> nous avons uni nos compétences avec un objectif commun</strong> : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.</p>
+
+                    </div>
+
+                    <div class="col col-4">
+                        <div  class="flex-grid">
+                            <Membre
+                                nom="Laurent Costaouec"
+                                role=""
+                                mission="Co-Fondateur / Co-Gérant"
+                                portrait="src/assets/img/team/color/Laurent.png"
+                                orientation =" "   
+                            />
+
+                            <Membre
+                                nom="Franck Hortala"
+                                role=""
+                                mission="Co-Fondateur / Co-Gérant"
+                                portrait="src/assets/img/team/color/Franck.png"
+                                orientation =""   
+                            />
+
+                            <Membre
+                                nom="Yann Lorgueilleux"
+                                role=""
+                                mission="Co-Gérant"
+                                portrait="src/assets/img/team/color/Yann.png"
+                                orientation =" "   
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+            
 
             
         </div>
     </div>
-   
-
-    <div  class="flex-grid">
-
-        
-        <div class="col col-6">
-            <p class="oka-text -lg">Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.</p> 
-        </div>
-      
-        <div class="col col-10">
-
-            <div style="background:#fff; padding:1rem; border-radius:0.5rem">
-
-                <p class="oka-text">Forts de parcours diversifiés — en informatique, électronique, graphisme — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes,<strong> nous avons uni nos compétences avec un objectif commun</strong> : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.</p>
 
 
-                <div  class="flex-grid ">
-                    <Membre
-                        nom="Laurent Costaouec"
-                        role=""
-                        mission="Co-Fondateur / Co-Gérant"
-                        portrait="src/assets/img/team/color/Laurent.png"
-                        orientation =" "   
-                    />
-
-                    <Membre
-                        nom="Franck Hortala"
-                        role=""
-                        mission="Co-Fondateur / Co-Gérant"
-                        portrait="src/assets/img/team/color/Franck.png"
-                        orientation =""   
-                    />
-
-                    <Membre
-                        nom="Yann Lorgueilleux"
-                        role=""
-                        mission="Co-Gérant"
-                        portrait="src/assets/img/team/color/Yann.png"
-                        orientation =" "   
-                    />
-
-                </div>
-
-             </div>
-        </div>
-    </div>
-
-    <Ancres />
-   
+    <div class="oka-spacer -xl"></div>
     <div id="expertise" class="oka-spacer -lg"></div>
    
-    <div class="oka-spacer -xxl"></div>
 
     <Expertises />
 

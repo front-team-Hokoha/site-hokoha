@@ -17,6 +17,9 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
     </style>
 <section  id="album" class="mosaic">
 
+    <p class="oka-data -sm -crop"><strong>Les différents instants de votre quotidien ou vous pouvez retrouver les traces de Hokoha.</strong></p>
+
+
     {shuffledImages.map((imagePath) => {
 
         // Extraire le nom de l'image à partir du chemin
@@ -29,9 +32,11 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
         <div class={`item ${hasMixBlend ? '-mixBlend' : ''}`} >   
         
             <Image src={images[imagePath]()} alt={`Hokoha Développement : ${imageName}`} />
-            
+            <p class="oka-data -xs">{imageName}</p>
         </div> 
         );
     
     })}
+
+
 </section>
