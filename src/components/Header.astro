@@ -10,31 +10,22 @@ const { currentPage } = Astro.props; // Récupérer le nom de la page courante
 
 header{
     position:sticky;
-    top:calc(100% - 4rem);
+    top:0;
     z-index: 20;
-
-    @include breakpoint(md) {
-        top:0;
-    }
-
 }
 
 .oka-burger__ctnr {
- 
     top: 0;
-    @include breakpoint(md) {
-        //top: 0;
-    }
 }
 
 .oka-burger__content {
     
-    justify-content: flex-end;
-    padding-bottom:5rem;
-    @include breakpoint(md) {
-        justify-content: flex-start;
-        padding-bottom:0;
-    }
+    // justify-content: flex-end;
+    // padding-bottom:5rem;
+    // @include breakpoint(md) {
+    //     justify-content: flex-start;
+    //     padding-bottom:0;
+    // }
 
 }
 </style>
@@ -96,7 +87,7 @@ header{
                                 <div class="oka-spinner"></div>
                             </a>
 
-                            <a href="clients" class={`oka-bt -ghost ${currentPage === 'Savoir' ? '-focus' : ''}`}>
+                            <a href="clients" class={`oka-bt -ghost ${currentPage === 'Clients' ? '-focus' : ''}`}>
                                 <div class="oka-bt__lbl">Nos clients</div>
                                 <div class="oka-spinner"></div>
                             </a>
@@ -130,16 +121,19 @@ header{
                                         <span class="u-showOnDark"><i class="fa-regular fa-sun-bright"></i></span>
                                         <span class="u-showOnLight"><i class="fa-solid fa-moon"></i></span>
                                     </div>
+                                    <div class="oka-bt__lbl oka-hide--md">Mode</div>
                                     <div class="oka-spinner"></div>
                                 </button>  
 
                                 <button onclick="document.body.classList.toggle('showGrid');  setCookieShowGrid()" class="oka-bt -ghost"  >
                                     <div class="oka-bt__ico"><i class="fa-solid fa-grid-round-5"></i></div>
+                                    <div class="oka-bt__lbl oka-hide--md">Grille</div>
                                     <div class="oka-spinner"></div>
                                 </button> 
 
                                 <button onclick="document.body.classList.toggle('zoomText');  setCookieZoomText()" class="oka-bt -ghost"  >
                                     <div class="oka-bt__ico"><i class="fa-regular fa-text-size"></i></div>
+                                    <div class="oka-bt__lbl oka-hide--md">Zoom</div>
                                     <div class="oka-spinner"></div>
                                 </button> 
                             </div>
