@@ -1,0 +1,26 @@
+.fak.fa-arrow-right::before, .fa-kit.fa-arrow-right::before { content: "\e009"; }
+.fak.fa-bars::before, .fa-kit.fa-bars::before { content: "\e007"; }
+.fak.fa-ellipsis::before, .fa-kit.fa-ellipsis::before { content: "\e005"; }
+.fak.fa-grid::before, .fa-kit.fa-grid::before { content: "\e003"; }
+.fak.fa-moon::before, .fa-kit.fa-moon::before { content: "\e001"; }
+.fak.fa-sun::before, .fa-kit.fa-sun::before { content: "\e002"; }
+.fak.fa-xmark::before, .fa-kit.fa-xmark::before { content: "\e006"; }
+.fak.fa-zoom::before, .fa-kit.fa-zoom::before { content: "\e004"; }
+
+.fak, .fa-kit {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  font-family: "Font Awesome Kit";
+}
+
+@font-face {
+  font-family: "Font Awesome Kit";
+  font-style: normal;
+  font-display: block;
+  src: url("/site-hokoha/assets/fonts/custom-icons.woff2") format("woff2"), url("../webfonts/custom-icons.ttf") format("truetype");
+}

@@ -32,7 +32,7 @@ const { nb, theme, title, body } = Astro.props;
     <input type="checkbox" id={`flip-${nb}`} class="oka-flip__pilot" />       
     <div class="oka-flip__inner">
         <div class="oka-argument__intro oka-flip__front" >
-            <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-regular fa-ellipsis"></i></label>
+            <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-kit fa-ellipsis"></i></label>
            
             <p class="oka-h -xs -secondary ">{theme}</p>
             <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
@@ -41,7 +41,7 @@ const { nb, theme, title, body } = Astro.props;
         </div>
 
         <div class="oka-argument__detail oka-flip__back">
-          <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-light fa-xmark"></i></label>
+          <label for={`flip-${nb}`} class="oka-flip__flipper"><i class="fa-kit fa-xmark"></i></label>
           <p class="oka-text -md "  set:html={body}></p> 
           
         <!-- Label déclencheur  
