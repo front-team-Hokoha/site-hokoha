@@ -116,24 +116,21 @@ header{
                             
                             <div class="oka-flex -center -gap-sm">
                                 <!-- Toogle DARK/LIGHT MODE  -->
-                                <button onclick="document.body.classList.toggle('oka-darkMode'); document.body.classList.toggle('oka-lightMode'); setCookieMode();" class="oka-bt -ghost" >
+                                <button onclick="document.body.classList.toggle('oka-darkMode'); document.body.classList.toggle('oka-lightMode'); setCookieMode();" class="oka-bt -ghost" aria-label="Mode" >
                                     <div class="oka-bt__ico">
                                         <span class="u-showOnDark"><i class="fa-regular fa-sun-bright"></i></span>
                                         <span class="u-showOnLight"><i class="fa-solid fa-moon"></i></span>
                                     </div>
-                                    <div class="oka-bt__lbl oka-hide--md">Mode</div>
                                     <div class="oka-spinner"></div>
                                 </button>  
 
-                                <button onclick="document.body.classList.toggle('showGrid');  setCookieShowGrid()" class="oka-bt -ghost"  >
+                                <button onclick="document.body.classList.toggle('showGrid');  setCookieShowGrid()" class="oka-bt -ghost" aria-label="Grille" >
                                     <div class="oka-bt__ico"><i class="fa-solid fa-grid-round-5"></i></div>
-                                    <div class="oka-bt__lbl oka-hide--md">Grille</div>
                                     <div class="oka-spinner"></div>
                                 </button> 
 
-                                <button onclick="document.body.classList.toggle('zoomText');  setCookieZoomText()" class="oka-bt -ghost"  >
+                                <button onclick="document.body.classList.toggle('zoomText');  setCookieZoomText()" class="oka-bt -ghost" aria-label="Zoom" >
                                     <div class="oka-bt__ico"><i class="fa-regular fa-text-size"></i></div>
-                                    <div class="oka-bt__lbl oka-hide--md">Zoom</div>
                                     <div class="oka-spinner"></div>
                                 </button> 
                             </div>
