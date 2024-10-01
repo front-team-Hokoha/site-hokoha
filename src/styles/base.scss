@@ -48,14 +48,14 @@ $oka-system-font-path: 'assets/fonts' !default;
 // !!!!!!! Déplacer dans fichier forms.scss
 @import "oka-design-system/2-elements/Forms/commons";
 @import "oka-design-system/2-elements/Forms/commons-radio-checkbox";
-@import "oka-design-system/2-elements/Forms/checkboxes/checkboxes";
-@import "oka-design-system/2-elements/Forms/inputs/inputs";
-@import "oka-design-system/2-elements/Forms/fields/fields";
-@import "oka-design-system/2-elements/Forms/radios/radios";
-@import "oka-design-system/2-elements/Forms/ranges/ranges";
-@import "oka-design-system/2-elements/Forms/selects/selects";
-@import "oka-design-system/2-elements/Forms/switchs/switchs";
-@import "oka-design-system/2-elements/Forms/textareas/textareas";
+// @import "oka-design-system/2-elements/Forms/checkboxes/checkboxes";
+// @import "oka-design-system/2-elements/Forms/inputs/inputs";
+// @import "oka-design-system/2-elements/Forms/fields/fields";
+// @import "oka-design-system/2-elements/Forms/radios/radios";
+// @import "oka-design-system/2-elements/Forms/ranges/ranges";
+// @import "oka-design-system/2-elements/Forms/selects/selects";
+ @import "oka-design-system/2-elements/Forms/switchs/switchs";
+// @import "oka-design-system/2-elements/Forms/textareas/textareas";
 
 // Elements
 // !!!!!!!! Déplacer vers mains.scss
@@ -68,7 +68,7 @@ $oka-system-font-path: 'assets/fonts' !default;
 
 // LAYOUT BASE
 @import "oka-design-system/4-layouts/app-wrapper/app-wrapper";
-@import "oka-design-system/4-layouts/forms/forms"; // !!!!!!!! -> Déplacer vers forms.scss
+//@import "oka-design-system/4-layouts/forms/forms"; // !!!!!!!! -> Déplacer vers forms.scss
 @import "oka-design-system/4-layouts/grids/grids";
 @import "oka-design-system/4-layouts/grids/flex-grid";
 @import "oka-design-system/4-layouts/grids/grid-auto";

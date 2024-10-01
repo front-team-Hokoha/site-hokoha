@@ -13,9 +13,9 @@
 
 @font-face {
     font-family: 'Noto Serif';
-    src: url('assets/fonts/NotoSerif-Italic.woff2') format('woff2');
+    src: url('assets/fonts/NotoSerif-MediumItalic.woff2') format('woff2');
     font-weight: normal;
-    font-style: italic;
+    //font-style: italic;
     font-display: swap;
 }
 
@@ -25,11 +25,8 @@
 .noto-serif {
     font-family: "Noto Serif", serif !important;
     font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: italic;
-    font-variation-settings:
-        "wdth" 100;
-  
+    font-weight: normal;
+    
     color:var(--oka-color-system-contrast-hard);
     letter-spacing: -0.02em;
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
