@@ -79,11 +79,13 @@ import logoImage from '../../assets/img/Logokoha-couv-simple.png';
 
         //Chargement du fond
 
-        window.addEventListener('load', function() {
-        const element = document.getElementById('video_pattern');
-        //element.classList.add('appear');
-        element.style.backgroundImage = "url('/site-hokoha/assets/img/trame-video.jpg')";
-      });
+       // window.addEventListener('load', function() {
+        document.addEventListener('astro:page-load', () => {
+            const element = document.getElementById('video_pattern');
+            
+            element.style.backgroundImage = "url('/site-hokoha/assets/img/trame-video.jpg')";
+            element.classList.add('appear-fade');
+        });
       </script>
 
 
