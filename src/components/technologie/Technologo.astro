@@ -1,0 +1,42 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/technologie/*.{png,jpg,jpeg,gif}')
+
+
+interface Props {
+    nom: string
+    categorie: string
+    logoPath: string;
+}
+
+const { nom,categorie, logoPath } = Astro.props;
+
+
+// Récupérer l'image à partir du chemin `logoPath`
+const imageImport = Object.entries(images).find(([path]) => path.includes(logoPath));
+const imageMetadata = imageImport ? await imageImport[1]() : null;
+
+---
+
+
+{imageMetadata && (
+    <Image  
+    src={imageMetadata.default}
+    widths={[48, 48, 48 , imageMetadata.default.width ]}
+    sizes={`(max-width: 480px) 48px, (max-width: 768px) 48px, (max-width: 1600px) 48px, ${imageMetadata.default.width}px`}
+    quality='max'
+    alt={`Développement ${categorie} : ${nom}`} 
+    className="appear-fade "/>
+  )}
+
+  <style>
+    img {
+        display: block;
+        width:48px;
+        height: 48px;
+
+
+    }
+  </style>

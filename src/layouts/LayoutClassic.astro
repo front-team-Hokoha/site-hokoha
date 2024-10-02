@@ -124,23 +124,28 @@ const { pageClass } = Astro.props;
         <!-- {# FONTAWESOME #} 
         <script is:inline data-astro-rerun src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
         -->
-        
+
       <script  is:inline data-astro-rerun >
 
         // Script de  déclencgement d'affichage des elements par apparition
         document.addEventListener('astro:page-load', () => {
             
             //document.addEventListener("DOMContentLoaded", () => {
-            const elements = document.querySelectorAll('.appear');
+            const elements = document.querySelectorAll('.appear , .appear-fade');
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // Ajoute un décalage entre les animations avec setTimeout
+                        // Ajoute un délai avant de commencer l'animation après l'entrée dans le viewport
+                        const delay = 200; // Délai en ms avant de commencer l'animation (par exemple, 500ms)
                         setTimeout(() => {
-                        entry.target.classList.add('visible');
-                        }, index * 200); // 200ms de décalage entre chaque élément
-                        observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
+                        
+                            // Ajoute un décalage entre les animations avec setTimeout
+                            setTimeout(() => {
+                            entry.target.classList.add('visible');
+                            }, index * 300); // 200ms de décalage entre chaque élément
+                            observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
+                        }, delay);
                     }
                     });
             });

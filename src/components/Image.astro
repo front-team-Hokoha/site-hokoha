@@ -28,7 +28,7 @@ const image = await getImage({
 
 <img
   src={image.src}                    // Source de l'image
-  srcset={image.srcset}              // Liste des sources optimisées
+  srcset={image.srcSet}              // Liste des sources optimisées
   sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"  // Tailles d'écran
   width={imgWidth || image.width}    // Largeur spécifiée ou générée automatiquement
   height={imgHeight || 'auto'}       // Hauteur spécifiée ou auto

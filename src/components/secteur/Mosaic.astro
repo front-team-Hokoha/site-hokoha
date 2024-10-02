@@ -14,7 +14,13 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
         gap: 1.5rem;
         padding:0;
     }
-    </style>
+
+
+
+
+
+    
+</style>
 <section  id="album" class="mosaic">
 
     <p class="oka-data -sm -crop"><strong>Les différents instants de votre quotidien ou vous pouvez retrouver les traces de Hokoha.</strong></p>
@@ -40,3 +46,93 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
 
 
 </section>
+
+
+
+<style lang="scss">
+
+    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+
+
+.mosaic {
+    position: relative;
+    z-index: 8;
+
+    padding:1rem;
+
+    .item.-mixBlend  {
+        img {
+            mix-blend-mode: luminosity;
+        }
+    }
+
+    img {
+        height:100%;
+        width:100%;
+        object-fit: cover ; /* Ajuste l'image pour qu'elle remplisse le conteneur sans déformation */
+        display: block; /* Supprime les espaces indésirables (si des éléments inline sont utilisés) */
+       
+
+
+        filter: contrast(1.1) saturate(1.1);
+ 
+    }
+
+
+}
+
+.mosaic {
+    columns: 2;
+    gap: 1.5rem;
+    counter-reset: grid;
+
+
+    @include breakpoint(xs) {
+        columns: 3;
+    }
+    @include breakpoint(sm) {
+        columns: 4;
+    }
+    @include breakpoint(md) {
+        columns: 6;
+    }
+    @include breakpoint(lg) {
+        columns: 6;
+    }
+    @include breakpoint(xl) {
+        columns: 8;
+    }
+
+  
+  .item + .item {
+    margin-top: 1rem;
+  }
+  
+  .item {
+    break-inside: avoid;
+    aspect-ratio: 4 / 3;
+    background: var(--oka-color-system-bg-medium);
+    //padding: 1rem;
+    border-radius: 0.75rem;
+
+    overflow: hidden;
+  }
+  
+/*   .item::before {
+//     counter-increment: grid;
+//     content: counter(grid);
+//   }
+*/
+  
+  .item:nth-child(3n) {
+    aspect-ratio: 1;
+    background: var(--oka-color-system-bg-medium);
+  }
+  
+  .item:nth-child(3n - 1) {
+    aspect-ratio: 2 / 3;
+    background: var(--oka-color-system-bg-heavy);
+  }
+}
+
+</style>

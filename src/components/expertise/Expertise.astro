@@ -23,20 +23,10 @@ const { theme,titre, description,stitre1,stitre2,stitre3, contenu1,contenu2,cont
 
 
 // Récupérer l'image à partir du chemin `imgCouvPath`
-console.log(images)
-console.log(imgCouvPath)
-
 const imageImport = Object.entries(images).find(([path]) => path.includes(imgCouvPath));
 const imageMetadata = imageImport ? await imageImport[1]() : null;
 
 ---
-<style>
-  img {
-    width:100%; 
-    height:18rem;
-    object-fit:cover;
-    }
-</style>
 
 <div class=" appear  oka-expertise">
   <div class="flex-grid">
@@ -83,3 +73,11 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
 </div>
 
 <div class="oka-spacer -lg"></div>
+
+<style>
+  img {
+    width:100%; 
+    height:18rem;
+    object-fit:cover;
+    }
+</style>
