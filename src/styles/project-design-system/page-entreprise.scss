@@ -51,8 +51,12 @@
     flex-wrap: wrap;
     gap:0 3rem;
 
+    .oka-h {
+        margin-top:-0.5rem;
+    }
+
     p {
         @extend .oka-text;
-        margin:0 !important;
+        //margin:0 !important;
     }
 }

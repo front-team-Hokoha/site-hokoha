@@ -24,18 +24,18 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
 {imageMetadata && (
     <Image  
     src={imageMetadata.default}
-    widths={[48, 48, 48 , imageMetadata.default.width ]}
-    sizes={`(max-width: 480px) 48px, (max-width: 768px) 48px, (max-width: 1600px) 48px, ${imageMetadata.default.width}px`}
+    widths={[32, 32, 32 , imageMetadata.default.width ]}
+    sizes={`(max-width: 480px) 32px, (max-width: 768px) 32px, (max-width: 1600px) 32px, ${imageMetadata.default.width}px`}
     quality='max'
     alt={`Développement ${categorie} : ${nom}`} 
-    class="appear-fade "/>
+    class="appear-fade"/>
   )}
 
   <style>
     img {
         display: block;
-        width:40px;
-        height: 40px;
+        width:32px;
+        height: 32px;
 
 
     }
