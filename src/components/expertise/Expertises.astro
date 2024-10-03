@@ -7,24 +7,16 @@ import TechnoMobile from '../../components/technologie/TechnoMobile.astro';
 import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 ---
 
-<div   class="flex-grid">
+<div class="flex-grid oka-flex -rvrs">
 
     <div class="col col-5">
         <h2 class="oka-h -xl -crop">Notre expertise <span class="u-noLineBreak">du développement</span> informatique.</h2>
         <div class="oka-spacer -sm"></div>
         <p class="oka-text -lg">Hokoha se distingue par une expertise polyvalente, couvrant plusieurs domaines clés du développement technologique.</p>
-        <p class="oka-text">Notre équipe maîtrise l'ensemble du processus de conception et de développement, de l'analyse des besoins à la mise en œuvre des solutions.</p>
-    
-    
-        <TechnoWeb />
-        <TechnoMobile />
-        <TechnoAnnexe />
-    
     </div>
     <div class="col col-1"></div>
     <div class="col col-10">
         <div class="flex-grid">
-
         <Expertise
             theme="Organisation"
             titre="Maitrise en gestion de projet"
@@ -39,6 +31,22 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
             imgIllustrPath=""
             />
 
+        </div>
+    </div>
+</div>
+
+
+
+<div class="flex-grid oka-flex -rvrs">
+
+    <div class="col col-5">
+        <p class="oka-text">Notre équipe maîtrise l'ensemble du processus de conception et de développement, de l'analyse des besoins à la mise en œuvre des solutions.</p>
+
+    </div>
+    <div class="col col-1"></div>
+    <div class="col col-10">
+        <div class="flex-grid">
+
         <Expertise
             theme="Conception"
             titre="Architecture logiciel / Modélisation"
@@ -52,6 +60,24 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
             imgCouvPath="src/assets/img/expertise/conception.jpg"
             imgIllustrPath=""
             />
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="flex-grid oka-flex -rvrs">
+
+    <div class="col col-5">
+        
+    
+    </div>
+    <div class="col col-1"></div>
+    <div class="col col-10">
+        <div class="flex-grid">
+
+
 
         <Expertise
             theme="Ergonomie"
@@ -66,6 +92,25 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
             imgCouvPath="src/assets/img/expertise/uxdesign.jpg"
             imgIllustrPath=""
             />
+        
+        </div>
+    </div>
+</div>
+
+
+<div class="flex-grid oka-flex -rvrs">
+
+    <div class="col col-5">
+        <TechnoWeb />
+        <TechnoMobile />
+        <TechnoAnnexe />
+    </div>
+    <div class="col col-1"></div>
+    <div class="col col-10">
+        <div class="flex-grid">
+
+
+
         
         <Expertise
             theme="Production"
@@ -83,6 +128,9 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
         </div>
     </div>
 </div>
+
+
+
 
 <div class="oka-spacer -xl"></div>
 

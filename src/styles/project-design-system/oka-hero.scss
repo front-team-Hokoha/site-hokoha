@@ -13,8 +13,8 @@
 
     background: var(--oka-color-app-bg-default);
  
-    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-medium) 60%,var(--oka-color-primary-contrast-hight) 95%);
-
+    //background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-medium) 60%,var(--oka-color-primary-contrast-hight) 95%);
+    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%, #073556 60%, #242424 95%);
 
     .flex-grid{
         flex-direction: column-reverse;
