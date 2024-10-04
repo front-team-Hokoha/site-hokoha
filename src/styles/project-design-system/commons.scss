@@ -254,3 +254,68 @@ html:has(.zoomText) {
 
 
 
+
+
+// Grid
+.oka-showGrid {
+    overflow:hidden;
+}
+
+.oka-showGrid:before//,
+//html:after
+{
+    content   : '';
+    position  : absolute;
+    width:100%;
+    //height:100%;
+    top       :33% ;
+    bottom   : 0;
+    left     : 33%;
+    z-index   : -1;
+
+    padding   : 0;
+ 
+    opacity   : 0   ;
+    font-size: 8px;
+
+    // 8Pt GRILLE VERTICALE
+    background-repeat: repeat-y;
+    background-size: 100% 0.5rem;
+    background-image: linear-gradient(to bottom, var(--oka-color-specs-hight) 0,rgba(255, 255, 255, 0) 1px),
+    linear-gradient(to left, var(--oka-color-specs-hight) 0,rgba(247, 43, 43, 0) 1px);
+    line-height: 0;
+
+    pointer-events: none;
+
+    //mix-blend-mode: multiply;
+
+}
+
+
+
+.oka-showGrid:before {
+    z-index   : 1;
+    opacity   : 0.50   ;
+}
+
+.oka-showGrid .oka-spacer,
+.oka-showGrid .oka-spacer:before,
+.oka-showGrid  .oka-spacer:after {
+    z-index   : 100000000000;
+    opacity   : 0   ;
+}
+
+
+.oka-showGrid .flex-grid-bg-fx {
+    display: flex !important;
+    opacity: 1 ;
+
+
+
+    .grid-bg-fx__grid > * {
+        position: relative;
+        margin-bottom: 0 !important;
+        background-color: blue !important;
+        opacity: 0.0;
+    }
+}

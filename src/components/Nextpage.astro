@@ -13,7 +13,7 @@ interface Props {
 const { titre, contenu, image, url, bouton } = Astro.props;
 ---
 
-<div class="oka-appWrap -full oka-darkMode oka-surface -system -soft">
+<div class="oka-appWrap -full oka-darkMode oka-surface -system -soft oka-showGrid">
 
     <div class="oka-appWrap">
         <div class="flex-grid">
@@ -48,4 +48,36 @@ const { titre, contenu, image, url, bouton } = Astro.props;
         
         </div>
     </div>
+
+
+
+
+    
+<!-- Grid Preview -->
+<div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
+    <div class="oka-app-wrap" style="height:100%">
+        <div class="grid-bg-fx__grid flex-grid ">
+
+            <div class="col col-1"></div>
+            <div class="col col-1"></div>
+            <div class="col col-1" ></div>
+            <div class="col col-1" ></div>
+
+            <div class="col col-1"></div>
+            <div class="col col-1"></div>
+            <div class="col col-1" ></div>
+            <div class="col col-1" ></div>
+
+            <div class="col col-1"></div>
+            <div class="col col-1"></div>
+            <div class="col col-1" ></div>
+            <div class="col col-1" ></div>
+
+            <div class="col col-1"></div>
+            <div class="col col-1"></div>
+            <div class="col col-1" ></div>
+            <div class="col col-1" ></div>
+        </div>
+    </div>
+</div>
 </div>

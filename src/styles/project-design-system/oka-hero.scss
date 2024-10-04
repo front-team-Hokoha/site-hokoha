@@ -7,18 +7,21 @@
     z-index:0;
     width: 100%;
     //margin-top:4rem;
-    min-height: 85vh;
+    //min-height: 85vh;
     flex-basis:100ch;
     overflow: hidden;
 
-    background: var(--oka-color-app-bg-default);
+    background: var(--oka-color-primary-bg-soft);
  
-    background-image: linear-gradient(-43deg, 
-                        var(--oka-color-app-bg-default) 40%,
+    background-image: linear-gradient(226deg, 
+                       #000 20%,
                         var(--oka-color-primary-bg-medium) 80%,
-                        /*var(--oka-color-primary-contrast-hight) 95%*/
+                       
                         );
     //background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%, #073556 60%, #242424 95%);
+
+    //background-image: linear-gradient(226deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-soft) 60%,var(--oka-color-primary-contrast-low) 95%);
+
 
     .flex-grid{
         flex-direction: column-reverse;
@@ -32,7 +35,7 @@
 }
 
 .oka-darkMode .oka-hero {
-    background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-soft) 60%,var(--oka-color-primary-contrast-low) 95%);
+    background-image: linear-gradient(0deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-soft) 60%,var(--oka-color-primary-contrast-low) 95%);
 
 }
 
@@ -52,17 +55,23 @@
 
 
 #video_pattern {
-    //background-image: url();
-    background-size: cover;
-    background-position: top;
-    mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
-
+    //background-size: cover;
+    //background-position: top;
+    /* mix-blend-mode: multiply; */
     position: absolute;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    //opacity: 0.7;
+
+    display: flex;
+    align-items: flex-end;
 
     pointer-events: none;
+    font-size: 120px;
+    line-height: 160px;
+    font-family: monospace;
+    color: #fff;
+    opacity: 0.06;
 
 }
 
@@ -77,75 +86,24 @@
     height: auto;
     /*z-index: -100;*/
     transform: translateX(-50%) translateY(-50%);
-    opacity: 10%;
+    opacity: 20% ; //7%;
+
     filter: brightness(1.8) grayscale(1); ;
-    /* filter: brightness(1.5) grayscale(1); */
+    mix-blend-mode: hard-light;
 
     pointer-events: none;
 }
 
 
-
-// Grid
-
-
-.oka-hero:after//,
-//html:after
-{
-    content   : '';
-    position  : absolute;
-    width:100%;
-    //height:100%;
-    top       :0 ;
-    bottom   : 0;
-    left     : 0;
-    z-index   : -1;
-
-    padding   : 0;
- 
-    opacity   : 0   ;
-    font-size: 8px;
-
-    // 8Pt GRILLE VERTICALE
-    background-repeat: repeat-y;
-    background-size: 100% 0.5rem;
-    background-image: linear-gradient(to bottom, var(--oka-color-specs-hight) 0,rgba(255, 255, 255, 0) 1px),
-    linear-gradient(to left, var(--oka-color-specs-hight) 0,rgba(255, 255, 255, 0) 1px);
-    line-height: 0;
-
-    pointer-events: none;
+.hero-cta {
+    position: relative;
+    z-index: 2;
+    border-radius: 1rem 1rem 0 0;
+    background-color: var(--oka-color-app-bg-default);
+    //height: 300px;
+    width: 100%;;
+    padding: 2rem;
 
 
 
-
-/*
-    background-repeat: repeat;  
-    background-size:  16px 16px, 16px 16px;
-    background-position:  0px 0px, 0px 0px;
-    background-image: linear-gradient(rgba(255, 0, 0, 0.542) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255, 0, 0, 0.3) 1px, transparent 1px);
-        
-*/
-
-
-}
-
-
-
-.oka-hero:after {
-    z-index   : 100000000000;
-    opacity   : 0.50   ;
-}
-
-.oka-hero .oka-spacer,
-.oka-hero .oka-spacer:before,
-.oka-hero  .oka-spacer:after {
-    z-index   : 100000000000;
-    opacity   : 0.50   ;
-}
-
-
-.oka-hero .flex-grid-bg-fx {
-    display: flex !important;
-    opacity: 0.9    ;
 }
