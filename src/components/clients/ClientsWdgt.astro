@@ -5,8 +5,8 @@ import LogoClient from '../clients/LogoClient.astro';
 // Charger les clients
 const clients = await Astro.glob('../../content/clients/**/*.md');
 
-// Sélectionner 5 clients
-const listeClients = clients.slice(0, 5);
+// Sélectionner 8 clients
+const listeClients = clients.slice(0, 104);
 
 ---
 
@@ -42,7 +42,7 @@ const listeClients = clients.slice(0, 5);
 
     <div class="flex-grid">
         {listeClients.map((client) => (
-        <div class={`col col-2 col--md-3 oka-logoClient -${client.frontmatter.categorie}`}>
+        <div class={` col col-2 col--md-2 oka-logoClient -${client.frontmatter.categorie}`}>
             {client.frontmatter.logoPath && (
             <LogoClient
                 logoPath={client.frontmatter.logoPath}

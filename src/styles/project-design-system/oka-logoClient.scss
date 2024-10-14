@@ -1,7 +1,7 @@
 // Vignette logo Clients
 .oka-logoClient {
     // mix-blend-mode: multiply; /* Autres valeurs possibles: screen, overlay, darken, lighten, etc. */
-    
+    background-color: var(--oka-color-app-bg-default);
  
     img {
     width:100%;
