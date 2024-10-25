@@ -15,35 +15,27 @@ const shuffledImages = Object.keys(images).sort(() => Math.random() - 0.5);
 <div class="mosaic">
 
     {shuffledImages.map((imagePath) => {
-
         // Extraire le nom de l'image à partir du chemin
         const imageName = imagePath.split('/').pop().split('.')[0]; // Récupère le nom sans extension
-
         // Générer une classe aléatoirement
         const hasMixBlend = Math.random() < 1; // 80 % de probabilité d'ajouter la classe 'nette'
 
         return (
         <div class={`item ${hasMixBlend ? '-mixBlend' : ''}`} >   
-        
             <Image src={images[imagePath]()} alt={`Hokoha Développement : ${imageName}`} />
-            
         </div> 
         );
     
     })}
 </section>
 
-
 <style lang="scss">
-
 @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
-
 
 #album {
     // height:90vh;
     // overflow: auto;
 }
-
 
 .mosaic {
     position: relative;
