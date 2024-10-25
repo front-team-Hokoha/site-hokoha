@@ -109,3 +109,11 @@
 
 
 }
+
+
+.oka-showGrid .flex-grid-bg-fx .grid-bg-fx__grid > * {
+    position: relative;
+    margin-bottom: 0 !important;
+    background-color: blue !important;
+    opacity: 0.1;
+}
