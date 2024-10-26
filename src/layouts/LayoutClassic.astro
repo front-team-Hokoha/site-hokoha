@@ -66,7 +66,7 @@ const { pageClass } = Astro.props;
                 <main class="layout-app__main">
                     
                     <!-- Contenu principal -->
-                    <div class="oka-appWrap">
+                    <div class="oka-appWrap -fluid">
                         <slot  />
                     </div>
                     
@@ -93,7 +93,7 @@ const { pageClass } = Astro.props;
            
             <!-- Grid Preview -->
             <div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
-                <div class="oka-app-wrap" style="height:100%">
+                <div class="oka-app-wrap -fluid" style="height:100%">
                     <div class="grid-bg-fx__grid flex-grid ">
         
                         <div class="col col-1"></div>

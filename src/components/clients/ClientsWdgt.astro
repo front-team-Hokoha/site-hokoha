@@ -11,6 +11,10 @@ const listeClients = clients.slice(0, 104);
 ---
 
 
+
+
+<div class="oka-flex "></div>
+
 <div class="clients-widget">
     <h3>Ils nous font confiances</h3>
     
@@ -40,7 +44,7 @@ const listeClients = clients.slice(0, 104);
     
     
 
-    <div class="flex-grid">
+    <div class="flex-grid bandeauShaded">
         {listeClients.map((client) => (
         <div class={` col col-2 col--md-2 oka-logoClient -${client.frontmatter.categorie}`}>
             {client.frontmatter.logoPath && (
@@ -56,3 +60,33 @@ const listeClients = clients.slice(0, 104);
 </div>
 
 <div class="oka-spacer -xl"></div>
+
+<style lang="scss">
+
+    .bandeauShaded{
+        position:relative;
+
+
+        &:before,
+        &:after {
+            content:"";
+            position:absolute;
+            z-index: 2;
+            display:block;
+            height:100%;
+            width:200px;
+
+            pointer-events: none;
+        }
+
+        &:before {
+            background-image: linear-gradient(to right, var(--oka-color-app-bg-default) , transparent );
+        }
+        &:after {
+            right: 0;
+            background-image: linear-gradient(to left, var(--oka-color-app-bg-default) , transparent );
+        }
+
+
+    }
+</style>

@@ -7,16 +7,26 @@
 }
 
 
+.sticky {
+    position:sticky;
+    z-index:10;
+    top:4rem;
+}
+
+
 .oka-bt {
     background : var(--ancre-fd);
+    border:1px solid rgba(0,0,0,0.1);
+
+
+
+
 }
 
 
 
 .oka-ancres{
-    position:sticky;
-    z-index:10;
-    top:4rem;
+
  
     height: 4rem;
 
@@ -49,30 +59,44 @@
 
 <div class="oka-spacer -lg"></div>
 
-<div class="oka-ancres">
-
-   
-    
-    <a href="entreprise/#historique" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">Historique</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-    <a href="entreprise/#expertise" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">Expertise</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-    <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">Équipe</div>
-        <div class="oka-spinner"></div>
-    </a>
-
-    <a href="entreprise/#album" class="oka-bt -ghost -sm">
-        <div class="oka-bt__lbl">L'album</div>
-        <div class="oka-spinner"></div>
-    </a>
-
+<div  class="flex-grid ">
+    <div class="col col-1"></div>
+    <div class="col col-11">
+        <div class="oka-h -lg -secondary">L'entreprise HOKOHA</div>
+    </div>
 </div>
+    
+    
+
+
+<div  class="flex-grid sticky">
+    <div class="col col-1"></div>
+    <div class="col col-11">
+        <div class="oka-ancres">
+            <a href="entreprise/#historique" class="oka-bt -ghost -sm">
+                <div class="oka-bt__lbl">1. HISTORIQUE</div>
+                <div class="oka-spinner"></div>
+            </a>
+        
+            <a href="entreprise/#expertise" class="oka-bt -ghost -sm">
+                <div class="oka-bt__lbl">2. EXPERTISE</div>
+                <div class="oka-spinner"></div>
+            </a>
+        
+            <a href="entreprise/#equipe" class="oka-bt -ghost -sm">
+                <div class="oka-bt__lbl">3. L'ÉQUIPE</div>
+                <div class="oka-spinner"></div>
+            </a>
+        
+            <a href="entreprise/#album" class="oka-bt -ghost -sm">
+                <div class="oka-bt__lbl">L'album</div>
+                <div class="oka-spinner"></div>
+            </a>
+        </div>
+    </div>
+</div>
+    
+    
+
 
     

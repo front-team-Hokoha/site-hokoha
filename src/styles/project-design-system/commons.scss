@@ -4,7 +4,7 @@
     --oka-color-neutral-darker : #1e2637;
 
     --oka-color-app-ground : var(--oka-color-neutral-lightest);
-    --oka-color-app-bg-default : var(--oka-color-neutral-lightest) ;
+    --oka-color-app-bg-default : #fff; // var(--oka-color-neutral-lightest) ;
 
     --oka-color-surface-level1-bg : var(--oka-color-white);
 
@@ -196,6 +196,14 @@ hr.filet{
     display:inline-block;
     width:10.5rem
 }
+
+hr,.oka-divider {
+    background-image: linear-gradient(to right, var(--oka-color-app-fg-default) 0 10%, rgba(255, 255, 255, 0) 10%);
+    background-position: bottom;
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+  }
+
 
 // Anti Line Break
 .u-noLineBreak {

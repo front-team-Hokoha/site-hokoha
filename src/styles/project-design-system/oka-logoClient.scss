@@ -7,6 +7,17 @@
     width:100%;
     height:auto;
     
+    filter: contrast(1.25) ;
     mix-blend-mode: luminosity;
+
+    transition: all 1.6s cubic-bezier(.075,.82,.165,1);
+
+        &:hover{
+            //filter:none;
+            mix-blend-mode:normal;
+        }
+
     }
+
+
 }

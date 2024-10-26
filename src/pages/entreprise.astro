@@ -38,93 +38,77 @@ const pageClass = "entreprise";
 
 
 
-    <div id="historique" class="oka-spacer -md"></div>
+    <div id="historique" class="oka-spacer -lg"></div>
 
 
 
     <div  class="flex-grid">
-        <div class="col col-10">
-            <h1 class="oka-h -xl -crop">Expertise et passion du développement.</h1>
+        <div class="col col-1"></div>
+        <div class="col col-12">
+            <h1 class="oka-h -xxl -crop -secondary"><span class="noto-serif">Expertise</span> et <span class="noto-serif">passion</span> du développement.</h1>
         </div>
         <div class="col col-1"></div>
-        <div class="col col-5">
+        <div class="col col-4">
         </div>
     </div>
    
-    <div class="oka-spacer -md"></div>
+    <div class="oka-spacer -lg"></div>
 
     <div  class="flex-grid">
-
-        <div class="col col-10">
+        <div class="col col-1"></div>
+        <div class="col col-1">
+            <!-- <div class="oka-spacer -sm"></div> -->
+            <h2 class="oka-text -xs ">1. <br>HISTORIQUE</h2></div>
+        <div class="col col-5">
             <p class="oka-text -lg">Les fondateurs d'HOKOHA, riches d'une solide expérience, partageaient depuis plusieurs années l'envie de créer une société dédiée au développement d'outils logiciels. En mars 2017, animés par une passion commune pour l'informatique, ils ont décidé de concrétiser cette ambition en fondant ensemble HOKOHA.</p> 
-        
-                <!-- <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="80" className="oka-hero__logo" /> -->
-
-
-
-               
-                <div class="oka-spacer -lg"></div>
-
-
-
-                <div  class="flex-grid">
-                    <Membre
-                        nom="Laurent Costaouec"
-                        role=""
-                        mission="Co-Fondateur / Co-Gérant"
-                        portrait="src/assets/img/team/color/Laurent.png"
-                        orientation =" "   
-                    />
-
-                    <Membre
-                        nom="Franck Hortala"
-                        role=""
-                        mission="Co-Fondateur / Co-Gérant"
-                        portrait="src/assets/img/team/color/Franck.png"
-                        orientation =""   
-                    />
-
-                    <Membre
-                        nom="Yann Lorgueilleux"
-                        role=""
-                        mission="Co-Gérant"
-                        portrait="src/assets/img/team/color/Yann.png"
-                        orientation =" "   
-                    />
-                </div>
-           
-        
-        
-        
-        
-        
         </div>
 
 
-        <div class="col col-1"></div>
-        <div class="col col-5" style="background:#fff; padding:0.5rem; border-radius:0.5rem">
+        <div class="col col-2"></div>
+        
 
-           
-                <div  class="flex-grid">
-                    
-                    <div class="col col-5">
-                        <p class="oka-text">Forts de parcours diversifiés — en informatique, électronique, graphisme — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes,<strong> nous avons uni nos compétences avec un objectif commun</strong> : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.</p>
-                    </div>
+        <div class="col col-3">
+            <div  class="flex-grid">
+                <Membre
+                    nom="Laurent Costaouec"
+                    role=""
+                    mission="Co-Fondateur / Co-Gérant"
+                    portrait="src/assets/img/team/color/Laurent.png"
+                    orientation =" "   
+                />
+    
+                <Membre
+                    nom="Franck Hortala"
+                    role=""
+                    mission="Co-Fondateur / Co-Gérant"
+                    portrait="src/assets/img/team/color/Franck.png"
+                    orientation =""   
+                />
+    
+                <Membre
+                    nom="Yann Lorgueilleux"
+                    role=""
+                    mission="Co-Gérant"
+                    portrait="src/assets/img/team/color/Yann.png"
+                    orientation =" "   
+                />
+            </div>
 
-                    
-                </div>
+        </div>
+        <div class="col col-3" style="background:#fff; padding:0.5rem; border-radius:0.5rem">
 
+            <p class="oka-text"><span class="guillemet -first noto-serif">&ldquo;</span>Forts de parcours diversifiés — en informatique, électronique, graphisme — et d’une expérience solide acquise dans des start-ups, SSII, PME industrielles et grands groupes,<strong> nous avons uni nos compétences avec un objectif commun</strong> : concevoir des solutions numériques sur mesure, parfaitement adaptées aux besoins spécifiques de chaque entreprise.<span class="guillemet -last noto-serif">&rdquo;</span></p>
 
-            
-
-            
         </div>
     </div>
+
+    
+
 
 
     <div class="oka-spacer -xl"></div>
     <hr class="oka-divider -high">
-    <div id="expertise" class="oka-spacer -lg"></div>
+    <div id="expertise" class="oka-spacer -xl"></div>
    
 
     <Expertises />
@@ -134,13 +118,14 @@ const pageClass = "entreprise";
        
         <div  class="equipe oka-surface oka-darkMode">
             
-            <div class="oka-appWrap">
+            <div class="oka-appWrap -fluid">
                
                 <Ancres />
                 <div id="equipe" class="oka-spacer -lg"></div>
 
                 <div class="flex-grid">
-                    <div class="col col-6">
+                    <div class="col col-1"></div>
+                    <div class="col col-5">
 
                         <Image src={logoImage} alt="Logotype de la société Hokoha Développement informatique" imgHeight="72" className="oka-hero__logo" />
                         <div class="oka-spacer -lg"></div>
@@ -223,3 +208,16 @@ const pageClass = "entreprise";
   </div>
 
 </LayoutClassic>
+
+
+<style lang="scss">
+
+    .guillemet {
+        font-size:98px;
+        position: absolute;
+
+        &.-last{
+            margin-top:40px;
+        }
+    }
+</style>
