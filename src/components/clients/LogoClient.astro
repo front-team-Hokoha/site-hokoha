@@ -16,14 +16,25 @@ const logos = import.meta.glob<{ default: ImageMetadata }>('/src/content/clients
 
 // 
 if (!logos[logoPath]) throw new Error(`"${logoPath}" does not exist in glob: "src/content/clients*.{jpeg,jpg,png,gif}"`);
+
+let isVisible = false; // Pour suivre la visibilité de l'image
+
+const loadImage = () => {
+    isVisible = true; // Marquer l'image comme visible
+};
 ---
 
 
-<Image 
-    src={logos[logoPath]()} 
-    widths={[345, 200, 246 , logos[logoPath]().width ]}
-    sizes={`(max-width: 480px) 345px, (max-width: 768px) 200px, (max-width: 1600px) 246px, ${logos[logoPath]().width}px`}
-    alt={altText} />
-
+<!-- Utilisation d'un conteneur div pour détecter la visibilité -->
+<div class="logo-container" data-logo-path={logoPath} data-alt-text={altText}>
+    {isVisible && (
+        <Image 
+            src={logos[logoPath]()} 
+            widths={[345, 200, 246 , logos[logoPath]().width ]}
+            sizes={`(max-width: 480px) 345px, (max-width: 768px) 200px, (max-width: 1600px) 246px, ${logos[logoPath]().width}px`}
+            alt={altText} 
+        />
+    )}
+</div>
 
 
