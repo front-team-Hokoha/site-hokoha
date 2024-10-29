@@ -1,0 +1,80 @@
+---
+//Composant
+import LogoClient from '../clients/LogoClient.astro';
+
+// Charger les clients
+const clients = await Astro.glob('../../content/clients/**/*.md');
+
+// Sélectionner 104 clients
+const listeClients = clients.slice(0, 104);
+
+---
+
+
+<div class="oka-flex "></div>
+
+<div class="clients-widget">
+    <h3>Ils nous font confiances</h3>
+
+    <div class="oka-spacer -sm"></div>
+    
+    
+
+    <div class="flex-grid bandeauShaded swiper">
+        <div class="swiper-wrapper">
+
+            {listeClients.map((client) => (
+            <div class='oka-logoClient swiper-slide'>
+                {client.frontmatter.logoPath && (
+                <LogoClient
+                    logoPath={client.frontmatter.logoPath}
+                    altText={`Logo de ${client.frontmatter.client}`}
+                />
+                )}
+
+            </div>
+            ))}
+            
+        </div>
+    </div>
+</div>
+
+<div class="oka-spacer -xl"></div>
+
+<style lang="scss">
+
+    // transition fluide
+    .swiper-wrapper {
+        transition-timing-function: linear;
+    }
+
+    .bandeauShaded{
+
+        position:relative;
+
+        &:before,
+        &:after {
+            content:"";
+            position:absolute;
+            z-index: 2;
+            display:block;
+            height:100%;
+            width:200px;
+
+            pointer-events: none;
+        }
+
+        &:before {
+            background-image: linear-gradient(to right, var(--oka-color-app-bg-default) , transparent );
+        }
+        &:after {
+            top: 0;
+            right: 0;
+            background-image: linear-gradient(to left, var(--oka-color-app-bg-default) , transparent );
+        }
+
+
+    }
+</style>
+
+<script src="../../libs/swiper.js"></script>
