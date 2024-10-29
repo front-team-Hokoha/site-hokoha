@@ -4,56 +4,64 @@ import 'swiper/css';
 
 document.addEventListener('DOMContentLoaded', () => {
     const swiperContainer = document.querySelector('.swiper');
-    const logoContainers = document.querySelectorAll('.logo-container');
 
-    // Initialiser le Swiper
-    const swiper = new Swiper(swiperContainer, {
-        modules: [Autoplay],
-        spaceBetween: 24,
-        slidesPerView: 4,
-        loop: true,
-        speed: 4000,
-        grabCursor: true,
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false,
-            enabled: false,
-        },
-        breakpoints: {
-            768: { slidesPerView: 5 },
-            1280: { slidesPerView: 10 },
-        },
-    });
 
-    // Fonction pour charger l'image
-    const loadImage = (container) => {
-        const logoPath = container.getAttribute('data-logo-path');
-        const altText = container.getAttribute('data-alt-text');
-        const img = new Image();
-        img.src = logoPath; // charger l'image
-        img.alt = altText;
-        container.appendChild(img); // ajouter l'image au conteneur
-    };
 
-    // Observer pour charger les images lorsque le conteneur est visible
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                loadImage(entry.target);
-                observer.unobserve(entry.target);
+    // Sélectionne le div que tu veux observer
+    const targetDiv = document.querySelector('.swiper');
+
+    // Crée une instance de Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        // Le div est dans le viewport
+            // Initialiser le Swiper
+            const swiper = new Swiper(swiperContainer, {
+                modules: [Autoplay],
+                spaceBetween: 24,
+                slidesPerView: 4,
+                loop: true,
+                speed: 4000,
+                grabCursor: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    enabled: true,
+                },
+                breakpoints: {
+                    768: { slidesPerView: 5 },
+                    1280: { slidesPerView: 10 },
+                },
+            });
+
+            // console.log('ici');
+
+        } else {
+            // Le div n'est plus visible
+            console.log('Le div est hors du viewport');
+
+            if(typeof swiper !== 'undefined' && swiper !== null) {
+                swiper.autoplay.stop();
             }
-        });
+
+        }
+    });
+    }, {
+        rootMargin: '0px 0px 200px 0px'
     });
 
-    // Observer chaque conteneur de logo
-    logoContainers.forEach(container => observer.observe(container));
+    // if (swiper) {
+    //     // Observer le conteneur swiper pour gérer l'autoplay
+    //     const swiperObserver = new IntersectionObserver(entries => {
+    //         entries.forEach(entry => {
+    //             entry.isIntersecting ? swiper.autoplay.start() : swiper.autoplay.stop();
+    //         });
+    //     });
+    // }
 
-    // Observer le conteneur swiper pour gérer l'autoplay
-    const swiperObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            entry.isIntersecting ? swiper.autoplay.start() : swiper.autoplay.stop();
-        });
-    });
+    // Commence à observer le div
+    observer.observe(targetDiv);
 
-    swiperObserver.observe(swiperContainer);
+
+    // swiperObserver.observe(swiperContainer);
 });
