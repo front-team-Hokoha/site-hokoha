@@ -27,7 +27,7 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
 <div class="col col-3 col--sm-4 col--md-5 appear">
     <div class={`cartoucheMembre flex-grid ${orientation}`}>
 
-        <div class="col col-1 col--md-2">
+        <div class="col col-1 col--md-1">
            
             <div class="membre__portrait">
             {imageMetadata && (
@@ -42,8 +42,8 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
         </div>
 
         <div class="col col-2 col--sm-2 col--md-3 membre__attributs">
-            {mission && <h3 class="oka-h -sm -secondary -crop">{mission}</h3>}
-            {role && <p class="oka-h -sm -crop ">{role}</p>}
+            {mission && <h3 class="oka-h -xs -secondary -crop">{mission}</h3>}
+            {role && <p class="oka-h -xs -crop ">{role}</p>}
             {nom && <p class="oka-h -sm  -crop">{nom}</p>}
         </div>
     </div>

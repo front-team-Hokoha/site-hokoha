@@ -15,19 +15,67 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 
     <div class="col col-5">
         <div class="oka-spacer -sm"></div>
-        <p class="oka-h -lg">Hokoha se distingue par son expertise polyvalente, couvrant plusieurs domaines clés du développement technologique.</p>
+        <p class="oka-h -lg -crop">Hokoha se distingue par son <span class="highlighted-text">expertise polyvalente</span>, couvrant plusieurs domaines clés du développement technologique.</p>
+    
+    
     </div>
 
-  
+  <style>
+.highlighted-text {
+
+    position: relative;
+    z-index:1;
+ 
+}
+
+.highlighted-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 0.5em;
+    width: 100%;
+    background: yellow;
+    transform: scaleX(0); /* Initialement masqué */
+    transform-origin: left;
+    transition: transform 0.5s ease; /* Ajoute une transition pour l’effet de surlignage */
+    z-index: -1; /* Derrière le texte */
+}
+
+/* Classe pour activer le surlignage */
+.highlighted-text.active::before {
+    transform: scaleX(1); /* Le surlignage apparaît */
+}
+
+  </style>
+
+
+<script>
+const texts = document.querySelectorAll('.highlighted-text');
+
+window.addEventListener('scroll', () => {
+    const triggerPoint = window.innerHeight * (2 / 3);
+
+    texts.forEach((text) => {
+        const textPosition = text.getBoundingClientRect();
+
+        // Ajoute la classe active quand le haut de l'élément atteint les deux tiers de la fenêtre
+        if (textPosition.top <= triggerPoint) {
+            text.classList.add('active');
+        }
+    });
+});
+</script>
 </div>
 
 
 
-<div class="flex-grid oka-flex -zzrvrs">
+<div class="flex-grid oka-flex -rvrs">
 
-    <div class="col col-5">
-      </div>
-    <div class="col col-1"></div>
+    <div class="col col-5"></div>
+
+    <div class="col col-1 oka-show--lg"></div>
+
     <div class="col col-10">
         <div class="flex-grid">
         <Expertise
@@ -46,13 +94,14 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 
         </div>
     </div>
+    
 </div>
 
 
 <hr class="oka-divider ">
 <div class="oka-spacer -md"></div>
 
-<div class="flex-grid oka-flex -rvrs">
+<div class="flex-grid oka-flex -zzrvrs">
 
     <div class="col col-5">
         <p class="oka-text">Notre équipe maîtrise l'ensemble du processus de conception et de développement, de l'analyse des besoins à la mise en œuvre des solutions.</p>
@@ -84,7 +133,7 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 <hr class="oka-divider ">
 <div class="oka-spacer -md"></div>
 
-<div class="flex-grid oka-flex -rvrs">
+<div class="flex-grid oka-flex -zzrvrs">
 
     <div class="col col-5">
         
@@ -117,7 +166,7 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 <hr class="oka-divider ">
 <div class="oka-spacer -md"></div>
 
-<div class="flex-grid oka-flex -rvrs">
+<div class="flex-grid oka-flex -zzrvrs">
 
     <div class="col col-5">
         <TechnoWeb />
@@ -153,7 +202,7 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 <div class="oka-spacer -md"></div>
 
 
-<div class="flex-grid oka-flex -rvrs">
+<div class="flex-grid oka-flex -zzrvrs">
 
     <div class="col col-5">
 

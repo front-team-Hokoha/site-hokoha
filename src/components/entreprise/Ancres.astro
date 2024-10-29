@@ -1,61 +1,3 @@
-<style lang="scss">
-
-@import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
-
-@function transparentize-css-var($color, $alpha) {
-  @return rgba($color, $alpha);
-}
-
-
-.sticky {
-    position:sticky;
-    z-index:10;
-    top:4rem;
-}
-
-
-.oka-bt {
-    background : var(--ancre-fd);
-    border:1px solid rgba(0,0,0,0.1);
-
-
-
-
-}
-
-
-
-.oka-ancres{
-
- 
-    height: 4rem;
-
-    display:flex;
-    align-items: center;
-    gap:0.5rem;
-
-    backdrop-filter: blur(3px); /* Applique le flou à l'arrière-plan */
-    
-    //overflow: auto;
-
-
-
-
-    &:before {
-        content:'';
-        position:absolute;
-        left:-1rem;
-        right:-1rem;
-        height:100%;
-
-        background-color: var(--oka-color-app-bg-default);
-        opacity: 0.9;
-       
-    }
-
-}
-</style>
-
 
 <div class="oka-spacer -lg"></div>
 
@@ -100,3 +42,62 @@
 
 
     
+<style lang="scss">
+
+    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+    
+    @function transparentize-css-var($color, $alpha) {
+      @return rgba($color, $alpha);
+    }
+    
+    
+    .sticky {
+        position:sticky;
+        z-index:10;
+        top:4rem;
+    }
+    
+    
+    .oka-bt {
+        background : var(--ancre-fd);
+        border:1px solid rgba(0,0,0,0.1);
+    
+        &__lbl {
+            font-size:0.6rem;
+        }
+    
+    
+    }
+    
+    
+    
+    .oka-ancres{
+    
+     
+        height: 4rem;
+    
+        display:flex;
+        align-items: center;
+        gap:0.5rem;
+    
+        backdrop-filter: blur(3px); /* Applique le flou à l'arrière-plan */
+        
+        //overflow: auto;
+    
+    
+    
+    
+        &:before {
+            content:'';
+            position:absolute;
+            left:-1rem;
+            right:-1rem;
+            height:100%;
+    
+            background-color: var(--oka-color-app-bg-default);
+            opacity: 0.9;
+           
+        }
+    
+    }
+    </style>

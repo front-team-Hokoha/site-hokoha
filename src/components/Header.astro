@@ -4,43 +4,17 @@ const { currentPage } = Astro.props; // Récupérer le nom de la page courante
 
 <!-- Header -->
 
-<style lang="scss">
-
-@import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
-
-header{
-    position:sticky;
-    top:0;
-    z-index: 20;
-}
-
-.oka-burger__ctnr {
-    top: 0;
-}
-
-.oka-burger__content {
-    
-    // justify-content: flex-end;
-    // padding-bottom:5rem;
-    // @include breakpoint(md) {
-    //     justify-content: flex-start;
-    //     padding-bottom:0;
-    // }
-
-}
-</style>
 
 <header>
-
     <!-- HEADER -->
-    <div class="oka-appbar layout-app__header zzoka-shadow-2" style="position:relative">
+    <div class="oka-appbar layout-app__header" style="position:relative">
         <div class="zzoka-appbar__row oka-app-wrap -fluid">
             <div class="flex-grid ">
 
-                <div class="col col-1">
+                <div class="col col-1 oka-show--lg">
                 </div>
 
-                <div class="col col-4">
+                <div class="col col-2 col--sm-4 col--md-4">
                     <section class="oka-appbar__left">
                     
                         <a href="/site-hokoha/" class="oka-logo">
@@ -59,7 +33,7 @@ header{
                     </section>
                 </div>
 
-                <div class="col col-10">
+                <div class="col col-2 col--sm-4 col--md-12 col--lg-10">
                     <section class="oka-appbar__right">
                         
                         <nav class="oka-burger">
@@ -152,3 +126,35 @@ header{
     </div>
 </header>
 
+
+
+<style lang="scss">
+
+    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+    
+    header{
+        position:sticky;
+        top:0;
+        z-index: 20;
+    }
+    
+
+    .oka-appbar__left,
+    .oka-appbar__right{
+        padding-top:1rem;
+    }
+    .oka-burger__ctnr {
+        top: 0;
+    }
+    
+    .oka-burger__content {
+        
+        // justify-content: flex-end;
+        // padding-bottom:5rem;
+        // @include breakpoint(md) {
+        //     justify-content: flex-start;
+        //     padding-bottom:0;
+        // }
+    
+    }
+    </style>
