@@ -8,6 +8,9 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Credits from '../components/Credits.astro';
 
+// Importez la fonction d'initialisation Lenis
+import { initLenis } from '../components/lenis'
+
 // Reception des props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
 const { description } = Astro.props;
@@ -124,6 +127,16 @@ const { pageClass } = Astro.props;
         <!-- {# FONTAWESOME #} 
         <script is:inline data-astro-rerun src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
         -->
+
+        <script >
+            import { initLenis } from '../components/lenis';
+            //document.addEventListener('DOMContentLoaded', initLenis); // Initialise Lenis une fois la page chargée
+            document.addEventListener('astro:page-load', () => {
+                initLenis();
+            })
+
+         </script>
+
 
       <script  is:inline data-astro-rerun >
 
@@ -271,37 +284,7 @@ const { pageClass } = Astro.props;
         </script>
 
 
-<script  is:inline data-astro-rerun >
-    // util_scroll-v1.js
-    // UTILITAIRE : autour du scroll
-    // version : 2
-    // revision 2 :15/06/2019 - Ajout fonction amélioration des performance de scroll
-    // Révision : 11/06/2019
 
-    // Améliore les performance de scroll : evite des evennement de souris lors du scroll
-    // livre : Css3 Pratique du design web (Eyrolles) pag : 180
-    
-    document.addEventListener('astro:page-load', () => {
-    //(function() {
-        var body = document.body
-        var defaultPE = body.style.pointerEvents
-        var timer
-
-        window.addEventListener('scroll', function() {
-            clearTimeout(timer);
-
-            if (body.style.pointerEvents !== 'none') {
-                body.style.pointerEvents = 'none'
-            }
-            timer - setTimeout(function() {
-                body.style.pointerEvents = defaultPE;
-            }, 500)
-
-        }, false)
-    //}())
-    });
-
-    </script>
 
     <script>
 
