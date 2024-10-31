@@ -1,1 +1,0 @@
-import"./ViewTransitions.astro_astro_type_script_index_0_lang.TEE2o9nO.js";import"https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js";const e=document.querySelectorAll(".highlighted-text");window.addEventListener("scroll",()=>{const i=window.innerHeight*.6666666666666666;e.forEach(t=>{t.getBoundingClientRect().top<=i&&t.classList.add("active")})});
