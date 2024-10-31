@@ -1,1 +1,0 @@
-import"./hoisted.Canke1fA.js";const e=document.querySelectorAll(".highlighted-text");window.addEventListener("scroll",()=>{const i=window.innerHeight*.6666666666666666;e.forEach(t=>{t.getBoundingClientRect().top<=i&&t.classList.add("active")})});
