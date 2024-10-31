@@ -8,14 +8,17 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Credits from '../components/Credits.astro';
 
-// Importez la fonction d'initialisation Lenis
-import { initLenis } from '../components/lenis'
 
 // Reception des props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
 const { description } = Astro.props;
 const { pageName } = Astro.props;
 const { pageClass } = Astro.props;
+
+
+
+
+
 
 
 ---
@@ -48,190 +51,6 @@ const { pageClass } = Astro.props;
                 overflow-x: hidden;
             }
             
-            .hx {
-            background: none;
-            color: var(--color-highlight-start);
-            display: inline-block;
-            position: relative;
-            white-space: nowrap;
-            }
-            
-            .hx-3 {
-            --color-highlight-end: #d686c1;
-            }
-            
-            .hx-4 {
-            --color-highlight-end: #49af42;
-            --color-highlight-end-alt: #4252af;
-            }
-            
-            .hx-5 {
-            display: inline-flex;
-            --after-scale: 1;
-            --color-bg-highlight: #6a5ace;
-            --color-highlight-start: #e1def4;
-            }
-            
-            .hx-5::after {
-            content: '';
-            left: -2.5%;
-            top: 10%;
-            bottom: -7.5%;
-            position: absolute;
-            z-index: -1;
-            width: 105%;
-            transform: scale3D(var(--after-scale),var(--after-scale),var(--after-scale));
-            background: var(--color-bg-highlight);
-            border-radius: 8px;
-            }
-            
-            .hx-6 {
-            display: inline-flex;
-            --after-width: 0%;
-            --after-width-final: 105%;
-            --color-bg-highlight: #dc764c;
-            --color-highlight-start: #fadabd;
-            }
-            
-            .hx-6::after {
-            content: '';
-            left: -2.5%;
-            top: 15%;
-            bottom: -10.5%;
-            position: absolute;
-            z-index: -1;
-            width: var(--after-width);
-            background: var(--color-bg-highlight);
-            border-radius: 8px;
-            }
-            
-            .hx-7 {
-            --after-height: 0%;
-            --after-height-final: 100%;
-            --color-bg-highlight: #437745;
-            --color-highlight-start: #d2f2d3;
-            }
-            
-            .hx-7::after {
-            content: '';
-            left: -2.5%;
-            top: 10%;
-            position: absolute;
-            z-index: -1;
-            width: 105%;
-            height: var(--after-height);
-            background: var(--color-bg-highlight);
-            border-radius: 8px;
-            }
-            
-            .hx-8 {
-            --color-highlight-end: #c3c58c;
-            }
-            
-            .hx-9 {
-            --color-highlight-start: rgb(84 77 73 / 61%);
-            --color-highlight-end: var(--color-text);
-            }
-            
-            .hx-9 .word:first-child {
-            position: absolute;
-            --color-highlight-end: #a86088;
-            color: var(--color-highlight-end);
-            }
-            
-            .hx-10 {
-            --color-highlight-start: var(--color-text);
-            }
-            
-            .hx-10 .word {
-            position: absolute;
-            }
-            
-            .hx-10 .word:last-child {
-            position: relative;
-            }
-            
-            .hx-flip {
-            font-size: clamp(2rem,20vw,22rem);
-            margin: 0;
-            position: relative;
-            }
-            
-            .hx-flip__inner,
-            .hx-flip__placeholder {
-            font-weight: 200;
-            background: none;
-            color: inherit;
-            display: inline-block;
-            }
-            
-            .hx-flip__placeholder,
-            .hx__placeholder {
-            opacity: 0;
-            }
-            
-            .hx-flip__inner {
-            position: absolute;
-            left: 0;
-            top: 0;
-            }
-            
-            .word,
-            .word > .char {
-            display: inline-block;
-            }
-            
-            .hx-12 {
-            --color-highlight-start: rgb(84 77 73 / 61%);
-            --color-highlight-end: #fff;
-            }
-            
-            .hx-12 .word:nth-child(n+2) {
-            position: absolute;
-            top: 0;
-            left: 0;
-            --color-highlight-end: #fff;
-            color: var(--color-highlight-end);
-            }
-            
-            .hx-13 {
-            position: relative;
-            --select-width: 0%;
-            --select-width-final: 103%;
-            --color-highlight-start: var(--color-text);
-            }
-            
-            .hx__select {
-            position: absolute;
-            width: var(--select-width);
-            height: 100%;
-            left: -1%;
-            top: 10%;
-            background: rgb(109 215 230 / 14%);
-            mix-blend-mode: plus-lighter;
-            }
-            
-            .hx__select::before,
-            .hx__select::after {
-            content: '';
-            position: absolute;
-            top: -0.125em;
-            left: -0.075em;
-            width: 0.155em;
-            height: calc(100% + 0.1275em);
-            background: url(../assets/img/select.svg) no-repeat 0 0;
-            background-size: auto 100%;
-            }
-            
-            .hx__select::after {
-            transform: scaleY(-1);
-            left: auto;
-            right: -0.075em;
-            top: auto;
-            bottom: -0.125em;
-            }
-            
-            
         </style>
 
         <base href="/site-hokoha/">
@@ -242,16 +61,8 @@ const { pageClass } = Astro.props;
     <body class={`oka-lightMode page-${pageClass}`} >
         <div id="root" class="layout-app">
             
-            <!-- <div class="heightPointGrid"></div> -->
-
-           
-
-            
             <Header  currentPage={pageName} />
             <slot name="hero" />
-
-            
-            
 
             <!-- Corps de page -->
             <div class="layout-app__body oka-surface" style="margin-top:0">
@@ -266,7 +77,7 @@ const { pageClass } = Astro.props;
                     <!-- Contenu Secondaire -->
                     <slot name="secondary" />
 
-                    <!--  -->
+                    <!-- Contenu CTA -->
                     <slot name="next" />
 
                 </main> 
@@ -279,9 +90,6 @@ const { pageClass } = Astro.props;
                 </footer>
             </div> 
 
-
-           
-            
             <slot name="modal" />
            
             <!-- Grid Preview -->
@@ -312,166 +120,162 @@ const { pageClass } = Astro.props;
                 </div>
             </div>
 
-      </div>
+        </div>
 
-        <!-- {# FONTAWESOME #} 
-        <script is:inline data-astro-rerun src="https://kit.fontawesome.com/b4f3e09537.js" crossorigin="anonymous"></script>
-        -->
+      
 
-        <script >
-            import { initLenis } from '../components/lenis';
-            //document.addEventListener('DOMContentLoaded', initLenis); // Initialise Lenis une fois la page chargée
+        <script>
+            import { initLenis } from '../scripts/lenis';
             document.addEventListener('astro:page-load', () => {
                 initLenis();
             })
+        </script>
 
-         </script>
+
+        <script is:inline data-astro-rerun >
+        
+        /**
+        * Get the value of a cookie
+        * Source: https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
+        * @param  {String} name  The name of the cookie
+        * @return {String}       The cookie value
+        */
+        /*
+        https://stackoverflow.com/questions/5671451/creating-a-javascript-cookie-on-a-domain-and-reading-it-across-sub-domains
+        */
+        function getCookie (name) {
+            let value = `; ${document.cookie}`;
+            let parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
 
 
-      <script  is:inline data-astro-rerun >
 
-        // Script de  déclencgement d'affichage des elements par apparition
-        document.addEventListener('astro:page-load', () => {
+        function setCookieMode () {
             
-            //document.addEventListener("DOMContentLoaded", () => {
-            const elements = document.querySelectorAll('.appear');
+            var cookieName = 'mode';   
+            var myDate = new Date();
+            myDate.setMonth(myDate.getMonth() + 12);
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Ajoute un délai avant de commencer l'animation après l'entrée dans le viewport
-                        const delay = 200; // Délai en ms avant de commencer l'animation (par exemple, 500ms)
-                        setTimeout(() => {
-                        
-                            // Ajoute un décalage entre les animations avec setTimeout
-                            setTimeout(() => {
-                            entry.target.classList.add('visible');
-                            }, index * 300); // 200ms de décalage entre chaque élément
-                            observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
-                        }, delay);
-                    }
-                    });
-            });
+            if (document.body.classList.contains('oka-darkMode')){
+                var cookieValue = 'dark';
+            }else{
+                var cookieValue = 'light';
+            }
+            document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate + ";path=/";
 
-            elements.forEach(element => {
-                observer.observe(element);
-            });
-            //});
-
-        })
+        }
 
 
-        // Script de  déclencgement d'affichage des elements par apparition
-        document.addEventListener('astro:page-load', () => {
+        function applyMode (){
+
+            let mode =  getCookie('mode')
+            if (mode=='dark'){
+                document.body.classList.add('oka-darkMode');
+                document.body.classList.remove('oka-lightMode');
+            }else{
+                document.body.classList.remove('oka-darkMode');
+                document.body.classList.add('oka-lightMode');
+            }
+
+        }
             
-            //document.addEventListener("DOMContentLoaded", () => {
-            const elements = document.querySelectorAll('.appear-fade');
+        applyMode(); 
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Ajoute un délai avant de commencer l'animation après l'entrée dans le viewport
-                        const delay = 200; // Délai en ms avant de commencer l'animation (par exemple, 500ms)
-                        setTimeout(() => {
-                        
-                            // Ajoute un décalage entre les animations avec setTimeout
-                            setTimeout(() => {
-                            entry.target.classList.add('visible');
-                            }, index * 300); // 200ms de décalage entre chaque élément
-                            observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
-                        }, delay);
-                    }
-                    });
-            });
+        function setCookieShowGrid () {
+            var cookieName = 'showGrid';   
+            var myDate = new Date();
+            myDate.setMonth(myDate.getMonth() + 12);
+            if (document.body.classList.contains('showGrid')){
+                //document.cookie = 'showGrid=true;';
+                var cookieValue = 'true';
+            }else{
+                //document.cookie = 'showGrid=false;';
+                var cookieValue = 'false';
+            }
+            document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate + ";path=/";
+        }
 
-            elements.forEach(element => {
-                observer.observe(element);
-            });
-            //});
 
-        })
+        function applyShowGrid (){
+            let showGrid =  getCookie('showGrid')
+            if (showGrid=='true'){
+                document.body.classList.add('showGrid');
+            }else{
+                document.body.classList.remove('showGrid');
+            }
+        }
+            
+        applyShowGrid();
+        </script>
 
-      </script>
 
         <script  is:inline data-astro-rerun >
-            /**
-            * Get the value of a cookie
-            * Source: https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
-            * @param  {String} name  The name of the cookie
-            * @return {String}       The cookie value
-            */
-            /*
-            https://stackoverflow.com/questions/5671451/creating-a-javascript-cookie-on-a-domain-and-reading-it-across-sub-domains
-            */
-            function getCookie (name) {
-                let value = `; ${document.cookie}`;
-                let parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            }
 
-
-
-            function setCookieMode () {
+            // Script de  déclencgement d'affichage des elements par apparition
+            document.addEventListener('astro:page-load', () => {
                 
-                var cookieName = 'mode';   
-                var myDate = new Date();
-                myDate.setMonth(myDate.getMonth() + 12);
+                //document.addEventListener("DOMContentLoaded", () => {
+                const elements = document.querySelectorAll('.appear');
 
-                if (document.body.classList.contains('oka-darkMode')){
-                    var cookieValue = 'dark';
-                }else{
-                    var cookieValue = 'light';
-                }
-                document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate + ";path=/";
-           
-            }
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Ajoute un délai avant de commencer l'animation après l'entrée dans le viewport
+                            const delay = 200; // Délai en ms avant de commencer l'animation (par exemple, 500ms)
+                            setTimeout(() => {
+                            
+                                // Ajoute un décalage entre les animations avec setTimeout
+                                setTimeout(() => {
+                                entry.target.classList.add('visible');
+                                }, index * 300); // 200ms de décalage entre chaque élément
+                                observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
+                            }, delay);
+                        }
+                        });
+                });
 
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+                //});
+
+            })
             
-            function applyMode (){
-           
-                let mode =  getCookie('mode')
-                if (mode=='dark'){
-                    document.body.classList.add('oka-darkMode');
-                    document.body.classList.remove('oka-lightMode');
-                }else{
-                    document.body.classList.remove('oka-darkMode');
-                    document.body.classList.add('oka-lightMode');
-                }
 
-            }
+            // Script de  déclencgement d'affichage des elements par apparition
+            document.addEventListener('astro:page-load', () => {
                 
-            applyMode(); 
+                //document.addEventListener("DOMContentLoaded", () => {
+                const elements = document.querySelectorAll('.appear-fade');
 
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Ajoute un délai avant de commencer l'animation après l'entrée dans le viewport
+                            const delay = 200; // Délai en ms avant de commencer l'animation (par exemple, 500ms)
+                            setTimeout(() => {
+                            
+                                // Ajoute un décalage entre les animations avec setTimeout
+                                setTimeout(() => {
+                                entry.target.classList.add('visible');
+                                }, index * 300); // 200ms de décalage entre chaque élément
+                                observer.unobserve(entry.target); // Arrête d'observer une fois l'élément visible
+                            }, delay);
+                        }
+                        });
+                });
 
-            function setCookieShowGrid () {
-                var cookieName = 'showGrid';   
-                var myDate = new Date();
-                myDate.setMonth(myDate.getMonth() + 12);
-                if (document.body.classList.contains('showGrid')){
-                    //document.cookie = 'showGrid=true;';
-                    var cookieValue = 'true';
-                }else{
-                    //document.cookie = 'showGrid=false;';
-                    var cookieValue = 'false';
-                }
-                document.cookie = cookieName +"=" + cookieValue + ";expires=" + myDate + ";path=/";
-            }
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+                //});
 
-            function applyShowGrid (){
-                let showGrid =  getCookie('showGrid')
-                if (showGrid=='true'){
-                    document.body.classList.add('showGrid');
-                }else{
-                    document.body.classList.remove('showGrid');
-                }
-            }
-                
-            applyShowGrid();
-
-
-
-
+            })
         </script>
+
+
+ 
 
 
 
