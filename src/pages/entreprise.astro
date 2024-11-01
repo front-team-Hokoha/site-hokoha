@@ -24,6 +24,9 @@ const article = articles[0];
 // Variables Globales passées au Layout
 const pageName = "Entreprise";
 const pageClass = "entreprise";
+
+
+
 ---
 
 <LayoutClassic 
@@ -222,3 +225,15 @@ const pageClass = "entreprise";
         }
     }
 </style>
+
+
+<!-- EFFET DE HIGHLIGHT -->
+<script>
+
+    import { initializeHighlight } from '../assets/js/index.js';
+
+    document.addEventListener("astro:page-load", () => {
+        initializeHighlight();
+    });
+
+</script>

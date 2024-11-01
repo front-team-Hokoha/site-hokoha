@@ -9,6 +9,9 @@ import Header from '../components/Header.astro';
 import Credits from '../components/Credits.astro';
 
 
+
+
+
 // Reception des props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
 const { description } = Astro.props;
@@ -403,15 +406,9 @@ const { pageClass } = Astro.props;
       document.onkeydown = KeyPress;
     </script>
 
-    <script>
 
-        import { initializeEffects } from '../assets/js/index.js';
 
-        document.addEventListener("astro:page-load", () => {
-            initializeEffects();
-        });
 
-    </script>
 
   </body>
 </html>
