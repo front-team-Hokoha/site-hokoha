@@ -15,11 +15,54 @@ import TechnoAnnexe from '../../components/technologie/TechnoAnnexe.astro';
 
     <div class="col col-5" style="backdrop-filter: blur(3px); padding-bottom:8rem;">
         <div class="oka-spacer -sm"></div>
-        <p class="oka-h -lg -crop">Hokoha se distingue par son <mark class="hx hx-13"><span class="hx__select"></span>expertise polyvalente</mark>, couvrant plusieurs domaines clés du développement technologique.</p>
+        <p class="oka-h -lg -crop">Hokoha se distingue par son <mark class="hx hx-13"><span class="hx__select"></span>expertise polyvalente</mark>, couvrant les domaines clés du développement technologique.</p>
+    
+    
+<style >
+
+    #accroches {
+        position:absolute;
+
+    
+       
+    
+        
+    }
+
+    .accroche{
+            --color-dotteds-rgb : rgba(0,0,0,0.15);
+            position: relative;
+            text-decoration: none; /* Retire l'underline par défaut */
+    
+            border-bottom:1px solid rgba(0,0,0,0.15);
+            border:1px solid red !important;
+            
+        }
+        p::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Place la ligne juste sous le texte */
+            width: 100%;
+            height: 2px; /* Épaisseur de la ligne */
+            background-color: currentColor; /* Utilise la couleur du texte */
+            transform: scaleX(0); /* Cache la ligne par défaut */
+            transform-origin: bottom right; /* Point de départ de l'animation */
+            transition: transform .6s cubic-bezier(.075,.82,.165,1);/* Animation douce */
+        }
+    
+        p:hover::after {
+            transform: scaleX(1); /* Affiche la ligne de gauche à droite au survol */
+            transform-origin: bottom left; /* L'animation se déroule de gauche à droite */
+        }
+    </style>
+        <div id="accroches"></div>
     </div>
 
+    
 </div>
 
+    
 
 
 <div class="flex-grid oka-flex">
