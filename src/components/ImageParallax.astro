@@ -1,0 +1,100 @@
+---
+
+import OkaImage from '../components/Image.astro';
+
+
+interface Props {
+    imgImport: ImageMetadata;
+ 
+  alt?: string; // Texte alternatif pour l'image
+  width?: number; // Largeur de l'image
+  height?: number; // Hauteur de l'image
+  containerHeight?: string; // Hauteur du conteneur (par défaut à 500px)
+ 
+}
+
+const { imgImport,alt,width,height,containerHeight  } = Astro.props;
+
+
+---
+
+  
+
+  
+
+<div class="parallax-image-container" style={`--height: ${containerHeight}`}>   
+    <OkaImage src={imgImport} 
+        alt={alt} 
+        imgHeight="auto"
+        imgWidth="100%" 
+        className="parallax-image" 
+        />
+</div>
+
+
+<style>
+
+    /* Ne Marche pas car ici parallax-image n'existe pas encore */
+    /*.parallax-image {
+        border:1px solid orange !important;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: translateY(20px);
+      }*/
+
+
+
+    .parallax-image-container {
+        position: relative;
+        overflow: hidden;
+        height: var(--height);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+    }
+    
+      
+
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+        
+        const images = document.querySelectorAll('.parallax-image');
+    
+        images.forEach((imgElement) => {
+        // Animation d'apparition au scroll
+        // gsap.to(imgElement, {
+        //     opacity: 1,
+        //     y: 200,
+        //     duration: 10,
+        //     ease: "power2.out",
+        //     scrollTrigger: {
+        //     trigger: imgElement,
+        //     start: "top 80%", // Quand l'image entre dans le viewport
+        //     toggleActions: "play none none none"
+        //     }
+        // });
+
+        // Effet de parallaxe
+        gsap.to(imgElement, {
+            y: "20%",
+            scrollTrigger: {
+            trigger: imgElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+            }
+        });
+        });
+    });
+  </script>
+  

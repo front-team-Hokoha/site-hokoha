@@ -55,12 +55,62 @@ html.lenis, html.lenis body {
     pointer-events: none;
   }
 
+  #accroches {
+    position:absolute;
 
-.accroche {
-    display: inline-block;
-    border:1px solid red !important;
+    display: flex ;
+    flex-direction: column;
 
+    padding-top:2rem;
+   
+
+    
 }
+
+.accroche{
+        --color-dotteds-rgb : rgba(0,0,0,0.15);
+
+        display : inline;
+        position: relative;
+        text-decoration: none; /* Retire l'underline par défaut */
+
+        border-bottom:1px solid rgba(0,0,0,0.15);
+        //border:1px solid red !important;
+        cursor: pointer;
+        
+    }
+    .accroche::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px; /* Place la ligne juste sous le texte */
+        width: 100%;
+        height: 2px; /* Épaisseur de la ligne */
+        background-color: currentColor; /* Utilise la couleur du texte */
+        transform: scaleX(0); /* Cache la ligne par défaut */
+        transform-origin: bottom right; /* Point de départ de l'animation */
+        transition: transform .6s cubic-bezier(.075,.82,.165,1);/* Animation douce */
+    }
+
+    .accroche:hover::after {
+        transform: scaleX(1); /* Affiche la ligne de gauche à droite au survol */
+        transform-origin: bottom left; /* L'animation se déroule de gauche à droite */
+    }
+
+
+    .parallax-image {
+        //border:1px solid green !important;
+        // width: 100%;
+        // height: 100%;
+        // object-fit: cover;
+        opacity: 1;
+        //transform: translateY(20px);
+        position: absolute;
+        top: -30%; /* Décalage vers le haut pour permettre l'effet de parallaxe */
+        width: 100%;
+        height: 140%; /* Taille agrandie pour remplir le conteneur avec l'effet */
+        object-fit: cover;
+      }
 
 // Flip
 

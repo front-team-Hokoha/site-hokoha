@@ -27,13 +27,12 @@ const image = await getImage({
 ---
 
 <img
-  src={image.src}                    // Source de l'image
-  srcset={image.srcSet}              // Liste des sources optimisées
-  sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"  // Tailles d'écran
-  width={imgWidth || image.width}    // Largeur spécifiée ou générée automatiquement
-  height={imgHeight || 'auto'}       // Hauteur spécifiée ou auto
-  alt={alt}                          // Texte alternatif
-  loading="lazy"                     // Lazy loading activé
-  class={className}                  // Classe CSS passée en prop
-  style={style}                      // Styles en ligne passés en prop
+  src={image.src}                               
+  sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"  
+  width={imgWidth || undefined}                  
+  height={imgHeight || undefined}                
+  alt={alt}                                      
+  loading="lazy"                                 
+  class={className}                              
+  style={style}                                 
 />

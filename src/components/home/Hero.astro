@@ -1,13 +1,13 @@
 ---
-import Image from '../../components/Image.astro';
+import OkaImage from '../../components/Image.astro';
 
-import logoImage from '../../assets/img/Logokoha-couv-simple.png';
+import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 ---
 
 
 <div class="oka-hero oka-darkMode oka-showGrid">
     
-    <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="" volume="0" poster="">
+    <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="true"  poster="">
         <!-- <source src="/assets/video/video0.mp4" type="video/mp4"> -->
         <!-- <source src="assets/video/fondCodeSource1.mp4" type="video/mp4"> -->
         <!-- <source src="assets/video/fondCodeSource2.mp4" type="video/mp4"> -->
@@ -35,7 +35,7 @@ import logoImage from '../../assets/img/Logokoha-couv-simple.png';
                 <div class="oka-spacer -xl"></div>
                 
                 
-                <Image src={logoImage} 
+                <OkaImage src={logoImageImport} 
                     alt="Logotype de la société Hokoha Développement informatique" 
                     imgHeight="80"
                     imgWidth="418" 
