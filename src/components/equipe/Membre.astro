@@ -1,5 +1,7 @@
 ---
 
+// import ImageParallax from '../ImageParallax.astro';
+
 interface Props {
     nom: string
     role: string;
@@ -24,12 +26,18 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
 
 ---
 
+
+
 <div class="col col-3 col--sm-4 col--md-4 appear">
     <div class={`cartoucheMembre flex-grid ${orientation}`}>
 
         <div class="col col-1 col--md-1">
            
             <div class="membre__portrait">
+
+            <!-- <ImageParallax imgImport={imageMetadata.default}  alt={`Hokoha Développement : ${nom}`} width={20} height={10} containerHeight="10rem" /> -->
+
+
             {imageMetadata && (
                 <Image  
                 src={imageMetadata.default}

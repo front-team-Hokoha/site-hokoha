@@ -149,6 +149,7 @@
     
     .hx-13 {
     position: relative;
+    z-index: 2;
     --select-width: 0%;
     --select-width-final: 103%;
     --color-highlight-start: var(--color-text);
@@ -160,7 +161,8 @@
     height: 100%;
     left: -1%;
     top: 10%;
-    background:rgb(255 255 6 / 74%); // Fd du stabilo
+   // background:rgb(255 255 6 / 74%); // Fd du stabilo
+    background: rgba(6,69,255,0.15);
     mix-blend-mode: plus-lighter;
     }
     

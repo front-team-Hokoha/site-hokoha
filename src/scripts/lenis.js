@@ -17,7 +17,24 @@ export function initLenis() {
     requestAnimationFrame(raf)
   }
 
-  requestAnimationFrame(raf)
+
+  requestAnimationFrame(raf);
+
+
+  // Gérer les clics sur les ancres pour le smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      alert('dfd')
+      e.preventDefault(); // Empêche le comportement de scroll par défaut
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        lenis.scrollTo(targetElement); // Utiliser Lenis pour scroller
+      }
+    });
+  });
 }
 
 

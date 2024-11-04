@@ -7,28 +7,29 @@ interface Props {
 
   theme: string;
 	titre: string;
+  link: string;
   description: string;
   imgImport: ImageMetadata;
 
 }
 
-const { theme,titre, description,imgImport } = Astro.props;
+const { theme,titre, link, description,imgImport } = Astro.props;
 
 ---
 
 
 
-<div class=" appear  oka-expertise" data-accroche={titre}>
+<div class="   oka-expertise" data-accroche={link}>
   <div class="flex-grid">
 
     <div class="col col-1"></div>
 
     <div class="col col-4">
       <div class="oka-spacer -md"></div>
-      <p class="oka-text -sm" >{theme}</p>
-      <h3 class="oka-h -md noto-serif  -crop">{titre}</h3>
+      <p class="oka-text -sm appear" >{theme}</p>
+      <h3 class="oka-h -md noto-serif  -crop appear">{titre}</h3>
       <div class="oka-spacer -xs"></div>
-      <p class="oka-text -lg">{description}</p>
+      <p class="oka-text -lg appear">{description}</p>
     </div>
 
     <div class="col col-4" >

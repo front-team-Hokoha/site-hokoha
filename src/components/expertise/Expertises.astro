@@ -2,6 +2,9 @@
 // Composant
 import Expertise from '../../components/expertise/Expertise.astro';
 
+//import OkaImage from '../../components/Image.astro';
+import { Image } from 'astro:assets';
+
 /*
 Composants inutilisés
 import TechnoWeb from '../../components/technologie/TechnoWeb.astro';
@@ -17,24 +20,48 @@ import DesignImageImport from '../../assets/img/expertise/uxdesign.jpg';
 import DevImageImport from '../../assets/img/expertise/developpement.jpg';
 import ErpImageImport from '../../assets/img/expertise/erp.jpg';
 
-
+import souris from '../../assets/img/expertise/souris.jpg';
 ---
 
-<div class="flex-grid oka-flex" style="position:sticky; top : 12rem; z-index:2">
+<div class="flex-grid oka-flex oka-expertise__head">
     <div class="col col-1 oka-show--lg"></div>
 
-    <div class="col col-1"><h2 class="oka-text -xs ">2.<br />NOTRE EXPERTISE</h2>
+    <div class="col col-1">
+        <h2 class="oka-text -xs ">2.<br />NOTRE EXPERTISE</h2>
     </div>
 
-    <div class="col col-5" style="backdrop-filter: blur(3px); padding-bottom:8rem;">
+    <div class="col col-5 oka-expertise__intro">
         <div class="oka-spacer -sm"></div>
         <p class="oka-h -lg -crop">Hokoha se distingue par son <mark class="hx hx-13"><span class="hx__select"></span>expertise polyvalente</mark>, couvrant les domaines clés du développement technologique.</p>
     
         <div id="accroches"></div>
     </div>
-
-    
+    <div class="col col-9">
+        
+    </div>
 </div>
+
+
+<div class="flex-grid">
+    <div class="col col-1 oka-show--lg"></div>
+    <div class="col col-1"></div>
+
+    <div class="col col-5 ">
+    </div>
+    <div class="col col-9">
+        <!-- widths :  -->
+        <Image
+            src={souris}
+            widths={[240, 540, 720, souris.width]}
+            sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${souris.width}px`}
+            alt="A description of my image."
+            />
+
+    </div>
+</div>
+
+
+
 
     
 <div class="flex-grid oka-flex">
@@ -48,6 +75,7 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
         <Expertise
             theme="Organisation"
             titre="Maitrise en gestion de projet"
+            link="Gestion de projet"
             description="Mise en place de la méthode de gestion la plus adaptée aux contraintes de votre projets"
             imgImport={AgiliteImageImport}
             />
@@ -60,19 +88,20 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
 <hr class="oka-divider ">
 <div class="oka-spacer -md"></div>
 
-<div class="flex-grid oka-flex -zzrvrs">
+<div class="flex-grid oka-flex">
 
     <div class="col col-6">
         <!-- <p class="oka-text">Notre équipe maîtrise l'ensemble du processus de conception et de développement, de l'analyse des besoins à la mise en œuvre des solutions.</p> -->
 
     </div>
-    <div class="col col-1"></div>
+    <div class="col col-1 oka-show--lg"></div>
     <div class="col col-9">
         <div class="flex-grid">
 
         <Expertise
             theme="Conception"
             titre="Architecture logiciel / Modélisation"
+            link="Architecture logiciel"
             description="Conception et modélisation de vos logiciels de façon structurée."
             imgImport={ConceptionImageImport}
             />
@@ -88,13 +117,14 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
 <div class="flex-grid oka-flex -zzrvrs">
 
     <div class="col col-6"></div>
-    <div class="col col-1"></div>
+    <div class="col col-1 oka-show--lg"></div>
     <div class="col col-9">
         <div class="flex-grid">
 
         <Expertise
             theme="Ergonomie"
             titre="Design d'interfaces ergonomiques"
+            link="Design d'interfaces"
             description="Design de vos interfaces logicielles centré sur vos utilisateurs."
             imgImport={DesignImageImport} 
             />
@@ -113,13 +143,14 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
         <TechnoMobile />
         <TechnoAnnexe /> -->
     </div>
-    <div class="col col-1"></div>
+    <div class="col col-1 oka-show--lg"></div>
     <div class="col col-9">
         <div class="flex-grid">
 
         <Expertise
             theme="Production"
             titre="Développement, intégration et qualité du logiciel"
+            link="Développement"
             description="Réalisation de logiciels conformes à vos attentes."
             imgImport={DevImageImport}
             />
@@ -137,13 +168,14 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
     <div class="col col-6">
 
     </div>
-    <div class="col col-1"></div>
+    <div class="col col-1 oka-show--lg"></div>
     <div class="col col-9">
         <div class="flex-grid">
 
         <Expertise
             theme="ERP / Gestion d’Entreprise"
             titre="ERP :  Planification et Gestion d’Entreprise complètes"
+            link="ERP de Gestion d’Entreprise"
             description="Développement de systèmes ERP taillés pour vos besoins métiers."
             imgImport={ErpImageImport}
             />
@@ -152,3 +184,126 @@ import ErpImageImport from '../../assets/img/expertise/erp.jpg';
 </div>
 
 <div class="oka-spacer -xl"></div>
+
+
+<style lang="scss">
+
+@import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+
+.oka-expertise__head {
+    @include breakpoint(lg) {
+        position:sticky; 
+        top : 12rem; 
+        z-index:2;
+    }
+}
+
+
+
+
+.oka-expertise__intro{
+    background: var(--oka-color-app-bg-default);
+    backdrop-filter: blur(3px); 
+    padding-bottom:8rem;
+}
+
+
+
+#accroches {
+    position:absolute;
+
+    display: flex ;
+    flex-direction: column;
+
+    padding-top:2rem;
+   
+
+    
+}
+
+:global(.accroche){
+        --color-dotteds-rgb : rgba(0,0,0,0.15);
+
+        display : inline;
+        position: relative;
+        text-decoration: none; /* Retire l'underline par défaut */
+
+        border-bottom:1px solid rgba(0,0,0,0.15);
+        //border:1px solid red !important;
+        cursor: pointer;
+        
+}
+:global(.accroche::after) {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Place la ligne juste sous le texte */
+    width: 100%;
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: currentColor; /* Utilise la couleur du texte */
+    transform: scaleX(0); /* Cache la ligne par défaut */
+    transform-origin: bottom right; /* Point de départ de l'animation */
+    transition: transform .6s cubic-bezier(.075,.82,.165,1);/* Animation douce */
+}
+
+:global(.accroche:hover::after) {
+    transform: scaleX(1); /* Affiche la ligne de gauche à droite au survol */
+    transform-origin: bottom left; /* L'animation se déroule de gauche à droite */
+}
+
+
+
+</style>
+
+
+<!-- ACCROCHES DES EXPERTISES -->
+<script>
+    
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+
+    document.addEventListener("astro:page-load", () => {
+
+        document.querySelectorAll(".oka-expertise").forEach((expertise) => {
+
+            const phrase = expertise.getAttribute("data-accroche");
+            const accroches = document.getElementById("accroches");
+
+            ScrollTrigger.create({
+                trigger: expertise,
+                start: "top 80%",
+                onEnter: () => {
+                    // Vérifier si la phrase existe déjà pour éviter les doublons
+                    if (!Array.from(accroches.children).some(p => p.textContent === phrase)) {
+
+                        // Ajouter la phrase sans effacer les précédentes
+                        const newParagraph = document.createElement("p");
+                        newParagraph.classList.add("accroche");
+                        newParagraph.classList.add("oka-h");
+                        newParagraph.classList.add("noto-serif");
+
+                        // Diviser la phrase en lettres
+                        phrase.split("").forEach((letter) => {
+                            const span = document.createElement("span");
+                            span.textContent = letter;
+                            newParagraph.appendChild(span);
+                        });
+
+                        accroches.appendChild(newParagraph);
+
+                        // Animation GSAP lettre par lettre
+                        gsap.fromTo(
+                            newParagraph.querySelectorAll("span"),
+                            { opacity: 0, y: 20 },
+                            { opacity: 1, y: 0 , stagger: 0.05, duration: 0.25 }
+                        );
+                    }
+                }
+            });
+        });
+    });   
+
+</script>
