@@ -4,9 +4,11 @@
 .hx {
     background: none;
     color: var(--color-highlight-start);
-    display: inline-block;
+    //display: inline-block;
+    display: inline;
     position: relative;
-    white-space: nowrap;
+    //white-space: nowrap;
+    white-space: wrap;
     }
     
     .hx-3 {
@@ -154,6 +156,11 @@
     --select-width-final: 103%;
     --color-highlight-start: var(--color-text);
     }
+
+    .hx-13 span{
+        outline:1px solid red;
+        }
+
     
     .hx__select {
     position: absolute;

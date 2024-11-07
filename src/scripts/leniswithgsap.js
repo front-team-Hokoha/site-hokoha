@@ -12,6 +12,8 @@ export function initLenis() {
   // Initialize Lenis for smooth scroll effects. Lerp value controls the smoothness.
   const lenis = new Lenis({
     lerp: 0.08,
+    smooth: true,
+		direction: 'vertical',
     smoothTouch: false,    
   })
 

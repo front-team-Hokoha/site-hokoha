@@ -24,8 +24,17 @@
 
     --oka-color-surface-level1-bg : var(--oka-color-neutral-darker);
 
-    
     --ancre-fd : rgba(0,0,0,0.4);
+}
+
+// Sticky
+.sticky {
+    position: sticky;
+    top : var(--sticky);
+
+    &.-top8{
+        --sticky:8rem;
+    }
 }
 
 
