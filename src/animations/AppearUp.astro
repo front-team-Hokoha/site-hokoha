@@ -1,0 +1,76 @@
+---
+
+import OkaImage from '../components/Image.astro';
+
+
+
+---
+
+
+
+<style>
+    
+    :global([data-appearup]) {
+
+        opacity: 0;
+        filter: blur(4px);
+
+        transform: translateY(30px); /* Position de démarrage pour l'effet de translation vers le haut */
+       
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+        
+        const elements = document.querySelectorAll('[data-appearup]');
+        let previousTop = null;
+        let delayIncrement = 0;
+    
+        elements.forEach((element) => {
+
+            const rect = element.getBoundingClientRect();
+        
+            // Vérifie si l'élément est sur la même ligne que le précédent
+            if (previousTop !== null && rect.top === previousTop) {
+                delayIncrement += 0.2; // Ajoute un délai de 0.2s pour chaque élément sur la même ligne
+            } else {
+                delayIncrement = 0; // Réinitialise le délai quand l'élément est sur une nouvelle ligne
+            }
+            previousTop = rect.top;
+
+
+            //Animation d'apparition au scroll
+            gsap.to(element, {
+                opacity: 1,
+                filter: "blur(0px)", 
+                transform: "translateY(0px)", // Retour à la position initiale
+                duration: 0.5,
+                delay: delayIncrement, // Ajoute le délai calculé
+                ease: "power2.out",
+                scrollTrigger: {
+                trigger: element,
+                start: "top 70%", // Quand l'image entre dans le viewport
+                toggleActions: "play none none none"
+                }
+            });
+
+            // // Effet de parallaxe
+            // gsap.to(element, {
+            //     y: "30%",
+            //     scrollTrigger: {
+            //     trigger: element,
+            //     start: "top bottom",
+            //     end: "bottom top",
+            //     scrub: true
+            //     }
+            // });
+        });
+    });
+  </script>
+  

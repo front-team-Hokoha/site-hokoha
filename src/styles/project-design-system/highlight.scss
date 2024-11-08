@@ -4,11 +4,10 @@
 .hx {
     background: none;
     color: var(--color-highlight-start);
-    //display: inline-block;
-    display: inline;
+    display: inline-block;
     position: relative;
-    //white-space: nowrap;
-    white-space: wrap;
+    white-space: nowrap;
+
     }
     
     .hx-3 {
@@ -149,6 +148,8 @@
     color: var(--color-highlight-end);
     }
     
+
+
     .hx-13 {
     position: relative;
     z-index: 2;
@@ -158,7 +159,7 @@
     }
 
     .hx-13 span{
-        outline:1px solid red;
+        //outline:1px solid red;
         }
 
     

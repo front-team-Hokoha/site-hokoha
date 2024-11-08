@@ -33,7 +33,7 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
 
         <div class="col col-1 col--md-1">
            
-            <div class="membre__portrait">
+            <div class="membre__portrait" data-appearup>
 
             <!-- <ImageParallax imgImport={imageMetadata.default}  alt={`Hokoha Développement : ${nom}`} width={20} height={10} containerHeight="10rem" /> -->
 
@@ -49,7 +49,7 @@ const imageMetadata = imageImport ? await imageImport[1]() : null;
             </div>
         </div>
 
-        <div class="col col-2 col--sm-2 col--md-3 membre__attributs">
+        <div class="col col-2 col--sm-2 col--md-3 membre__attributs" data-appearup>
             {mission && <h3 class="oka-h -xs -secondary -crop">{mission}</h3>}
             {role && <p class="oka-h -xs -crop ">{role}</p>}
             {nom && <p class="oka-h -sm  -crop">{nom}</p>}
