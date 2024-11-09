@@ -33,7 +33,7 @@ export class HighlightEffect {
 
     this.ScrollTrigger.create({
       trigger: this.highlightedElement,
-      start: 'center center', // 
+      start: 'top 70%', // 
       onEnter: () => this.animateChars(),
       onEnterBack: () => this.animateChars(),
       // Réinitialise l'état du caractère lorsque l'on fait défiler vers l'arrière

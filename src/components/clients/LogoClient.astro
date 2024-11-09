@@ -28,5 +28,27 @@ if (!logos[logoPath]) throw new Error(`"${logoPath}" does not exist in glob: "sr
 />
 
 
+<style lang="scss">
+    
+// Vignette logo Clients
+:global(.oka-logoClient){
+    
+    background-color: var(--oka-color-app-bg-default);
+
+    img {
+        width:100%;
+        height:auto;
+        opacity: 0.7;
+        
+        filter: contrast(1.25) ;
+        mix-blend-mode: luminosity;
+
+        .oka-darkMode & {
+            opacity: 1;
+        }
+    }
+}
+</style>
+
 
 

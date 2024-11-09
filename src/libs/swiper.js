@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     swiper = new Swiper(swiperContainer, {
                         modules: [Autoplay],
                         spaceBetween: 24,
-                        slidesPerView: 4,
+                        slidesPerView: 2,
                         loop: true,
                         speed: 4000,
                         grabCursor: true,
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             enabled: true,
                         },
                         breakpoints: {
-                            768: { slidesPerView: 5 },
-                            1280: { slidesPerView: 10 },
+                            768: { slidesPerView: 4 },
+                            1280: { slidesPerView: 7 },
                         },
                     });
 
