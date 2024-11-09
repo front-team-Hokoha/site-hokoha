@@ -26,19 +26,19 @@ const { nb, theme, title, body } = Astro.props;
     <div class="oka-spacer -sm"></div>
 </div> -->
 
-<hr class="oka-divider ">
-<div class="oka-spacer -md"></div>
+
 
 <div class="oka-argument" data-appeargroup >
-
-
-
-  <p class="oka-h -xs -secondary " >{theme}</p>
-  <h2 class="oka-h -lg -secondary -crop" set:html={title}></h2>
+  <hr class="oka-divider ">
   <div class="oka-spacer -md"></div>
-  <p class="oka-text -md " set:html={body}></p> 
 
-    
+
+  <p class="oka-h -xs -secondary " data-appearfirst>{theme}</p>
+  <h2 class="oka-h -lg -secondary -crop" data-appearsecond set:html={title}></h2>
+  <div class="oka-spacer -md"></div>
+  <p class="oka-text -md " data-appearthird set:html={body}></p> 
+
+  <div class="oka-spacer -md"></div>
 </div>
 
-<div class="oka-spacer -md"></div>
+
