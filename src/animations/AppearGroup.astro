@@ -1,0 +1,98 @@
+
+---
+
+
+
+---
+
+<style lang="scss">
+
+
+    :global([data-appeargroup] > :nth-child(1)) {
+ 
+        //background: red;
+        opacity: 0;
+        transform: translateY(30px);  
+    }
+
+    :global([data-appeargroup] > :nth-child(2)) {
+        //background: green;
+        opacity: 0;
+        transform: translateY(30px);  
+    }
+
+    :global([data-appeargroup] > :nth-child(3)) {
+        //background: blue;
+        opacity: 0;
+        transform: translateY(30px);  
+    }
+
+    :global([data-appeargroup] > :nth-child(4)) {
+        //background: yellow;
+        opacity: 0;
+        transform: translateY(30px);  
+    }
+
+
+
+</style>
+
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+                
+        // Sélectionner tous les groupes et appliquer une animation unique à chacun
+        document.querySelectorAll('[data-appeargroup]').forEach(group => {
+
+            const children = group.children;
+
+            
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                trigger: group,
+                start: "top 66.6%", // 2/3 de l'écran
+                toggleActions: "play none none none"
+                }
+            });
+
+            if (children[0]) {
+               
+                timeline.to(children[0], {
+                opacity: 1,
+                top: "20px",
+                duration: 0.25
+                });
+            }
+
+            if (children[1]) {
+                timeline.to(children[1], {
+                opacity: 1,
+                top: "20px",
+                left: "-20px",
+                duration: 0.25
+                }, "+=0.25"); // Délai de 0.25s après l'animation précédente
+            }
+
+            if (children[2]) {
+                timeline.to(children[2], {
+                opacity: 1,
+                top: "20px",
+                duration: 0.25
+                }, "+=0.25"); // Délai de 0.25s après l'animation précédente
+            }
+
+            if (children[3]) {
+                timeline.to(children[3], {
+                opacity: 1,
+                top: "20px",
+                duration: 0.25
+                }, "+=0.25"); // Délai de 0.25s après l'animation précédente
+            }
+        });
+    });
+</script>

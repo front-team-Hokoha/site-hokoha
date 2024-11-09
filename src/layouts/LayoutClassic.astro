@@ -5,6 +5,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Smoothscroll from '../animations/Smoothscroll.astro';
 import Appearup from '../animations/AppearUp.astro';
+import Appeargroup from '../animations/AppearGroup.astro';
 
 // Composant Communs
 import Header from '../components/Header.astro';
@@ -126,6 +127,7 @@ const { pageClass } = Astro.props;
       
         <Smoothscroll />
         <Appearup />
+        <Appeargroup />
 
 
         <script is:inline data-astro-rerun >
