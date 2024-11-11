@@ -60,43 +60,43 @@
             
             const timeline = gsap.timeline({
                 scrollTrigger: {
-                trigger: group,
-                start: "top 66.6%", // 2/3 de l'écran
-                toggleActions: "play none none none"
+                    trigger: group,
+                    start: "top 50%", // 2/3 de l'écran
+                    toggleActions: "play none none none"
                 }
             });
 
             if (first) {
                
                 timeline.to(first, {
-                opacity: 1,
-                transform: "translateY(0px)", // Retour à la position initiale
-                duration: 0.5
+                    opacity: 1,
+                    transform: "translateY(0px)", // Retour à la position initiale
+                    duration: 0.5
                 });
             }
 
             if (second) {
                 timeline.to(second, {
-                opacity: 1,
-                transform: "translateY(0px)", // Retour à la position initiale
-                left: "-20px",
-                duration: 0.5
+                    opacity: 1,
+                    transform: "translateY(0px)", // Retour à la position initiale
+                    left: "-20px",
+                    duration: 0.5
                 }, "-=0.25"); // Délai de 0.25s après l'animation précédente
             }
 
             if (third) {
                 timeline.to(third, {
-                opacity: 1,
-                transform: "translateY(0px)", // Retour à la position initiale
-                duration: 0.5
+                    opacity: 1,
+                    transform: "translateY(0px)", // Retour à la position initiale
+                    duration: 0.5
                 }, "-=0.25"); // Délai de 0.25s après l'animation précédente
             }
 
             if (fourth) {
                 timeline.to(fourth, {
-                opacity: 1,
-                transform: "translateY(0px)", // Retour à la position initiale
-                duration: 0.5
+                    opacity: 1,
+                    transform: "translateY(0px)", // Retour à la position initiale
+                    duration: 0.5
                 }, "-=0.25"); // Délai de 0.25s après l'animation précédente
             }
         });

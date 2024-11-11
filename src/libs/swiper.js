@@ -3,6 +3,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     const swiperContainer = document.querySelector('.swiper');
 
     // Sélectionne le div que tu veux observer

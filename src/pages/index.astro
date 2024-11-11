@@ -28,7 +28,7 @@ const pageClass = "accueil";
 
 
   <div class="oka-spacer -xxl"></div>
-  <div class="flex-grid">
+  <div class="flex-grid" data-appearup>
     <div class="col col-1"></div>
     <div class="col col-1">
       <h2 class="oka-text -xs sticky -top8">1.<br />A PROPOS</h2>
@@ -37,7 +37,7 @@ const pageClass = "accueil";
     
       <!-- <p class="oka-text -lg">HOKOHA est une société de développement informatique, engagée à rendre les technologies numériques plus accessibles. Nous développons, au forfait, des solutions efficaces et sur mesure parfaitement adaptées aux besoins spécifiques des entreprises.</p> -->
       <div class="sticky -top8">
-        <p class="oka-h -secondary -lg -crop">HOKOHA est une société spécialisée dans le <mark class="hx hx-13"><span class="hx__select"></span>développement</mark> informatique <mark class="hx hx-13"><span class="hx__select"></span>sur mesure</mark>, dédiée à rendre les technologies numériques accessibles et performantes pour les entreprises.</p>
+        <p class="oka-h -zzsecondary -lg -crop">HOKOHA est une société spécialisée dans le <mark class="hx hx-13"><span class="hx__select"></span>développement</mark> informatique <mark class="hx hx-13"><span class="hx__select"></span>sur mesure</mark>, dédiée à rendre les technologies numériques accessibles et performantes pour les entreprises.</p>
         <div class="oka-spacer -sm"></div>
       </div>
 
@@ -88,7 +88,7 @@ const pageClass = "accueil";
     <div class="col col-5">
     
       <!-- <p class="oka-text -lg">HOKOHA est une société de développement informatique, engagée à rendre les technologies numériques plus accessibles. Nous développons, au forfait, des solutions efficaces et sur mesure parfaitement adaptées aux besoins spécifiques des entreprises.</p> -->
-      <div class="sticky -top8">
+      <div class="sticky -top8" data-appearup>
         <div class="oka-spacer -sm"></div>
         <p class="oka-text -lg">Nous concevons des solutions innovantes et personnalisées, parfaitement alignées avec les besoins spécifiques de chaque client. Notre engagement se traduit par des solutions au forfait, optimisant vos outils et intégrant harmonieusement vos systèmes existants pour améliorer l'efficacité globale de vos processus métiers.</p>
       </div>
@@ -227,49 +227,6 @@ const pageClass = "accueil";
     />
   </div>
 
-
-<!-- "Modals" -->
-<div slot="modal">
-  <!-- modal -->
-  <div  class="oka-modal -lg ">
-    <!-- Pilot d'affichage du modal -->
-    <input type='checkbox' id="display-modal-default" name="display-modal" class="oka-modal__pilot noVerifForm"  onchange="this.checked ? window.location.hash='default' : window.location.hash=''" />
-    <!-- Fond Overlay et pilot de fermeture -->
-    <label class="oka-modal__bg" for="display-modal-default"></label>
-    <!-- Container -->
-    <div id="modal-default" class="oka-modal__ctnr">
-        <div class="oka-modal__head oka-head">
-
-            <div class="oka-head__title">
-                <div class="oka-UI-h -sm">
-                    Component Heading 
-                </div>
-            </div>
-
-            <label class="oka-head__action oka-bt oka-bt--rounded oka-bt--ghost "  for="display-modal-default">
-                <span class="oka-bt__lbl">Fermer</span>
-                <span class="oka-bt__ico">✕</span>
-            </label>
-        </div>
-        <div class="oka-modal__body oka-wrap oka-wrap--md">
-
-            !!! En cas d'utilisation d'un formulaire dans le modal.
-            Il faut utiliser la balise form comme  oka-modal__ctnr
-
-        </div>
-        <div class="oka-modal__footer">
-            <label for="display-modal-default" class="oka-bt oka-bt--outlined modal-close">
-                <span class="oka-bt__lbl">Annuler</span>
-                <span class="oka-bt__spinner"></span>
-            </label>
-            <a href="#!" class="oka-bt oka-bt--primary" onclick='this.classList.add("js-ajaxInProgress")'>
-                <span class="oka-bt__lbl">Supprimer</span>
-                <span class="oka-bt__spinner"></span>
-            </a>
-        </div>
-    </div>
-  </div>
-</div>
 
 
 

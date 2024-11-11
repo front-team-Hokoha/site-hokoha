@@ -17,7 +17,7 @@
  
    background-image: linear-gradient(90deg, 
                        #000 40%,
-                        var(--oka-color-primary-bg-medium) 80%,
+                       #000e18 80%,
                        
                         );
     //background-image: linear-gradient(-43deg, var(--oka-color-app-bg-default) 5%, #073556 60%, #242424 95%);
@@ -88,9 +88,9 @@
     height: auto;
     /*z-index: -100;*/
     transform: translateX(-50%) translateY(-50%);
-    opacity: 25% ; //7%;
+    opacity: 35% ; //7%;
 
-    filter: brightness(1.2) grayscale(0); ;
+    filter: brightness(1.2) grayscale(1); ;
     mix-blend-mode: hard-light;
 
     pointer-events: none;
