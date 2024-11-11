@@ -35,6 +35,12 @@
     --ancre-fd : rgba(0,0,0,0.4);
 }
 
+// Containerq querie
+.-cq {
+    container-type: inline-size;
+} 
+
+
 // Sticky
 .sticky {
     position: sticky;

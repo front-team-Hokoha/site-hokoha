@@ -301,13 +301,17 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     );
         
 
+    // Attention l'utilisation de clamp avec des unité liées au Container Queries (7cqw)
+    // Oblige a déclarer le parent de container-type:inline-size
     font-size: clamp(
         var(--oka-typo-brand-heading-md-font-size), 
         7cqw, 
         var(--oka-typo-brand-heading-giant-font-size)
         );
+
+    // ici : Calc permet d'ajouter l'unité a la variable
     line-height: clamp(
-        calc(var(--oka-typo-brand-heading-md-line-height) * 1px), 
+        calc(var(--oka-typo-brand-heading-md-line-height) * 1px),  
         1.4em, 
         calc(var(--oka-typo-brand-heading-giant-line-height) * 1px)
         );
@@ -331,11 +335,7 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
 }
 
 
-// div:has(.oka-h.-xxl)  {
-//     outline: 1px solid red;
-//     container-type: inline-size;
-//     height: auto;
-// }
+
 // --------------------------------------
 
 @mixin cropLineHeight {
