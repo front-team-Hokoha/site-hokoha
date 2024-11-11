@@ -18,7 +18,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
     <div class="oka-app-wrap -fluid ">
         
-        <div class="flex-grid">
+        <div class="flex-grid" data-appearup>
             <div class="col col-2"></div>
             <div class="col col-10">
              
@@ -35,12 +35,12 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
                 />
 
                 <div class="oka-spacer -sm"></div>
-                <hr class="filet"/>
-                <div class="oka-spacer -sm"></div>
+
                 <!-- <div class="oka-h -md -secondary -crop">Apporteur de solutions</div> -->
-                <h1 class="oka-h -xl"><span class='noto-serif'>Développement informatique</span></h1>
+                <h1 class="oka-h -lg"><span class='noto-serif'>Développement informatique</span></h1>
                 <div class="oka-spacer -lg"></div>
-                <h2 class="oka-h -xl -secondary" style="">
+                <hr class="filet"/>
+                <h2 class="oka-h -xxl -secondary" style="">
                     <span id="phrase1" class='u-noLineBreak'></span>&nbsp;<br />
                     <span id="phrase2" class='u-noLineBreak'></span>&nbsp;<br />
                     <!-- <span class='u-noLineBreak'>Applications Web</span> -->
@@ -60,10 +60,14 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
             
             </div>
 
-            <div class="col col-1 oka-show--md"></div>
+            
 
-            <div class="col col-5 oka-flex -vrt " style="justify-content:space-between">
-
+            <div class="col col-3 oka-flex -vrt " style="justify-content:center">
+                <button class="oka-bt -lg -zzsecondary ">
+                    <div class="oka-bt__ico"><i class="fa-kit fa-arrow-right"></i></div>
+                    <div class="oka-bt__lbl">Parlons de votre projet</div>
+                    <div class="oka-spinner"></div>
+                </button>
                 
                <!-- <div>
                     <div class="oka-spacer -md"></div>
@@ -88,7 +92,8 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
                         <div class="oka-spinner"></div>
                     </button>
                     <div class="oka-spacer -md"></div>
-                </div> -->
+                </div> 
+                -->
                  
             </div>
         </div>
@@ -200,7 +205,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
             setTimeout(() => { phrase3.start(); }, 1500); 
             setTimeout(() => { phrase4.start(); }, 2000);  
 
-            setTimeout(() => { codeTyping.start(); }, 3000); 
+            setTimeout(() => { codeTyping.start(); }, 5000); 
 
             
         
