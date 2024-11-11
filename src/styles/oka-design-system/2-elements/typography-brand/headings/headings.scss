@@ -291,30 +291,51 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     
     // mobile -> XL
     --crop-top : -1.5rem;
-        --crop-bottom : -1rem;
+    --crop-bottom : -1rem;
 
-        @include plumber-set-defaults($use-baseline-origin: false);
-        @include plumber( 
-            $baseline: $oka-brand-heading-font-baseline, 
-            $font-size: $oka-brand-heading-font-size-xl, 
-            $line-height: $oka-brand-heading-line-height-xl, 
-        );
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-xl, 
+        $line-height: $oka-brand-heading-line-height-xl, 
+    );
         
+
+    font-size: clamp(
+        var(--oka-typo-brand-heading-md-font-size), 
+        7cqw, 
+        var(--oka-typo-brand-heading-giant-font-size)
+        );
+    line-height: clamp(
+        calc(var(--oka-typo-brand-heading-md-line-height) * 1px), 
+        1.4em, 
+        calc(var(--oka-typo-brand-heading-giant-line-height) * 1px)
+        );
+
     // desktop -> XXL
-    @include breakpoint(lg) {
+    // @include breakpoint(lg) {
     
-        @include plumber-set-defaults($use-baseline-origin: true);
-        @include plumber( 
-            $baseline: $oka-brand-heading-font-baseline,
-            $font-size: $oka-brand-heading-font-size-xxl, 
-            $line-height: $oka-brand-heading-line-height-xxl, 
-            );
-        }  
+    //     @include plumber-set-defaults($use-baseline-origin: true);
+    //     @include plumber( 
+    //         $baseline: $oka-brand-heading-font-baseline,
+    //         $font-size: $oka-brand-heading-font-size-xxl, 
+    //         $line-height: $oka-brand-heading-line-height-xxl, 
+    //         );
+    //     }  
+
+        
 }
 
 %oka-h-xxl {
     @include oka-h-xxl;
 }
+
+
+// div:has(.oka-h.-xxl)  {
+//     outline: 1px solid red;
+//     container-type: inline-size;
+//     height: auto;
+// }
 // --------------------------------------
 
 @mixin cropLineHeight {
