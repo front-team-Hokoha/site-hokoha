@@ -1,4 +1,6 @@
 
+
+
 :root,.oka-lightMode  {
 
     --oka-color-neutral-darker : #1e2637;
@@ -7,6 +9,8 @@
     --oka-color-app-bg-default : #fff; // var(--oka-color-neutral-lightest) ;
 
     --oka-color-surface-level1-bg : var(--oka-color-white);
+
+    --oka-borderradius-bt:0.25rem !important;
 
     --ancre-fd : rgba(255,255,255,0.4);
 
@@ -24,6 +28,10 @@
 
     --oka-color-surface-level1-bg : var(--oka-color-neutral-darker);
 
+
+    --oka-borderradius-bt:0.25rem !important;
+
+
     --ancre-fd : rgba(0,0,0,0.4);
 }
 
@@ -38,6 +46,10 @@
 
     &.-top12{
         --sticky:12rem;
+    }
+
+    &.-top40vh {
+        top: 40vh;
     }
 }
 
