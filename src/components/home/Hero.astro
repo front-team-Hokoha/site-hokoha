@@ -1,6 +1,8 @@
 ---
 import OkaImage from '../../components/Image.astro';
 
+import TextAnimator from '../../animations/TextAnimator.astro';
+
 import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 ---
 
@@ -39,17 +41,15 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
                 <hr class="filet"/>
                 <div class="-cq" >
                     <h2 class="oka-h -xxl -secondary" style="">
-                        <span id="phrase1" class='u-noLineBreak'></span>&nbsp;<br />
+                        <!-- <span id="phrase1" class='u-noLineBreak'></span>&nbsp;<br />
                         <span id="phrase2" class='u-noLineBreak'></span>&nbsp;<br />
-                        <!-- <span class='u-noLineBreak'>Applications Web</span> -->
+                         <span class='u-noLineBreak'>Applications Web</span>
                         <span id="phrase3" class='u-noLineBreak'></span>&nbsp;<br />
-                        <span id="phrase4" class='u-noLineBreak'></span>&nbsp;
-
-
-                        <!-- <span id="phrase1" class='u-noLineBreak'>Logiciels métiers</span><br />
-                        <span id="phrase2" class='u-noLineBreak'>Applications Mobiles</span><br />
-                        <span id="phrase3" class='u-noLineBreak'>IoT Objets connecté</span> <br />
-                        <span id="phrase4" class='u-noLineBreak'>ERP de gestion d'entreprise</span> -->
+                        <span id="phrase4" class='u-noLineBreak'></span>&nbsp; -->
+                        <TextAnimator text="Logiciels métiers" /><br />
+                        <TextAnimator text="Applications Mobiles" /><br />
+                        <TextAnimator text="IoT Objets connecté" /><br />
+                        <TextAnimator text="ERP de gestion d'entreprise" />
                     </h2>
                 </div>
                 
@@ -136,7 +136,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
         //Chargement du fond
 
-       // window.addEventListener('load', function() {
+        // window.addEventListener('load', function() {
         document.addEventListener('astro:page-load', () => {
            
             // const element = document.getElementById('video_pattern');
@@ -151,60 +151,60 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
             // AutoType
             // https://github.com/tsanak/autotyping
 
-            const  AutoTyping=function(e){var t={};function r(n){if(t[n])return t[n].exports;var i=t[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,r),i.l=!0,i.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)r.d(n,i,function(t){return e[t]}.bind(null,i));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=0)}([function(e,t,r){"use strict";r.r(t);t.default=class{constructor(e,t,{typeSpeed:r=150,deleteSpeed:n=150,waitBeforeDelete:i=1e3,waitBetweenWords:o=1e3,writeWhole:l=!1}={}){this.selector=e,this.text=t,this.typeSpeed=r,this.deleteSpeed=n,this.waitBeforeDelete=i,this.waitBetweenWords=o,this.writeWhole=l,this.el=document.querySelector(e)}async start(){this.el;for(let e=0;e<this.text.length;e++){const t=this.text[e];let r=t.split("");this.writeWhole&&(r=[t]),await this.writeText(r),e==this.text.length-1&&(e=-1)}}writeText(e){let t=this;return new Promise(r=>{const n=this.el;let i=!1,o=setInterval(()=>{let l=e.shift();i&&(i=!1,l=" "+l),i=" "==l,n.innerText+=l,0==e.length&&(clearInterval(o),setTimeout(()=>{let e=setInterval(()=>{const i=n.innerText;t.writeWhole?n.innerText="":n.innerText=i.substr(0,i.length-1),0==n.innerText.length&&(clearInterval(e),setTimeout(()=>r(),this.waitBetweenWords))},this.deleteSpeed)},this.waitBeforeDelete))},this.typeSpeed)})}}}]).default;
+            //const  AutoTyping=function(e){var t={};function r(n){if(t[n])return t[n].exports;var i=t[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,r),i.l=!0,i.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)r.d(n,i,function(t){return e[t]}.bind(null,i));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=0)}([function(e,t,r){"use strict";r.r(t);t.default=class{constructor(e,t,{typeSpeed:r=150,deleteSpeed:n=150,waitBeforeDelete:i=1e3,waitBetweenWords:o=1e3,writeWhole:l=!1}={}){this.selector=e,this.text=t,this.typeSpeed=r,this.deleteSpeed=n,this.waitBeforeDelete=i,this.waitBetweenWords=o,this.writeWhole=l,this.el=document.querySelector(e)}async start(){this.el;for(let e=0;e<this.text.length;e++){const t=this.text[e];let r=t.split("");this.writeWhole&&(r=[t]),await this.writeText(r),e==this.text.length-1&&(e=-1)}}writeText(e){let t=this;return new Promise(r=>{const n=this.el;let i=!1,o=setInterval(()=>{let l=e.shift();i&&(i=!1,l=" "+l),i=" "==l,n.innerText+=l,0==e.length&&(clearInterval(o),setTimeout(()=>{let e=setInterval(()=>{const i=n.innerText;t.writeWhole?n.innerText="":n.innerText=i.substr(0,i.length-1),0==n.innerText.length&&(clearInterval(e),setTimeout(()=>r(),this.waitBetweenWords))},this.deleteSpeed)},this.waitBeforeDelete))},this.typeSpeed)})}}}]).default;
 
 
             //const typing = new AutoTyping('selector', [array of words]);
             //const typing = new AutoTyping('#video_pattern', ['lorem ipsum etc', 'after the first text']);
 
 
-            const codeSource = [ 
-            'r.d=function(e,t,n) {r.o(e,t)|| Object.defineProperty (e,t,{enumerable:!0,get:n})}',
-            'r.r=function(e){"undefined" !=typeof Symbol&&Symbol. toStringTag &&Object.defineProperty (e,Symbol.toStringTag',
-            '{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}',
-            'r.t=function(e,t){if(1&t&&(e=r(e)) this.deleteSpeed=n, this.waitBeforeDelete=i, this.waitBetweenWords=o, this.writeWhole=l',
-            '8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null)',
-            'if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e})',
-            '2&t&&"string"!=typeof e)',
-            'for(var i in e)r.d(n,i,function(t)',
-            '{return e[t]}.bind(null,i));return n}',
-            'r.n=function(e){var t=e&&e.__esModule?',
-            'function(){return e.default}:function(){return e};',
-            'return r.d(t,"a",t),t},r.o=function(e',
-            't){return Object.prototype.hasOwnProperty.call(e,t)}',
-            'writeWhole:l=!1}={}){this.selector=e,this.text=t,this.typeSpeed=r',
-            'this.deleteSpeed=n, this.waitBeforeDelete=i, this.waitBetweenWords=o, this.writeWhole=l',
-            'this.el=document.querySelector(e)}async start(){',
-            'this.el;for(let e=0;e<this.text.length;e++){const t=this.text[e];let r=t.split("");',
-            'e==this.text.length-1&&(e=-1)}}writeText(e){let t=this;return new Promise(r=>{const n=this.el;let i=!1,o=setInterval(()=>{let l=e.shift();',
-            'i&&(i=!1,l=" "+l),i=" "==l,n.innerText+=l'
-            ];
+            // const codeSource = [ 
+            // 'r.d=function(e,t,n) {r.o(e,t)|| Object.defineProperty (e,t,{enumerable:!0,get:n})}',
+            // 'r.r=function(e){"undefined" !=typeof Symbol&&Symbol. toStringTag &&Object.defineProperty (e,Symbol.toStringTag',
+            // '{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}',
+            // 'r.t=function(e,t){if(1&t&&(e=r(e)) this.deleteSpeed=n, this.waitBeforeDelete=i, this.waitBetweenWords=o, this.writeWhole=l',
+            // '8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null)',
+            // 'if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e})',
+            // '2&t&&"string"!=typeof e)',
+            // 'for(var i in e)r.d(n,i,function(t)',
+            // '{return e[t]}.bind(null,i));return n}',
+            // 'r.n=function(e){var t=e&&e.__esModule?',
+            // 'function(){return e.default}:function(){return e};',
+            // 'return r.d(t,"a",t),t},r.o=function(e',
+            // 't){return Object.prototype.hasOwnProperty.call(e,t)}',
+            // 'writeWhole:l=!1}={}){this.selector=e,this.text=t,this.typeSpeed=r',
+            // 'this.deleteSpeed=n, this.waitBeforeDelete=i, this.waitBetweenWords=o, this.writeWhole=l',
+            // 'this.el=document.querySelector(e)}async start(){',
+            // 'this.el;for(let e=0;e<this.text.length;e++){const t=this.text[e];let r=t.split("");',
+            // 'e==this.text.length-1&&(e=-1)}}writeText(e){let t=this;return new Promise(r=>{const n=this.el;let i=!1,o=setInterval(()=>{let l=e.shift();',
+            // 'i&&(i=!1,l=" "+l),i=" "==l,n.innerText+=l'
+            // ];
             
-            const codeTyping = new AutoTyping('#video_pattern', codeSource, {
-                typeSpeed: 30,
-                deleteSpeed: 10,
-                waitBeforeDelete: 100,
-                waitBetweenWords: 500,
-            });
+            // const codeTyping = new AutoTyping('#video_pattern', codeSource, {
+            //     typeSpeed: 30,
+            //     deleteSpeed: 10,
+            //     waitBeforeDelete: 100,
+            //     waitBetweenWords: 500,
+            // });
 
 
-            const options = { 
-                typeSpeed: 30,
-                deleteSpeed: 30,
-                waitBeforeDelete: 10000000,
-                waitBetweenWords: 500,}
+            // const options = { 
+            //     typeSpeed: 30,
+            //     deleteSpeed: 30,
+            //     waitBeforeDelete: 10000000,
+            //     waitBetweenWords: 500,}
 
-            const phrase1 = new AutoTyping('#phrase1', ['Logiciels Métiers'] , options );
-            const phrase2 = new AutoTyping('#phrase2', ['Applications Mobiles'] , options);
-            const phrase3 = new AutoTyping('#phrase3', ['IoT Objets connecté'] , options);
-            const phrase4 = new AutoTyping('#phrase4', ['ERP de gestion d\'entreprise'] , options);
+            // const phrase1 = new AutoTyping('#phrase1', ['Logiciels Métiers'] , options );
+            // const phrase2 = new AutoTyping('#phrase2', ['Applications Mobiles'] , options);
+            // const phrase3 = new AutoTyping('#phrase3', ['IoT Objets connecté'] , options);
+            // const phrase4 = new AutoTyping('#phrase4', ['ERP de gestion d\'entreprise'] , options);
 
-            setTimeout(() => { phrase1.start(); }, 300); 
-            setTimeout(() => { phrase2.start(); }, 1000);
-            setTimeout(() => { phrase3.start(); }, 1500); 
-            setTimeout(() => { phrase4.start(); }, 2000);  
+            // setTimeout(() => { phrase1.start(); }, 300); 
+            // setTimeout(() => { phrase2.start(); }, 1000);
+            // setTimeout(() => { phrase3.start(); }, 1500); 
+            // setTimeout(() => { phrase4.start(); }, 2000);  
 
-            setTimeout(() => { codeTyping.start(); }, 5000); 
+            //setTimeout(() => { codeTyping.start(); }, 5000); 
 
             
         

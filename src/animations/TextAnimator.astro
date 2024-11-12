@@ -1,0 +1,95 @@
+---
+interface Props {
+    text: string;
+}
+
+// Expose les props
+const { text } = Astro.props;
+---
+
+<span class="hover-effect"  set:html={text}></span>
+
+
+
+
+<!-- SplitType for text manipulation: https://github.com/lukePeavey/SplitType -->
+<script src="../libs/split-type.min.js"></script>
+
+<script>
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextAnimator } from '../animations/TextAnimator.js';
+
+// Enregistrement du plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+
+const init = () => {
+  document.querySelectorAll('.hover-effect').forEach(hoverEffect => {
+    const animator = new TextAnimator(hoverEffect);
+
+    // Initialisation de ScrollTrigger
+    ScrollTrigger.create({
+      trigger: hoverEffect,
+      start: 'top 80%', // Point de déclenchement (ajustable)
+      onEnter: () => {
+        animator.animate();
+      },
+      once: true // L'animation se déclenche une seule fois
+    });
+  });
+};
+
+document.addEventListener('astro:page-load', () => {
+    init(); 
+})
+
+</script>
+
+
+<style is:global>
+
+  
+  
+  .hover-effect {
+    font-kerning: none;
+    position: relative;
+    /*white-space: nowrap;*/
+  }
+
+
+  .hover-effect .word {
+    white-space: nowrap;
+  }
+  
+  .hover-effect .char {
+    position: relative;
+    --opa: 0;
+  }
+
+  
+  .hover-effect .char::after {
+    content: '';
+    width: 1ch;
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: var(--opa);
+    background: currentColor;
+    height: 100%;
+
+     
+  }
+  
+  .oka-h .hover-effect .char::after {
+      /*display:none;*/
+      width: 0.5ch;
+      top: -1rem !important;
+      height:2.5rem !important;
+
+    }
+
+
+
+</style>
