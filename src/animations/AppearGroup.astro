@@ -47,7 +47,7 @@
   
     document.addEventListener("astro:page-load", () => {
 
-        const delayBetweenAnimations = 0.25;
+        const startPosition = window.matchMedia("(max-width: 768px)").matches ? "top 80%" : "top 50%";
                 
         // Sélectionner tous les groupes et appliquer une animation unique à chacun
         document.querySelectorAll('[data-appeargroup]').forEach(group => {
@@ -61,7 +61,7 @@
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: group,
-                    start: "top 50%", // 2/3 de l'écran
+                    start: startPosition,
                     toggleActions: "play none none none"
                 }
             });

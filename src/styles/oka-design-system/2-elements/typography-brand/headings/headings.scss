@@ -312,7 +312,7 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     // ici : Calc permet d'ajouter l'unité a la variable
     line-height: clamp(
         calc(var(--oka-typo-brand-heading-md-line-height) * 1px),  
-        1.4em, 
+        1.5em, 
         calc(var(--oka-typo-brand-heading-giant-line-height) * 1px)
         );
 
