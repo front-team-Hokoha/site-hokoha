@@ -1,6 +1,9 @@
 // Import debounce utility function.
 import { debounce } from '../scripts/utils.js';
 
+// Libraiire de decoupage de texte
+import SplitType from 'split-type';
+
 
 // Defines a class to split text into lines, words and characters for animation.
 export class TextSplitter {
