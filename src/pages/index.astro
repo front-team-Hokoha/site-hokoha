@@ -4,7 +4,7 @@
 import LayoutClassic from '../layouts/LayoutClassic.astro'; 
 
 // Composants
-import TextAnimator from '../animations/TextAnimator.astro';
+import Typper from '../animations/Typper.astro';
 import Hero from '../components/home/Hero.astro';
 import Argument from '../components/home/Argument.astro';
 import Focus from '../components/home/Focus.astro';
@@ -33,7 +33,7 @@ const pageClass = "accueil";
     <div class="col col-1 oka-show--lg"></div>
     <div class="col col-1 col--md-1">
       <p class="oka-text -xs sticky -top40vh">
-        <TextAnimator text="1.<br />A PROPOS" />
+        <Typper text="1.<br />A PROPOS" />
       </p>
     </div>
     <div class="col col-5">
@@ -85,12 +85,12 @@ const pageClass = "accueil";
     <div class="col col-1 oka-show--lg"></div>
     <div class="col col-1">
       <p class="oka-text -xs sticky -top40vh">
-        <TextAnimator text="2.<br />CHAMP D'ACTION" />
+        <Typper text="2.<br />CHAMP<br />D'ACTION" />
       </p>
     </div>
     <div class="col col-5">
     
-      <div class="sticky -top8" data-appearup>
+      <div class="sticky -top8" data-appearup >
         <p class="oka-text -lg">Nous concevons des solutions innovantes et personnalisées, parfaitement alignées avec les besoins spécifiques de chaque client. Notre engagement se traduit par des solutions au forfait, optimisant vos outils et intégrant harmonieusement vos systèmes existants pour améliorer l'efficacité globale de vos processus métiers.</p>
       </div>
     </div>
@@ -100,12 +100,12 @@ const pageClass = "accueil";
     <div class="col col-6">
 
       <div class="-cq" >
-        <h2 class="oka-h -xxl -secondary list__item" style="">
-          <span id="phrase1_bis" class='hover-effect u-noLineBreak'>Logiciels métiers</span><br />
-          <span id="phrase2_bis" class='hover-effect u-noLineBreak'>Applications Mobiles</span><br />
-          <span id="phrase3_bis" class='hover-effect u-noLineBreak'>IoT Objets connecté</span> <br />
-          <span id="phrase4_bis" class='hover-effect u-noLineBreak'>ERP de gestion d'entreprise</span> 
-       </h2>
+        <h2 class="oka-h -xxl -secondary">
+          <Typper text="Logiciels métiers" /><br />
+          <Typper text="Applications Mobiles" /><br />
+          <Typper text="IoT Objets connecté" /><br />
+          <Typper text="ERP de gestion d'entreprise" /> 
+        </h2>
 
       </div>
     </div>
@@ -117,7 +117,7 @@ const pageClass = "accueil";
     <div class="col col-1 oka-show--lg"></div>
     <div class="col col-1">
       <p class="oka-text -xs sticky -top40vh">
-        <TextAnimator text="3.<br />POURQUOI HOKOHA" />
+        <Typper text="3.<br />POURQUOI HOKOHA" />
       </p>
     </div>
   </div>

@@ -5,7 +5,7 @@ import { TextSplitter } from '../libs/textSplitter.js';
 
 import { gsap } from "gsap";
 
-//const lettersAndSymbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', ';', ':', '<', '>', ','];
+const lettersAndSymbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', ';', ':', '<', '>', ','];
 
 //const lettersAndSymbols = ['0','1'];
 
@@ -68,10 +68,10 @@ export class TextAnimator {
         repeatRefresh: true,
         repeatDelay: 0.04,
         delay: (position+1)*0.07,
-        //innerHTML: () => lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
+        innerHTML: () => lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
         
-        innerHTML:  String( Math.floor(Math.random() < 0.5 ? "1" : "0") ),
-        //innerHTML: "1",
+        //innerHTML:  String( Math.floor(Math.random() < 0.5 ? "1" : "0") ),
+        //innerHTML: String(Math.random() < 0.5 ? 1 : 0),
 
         opacity: 1
       });

@@ -1,7 +1,7 @@
 // Import debounce utility function.
 import { debounce } from '../scripts/utils.js';
 
-// Libraiire de decoupage de texte
+// Libraire de decoupage de texte
 import SplitType from 'split-type';
 
 

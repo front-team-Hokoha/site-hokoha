@@ -7,13 +7,8 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<span class="hover-effect"  set:html={text}></span>
+<span class="typper"  set:html={text}></span>
 
-
-
-
-<!-- SplitType for text manipulation: https://github.com/lukePeavey/SplitType 
-<script src="../libs/split-type.min.js"></script>-->
 
 <script>
 
@@ -26,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const init = () => {
-  document.querySelectorAll('.hover-effect').forEach(hoverEffect => {
+  document.querySelectorAll('.typper').forEach(hoverEffect => {
     const animator = new TextAnimator(hoverEffect);
 
     // Initialisation de ScrollTrigger
@@ -52,37 +47,35 @@ document.addEventListener('astro:page-load', () => {
 
   
   
-  .hover-effect {
+  .typper {
     font-kerning: none;
     position: relative;
     /*white-space: nowrap;*/
   }
 
 
-  .hover-effect .word {
+  .typper .word {
     white-space: nowrap;
   }
   
-  .hover-effect .char {
+  .typper .char {
     position: relative;
     --opa: 0;
   }
 
   
-  .hover-effect .char::after {
+  .typper .char::after {
     content: '';
     width: 1ch;
-    top: 0;
+    top: -0.5rem;
     left: 0;
     position: absolute;
     opacity: var(--opa);
     background: currentColor;
-    height: 100%;
-
-     
+    height: 1rem;
   }
   
-  .oka-h .hover-effect .char::after {
+  .oka-h .typper .char::after {
       /*display:none;*/
       width: 0.5ch;
       top: -1rem !important;
