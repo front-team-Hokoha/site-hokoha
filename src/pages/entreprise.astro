@@ -5,6 +5,10 @@
 import LayoutClassic from '../layouts/LayoutClassic.astro'; 
 
 // Composants
+
+import Typper from '../animations/Typper.astro';
+
+
 import Ancres from '../components/entreprise/Ancres.astro';
 //import Valeur from '../components/entreprise/Valeur.astro';
 
@@ -48,7 +52,10 @@ const pageClass = "entreprise";
     <div  class="flex-grid">
         <div class="col col-1  oka-show--lg"></div>
         <div class="col col-12">
-            <h1 class="oka-h -xxl -crop -secondary"><span class="noto-serif">Expertise</span> et <span class="noto-serif">passion</span> du développement.</h1>
+            <!-- <h1 class="oka-h -xxl -crop -secondary"><span class="noto-serif">Expertise</span> et <span class="noto-serif">passion</span> du développement.</h1> -->
+            <h1 class="oka-h -xxl -crop -secondary">
+                <Typper text='<span class="noto-serif">Expertise</span> et <span class="noto-serif">passion</span> du développement.' />
+            </h1>
         </div>
         <div class="col col-1"></div>
         <div class="col col-4">
@@ -95,6 +102,7 @@ const pageClass = "entreprise";
                     portrait="src/assets/img/team/color/Yann.png"
                     orientation =" "   
                 />
+                <div class="oka-spacer -md"></div>
             </div>
 
         </div>
