@@ -9,9 +9,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
 <div class="oka-hero oka-darkMode oka-showGrid">
     
-    <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="true"  poster="">
-        <source src="assets/video/dev.mp4" type="video/mp4"> 
-    </video>
+   
 
     
 
@@ -19,11 +17,18 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
         
         <div class="flex-grid" data-appearup>
             <div class="col col-2"></div>
-            <div class="col col-9">
-             
-                <!-- <div class="oka-spacer -xl"></div> -->
+            <div class="col col-8" style="position:relative">
+                <div class="oka-hero__video">
+                    <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="true"  poster="">
+                        <source src="assets/video/dev.mp4" type="video/mp4"> 
+                    </video>
+                </div>
+                <!-- -->
                 <div class="oka-spacer -md"></div>
                 <div class="oka-spacer -xl"></div>
+                <div class="oka-spacer -xl"></div>
+                <div class="oka-spacer -xl"></div> 
+           
                 
                 
                 <OkaImage src={logoImageImport} 
@@ -35,28 +40,35 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
                 <div class="oka-spacer -sm"></div>
 
-                <!-- <div class="oka-h -md -secondary -crop">Apporteur de solutions</div> -->
                 <h1 class="oka-h -lg"><span class='noto-serif'>Développement informatique</span></h1>
-                <div class="oka-spacer -lg"></div>
-                <hr class="filet"/>
-                <div class="-cq" >
-                    <h2 class="oka-h -xxl -secondary">
-                        <Typper text="Logiciels métiers" /><br />
-                        <Typper text="Applications Mobiles" /><br />
-                        <Typper text="IoT Objets connecté" /><br />
-                        <Typper text="ERP de gestion d'entreprise" />
-                    </h2>
-                </div>
                 
-                <!-- <div class="oka-spacer -lg"></div> -->
-                <div class="oka-spacer -xl"></div>
+                <hr class="filet"/>
+                <div class="oka-spacer -sm"></div>
+                <div class="oka-h -md -secondary -crop">Apporteur de solutions</div>
+                <div class="oka-spacer -xl"></div> 
+                
+
             
             </div>
 
-            
+            <div class="col col-1"></div>
 
-            <div class="col col-3 oka-flex -vrt " style="justify-content:flex-end">
-                
+            <div class="col col-5 oka-flex -vrt " style="justify-content:flex-end">
+
+                <div class="oka-spacer -xl"></div>
+                <!-- <div class="oka-spacer -md"></div> -->
+   
+
+                <div class="-cq" >
+                    <h2 class="oka-h -xxl -secondary">
+                        <Typper text="Solutions web" /><br />
+                        <Typper text="Logiciels métiers" /><br />
+                        <Typper text="Applications Mobiles" /><br />
+                        <Typper text="IoT Objets connectés" /><br />
+                        <Typper text="ERP Gestion d'entreprise" />
+                    </h2>
+                </div>
+                <div class="oka-spacer -md"></div>
                 <button class="oka-bt -lg -zzsecondary ">
                     <div class="oka-bt__ico"><i class="fa-kit fa-arrow-right"></i></div>
                     <div class="oka-bt__lbl">Parlons de votre projet</div>
@@ -123,7 +135,145 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
     </div>
 
 
+    <style lang="scss">
 
+    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+    .oka-hero{
+        
+
+        --hero-bg : #020464; ; 
+        // margin:1rem;
+        //border-radius: 1rem;
+        //border-left:4px solid #fff;
+
+        position:relative;
+        z-index:0;
+
+        //width: 100%;
+        //margin-top:4rem;
+    // min-height: 85vh;
+        flex-basis:100ch;
+        overflow: hidden;
+
+        background: var(--hero-bg); // #05137c; // #010e20; //var(--oka-color-primary-bg-soft);
+    
+    //    background-image: linear-gradient(90deg, 
+    //                        #000 40%,
+    //                        #000e18 80%,
+                        
+    //                         );
+
+        .flex-grid{
+            //flex-direction: column-reverse;
+
+            @include breakpoint(md) {
+                flex-direction: row;
+
+            }
+        }
+    
+    }
+
+    .oka-darkMode .oka-hero {
+        background-image: linear-gradient(90deg, var(--oka-color-app-bg-default) 5%,var(--oka-color-primary-bg-soft) 60%,var(--oka-color-primary-contrast-low) 95%);
+
+    }
+
+    .oka-hero__logo{
+
+        display:block; //hack marge des navigateur sur les éléments inline
+
+        width:auto;
+        height:rem;
+
+        @include breakpoint(lg) {
+            height:5rem;
+        }
+
+    }
+
+
+
+    #video_pattern {
+        //background-size: cover;
+        //background-position: top;
+        /* mix-blend-mode: multiply; */
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: flex-end;
+
+        pointer-events: none;
+        font-size: 120px;
+        line-height: 160px;
+        font-family: monospace;
+        color: #fff;
+        opacity: 0.12;
+
+    }
+
+    .oka-hero__video{
+
+        position:absolute;
+        right:0;
+        z-index: -1;
+
+        width: 80vw;
+        height:100%;
+
+        display: flex;
+        flex-direction: row-reverse;
+        background: var(--hero-bg);
+
+    }
+
+    #video_background {
+    
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        //transform: translateX(-50%) translateY(-50%);
+        opacity: 35% ; //7%;
+
+        filter: brightness(1.3) grayscale(1); 
+        //mix-blend-mode: hard-light;
+
+        pointer-events: none;
+    }
+
+
+    .hero-cta {
+        position: relative;
+        z-index: 2;
+        border-radius: 1rem 1rem 0 0;
+        background-color: var(--oka-color-app-bg-default);
+        //height: 300px;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .flex-grid-bg-fx, .grid-bg-fx {
+        z-index: -1;
+    }
+
+    .oka-showGrid .flex-grid-bg-fx .grid-bg-fx__grid > * {
+        position: relative;
+        margin-bottom: 0 !important;
+        background-color: blue !important;
+        opacity: 0;
+    }
+
+    .oka-showGrid:before {
+        z-index: -1;
+    }
+
+    </style>
 
     <script  is:inline data-astro-rerun>
 

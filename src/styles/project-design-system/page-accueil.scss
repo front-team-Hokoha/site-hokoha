@@ -11,26 +11,6 @@
 
 }
 
-@font-face {
-    font-family: 'Noto Serif';
-    src: url('/site-hokoha/assets/fonts/NotoSerif-MediumItalic.woff2') format('woff2');
-    font-weight: normal;
-    //font-style: italic;
-    font-display: swap;
-}
-
-
-
-
-.noto-serif {
-    font-family: "Noto Serif", serif !important;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    
-    color:var(--oka-color-system-contrast-hard);
-    letter-spacing: -0.02em;
-    // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
-    }
 
 .oka-argument {
 

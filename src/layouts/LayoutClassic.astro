@@ -6,6 +6,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Smoothscroll from '../animations/Smoothscroll.astro';
 import Appearup from '../animations/AppearUp.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
+import CursorEffect from '../animations/CursorEffect.astro';
 
 
 // Composant Communs
@@ -42,10 +43,9 @@ const { pageClass } = Astro.props;
 
 
         <link rel="prefetch" href="/site-hokoha/assets/img/trame-video.jpg" as="image">
-        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script> -->
 
-
-
+    
         <style lang="scss" is:global>
             
             @import '../styles/main.scss';
@@ -62,11 +62,12 @@ const { pageClass } = Astro.props;
         <ViewTransitions />
     </head>
     <body class={`oka-lightMode page-${pageClass}`} >
+        <!-- <CursorEffect /> -->
         <div id="root" class="layout-app">
             
             <Header  currentPage={pageName} />
-            <slot name="hero" />
 
+            <slot name="hero" />
             <!-- Corps de page -->
             <div class="layout-app__body oka-surface" style="margin-top:0">
             
@@ -125,6 +126,11 @@ const { pageClass } = Astro.props;
 
         </div>
 
+
+        
+       
+
+
       
         <Smoothscroll />
         <Appearup />
@@ -132,9 +138,8 @@ const { pageClass } = Astro.props;
 
      
 
-  
+        
 
-        <script src="../animations/TextAnimator.js"></script>
 
         <script is:inline data-astro-rerun >
         
@@ -234,6 +239,7 @@ const { pageClass } = Astro.props;
       }
       document.onkeydown = KeyPress;
     </script>
+
 
 
 <!-- EFFET DE HIGHLIGHT -->
