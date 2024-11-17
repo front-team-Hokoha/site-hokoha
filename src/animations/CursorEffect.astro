@@ -9,7 +9,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
     <defs>
       <filter id="gooey">
-          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="18" />
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="98" />
           <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -7" result="goo" />
           <feComposite in="SourceGraphic" in2="goo" operator="atop" />
       </filter>
@@ -65,14 +65,14 @@ window.addEventListener('click', () => {
 	--color-link: #000;
 	--color-link-hover: #000;
 	--page-padding: 1rem;
-	--columns: 15;
+	--columns: 16;
 	--cursor-blend-mode: difference;
 	--cursor-radius: 0;
 }
 
 body{
-	--cursor-bg: #9eea47;
-    --cursor-blend-mode: exclusion;
+	--cursor-bg: #47eadf;
+    --cursor-blend-mode: color-dodge;
     --gradient-text-1: #85f2c3;
     --gradient-text-2: rgb(246 99 115);
     /*background-image: url(../img/bg2.jpg);*/
