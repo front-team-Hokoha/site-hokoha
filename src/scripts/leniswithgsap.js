@@ -14,7 +14,7 @@ export function initLenis() {
     lerp: 0.08,
     smooth: true,
 		direction: 'vertical',
-    smoothTouch: false,    
+    smoothTouch: true,    
   })
 
   // Sync ScrollTrigger with Lenis' scroll updates.

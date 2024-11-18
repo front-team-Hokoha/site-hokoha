@@ -30,7 +30,7 @@
     display:block; //hack marge des navigateur sur les éléments inline
 
     width:auto;
-    height:3rem !important;
+    height:3rem;
 
     @include breakpoint(lg) {
         height:5rem;
