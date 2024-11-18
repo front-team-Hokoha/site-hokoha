@@ -1,6 +1,6 @@
 
 // Import required functions from './utils.js'
-import { getMousePos, getWinSize, isFirefox } from '../scripts/utils.js';
+import { getMousePos, getWinSize, isFirefox  } from '../scripts/utils.js';
 
 import { gsap } from "gsap";
 
@@ -14,7 +14,7 @@ const updateMousePos = ev => {
   
 // Listen for 'mousemove' and 'pointermove' events and update 'mousepos' accordingly
 window.addEventListener('mousemove', updateMousePos);
-//window.addEventListener('pointermove', updateMousePos, { passive: true });
+window.addEventListener('pointermove', updateMousePos, { passive: true });
 
 // Initialize window size object
 let winsize = getWinSize();
@@ -90,8 +90,10 @@ export class GooCursor {
             // gsap.to(cell, { duration: 0.3, ease: 'expo', opacity: 0, delay: this.settings.ttl });
         }
 
+        
+
         window.addEventListener('mousemove', handleMove);
-        //window.addEventListener('pointermove', handleMove, { passive: true });
+        window.addEventListener('pointermove', handleMove, { passive: true });
     }
 
     /**

@@ -1,6 +1,5 @@
 ---
-// Vérifiez la taille de l'écran côté client
-//const isMobile = window.innerWidth < 768;
+
 ---
 
 <div class="cursor">
@@ -21,11 +20,15 @@
 <script>
 
 
+
 import { GooCursor } from './cursor.js';
 import { gsap } from "gsap";
 
 const cursorEl = document.querySelector('.cursor');
 
+const isMobile = window.innerWidth < 768;
+
+//if(!isMobile){
 // Initialize cursor
 const goo = new GooCursor(cursorEl);
 
@@ -56,6 +59,7 @@ window.addEventListener('click', () => {
         }
     }, 'start+=0.3')
 });
+//}
 </script>
 
 
@@ -65,11 +69,13 @@ window.addEventListener('click', () => {
 @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
 
 :root {
-	/*--columns: 14;*/
-
 
   /* Limiter le nombre de cellules pour les mobiles*/
   --columns: 6;
+
+  @include breakpoint(md) {
+    --columns: 14;
+  }
 }
 
 body{
