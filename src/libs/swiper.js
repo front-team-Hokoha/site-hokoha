@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     swiper = new Swiper(swiperContainer, {
                         modules: [Autoplay],
                         spaceBetween: 24,
-                        slidesPerView: 2,
+                        slidesPerView: 3,
                         loop: true,
                         speed: 4000,
                         grabCursor: true,

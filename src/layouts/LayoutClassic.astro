@@ -6,6 +6,8 @@ import { ViewTransitions } from 'astro:transitions';
 import Smoothscroll from '../animations/Smoothscroll.astro';
 import Appearup from '../animations/AppearUp.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
+
+
 import CursorEffect from '../animations/CursorEffect.astro';
 
 
@@ -25,7 +27,9 @@ const { pageClass } = Astro.props;
 
 
 
+
 ---
+
 
 <html lang="fr">
     <head>
@@ -62,7 +66,10 @@ const { pageClass } = Astro.props;
         <ViewTransitions />
     </head>
     <body class={`oka-lightMode page-${pageClass}`} >
-        <CursorEffect />
+        
+        <!-- <CursorEffect  /> -->
+        
+        
         <div id="root" class="layout-app">
             
             <Header  currentPage={pageName} />
@@ -127,19 +134,12 @@ const { pageClass } = Astro.props;
         </div>
 
 
-        
-       
-
-
       
         <Smoothscroll />
         <Appearup />
         <Appeargroup />
 
-     
-
-        
-
+    
 
         <script is:inline data-astro-rerun >
         
