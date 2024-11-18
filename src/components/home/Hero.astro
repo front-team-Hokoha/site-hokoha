@@ -15,9 +15,10 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
     <div class="oka-app-wrap -fluid ">
         
-        <div class="flex-grid" data-appearup>
-            <div class="col col-2"></div>
+        <div class="flex-grid" >
+            <div class="col col-2 oka-show--md"></div>
             <div class="col col-8" style="position:relative">
+                <!-- -->
                 <div class="oka-hero__video">
                     <video class="video_background" id="video_background" preload="auto" autoplay="" loop="" muted="true"  poster="">
                         <source src="assets/video/dev.mp4" type="video/mp4"> 
@@ -51,11 +52,11 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
             
             </div>
 
-            <div class="col col-1"></div>
+            <div class="col col-1 oka-show--md"></div>
 
             <div class="col col-5 oka-flex -vrt " style="justify-content:flex-end">
 
-                <div class="oka-spacer -xl"></div>
+                <div class="oka-spacer -xl oka-show--md"></div>
                 <!-- <div class="oka-spacer -md"></div> -->
    
 
@@ -163,18 +164,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
     }
 
-    .oka-hero__logo{
-
-        display:block; //hack marge des navigateur sur les éléments inline
-
-        width:auto;
-        height:rem;
-
-        @include breakpoint(lg) {
-            height:5rem;
-        }
-    }
-
+  
 
 
     #video_pattern {
@@ -197,17 +187,23 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
     }
 
     .oka-hero__video{
-
         position:absolute;
-        right:0;
+        right:-1rem;
         z-index: -1;
 
-        width: 80vw;
+        width: 130vw;
         height:100%;
 
         display: flex;
         flex-direction: row-reverse;
         background: var(--hero-bg);
+
+
+        @include breakpoint(md) {
+            right:0;
+            width: 80vw;
+            height:100%;
+        }
 
     }
 
