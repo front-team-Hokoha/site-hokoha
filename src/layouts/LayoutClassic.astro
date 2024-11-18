@@ -7,26 +7,17 @@ import Smoothscroll from '../animations/Smoothscroll.astro';
 import Appearup from '../animations/AppearUp.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
 
-
 import CursorEffect from '../animations/CursorEffect.astro';
-
 
 // Composant Communs
 import Header from '../components/Header.astro';
 import Credits from '../components/Credits.astro';
-
-
-
-
 
 // Reception des props passées par les pages qui utilisent ce layout
 const { title } = Astro.props;
 const { description } = Astro.props;
 const { pageName } = Astro.props;
 const { pageClass } = Astro.props;
-
-
-
 
 ---
 
@@ -67,7 +58,7 @@ const { pageClass } = Astro.props;
     </head>
     <body class={`oka-lightMode page-${pageClass}`} >
         
-        <!-- <CursorEffect  /> -->
+        <CursorEffect  />
         
         
         <div id="root" class="layout-app">
