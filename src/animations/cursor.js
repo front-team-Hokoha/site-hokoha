@@ -13,7 +13,7 @@ const updateMousePos = ev => {
 };
   
 // Listen for 'mousemove' and 'pointermove' events and update 'mousepos' accordingly
-window.addEventListener('mousemove', updateMousePos);
+//window.addEventListener('mousemove', updateMousePos);
 window.addEventListener('pointermove', updateMousePos, { passive: true });
 
 // Initialize window size object
@@ -92,7 +92,7 @@ export class GooCursor {
 
         
 
-        window.addEventListener('mousemove', handleMove);
+        //window.addEventListener('mousemove', handleMove);
         window.addEventListener('pointermove', handleMove, { passive: true });
     }
 
