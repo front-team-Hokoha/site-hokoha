@@ -2,8 +2,9 @@ import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
-document.addEventListener('DOMContentLoaded', () => {
-    
+//document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
+   
     const swiperContainer = document.querySelector('.swiper');
 
     // Sélectionne le div que tu veux observer
