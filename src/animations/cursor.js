@@ -48,6 +48,8 @@ export class GooCursor {
     };
 
     constructor(DOM_el) {
+
+        console.log(DOM_el)
         this.DOM.el = DOM_el;
 
         // Cells wrapper element that gets the SVG filter applied
@@ -101,14 +103,18 @@ export class GooCursor {
      * These are the elements that get shown when moving the mouse
      */
     layout() {
+
+        console.log('layout')
         // The number of columns is defined in a CSS variable --columns
         this.columns = getComputedStyle(this.DOM.el).getPropertyValue('--columns');
+        
         // Calculate cell size
         this.cellSize =  winsize.width/this.columns;
         // Calculate number of rows
         this.rows = Math.ceil(winsize.height/this.cellSize);
         // Calculate the total amount of cells (rows x columns)
         this.cellsTotal = this.rows * this.columns;
+
         // Insert [this.cellsTotal] cursor__inner-box elements inside the .cursor__inner element
         let innerStr = '';
         // Erase contents
