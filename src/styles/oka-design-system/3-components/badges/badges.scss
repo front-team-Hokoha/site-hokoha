@@ -1,0 +1,76 @@
+
+/** OKA BADGES
+//
+| 4.0.0 | 04/11/2022 | figma token  |
+| 0.0.2 | 01/09/2022 | ajout modifier info (corridor)  |
+| 0.0.1 | 08/10/2021 | création (pottok)  |
+
+*/
+
+/* DEPENDANCES */
+@import "../../1-bases/animations/animations";
+
+
+.oka-badge {
+
+    // TAILLE
+    width:1rem;
+    height:1rem;
+    border-radius: 50%;
+
+    // ANIMATION D'APPARITION
+    animation: oka-pulse 0.13s linear;
+
+    background: var(--oka-badge-color);
+
+    // MODIFIERS : ASPECT
+    &.-warning {
+        --oka-badge-color :var(--oka-color-fg-warning, var(--oka-color-warning-contrast-medium , var(--color--warning))); 
+    }
+
+    &.-error {
+        --oka-badge-color :var(--oka-color-fg-negative, var(--oka-color-error-contrast-medium , var(--color--error))); 
+    }
+
+    &.-success {
+        --oka-badge-color :var(--oka-color-fg-positive, var(--oka-color-success-contrast-medium , var(--color--success))); 
+    }
+
+    &.-info {
+        --oka-badge-color :var(--oka-color-fg-info, var(--oka-color-info-contrast-medium , var(--color--info))); 
+        
+    }
+
+    // MODIFIERS : SIZE
+    &--xs,
+    &.-xs {
+        width:0.5rem;
+        height:0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &--sm,
+    &.-sm {
+        width:0.75rem;
+        height:0.75rem;
+        border-radius: 0.75rem;
+    }
+
+    // MODIFIER  : ANIMATION
+    &.-pulse {
+        //@extend .oka-pulse;
+        
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            //box-shadow: 0 0 0 0px rgba(255,0,0, 0.5);
+            box-shadow: 0 0 0 0 var(--oka-badge-color);
+        }
+        100% {
+            box-shadow: 0 0 0 1rem rgba(255,0,0, 0);
+        }
+    }
+}
+     

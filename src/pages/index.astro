@@ -5,7 +5,13 @@ import LayoutClassic from '../layouts/LayoutClassic.astro';
 
 // Composants
 import Typper from '../animations/Typper.astro';
-import Hero from '../components/home/Hero.astro';
+//import Hero from '../components/home/Hero.astro';
+import OkaImage from '../components/Image.astro';
+import logoImageImport from '../assets/img/Logokoha-primary-onlight.png';
+import img1 from '../assets/img/entreprise/mosaic/JPEG/perspective.jpg';
+//import img1 from '../assets/img/entreprise/mosaic/JPEG/kevinA.jpg';
+
+
 import Argument from '../components/home/Argument.astro';
 import Focus from '../components/home/Focus.astro';
 import ClientsWidget from '../components/clients/ClientsSwiper.astro';
@@ -24,83 +30,105 @@ const pageClass = "accueil";
   pageClass={pageClass}
   >
 
-  
-
-
-
-  <div class="oka-spacer -xl"></div>
   <div class="flex-grid" >
     <div class="col col-1 oka-show--lg"></div>
-    <div class="col col-1 col--md-1">
-      <p class="oka-text -xs sticky -top40vh">
-        <Typper text="1.<br />A PROPOS" />
-      </p>
+    <div class="col col-14">
+      <div class="oka-spacer -xl"></div>
+
+
+      <h1 class="oka-h -poster -crop -secondary">
+        <Typper text='La précision du <span class="noto-serif">développement sur-mesure</span>.' />
+      </h1>
+
+
+      <hr class="oka-divider -lg " />
+
     </div>
+
+  </div>
+
+  
+  
+  <div class="flex-grid" >
+    <div class="col col-1 oka-show--lg"></div>
+
     <div class="col col-5">
     
-      <div class="sticky -top40vh">
-        <h2 class="oka-h -secondary -lg -crop">HOKOHA est une société spécialisée dans le <mark class="hx hx-13"><span class="hx__select"></span>développement</mark> informatique <mark class="hx hx-13"><span class="hx__select"></span>sur mesure</mark>, dédiée à rendre les technologies numériques accessibles et performantes pour les entreprises.</h2>
+      <div class="sticky -top30vh">
+
+        <OkaImage src={logoImageImport} 
+                    alt="Logotype de la société Hokoha Développement informatique" 
+                    imgHeight="80"
+                    imgWidth="418" 
+                    className="oka-hero__logo" 
+                />
+        <div class="oka-spacer -md"></div>
+        <h2 class="oka-h -secondary -sm -crop">La société HOKOHA est spécialisée dans le <mark class="hx hx-13"><span class="hx__select"></span>développement</mark> informatique <mark class="hx hx-13"><span class="hx__select"></span>sur mesure</mark>, dédiée à rendre les technologies numériques accessibles et performantes pour les entreprises.</h2>
+        <div class="oka-spacer -xl"></div>
+        
+        <!-- <OkaImage src={img1} 
+                    alt="Logotype de la société Hokoha Développement informatique" 
+                    imgHeight="800"
+                    imgWidth="800" 
+                    className="" 
+                    style="width:100%; object-fit:cover;"
+                /> -->
+                
+        
+      
+      
+      
       </div>
 
     </div>
+    
     <div class="col col-1"></div>
-
-    <div class="col col-7">
-        <div class="oka-spacer -xxl"></div>
+    <div class="col col-8">
+        <div class="oka-spacer -xl"></div>
+        <div class="oka-spacer -xl"></div>
 
         <Argument
           nb="1"
           theme="Notre métier"
-          title="<span class='noto-serif'>Développer</span> et <span class='noto-serif'>interconnecter</span> <span class='u-noLineBreak'>vos outils.</span>"
+          title="<span class='noto-serif'>Développer</span> et <br/><span class='noto-serif'>interconnecter</span> <span class='u-noLineBreak'>vos outils.</span>"
           body="Nous développons vos outils sur mesure et les interconnectons pour créer un écosystème numérique fluide et performant. Notre approche garantit une intégration harmonieuse, optimisant vos processus et renforçant l'efficacité de vos systèmes."
         />
 
         <Argument
           nb="2"
           theme="Notre objectif"
-          title="Concrétiser vos <span class='noto-serif'>innovations</span> et relever <span class='u-noLineBreak'><span class='noto-serif'>vos défis</span>.</span>"
+          title="Concrétiser vos <span class='noto-serif'>innovations</span><br /> et relever <span class='u-noLineBreak'><span class='noto-serif'>vos défis</span>.</span>"
           body="Nous concrétisons vos idées les plus innovantes en alliant <span>créativité et pragmatisme</span>. Chaque défi est pour nous une opportunité de proposer des solutions sur mesure, simples et efficaces, répondant parfaitement à vos besoins tout en stimulant l'innovation dans vos projets."
         />
 
-        <Argument
-        nb="3"
-        theme="Notre métier"
-        title="Allier <span class='noto-serif'>ergonomie</span> avec <span class='u-noLineBreak'>les <span class='noto-serif'>esthétisme</span>.</span>"
-        body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
-        />
+       
 
         <Argument
-          nb="4"
+          nb="3"
           theme="Notre métier"
-          title="Nous <span class='noto-serif'>collectons</span> vos données et nous <span class='u-noLineBreak'>les <span class='noto-serif'>valorisons</span>.</span>"
+          title="<span class='noto-serif'>Collecter, traiter</span><br /> et <span class='noto-serif'>valoriser</span> vos données."
           body="Nous collectons vos données avec précision et les valorisons pour en extraire tout leur potentiel. Grâce à une analyse rigoureuse et des solutions adaptées, nous transformons vos données en leviers de croissance et en outils d’aide à la décision efficaces."
         />
         
     </div>
+
+   
   </div>
 
-  <div class="oka-spacer -xl"></div>
+  <div class="oka-spacer -xl"></div>  
+  <!-- <hr class="oka-divider "> -->
+  <div class="oka-spacer -xl"></div>  
+
 
   <div class="flex-grid ">
     <div class="col col-1 oka-show--lg"></div>
-    <div class="col col-1">
-      <p class="oka-text -xs sticky -top40vh">
-        <Typper text="2.<br />CHAMP<br />D'ACTION" />
-      </p>
-    </div>
-    <div class="col col-5">
     
-      <div class="sticky -top8" data-appearup >
-        <p class="oka-text -lg">Nous concevons des solutions innovantes et personnalisées, parfaitement alignées avec les besoins spécifiques de chaque client. Notre engagement se traduit par des solutions au forfait, optimisant vos outils et intégrant harmonieusement vos systèmes existants pour améliorer l'efficacité globale de vos processus métiers.</p>
-      </div>
-    </div>
 
-    <div class="col col-1"></div>
+    <div class="col col-5">
 
-    <div class="col col-6">
+      <div class="-cq sticky -top30vh" >
 
-      <div class="-cq" >
-        <h2 class="oka-h -xxl -secondary">
+        <h2 class="oka-h -xxl -secondary -crop">
           <Typper text="Solutions web" /><br />
           <Typper text="Logiciels métiers" /><br />
           <Typper text="Applications Mobiles" /><br />
@@ -110,21 +138,32 @@ const pageClass = "accueil";
 
       </div>
     </div>
+
+
+    <div class="col col-7">
+      <!-- <div class="oka-spacer -xl"></div>  
+      <div class="oka-spacer -xl"></div> -->
+
+
+      
+      <div class="zzsticky zz-top8" style="margin-top:50vh" data-appearup >
+        <p class="oka-text -lg">Nous concevons des solutions innovantes et personnalisées, parfaitement alignées avec les besoins spécifiques de chaque client. Notre engagement se traduit par des solutions au forfait, optimisant vos outils et intégrant harmonieusement vos systèmes existants pour améliorer l'efficacité globale de vos processus métiers.</p>
+      </div>
+    </div>
+
+ 
+
+    
   </div>
 
-  <div class="oka-spacer -xxl"></div>
+  <div class="oka-spacer -xl"></div>
   
   <div class="flex-grid">
     <div class="col col-1 oka-show--lg"></div>
-    <div class="col col-1">
-      <p class="oka-text -xs sticky -top40vh">
-        <Typper text="3.<br />POURQUOI<br />HOKOHA" />
-      </p>
-    </div>
-  </div>
+    <div class="col col-14">
+     
 
-
-  <div class="oka-cols -four oka-darkMode">
+        <div class="oka-cols -four oka-darkMode">
 
     <Focus
       title="Accompagnement"
@@ -155,7 +194,14 @@ const pageClass = "accueil";
     />
   </div>
 
-  <div class="oka-spacer -xxl"></div>
+
+    </div>
+  </div>
+
+
+  
+
+  <div class="oka-spacer -xl"></div>
 
 
   <ClientsWidget />
@@ -204,7 +250,7 @@ const pageClass = "accueil";
 
   <!-- "Hero" -->
   <div slot="hero">
-    <Hero />
+    <!-- <Hero /> -->
   </div>
 
   

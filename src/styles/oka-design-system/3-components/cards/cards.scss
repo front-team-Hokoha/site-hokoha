@@ -1,0 +1,181 @@
+/* OKA CARDS 
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+| 4.0.3 | 02/09/2024 | Corrections autours du lien |
+| 4.0.2 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.1 | 23/11/2022 | ABEM |
+| 4.0.0 | 24/10/2022 | use figma tokens |
+| 3.0.5 | 02/07/2021 | tokens |
+| 3.0.4 | 18/03/2021 | ajout body |
+| 3.0.3 |            | utilisation typo components pour heading|
+| 3.0.1 |            | shadows dependances 3.0.0|
+| 3.0.0 |            |   |
+| 2.0.2 |            | skeleton|
+| 2.0.1 |            | hover : couleur accent|
+| 2.0.0 |            |    |
+*/
+
+
+
+// Head
+
+
+@mixin card--skeleton{
+    pointer-events: none;
+    box-shadow: none !important;
+    * {
+        pointer-events: none;
+        background: var(--oka-color-bg-disabled , var(--color--skeleton));
+        color: var(--oka-color-none, var(--color--skeleton));
+        border-color : var(--oka-color-bd-disabled , var(--color--skeleton));
+    }
+}
+
+
+.oka-card {
+
+    // CARD
+    --oka-card-bd-radius : 0.25rem;
+    --oka-card-bg-color  : var(--oka-color-layer-floor-0 , var(--oka-color-app-bg-default,#fff));
+    --oka-card-bd-width : 0;
+    --oka-card-bd-color : var(--oka-color-bd-primary-subtle);
+
+    // LINK
+    --oka-card-link-bg-color : var(--oka-color-bg-primary-minimal , var(--oka-color-action-bg-primary-hover-alpha));
+    --oka-card-link-bd-color : var(--oka-color-bd-primary-subtle , var(--oka-color-action-bg-primary-hover-alpha));
+    --oka-card-link-bd-width : 4px ;
+    
+    //HEAD
+    --oka-card-head-bd-color       : var(--oka-color-bd-subtle ,var(--gray--lighter));
+    --oka-card-head-bd-width       : 1px 0 0 0 ;
+
+}
+
+
+
+
+.oka-card {
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    // Background
+    background-color: var(--oka-card-bg-color); // 5.0.0
+
+    // 5.0.0 // background-repeat: no-repeat;
+    // 5.0.0 // background-position: center;
+    // 5.0.0 // background-size: contain;
+
+    // Border
+    // 5.0.0 // border-width : $oka-card-border-width;
+    // 5.0.0 // border-color : $oka-card-border-color;
+    // 5.0.0 // border-style : $oka-card-border-style;
+
+    border : var(--oka-card-bd-width) solid var(--oka-card-bd-color); // 5.0.0
+
+    border-radius: var(--oka-card-bd-radius); // 5.0.0
+    
+    overflow:hidden;
+
+    // SHADOW
+    @extend .oka-shadow-2;
+
+    // Modifiers
+    &--reverse,
+    &.-reverse {
+        flex-direction:column-reverse;
+    }
+
+    &--skeleton,
+    &.-skeleton {
+        @include card--skeleton;
+    }
+
+
+    &__link{
+        position:absolute !important;
+        z-index:2;
+        width:100%;
+        height:100%;
+
+        @extend %oka-ripple; // 4.0.2
+
+        &:hover{
+            // Border
+            // 5.0.0 // border-width : $oka-card-link-border-width-hover;
+            // 5.0.0 // border-color : $oka-card-link-border-color-hover;
+            // 5.0.0 // border-style : $oka-card-link-border-style-hover;
+            border : var(--oka-card-link-bd-width) solid var(--oka-card-link-bd-color); // 5.0.0
+            // Background
+            background: var(--oka-card-link-bg-color) ; // 5.0.0 //$oka-card-link-background-color-hover ;
+        }
+    }
+
+    &__pin{
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+    }
+
+    &__corner--left,
+    &__corner {
+        width: 2.5rem; 
+        height: 2.5rem; 
+    
+        position:absolute;
+        top:0;
+        left:0;
+    }
+
+    &__media {
+
+        // Border
+        // 4.0.0 // border-color : $oka-card-media-border-color;
+        // 4.0.0 // border-width : $oka-card-media-border-width;
+        // 4.0.0 // border-style : $oka-card-media-border-style;
+
+        // Background
+        // 4.0.0 // background-color: $oka-card-media-background-color;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        width: 100%;
+
+        //https://www.geeksforgeeks.org/maintain-the-aspect-ratio-of-a-div-with-css/
+        // ------------------------
+        //utiliser oka-ratio à la place
+        // ------------------------
+        &--16-9{
+            padding-top: 56.25%;
+        }
+    }
+
+
+    &__body {
+        padding:0.5rem;
+        flex-grow:4;
+    }
+    
+    &__head{
+        width: 100%; // Force la taille (si dans containeur flex)
+        flex-grow:1; // Force la taille (si dans containeur flex)
+        
+        min-height:2rem;
+
+        padding:  0.5rem  1rem;
+
+        // Border
+        // 5.0.0 // border-color : $oka-card-head-border-color;
+        // 5.0.0 // border-width : $oka-card-head-border-width;
+        // 5.0.0 // border-style : $oka-card-head-border-style;
+        border-color : var(--oka-card-head-bd-color); // 5.0.0
+        border-width : var(--oka-card-head-bd-width); // 5.0.0
+        border-style : solid; // 5.0.0
+    }
+
+
+
+}
+

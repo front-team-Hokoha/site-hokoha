@@ -1,0 +1,184 @@
+
+/** OKA-SPACER : inline et horizontal responsive spacer 
+
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+| 1.0.2 | 29/01/2025 | revision de l'affichage technique |
+| 1.0.1 | 26/09/2024 | ajout -xxl + affichage technique |
+| 1.0.0 | 03/04/2024 | ajout -full  |
+| 0.0.1 | 18/10/2022 | création  |
+*/
+
+
+
+// Par défaut le spacer (.-stack)
+
+.oka-spacer {
+    
+    flex-grow:0;
+    flex-shrink:0;
+
+
+    height:var(--space-sm);
+
+    &:before{
+        content:"sm";
+    }
+
+    &.-inline{
+        width:var(--space-sm);
+    }
+
+
+
+    &.-md{
+        height:var(--space-md);
+
+        &:before{
+            content:"md";
+        }
+
+        &.-inline{  
+            width:var(--space-md);
+        }
+    }
+
+    &.-lg{
+        height:var(--space-lg);
+        
+        &:before{
+            content:"lg";
+        }
+
+        &.-inline{
+            width:var(--space-lg);
+        }
+    }
+
+    &.-xl{
+        height:var(--space-xl);
+
+        &:before{
+            content:"xl";
+        }
+
+        &.-inline{
+            width:var(--space-xl);
+        }
+    }
+
+    &.-xxl{
+        height:var(--space-xxl);
+
+        &:before{
+            content:"xxl";
+        }
+        
+        &.-inline{
+            width:var(--space-xxl);
+        }
+    }
+
+
+    &.-inline{
+        height:0;
+    }
+
+    &.-full{
+        flex-grow:1;
+        &:before{
+            content:"full";
+        }
+    }
+
+}
+
+
+
+
+//  affichage grille technique
+.oka-spacer{
+
+    &:before,
+    &:after{
+        color : var(--oka-color-fg-spec, var(--oka-color-specs-hight));
+        font-size: 8px;
+    }
+}
+
+.oka-spacer:not(.-inline){
+    position: relative;
+    border-color : var(--oka-color-bd-spec-subtle,var(--oka-color-specs-low)) !important;
+    border-style: solid !important;
+    border-width: 0 0 0 0.5px !important;
+    opacity:0;
+    
+    &:before,
+    &:after{
+        //content:"" !important;
+        display: block;
+        width:0.5rem;
+        height:1px;
+
+        position: absolute;
+        left:-0.25rem;
+
+        padding-left:0.5rem;
+
+        border-style: solid ;
+        border-color : var(--oka-color-bd-spec-subtle, var(--oka-color-specs-low)) !important;
+        border-width: 0.5px 0 0 0 !important;
+
+        
+
+        opacity: 0;
+
+        overflow:visible;
+
+    }
+    &:after{
+        content:"";
+        bottom:0;
+        border-width: 0 0 0.5px 0 !important;
+    }
+}
+
+
+.oka-spacer.-inline {
+    position: relative;
+    border-color : var(--oka-color-bd-spec-subtle, var(--oka-color-specs-low)) !important;
+    border-style: solid !important;
+    border-width: 0.5px 0 0 0  !important;
+    opacity:0;
+
+   
+    &:before,
+    &:after{
+       
+        display: block;
+        width:1px;
+        height:0.5rem;
+
+        position: absolute;
+        top:-0.25rem;
+
+        border-style: solid ;
+        border-color : var(--oka-color-bd-spec-subtle, var(--oka-color-specs-low)) !important;
+        border-width: 0 0 0 0.5px !important;
+
+        opacity: 0;
+
+    }
+    &:after{
+        content:"";
+        right:0;
+        border-width: 0   0 0  0.5px !important;
+    }
+}
+
+
+.showGrid .oka-spacer,
+.showGrid .oka-spacer:before,
+.showGrid .oka-spacer:after {
+    opacity:1;
+}

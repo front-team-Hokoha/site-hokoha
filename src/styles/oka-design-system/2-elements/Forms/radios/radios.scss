@@ -2,6 +2,9 @@
 /**
 * CHECKBOX OKA
 *
+
+|  5.0.0 | 22/05/2025 |compatible design tokens 5 figma + Outline gérer par commons-radio-checkbox|
+
 | 4.0.1 | 16/10/2023 | Ancêtre -forceActionSecondary |
 | 4.0.0 | 13/03/2022 | figma token compatible - ABEM |
 | 3.1.0 | 03/06/2021 | revision  |
@@ -45,10 +48,11 @@ input[type="radio"].oka-radio  {
 
         }
 
+        // 5.0.0 Outline gérer par commons-radio-checkbox
         &:before{
             //Supprime le outline quand checked
             // on ne peut pas unchecked un radio
-            box-shadow : none !important;
+            //box-shadow : none !important;
         }
 
     } 

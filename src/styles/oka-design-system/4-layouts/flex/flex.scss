@@ -1,0 +1,149 @@
+// UTILITAIRE FLEX
+
+/*
+| 4.0.4 | 06/06/2025 | gap xs par default + modifier -gap-none + centré par default + aligné en haut pour vrt par default|
+| 4.0.3 | 11/03/2025 | Ajout modifier space-between |
+| 4.0.2 | 26/07/2024 | Simplification du nomage + modifier gap  |
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+| 0.0.1 | 24/11/2022 | Création |
+*/
+
+
+.oka-flex {
+    --oka-flex-align-content: center;
+    --oka-flex-justify-content: flex-start;
+    --oka-flex-align-items: var(--oka-flex-align-content);
+    --oka-flex-justify-items: var(--oka-flex-justify-content);
+
+    display: flex;
+    
+    align-content: var(--oka-flex-align-content);
+    justify-content: var(--oka-flex-justify-content);
+    align-items: var(--oka-flex-align-items);
+    justify-items: var(--oka-flex-justify-items);
+
+    gap: var(--space-sm); // gap par default 
+
+    > * {
+        &.-grow{
+            flex-grow: 1;
+        }
+    }
+
+    &.-grow {
+        > * {
+            flex-grow: 1;
+        }
+    }
+
+    &.-wrap{
+        flex-wrap: wrap;
+    }
+
+    &.-rvrs{
+        flex-direction: row-reverse;
+    }
+
+    &.-space-between {
+        --oka-flex-justify-content: space-between !important;
+    }
+
+
+    &[class*= "-top"] {
+        // applique quelque soit l'axe x (droite/gauche)
+        --oka-flex-justify-content: center;
+        --oka-flex-align-content: flex-start;
+
+        &.-vrt{
+            --oka-flex-justify-content: flex-start;
+            --oka-flex-align-content: center;
+
+            &.-rvrs {
+                --oka-flex-justify-content: flex-end;
+            }
+        }
+    }
+
+    &[class*= "-bottom"] {
+        // applique quelque soit l'axe x (droite/gauche)
+        --oka-flex-justify-content: center;
+        --oka-flex-align-content: flex-end;
+
+        &.-vrt{
+            --oka-flex-justify-content: flex-end;
+            --oka-flex-align-content: center;
+
+            &.-rvrs{
+                --oka-flex-justify-content: flex-start;
+            }
+        }
+    }
+
+    &[class*= "-center"]{
+        // applique quelque soit l'axe x (droite/gauche)
+        --oka-flex-align-content: center;
+        --oka-flex-justify-content: center;
+    }
+
+    &[class*="-left"] {
+        --oka-flex-justify-content: flex-start;
+
+        &.-rvrs {
+            --oka-flex-justify-content: flex-end;
+        }
+    }
+
+    &[class*="-right"] {
+        --oka-flex-justify-content: flex-end;
+
+        &.-rvrs {
+            --oka-flex-justify-content: flex-start;
+        }
+    }
+
+    &.-vrt {
+        flex-direction: column;
+        --oka-flex-align-content: flex-start; // par default en vertical, les item sont calés en haut
+
+        &.-rvrs {
+            flex-direction: column-reverse;
+        }
+
+        &[class*="-left"]{
+            --oka-flex-align-content: flex-start;
+        }
+        
+        &[class*="-right"]{
+            --oka-flex-align-content: flex-end;
+        }
+
+        &[class*="-left"], &[class*="-right"]{
+            &[class*="-flex-center"] {
+                --oka-flex-justify-content: center;
+            }
+        }
+    }
+
+
+    &.-gap {
+
+        &-none {
+            gap: 0;
+        }
+        &-xs {
+            gap: var(--space-xs); 
+        }
+        &-sm {
+            gap: var(--space-sm); // par defaut flex a gap sm
+        }
+
+        &-md {
+            gap: var(--space-md);
+        }
+
+        &-lg {
+            gap: var(--space-lg);
+        }
+    }
+
+}

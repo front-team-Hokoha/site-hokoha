@@ -7,7 +7,7 @@ import Smoothscroll from '../animations/Smoothscroll.astro';
 import Appearup from '../animations/AppearUp.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
 
-import CursorEffect from '../animations/CursorEffect.astro';
+//import CursorEffect from '../animations/CursorEffect.astro';
 
 // Composant Communs
 import Header from '../components/Header.astro';
@@ -51,6 +51,10 @@ const { pageClass } = Astro.props;
             
         </style>
 
+
+        <link rel="preconnect" href="https://rsms.me/">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
         <base href="/site-hokoha/">
 
     
@@ -58,7 +62,7 @@ const { pageClass } = Astro.props;
     </head>
     <body class={`oka-lightMode page-${pageClass}`} >
         
-        <CursorEffect  />
+        <!-- <CursorEffect  /> -->
         
         
         <div id="root" class="layout-app">

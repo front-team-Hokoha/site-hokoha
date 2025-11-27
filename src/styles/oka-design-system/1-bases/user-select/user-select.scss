@@ -3,6 +3,7 @@
 // USER-SELECT
 //
 //
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 | 4.0.0  | 04/09/2022 | Compatible Figma token |
 | 3.1.0  | 03/06/2021 | Revision |
 */
@@ -16,8 +17,6 @@
     @include user-select-none()
 }
 
-
-
 @mixin user-select-text {
     user-select: text;
 }
@@ -25,8 +24,6 @@
 .oka-U-selectText{
     @include user-select-text()
 }
-
-
 
 @mixin user-select-all {
     user-select: all;
@@ -37,8 +34,7 @@
 }
 
 // surbrillance des textes.
-// HABILLAGE DU SELECT HIGHLIGT
 ::selection {
-    color:var(--oka-color-primary-fg-on-medium);;
-    background: var(--oka-color-primary-bg-medium);
+    color: var(--oka-color-fg-strong ,var(--oka-color-primary-fg-on-medium));
+    background: var(--oka-color-bg-primary-subtle, var(--oka-color-primary-bg-medium));
 }

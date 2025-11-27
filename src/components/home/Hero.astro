@@ -7,45 +7,47 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 ---
 
 
-<div class="oka-hero oka-darkMode oka-showGrid">
+<div class="oka-hero oka-darkMode oka-showGrid" style="height:80vh">
     
    
-
-    
 
     <div class="oka-app-wrap -fluid ">
         
         <div class="flex-grid" >
-            <div class="col col-2 oka-show--md"></div>
-            <div class="col col-8" style="position:relative">
-                <!-- -->
+            <div class="col col-1 oka-show--md"></div>
+            <div class="col col-9" style="position:relative">
+                <!-- 
                 <div class="oka-hero__video">
                     <video class="video_background" id="video_background" preload="auto" autoplay playsinline loop="" muted="true"  poster="">
                         <source src="assets/video/dev.mp4" type="video/mp4"> 
                     </video>
-                </div>
+                </div>-->
+
                 <!-- -->
                 <div class="oka-spacer -md"></div>
                 <div class="oka-spacer -xl"></div>
                 <div class="oka-spacer -xl"></div>
+                
+                
+                
+
+                <div class="oka-spacer -sm"></div>
+
+                <!-- <h1 class="oka-h -xxl">Développement informatique,</h1> -->
+                <h1 class="oka-h -poster">La précision du sur-mesure.</h1>
+
+        
                 <div class="oka-spacer -xl"></div> 
            
-                
-                
+                <hr class="filet"/>
                 <OkaImage src={logoImageImport} 
                     alt="Logotype de la société Hokoha Développement informatique" 
                     imgHeight="80"
                     imgWidth="418" 
                     className="oka-hero__logo" 
                 />
-
                 <div class="oka-spacer -sm"></div>
-
-                <h1 class="oka-h -lg"><span class='noto-serif'>Développement informatique</span></h1>
-                
-                <hr class="filet"/>
-                <div class="oka-spacer -sm"></div>
-                <div class="oka-h -md -secondary -crop">Apporteur de solutions</div>
+                <!-- <div class="oka-h -md -secondary -crop">Apporteur de solutions</div> -->
                 <div class="oka-spacer -xl"></div> 
                 
 
@@ -61,7 +63,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
    
 
                 <div class="-cq" >
-                    <h2 class="oka-h -xxl -secondary">
+                    <h2 class="oka-h -md -secondary">
                         <Typper text="Solutions web" /><br />
                         <Typper text="Logiciels métiers" /><br />
                         <Typper text="Applications Mobiles" /><br />
@@ -138,7 +140,7 @@ import logoImageImport from '../../assets/img/Logokoha-couv-simple.png';
 
     <style lang="scss">
 
-    @import "src/styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
+    @import "@styles/oka-design-system/0-abstracts/breakpoints/breakpoints";
     .oka-hero{
         
         --hero-bg : hsl(220 96% 20%) ;

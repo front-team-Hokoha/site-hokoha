@@ -1,5 +1,8 @@
 // OKA LOADER
 /*
+
+| 5.0.0 | 22/05/2025 | compatible design tokens figma + spinner translucide|
+
 | 4.0.0 | 25/10/2021 | compatible darkMode - ABEM |
 | 3.1.1 | 13/10/2021 | Secondary |
 | 3.1.0 | 02/06/2021 | Révision |
@@ -17,13 +20,13 @@
     flex-grow:0;
     flex-shrink:0;
 
-    border: 1px solid var(--oka-color-system-contrast-low);
-    border-right-color: var(--oka-color-primary-contrast-hight);
-    border-bottom-color: var(--oka-color-primary-contrast-hight);
+    border: 1px solid var(--oka-color-primary-50, var(--oka-color-system-contrast-low)); // 5.0.0
+    border-right-color: var(--oka-color-primary-700, var(--oka-color-primary-contrast-hight)); // 5.0.0
+    border-bottom-color: var(--oka-color-primary-700, var(--oka-color-primary-contrast-hight)); // 5.0.0
 
     border-radius: 50%;
 
-    animation: loaderRotate 0.75s linear infinite;
+    animation: loaderRotate 0.65s linear infinite;
     
 
     &.-sm {
@@ -42,8 +45,9 @@
     
 
     &.-secondary {
-        border-right-color: var(--oka-color-secondary-contrast-medium);
-        border-bottom-color: var(--oka-color-secondary-contrast-medium);
+        border: 1px solid var(--oka-color-secondary-50, var(--oka-color-system-contrast-low));
+        border-right-color: var(--oka-color-secondary-700, var(--oka-color-secondary-contrast-medium));
+        border-bottom-color: var(--oka-color-secondary-700, var(--oka-color-secondary-contrast-medium));
 
     }
 }

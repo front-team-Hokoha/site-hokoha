@@ -1,5 +1,6 @@
 /** ==================================================
 * WRAPPERS
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 | 4.0.0    | 04/05/2023 | ABEM / intégration des variables scss (tokens) |
 | 1.0.2    | 23/02/2021 | nomage - responsive par default - ajout wrap-fluid |
 | 1.0.1    | 21/12/2020 | séparation du wrapper de composant |
@@ -138,7 +139,6 @@ https://css-tricks.com/best-way-implement-wrapper-css/
 // Preview
 body.showGrid .oka-appWrap,
 body.showGrid .oka-app-wrap{
-    //outline: 1px solid $oka-grid-color-preview;
-    outline: 1px solid var(--oka-color-specs-low);
+    outline: 1px solid var(--oka-color-bd-spec, var(--oka-color-specs-low));
 }
 

@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { nb, theme, title, body } = Astro.props;
+
+
+import Arrow from '../../components/Arrow.astro';
 ---
 
 
@@ -26,19 +29,20 @@ const { nb, theme, title, body } = Astro.props;
     <div class="oka-spacer -sm"></div>
 </div> -->
 
-
+<Arrow></Arrow>
 
 <div class="oka-argument" data-appeargroup >
-  <hr class="oka-divider ">
+  <div class="oka-spacer  -xl"></div>
+  <hr class="oka-divider " data-sssappearfirst />
   <div class="oka-spacer -md"></div>
 
 
-  <p class="oka-h -xs -secondary " data-appearfirst>{theme}</p>
-  <h2 class="oka-h -lg -secondary -crop" data-appearsecond set:html={title}></h2>
+  <p class="oka-h -xs ---secondary " data-appearfirst>{theme}</p>
+  <h2 class="oka-h -xl -secondary -crop" data-appearsecond set:html={title}></h2>
   <div class="oka-spacer -md"></div>
-  <p class="oka-text -md " data-appearthird set:html={body}></p> 
+  <p class="oka-text -md " data-appearthird set:html={body} style="max-width:640px"></p> 
 
-  <div class="oka-spacer -md"></div>
+
 </div>
 
 

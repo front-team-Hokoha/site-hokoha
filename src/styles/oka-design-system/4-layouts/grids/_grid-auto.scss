@@ -1,12 +1,14 @@
 
 /* 
-
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 1.1.0 | 10/03/2025 | mixin avec passage de variable pour la taille des cellules | 
 | 1.0.0 | 06/08/2024 | autofill pour éviter les fullscreen des items seuls | 
 | 0.0.1 |  | Mise en place | 
 */
 
 
-//Now we can define the mixin that will create our gallery; the min-width of the items will be the only argument of this mixin:
+//Now we can define the mixin that will create our gallery; 
+// the min-width of the items will be the only argument of this mixin:
 //The minmax function allows us to set a min-width for our elements, while the repeat() function takes care of actually creating the grid.
 @mixin gridAuto($min-width, $fallback: 3) {
 
@@ -32,48 +34,62 @@
 }
 
 
+// Mixin avec variable de taiile de cellule.
+// Variable  fournies : 200px / 50%
+
+/* Exemple d'usage : 
+
+.maGrille {
+  @include grid-auto( $cell : 264px , $row : 3rem );
+}
+
+.maGrille {
+  @include grid-auto( $cell : 20% , $row : 3rem );
+}
+
+*/
+
+@mixin grid-auto( $cell : 200px , $row : 3rem ) {
+  
+  @include grid;
+  @include gridAuto( $cell  , 4 );
+  // auteur des cellules
+  grid-auto-rows: minmax( $row, auto); // Requis pour Safari
+
+} 
+
 
 
 /*
-The mixin now accepts two arguments: the first one is the minimum width of the items in the gallery (the same as before — it will be used only if the browsers support CSS Grid), the second (which is optional — default value is 3) is the number of items per row on browsers that do not support CSS Grid (where the fallback is applied)
+Grille prédéfinies
 */
 
+.grid-80,
+.oka-grid80 {
 
+  @include grid-auto( $cell : 80px  , $row :3rem);
 
-@mixin grid-80 {
-    @include grid;
-    @include gridAuto(80px,8);
-    // auteur des cellules
-    grid-auto-rows: minmax(3rem, auto);
 }
 
-.grid-80 {
-    @include grid-80;
+.grid-160,
+.oka-grid160 {
+
+  @include grid-auto( $cell : 160px  , $row :3rem);
+
 }
 
+.grid-240,
+.oka-grid240 {
 
-.grid-160 {
-    @include grid;
-    @include gridAuto(160px,6);
-    // auteur des cellules
-    grid-auto-rows: minmax(3rem, auto);
-}
+  @include grid-auto( $cell : 240px  , $row :3rem);
 
-
-
-.grid-240 {
-    @include grid;
-    @include gridAuto(240px,5);
-    // auteur des cellules
-    grid-auto-rows: minmax(3rem, auto);
 }
 
 
-.grid-320 {
-    @include grid;
-    @include gridAuto(320px,4);
-    // auteur des cellules
-    grid-auto-rows: minmax(3rem, auto);
-}
+// .grid-320,
+// .oka-grid320 {
+//   @include grid-auto( $cell : 320px  , $row :3rem);
+
+// }
 
 

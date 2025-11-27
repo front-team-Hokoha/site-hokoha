@@ -1,6 +1,7 @@
 /**  OKA FIELDS
 //
 // Champs de formulaires et elements associés
+| 5.0.0 | 22/05/2025 |compatible design tokens 5 figma |
 
 | 4.0.1 | 11/09/2024 | modifier : -full (pleine largeur dispo) |
 | 4.0.0 | 11/09/2023 | Appliquer marge ingerieur aux label sauf ceux .u-displaynone |
@@ -38,7 +39,7 @@
 .oka-field{
 
 
-    --color--error : var(--oka-color-error-contrast-medium);
+    --color--error : var(--oka-color-fg-negative-strong, var(--oka-color-error-contrast-medium));
 
     position: relative;
     display: flex;
@@ -75,19 +76,25 @@
         input:not([type="search"]), 
         textarea,
         .ss-main .ss-multi-selected  {
-            border: 1px solid var(--color--error) !important;
+            border: 1px solid var(--oka-color-bd-negative, var(--color--error)) !important;
+            box-shadow      : 0 0 0 3px var(--oka-color-bd-negative-minimal) !important; //3.0.2
         }
     }
 
     &--switch.oka-field--invalid,
     &--radios.oka-field--invalid,
-    &--checkboxs.oka-field--invalid{
+    &--checkbox.oka-field--invalid {
 
             input{
-                border-color:var(--color--error);
+                border-color:var(--color--error) !important;
             }
-            .label {
-                color:var(--color--error);
+            label:before {
+                color:var(--color--error) !important;
+                border: 1px solid var(--oka-color-bd-negative, var(--color--error)) !important;
+                box-shadow      : 0 0 0 3px var(--oka-color-bd-negative-minimal) !important; //3.0.2
+            }
+            label:after{
+                background-color: var(--oka-color-fg-negative) !important;
             }
 
     }
@@ -102,7 +109,7 @@
         input[type="radio"].oka-radio + label:before,
         input[type="checkbox"].oka-checkbox + label:before {
         
-        // border:1px solid red !important;
+        //border:1px solid red !important;
             box-shadow: 0 0 0 3px hsla(var(--color--error-h), var(--color--error-s), var(--color--error-l), 0.45);
         }
     }
@@ -179,7 +186,7 @@
     width: 0.75rem;
     height: 0.75rem;
 
-    background-color: var(--oka-color-error-contrast-medium, --color--error, red);
+    background-color: var(--color--error , var(--oka-color-error-contrast-medium, red));
     border-radius: 0.75rem;
 
     &:after {

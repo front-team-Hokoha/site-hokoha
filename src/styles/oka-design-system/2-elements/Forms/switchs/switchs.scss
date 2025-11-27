@@ -1,13 +1,10 @@
 /** OKA SWITCH
-//
+
+| 5.0.0 | 22/05/2025 |compatible design tokens 5 figma |
 |  0.0.2 | 16/01/2023 | Modifier de Couleurs / Version labels Interne |
 |  0.0.1 | 29/09/2021 | from https://miladd3.github.io/clean-switch/ |
     
-|
-
 */
-
-
 
 
 .oka-switch {
@@ -16,17 +13,66 @@
   --switch-height: 1.5rem;
   --switch-thumb-size : 1.5rem;
 
+  // Neutre par default
+  --switch-bg-color-inactive : var(--oka-color-bg-disabled, var(--oka-color-ui-bg-primary-disabled)); 
+  --switch-thumb-color-inactive : var(--oka-color-fg-disabled, var(--oka-color-ui-fg-primary-muted));
+
+  --switch-fg-color : var(--oka-color-fg , var(--oka-color-app-fg-default));
+
+  // Activé
+  --switch-bg-color-active : var(--oka-color-bg-primary-subtle , var(--oka-color-ui-bg-primary-default));
+  --switch-thumb-color-active : var(--oka-color-fg-primary-active , var(--oka-color-ui-border-primary-focus)); 
+
+  --switch-thumb-outline:   var(--oka-color-bd-primary-subtle , var(--oka-color-ui-outline-primary-hover));
+
+  // MODIFIERS COLOR
+  &.-secondary {
+
+    // --switch-bg-color-inactive : var(--oka-color-bg-disabled, var(--oka-color-ui-bg-secondary-disabled)); // oka-alpha(var(--color--success), 0.4);
+    // --switch-thumb-color-inactive :var(--oka-color-fg-disabled, var(--oka-color-ui-fg-secondary-muted));// green;
   
-  --switch-bg-color-inactive : var(--oka-color-ui-bg-primary-disabled); // oka-alpha(var(--color--success), 0.4);
-  --switch-thumb-color-inactive :var(--oka-color-ui-fg-primary-muted);// green;
+    --switch-bg-color-active : var(--oka-color-bg-secondary-subtle , var(--oka-color-ui-bg-secondary-default));
+    --switch-thumb-color-active : var(--oka-color-fg-secondary-active , var(--oka-color-ui-border-secondary-focus)); //red;
+  
+    --switch-thumb-outline:   var(--oka-color-bd-secondary-subtle , var(--oka-color-ui-outline-secondary-hover));
+  }
 
-  --switch-fg-color : var(--oka-color-app-fg-default);
+  &.-trueFalse {
+    --switch-bg-color-inactive : var(--oka-color-bg-positive-subtle, var(--oka-color-success-bg-soft)); 
+    --switch-thumb-color-inactive :var(--oka-color-fg-positive-active, var(--oka-color-success-fg-on-soft));
+  
+    --switch-bg-color-active : var(--oka-color-bg-negative-subtle , var(--oka-color-error-bg-soft));
+    --switch-thumb-color-active : var(--oka-color-fg-negative-active , var(--oka-color-error-fg-on-soft)); 
+  
+    --switch-thumb-outline:   var(--oka-color-bd-primary-subtle , var(--oka-color-ui-outline-secondary-hover));
+  }
 
-  --switch-bg-color-active : var(--oka-color-ui-bg-primary-default);
-  --switch-thumb-color-active : var(--oka-color-ui-border-primary-focus); //red;
+  &.-falseTrue {
+    --switch-bg-color-inactive : var(--oka-color-bg-negative-subtle ,var(--oka-color-success-bg-soft)); 
+    --switch-thumb-color-inactive :var(--oka-color-fg-negative-active ,var(--oka-color-success-fg-on-soft));
+  
+    --switch-bg-color-active : var(--oka-color-bg-positive-subtle, var(--oka-color-error-bg-soft));
+    --switch-thumb-color-active : var(--oka-color-fg-positive-active, var(--oka-color-error-fg-on-soft)); 
+  
+    --switch-thumb-outline:   var(--oka-color-bd-primary-subtle , var(--oka-color-ui-outline-secondary-hover));
+  }
 
-  --switch-thumb-outline:   var(--oka-color-ui-outline-primary-hover);
 
+  &.-travel {
+    --switch-bg-color-active : var(--oka-color-bg-strong , var(--oka-color-neutral-dark)); 
+    --switch-thumb-color-active : var(--oka-color-bg-positive, var(--oka-color-feedback-success-light));
+    
+    --switch-fg-color : var(--oka-color-fg-on_surface , var(--oka-color-neutral-lightest));
+
+    --switch-bg-color-inactive : var(--oka-color-bg-strong ,var(--oka-color-neutral-dark));
+    --switch-thumb-color-inactive : var(--oka-color-fg-on_surface ,var(--oka-color-neutral-light));
+  
+    --switch-thumb-outline:   var(--oka-color-ui-outline-primary-hover);
+  }
+
+}
+
+.oka-switch {
 
   display: flex;
 
@@ -80,7 +126,7 @@
 
       //--right :  calc(100% - var(--switch-height) + 0.25rem);
 
-      @extend .oka-shadow-3;
+      @extend .oka-shadow3;
 
       content: "";
 
@@ -98,7 +144,7 @@
 
       margin-right: 0;
       
-      background-color: var(--switch-thumb-color-inactive) ; //oka-alpha(var(--color--success), 1);
+      background-color: var(--switch-thumb-color-inactive) ;
       border-radius: 50%;
       color:#fff;
 
@@ -190,51 +236,7 @@
   }
 
 
-  // MODIFIERS COLOR
-  &.-secondary {
-
-    --switch-bg-color-inactive : var(--oka-color-ui-bg-secondary-disabled); // oka-alpha(var(--color--success), 0.4);
-    --switch-thumb-color-inactive :var(--oka-color-ui-fg-secondary-muted);// green;
   
-    --switch-bg-color-active : var(--oka-color-ui-bg-secondary-default);
-    --switch-thumb-color-active : var(--oka-color-ui-border-secondary-focus); //red;
-  
-    --switch-thumb-outline:   var(--oka-color-ui-outline-secondary-hover);
-  }
-
-  &.-trueFalse {
-    --switch-bg-color-inactive : var(--oka-color-success-bg-soft); // oka-alpha(var(--color--success), 0.4);
-    --switch-thumb-color-inactive :var(--oka-color-success-fg-on-soft);// green;
-  
-    --switch-bg-color-active : var(--oka-color-error-bg-soft);
-    --switch-thumb-color-active : var(--oka-color-error-fg-on-soft); //red;
-  
-    --switch-thumb-outline:   var(--oka-color-ui-outline-secondary-hover);
-  }
-
-  &.-falseTrue {
-    --switch-bg-color-active : var(--oka-color-success-bg-soft); // oka-alpha(var(--color--success), 0.4);
-    --switch-thumb-color-active :var(--oka-color-success-fg-on-soft);// green;
-  
-    --switch-bg-color-inactive : var(--oka-color-error-bg-soft);
-    --switch-thumb-color-inactive : var(--oka-color-error-fg-on-soft); //red;
-  
-    --switch-thumb-outline:   var(--oka-color-ui-outline-secondary-hover);
-  }
-
-
-  &.-travel {
-    --switch-bg-color-active : var(--oka-color-neutral-dark); // oka-alpha(var(--color--success), 0.4);
-    --switch-thumb-color-active :var(--oka-color-feedback-success-light);// green;
-    
-    --switch-fg-color : var(--oka-color-neutral-lightest);
-
-
-    --switch-bg-color-inactive : var(--oka-color-neutral-dark);
-    --switch-thumb-color-inactive : var(--oka-color-neutral-light); //red;
-  
-    --switch-thumb-outline:   var(--oka-color-ui-outline-primary-hover);
-  }
 
 
   // MODIFIERS SIZE

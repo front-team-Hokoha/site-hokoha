@@ -1,5 +1,7 @@
 /* OKA APPBAR */
 /*
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
 | 4.0.2 | 28/08/2024 | Ajout modificateur -fullwidth pour oka-appbar__left |
 | 4.0.1 | 29/08/2023 | Evite le container-type en cas de oka-appWrap |
 | 4.0.0 | 17/05/2022 | utilise tokens figma |
@@ -9,22 +11,17 @@
 | 0.0.1 |            | versionning - tokens
 */
 
-
-
-// Tokens
-:root {
-    --oka-appbar-zIndex : 1000;
+:root{
     --oka-appbar-height : 4rem;
+    --oka-appbar-elevation : var(--oka-elevation-header , 1000);
+    --oka-appbar-color-background : var(--oka-color-layer-header, var(--oka-color-app-bg-header ));
 }
-
-
-
-
 
 .oka-appbar {
 
+
     //position:absolute;
-    z-index: var(--oka-appbar-zIndex); // $oka-appbar-elevation;
+    z-index: var(--oka-appbar-elevation); // $oka-appbar-elevation;
    
     top:0;
     left:0;
@@ -36,10 +33,10 @@
     justify-content: flex-start;
     //
     padding : 0;
-    background : var(--oka-color-app-bg-header );
+    background : var(--oka-appbar-color-background);
   
     //4.0.0 -> Ajout border-bottom pour dark-mode
-    border-bottom: 1px solid var(--oka-color-app-border-default);
+    //border-bottom: 1px solid var(--oka-color-app-border-default);
 
     // Row
     &__row{

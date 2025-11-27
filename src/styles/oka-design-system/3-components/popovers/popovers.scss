@@ -1,0 +1,128 @@
+
+// ====================================================
+//  POPOVER
+//
+
+// 3.0.0
+
+
+
+// Tokens popovers
+:root {
+
+
+    --oka-popover-bg : var(--oka-color-layer-floor-0 , var(--color-1--darkest));
+    --oka-popover-bd :  var(--oka-color-bd-minimal , var(--color-1--light));
+    --oka-popover-radius : var(--oka-radius-container, 0);
+
+    --oka-popover-minWidt : 340px;
+    --oka-popover-maxWidt : 480px
+}
+// Ombres
+// @import "../../1-bases/shadows/shadows.3.0.0";
+
+.oka-popover{
+
+    position: relative;
+    display: inline-block; // permet de positionner le popover relativement a 
+
+    // Bouton d'ouverture
+    &__openner{
+        cursor:help;
+        user-select: none;
+    }
+
+    // le input checkbox declancheurs
+    &__pilot{
+        display:none;
+    }
+
+    // Popover
+    &__ctnr {
+        display:none;
+        position: absolute;
+        top:0;
+       
+        z-index: var(--oka-elevation-popover , 4000);
+
+        min-width : var(--oka-popover-minWidth , 340px);
+        max-width : var(--oka-popover-maxWidth , 680px);
+
+
+        flex-direction: column;
+
+        padding: 1rem;
+
+        background: var(--oka-popover-bg);
+                
+        border : 1px solid var(--oka-popover-bd);
+        border-radius: var(--oka-popover-radius);
+        
+        color: var(--oka-color-fg);
+
+        @include shadow-4;
+
+
+        // Supprime les interactions sur tous les elements contenu
+        pointer-events:none;
+
+
+        .-left  &{
+            left:0;
+        }
+        .-right  &{
+            right:0;
+        }
+
+        // reactive les interactions sur les elements interactifs
+        a,button,label,input {
+            user-select: all;
+            pointer-events:all; 
+        }
+    }
+
+
+
+    // Le declencheur de fermeture
+    // Label transparent sur toute la surface (viewport)
+    &__closer{
+
+        pointer-events:all; 
+
+
+        // !!!!! on surcharge un label
+        // donc on reinit tout et  on force
+        //
+        display:none !important;
+        //
+        position:fixed  !important;
+        z-index: 30 !important;
+
+        top:0 !important; // v2.0.2
+        right:0 !important; // v2.0.2
+        bottom:0 !important; // v2.0.2
+        left:0 !important; // v2.0.2
+
+        //width:100vw !important;// NON : Probleme de taille sur les mobiles
+        //height:100vh !important;// NON : Probleme de taille sur les mobiles
+
+        margin: 0 !important;
+        background:transparent !important;
+        
+
+        &:after,
+        &:before {
+            display:none !important;
+        }
+    }
+}
+
+
+//
+//
+// System d'ouverture (pure css)
+//
+.oka-popover__pilot:checked ~ .oka-popover__ctnr,
+.oka-popover__pilot:checked ~ .oka-popover__closer{
+    display:flex !important;
+}

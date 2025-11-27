@@ -1,18 +1,22 @@
 // OKA LINKS
 /*
+| 5.0.0 | 22/05/2025 | compatible design tokens figma |
+
+| 4.0.1    | 17/04/2025 |  Force l'interaction |
 | 4.0.0    | 07/07/2023 |  Création |
 */
 
 %link {
-    color:var(--oka-color-action-fg-primary-default);
+    color: var(--oka-color-fg-primary , var(--oka-color-action-fg-primary-default));
     text-decoration: underline;
     cursor:pointer;
+    pointer-events: all; // 4.0.1 
 
     &:hover {
-        color:var(--oka-color-action-fg-primary-hover);
+        color:var(--oka-color-fg-primary-hover , var(--oka-color-action-fg-primary-hover));
     }
     &:active {
-        color:var(--oka-color-action-fg-primary-press);
+        color:var(--oka-color-fg-primary-active , var(--oka-color-action-fg-primary-press));
     }
 }
 

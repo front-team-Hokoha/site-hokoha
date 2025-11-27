@@ -1,5 +1,6 @@
-.oka-darkMode {
-        --oka-color-app-underground: #121721;
+.oka-darkMode,
+.oka-skeuomorphMode {
+--oka-color-app-underground: #121721;
 --oka-color-app-ground: #364563;
 --oka-color-app-shadows: #7a8fb8;
 --oka-color-app-bg-default: #121721;

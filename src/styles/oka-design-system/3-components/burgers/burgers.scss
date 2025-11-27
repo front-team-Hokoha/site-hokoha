@@ -1,0 +1,201 @@
+
+/* OKA BURGER MENU 
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+| 4.0.0 | 09/02/2023 | Toggle Icones active/Inactive |
+| 0.0.2 | 28/09/2022 | Dissociation du design du bouton d'ouverture |
+| 0.0.1 | 16/03/2021 | Récupération du projet Hibou    | 
+
+*/
+
+
+
+.oka-burger{
+
+    position:relative;
+    width:100%;
+
+    display:flex;
+    flex-direction: row-reverse;
+    
+
+    // Bouton d'ouverture
+    // Etend les fonctionnalités de oka-bt
+    &__openner{
+        position:relative;
+        z-index:4100;
+
+        @include breakpoint(md) {
+            display:none;
+        }
+
+        // 4.0.0 - Ajout icone inactive / active
+        .-isOpen{
+            display: none;
+        }
+    }
+
+
+    // le input checkbox declancheurs
+    &__pilot{
+        display:none;
+    }
+
+    // Container 
+    &__ctnr {
+        
+        justify-content: center;
+
+        display:none;
+
+        position: fixed;
+        top: var(--oka-appbar-height);
+        bottom:0;
+        right:0;
+        left:0;
+        z-index: 4000;
+
+
+        background: var(--oka-color-layer-header, var(--oka-color-app-bg-header));
+
+        overflow: auto; // 0.0.2 -> Pour menus très long (annuler pour md)
+
+
+        @include breakpoint(sm) {
+
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            
+            //
+            background: var(--oka-color-layer-overlay, var(--oka-color-app-bg-overlay));
+
+        }
+
+
+
+        @include breakpoint(md) {
+            display:flex;
+
+            position:relative;
+            top:0rem;
+            bottom:0;
+            right:0;
+            left:0;
+            
+            background :transparent;
+            box-shadow : none;
+
+            overflow: visible; // 0.0.2 -> (annuler auto de  xs)
+        }
+
+    } 
+    // Le declencheur de fermeture
+    // Label transparent sur toute la surface (viewport)
+    &__closer{
+
+        pointer-events:all; 
+
+        // !!!!! on surcharge un label
+        // donc on reinit tout et  on force
+        //
+        display:none !important;
+        //
+        position:fixed  !important;
+        z-index: -1;
+
+        top:0 !important; // 
+        right:0 !important; // 
+        bottom:0 !important; // 
+        left:0 !important; // 
+
+        margin: 0 !important;
+        background:transparent !important;
+    
+        &:after,
+        &:before {
+            display:none !important;
+        }
+    }
+
+    // Le contenu
+    &__content{
+    
+        width:100%;
+        max-width: 340px; //0.0.2
+
+        display:flex;
+        // Centrage vertical du contenu
+        flex-direction: column;
+        justify-content: flex-start; // Obliger pour overflow des items
+
+        //0.0.2 //padding:1rem 3rem 3rem;
+        padding-top:3.5rem;
+       
+        //
+        background : var(--oka-color-layer-header, var(--oka-color-app-bg-header));
+
+
+        // tous les enfants
+        > * {
+            margin-top:0.5rem;
+            flex-shrink: 0; 
+
+            // Force la position : fix bug affchage avec backdropFilters
+            position:relative;
+        }
+
+
+        @include breakpoint(sm) {
+         
+            
+            padding-left:1rem;
+            padding-right:1rem;
+
+            overflow-y:auto;
+           
+
+        }
+
+
+        @include breakpoint(md) {
+            
+            width:100%;
+            max-width: none; //0.0.2
+
+            flex-direction: row;
+            padding:0;
+
+            background:transparent;
+
+            overflow-y:visible;
+
+           // responsivité des boutons
+            > * {
+                margin-top:0;
+                margin-right:0.5rem;
+                flex-shrink: 1;
+            }
+
+        }
+
+    }
+}
+
+//
+//
+// System d'ouverture (pure css)
+//
+.oka-burger__pilot:checked ~ .oka-burger__ctnr,
+.oka-burger__pilot:checked ~ .oka-burger__ctnr .oka-burger__closer{
+    display:flex !important;
+
+    //backdrop-filter: blur(1px); // Abandonné creer des surcouche de couleurs
+}
+
+// 4.0.0 - Ajout icone inactive / active
+.oka-burger__pilot:checked ~  .oka-burger__openner .-isClose {
+    display: none;
+}
+.oka-burger__pilot:checked ~ .oka-burger__openner .-isOpen {
+    display: flex;
+}

@@ -2,7 +2,9 @@
 // HEADINGS
 
 /*
-
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 4.0.2 | 13/04/2025 | Equilibre le contenu au saut de ligne  |
+| 4.0.1 | 30/01/2025 | corps responsive mobile<->desktop + XXL clamp()  |
 | 4.0.0 | 02/12/2022 | Nomage conforme ABEM  |
 | 3.1.3 | 25/04/2022 | Supression des cropLineHeight -  |
 | 3.1.2 | 10/01/2022 | Marge inférieure uniquement sur <h1><h2>etc... avec modifier oka-h--autostack |
@@ -61,6 +63,11 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
         width: 0;
         margin-top: var(--crop-bottom);
     }
+
+    .showGrid & {
+        background: var(--oka-color-bg-spec-minimal , var(--oka-color-specs-lighter));    
+    }
+
 }
 
 
@@ -80,7 +87,10 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     margin-top: 0;
     margin-bottom:0 ;
 
-    color :   var(--oka-color-app-fg-default);
+    color :   var(--oka-color-fg , var(--oka-color-app-fg-default));
+
+    // 4.0.2 : Equilibre le contenu quand sauts de ligne
+    text-wrap : balance;
 
     // !!!! Attention correctif sur lineHeight des enfants
     span,
@@ -94,31 +104,13 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     // Modifier : Type
     &.-secondary,
     .-secondary {
-        font-weight: 300;
+        font-weight: 200;
     }
 
     // =======================================
     // Modifier : Crop (line Height)
     &.-crop {
-
         @extend %oka-crop;
-        
-        // //
-        // &:before {
-        //     content: '';
-        //     display: block;
-        //     height: 0;
-        //     width: 0;
-        //     margin-bottom: var(--crop-top);
-        // }
-        // //
-        // &:after {
-        //     content: '';
-        //     display: block;
-        //     height: 0;
-        //     width: 0;
-        //     margin-top: var(--crop-bottom);
-        // }
     }
 
     // =======================================
@@ -130,8 +122,6 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
         font-weight: $oka-brand-heading-font-weight-strong;
     }
 }
-
-
 
 // --------------------------------------
 // TITRAGE XS (h5)
@@ -335,6 +325,56 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
 }
 
 
+// --------------------------------------
+// TITRAGE POSTER
+@mixin oka-h-poster {
+    
+    // mobile -> XL
+    --crop-top : -1.5rem;
+    --crop-bottom : -1rem;
+
+    @include plumber-set-defaults($use-baseline-origin: false);
+    @include plumber( 
+        $baseline: $oka-brand-heading-font-baseline, 
+        $font-size: $oka-brand-heading-font-size-xl, 
+        $line-height: $oka-brand-heading-line-height-xl, 
+    );
+        
+
+    // Attention l'utilisation de clamp avec des unité liées au Container Queries (7cqw)
+    // Oblige a déclarer le parent de container-type:inline-size
+    font-size: clamp(
+        var(--oka-typo-brand-heading-md-font-size), 
+        7cqw, 
+        var(--oka-typo-brand-heading-poster-font-size)
+        );
+
+    // ici : Calc permet d'ajouter l'unité a la variable
+    line-height: clamp(
+        calc(var(--oka-typo-brand-heading-md-line-height) * 1px),  
+        1.5em, 
+        calc(var(--oka-typo-brand-heading-poster-line-height) * 1px)
+        );
+
+    // desktop -> XXL
+    // @include breakpoint(lg) {
+    
+    //     @include plumber-set-defaults($use-baseline-origin: true);
+    //     @include plumber( 
+    //         $baseline: $oka-brand-heading-font-baseline,
+    //         $font-size: $oka-brand-heading-font-size-xxl, 
+    //         $line-height: $oka-brand-heading-line-height-xxl, 
+    //         );
+    //     }  
+
+        
+}
+
+%oka-h-poster {
+    @include oka-h-poster;
+}
+
+
 
 // --------------------------------------
 
@@ -367,6 +407,13 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
 
 .oka-h {
     @extend %oka-h;
+}
+
+// --------------------------------------
+// TITRAGE POSTER
+//.oka-h--xxl,// deprecated
+.oka-h.-poster {
+    @extend %oka-h-poster;
 }
 
 
@@ -410,7 +457,7 @@ h2 {
 // TITRAGE M
 //.oka-h--md, // deprecated
 //.oka-h-md,// deprecated
-.oka-h:not(.-xxl):not(.-xl):not(.-lg):not(.-sm):not(.-xs),
+.oka-h:not(.-poster):not(.-xxl):not(.-xl):not(.-lg):not(.-sm):not(.-xs),
 .oka-h.-md{
     @extend %oka-h-md;
 }

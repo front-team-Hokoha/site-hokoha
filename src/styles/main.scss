@@ -10,43 +10,33 @@
 @import "oka-design-system/1-utilities/oka-utilities";
 
 // COMPONENTS (ORGANISMES)-----------------------------------
-//@import "oka-design-system/3-components/accept-terms/accept-terms.4.0.0";
-// -> présent dans base  @import "oka-design-system/3-components/appbar/appbar.4.0.1";
-//@import "oka-design-system/3-components/avatars/avatars.4.0.0";
-//@import "oka-design-system/3-components/badges/badges.4.0.0";
-@import "oka-design-system/3-components/burgers/burgers.4.0.0.scss";
-//@import "oka-design-system/3-components/buttonsGroup/buttonsGroup.0.0.1.scss";
-@import "oka-design-system/3-components/cards/cards.4.0.3";
-// -> présent dans base  @import "oka-design-system/3-components/credits/credits.4.0.1";
-//@import "oka-design-system/3-components/dropdowns/dropdowns.4.0.0";
-//@import "oka-design-system/3-components/inset/inset.4.0.0";
-//@import "oka-design-system/3-components/fields-password/fields-password.0.0.1";
-//@import "oka-design-system/3-components/fields-search/fields-search.4.0.0";
-//@import "oka-design-system/3-components/filters/filters.3.1.0.scss";
-@import "oka-design-system/3-components/flips/flips.1.0.3";
-//@import "oka-design-system/3-components/heads/heads.1.0.0";
-//@import "oka-design-system/3-components/input-checklist/input-checklist.0.0.2";
-// -> présent dans base  @import "oka-design-system/3-components/messages/messages.4.0.0";
-@import "oka-design-system/3-components/modals/modals.4.0.2";
-//@import "oka-design-system/3-components/navitems/navitems.4.0.2";
-//@import "oka-design-system/3-components/navgroups/navgroups.4.0.0";
-//@import "oka-design-system/3-components/pagination/pagination.0.0.1";
-//@import "oka-design-system/3-components/popovers/popovers.3.0.0";
-@import "oka-design-system/3-components/ratios/ratios.4.0.0";
-// -> présent dans base  @import "oka-design-system/3-components/spacers/spacers.1.0.0.scss";
-//@import "oka-design-system/3-components/tables/tables.4.0.4";
-//@import "oka-design-system/3-components/tabsToAccordions/tabsToAccordions.4.0.2";
-//@import "oka-design-system/3-components/tags/tags.4.0.0";
-//@import "oka-design-system/3-components/tooltips/tooltips.4.0.0";
-//@import "oka-design-system/3-components/tree/tree.0.0.1";
+// /* 5 */ @import "oka-design-system/3-components/accept-terms/accept-terms.4.0.0"; 
+// /* 5 */ @import "oka-design-system/3-components/avatars/avatars"; 
+// /* 5 */ @import "oka-design-system/3-components/badges/badges";
+/* 5 */ @import "oka-design-system/3-components/burgers/burgers"; 
+// /* 5 */ @import "oka-design-system/3-components/buttonsGroup/buttonsGroup"; 
+/* 5 */ @import "oka-design-system/3-components/cards/cards"; 
+// /* 5 */ @import "oka-design-system/3-components/chip/chip";
+// @import "oka-design-system/3-components/dashboard/dashboard.0.0.1"; // ------------------------------> A reprendre (suivre pattern de badge)
+// /* 5 */ @import "oka-design-system/3-components/dropdowns/dropdowns"; // -----------------------> A reprendre 
+// // @import "oka-design-system/3-components/inset/inset.4.0.0"; // -----------------------> Abandonné -  A reprendre  en utilitaire
+// @import "oka-design-system/3-components/filters/filters.3.1.0.scss"; // ------------------------------> A reprendre (suivre pattern de badge)
+/* 5 */ @import "oka-design-system/3-components/flips/flips";
+// /* 5 */ @import "oka-design-system/3-components/heads/heads";
+// /* 5 */ @import "oka-design-system/3-components/navitems/navitems";
+// /* 5 */ @import "oka-design-system/3-components/navgroups/navgroups";
+// /* 5 */ @import "oka-design-system/3-components/pagination/pagination";
+// /* 5 */ @import "oka-design-system/3-components/popovers/popovers";
+/* 5 */ @import "oka-design-system/3-components/ratios/ratios";
+// /* 5 */ @import "oka-design-system/3-components/tables/tables";
+// /* 5 */ @import "oka-design-system/3-components/tags/tags";
+// /* 5 */ @import "oka-design-system/3-components/tooltips/tooltips";
+// @import "oka-design-system/3-components/tree/tree.0.0.1"; 
+ // -----------------------> A reprendre 
 //
 // LAYOUT (TEMPLATES) -----------------------------------
-//@import "oka-design-system/4-layouts/2-cols-1/2-cols-1.1.0.1";
-//@import "oka-design-system/4-layouts/3-cols-1/3-cols-1.1.0.1";
-//@import "oka-design-system/4-layouts/4-cols-1/4-cols-1.1.0.1";
-
-
-
+//
+// Paramêtrage de la grille 
 $nbCol : 16;
 
 $nbCol-on-xsmall  : calc($nbCol / 4 );
@@ -59,8 +49,6 @@ $grid-gap-on-small  : 1.5rem;
 $grid-gap-on-medium : 1.5rem;
 $grid-gap-on-large  : 1.5rem;
 
-
-//grid gap
 :root {
   --grid-columns: #{$nbCol-on-xsmall} ;
 
@@ -83,15 +71,20 @@ $grid-gap-on-large  : 1.5rem;
 
 
 
-@import "oka-design-system/4-layouts/cols/cols.4.0.0";
+@import "oka-design-system/4-layouts/cols/cols";
+@import "oka-design-system/4-layouts/flex/flex";
 //
-
-//@import "oka-design-system/4-layouts/oka-filters/oka-filters.4.0.0";
+@import "oka-design-system/4-layouts/oka-filters/oka-filters.4.0.0";
 
 // PAGES -----------------------------------
 // ARTBOARDS -> AFFICHAGE DES VALEURS DE VARIABLES
 //@import "oka-design-system/_artboards/artboard.scss";
 //@import "oka-design-system/_artboards/typography/typography.scss";
+
+//@import "skeuomorphisme";
+
+
+@import "shame-design-system";
 
 
 

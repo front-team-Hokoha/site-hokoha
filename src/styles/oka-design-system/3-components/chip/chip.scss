@@ -1,0 +1,67 @@
+/** OKA CHIP
+//
+| 5.0.1 | 07/07/2025 | Pointer |
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+| 4.0.0 | 29/01/2025 | Création |
+
+*/
+
+
+.oka-chip {
+
+    --oka-chip-bd-color : var(--oka-color-none,var(--oka-color-system-contrast-medium));
+    --oka-chip-outline-color : var(--oka-color-bd-minimal , var(--oka-color-system-contrast-low));
+    --oka-chip-fg-color : var(--oka-color-fg-subtle ,var(--oka-color-app-fg-default));
+    --oka-chip-bg-color : transparent;
+
+    cursor: pointer;
+
+
+    &:hover{
+        --oka-chip-bd-color : var(--oka-color-bd-primary, var(--oka-color-ui-border-primary-hover));
+        --oka-chip-outline-color : var(--oka-color-bd-primary-minimal , var(--oka-color-ui-outline-primary-hover));
+        --oka-chip-fg-color : var(--oka-color-fg-primary , var(--oka-color-action-fg-primary-hover));
+        --oka-chip-bg-color : transparent;
+    }
+
+
+    display: inline-flex;
+    align-items: center;
+    gap:0.5rem;
+    height: 2rem;
+    padding: 0 0.75rem;
+
+    border-color:var(--oka-chip-bd-color);
+    border-width:1px;
+    border-style: solid;
+
+    border-radius:3rem;
+
+    background-color: var(--oka-chip-bg-color);
+    box-shadow : 0 0 0 3px var(--oka-chip-outline-color); 
+
+    * {
+        color : var(--oka-chip-fg-color);
+    }
+    
+}
+
+.oka-chip__lbl{
+    @include cta-text;
+}
+
+.oka-chip__data{
+    @extend %oka-data-sm;
+}
+
+
+.oka-chip__select{
+    display:none;
+}
+
+.oka-chip__select:checked + .oka-chip {
+    --oka-chip-bd-color : var(--oka-color-bd-primary-active , var(--oka-color-ui-border-primary-focus));
+    --oka-chip-outline-color : var(--oka-color-bd-primary-minimal , var(--oka-color-ui-outline-primary-focus));
+    --oka-chip-fg-color : var(--oka-color-fg-strong , var(--oka-color-action-fg-primary-hover));
+    --oka-chip-bg-color :  var(--oka-color-bg-primary-minimal , var(--oka-color-action-bg-primary-hover-alpha));
+} 

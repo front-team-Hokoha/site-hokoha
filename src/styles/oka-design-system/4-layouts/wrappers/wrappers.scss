@@ -1,6 +1,6 @@
 /** ==================================================
 * WRAPPERS
-
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 | 1.0.2    | 10/02/2021 | Simplification + Modifiers de padding - Séparation avec oka-app-wrapper |
 | 1.0.1    | 21/12/2020 | ajout du wrapper de composant |
  1.0.0
@@ -32,18 +32,14 @@
         padding:1rem !important;
     }
 
-    &-squish--lg {
-        padding : $space-inset-squish-lg !important;
-    }
-    &-squish--xl {
-        padding : $space-inset-squish-xl !important;
-    }
+    // &-squish--lg {
+    //     padding : $space-inset-squish-lg !important;
+    // }
+    // &-squish--xl {
+    //     padding : $space-inset-squish-xl !important;
+    // }
 
 }
 
 
 
-// // Preview
-// body.showGrid .oka-wrap{
-//     //outline: 1px solid $oka-grid-color-preview;
-// }

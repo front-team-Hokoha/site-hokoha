@@ -1,12 +1,18 @@
 // INSET
 
+// Containeur de données avec un filet de contour
+// très rarement utilisé
+// à convertir en class utilitare de bordure à appliquer à oka-wrap (bénéfice de wrap)
+
+
 /*
+
 | 4.0.0 | 25/11/2022 | Création |
 
 */
 
 .oka-inset {
-    --oka-inset-border-color : var(--oka-color-system-contrast-medium);
+    --oka-inset-border-color : var(--oka-color-bd , var(--oka-color-system-contrast-medium));
 
     //border-width: 1px;
     //border-style: solid;

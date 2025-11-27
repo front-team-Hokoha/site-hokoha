@@ -3,6 +3,7 @@
 // 8points GRID Vertical
 //
 /**
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 |  4.0.0 | 04/09/2022 | Compatible figma tokens + s'applique à #root |
 |  1.0.1 | 10/01/2022 | Modification du pas : 1rem puis reprise de plumber our permettre les interlignage à 1.5rem |
 |  0.0.1 | | |
@@ -28,12 +29,26 @@
     );
 
 
+
+body.sb-show-main.showGrid #storybook-root,
+div[id^="story--"]:not([id$="-inner"]),
+body.sb-show-main .showGrid {
+    position:relative; /* requis pour showGrid */
+
+}
+
+
 // .showGrid:after,
 // .showGridCtnr:after,
 // body:not(.sb-show-main):after
 .showGrid #root:after,
 .showGridCtnr:after,
-body:not(.sb-show-main) #root:after
+
+// storybook
+body.sb-show-main #storybook-root:not(:has(.layout-app)):not(:has(.showGrid)):after, /* Preview mode  - Hors oka-layout-app*/
+body.sb-show-main #storybook-root .layout-app:after, /* Preview mode */
+div[id^="story--"]:not([id$="-inner"]):after,  /* module dans Docs */
+body.sb-show-main .showGrid:after  /* Div spécifique dans Docs */
 {
     content   : '';
     position  : absolute;
@@ -52,29 +67,35 @@ body:not(.sb-show-main) #root:after
     // 8Pt GRILLE VERTICALE
     background-repeat: repeat-y;
     background-size: 100% 0.5rem;
-    background-image: linear-gradient(to bottom,var(--oka-color-specs-default) 0,rgba(255, 255, 255, 0) 1px),
-    linear-gradient(to left,var(--oka-color-specs-default) 0,rgba(255, 255, 255, 0) 1px);
+    background-image: linear-gradient(to bottom, var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default)) 0,rgba(255, 255, 255, 0) 1px);
     line-height: 0;
 
-    pointer-events: none;
-
-
+   
     /* SQUARE */
-    /*
+    /* 
     background-repeat: repeat;  
     background-size:  16px 16px, 16px 16px;
     background-position:  0px 0px, 0px 0px;
-    background-image: linear-gradient(var(--oka-color-specs-default) 1px, transparent 1px),
-                    linear-gradient(90deg, var(--oka-color-specs-default) 1px, transparent 1px);
+    background-image: linear-gradient(var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default))  1px, transparent 1px),
+                    linear-gradient(90deg, var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default))  1px, transparent 1px);
         
     */
+
+    line-height: 0;
+    pointer-events: none;
 }
 
 // body:not(.sb-show-main).showGrid:after 
-body:not(.sb-show-main).showGrid #root:after 
+body:not(.sb-show-main).showGrid #root:after ,
+
+body.sb-show-main.showGrid #storybook-root:not(:has(.layout-app)):not(:has(.showGrid)):after,   /* Preview mode - Hors oka-layout-app */
+body.sb-show-main.showGrid #storybook-root .layout-app:after, /* Preview mode */
+body.showGrid  div[id^="story--"]:not([id$="-inner"]):after , /* module dans Docs */
+body.sb-show-main .showGrid:after  /* Div spécifique dans Docs */
+
 {
     z-index   : 100000000000;
-    opacity   : 0.30   ;
+    opacity   : 1   ;
 }
 
 
@@ -88,3 +109,10 @@ body:not(.sb-show-main).showGrid #root:after
         opacity   : 0.30   ;
     }
 }
+
+
+// /* Pas de grille pour le body de docs */
+// body.sb-main-fullscreen.showGrid:after
+// body.showGrid:after {
+//     opacity: 0 !important;
+// }

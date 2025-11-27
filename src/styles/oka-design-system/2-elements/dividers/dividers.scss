@@ -1,6 +1,9 @@
 // DIVIDERS
 //
 /**
+| 5.0.0 | 22/05/2025 | compatible design tokens figma |
+
+|  4.0.1 | 11/03/2025 | Ajout de modifiers d'espacement |
 |  4.0.0 | 23/05/2022 | Compatible figma Token + Modifiers de 'Contrast' + Epaisseur + vertical |
 |  3.1.0 | 03/06/2021 | Révision nomage modifiers de Taille |
 */
@@ -18,7 +21,7 @@ epaisseur : / fat
 hr,
 .oka-divider {
 
-    --divider-color : var(--oka-color-system-contrast-medium);
+    --divider-color : var(--oka-color-bd-subtle , var(--oka-color-system-contrast-medium));
     --divider-gradient-direction : bottom;
     --divider-weight: 1px;
     --divider-margin: -1px;
@@ -75,43 +78,209 @@ hr,
 
     // COLORS MODIFIERS
 
-    &.-light{
-        --divider-color : var(--oka-color-light);
-    }
-    &.-dark{
-        --divider-color : var(--oka-color-dark);
-    }
+    // NON DOCUMENTER
+    // &.-light{
+    //     --divider-color : var(--oka-color-light);
+    // }
+    // &.-dark{
+    //     --divider-color : var(--oka-color-dark);
+    // }
     
+
     &.-low{
-        --divider-color : var(--oka-color-system-contrast-low);
+        --divider-color : var(--oka-color-bd-minimal , var(--oka-color-system-contrast-low));
 
         &.-primary{
-            --divider-color : var(--oka-color-primary-contrast-low);
+            --divider-color : var(--oka-color-bd-primary-minimal , var(--oka-color-primary-contrast-low));
         }
         &.-secondary{
-            --divider-color : var(--oka-color-secondary-contrast-low);
+            --divider-color : var(--oka-color-bd-secondary-minimal , var(--oka-color-secondary-contrast-low));
         }
     }
 
     &.-primary{
-        --divider-color : var(--oka-color-primary-contrast-medium);
+        --divider-color : var(--oka-color-bd-primary-subtle , var(--oka-color-primary-contrast-medium));
     }
     &.-secondary{
-        --divider-color : var(--oka-color-secondary-contrast-medium);
+        --divider-color : var(--oka-color-bd-secondary-subtle , var(--oka-color-secondary-contrast-medium));
     }
     
 
     &.-high{
-        --divider-color : var(--oka-color-system-contrast-hight);
+        --divider-color : var(--oka-color-bd , var(--oka-color-system-contrast-hight));
 
         &.-primary{
-            --divider-color : var(--oka-color-primary-contrast-hight);
+            --divider-color : var(--oka-color-bd-primary , var(--oka-color-primary-contrast-hight));
         }
         &.-secondary{
-            --divider-color : var(--oka-color-secondary-contrast-hight);
+            --divider-color : var(--oka-color-bd-secondary , var(--oka-color-secondary-contrast-hight));
+        }
+    }
+
+    /* ESPACEMENT GLOBAL */
+    &.-sm {
+
+        margin-top: var(--space-sm);
+        margin-bottom: var(--space-sm);
+
+        &.-vrt {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            margin-left: var(--space-sm);
+            margin-right: var(--space-sm);
+        }
+
+    }
+
+    &.-md {
+        margin-top: var(--space-md);
+        margin-bottom: var(--space-md);
+
+        &.-vrt {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            margin-left: var(--space-md);
+            margin-right: var(--space-md);
+        }
+    }
+
+    &.-lg {
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-lg);
+
+        &.-vrt {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            margin-left: var(--space-lg);
+            margin-right: var(--space-lg);
+        }
+    }
+
+    &.-xl {
+        margin-top: var(--space-xl);
+        margin-bottom: var(--space-xl);
+
+        &.-vrt  {
+            margin-top: 0;
+            margin-bottom: 0;
+
+            margin-left: var(--space-xl);
+            margin-right: var(--space-xl);
+        }
+    }
+
+    /* ESPACEMENT DEBUT */
+    &.-start {
+
+        &.-sm {
+            margin-top: var(--space-sm);
+            margin-bottom: 0;
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 0;
+    
+                margin-left: var(--space-sm);
+            }
+            
+        }
+        &.-md {
+            margin-top: var(--space-md);
+            margin-bottom: 0;
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 0;
+    
+                margin-left: var(--space-md);
+            }
+        }
+        &.-lg {
+            margin-top: var(--space-lg);
+            margin-bottom: 0;
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 0;
+    
+                margin-left: var(--space-lg);
+            }
+        }
+        &.-xl {
+            margin-top: var(--space-xl);
+            margin-bottom: 0;
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 0;
+    
+                margin-left: var(--space-xl);
+            }
+        }
+    }
+
+    /* ESPACEMENT APRES */
+    &.-end {
+
+        &.-sm {
+            margin-top: 0;
+            margin-bottom: var(--space-sm);
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+
+                margin-right: var(--space-sm);
+    
+            }
+        }
+        &.-md {
+            margin-top: 0;
+            margin-bottom: var(--space-md);
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+
+                margin-right: var(--space-md);
+    
+            }
+        }
+        &.-lg {
+            margin-top: 0;
+            margin-bottom: var(--space-lg);
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+
+                margin-right: var(--space-lg);
+    
+            }
+        }
+        &.-xl {
+            margin-top: 0;
+            margin-bottom: var(--space-xl);
+
+            &.-vrt {
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+
+                margin-right: var(--space-xl);
+    
+            }
         }
     }
 
 }
-
-

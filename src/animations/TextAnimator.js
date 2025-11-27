@@ -21,6 +21,19 @@ export class TextAnimator {
     }
 
     this.textElement = textElement;
+
+    // Mesure du block original
+    const rect = textElement.getBoundingClientRect();
+    this.originalWidth = rect.width;
+    this.originalHeight = rect.height;
+
+    // Fixe la taille
+    const parent = textElement.parentElement;
+    if (parent) {
+      //parent.style.width = `${rect.width}px`;
+      //parent.style.height = `${rect.height}px`;
+    }
+
     this.splitText();
   }
 
@@ -32,6 +45,17 @@ export class TextAnimator {
 
     // Save the initial state of each character
     this.originalChars = this.splitter.getChars().map(char => char.innerHTML);
+
+// Save the initial state of each word
+  this.originalWords = this.splitter.getWords().map(word => word.innerHTML);
+// Pour chaque mot, calcule sa taille et applique en style inline
+  this.splitter.getWords().forEach(word => {
+    const rect = word.getBoundingClientRect();
+    word.style.width = `${rect.width}px`;
+    word.style.height = `${rect.height}px`;
+  });
+
+
   }
 
   animate() {

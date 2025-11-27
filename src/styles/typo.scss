@@ -1,5 +1,5 @@
 // Emplacement des Polices : Font Brand (expressive)
-$oka-brand-font-path: '/site-hokoha/assets/fonts' !default;
+$oka-brand-font-path: '/public/assets/fonts' !default;
 
 
 // Import FONTAWESOME
@@ -11,33 +11,34 @@ $oka-brand-font-path: '/site-hokoha/assets/fonts' !default;
 
 @import "oka-design-system/1-bases/fonts/fontawesome-custom-icons/custom-icons" ;
 
+
 // BASE - BRAND FONTS (EXPRESSIVES)
 @import "project-design-system/fonts/font-ibm-plex-sans-v8-latin";
 
 
 // =========================================
 // BRAND-HEADINGS
-$oka-brand-heading-font-family: 'IBM Plex Sans',sans-serif;
-$oka-brand-heading-font-weight: 500;
-$oka-brand-heading-font-baseline: $ibm-plex-baseline;
-$oka-brand-heading-letter-spacing: -0.032em;
+$oka-brand-heading-font-family: Inter,sans-serif;
+$oka-brand-heading-font-weight: 600;
+$oka-brand-heading-font-baseline: 0.134;
+$oka-brand-heading-letter-spacing: -0.05em;
 
-$oka-brand-heading-font-family-strong: 'IBM Plex Sans',sans-serif;
-$oka-brand-heading-font-weight-strong: 600;
+$oka-brand-heading-font-family-strong: Inter,sans-serif;
+$oka-brand-heading-font-weight-strong: 800;
 
 // =========================================
 // BRAND BODY (TEXT)
 //
-$oka-brand-text-font-family: 'IBM Plex Sans',sans-serif;
-$oka-brand-text-font-weight: $ibm-plex-sans-regular-weight;
+$oka-brand-text-font-family: Inter,sans-serif;
+$oka-brand-text-font-weight: 200;
 //
-$oka-brand-text-font-family-bold: 'IBM Plex Sans',sans-serif;
-$oka-brand-text-font-weight-bold: $ibm-plex-sans-500-weight;
+$oka-brand-text-font-family-bold: Inter,sans-serif;
+$oka-brand-text-font-weight-bold: 400;
 //
-$oka-brand-text-font-family-light: 'IBM Plex Sans',sans-serif;
-$oka-brand-text-font-weight-light: $ibm-plex-sans-300-weight;
+$oka-brand-text-font-family-light: Inter,sans-serif;
+$oka-brand-text-font-weight-light: 100;
 //
 $oka-brand-text-letter-spacing: -0.006em;
-$oka-brand-text-word-spacing: 0.1em;
+$oka-brand-text-word-spacing: 0.06em;
 //
-$oka-brand-text-font-baseline:0.124 ; // 0.158203;
+$oka-brand-text-font-baseline:0.134 ; 

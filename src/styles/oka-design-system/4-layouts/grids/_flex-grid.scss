@@ -1,4 +1,5 @@
 /*
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 | 4.0.0 | |   |
  3.0.0 : tokens
 */
@@ -40,6 +41,7 @@
     }
   }
 }
+
 
 .flex-grid {
 
@@ -388,8 +390,8 @@ $calc-span: calc(((100% - (var(--grid-columns) - 1) * var(--sub-gap)) * var(--sp
   > * {
     position: relative;
     margin-bottom: 0 !important;
-    background-color: blue !important;
-    opacity:0.06;
+    background-color: var(--oka-color-bg-spec-minimal ,blue )  !important;
+    opacity:0.5;
   }
 
   > *::before, *::after {
@@ -398,9 +400,9 @@ $calc-span: calc(((100% - (var(--grid-columns) - 1) * var(--sub-gap)) * var(--sp
     top: 0;
     height: 100%;
     width: 1px;
-    background-color: currentColor;
-    background-color: green;
-    opacity:0.4;
+    // background-color: currentColor;
+    // background-color: green;
+    opacity:0.24;
   }
 
   > *::before {

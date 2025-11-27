@@ -1,0 +1,184 @@
+/** OKA NAV ITEMS
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+| 4.0.2 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.1 | 23/11/2022 | ajout de -disabled + ABEM |
+| 4.0.0 | 08/06/2022 | figma token  + css var tokens  |
+| 3.1.2 | 23/04/2022 | renomage : navitems  |
+| 3.1.1 | 18/09/2021 | corrections comportement des Icones + state Disabled  |
+| 3.1.0 | 02/06/2021 | Dépendance typo Nav 3.1.0 / Active Border Colors  |
+| 3.0.2 | 15/12/2020 | Ajout bg Couleurs / corner Radius |
+| 3.0.1 | 02/12/2020 | Héritage de couleurs des libellés |
+| 3.0.0 |            | tokens                            |
+*/
+
+
+// Tokens de surcharges
+:root {
+    --oka-nav-height             : 2.5rem ;
+    --oka-nav-border-width       : 1px ;
+    --oka-nav-border-radius      : 0.25rem ;
+
+    --oka-nav-color-bg-default : var(--oka-color-none);
+    --oka-nav-color-fg-default : var(--oka-color-fg-primary);
+    --oka-nav-color-bd-default : var(--oka-color-bd-primary);
+
+    --oka-nav-color-bg-hover : var(--oka-color-bg-primary-minimal);
+    --oka-nav-color-fg-hover : var(--oka-color-fg-primary-hover);
+    --oka-nav-color-bd-hover : var(--oka-color-bd-primary-hover);
+
+    --oka-nav-color-bg-active : var(--oka-color-bg-primary-minimal);
+    --oka-nav-color-fg-active : var(--oka-color-fg-primary-active);
+    --oka-nav-color-bd-active : var(--oka-color-bd-primary-active);
+
+    --oka-nav-color-bg-disabled : var(--oka-color-bg-disabled);
+    --oka-nav-color-fg-disabled : var(--oka-color-fg-disabled);
+    --oka-nav-color-bd-disabled : var(--oka-color-bd-disabled);
+
+
+    --oka-nav-color-bg-default-secondary : var(--oka-color-none);
+    --oka-nav-color-fg-default-secondary : var(--oka-color-fg-secondary);
+    --oka-nav-color-bd-default-secondary : var(--oka-color-bd-secondary);
+
+    --oka-nav-color-bg-hover-secondary : var(--oka-color-bg-secondary-minimal);
+    --oka-nav-color-fg-hover-secondary : var(--oka-color-fg-secondary-hover);
+    --oka-nav-color-bd-hover-secondary : var(--oka-color-bd-secondary-hover);
+
+    --oka-nav-color-bg-active-secondary : var(--oka-color-bg-secondary-minimal);
+    --oka-nav-color-fg-active-secondary : var(--oka-color-fg-secondary-active);
+    --oka-nav-color-bd-active-secondary : var(--oka-color-bd-secondary-active);
+}
+
+
+
+// Teintes 
+
+.oka-nav {
+
+    --nav-color-bg  : var(--oka-nav-color-bg-default, var(--oka-color-action-bg-primary-default-alt));
+    --nav-color-fg  : var(--oka-nav-color-fg-default, var(--oka-color-action-fg-primary-default));
+    --nav-color-bd  : var(--oka-nav-color-bd-default, var(--oka-color-action-border-primary-default));
+
+    &.-secondary  {
+        --nav-color-bg  : var(--oka-nav-color-bg-default-secondary, var(--oka-color-action-bg-secondary-default-alt));
+        --nav-color-fg  : var(--oka-nav-color-fg-default-secondary, var(--oka-color-action-fg-secondary-default));
+        --nav-color-bd  : var(--oka-nav-color-bd-default-secondary, var(--oka-color-action-border-secondary-default));
+    } 
+
+    &:hover {
+        --nav-color-bg : var(--oka-nav-color-bg-hover, var(--oka-color-action-bg-primary-hover-alt));
+        --nav-color-fg : var(--oka-nav-color-fg-hover, var(--oka-color-action-fg-primary-hover));
+        --nav-color-bd : var(--oka-nav-color-bd-hover, var(--oka-color-action-border-primary-hover));
+
+        &.-secondary {
+            --nav-color-bg : var(--oka-nav-color-bg-hover-secondary, var(--oka-color-action-bg-secondary-hover-alt));
+            --nav-color-fg : var(--oka-nav-color-fg-hover-secondary, var(--oka-color-action-fg-secondary-hover));
+            --nav-color-bd : var(--oka-nav-color-bd-hover-secondary, var(--oka-color-action-border-secondary-hover));
+        }
+    }
+
+
+    &.-active {
+        --nav-color-bg : var(--oka-nav-color-bg-active, var(--oka-color-action-bg-primary-press-alt));
+        --nav-color-fg : var(--oka-nav-color-fg-active, var(--oka-color-action-fg-primary-on-solid));
+        --nav-color-bd : var(--oka-nav-color-bd-active, var(--oka-color-action-border-primary-press));
+
+        &.-secondary {
+            --nav-color-bg : var(--oka-nav-color-bg-hover-secondary, var(--oka-color-action-bg-secondary-press-alt));
+            --nav-color-fg : var(--oka-nav-color-fg-hover-secondary, var(--oka-color-action-fg-secondary-on-solid));
+            --nav-color-bd : var(--oka-nav-color-bd-hover-secondary, var(--oka-color-action-border-secondary-press));
+        }
+    }
+
+    :disabled,
+    &.-disabled{
+        --nav-color-bg : var(--oka-nav-color-bg-disabled, var(--oka-color-action-bg-primary-disabled));
+        --nav-color-fg : var(--oka-nav-color-fg-disabled, var(--oka-color-action-fg-alt-primary-disabled));
+        --nav-color-bd : var(--oka-nav-color-bd-disabled, var(--oka-color-action-border-primary-disabled));
+    }
+} 
+
+
+.oka-nav {
+ 
+    @include label-reset;
+
+    height  :  calc( var(--oka-nav-height) -  var(--oka-nav-border-width) );
+
+    display:inline-flex;
+    align-items: center;
+
+    background  : var(--nav-color-bg);
+    color : var(--nav-color-fg) !important;    // important car surcharge les liens default (<a> )  
+    border-color : var(--nav-color-bd); 
+
+    border-radius :var(--oka-nav-border-radius);
+    border-width : var(--oka-nav-border-width) ;
+    border-style : solid ; 
+
+    text-decoration: none;
+
+    cursor:pointer;
+
+    transition: background-color ease 0.2s; // Effet smooth transformation / position / background / Colors
+
+    @extend %oka-ripple; // 4.0.2
+
+    &.-active{
+        pointer-events: none;
+        cursor: none;
+    }
+
+
+    // DISABLED (primary / secondary)
+    &:disabled,
+    &.-disabled {
+        @extend .u-cta-disabled;
+    }
+
+
+
+    // ............................
+    // ICONES
+    &__ico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        //
+        width: 2.5rem;
+        height:2.5rem;
+        //
+        flex-shrink: 0; // 3.1.1
+        //
+        font-size:1rem;
+        text-align: center;
+        //
+        color : inherit;
+        //
+        user-select: none;
+    }
+
+    // ............................
+    // LIBELLE
+    &__lbl {
+        //min-width: 8rem;
+        //padding:$space-inset-squish-m ;
+        margin-left:1.5rem;
+        margin-right:1.5rem;
+        //
+        // TYPOGRAPHIE Géré par  : @import "../../2-elements/typography-system/navs/navs.3.0.0.scss";
+        //
+        // Supprime le Crop (->conflit avec alignement vertical via flexbox )
+        padding-top:0;
+        padding-bottom:0;
+
+        color : inherit;
+    }
+
+    //
+    // Decalage lié à Icone gauche
+    &__ico  + &__lbl {
+        //margin-left:0.5rem; // 3.1.1
+        margin-left: 0rem; // 3.1.1
+    }
+}

@@ -1,0 +1,311 @@
+
+/** oka-tabs 
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+| 4.0.2 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.1 | 09/05/2023 | variant -accordion |
+| 0.0.1 | 21/10/2022 | Récup de Hugo / Corridor |
+
+
+ - version compatible tab to accordion en mode mobile
+ - basé sur les ContainerQuery
+
+
+ From : https://codepen.io/mikestreety/pen/yVNNNm
+
+ */
+
+/* DEPENDANCES */
+@import "../../1-bases/animations/animations";
+
+
+ // Inputs radios Pilot d'affichage / masquage
+.oka-pilot,
+.oka-tab__pilot{
+    display:none;
+}
+
+
+ %accordionArrow--closed {
+    // Icone (Mobile)
+    &:before{
+        @extend %arrow; 
+        margin: 0 0.5rem ;
+        transform: rotate(0deg);
+        order: 5 ;
+
+    }
+    // &:hover:before{
+    //     transform: rotate(90deg);
+    // }
+}
+
+
+%accordionArrow--open{
+    // Rotation  Icone
+    &:before{
+        transform: rotate(90deg) !important;
+    }
+    // &:hover:before{
+    //     transform: rotate(0deg) !important;
+    // }
+}
+
+
+
+%accordionButton {
+
+    @extend %oka-ripple; // 4.0.2
+
+    display:flex;
+    align-items: center;
+    
+    width : 100%;
+    height: 3.5rem;
+
+    margin : 0 ;
+    padding : 0 ;
+
+    background : transparent ;
+    color:var(--oka-actionAlternatif-color-default);
+
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: var(--oka-actionAlternatif-border-default); 
+
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover{
+        background-color:var(--oka-actionAlternatif-bg-hover);
+        color:var(--oka-actionAlternatif-color-hover);
+        border-color : var(--oka-actionAlternatif-border-hover);  
+    }
+
+    &--disabled {
+        border-color : var(--oka-actionAlternatif-border-disabled); 
+        color : var(--oka-actionAlternatif-color-disabled); 
+        cursor:not-allowed;
+        pointer-events:none;
+    }
+
+    // Colorisation des enfants : titres / Sous-Titres / Tags / Texte annexe / Icones
+    * {
+        color: inherit !important ; // 3.0.4 ->
+    }
+}
+
+%accordionButton--press {
+    z-index:10;
+
+    color: var(--oka-actionAlternatif-color-press);
+    border-color: var(--oka-actionAlternatif-border-press);
+}
+
+%accordionLibelle{
+    @extend .oka-ctaText;
+    
+    flex-grow:0; // v4.0.1
+
+    margin-left:0.5rem; // v2.0.1
+    margin-right:0.5rem; // v2.0.1
+}
+
+
+
+%actionAlternatifColorTokens {
+    --oka-actionAlternatif-border-default: var(--oka-color-bd-subtle, var(--oka-color-system-contrast-medium));
+    --oka-actionAlternatif-color-default : var(--oka-color-fg-primary, var(--oka-color-action-fg-primary-default)); 
+
+    --oka-actionAlternatif-bg-hover:  var(--oka-color-bg-primary-minimal, var(--oka-color-action-bg-primary-hover-alt));
+    --oka-actionAlternatif-border-hover: var(--oka-color-bd-subtle, var(--oka-color-action-border-primary-hover));
+    --oka-actionAlternatif-color-hover : var(--oka-color-fg-primary,  var(--oka-color-action-fg-primary-hover)); 
+
+    --oka-actionAlternatif-border-press: var(--oka-color-bd-primary, var(--oka-color-action-border-primary-press));
+    --oka-actionAlternatif-color-press : var(--oka-color-fg, var(--oka-color-app-fg-default)); 
+
+    --oka-actionAlternatif-border-disabled: var(--oka-color-bd-disabled, var(--oka-color-action-border-primary-disabled));
+    --oka-actionAlternatif-color-disabled : var(--oka-color-fg-disabled, var(--oka-color-action-fg-primary-disabled)); 
+
+    &.-secondary{
+        --oka-actionAlternatif-border-default:  var(--oka-color-bd-subtle, var(--oka-color-system-contrast-medium));
+        --oka-actionAlternatif-color-default : var(--oka-color-fg-secondary, var(--oka-color-action-fg-secondary-default)); 
+
+        --oka-actionAlternatif-bg-hover: var(--oka-color-bg-secondary-minimal, var(--oka-color-action-bg-secondary-hover-alt));
+        --oka-actionAlternatif-border-hover: var(--oka-color-bd-subtle, var(--oka-color-action-border-secondary-hover));
+        --oka-actionAlternatif-color-hover : var(--oka-color-fg-secondary, var(--oka-color-action-fg-secondary-hover)); 
+
+        --oka-actionAlternatif-border-press: var(--oka-color-bd-secondary, var(--oka-color-action-border-secondary-press));
+        --oka-actionAlternatif-color-press : var(--oka-color-fg, var(--oka-color-app-fg-default)); 
+
+        --oka-actionAlternatif-border-disabled: var(--oka-color-bd-disabled, var(--oka-color-action-border-secondary-disabled));
+        --oka-actionAlternatif-color-disabled : var(--oka-color-fg-disabled,var(--oka-color-action-fg-secondary-disabled)); 
+    }
+}
+
+
+/**
+* Tabs et Accordion (default : accordion sur viewport SM )
+*/
+
+.oka-tabs {
+    @extend %actionAlternatifColorTokens;
+
+	position:relative;
+
+    overflow-y: auto;
+  
+    display: flex ;
+	flex-wrap: wrap ; // make sure it wraps
+
+    // Container Query 
+    // !!! provoque l'annulation de overflow et des enfants fixed
+    container-type: inline-size; 
+
+    .oka-tab__head{
+        --oka-flex-align-items : center;
+        
+        @extend .oka-flex;
+        flex-grow:1;
+    }
+
+    .oka-tab__body {
+
+        display:block;
+
+        // Effet de slide ouverture - Position initiale
+        @extend %okaSlideOuverture--initial;
+
+        //
+        width: 100%;
+        flex-grow: 1;
+    }
+
+
+    // Bouton selectionné
+    .oka-pilot:checked + .oka-tab__button,
+    .oka-tab__pilot:checked + .oka-tab__button {
+        
+        @extend %accordionButton--press;
+
+        border-width: 0 0 3px 0;
+
+        // Rotation  Icone
+        @extend %accordionArrow--open;
+          
+    }
+
+    // Affichage de Body
+    .oka-pilot:checked + .oka-tab__button + .oka-tab__body,
+    .oka-tab__pilot:checked + .oka-tab__button + .oka-tab__body {
+
+        // Effet de slide ouverture - Position ouvert
+        @extend %okaSlideOuverture--open;
+    }
+
+
+    /* APPARENCE --------------------------------------- */
+    .oka-tab {
+
+        // Tabs Button
+        // ou
+        // Accordion Button 
+        &__button{
+
+            @extend %accordionButton;
+            @extend %accordionArrow--closed;
+
+        }
+
+        &__lbl {
+            @extend %accordionLibelle;    
+        }
+    }
+}
+
+
+
+.oka-tab__button:before{
+    .-reverse & {
+        order: 0 !important;
+    }
+ 
+}
+
+
+// ---------------------------------------------------------------------------------------
+// Fonction : container responsive (ex d'utilisation : filtres)
+// 
+// FORCE L'OUVERTURE A PARTIR DU VIEWPORT MD
+
+
+.oka-tabs.-accordion.-openOnMd {
+    @supports (container-type: inline-size) {
+        @container (min-width: #{$oka-breakpoint-sm} ) {
+            // Masque l'entete pour breakpoint(md)
+            .oka-tab__button{
+             display:none;
+            }
+
+            // Force l'affichage de body
+            .oka-tab__body {
+                max-height:50000px;
+                transform: scaleY(1);
+
+                overflow: visible;
+            }
+        }
+    }
+}
+
+
+
+
+// ---------------------------------------------------------------------------------------
+// Fonction : container responsive 
+// Position tabs sur grands ecrans
+
+.oka-tabs:not(.-accordion){
+
+    // conatiner supérieurà SM -> MODE TABS
+    @supports (container-type: inline-size) {
+        @container (min-width: #{$oka-breakpoint-sm}) {
+
+            .oka-tab__button {
+                
+                order: 1; // positionne tous les boutons en premier
+                
+                margin: 0 0.5rem;
+                padding: 0 2rem;
+
+                // Masque les Icones d'accordions
+                &:before{
+                    display:none;
+                }
+            }
+
+            .oka-tab__body {
+                order: 99 ; // positionne tous les containers (body) en dernier
+            }
+
+            // Bouton selectionné
+            .oka-pilot:checked + .oka-tab__button,
+            .oka-tab__pilot:checked + .oka-tab__button {
+                // empeche la fonction de fermeture hérité de accordion pour desktop (tabs)
+                cursor: default; 
+                pointer-events:none ; //
+            }
+
+            /* APPARENCE --------------------------------------- */
+            .oka-tab__button{
+                // Surcharge les boutons d'accordions pour devenir bouton de tabs
+                border-width: 0 0 1px 0;
+                width: auto; // Bouton en ligne
+                //
+                margin: 0 0.5rem 0 0;
+                padding: 0 1.5rem ;
+            }
+
+        }
+    }
+}

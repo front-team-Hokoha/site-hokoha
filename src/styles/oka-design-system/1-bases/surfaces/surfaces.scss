@@ -3,6 +3,9 @@
 
 
 /*
+
+| 5.0.0 | 24/05/2025 | SEMI compatible token 5 ( a aboutir) |
+
 | 4.0.0 | 20/04/2023 | Nomage du fichier  |
 
 
@@ -17,15 +20,16 @@ $presence : default / soft / medium / heavy
 
 %oka-surface {
 
-    --surface-color-bg : var(--oka-color-app-bg-default);
-    --surface-color-fg : var(--oka-color-app-fg-default);
+    --surface-color-bg : var(--oka-color-layer-floor-0 , var(--oka-color-app-bg-default)); // 5.0.0
+    --surface-color-fg : var(--oka-color-fg , var(--oka-color-app-fg-default)); // 5.0.0
+
 
     background-color :  var(--surface-color-bg);
     color : var(--surface-color-fg);
 
 
     &SystemSoft{
-        --surface-color-bg : var(--oka-color-system-bg-soft);
+        --surface-color-bg : var(--oka-color-layer-floor-0  , var(--oka-color-system-bg-soft));
         --surface-color-fg : var(--oka-color-system-fg-on-soft);
     }
     &SystemMedium{

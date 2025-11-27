@@ -1,0 +1,11 @@
+
+/**
+ Ce fichier est gérer à la main actuellement
+ */
+
+:root {
+    --oka-elevation-popover: 4000;
+    --oka-elevation-modal: 3000;
+    --oka-elevation-header: 1000;
+    --oka-elevation-dropdown: 1000;
+}

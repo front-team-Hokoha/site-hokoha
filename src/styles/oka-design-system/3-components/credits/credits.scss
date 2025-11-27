@@ -1,0 +1,60 @@
+/* OKA CREDITS 
+| 5.0.1 | 16/065/2025 | Modifier -left  |
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+
+| 4.0.1 | 26/01/23 | ABEM - Supprime les elements pour oka-data |
+| 4.0.0 | 17/09/22 | figma tokens |
+| 1.0.0 | 07/09/21 | ajout de strong |
+| 0.0.1 |          | versionning - tokens |
+*/
+
+
+.oka-credits {
+    --credit-align : flex-end;  // 5.0.1
+
+    padding:0.5rem 0 0 0;
+
+    color: var(--oka-color-fg ,var(--oka-color-app-fg-default));
+
+
+    // Positionne stack  pour view small
+    display: flex;
+    flex-direction: column;
+    justify-content:   var(--credit-align); // 5.0.1  
+    align-items: var(--credit-align); // 5.0.1
+
+
+    //  marges des enfants par defaut
+     > *  {
+        margin:0 0 -0.5rem 0 ; 
+        padding-left:  0.5rem !important;   
+     }
+
+
+    // Positionne en ligne  pour view medium
+    @include breakpoint(sm) {
+        flex-direction: row;
+        // 5.0.1 // justify-content : flex-end;
+        flex-wrap: wrap;
+        
+    }
+
+
+
+    
+    &--stack , 
+    &.-stack {
+        flex-direction: column;
+        justify-content: var(--credit-align); //flex-end; // 5.0.1
+        flex-wrap: wrap;
+
+        // pousse en bas (cas ou sidebar : flex column)
+        margin-top: auto;
+    }
+
+    // 5.0.1
+    &.-left{
+        --credit-align : flex-start ;
+    }
+
+}

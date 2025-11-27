@@ -1,6 +1,8 @@
 
 /** STYLES COMMUNS à : INPUT / TEXTAREA / SELECT
 
+| 5.0.0 | 22/05/2025 | compatible design tokens 5 figma |
+| 4.0.5 | 30/01/2025 | Font size : 1rem (norme d'accessibilité) |
 | 4.0.4 | 01/08/2024 | modifier -update |
 | 4.0.3 | 20/03/2024 | token radee + outline |
 | 4.0.2 | 23/10/2023 | reprise input:readonly compatible avec le plugin date piker (https://easepick.com/) |
@@ -28,7 +30,7 @@
 // Tokens
 
 $oka-forms-max-width : 340px;
-$oka-forms-border-radius : var(--oka-borderradius-forms, 3px);
+$oka-forms-border-radius : var(--oka-radius-form , var(--oka-borderradius-forms, 3px));
 
 // OUTLINE
 $oka-form-outline-width             : 3px;
@@ -76,70 +78,75 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
 
 @mixin forms-text( $variant:'primary') {  
     //
-    $form-bg-default    : var(--oka-color-ui-bg-primary-default);
-    $form-bg-hover      : var(--oka-color-ui-bg-primary-hover);
-    $form-bg-focus      : var(--oka-color-ui-bg-primary-focus);
-    $form-bg-disabled   : var(--oka-color-ui-bg-primary-disabled);
-    $form-bg-error      : var(--oka-color-ui-bg-primary-error);
+    $form-bg-default        : var(--oka-color-none, var(--oka-color-ui-bg-primary-default));
+    $form-bg-hover          : var(--oka-color-bg-primary-minimal, var(--oka-color-ui-bg-primary-hover));
+    $form-bg-focus          : var(--oka-color-bg-on_surface, var(--oka-color-ui-bg-primary-focus));
+    $form-bg-disabled       : var(--oka-color-bg-disabled, var(--oka-color-ui-bg-primary-disabled));
+    $form-bg-error          : var(--oka-color-bg-on_surface, var(--oka-color-ui-bg-primary-error));
     //  
-    $form-fg-default    : var(--oka-color-ui-fg-primary-default);
-    $form-fg-subtle     : var(--oka-color-ui-fg-primary-subtle);
-    $form-fg-muted      : var(--oka-color-ui-fg-primary-muted);
-    $form-fg-error      : var(--oka-color-ui-fg-primary-error);
+    $form-fg-default        : var(--oka-color-fg, var(--oka-color-ui-fg-primary-default));
+    $form-fg-subtle         : var(--oka-color-fg-subtle, var(--oka-color-ui-fg-primary-subtle));
+    $form-fg-muted          : var(--oka-color-fg-disabled, var(--oka-color-ui-fg-primary-muted));
+    $form-fg-error          : var(--oka-color-fg-negative, var(--oka-color-ui-fg-primary-error));
     //
-    $form-border-default    : var(--oka-color-ui-border-primary-default);
-    $form-border-hover      : var(--oka-color-ui-border-primary-hover);
-    $form-border-focus      : var(--oka-color-ui-border-primary-focus);
-    $form-border-disabled   : var(--oka-color-ui-border-primary-disabled);
-    $form-border-error      : var(--oka-color-ui-border-primary-error);
+    $form-border-default    : var(--oka-color-bd-primary, var(--oka-color-ui-border-primary-default));
+    $form-border-hover      : var(--oka-color-bd-primary-hover, var(--oka-color-ui-border-primary-hover));
+    $form-border-focus      : var(--oka-color-bd-primary-active, var(--oka-color-ui-border-primary-focus));
+    $form-border-disabled   : var(--oka-color-bd-disabled, var(--oka-color-ui-border-primary-disabled));
+    $form-border-error      : var(--oka-color-bd-negative, var(--oka-color-ui-border-primary-error));
     //
-    $form-outline-default   : var(--oka-color-ui-outline-primary-default);
-    $form-outline-hover     : var(--oka-color-ui-outline-primary-hover);
-    $form-outline-focus     : var(--oka-color-ui-outline-primary-focus);
-    $form-outline-disabled  : var(--oka-color-ui-outline-primary-disabled);
-    $form-outline-error     : var(--oka-color-ui-outline-primary-error);
+    $form-outline-default   : var(--oka-color-bd-primary-minimal, var(--oka-color-ui-outline-primary-default));
+    $form-outline-hover     : var(--oka-color-bd-primary-minimal, var(--oka-color-ui-outline-primary-hover));
+    $form-outline-focus     : var(--oka-color-bd-primary-minimal, var(--oka-color-ui-outline-primary-focus));
+    $form-outline-disabled  : var(--oka-color-bd-disabled, var(--oka-color-ui-outline-primary-disabled));
+    $form-outline-error     : var(--oka-color-bd-negative-minimal, var(--oka-color-ui-outline-primary-error));
     //  
     
 
 
     @if $variant == 'secondary'   {
         //
-        $form-bg-default    : var(--oka-color-ui-bg-secondary-default);
-        $form-bg-hover      : var(--oka-color-ui-bg-secondary-hover);
-        $form-bg-focus      : var(--oka-color-ui-bg-secondary-focus);
-        $form-bg-disabled   : var(--oka-color-ui-bg-secondary-disabled);
-        $form-bg-error      : var(--oka-color-ui-bg-secondary-error);
+        $form-bg-default    : var(--oka-color-none, var(--oka-color-ui-bg-secondary-default));
+        $form-bg-hover      : var(--oka-color-bg-secondary-minimal, var(--oka-color-ui-bg-secondary-hover));
+        $form-bg-focus      : var(--oka-color-bg-on_surface, var(--oka-color-ui-bg-secondary-focus));
+        $form-bg-disabled   : var(--oka-color-bg-disabled, var(--oka-color-ui-bg-secondary-disabled));
+        $form-bg-error      : var(--oka-color-bg-on_surface, var(--oka-color-ui-bg-secondary-error));
         //  
-        $form-fg-default    : var(--oka-color-ui-fg-secondary-default);
-        $form-fg-subtle     : var(--oka-color-ui-fg-secondary-subtle);
-        $form-fg-muted      : var(--oka-color-ui-fg-secondary-muted);
-        $form-fg-error      : var(--oka-color-ui-fg-secondary-error);
+        $form-fg-default    : var(--oka-color-fg, var(--oka-color-ui-fg-secondary-default));
+        $form-fg-subtle     : var(--oka-color-fg-subtle, var(--oka-color-fg-subtle));
+        $form-fg-muted      : var(--oka-color-fg-disabled, var(--oka-color-ui-fg-secondary-muted));
+        $form-fg-error      : var(--oka-color-fg-negative, var(--oka-color-ui-fg-secondary-error));
         //
-        $form-border-default    : var(--oka-color-ui-border-secondary-default);
-        $form-border-hover      : var(--oka-color-ui-border-secondary-hover);
-        $form-border-focus      : var(--oka-color-ui-border-secondary-focus);
-        $form-border-disabled   : var(--oka-color-ui-border-secondary-disabled);
-        $form-border-error      : var(--oka-color-ui-border-secondary-error);
+        $form-border-default    : var(--oka-color-bd-secondary, var(--oka-color-ui-border-secondary-default));
+        $form-border-hover      : var(--oka-color-bd-secondary-hover, var(--oka-color-ui-border-secondary-hover));
+        $form-border-focus      : var(--oka-color-bd-secondary-active, var(--oka-color-ui-border-secondary-focus));
+        $form-border-disabled   : var(--oka-color-bd-disabled, var(--oka-color-ui-border-secondary-disabled));
+        $form-border-error      : var(--oka-color-bd-negative, var(--oka-color-ui-border-secondary-error));
         //
-        $form-outline-default   : var(--oka-color-ui-outline-secondary-default);
-        $form-outline-hover     : var(--oka-color-ui-outline-secondary-hover);
-        $form-outline-focus     : var(--oka-color-ui-outline-secondary-focus);
-        $form-outline-disabled  : var(--oka-color-ui-outline-secondary-disabled);
-        $form-outline-error     : var(--oka-color-ui-outline-secondary-error);
+        $form-outline-default   : var(--oka-color-bd-secondary-minimal, var(--oka-color-ui-outline-secondary-default));
+        $form-outline-hover     : var(--oka-color-bd-secondary-minimal, var(--oka-color-ui-outline-secondary-hover));
+        $form-outline-focus     : var(--oka-color-bd-secondary-minimal, var(--oka-color-ui-outline-secondary-focus));
+        $form-outline-disabled  : var(--oka-color-bd-disabled, var(--oka-color-ui-outline-secondary-disabled));
+        $form-outline-error     : var(--oka-color-bd-negative-minimal, var(--oka-color-ui-outline-secondary-error));
     }
     
     
+    .oka-fiel--invalid & {
+
+        
+    }
+
+
+
     // ...................................................
-    & {
-        background-color: $form-bg-default;
-        color           : $form-fg-default;
-        border-color    : $form-border-default;
-        border-width    : 1px ;
-        border-style    : solid ;
-        outline: none; //3.0.2
-        //box-shadow: none; //3.0.2
-        box-shadow      : 0 0 0 $oka-form-outline-width $form-outline-default; //4.0.3
-    }
+    background-color: $form-bg-default;
+    color           : $form-fg-default;
+    border-color    : $form-border-default;
+    border-width    : 1px ;
+    border-style    : solid ;
+    outline: none; //3.0.2
+    //box-shadow: none; //3.0.2
+    box-shadow      : 0 0 0 $oka-form-outline-width $form-outline-default; //4.0.3
 
     &::placeholder{
         color       : $form-fg-subtle;
@@ -172,10 +179,10 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
         //                     inset 0 4px 4px oka-alpha($oka-color-shadow, 0.11),
         //                     inset 0 6px 8px oka-alpha($oka-color-shadow, 0.11); //4.0.0
         box-shadow      :   0 0 0 $oka-form-outline-width $form-outline-focus,
-                            inset 0 1px 1px var(--oka-color-app-shadows),
-                            inset 0 2px 2px var(--oka-color-app-shadows),
-                            inset 0 4px 4px var(--oka-color-app-shadows),
-                            inset 0 6px 8px var(--oka-color-app-shadows);
+                            inset 0 1px 1px var(--oka-color-neutral-alpha20 , var(--oka-color-app-shadows)),
+                            inset 0 2px 2px var(--oka-color-neutral-alpha20 , var(--oka-color-app-shadows)),
+                            inset 0 4px 4px var(--oka-color-neutral-alpha20 , var(--oka-color-app-shadows)),
+                            inset 0 6px 8px var(--oka-color-neutral-alpha20 , var(--oka-color-app-shadows));
         //@include shadow-inset;
     }
 
@@ -188,15 +195,15 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
     // DISABLED
     &.disabled,
     &:disabled{
-        background-color: $form-bg-disabled;
-        color           : $form-fg-muted;
-        border-color    : $form-border-disabled;
-        box-shadow      : 0 0 0 $oka-form-outline-width $form-outline-disabled; //4.0.3
+        background-color: $form-bg-disabled !important;
+        color           : $form-fg-muted !important;
+        border-color    : $form-border-disabled !important;
+        box-shadow      : 0 0 0 $oka-form-outline-width $form-outline-disabled !important; //4.0.3
         //
-        cursor: not-allowed;
+        cursor: not-allowed !important;
         //
         // supprime les fleches
-        @include noArrow
+        @include noArrow; 
     }
 
     // ...................................................
@@ -257,7 +264,6 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
         
         cursor: not-allowed;
         pointer-events: none;
-        
         //
         // supprime les fleches
         @include noArrow;
@@ -266,10 +272,7 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
         &::placeholder{
             color: transparent;
         }
-        
-        
-  
-        
+
     }
 }
 
@@ -296,7 +299,7 @@ $oka-forms-text-color-skeleton     : $oka-forms-border-color-skeleton ;
     min-height:2.5rem;
     padding:0 0.5rem;
     // FONT DATA
-    @extend %oka-data-md;
+    @extend %oka-data-lg;
 }
 
 @mixin forms--lg {

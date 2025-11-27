@@ -27,7 +27,7 @@ const init = () => {
     // Initialisation de ScrollTrigger
     ScrollTrigger.create({
       trigger: hoverEffect,
-      start: 'top 80%', // Point de déclenchement (ajustable)
+      start: 'top 50%', // Point de déclenchement (ajustable)
       onEnter: () => {
         animator.animate();
       },
@@ -50,7 +50,6 @@ document.addEventListener('astro:page-load', () => {
   .typper {
     font-kerning: none;
     position: relative;
-    /*white-space: nowrap;*/
   }
 
 
@@ -60,6 +59,7 @@ document.addEventListener('astro:page-load', () => {
   
   .typper .char {
     position: relative;
+    opacity: 0;
     --opa: 0;
   }
 

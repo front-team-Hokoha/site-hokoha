@@ -1,0 +1,43 @@
+// Emplacement des Polices : Font Brand (expressive)
+$oka-brand-font-path: '/site-hokoha/assets/fonts' !default;
+
+
+// Import FONTAWESOME
+// $fa-font-path : $oka-brand-font-path + "/fontawesome-pro-6.5.2";
+// @import "oka-design-system/1-bases/fonts/fontawesome-pro-6.5.2/fontawesome.scss"; // Obligatoire : fichier de demarrage
+// @import "oka-design-system/1-bases/fonts/fontawesome-pro-6.5.2/solid.scss"; // Obligatoire : oka-list
+// @import "oka-design-system/1-bases/fonts/fontawesome-pro-6.5.2/regular.scss";
+
+
+@import "oka-design-system/1-bases/fonts/fontawesome-custom-icons/custom-icons" ;
+
+// BASE - BRAND FONTS (EXPRESSIVES)
+@import "project-design-system/fonts/font-ibm-plex-sans-v8-latin";
+
+
+// =========================================
+// BRAND-HEADINGS
+$oka-brand-heading-font-family: 'IBM Plex Sans',sans-serif;
+$oka-brand-heading-font-weight: 500;
+$oka-brand-heading-font-baseline: $ibm-plex-baseline;
+$oka-brand-heading-letter-spacing: -0.032em;
+
+$oka-brand-heading-font-family-strong: 'IBM Plex Sans',sans-serif;
+$oka-brand-heading-font-weight-strong: 600;
+
+// =========================================
+// BRAND BODY (TEXT)
+//
+$oka-brand-text-font-family: 'IBM Plex Sans',sans-serif;
+$oka-brand-text-font-weight: $ibm-plex-sans-regular-weight;
+//
+$oka-brand-text-font-family-bold: 'IBM Plex Sans',sans-serif;
+$oka-brand-text-font-weight-bold: $ibm-plex-sans-500-weight;
+//
+$oka-brand-text-font-family-light: 'IBM Plex Sans',sans-serif;
+$oka-brand-text-font-weight-light: $ibm-plex-sans-300-weight;
+//
+$oka-brand-text-letter-spacing: -0.006em;
+$oka-brand-text-word-spacing: 0.1em;
+//
+$oka-brand-text-font-baseline:0.124 ; // 0.158203;

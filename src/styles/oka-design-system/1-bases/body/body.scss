@@ -3,7 +3,11 @@
 // BODY
 
 /**
-| 4.0.1 | 05/08/2024 | user select none |
+| 5.0.0 | 22/05/2025 |compatible design tokens 5 figma |
+
+| 4.0.3 | 30/01/2025 | typo : évite veuves et orphelins |
+| 4.0.2 | 05/08/2024 | user select none |
+| 4.0.1 | 07/07/2023 | reprise pour gestion de la hauteur pleine page |
 | 4.0.0 | 17/05/2022 | utilise tokens figma |
 | 3.1.0 | 03/06/2021 | Revue |
 
@@ -11,7 +15,7 @@
 */
 
 body{
-    //user-select: none;
+    user-select: none;
     pointer-events: all;
 }
 
@@ -29,13 +33,16 @@ body,
     margin      : 0;
     padding     : 0;
     //
-    background-color: var(--oka-color-app-ground);
+    background-color: var(--oka-color-layer-floor-0 , var(--oka-color-app-ground));
     // propagation de la couleur
-    color : var(--oka-color-app-fg-default);
+    color : var(--oka-color-fg , var(--oka-color-app-fg-default));
 
     // !!! provoque l'annulation de overflow et des enfants fixed
     // On doit déporter cette regle sur un autre composant (#root ???]
     // container-type: inline-size; 
+
+    // | 4.0.2 | 30/01/2025 | typo : évite veuves et orphelins |
+    text-wrap: pretty;
 
 
     
@@ -48,28 +55,28 @@ body,
 
 //
 // BARRE DE DEFILEMENT
-
+//
 // *::-webkit-scrollbar {
 //     width: 8px;
 //     position: absolute;
 //     right: 6px;
-
+//
 //     &:hover {
 //         width: 6px !important;
 //     }
 // }
-
+//
 // *::-webkit-scrollbar-track {
-//     //-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,1);
-//     background-color: transparent;
+//     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,1);
+//     background-color: red;
 // }
-
+//
 // *::-webkit-scrollbar-thumb {
 //     background-color: blue;
-//     //outline: 1px solid black;
+//     outline: 1px solid black;
 //     //border-radius: 8px;
 //     width: 6px;
-
+//
 //     &:hover {
 //         width: 6px !important;
 //     }

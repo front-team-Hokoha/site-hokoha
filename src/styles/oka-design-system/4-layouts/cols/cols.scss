@@ -1,0 +1,275 @@
+
+/** ==================================================
+* COLS
+
+| 4.0.1 | 06/06/2025 | ajout du modifier --force (reste sur x colonnes , ignore le responsive) |
+| 4.0.0 | 22/05/2023 | Création |
+
+
+
+
+
+/**
+* Golden ratio : Calcul la taille de la première colonne;
+*
+* --columns : (calc( var(--span) *  ( ( (100% / var(--grid-columns)) - ( (var(--grid-columns) - 1) * var(--grid-gap-x) )) + (var(--span) - 1 * var(--grid-gap-x) )  ) )) 2fr ;
+*/
+
+
+
+@function colSize($span, $gridGap) {
+
+  //@debug "----------------------";
+  
+  $nbColonnes : $span ;
+  //@debug "Nb Colonnes: #{$nbColonnes}";
+
+  $nbGouttieres : $span - 1 ;
+  //@debug "Nb Gouttières: #{$nbGouttieres}";
+
+
+  $colonneWidth : calc((100% - (($nbCol - 1) * $gridGap)) / $nbCol);
+  //@debug "Colonne width: #{$colonneWidth}";
+  
+  $divWidth : calc(($nbColonnes * $colonneWidth) + ($nbGouttieres * $gridGap ));
+  //@debug "Div width: #{$divWidth}";
+
+  $result : $divWidth;
+
+  @return $result;
+}
+
+
+.oka-cols {
+
+  display: grid; 
+  width : 100%;
+
+  grid-template-columns: var(--columns); 
+  grid-template-rows: var(--rows) ; 
+  gap: var(--gap); 
+  grid-template-areas:  var(--areas); 
+
+
+  > div {
+
+    // Container Query 
+    // !!! provoque l'annulation de overflow et des enfants fixed
+    container-type: inline-size; 
+  }
+  
+
+  > :first-child{
+    grid-area: col1;
+    //outline: 1px solid red;
+  }
+
+  > :nth-child(2) {
+    grid-area: col2;
+    //outline: 1px solid green;
+  }
+
+  > :nth-child(3) {
+    grid-area: col3;
+    //outline: 1px solid orange;
+  }
+
+  > :nth-child(4) {
+    grid-area: col4;
+    //outline: 1px solid blue;
+  }
+
+  // ------------------------------------------------
+  // Deux colonnes
+  &.-two{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2";
+
+
+    @supports (container-type: inline-size) {
+      @container (min-width: #{$oka-breakpoint-sm} ) {
+        --columns : 1fr 1fr; 
+        --areas : "col1 col2";
+        --gap: 0 var(--grid-gap-x);
+      }
+    }
+
+    
+    @supports not (container-type: inline-size) {
+      @include breakpoint(sm) {
+        --columns : 1fr 1fr; 
+        --areas : "col1 col2";
+        --gap: 0 var(--grid-gap-x); 
+      }
+    }
+
+    &.-force{
+      --columns : 1fr 1fr !important; 
+      --areas : "col1 col2" !important;
+      --gap: 0 var(--grid-gap-x) !important; 
+    }
+
+    &.-gold {
+
+      @supports (container-type: inline-size) {
+        @container (min-width: #{$oka-breakpoint-sm} ) {
+          grid-template-columns: colSize(6, #{$grid-gap-on-small} ) 2fr;
+        }
+        @container (min-width: #{$oka-breakpoint-md} ) {
+           grid-template-columns: colSize(5, #{$grid-gap-on-medium}) 2fr;
+        }
+        @container (min-width: #{$oka-breakpoint-lg} ) {
+          grid-template-columns: colSize(4, #{$grid-gap-on-large}) 2fr;
+        }
+      }
+
+      @supports not (container-type: inline-size) {
+        @include breakpoint(sm) {
+          grid-template-columns: colSize(6, #{$grid-gap-on-small} ) 2fr; 
+        }
+        @include breakpoint(md) {
+          grid-template-columns: colSize(5, #{$grid-gap-on-medium}) 2fr; 
+        }
+        @include breakpoint(lg) {
+          grid-template-columns: colSize(4, #{$grid-gap-on-large}) 2fr; 
+        }
+      }   
+    }
+  }
+
+  // ------------------------------------------------
+  // Trois colonnes
+  &.-three{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2"
+                "col3";
+
+    @supports (container-type: inline-size) {
+      @container (min-width: #{$oka-breakpoint-xs} ) {
+        --columns : 1fr 1fr;  
+        --areas : "col1 col2"
+                  "col1 col3";
+        &.-N {
+          --areas : "col1 col2"
+                    "col1 col3";
+        }
+
+        &.-Z {
+          --areas : "col1 col3"
+                    "col2 col3";
+        }
+
+        &.-M {
+          --areas : "col1 col1"
+                    "col2 col3";
+        }
+
+        &.-U {
+          --areas : "col1 col2"
+                    "col3 col3";
+        }
+      }
+    }
+
+    @supports (container-type: inline-size) {
+      @container (min-width: #{$oka-breakpoint-sm} ) {
+        --columns : 1fr 1fr 1fr; 
+        --areas : "col1 col2 col3";
+        --gap: 0 var(--grid-gap-x);
+
+        &.-N ,
+        &.-Z ,  
+        &.-M ,
+        &.-U {
+           --areas : "col1 col2 col3";
+        }
+      }
+    }
+
+
+
+    @supports not (container-type: inline-size) {
+      @include breakpoint(sm) {
+        --columns : 1fr 1fr 1fr; 
+        --areas : "col1 col2 col3";
+        --gap: 0 var(--grid-gap-x);
+      }
+    }
+
+    
+    &.-force{
+      --columns : 1fr 1fr 1fr !important; 
+      --areas : "col1 col2 col3" !important;
+    }
+
+
+
+    &.-gold {
+
+      @include breakpoint(sm) {
+        --columns : 1fr 1fr;  
+        --areas : "col1 col1"
+                  "col2 col3";
+        --gap: var(--grid-gap-y) var(--grid-gap-x); 
+
+      }
+      @include breakpoint(md) {
+        --areas : "col1 col2 col3"; 
+        grid-template-columns: colSize(5, #{$grid-gap-on-medium}) 1.5fr 1.5fr; 
+      }
+      @include breakpoint(lg) {
+        grid-template-columns: colSize(4, #{$grid-gap-on-large}) 1.5fr 1.5fr; 
+      }
+
+    }
+  }
+
+  // ------------------------------------------------
+  // Quatres colonnes
+  &.-four{
+    --columns : 1fr;
+    --rows : auto auto;
+    --gap: var(--grid-gap-y) var(--grid-gap-x); 
+    --areas :   "col1"
+                "col2"
+                "col3"
+                "col4";
+
+    @include breakpoint(sm) {
+      --columns : 2fr 2fr; 
+      --areas : "col1 col2" 
+                "col3 col4";
+      --gap: var(--grid-gap-y) var(--grid-gap-x);
+    }
+    @include breakpoint(md) {
+      --columns : 1fr 1fr 1fr 1fr;
+      --areas : "col1 col2 col3 col4" ;
+      --gap: 0 var(--grid-gap-x); 
+    }
+
+    
+    &.-force{
+      --columns : 1fr 1fr 1fr 1fr !important;
+      --areas : "col1 col2 col3 col4" !important;
+    }
+
+    &.-gold {
+
+      @include breakpoint(sm) {
+        --columns : 35.275% 2fr;
+        --areas : "col1 col1"
+                  "col2 col3"; 
+      }
+      @include breakpoint(md) {
+        --columns : 23.5% 1.5fr 1.5fr; 
+        --areas : "col1 col2 col3"; 
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 
 /** ==================================================
 // UI DATAS
-| 4.0.2 |  |    |
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 4.0.2 | 29/01/2025 | correction des cropLineHeight + Couleur app default  |
 | 4.0.1 | 21/09/2023 | placeholder pour strong   |
 | 4.0.0 | 17/01/2023 | Nomage conforme ABEM  |
 | 3.1.1 | 02/09/2021 | reprise du nomage oka-data-(size) |
@@ -64,10 +65,14 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
 
 %oka-data {
 
+    display:block;
+    max-width: 640px;
+
+    color: var(--oka-color-fg , var(--oka-color-app-fg-default));
+
     letter-spacing: $oka-data-letter-spacing;
     word-spacing : $oka-data-word-spacing ;
 
-    display:block;
 
     // =======================================
     // Modifier de graisse
@@ -91,7 +96,7 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
 %oka-data-md {
     
     --crop-top : -0.5rem;
-    --crop-bottom : -1rem;
+    --crop-bottom : -0.5rem;     // 4.0.2 : revision suite à surcharge de plumber (ci-dessous)
 
     @include plumber-set-defaults($use-baseline-origin: true);
     @include plumber(
@@ -99,6 +104,10 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
         $font-size: $oka-data-font-size-md,
         $line-height: $oka-data-line-height-md,
     );
+
+
+    padding-bottom: 0.3128125rem;     // 4.0.2 : surcharge de plumber : correctif pour line-height inférieures à 1rem
+
     font-family: $oka-data-font-family-light;
     font-weight: $oka-data-font-weight-light;
 }
@@ -110,7 +119,7 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
 %oka-data-sm {
 
     --crop-top : -0.5rem;
-    --crop-bottom : -1.0rem;
+    --crop-bottom : -0.5rem; // 4.0.2 : revision suite à surcharge de plumber (ci-dessous)
 
     @include plumber-set-defaults($use-baseline-origin: true);
     @include plumber(
@@ -118,6 +127,9 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
         $font-size: $oka-data-font-size-sm,
         $line-height: $oka-data-line-height-sm,
     );
+
+    padding-bottom: 0.278125rem;     // 4.0.2 : surcharge de plumber : correctif pour line-height inférieures à 1rem
+
     font-family: $oka-data-font-family;
     font-weight: $oka-data-font-weight;
 }
@@ -128,7 +140,7 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
 %oka-data-xs {
 
     --crop-top : -0.5rem;
-    --crop-bottom : -1.0rem;
+    --crop-bottom : -0.5rem; // 4.0.2 : revision suite à surcharge de plumber (ci-dessous)
 
     @include plumber-set-defaults($use-baseline-origin: true);
     @include plumber(
@@ -136,6 +148,9 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
         $font-size: $oka-data-font-size-xs,
         $line-height: $oka-data-line-height-xs,
     );
+
+    padding-bottom: 0.24525rem;  // 4.0.2 : surcharge de plumber : correctif pour line-height inférieures à 1rem
+
     font-family: $oka-data-font-family;
     font-weight: $oka-data-font-weight;
 }
@@ -145,8 +160,8 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
 // large
 %oka-data-lg {
 
-    --crop-top : -0.5rem;
-    --crop-bottom : -1.0rem;
+    --crop-top : -1rem;  // 4.0.2 : revision suite à surcharge de plumber (ci-dessous)
+    --crop-bottom : -0.5rem;  // 4.0.2 : revision suite à surcharge de plumber (ci-dessous)
 
     @include plumber-set-defaults($use-baseline-origin: true);
     @include plumber(
@@ -154,6 +169,8 @@ $oka-data-line-height-xs: $oka-lineheight-xxs;  // [ 1rem ]
         $font-size: $oka-data-font-size-lg,
         $line-height: $oka-data-line-height-lg,
     );
+
+    padding-bottom: 0.110rem; // 4.0.2 : surcharge de plumber : correctif pour line-height inférieures à 1rem
 
     font-family: $oka-data-font-family-light;
     font-weight: $oka-data-font-weight-light;

@@ -6,6 +6,7 @@
 
 
 /* 
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
 | 1.0.2  | 27/08/2024  | ajout modificateurs pour mise en page login  |
 | 1.0.1  | 26/10/2022  | revision suite à Hugo |
 | 1.0.0  | 22/02/2021  | mise en place |
@@ -118,11 +119,7 @@ _____________________< body > ______________________________
         padding-top:1rem;
         padding-bottom:1rem;
 
-        background-color: var(--oka-color-app-bg-footer);
+        background-color: var(--oka-color-layer-footer, var(--oka-color-app-bg-footer));
        
-        @include breakpoint(sm) {
-            //padding-top:1rem;
-            //padding-bottom:1rem;
-        }
     }
 }

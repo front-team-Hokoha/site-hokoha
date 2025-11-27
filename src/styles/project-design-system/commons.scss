@@ -9,7 +9,7 @@
     
     
     --oka-color-app-bg-default : hsl(218 100% 99%); // #fff; // var(--oka-color-neutral-lightest) ;
-    --oka-color-app-fg-default : hsl(220 92.38% 22.59%); 
+    --oka-color-app-fg-default : hsl(221, 89%, 10%); 
 
     --oka-color-app-fg-secondary :  hsl(195 100% 50%); // hsl(222 99.21% 29.6%) ; // hsl(222.06 100% 50%); // hsl(0 38.43% 36.51%); //
 
@@ -56,14 +56,14 @@
 
 
 .noto-serif {
-    font-family: "Noto Serif", serif !important;
+    //font-family: "Noto Serif", serif !important;
     font-optical-sizing: auto;
-    font-weight: normal;
+    font-weight: 600;
     
-    color:var(--oka-color-system-contrast-hard);
-    letter-spacing: -0.02em;
+    //color:var(--oka-color-system-contrast-hard);
+    letter-spacing: -0.04em;
     // border-bottom:1px solid var(--oka-color-primary-contrast-medium);
-    color:var(--oka-color-app-fg-secondary);
+    //color:var(--oka-color-app-fg-secondary);
     }
 
 
@@ -85,6 +85,10 @@
 
     &.-top12{
         --sticky:12rem;
+    }
+
+    &.-top30vh {
+        top: 30vh;
     }
 
     &.-top40vh {
@@ -250,9 +254,9 @@ hr.filet{
 }
 
 hr,.oka-divider {
-    background-image: linear-gradient(to right, var(--oka-color-app-fg-default) 0 10%, rgba(255, 255, 255, 0) 10%);
+    background-image: linear-gradient(to right, var(--oka-color-fg) 0 10%, rgba(255, 255, 255, 0) 10%);
     background-position: bottom;
-    background-size: 8px 1px;
+    /*background-size: 8px 1px;*/
     background-repeat: repeat-x;
   }
 

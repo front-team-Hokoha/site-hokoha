@@ -1,6 +1,8 @@
 // ==================================================
 // LES TEXTS
 /*
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 4.0.2 | 10/03/2025 | Intégration des li |
 | 4.0.1 | 30/11/2022 | Revision nomage ABEM |
 | 4.0.0 | 10/06/2022 | Perfectionnement alignement grid verticale |
 | 3.1.0 | 02/06/2021 | Revision nommage : Modifiers de taille |
@@ -55,10 +57,13 @@ $oka-brand-text-lg-ajustement-vertical : 0 ;
     
     margin-top:0; // 
 
+    color :   var(--oka-color-fg); // 5.0.0
+
     font-family: $oka-brand-text-font-family-light;
     font-weight: $oka-brand-text-md-weight ; // 4.0.0 
     letter-spacing: $oka-brand-text-letter-spacing;
     word-spacing : $oka-brand-text-word-spacing;
+
 
     &.-strong,
     strong {
@@ -147,6 +152,6 @@ $oka-brand-text-lg-ajustement-vertical : 0 ;
 }
 
 
-// .oka-text {
-//     @extend .oka-text;
-// }
+p, ul, ol,  .oka-text {
+    @extend .oka-text;
+}

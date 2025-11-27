@@ -1,0 +1,49 @@
+/**
+
+| 4.0.0    | 17/04/2025 | Création pour oka-list |
+
+*/
+.oka-cookieBanner{
+
+    @extend .oka-surface;
+    @extend .oka-shadow5;
+
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    z-index: 9999;
+    gap: 1rem;
+    
+    padding: 1rem;
+
+    @include breakpoint(md) {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    &__controls {
+
+        width: 100%;
+        
+        @include breakpoint(md) {
+            max-width: 35%;
+        }
+    }
+
+    &__actions {
+        
+        display: flex;
+        gap: .5rem;
+
+        @include breakpoint(md) {
+            justify-content: flex-end;
+        }
+
+    }
+
+}

@@ -1,19 +1,23 @@
 
-// FORMS OKA (MISE EN PAGE DES FORMULAIRES)
+// MISE EN PAGE DES FORMULAIRES
 //
 //
-// 2.0.5 | 09/08/2021 | Révision des marges des label (HRZ) !!! Checkebox et Radios
-// 2.0.4 | 02/03/2021 | Nomage de encapsuleur et ses elements -> oka-field
-// 2.0.3 : Ajout du oka-field--group !!!!!!!!!!!!!!!!!!!!!! -> Embarque Js-requied / oka-field__ico-state etc ....
-// 2.0.2 : Evite la derniere marge de row (position en pied)
-// 2.0.1
-
+/*
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+2.0.6 | 16/04/2025 | Marge entre label et input non encapsulé dans oka-field
+2.0.5 | 09/08/2021 | Révision des marges des label (HRZ) !!! Checkebox et Radios
+2.0.4 | 02/03/2021 | Nomage de encapsuleur et ses elements -> oka-field
+2.0.3 : Ajout du oka-field--group !!!!!!!!!!!!!!!!!!!!!! -> Embarque Js-requied / oka-field__ico-state etc ....
+2.0.2 : Evite la derniere marge de row (position en pied)
+2.0.1
+*/
 
 /* MISE EN PAGES */
 
 /* Default */
+
 .l-form-row {
-    ////border:1px solid red;
+    //border:1px solid red;
     margin-bottom:1rem;
 
     // Evite la derniere marge (position en pied)
@@ -26,6 +30,12 @@
     // label {
     //     //margin-bottom:0.5rem;
     // }
+
+
+    // 2.0.6
+    .oka-label:not(.u-displaynone) + .oka-input {
+        margin-top: 0.5rem;
+    }
 }
 
 

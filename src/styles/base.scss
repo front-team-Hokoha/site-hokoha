@@ -1,10 +1,16 @@
 // Tokens Figma (css variables)
-@import "design-tokens/variables-global";
-@import "design-tokens/variables-light";
-@import "design-tokens/variables-dark";
+// @import "design-tokens/variables-global";
+// @import "design-tokens/variables-light";
+// @import "design-tokens/variables-dark";
+
+@import "design-tokens/palette";
+@import "design-tokens/static";
+@import "design-tokens/primitive";
+@import "design-tokens/semantic";
+@import "design-tokens/elevations";
 
 // Emplacement des Polices : Font System (productive)
-$oka-system-font-path: '/site-hokoha/assets/fonts' !default;
+$oka-system-font-path: '/public/assets/fonts' !default;
 
 //--------------------------------------
 // VENDORS
@@ -17,70 +23,78 @@ $oka-system-font-path: '/site-hokoha/assets/fonts' !default;
 @import "oka-design-system/0-abstracts/functions-svg";
 
 // BASE / NEUTRONS -----------------------------------
-@import "oka-design-system/1-bases/8ptGrid/8ptGrid";
-//@import "oka-design-system/1-bases/animations/animations";
-@import "oka-design-system/1-bases/body/body";
-@import "oka-design-system/1-bases/html/html";
-@import "oka-design-system/1-bases/icons/icons";
-@import "oka-design-system/1-bases/ripple/ripple";
-@import "oka-design-system/1-bases/shadows/shadows";
-@import "oka-design-system/1-bases/spacings/spacings"; // ??????????????? -> Déplacer vers Utilities
-@import "oka-design-system/1-bases/surfaces/surfaces";
-@import "oka-design-system/1-bases/typo/typo-scale";   
-@import "oka-design-system/1-bases/typo/typo-system";  
-@import "oka-design-system/1-bases/user-select/user-select";    // ??????????????? -> Déplacer vers Utilities
-@import "oka-design-system/1-bases/visibility/visibility";    // ??????????????? -> Déplacer vers Utilities
+/* 5 */ @import "oka-design-system/1-bases/8ptGrid/8ptGrid";
+/* 5 */ @import "oka-design-system/1-bases/animations/animations";
+/* 5 */ @import "oka-design-system/1-bases/body/body";
+/* 5 */ @import "oka-design-system/1-bases/html/html";
+/* 5 */ @import "oka-design-system/1-bases/icons/icons";
+/* 5 */ @import "oka-design-system/1-bases/ripple/ripple";
+/* 5 */ @import "oka-design-system/1-bases/shadows/shadows";
+/* 5 */ @import "oka-design-system/1-bases/spacings/spacings";
+/* 5 a revoir */@import "oka-design-system/1-bases/surfaces/surfaces"; // ------------------------> A reprendre
+/* 5 */ @import "oka-design-system/1-bases/typo/typo-scale";   
+/* 5 */ @import "oka-design-system/1-bases/typo/typo-system";  
+/* 5 */ @import "oka-design-system/1-bases/user-select/user-select";  
+/* 5 */ @import "oka-design-system/1-bases/visibility/visibility";   
 
 // ELEMENTS / MOLECULES -----------------------------------
 
 // Typographie System
-@import "oka-design-system/2-elements/typography-system/cta-text/cta-text";
-@import "oka-design-system/2-elements/typography-system/components-headings/components-headings";
-@import "oka-design-system/2-elements/typography-system/datas/datas";
-@import "oka-design-system/2-elements/typography-system/labels/labels";
-@import "oka-design-system/2-elements/typography-system/navs/navs";
+/* 5 */ @import "oka-design-system/2-elements/typography-system/cta-text/cta-text";
+/* 5 */ @import "oka-design-system/2-elements/typography-system/components-headings/components-headings";
+/* 5 */ @import "oka-design-system/2-elements/typography-system/datas/datas";
+/* 5 */ @import "oka-design-system/2-elements/typography-system/labels/labels";
+/* 5 */ @import "oka-design-system/2-elements/typography-system/navs/navs";
 
 // Typographie Marque
-@import "oka-design-system/2-elements/typography-brand/headings/headings";
-@import "oka-design-system/2-elements/typography-brand/texts/texts";
+/* 5 */ @import "oka-design-system/2-elements/typography-brand/headings/headings";
+/* 5 */ @import "oka-design-system/2-elements/typography-brand/texts/texts";
 
 // Elements de Formulaire
-// !!!!!!! Déplacer dans fichier forms.scss
-@import "oka-design-system/2-elements/Forms/commons";
-@import "oka-design-system/2-elements/Forms/commons-radio-checkbox";
-// @import "oka-design-system/2-elements/Forms/checkboxes/checkboxes";
-// @import "oka-design-system/2-elements/Forms/inputs/inputs";
-// @import "oka-design-system/2-elements/Forms/fields/fields";
-// @import "oka-design-system/2-elements/Forms/radios/radios";
-// @import "oka-design-system/2-elements/Forms/ranges/ranges";
-// @import "oka-design-system/2-elements/Forms/selects/selects";
- @import "oka-design-system/2-elements/Forms/switchs/switchs";
-// @import "oka-design-system/2-elements/Forms/textareas/textareas";
+/* 5 */ @import "oka-design-system/2-elements/Forms/commons";
+/* 5 */ @import "oka-design-system/2-elements/Forms/commons-radio-checkbox";
+/* 5 */ @import "oka-design-system/2-elements/Forms/checkboxes/checkboxes";
+/* 5 */ @import "oka-design-system/2-elements/Forms/inputs/inputs";
+/* 5 */ @import "oka-design-system/2-elements/Forms/fields/fields";
+/* 5 */ @import "oka-design-system/2-elements/Forms/radios/radios";
+/* 5 */ @import "oka-design-system/2-elements/Forms/ranges/ranges";
+/* 5 */ @import "oka-design-system/2-elements/Forms/selects/selects";
+/* 5 */ @import "oka-design-system/2-elements/Forms/switchs/switchs";
+/* 5 */ @import "oka-design-system/2-elements/Forms/textareas/textareas";
 
 // Elements
-// !!!!!!!! Déplacer vers mains.scss
-@import "oka-design-system/2-elements/buttons/buttons";
-@import "oka-design-system/2-elements/dividers/dividers";
-@import "oka-design-system/2-elements/links/links";
-@import "oka-design-system/2-elements/loaders/loaders";
-@import "oka-design-system/2-elements/spinners/spinners";
+/* 5 */ @import "oka-design-system/2-elements/buttons/buttons";
+/* 5 */ @import "oka-design-system/2-elements/dividers/dividers";
+/* 5 */ @import "oka-design-system/2-elements/links/links";
+/* 5 */ @import "oka-design-system/2-elements/loaders/loaders";
+/* 5 */ @import "oka-design-system/2-elements/spinners/spinners";
 
 
 // LAYOUT BASE
-@import "oka-design-system/4-layouts/app-wrapper/app-wrapper";
-//@import "oka-design-system/4-layouts/forms/forms"; // !!!!!!!! -> Déplacer vers forms.scss
-@import "oka-design-system/4-layouts/grids/grids";
-@import "oka-design-system/4-layouts/grids/flex-grid";
-@import "oka-design-system/4-layouts/grids/grid-auto";
-//@import "oka-design-system/4-layouts/grids/grid-layout";
-@import "oka-design-system/4-layouts/layout-app/layout-app";
-@import "oka-design-system/4-layouts/wrappers/wrappers";
+/* 5 */ @import "oka-design-system/4-layouts/app-wrapper/app-wrapper";
+/* 5 */ @import "oka-design-system/4-layouts/forms/forms"; // !!!!!!!! -> Déplacer vers forms.scss ?????
+/* 5 */ @import "oka-design-system/4-layouts/grids/grids";
+/* 5 */ @import "oka-design-system/4-layouts/grids/flex-grid";
+/* 5 */ @import "oka-design-system/4-layouts/grids/grid-auto";
+/* 5 */ @import "oka-design-system/4-layouts/layout-app/layout-app";
+/* 5 */ @import "oka-design-system/4-layouts/wrappers/wrappers";
 
 
-// Starter (page Login)
-@import "oka-design-system/3-components/credits/credits.4.0.1";
-@import "oka-design-system/3-components/messages/messages.4.0.0";
-@import "oka-design-system/3-components/spacers/spacers.1.0.1.scss";
+// Starter ( cookies )
+/* 5 */ @import "oka-design-system/3-components/modals/modals";
+/* 5 */ @import "oka-design-system/3-components/tabsToAccordions/tabsToAccordions";
+
+@import "oka-design-system/4-layouts/oka-cookieBanner/oka-cookieBanner.scss";
+
+// Starter ( page Login )
+/* 5 */ @import "oka-design-system/3-components/credits/credits";
+/* 5 */ @import "oka-design-system/3-components/messages/messages";
+/* 5 */ @import "oka-design-system/3-components/spacers/spacers";
+
+
+/* 5 */ @import "oka-design-system/3-components/fields-password/fields-password";
+/* 5 */ @import "oka-design-system/3-components/fields-search/fields-search";
+/* 5 */ @import "oka-design-system/3-components/input-checklist/input-checklist";
 
 // Starter (base section)
-@import "oka-design-system/3-components/appbar/appbar";
+/* 5 */ @import "oka-design-system/3-components/appbar/appbar";

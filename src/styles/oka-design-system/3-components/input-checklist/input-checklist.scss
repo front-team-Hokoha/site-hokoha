@@ -1,0 +1,38 @@
+
+
+/*
+Checklist pour champ password
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+| 0.0.2   | 30/09/2022 | Colors - compatible Figma Token      |
+| 0.0.1   | 09/09/2021 | Mise en place (recup de Hibou)        |
+
+*/
+
+
+.oka-input-checklist{
+    
+    &__point {
+        @extend %oka-data-sm;
+        margin-bottom:-0.5rem;
+
+        &:before {
+            content : '✕';
+            margin-right:0.5rem;
+            color: var(--oka-color-fg-negative-strong ,var(--oka-color-error-contrast-hight));
+        }
+
+
+        &--success,
+        &.-success{
+            //color : green;
+            color: var(--oka-color-fg-positive-strong , var(--oka-color-success-contrast-hight));
+
+            &:before {
+                content : '✔';
+                color: var(--oka-color-fg-positive-strong , var(--oka-color-success-contrast-hight));
+            }
+
+        }
+    }
+}
