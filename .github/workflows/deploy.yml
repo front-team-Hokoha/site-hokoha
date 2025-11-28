@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 21  # Assurez-vous d'utiliser la version correcte de Node.js
+          node-version: 22  # Assurez-vous d'utiliser la version correcte de Node.js
 
       - name: Install dependencies using Yarn
         run: yarn install
