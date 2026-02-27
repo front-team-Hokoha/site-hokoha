@@ -4,7 +4,7 @@ const savoirFaires = Object.values(
   import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }),
 );
 ---
-toto
+
 <!-- <span class="oka-savoir-faire__card-subtitle">{(savoirFaires).map(savoirFaire => ({savoirFaire.frontmatter.title}))}</span> -->
 {savoirFaires.map((savoirFaire) => (
    <article class="oka-savoir-faire__card">
