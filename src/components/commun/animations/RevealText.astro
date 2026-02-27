@@ -1,0 +1,59 @@
+<div class="reveal-text -hidden">
+  <slot />
+</div>
+
+<style lang="scss">
+	.reveal-text {
+		// border: 3px dotted red;
+
+		&.-hidden {
+			visibility: hidden;	
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from "gsap";
+	import { SplitText } from "gsap/SplitText";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(SplitText, ScrollTrigger);
+
+	// Charger les éléments dès que la page est chargée
+	document.addEventListener("astro:page-load", () => {
+		const revealtextes = document.querySelectorAll(".reveal-text");
+
+		// Vérifie si les components Revealtext existent sur la page
+		if (!revealtextes.length) return;
+
+		// Créer une animation de reveal lors du scroll pour chaque Revealtext
+		revealtextes.forEach((revealtext) => {
+			ScrollTrigger.create({
+				trigger: revealtext,
+				start: "top 80%",
+				once: true,
+				markers: true,
+				onEnter: () => {
+					// Affiche les éléments
+					revealtext.classList.remove("-hidden");
+
+					// Créer une animation de split pour chaques lignes
+					SplitText.create(revealtext, {
+						type: "lines",
+						autoSplit: true,
+						mask: "lines",
+						onSplit: (self) => {
+							return gsap.from(self.lines, {
+								y: 30,
+								autoAlpha: 0,
+								stagger: 0.15,
+								duration: .5,
+								ease: "power2.out"
+							});
+						},
+					});
+				},
+			});
+		});
+	});
+</script>

@@ -1,0 +1,35 @@
+---
+import * as SavoirFaire1 from "../../../contenus/savoir-faires/savoir-faire-1.md";
+const savoirFaires = Object.values(
+  import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }),
+);
+---
+
+<!-- <span class="oka-savoir-faire__card-subtitle">{(savoirFaires).map(savoirFaire => ({savoirFaire.frontmatter.title}))}</span> -->
+{savoirFaires.map((savoirFaire) => (
+   <article class="oka-savoir-faire__card">
+      <div class="content">
+         <div class="oka-savoir-faire__card-content">
+            <span class="oka-savoir-faire__card-subtitle">
+               {savoirFaire.frontmatter.subtitle}
+            </span>
+
+            <h3 class="oka-savoir-faire__card-title">
+               {savoirFaire.frontmatter.title}
+            </h3>
+         </div>
+
+         <savoirFaire.Content />
+
+         <a class="oka-cta" href="#">
+            En savoir plus
+         </a>
+      </div>
+
+      <figure>
+         <img src="../../assets/images/test.png" alt={savoirFaire.frontmatter.alt}>
+      </figure>
+   </article>
+))}
+
+

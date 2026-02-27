@@ -1,0 +1,60 @@
+---
+import Revealtext from "../commun/animations/RevealText.astro";
+import RevealBox from "../commun/animations/RevealBox.astro";
+---
+
+<section class="oka-hero">
+  <Revealtext>
+    <h1 class="oka-hero__title">La précision du développement sur-mesure.</h1>
+  </Revealtext>
+
+  <p class="oka-hero__text">
+    Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
+    cras. Dui nec amet mauris tempor interdum facilisi eget.
+  </p>
+
+  <!-- TODO Créer un component Call to action -->
+  <a class="oka-cta" href="#">call to action</a>
+
+  <!-- test revealbox -->
+  <RevealBox>
+      <div class="box-c">
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+         <div class="box" data-reveal></div>
+      </div>
+   </RevealBox>
+</section>
+
+<style lang="scss">
+   .oka-hero {
+      height: 100vh;
+      padding: 32px;
+
+      &__title {
+      max-width: 1000px;
+      font-family: serif-serif;
+      font-size: 4rem;
+      }
+   }
+
+   .box-c {
+      width: 400px;
+      height: 400px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+
+      .box {
+         height: 100%;
+         width: 100%;
+         border: 2px dotted red;
+      }
+   }
+</style>
