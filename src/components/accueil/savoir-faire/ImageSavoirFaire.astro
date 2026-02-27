@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+
+const { imagePath, altText } = Astro.props;
+
+// Import synchrone des images
+const images = import.meta.glob(
+  "/src/assets/images/**/*.{jpeg,jpg,png,gif}",
+  {
+    eager: true,
+    import: "default"
+  }
+);
+
+// Récupération de l’image correspondant au path
+const image = images[imagePath];
+
+if (!image) {
+  throw new Error(`Image not found: ${imagePath}`);
+}
+---
+
+
+<Image
+  src={image}
+  alt={altText}
+/>

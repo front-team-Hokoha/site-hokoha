@@ -1,7 +1,7 @@
 ---
 subtitle: 'Domaine 2'
 title: 'Lorem ipsum dolor sit amet consectetur 2'
-src: '../../assets/images/test.png'
+src: '/src/assets/images/test.png'
 alt: 'texte alternatif'
 ---
 

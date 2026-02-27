@@ -1,11 +1,8 @@
 ---
-import * as SavoirFaire1 from "../../../contenus/savoir-faires/savoir-faire-1.md";
-const savoirFaires = Object.values(
-  import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }),
-);
+const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }));
+import ImageSavoirFaire from "../savoir-faire/CardSavoirFaire.astro";
 ---
 
-<!-- <span class="oka-savoir-faire__card-subtitle">{(savoirFaires).map(savoirFaire => ({savoirFaire.frontmatter.title}))}</span> -->
 {savoirFaires.map((savoirFaire) => (
    <article class="oka-savoir-faire__card">
       <div class="content">
@@ -27,7 +24,10 @@ const savoirFaires = Object.values(
       </div>
 
       <figure>
-         <img src="../../assets/images/test.png" alt={savoirFaire.frontmatter.alt}>
+         <ImageSavoirFaire 
+            imagePath={savoirFaire.frontmatter.src}
+            altText={savoirFaire.frontmatter.alt}
+         />
       </figure>
    </article>
 ))}
