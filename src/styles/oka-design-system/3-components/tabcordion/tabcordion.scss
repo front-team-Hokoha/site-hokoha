@@ -1,0 +1,97 @@
+
+/** oka-tabcordion
+| 6.0.0 | 11/12/2025 | WCAG, interactions via js-collapse |
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+| 4.0.2 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.1 | 09/05/2023 | variant -accordion |
+| 0.0.1 | 21/10/2022 | Récup de Hugo / Corridor |
+
+
+ - version compatible tab to accordion en mode mobile
+ - basé sur les ContainerQuery
+
+
+ From : https://codepen.io/mikestreety/pen/yVNNNm
+
+*/
+
+/* DEPENDANCES */
+
+@use "../tab/tab" as *;
+
+
+@use "../../0-abstracts/breakpoints/breakpoints" as *;
+
+
+/**
+* Tabs et Accordion (default : accordion sur viewport SM )
+*/
+
+.oka-tabcordion {
+
+	position:relative;
+
+    overflow-y: auto;
+  
+    display: flex ;
+	flex-wrap: wrap ; // make sure it wraps
+
+    // Container Query 
+    // !!! provoque l'annulation de overflow et des enfants fixed
+    container-type: inline-size; 
+
+  
+
+    .oka-collapse {
+        display:block;
+        width: 100%;
+        flex-grow: 1;
+    }
+
+}
+
+
+// ---------------------------------------------------------------------------------------
+// Position tabs sur grands ecrans
+
+.oka-tabcordion:not(.-accordion){
+
+    // container supérieurà SM -> MODE TABS
+    @supports (container-type: inline-size) {
+        @container (min-width: #{$oka-breakpoint-sm}) {
+
+            .oka-tab {
+                
+                order: 1; // positionne tous les boutons en premier
+                width: auto; // auto width pour les tabs
+                
+                &__bt{
+                    width: auto; // Bouton en ligne
+                    //
+                    margin: 0 0.5rem 0 0;
+                    padding: 0 2rem ;
+
+                    // Surcharge les boutons d'accordions pour devenir bouton de tabs
+                    border-width: 0 0 1px 0;
+                    
+                    // Masque les Icones d'accordions
+                    &:before{
+                        display:none;
+                    }
+            
+                }
+            }
+
+            .oka-collapse {
+                order: 99 ; // positionne tous les containers (body) en dernier
+            }
+
+            // Bouton selectionné
+            .oka-tab__bt[aria-expanded="true"] {
+                // empeche la fonction de fermeture hérité de accordion pour desktop (tabs)
+                cursor: default; 
+                pointer-events:none ; //
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+
+/** OKA TEXTAREA
+
+| 5.0.0 | 22/05/2025 |compatible design tokens 5 figma |
+| 4.0.1 | 16/10/2023 | Ancêtre -forceActionSecondary |
+| 4.0.0 | 13/03/2022 | figma token compatible |
+| 3.1.0 | 03/06/2021 | revision |
+| 1.0.0 | 26/10/2020 | création |
+
+*/
+
+// Dépendance 
+@use "../commons.scss" as *;
+@use "../../../2-elements/spinners/spinners.scss" as *;
+@use "../../../2-elements/typography-system/datas/datas.scss" as *;
+
+
+
+
+@mixin textareaDefault {
+    @include forms;
+    @include forms-text;
+    @include forms--md;
+}
+
+
+
+textarea,
+.oka-textarea {
+    @include textareaDefault;
+    width:100%;
+    min-height:120px;
+
+    //@include input-text--l;
+
+    padding: 1rem 0.5rem ; //$space-inset-stretch-md;
+
+    &.-secondary,
+    .-forceActionSecondary & {
+        @include forms-text('secondary');
+    }
+}

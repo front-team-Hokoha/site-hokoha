@@ -1,0 +1,88 @@
+/** OKA TREE
+
+| 0.0.1 | 06/02/2022 | Création |
+
+*/
+
+
+
+// Container global
+.oka-tree {
+
+    max-width:340px;
+
+    display: flex;
+    flex-direction: column;
+    >* {
+        margin-bottom: 0.5rem;
+    }
+
+
+    .oka-nav {
+        //border:none;
+        //background: none;
+    }
+
+
+}
+
+.oka-dropdown--accordion {
+   
+   .oka-nav__indic{
+        &:before{
+            content:'\002023'; // https://outils-javascript.aliasdmc.fr/encodage-caracteres-speciaux/encode-caractere-2023-html-css-js-autre.html
+            //
+            position:absolute;
+            top:0.75rem;
+            right:0;
+            
+            //
+            height:auto;
+            width:auto;
+            margin: 0 0.5rem ;
+
+            font-size: 28px;
+            // 3.0.4 //color:inherit;
+            color:var(--color--accent); // 3.0.4 
+            // Rotation  Icone
+            transform: rotate(90deg);
+        }
+    }
+}
+
+
+
+
+
+.oka-dropdown--accordion > * {
+    width: 100%; 
+}
+  
+.oka-dropdown--accordion .oka-dropdown__ctnr {
+    min-width: inherit;
+    //background: var(--color-1--darkest); 
+    
+}
+  
+.oka-tree__group{
+    display: flex;
+    flex-direction: column;
+
+    > *:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+.oka-dropdown__ctrl:checked + .oka-dropdown--accordion .oka-dropdown__ctnr {
+    position: relative;
+    top:0;
+    left:1.25rem;
+    width: calc(100% - 1.25rem);
+    padding: 0.5rem 0 0 0.5rem;
+    margin-bottom:1rem;
+    //
+    box-shadow: none ; // supprime heritage de dropdown
+
+    background-image: linear-gradient(to right,var(--gray--base) 0,rgba(255, 255, 255, 0) 1px );
+}

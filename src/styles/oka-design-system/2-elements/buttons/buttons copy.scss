@@ -1,0 +1,609 @@
+
+/** BOUTONS OKA
+
+| 5.0.0 | 22/05/2025 | compatible design tokens figma |
+
+| 4.0.4 | 16/10/2023 | Ancêtre -forceActionSecondary |
+| 4.0.3 | 17/08/2023 | @extend %oka-ripple |
+| 4.0.2 | 25/11/2022 | Ajout de padding horizontal sur le libellé  |
+| 4.0.1 | 11/10/2022 | gestion du focus (pour bouton actifs dans btGroup)  |
+| 4.0.0 | 23/05/2022 | introduction des figma tokens + ellipsis libellé + notation ABEM  |
+
+| 3.1.2 | 12/10/2021 | Ajout boutons avec colors feedback  |
+| 3.1.1 | 07/10/2021 | externalisation de l'état 'disabled' / Nomage des feedbacks ajax  |
+| 3.1.0 | 02/06/2021 | Dépendance new Typo Buton |
+| 3.0.7 | 10/02/2021 | revision nomage size modifiers |
+| 3.0.6 | 04/02/2021 | gestion de disabled via class modifier (pour label / a ) |
+| 3.0.5 | 15/12/2020 | !!! Supression de oka-bt--navitem / Marges des icones (et icones seules) |
+| 3.0.4 | 24/11/2020 | introduction de disabled  / Min-width : libellé  / display:inline-flex |
+| 3.0.3 |            | oka-bt--navitem |
+| 3.0.2 |            | gestion des button secondary + tokens |
+| 3.0.1 |            | dependance label 3.0.0 |
+| 3.0.0 |            | Ajout des Dependances |
+| 2.0.6 |            | no pointer event pendant les micros interactions |
+| 2.0.5 |            | Skeleton + modifier rounded |
+| 2.0.4 |            | modifier outlined |
+| 2.0.3 |            | naming + externalisation du spinner |
+| 2.0.2 |            | intégration des icones base64 |
+*/
+
+//
+//  ressources
+//  https://medium.com/the-school-of-do/ui-cheat-sheets-buttons-7856ff90f544
+//
+// styles communs aux : <a> <button> <label> 
+// Dépendances
+// Tokens
+// @import "../../../design-tokens/oka-buttons-tokens.scss";
+// ripple
+// @import "../../1-bases/ripple";
+// typo-buttons
+// @import "../../2-elements/typography-system/buttons/buttons.3.1.0.scss";
+// spinner
+// @import "../../2-elements/spinners/spinners.3.0.0";
+// shadows
+// @import "../../1-bases/shadows/shadows.3.0.0";
+
+/*
+3.1.1 : externalisation de 'disabled'.
+*/
+
+// pour calcul division
+@use "sass:math";
+
+
+
+// ===========================================================
+// hauteur
+$oka-bt-min-width: 6rem;
+//$oka-bt-border-radius: var(--oka-borderradius-bt, 4.25rem);
+
+// ===========================================================
+// Sizes
+//
+$height-button--sm: 2rem;
+$height-button--md: 2.5rem;
+$height-button--lg: 3rem;
+//
+// ===========================================================
+// Icones
+$bt-ico-width: 2rem;
+$bt-ico-height: auto;
+//
+// ===========================================================
+// Libellé
+$padding-left-libelle-button: 1.5rem;
+$padding-right-libelle-button: 1.5rem;
+// ===========================================================
+// Border
+$border-style-button: solid;
+$border-width-button: var(--oka-borderwidth-bt, 2px);
+
+
+
+
+
+.u-cta-disabled {
+    opacity: 0.8; // 4.0.0
+    //filter: grayscale(40%); // 4.0.0
+    cursor: not-allowed; // !!! annuler par déclaration suivante
+    pointer-events: none;
+}
+
+@mixin bt--skeleton {
+    box-shadow: none !important;
+    background: var(--color--skeleton);
+    * {
+        background: var(--color--skeleton);
+        color: var(--color--skeleton);
+        border-color: var(--color--skeleton);
+    }
+}
+
+// MODIFIER MODEL
+@mixin btModel( $model:'button') {
+    @if $model=='button' {
+        //
+        // Protège des transformations flex du parent
+        flex-grow: 0;
+        flex-shrink: 0;
+        //
+        //
+        //display: flex; // !! ne pas utiliser inline ou inlineFlex -> Cause défaut d'alignement vertical
+        display: inline-flex; // !! annule declaration précédente (prblm : le bouton s'étend sur toute la largeur dans les containeur flex)
+        justify-content: center; // cas bt icone svg
+        align-items: center; // cas bt icone font
+        vertical-align: middle; // !!! alignement vertical de plusieurs item
+        box-sizing: border-box;
+        //
+        // Reset padding du user agent
+        padding: 0;
+    }
+}
+
+// MODIFIERS : LEVEL
+// défini : les teintes 
+
+// 5.0.0 design token 2
+@mixin btLevel ( $variant:'primary' ) {
+    //
+    --bt-background-color                : var(--oka-color-bg-primary , var(--oka-color-action-bg-primary-default));
+    --bt-background-color-hover          : var(--oka-color-bg-primary-hover , var(--oka-color-action-bg-primary-hover));
+    --bt-background-color-active         : var(--oka-color-bg-primary-active , var(--oka-color-action-bg-primary-press));
+    --bt-background-color-disabled       : var(--oka-color-bg-disabled , var(--oka-color-action-bg-primary-disabled));
+    //
+    --bt-background-color-outlined-hover : var(--oka-color-bg-primary-minimal , var(--oka-color-action-bg-primary-hover-alpha , red)); 
+    --bt-background-color-outlined-active: var(--oka-color-bg-primary-minimal , var(--oka-color-action-bg-primary-hover-alpha , green));
+    //
+    --bt-text-color                      : var(--oka-color-fg-on_surface , var(--oka-color-action-fg-primary-on-solid));
+    --bt-text-color-hover                : var(--oka-color-fg-on_surface , var(--oka-color-action-fg-primary-on-solid));
+    --bt-text-color-active               : var(--oka-color-fg-on_surface , var(--oka-color-action-fg-primary-on-solid));
+    --bt-text-color-disabled             : var(--oka-color-fg-disabled , var(--oka-color-action-fg-primary-disabled));
+    //
+    --bt-text-color-outlined             : var(--oka-color-fg-primary , var(--oka-color-action-fg-primary-default));
+    --bt-text-color-outlined-hover       : var(--oka-color-fg-primary-hover , var(--oka-color-action-fg-primary-hover));
+    --bt-text-color-outlined-active      : var(--oka-color-fg-primary-active , var(--oka-color-action-fg-primary-press));
+    //
+    --bt-border-color                    : var(--oka-color-bd-primary , var(--oka-color-action-border-primary-default));
+    --bt-border-color-hover              : var(--oka-color-bd-primary-hover , var(--oka-color-action-border-primary-hover));
+    --bt-border-color-active             : var(--oka-color-bd-primary-active , var(--oka-color-action-border-primary-press));
+    --bt-border-color-disabled           : var(--oka-color-bd-disabled , var(--oka-color-action-border-primary-disabled));
+
+    --bt-background-color-outlined : transparent;
+
+    // 5.0.0 design token 2
+    @if $variant == 'secondary'   {
+        //
+        --bt-background-color                : var(--oka-color-bg-secondary ,  var(--oka-color-action-bg-secondary-default));
+        --bt-background-color-hover          : var(--oka-color-bg-secondary-hover ,  var(--oka-color-action-bg-secondary-hover));
+        --bt-background-color-active         : var(--oka-color-bg-secondary-active ,  var(--oka-color-action-bg-secondary-press));
+        --bt-background-color-disabled       : var(--oka-color-bg-disabled ,  var(--oka-color-action-bg-primary-disabled));
+        //
+        --bt-background-color-outlined-hover : var(--oka-color-bg-secondary-minimal ,  var(--oka-color-action-bg-secondary-hover-alpha , red)); 
+        --bt-background-color-outlined-active: var(--oka-color-bg-secondary-minimal ,  var(--oka-color-action-bg-secondary-hover-alpha , green));
+        //
+        --bt-text-color                      : var(--oka-color-fg-on_surface ,  var(--oka-color-action-fg-secondary-on-solid));
+        --bt-text-color-hover                : var(--oka-color-fg-on_surface ,  var(--oka-color-action-fg-secondary-on-solid));
+        --bt-text-color-active               : var(--oka-color-fg-on_surface ,  var(--oka-color-action-fg-secondary-on-solid));
+        --bt-text-color-disabled             : var(--oka-color-fg-disabled ,  var(--oka-color-action-fg-secondary-disabled));
+        //
+        --bt-text-color-outlined             : var(--oka-color-fg-secondary ,  var(--oka-color-action-fg-secondary-default));
+        --bt-text-color-outlined-hover       : var(--oka-color-fg-secondary-hover ,  var(--oka-color-action-fg-secondary-hover));
+        --bt-text-color-outlined-active      : var(--oka-color-fg-secondary-active  ,  var(--oka-color-action-fg-secondary-press));
+        //
+        --bt-border-color                    : var(--oka-color-bd-secondary ,  var(--oka-color-action-border-secondary-default));
+        --bt-border-color-hover              : var(--oka-color-bd-secondary-hover ,  var(--oka-color-action-border-secondary-hover));
+        --bt-border-color-active             : var(--oka-color-bd-secondary-active ,  var(--oka-color-action-border-secondary-press));
+        --bt-border-color-disabled           : var(--oka-color-bd-disabled ,  var(--oka-color-action-border-secondary-disabled));
+
+    }
+
+
+    // 5.0.0 design token 2
+    @if $variant=='error'  {
+    //
+    --bt-background-color                : var(--oka-color-bg-negative , var(--oka-color-feedback-error-base));
+    --bt-background-color-hover          : var(--oka-color-bg-negative-hover , var(--oka-color-feedback-error-dark));
+    --bt-background-color-active         : var(--oka-color-bg-negative-active , var(--oka-color-feedback-error-light));
+    --bt-background-color-disabled       : var(--oka-color-bg-disabled , var(--oka-color-action-bg-primary-disabled));
+    //
+    --bt-background-color-outlined-hover : var(--oka-color-bg-negative-minimal , rgba(0,0,0,0.1)); 
+    --bt-background-color-outlined-active: var(--oka-color-bg-negative-minimal , rgba(0,0,0,0.1));
+    //
+    --bt-text-color                      : var(--oka-color-fg-on_surface , var(--oka-color-white));
+    --bt-text-color-hover                : var(--oka-color-fg-on_surface , var(--oka-color-white));
+    --bt-text-color-active               : var(--oka-color-fg-on_surface , var(--oka-color-white));
+    --bt-text-color-disabled             : var(--oka-color-fg-disabled , var(--oka-color-action-fg-primary-disabled));
+    //
+    --bt-text-color-outlined             : var(--oka-color-fg-negative , var(--oka-color-feedback-error-dark));
+    --bt-text-color-outlined-hover       : var(--oka-color-fg-negative-hover , var(--oka-color-feedback-error-dark));
+    --bt-text-color-outlined-active      : var(--oka-color-fg-negative-active , var(--oka-color-feedback-error-light));
+    //
+    --bt-border-color                    : var(--oka-color-bd-negative , var(--oka-color-feedback-error-base));
+    --bt-border-color-hover              : var(--oka-color-bd-negative-hover , var(--oka-color-feedback-error-dark));
+    --bt-border-color-active             : var(--oka-color-bd-negative-active , var(--oka-color-feedback-error-light));
+    --bt-border-color-disabled           : var(--oka-color-bd-disabled , var(--oka-color-action-border-primary-disabled));
+    
+    }
+
+    // 5.0.0 design token 2
+    @if $variant=='success'  {
+        //
+        --bt-background-color                : var(--oka-color-bg-positive , var(--oka-color-feedback-success-base));
+        --bt-background-color-hover          : var(--oka-color-bg-positive-hover , var(--oka-color-feedback-success-dark));
+        --bt-background-color-active         : var(--oka-color-bg-positive-active , var(--oka-color-feedback-success-light));
+        --bt-background-color-disabled       : var(--oka-color-bg-disabled , var(--oka-color-action-bg-primary-disabled));
+        //
+        --bt-background-color-outlined-hover : var(--oka-color-bg-positive-minimal , rgba(0,0,0,0.1)); 
+        --bt-background-color-outlined-active: var(--oka-color-bg-positive-minimal , rgba(0,0,0,0.1));
+        //
+        --bt-text-color                      : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-hover                : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-active               : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-disabled             : var(--oka-color-fg-disabled , var(--oka-color-action-fg-primary-disabled));
+        //
+        --bt-text-color-outlined             : var(--oka-color-fg-positive , var(--oka-color-feedback-success-dark));
+        --bt-text-color-outlined-hover       : var(--oka-color-fg-positive-hover , var(--oka-color-feedback-success-dark));
+        --bt-text-color-outlined-active      : var(--oka-color-fg-positive-active , var(--oka-color-feedback-success-light));
+        //
+        --bt-border-color                    : var(--oka-color-bd-positive , var(--oka-color-feedback-success-base));
+        --bt-border-color-hover              : var(--oka-color-bd-positive-hover , var(--oka-color-feedback-success-dark));
+        --bt-border-color-active             : var(--oka-color-bd-positive-active , var(--oka-color-feedback-success-light));
+        --bt-border-color-disabled           : var(--oka-color-bd-disabled , var(--oka-color-action-border-primary-disabled));
+        
+    }
+    
+    // 5.0.0 design token 2
+    @if $variant=='warning'  {
+        //
+        --bt-background-color                : var(--oka-color-bg-warning , var(--oka-color-feedback-warning-base));
+        --bt-background-color-hover          : var(--oka-color-bg-warning-hover , var(--oka-color-feedback-warning-dark));
+        --bt-background-color-active         : var(--oka-color-bg-warning-active , var(--oka-color-feedback-warning-light));
+        --bt-background-color-disabled       : var(--oka-color-bg-disabled , var(--oka-color-action-bg-primary-disabled));
+        //
+        --bt-background-color-outlined-hover : var(--oka-color-bg-warning-minimal , rgba(0,0,0,0.1)); 
+        --bt-background-color-outlined-active: var(--oka-color-bg-warning-minimal , rgba(0,0,0,0.1));
+        //
+        --bt-text-color                      : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-hover                : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-active               : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-disabled             : var(--oka-color-fg-disabled , var(--oka-color-action-fg-primary-disabled));
+        //
+        --bt-text-color-outlined             : var(--oka-color-fg-warning , var(--oka-color-feedback-warning-dark));
+        --bt-text-color-outlined-hover       : var(--oka-color-fg-warning-hover , var(--oka-color-feedback-warning-dark));
+        --bt-text-color-outlined-active      : var(--oka-color-fg-warning-active , var(--oka-color-feedback-warning-light));
+        //
+        --bt-border-color                    : var(--oka-color-bd-warning , var(--oka-color-feedback-warning-base));
+        --bt-border-color-hover              : var(--oka-color-bd-warning-hover , var(--oka-color-feedback-warning-dark));
+        --bt-border-color-active             : var(--oka-color-bd-warning-active , var(--oka-color-feedback-warning-light));
+        --bt-border-color-disabled           : var(--oka-color-bd-disabled , var(--oka-color-action-border-primary-disabled));
+        
+    }
+
+    // 5.0.0 design token 2
+    @if $variant=='info'  {
+        //
+        --bt-background-color                : var(--oka-color-bg-info , var(--oka-color-feedback-info-base));
+        --bt-background-color-hover          : var(--oka-color-bg-info-hover , var(--oka-color-feedback-info-dark));
+        --bt-background-color-active         : var(--oka-color-bg-info-active , var(--oka-color-feedback-info-light));
+        --bt-background-color-disabled       : var(--oka-color-bg-disabled , var(--oka-color-action-bg-primary-disabled));
+        //
+        --bt-background-color-outlined-hover : var(--oka-color-bg-info-minimal , rgba(0,0,0,0.1)); 
+        --bt-background-color-outlined-active: var(--oka-color-bg-info-minimal , rgba(0,0,0,0.1));
+        //
+        --bt-text-color                      : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-hover                : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-active               : var(--oka-color-fg-on_surface , var(--oka-color-white));
+        --bt-text-color-disabled             : var(--oka-color-fg-disabled , var(--oka-color-action-fg-primary-disabled));
+        //
+        --bt-text-color-outlined             : var(--oka-color-fg-info , var(--oka-color-feedback-info-dark));
+        --bt-text-color-outlined-hover       : var(--oka-color-fg-info-hover , var(--oka-color-feedback-info-dark));
+        --bt-text-color-outlined-active      : var(--oka-color-fg-info-active , var(--oka-color-feedback-info-light));
+        //
+        --bt-border-color                    : var(--oka-color-bd-info , var(--oka-color-feedback-info-base));
+        --bt-border-color-hover              : var(--oka-color-bd-info-hover , var(--oka-color-feedback-info-dark));
+        --bt-border-color-active             : var(--oka-color-bd-info-active , var(--oka-color-feedback-info-light));
+        --bt-border-color-disabled           : var(--oka-color-bd-disabled , var(--oka-color-action-border-primary-disabled));
+        
+    }
+
+
+
+    // DEFAULT
+    background-color: var(--bt-background-color);
+    color: var(--bt-text-color);
+    border-color: var(--bt-border-color);
+
+
+    // HOVER
+    
+    &:hover,
+    &.-hover {
+        background-color: var(--bt-background-color-hover);
+        color: var(--bt-text-color-hover);
+        border-color : var(--bt-border-color-hover);
+    }
+    // ACTIVE (effet clic) - FOCUS 
+    &:active,
+    &.-active,
+    &:focus,
+    &.-focus {
+        background-color: var(--bt-background-color-active);
+        color: var(--bt-text-color-active);
+        border-color : var(--bt-border-color-active);
+        outline-color : var(--bt-border-color-active);
+    }
+    // DISABLED (primary / secondary)
+    &:disabled,
+    &.-disabled {
+        // 3.1.1 // cursor: not-allowed;
+        // 3.1.1 // pointer-events: none;
+        @extend .u-cta-disabled; //  3.1.1 : externalisation de 'disabled'
+        color: var(--bt-text-color-disabled);
+        background-color: var(--bt-background-color-disabled);// 4.0.0   
+        border-color : var(--bt-border-color-disabled) ;// 4.0.0
+
+    }
+    &.-outlined,
+    &.-ghost {
+        color: var(--bt-text-color-outlined);
+        background-color: var(--bt-background-color-outlined);
+        
+       
+        &:hover,
+        &.-hover {
+            background-color: var(--bt-background-color-outlined-hover);
+            color: var(--bt-text-color-outlined-hover);
+            border-color : var(--bt-border-color-hover);
+        }
+        //
+        &:active,
+        &.-active,
+        &:focus,
+        &.-focus  {
+            background-color: var(--bt-background-color-outlined-active);
+            color: var(--bt-text-color-outlined-active);
+            border-color : var(--bt-border-color-active);
+            outline-color : var(--bt-border-color-active);
+        }
+        &:disabled,
+        &.oka-bt--disabled,
+        &.-disabled {
+            background-color: transparent !important;
+            @extend .u-cta-disabled; //  3.1.1 : externalisation de 'disabled'
+
+            color: var(--bt-text-color-disabled); // 4.0.0
+            border-color : var(--bt-border-color-disabled) ; // 4.0.0
+        }
+    }
+}
+
+// MODIFIERS : TYPES 
+// defini Présence et taille des :
+// Background
+// filet
+// shadow
+@mixin btType( $type:'solid') {
+    @if $type=='solid' {
+        border-width: 0px;
+    }
+    @if $type=='outlined' {
+        border-style: $border-style-button;
+        border-width: $border-width-button;
+        background-color: transparent;
+    }
+    @if $type=='ghost' {
+        border: none;
+        background: none;
+    }
+}
+
+
+
+// MODIFIER SIZE
+@mixin btSize( $size:'medium') {
+    @if $size=='small' {
+        height: $height-button--sm;
+        min-width: $height-button--sm;
+       
+        &.-rounded {
+            border-radius: $height-button--sm;
+        }
+    }
+    @if $size=='medium' {
+        height: $height-button--md;
+        min-width: $height-button--md;
+
+        &.-rounded {
+            border-radius: $height-button--md;
+        }
+    }
+    @if $size=='large' {
+        height: $height-button--lg;
+        min-width: $height-button--lg;
+
+        &.-rounded {
+            border-radius: $height-button--lg;
+        }
+    }
+}
+
+@mixin bt {
+    position: relative;
+    z-index: 1; // 3.0.7 /  Protège contre superposition avec une Grid (entrainnant la perte du pointer-event)
+    // MODIFIER MODEL
+    @include btModel;
+    //@extend .oka-ctaText;
+    //
+    border-radius: var(--oka-radius-button , var(--oka-borderradius-bt, 4.25rem)); // 5.0.0 design token 2
+    // MODIFIER LEVEL
+    @include btLevel;
+    // MODIFIER TYPE
+    @include btType;
+    // MODIFIER SIZE
+    @include btSize;
+    //
+    //text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    //
+    //
+    &:hover,
+    &.-hover {
+        transform: translate3d(0, -1px, 0)
+    }
+    //
+    &:focus,
+    &.-focus {
+        outline-style: solid;
+        outline-width: 2px;
+    }
+    //
+    &:active,
+    &.-active {
+        transform: translate3d(0, 1px, 0)
+    }
+    //@include ripple;
+    @extend %oka-ripple; // 4.0.3
+
+    // ............................
+    // LIBELLE
+    &__lbl {
+        min-width: $oka-bt-min-width;
+        //
+        padding-left: $padding-left-libelle-button;
+        padding-right: $padding-right-libelle-button;
+        //
+        @extend .oka-ctaText;
+        text-align: center;
+
+        // Ellipsis // 4.0.0
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        //
+        // Supprime la correction de crop du texte (-> conflit avec flex du parent: align-items:center )
+        padding-top: 0;
+        padding-bottom: 0;
+        &:before,
+        &:after {
+            display: none;
+        }
+        //
+        &.-sm {
+            @include typo-buttons--sm;
+        }
+    }
+    // ............................
+    // ICONES
+    &__ico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        //
+        width: --bt-ico-width;
+        height: --bt-ico-width;
+        text-align: center;
+        // background-color: red;
+        // margin-left:0.5rem;
+    }
+
+    // Icone Seule
+    .oka-bt__ico:first-child:last-child{
+        margin-right:0 !important;
+        margin-left:0 !important;
+    }
+
+
+    .oka-bt__ico:nth-last-child(2):not(:first-child),
+    .oka-spinner:nth-last-child(2):not(:first-child),
+    .oka-bt__ico:last-child:not(:nth-child(2)):not(:first-child),
+    .oka-spinner:last-child:not(:nth-child(2)):not(:first-child) {
+        margin-right:  calc($padding-left-libelle-button / 1.25);
+        margin-left: calc(($padding-left-libelle-button / -5) * 2);
+    }
+    
+    &.js-ajaxProgress,
+    &.js-ajaxInProgress {
+        .oka-spinner:nth-last-child(2):not(:first-child),
+        .oka-spinner:last-child:not(:nth-child(2)):not(:first-child) {
+            margin-right: calc(($padding-left-libelle-button/ 3) * 2);
+            margin-left: calc($padding-left-libelle-button/ -3);
+        }
+    }
+
+    .oka-bt__ico:first-child:not(:nth-last-child(2)){
+        margin-right: calc(($padding-left-libelle-button/ -3) * 2);
+        margin-left:  calc($padding-left-libelle-button/ 3);
+    }
+   
+}
+
+.oka-bt{
+    transition: background ease 0.2s; // Effet smooth transformation / position / background / Colors
+    @include bt;
+    // =========================================
+    // MODIFIERS MODEL
+    // &--navitem {
+    //     @include btModel($model:"navitem");
+    // }
+    // =========================================
+    // MODIFIERS LEVEL
+    &.-primary {
+        @include btLevel('primary');      
+    }
+    &.-secondary,
+    .-forceActionSecondary & {
+        @include btLevel('secondary');
+    }
+    &.-error {
+        @include btLevel('error');
+    }
+    &.-success {
+        @include btLevel('success');
+    }
+    &.-warning {
+        @include btLevel('warning');
+    }
+    &.-info {
+        @include btLevel('info');
+    }
+    
+    // =========================================
+    // MODIFIERS ASPECTS
+    &--solid,
+    &.-solid {
+        @include btType($type: "solid");
+    }
+    &--outlined,
+    &.-outlined {
+        @include btType($type: "outlined");
+    }
+    &--ghost,
+    &.-ghost {
+        @include btType($type: "ghost");
+    }
+    // =========================================
+    // MODIFIERS SIZE
+    &--sm,
+    &.-sm {
+        @include btSize($size: "small");
+    }
+    &--lg,
+    &.-lg {
+        @include btSize($size: "large");
+    }
+    // =========================================
+    /*  MICRO-INTERACTIONS */
+    &.js-ajaxSucces,
+    &.js-ajaxSuccess,
+    &.js-ajaxInProgress,
+    &.js-ajaxProgress,
+    &.js-submitSubmit,
+    &.js-ajaxError {
+        opacity: 1;
+        pointer-events: none;
+        // .oka-bt__lbl,
+        // .e-oka-bt__lbl {
+        //     display: none;
+        // }
+        .oka-bt__ico,
+        .e-oka-bt__ico {
+            display: none;
+            //border: none;
+        }
+        .oka-spinner,
+        .e-oka-spinner {
+            display: flex;
+
+        }
+    }
+    &.js-ajaxInProgress,
+    &.js-ajaxProgress,
+    &.js-submitSubmit {
+        cursor: progress;
+    }
+}

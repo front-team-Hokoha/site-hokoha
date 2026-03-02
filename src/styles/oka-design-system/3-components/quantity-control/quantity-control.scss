@@ -1,0 +1,21 @@
+
+
+// ====================================================
+//  Quantity Control
+/*
+| 6.0.0 | 16/01/2026 | Création  |
+*/
+
+.oka-quantityControl{
+    display: flex;
+    gap: 0.5rem;
+
+    
+    .oka-bt.-disabled{
+        background-color: var(--oka-color-bg-secondary-minimal) !important;
+    }
+
+    .oka-input{
+        width: 4rem;
+    }
+ }

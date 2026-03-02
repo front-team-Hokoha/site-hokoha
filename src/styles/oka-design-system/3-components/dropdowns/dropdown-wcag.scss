@@ -1,0 +1,66 @@
+/** OKA DROPDOWN 
+
+| 6.0.0 | 03/12/2025 | WCAG, interactions via js-collapse |
+
+| 5.0.1 | 13/08/2025 | Compatibilité dropdown/burger |
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+
+| 4.0.0 | 27/10/2022 | figma tokens |
+| 3.0.3 | 28/09/2022 | AutoOuverture pour menu mobile |
+| 3.0.2 | 26/01/2022 | tokens |
+| 3.0.1 | 30/11/2020 | Z-index pour multi dropdown / surbrillance bt declancheur |
+| 3.0.0 | 01/11/2020 | Révision / nomage |
+| 2.0.0 | | |
+
+*/
+
+
+@use "../../0-abstracts/breakpoints/breakpoints" as *;
+@use "../../1-bases/shadows/shadows" as *;
+
+
+// Tokens
+
+$oka-dropdown-border-radius : 0 ;
+$oka-dropdown-container-minwidth : 16rem;
+$oka-dropdown-position-right : 0;
+
+.oka-dropdown {
+    --oka-dropdown-position-top: 3rem;
+    position:relative;
+}
+
+.oka-dropdown .oka-collapse {
+    position:absolute;
+    top: var(--oka-dropdown-position-top);
+    right: $oka-dropdown-position-right;
+    z-index: 1;
+
+    @include breakpoint(sm) {
+        position : absolute;
+    }
+}
+
+
+
+
+// -------------------------------------------
+// Design du container
+//
+.oka-dropdown .oka-collapse {
+
+    @extend .oka-shadow-3;
+    //
+    background-color: var(--oka-color-layer-floor-0, var(--oka-color-app-bg-default));
+    color: var(--oka-color-fg, var(--oka-color-app-fg-default));
+    //
+    border-radius: $oka-dropdown-border-radius;
+    min-width:$oka-dropdown-container-minwidth;
+    max-width: 20rem;
+
+    padding:0.5rem; // 6.0.0
+}
+
+
+
+

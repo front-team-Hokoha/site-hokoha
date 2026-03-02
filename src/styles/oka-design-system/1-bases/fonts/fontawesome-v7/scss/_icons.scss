@@ -1,0 +1,16 @@
+// specific icon class definition
+// -------------------------
+@use "sass:string";
+//@use 'variables' as v; // Isolé afin d'exposer et selectionner les icones depuis la radine du DS
+@use '../../../../../icons-fa' as v; // exposition et selection des icones depuis la racine du DS
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+
+@each $name, $icon in v.$icons {
+  .#{v.$css-prefix}-#{$name} {
+    #{v.$icon-property}: string.unquote("\"#{ $icon }\"");
+  }
+}
+

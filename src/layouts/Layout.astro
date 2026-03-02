@@ -22,20 +22,63 @@ import GlobalStyles from "../components/commun/GlobalStyles.astro";
 		<title>Hokoha - Lorem Ipsum</title>
 		<ClientRouter />
 		<!-- <LocalScripts /> -->
-	</head>
-	<body>
-		<Header />
-	
-		<main>
-			<slot />
-		</main>
 
-		<Footer />
+
+		<style lang="scss" is:global>
+            @import '../styles/main.scss';
+        </style>
+
+	<!-- </head> -->
+	<body>
+		<div id="root" class="layout-app">
+			<Header />
+			
+		
+			<main class="layout-app__main oka-surface">
+				<!-- Contenu principal -->
+                <div class="oka-appWrap -fluid">
+					
+					<slot />
+ 				</div>
+			</main>
+
+			<Footer />
+
+			<!-- Grid Preview -->
+            <div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
+                <div class="oka-app-wrap -fluid" style="height:100%">
+                    <div class="grid-bg-fx__grid flex-grid ">
+        
+                        <div class="col col-1"></div>
+                        <div class="col col-1"></div>
+                        <div class="col col-1" ></div>
+                        <div class="col col-1" ></div>
+        
+                        <div class="col col-1"></div>
+                        <div class="col col-1"></div>
+                        <div class="col col-1" ></div>
+                        <div class="col col-1" ></div>
+        
+                        <div class="col col-1"></div>
+                        <div class="col col-1"></div>
+                        <div class="col col-1" ></div>
+                        <div class="col col-1" ></div>
+        
+                        <div class="col col-1"></div>
+                        <div class="col col-1"></div>
+                        <div class="col col-1" ></div>
+                        <div class="col col-1" ></div>
+                    </div>
+                </div>
+            </div>
+
+
+		</div>
 	</body>
 </html>
 
 <!-- ===== SCSS ===== -->
-<GlobalStyles/>
+<!-- <GlobalStyles/> -->
 
 
 <style>
@@ -65,3 +108,62 @@ import GlobalStyles from "../components/commun/GlobalStyles.astro";
 		background: green;
 	}
 </style>
+
+
+
+
+
+
+
+
+<script is:inline data-astro-rerun >
+        
+	/**
+	* Get the value of a cookie
+	* Source: https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
+	* @param  {String} name  The name of the cookie
+	* @return {String}       The cookie value
+	*/
+	/*
+	https://stackoverflow.com/questions/5671451/creating-a-javascript-cookie-on-a-domain-and-reading-it-across-sub-domains
+	*/
+	function getCookie (name) {
+		let value = `; ${document.cookie}`;
+		let parts = value.split(`; ${name}=`);
+		if (parts.length === 2) return parts.pop().split(';').shift();
+	}
+
+	function applyShowGrid (){
+		let showGrid =  getCookie('showGrid')
+		if (showGrid=='true'){
+			document.body.classList.add('showGrid');
+		}else{
+			document.body.classList.remove('showGrid');
+		}
+	}
+		
+	applyShowGrid();
+</script>
+
+
+
+
+
+
+
+
+<script  is:inline data-astro-rerun>
+	// Interactions de clavier
+	function KeyPress(e) {
+		var evtobj = window.event? event : e;
+		// TOGGLE 8pt GRID
+		if (evtobj.keyCode == 223 && evtobj.ctrlKey) {
+			document.body.classList.toggle('showGrid');
+		}
+		// Ferme tous les modals
+		if (evtobj.keyCode == 27) {
+			window.location.hash='';
+		}
+	}
+	document.onkeydown = KeyPress;
+</script>

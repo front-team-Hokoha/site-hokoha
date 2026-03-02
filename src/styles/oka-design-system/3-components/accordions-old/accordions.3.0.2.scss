@@ -1,0 +1,323 @@
+/**  OKA ACCORDIONS 
+
+| 3.0.2 | 04/02/2021 | modifier ghost - Ajout Fonction responsive (accordion jusqu'a small)  |
+| 3.0.1 | 21/12/2020 | modifier shadow |
+| 3.0.0 | 05/11/2020 |  creations  |
+| 2.0.1 | |  modifier --reverse|
+*/
+
+// Dépendances :
+//
+// Tokens
+@import "../../../design-tokens/oka-accordions-tokens.scss";
+
+
+
+
+
+// Dépendances
+//@import "../../2-elements/heads/_heads";
+
+
+
+.oka-accordion {
+    margin:0;
+    margin-bottom:1rem;
+
+    &:last-child{
+        margin-bottom:0;
+    }
+
+
+
+    // Entete 
+    &__head{
+
+        //@include head;
+        display: flex;
+
+        padding-top:0;
+        
+        @include ripple;
+
+        &--reverse{
+            .oka-accordion__button {
+            flex-direction: row-reverse;
+            }
+        }
+    }
+
+
+
+
+    // Inputs radios Pilot
+    &__pilot{
+        display:none;
+    }
+
+    // label
+    &__button{
+        display:flex;
+
+        align-items: center;
+        min-height:3.5rem; // v2.0.1
+        width: 100%;
+        //margin-left:0.5rem;
+
+        padding-left:1rem ;
+        padding-right:1rem ;
+
+        
+        color:var(--color--accent);
+
+        cursor: pointer;
+
+        &:hover{
+            color:#fff;
+            background:oka-alpha(var(--color--accent), 0.4);
+
+            // Rotation  Icone
+            // &:before{
+            //     //transform: rotate(90deg);
+            // }
+        }
+
+
+
+        &--disabled {
+            opacity:0.5;
+            cursor:not-allowed;
+            pointer-events:none;
+        }
+
+        // Icone
+        &:before{
+            content:'\002023'; // https://outils-javascript.aliasdmc.fr/encodage-caracteres-speciaux/encode-caractere-2023-html-css-js-autre.html
+            //
+            height:auto;
+            width:auto;
+            margin: 0 0.5rem ;
+
+            font-size: 28px;
+            color:inherit;
+
+            // Rotation  Icone
+            transform: rotate(90deg);
+        }
+
+    }
+
+
+    &__lbl {
+        flex-grow:1;
+
+        margin-left:0.5rem; // v2.0.1
+        margin-right:0.5rem; // v2.0.1
+
+        @include typo-buttons;
+        color:inherit;
+    }
+
+    &__ico {
+        //border:1px solid red; //v2.0.1
+        display: flex;
+        &.material-icons,
+        .material-icons {
+            font-size:16px;
+        }
+    }
+
+    &__body {
+
+        display:block;
+
+        // Effet de slide ouverture
+        max-height:0;
+        transform: scaleY(0);
+        transform-origin: 50% 0;
+        transition:transform 0.20s ease;
+        overflow: hidden;
+        //
+        position: relative;
+        // !!!!
+        // Le padding dans le panel doit etre
+        // géré par un wrapper;
+        // padding:1.5rem 0.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+// MODIFIERS STYLE VISUELS
+// Primary , gray 
+
+@mixin accordionType ( $type:'primary'){
+
+    $accordion-background-color                : $oka-accordion-background-color-primary;
+    $accordion-background-color-hover          : $oka-accordion-background-color-primary-hover; 
+    $accordion-background-color-active         : $oka-accordion-background-color-primary-active; 
+    
+    $accordion-body-background-color           : $oka-accordion-body-background-color-primary;
+
+    $accordion-text-color                      : $oka-accordion-text-color-primary;
+    $accordion-text-color-hover                : $oka-accordion-text-color-primary-hover;
+    $accordion-text-color-active               : $oka-accordion-text-color-primary-active;
+
+
+    @if $type == 'neutral' {
+
+        $accordion-background-color             : $oka-accordion-background-color-neutral;
+        $accordion-background-color-hover       : $oka-accordion-background-color-neutral-hover; 
+        $accordion-background-color-active      : $oka-accordion-background-color-neutral-active; 
+        
+        $accordion-body-background-color        : $oka-accordion-body-background-color-neutral;
+
+        $accordion-text-color                   : $oka-accordion-text-color-neutral;
+        $accordion-text-color-hover             : $oka-accordion-text-color-neutral-hover;
+        $accordion-text-color-active            : $oka-accordion-text-color-neutral-active;
+
+    }
+
+    @if $type == 'ghost-onlight' {
+
+        $accordion-background-color             : $oka-accordion-background-color-ghost;
+        $accordion-background-color-hover       : $oka-accordion-background-color-ghost-hover; 
+        $accordion-background-color-active      : $oka-accordion-background-color-ghost-active; 
+        
+        $accordion-body-background-color        : $oka-accordion-body-background-color-neutral;
+
+        $accordion-text-color                   : $oka-accordion-text-color-ghost-onlight;
+        $accordion-text-color-hover             : $oka-accordion-text-color-ghost-onlight-hover;
+        $accordion-text-color-active            : $oka-accordion-text-color-ghost-onlight-active;
+
+    }
+
+    .oka-accordion{
+        // label
+        &__button{
+
+            background: $accordion-background-color;
+            color : $accordion-text-color;
+
+
+            @if $type == 'ghost-onlight' {
+                // Ligne Horizontale centrée verticalement
+                background-repeat: repeat-y;
+                background-size: 100% 3rem;
+                background-image: linear-gradient(to top,var(--gray--darker) 0,rgba(255, 255, 255, 0)1px) !important; // § important -> pour tous les états
+            }
+
+
+            &:hover {
+                background: $accordion-background-color-hover;
+                color : $accordion-text-color-hover;
+            }
+        }
+
+        // Body
+        &__body {
+            background-color: $accordion-body-background-color;
+        }
+    }
+
+    // ACCORDION OPEN - ACTIVE
+    .oka-accordion__pilot:checked + .oka-accordion__head label {
+        background : $accordion-background-color-active ;
+        color : $accordion-text-color-active ;
+    }
+}
+
+
+
+// MODIFIERS 
+.oka-accordion {
+   
+    // Primary Default
+    @include accordionType($type:"primary");
+
+    // Neutral
+    &--neutral{
+        @include accordionType($type:"neutral");
+    }
+
+    // Ghost 
+    &--ghost-onlight{
+        @include accordionType($type:"ghost-onlight");
+    }
+
+    // Ombré
+    &--shaded{
+        @include shadow-shorter;
+    }
+}
+
+
+
+// INTERACTIONS
+//
+// Activer les Buttons Accordion
+.oka-accordion__pilot:checked + div .oka-accordion__head label , // <--- Spécifique TRUCKS
+.oka-accordion__pilot:checked + .oka-accordion__head label {
+
+    z-index:10;
+
+    // Rotation  Icone
+    &:before{
+        transform: rotate(-90deg) !important;
+    }
+
+    // &:hover{
+    //     &:before{
+    //         //transform: rotate(-90deg);
+    //     }
+    // }
+}
+
+// Ouverture du Corps
+.oka-accordion__pilot:checked ~ .oka-accordion__body  {
+
+    // Effet de slide ouverture
+    max-height:50000px;
+    transform: scaleY(1);
+    //
+    margin-bottom:2rem;
+    overflow: visible;
+}
+
+
+
+// Fonction : container responsive (utilisation : filtres)
+// 
+// FORCE L'OUVERTURE POUR VIEWPORT MD
+.oka-accordion--md-force-open {
+
+    // Masque l'entete pour breakpoint(md)
+    .oka-accordion__head{
+        @include breakpoint(md) {
+            display:none;
+        }
+    }
+
+    // Force l'affichage de body
+    .oka-accordion__body {
+        background-color: transparent;
+    
+        @include breakpoint(md) {
+            max-height:50000px;
+            transform: scaleY(1);
+            //
+            margin-bottom:2rem;
+        
+            overflow: visible;
+        }
+    }
+
+}
+
+

@@ -1,0 +1,23 @@
+
+/** OKA COLLAPSE 
+
+| 6.0.0 | 03/12/2025 | Création - interactions via js-collapse |
+
+*/
+
+
+// 6.0.0 // Ouverture / Fermeture via JS Collapse
+.oka-collapse {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+}
+.oka-collapse[hidden] {
+    display:block !important;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px);
+}

@@ -1,0 +1,95 @@
+/**
+Animations
+
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+|  3.1.1 | 21/10/2022 | Ouverture Fermeture (y) Effect |
+|  3.1.0 | 03/06/2021 | Supression ref MaterialDesign |
+*/
+
+// PULSATIONS
+@keyframes oka-pulse {
+    0% {
+        transform: scale(0.75);
+        opacity:0.6;
+    }
+
+    70% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+// ROTATION SPIN 
+@keyframes oka-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+// WIGGLE BOUTON
+.oka-filters_body > button.oka-bt:not([disabled]) {
+  animation: wiggle 2s linear infinite;
+}
+
+:root {
+  --wiggle-force: 3deg;
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(calc(calc(var(--wiggle-force) * 3) * -1 )); // -15
+  }
+  20% {
+    transform: rotateZ(calc(var(--wiggle-force) * 2)); // 10
+  }
+  25% {
+    transform: rotateZ(calc(calc(var(--wiggle-force) * 2) * -1)); // -10
+  }
+  30% {
+    transform: rotateZ(calc(var(--wiggle-force) * 1.2)); // 6
+  }
+  35% {
+    transform: rotateZ(calc(calc(var(--wiggle-force) * 0.8) * -1)); // -4
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+//
+
+
+// Effet : Slide Ouverture
+//
+// @extend %okaSlideOuverture--initial;
+// @extend %okaSlideOuverture--open;
+
+
+// Effet de slide ouverture - Position initiale
+%okaSlideOuverture--initial{
+    max-height:0;
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    transition:transform 0.2s ease;
+    overflow: hidden;
+    position: relative; 
+}
+
+// Effet de slide ouverture - Ouverture
+%okaSlideOuverture--open{
+    max-height:50000px;
+    transform: scaleY(1);
+    overflow: visible;
+}

@@ -1,0 +1,23 @@
+:root {
+  --oka-color-black: #000000FF;
+  --oka-color-black-alpha10: #00000019;
+  --oka-color-black-alpha20: #00000033;
+  --oka-color-black-alpha30: #0000004C;
+  --oka-color-black-alpha40: #00000066;
+  --oka-color-black-alpha50: #0000007F;
+  --oka-color-black-alpha60: #00000099;
+  --oka-color-black-alpha70: #000000B2;
+  --oka-color-black-alpha80: #000000CC;
+  --oka-color-black-alpha90: #000000E5;
+  --oka-color-none: #FFFFFF00;
+  --oka-color-white: #FFFFFFFF;
+  --oka-color-white-alpha10: #FFFFFF19;
+  --oka-color-white-alpha20: #FFFFFF33;
+  --oka-color-white-alpha30: #FFFFFF4C;
+  --oka-color-white-alpha40: #FFFFFF66;
+  --oka-color-white-alpha50: #FFFFFF7F;
+  --oka-color-white-alpha60: #FFFFFF99;
+  --oka-color-white-alpha70: #FFFFFFB2;
+  --oka-color-white-alpha80: #FFFFFFCC;
+  --oka-color-white-alpha90: #FFFFFFE5;
+}

@@ -1,0 +1,42 @@
+/* HEAD OKA
+//
+// Entete de Composants
+
+
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+|   1.0.0   | 0 | Création |
+
+
+*/
+
+.oka-head{
+
+    display:flex;
+    align-items: center;
+
+    > :first-child {
+        margin-right:0.5rem;
+    }
+
+
+    &__title{
+        flex-grow:1;
+    }
+
+    // Marge à gauche pour dernier elements
+    &__title + &__action,
+    &__title + &__ico {
+        //border:1px solid green;
+        margin-left : 0.5rem;
+    }
+
+
+    //  Gestion des alignements particuliers
+    // Si title est sur plusieirs lignes
+    // on align les icones et bt actions en haut
+    &__ico,
+    &__action {
+        align-self: flex-start;
+    }
+
+}

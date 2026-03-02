@@ -1,0 +1,124 @@
+@use 'sass:map';
+
+/** OKA BADGES
+//
+| 5.0.2 | 25/09/2025 | Optimisation CSS avec map et base states |
+| 5.0.1 | 01/08/2025 | renomage de l'animation pulse (evite les conflits)  |
+| 5.0.0 | 24/05/2025 | Compatible design token 5 |
+| 4.0.0 | 04/11/2022 | figma token  |
+| 0.0.2 | 01/09/2022 | ajout modifier info (corridor)  |
+| 0.0.1 | 08/10/2021 | création (pottok)  |
+
+*/
+
+/* DEPENDANCES */
+// @import "../../1-bases/animations/animations";
+
+// ----------------------------------------------------
+// 1 - Map des modificateurs
+// Map des variantes de couleurs
+$badge-variants: (
+  'warning': var(--oka-color-fg-warning, var(--oka-color-warning-contrast-medium, var(--color--warning))),
+  'error': var(--oka-color-fg-negative, var(--oka-color-error-contrast-medium, var(--color--error))),
+  'success': var(--oka-color-fg-positive, var(--oka-color-success-contrast-medium, var(--color--success))),
+  'info': var(--oka-color-fg-info, var(--oka-color-info-contrast-medium, var(--color--info)))
+);
+
+// Map des tailles
+$badge-sizes: (
+  'xs': (
+    'size': 0.5rem,
+    'radius': 0.5rem
+  ),
+  'sm': (
+    'size': 0.75rem, 
+    'radius': 0.75rem
+  ),
+  'default': (
+    'size': 1rem,
+    'radius': 50%
+  )
+);
+
+// ----------------------------------------------------
+// 2 - Définition du Block.
+// Classe de base avec tous les styles communs
+%badge-base-states {
+  
+  // Taille par défaut
+  // Utilisation des variables de surcharges des modificateurs
+  width: var(--badge-size, 1rem);
+  height: var(--badge-size, 1rem);
+  border-radius: var(--badge-radius, 50%);
+  
+  // Couleur utilisant la variable CSS
+  background: var(--oka-badge-color);
+  
+  // Animation d'apparition commune
+  animation: oka-pulse 0.13s linear;
+  
+  // Animation pulse conditionnelle
+  &.-pulse {
+    animation: oka-badge-pulse 2s infinite;
+  }
+}
+
+// ----------------------------------------------------
+// 3 - Mixins pour modificateurs
+// Mixin pour définir les variables de couleur
+@mixin badgeVariant($variant) {
+  --oka-badge-color: #{map.get($badge-variants, $variant)};
+}
+
+// Mixin pour définir les variables de taille  
+@mixin badgeSize($size) {
+  $size-data: map.get($badge-sizes, $size);
+  --badge-size: #{map.get($size-data, 'size')};
+  --badge-radius: #{map.get($size-data, 'radius')};
+}
+
+
+// ----------------------------------------------------
+// 4 - Application des styles
+.oka-badge {
+  @extend %badge-base-states;
+
+
+  // MODIFIERS : COULEURS (optimisés)
+  &.-warning {
+    @include badgeVariant('warning');
+  }
+
+  &.-error {
+    @include badgeVariant('error');
+  }
+
+  &.-success {
+    @include badgeVariant('success');
+  }
+
+  &.-info {
+    @include badgeVariant('info');
+  }
+
+  // MODIFIERS : TAILLES (optimisés)
+  &--xs,
+  &.-xs {
+    @include badgeSize('xs');
+  }
+
+  &--sm,
+  &.-sm {
+    @include badgeSize('sm');
+  }
+}
+
+// Animation keyframes (définie une seule fois)
+@keyframes oka-badge-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--oka-badge-color);
+  }
+  100% {
+    box-shadow: 0 0 0 1rem rgba(255, 0, 0, 0);
+  }
+}

@@ -1,0 +1,110 @@
+/** INPUTS
+
+| 5.0.0 | 22/05/2025 | compatible design tokens 5 figma |
+| 4.0.1 | 16/10/2023 | Ancêtre -forceActionSecondary |
+| 4.0.0 | 13/03/2022 | figma token compatible + ABEM |
+| 3.1.0   | 03/06/2021 | revision nommage Modifiers Taille         |
+| 3.0.2   | 24/11/2020 | secondary |
+| 3.0.1   | 25/10/2020 | commons 3.0.1  - getion outline |
+| 3.0.0   |            | nomage                          |
+| 2.0.1   |            |                                 |
+
+ ressources
+ https://uxdesign.cc/ui-cheat-sheet-text-fields-2152112615f8
+
+*/
+
+// Dépendance 
+@use "../commons.scss" as *;
+@use "../../../2-elements/spinners/spinners.scss" as *;
+@use "../../../2-elements/typography-system/datas/datas.scss" as *;
+
+
+
+
+@mixin inputDefault() {
+    @include forms;
+    @include forms--md;
+}
+
+@mixin inputautre(){
+    
+}
+
+
+
+.oka-input {
+    @include inputDefault();
+    @include forms-text('primary');
+
+    & {
+        // Centrage Verticale (ex : pour Tag cas Multiselect )
+        display:flex;
+        flex-wrap : wrap;
+        align-items: center;
+        // NoCrop Suite au centrage vertical Flex.
+        padding-top:0;
+        padding-bottom:0;
+        // Cas contenu Tags
+        > *:not(:last-child){
+            margin-right:0.25rem;
+        }
+        .oka-tag{
+            margin-top:.25rem;
+            margin-bottom:0.25rem;
+        }
+
+        // Masquer les pseudo-éléments après toutes les déclarations pour éviter mixed-decls
+        &:before,&:after{display:none}
+    }
+   
+    &.-secondary,
+    //&--secondary,
+    .-forceActionSecondary & {
+        @include forms-text('secondary' );
+    }
+
+}
+
+
+
+// SIZE MODIFIERS
+.oka-input {
+
+    &.-sm,
+    &--sm {
+        @include forms--sm;
+    }
+
+    &.-lg,
+    &--lg {
+        @include forms--lg;
+    }
+
+    
+    &.-full,//
+    &--full {
+        max-width:none !important;
+    }
+
+}
+
+
+
+
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]{
+    @extend .oka-input;
+}
