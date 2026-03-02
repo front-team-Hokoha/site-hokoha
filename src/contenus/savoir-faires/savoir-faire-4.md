@@ -1,6 +1,6 @@
 ---
 subtitle: 'NOTRE SAVOIR-FAIRE'
-title: 'Concevoir des interfaces ergonomiques & esthétiques.'
+title: 'Intégrer des fonctionnalités innovantes.'
 src: '/src/assets/images/test.png'
 alt: 'texte alternatif'
 ---

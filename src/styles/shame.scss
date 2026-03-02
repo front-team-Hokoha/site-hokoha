@@ -1,6 +1,10 @@
 
 
 
+:root {
+    --space-xxl : var(--space-2xl);
+}
+
 /* revue par Hokoha
 -------------------------------- */
 .height-100{
@@ -14,3 +18,4 @@
 .oka-badge.-maCouleur{
     --oka-badge-color : pink;
 }
+

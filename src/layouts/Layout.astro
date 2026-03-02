@@ -5,9 +5,11 @@ import { ClientRouter } from "astro:transitions";
 import Header from "../components/commun/Header.astro";
 import Footer from "../components/commun/Footer.astro";
 // ===== Style Global =====
-import GlobalStyles from "../components/commun/GlobalStyles.astro";
+//import GlobalStyles from "../components/commun/GlobalStyles.astro";
 // ===== Scripts =====
 // import LocalScripts from "../components/commun/LocalScripts.astro"
+
+import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 ---
 
 <!-- ===== HTML ===== -->
@@ -21,8 +23,7 @@ import GlobalStyles from "../components/commun/GlobalStyles.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Hokoha - Lorem Ipsum</title>
 		<ClientRouter />
-		<!-- <LocalScripts /> -->
-
+		
 
 		<style lang="scss" is:global>
             @import '../styles/main.scss';
@@ -111,7 +112,8 @@ import GlobalStyles from "../components/commun/GlobalStyles.astro";
 
 
 
-
+<!-- <LocalScripts /> -->
+<Smoothscroll />
 
 
 

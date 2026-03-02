@@ -9,29 +9,73 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
    <article class="oka-savoir-faire__card">
       <div class="content">
          <div class="oka-savoir-faire__card-content">
-            <span class="oka-savoir-faire__card-subtitle">
+            <span class="oka-data -sm">
                {savoirFaire.frontmatter.subtitle}
             </span>
 
-            <h3 class="oka-savoir-faire__card-title">
+            <h3 class="oka-h -lg">
                {savoirFaire.frontmatter.title}
             </h3>
          </div>
+         <div class="contenu">
+            <savoirFaire.Content />
+         </div>
 
-         <savoirFaire.Content />
 
-         <a class="oka-cta" href="#">
-            En savoir plus
-         </a>
+         <button class="oka-bt -ghost -sm  ">
+           <div class="oka-bt__ico"><i class="fa fa-heart"></i></div>
+           <div class="oka-bt__lbl">En savoir plus</div>
+           <div class="oka-spinner"></div>
+         </button>
+
+
+         <div class="oka-spacer  -xxl" aria-hidden="true"></div>
       </div>
 
 
-<ImageSavoirFaire 
+         {/* <ImageSavoirFaire 
             imagePath={savoirFaire.frontmatter.src}
             altText={savoirFaire.frontmatter.alt}
-         />
+         /> */}
 
    </article>
+  
 ))}
 
+
+<style lang="scss">
+  .oka-savoir-faire__card {
+      position: sticky;
+      top: 10rem;
+
+      background-color: var(--oka-color-layer-floor-0);
+   }
+
+   .contenu {
+      max-width : 400px;
+   }
+  
+</style>
+
+<script>
+  function updateStickyTops() {
+    const cards = document.querySelectorAll<HTMLElement>('.oka-savoir-faire__card');
+    const BASE_TOP_REM = 8;
+    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    let cumulativeOffset = 0;
+
+    cards.forEach((card) => {
+      card.style.top = `calc(${BASE_TOP_REM}rem + ${cumulativeOffset}px)`;
+      const header = card.querySelector<HTMLElement>('.oka-savoir-faire__card-content');
+      if (header) {
+        cumulativeOffset += header.getBoundingClientRect().height;
+      }
+    });
+  }
+
+  updateStickyTops();
+
+  const ro = new ResizeObserver(updateStickyTops);
+  document.querySelectorAll('.oka-savoir-faire__card-content').forEach((el) => ro.observe(el));
+</script>
 

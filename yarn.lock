@@ -1180,6 +1180,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@studio-freight/lenis@npm:^1.0.42":
+  version: 1.0.42
+  resolution: "@studio-freight/lenis@npm:1.0.42"
+  checksum: 10c0/edaaa6692a2e365ef6a0ed5b0a6d5f0bf32370fd4f53cd6aeff4cb42e92496127453dc348d4e1e5206425990c15d07c188fdf86f454995e342194c41f2ca270a
+  languageName: node
+  linkType: hard
+
 "@types/debug@npm:^4.0.0":
   version: 4.1.12
   resolution: "@types/debug@npm:4.1.12"
@@ -4125,6 +4132,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "site-hokoha@workspace:."
   dependencies:
+    "@studio-freight/lenis": "npm:^1.0.42"
     astro: "npm:^5.17.1"
     gsap: "npm:^3.14.2"
     sass-embedded: "npm:^1.97.3"
