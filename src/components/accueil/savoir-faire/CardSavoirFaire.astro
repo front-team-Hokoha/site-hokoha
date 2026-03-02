@@ -1,6 +1,8 @@
 ---
+import ImageSavoirFaire from "../savoir-faire/ImageSavoirFaire.astro";
+
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }));
-import ImageSavoirFaire from "../savoir-faire/CardSavoirFaire.astro";
+
 ---
 
 {savoirFaires.map((savoirFaire) => (
@@ -23,12 +25,12 @@ import ImageSavoirFaire from "../savoir-faire/CardSavoirFaire.astro";
          </a>
       </div>
 
-      <figure>
-         <ImageSavoirFaire 
+
+<ImageSavoirFaire 
             imagePath={savoirFaire.frontmatter.src}
             altText={savoirFaire.frontmatter.alt}
          />
-      </figure>
+
    </article>
 ))}
 
