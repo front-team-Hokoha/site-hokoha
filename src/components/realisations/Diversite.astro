@@ -1,0 +1,40 @@
+---
+import Avantages from "../commun/Avantages.astro";
+import Fidelite from "../commun/avantages/Fidelite.astro";
+import Forfait from "../commun/avantages/Forfait.astro";
+import Garantie from "../commun/avantages/Garantie.astro";
+
+---
+
+<section class="flex-grid">
+   <div class="col col-1"></div>
+
+   <div class="col col-10">
+      <h2 class="oka-t -lg">Secteurs d'activités diversifiée</h2>
+      <div class="col col-15">
+         <p class="oka-text -lg">
+            Nous collaborons avec des entreprises issues de tous types de secteurs d’activité, 
+            qu’il s’agisse de l’industrie, des services, de la santé ou encore du commerce. 
+            Grâce à notre expertise diversifiée, nous somme en mesure de comprendre et d’adapter 
+            nos solutions aux spécificités et aux exigences propres à chaque domaine.
+         </p>
+      </div>
+
+      <div class="oka-spacer -md" aria-hidden="true"></div>
+
+      <button class="oka-bt -outlined">
+         <!-- <div class="oka-bt__ico"><i class="fa-regular fa-arrow-left"></i></div> -->
+         <div class="oka-bt__lbl">call to action</div>
+         <!-- <div class="oka-loader"></div> -->
+      </button>
+      
+      <div class="oka-spacer -lg" aria-hidden="true"></div>
+      <Avantages>
+         <Forfait />
+         <Garantie />
+         <Fidelite />
+      </Avantages>
+   </div>
+   
+   <div class="oka-spacer  -xl" aria-hidden="true"></div>
+</section>
