@@ -1,19 +1,75 @@
 ---
 import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
-import { Image } from 'astro:assets';
+import Revealtext from "../commun/animations/RevealText.astro";
 ---
+<hr class="oka-divider" aria-hidden="true">
 
-<section class="oka-savoir-faire">
-  <div class="oka-savoir-faire__top">
-    <h2>Notre Savoir-Faire.</h2>
+<section class="flex-grid">
+  <div class="col col-1"></div>
+  <div class="col col-10">
+     <Revealtext>
+      <h1>
+          Lorem ipsum dolor sit amet consectetur. Lorem risus molestie posuere
+          turpis tincidunt vestibulum cursus.
+      </h1>
+      </Revealtext>
+  </div>
+  <div class="col col-5"></div>
+</section>
 
-   <p>
-      Lorem ipsum dolor sit amet consectetur. Lorem risus molestie posuere
-      turpis tincidunt vestibulum cursus.
-   </p>
+<div class="oka-spacer  -xl" aria-hidden="true"></div>
+
+<section class="flex-grid oka-savoir-faire__content">
+
+
+  <div class="col col-1"></div>
+  <div class="col col-5 oka-savoir-faire__top">
+    <div class="stiktop">
+
+      <div class="container"></div>
+
+    </div>
   </div>
 
-  <div class="oka-savoir-faire__list">
+  <div class="col col-1"></div>
+  <div class="col col-9 oka-savoir-faire__list">
+    <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
       <CardSavoirFaire />
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="stiktop oka-h -giant">innover</div>
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+      <hr class="oka-divider" aria-hidden="true">
   </div>
 </section>
+
+<style lang="scss">
+
+
+  .oka-savoir-faire{
+    position: sticky;
+
+    top: 8rem;
+
+
+  }
+
+
+  .stiktop{
+
+    position: sticky;
+    top: 7rem;
+
+    
+  }
+
+  .container {
+    background-color: var(--oka-color-bg-minimal);
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+</style>

@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@studio-freight/lenis", "npm:1.0.42"],\
           ["astro", "npm:5.18.0"],\
           ["gsap", "npm:3.14.2"],\
           ["sass-embedded", "npm:1.97.3"],\
@@ -1358,6 +1359,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/@shikijs-vscode-textmate-npm-10.0.2-c80a8c15da-10c0.zip/node_modules/@shikijs/vscode-textmate/",\
         "packageDependencies": [\
           ["@shikijs/vscode-textmate", "npm:10.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@studio-freight/lenis", [\
+      ["npm:1.0.42", {\
+        "packageLocation": "../../.yarn/berry/cache/@studio-freight-lenis-npm-1.0.42-01017a5245-10c0.zip/node_modules/@studio-freight/lenis/",\
+        "packageDependencies": [\
+          ["@studio-freight/lenis", "npm:1.0.42"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4408,6 +4418,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@studio-freight/lenis", "npm:1.0.42"],\
           ["astro", "npm:5.18.0"],\
           ["gsap", "npm:3.14.2"],\
           ["sass-embedded", "npm:1.97.3"],\
