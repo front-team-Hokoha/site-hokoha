@@ -1,0 +1,77 @@
+---
+import Projet from "./Projet.astro"
+---
+
+<section class="flex-grid">
+   <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+   <div class="col col-3"></div>
+
+   <div class="col col-10 oka-grid240">
+      <Projet >
+         <h2>0 1- Projet</h2>
+         <h3>Solution web</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>02 - Projet</h2>
+         <h3>Logiciel métier</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>03 - Projet</h2>
+         <h3>Application mobile</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>04 - Projet</h2>
+         <h3>Intelligence artificiel</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>05 - Projet</h2>
+         <h3>Objet connecté</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>06 - Projet</h2>
+         <h3>Logiciel métier</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>07-Projet</h2>
+         <h3>Solution web</h3>
+         <a href="#"></a>
+      </Projet>
+
+      <Projet>
+         <h2>08-Projet</h2>
+         <h3>Solution web</h3>
+         <a href="#"></a>
+      </Projet>
+   </div>
+</section>
+
+
+<style lang="scss">
+   // @use "../../styles/oka-design-system/1-bases/ripple/ripple.scss" as *;  
+
+   .oka-grid240 {
+      gap: 0;
+   }
+
+   a {
+      // @extend %oka-ripple;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+   }
+</style>

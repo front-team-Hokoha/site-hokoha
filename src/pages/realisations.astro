@@ -1,100 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Projets from '../components/realisations/Projets.astro';
+import RevealText from '../components/commun/animations/RevealText.astro';
+import Diversite from '../components/realisations/Diversite.astro';
 ---
 
   <Layout>
-    <h1>page Réalisations</h1>
-
     <!-- ===== Hero Section ===== -->
-    <section>
-      <h1>Lorem ipsum ac a scelerisquealiquam fames.</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
-        tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
-      </p>
+    <section class="flex-grid">
+      <div class="col col-1"></div>
+      <div class="col col-10">
+        <RevealText>
+          <h1 class="oka-h -giant">Lorem ipsum ac a scelerisquealiquam fames.</h1>
+        </RevealText>
+
+        <p class="oka-text -lg">
+          Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
+          tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
+        </p>
+      </div>
     </section>
 
     <!-- ===== Réalisations Section -->
-    <section>
-      <ul>
-        <li>
-          <a href="#">
-            <figure>
-              <img src="" alt="Projet 1" />
-            </figure>
-          </a>
-        </li>
+    <Projets />
 
-		  <li>
-          <a href="#">
-            <figure>
-              <img src="" alt="Projet 2" />
-            </figure>
-          </a>
-        </li>
-
-		  <li>
-          <a href="#">
-            <figure>
-              <img src="" alt="Projet 3" />
-            </figure>
-          </a>
-        </li>
-
-		  <li>
-          <a href="#">
-            <figure>
-              <img src="" alt="Projet 4" />
-            </figure>
-          </a>
-        </li>
-
-		  <li>
-          <a href="#">
-            <figure>
-              <img src="" alt="Projet 5" />
-            </figure>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-	 <section>
-		<h2>Secteurs d'activités diversifiée</h2>
-		<p>
-			Nous collaborons avec des entreprises issues de tous types de secteurs d’activité, 
-			qu’il s’agisse de l’industrie, des services, de la santé ou encore du commerce. 
-			Grâce à notre expertise diversifiée, nous somme en mesure de comprendre et d’adapter 
-			nos solutions aux spécificités et aux exigences propres à chaque domaine.
-		</p>
-
-		<ul>
-			<li>
-				<article>
-					<h4>Text</h4>
-					<h3>Forfait</h3>
-
-					<p>Lorem ipsum dolor set amet consectetur</p>
-				</article>
-			</li>
-
-			<li>
-				<article>
-					<h4>Text</h4>
-					<h3>Forfait</h3>
-
-					<p>Lorem ipsum dolor set amet consectetur</p>
-				</article>
-			</li>
-
-			<li>
-				<article>
-					<h4>Text</h4>
-					<h3>Forfait</h3>
-
-					<p>Lorem ipsum dolor set amet consectetur</p>
-				</article>
-			</li>
-		</ul>
-	 </section>
+    <div class="oka-spacer -xl"></div>
+    
+    <!-- ===== Diversités ===== -->
+    <Diversite />
 </Layout>
