@@ -1,163 +1,90 @@
 ---
-// import Test from "./PolygoneTest.astro";
-
 interface Props {
-  frontText?: string;
-  backText?:  string;
+	frontText?: string;
+	backText?:  string;
+	color?: string;
+	videoUrl?: string;
+	imageUrl?: string;
 }
-const { frontText = 'Front', backText = 'Back' } = Astro.props;
+const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
 
-<!-- SVG defs (invisible, partagé) -->
-<svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <polygon id="light"
-      points="0,-64 55.425,-32 55.425,32 0,64 -55.425,32 -55.425,-32"
-      fill="transparent"
-      stroke="#2C5F8A"
-      stroke-width="1"
-    />
+<div class={`polygon-shape ${color ?? ''}`}  style={imageUrl ? `background-image: url(${imageUrl});` : undefined}>
+	{(!imageUrl || videoUrl) && (
+		<span class="polygon-text">{frontText}</span>
+	)}
 
-
-    <polygon id="dark"
-      points="0,-64 55.425,-32 55.425,32 0,64 -55.425,32 -55.425,-32"
-      fill="transparent"
-      stroke="#2C5F8A"
-      stroke-width="1"
-    />
-  </defs>
-</svg>
-
-
-<div class="polygone">
-  <div class="polygone-inner">
-
-    <!-- Face avant -->
-    <div class="polygone-face polygone-front">
-      <svg width="110.851" height="128" viewBox="-55.425 -64 110.851 128" xmlns="http://www.w3.org/2000/svg">
-        <use href="#light" />
-        <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#2C5F8A" font-size="12">{frontText}</text>
-      </svg>
-      <!-- <Test /> -->
-    </div>
-
-    <!-- Face arrière -->
-    <div class="polygone-face polygone-back">
-      <svg width="110.851" height="128" viewBox="-55.425 -64 110.851 128" xmlns="http://www.w3.org/2000/svg">
-        <use href="#dark" />
-        <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#2C5F8A" font-size="12">{backText}</text>
-      </svg>
-    </div>
-
-  </div>
+	{videoUrl && (
+		<video autoplay muted loop>
+			<source src={videoUrl} type="video/mp4">
+		</video>
+	)}
 </div>
 
 <style lang="scss">
-  .polygone {
-    perspective: 800px;
-    width: 110.851px;
-    height: 128px;
-  }
+  .polygon-shape {
+		position: relative;
+		height: 128px;
+		width: 110.851px;
+		// clip-path: polygon(0% 25%, 50% 0%, 99% 25%, 99% 75%, 50% 99%, 0% 75%);
+		clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-  .polygone-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    /* transition définie par le script */
-  }
+		.polygone-text {
+			color: #2C5F8A;
+			font-size: 12px;
+			text-align: center;
+		}
 
-  .polygone-face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+		video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 
-    svg {
-      overflow: visible;
-    }
-  }
+	.-web {
+		background-color: rgb(15, 36, 230);
+		color: white
+	}
+
+	.-metier {
+		background-color: rgb(255, 162, 0);
+		color: black
+	}
+
+	.-app {
+		background-color: rgb(28, 168, 100);
+		color: white
+	}
+
+	.-ia {
+		background-color: rgb(38, 112, 208);
+		color: white
+	}
+
+	.-objet {
+		background-color: rgb(80, 171, 20);
+		color: black
+	}
+
+	.-nothing {
+		background-color: white;
+	}
+
+	.-stroke {
+		border: 1px solid #2C5F8A;
+	}
+
+	.-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
 </style>
-
-<script>
-
-  document.addEventListener("astro:page-load", () => {
- 
-
-
-    // ── Paramètres ────────────────────────────────────────────
-    const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
-    const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
-    const FLIP_DURATION     = 0.7; // durée de l'animation de flip (secondes)
-    const DELAY_MIN         = 1;   // délai de démarrage min (secondes)
-    const DELAY_MAX         = 4;   // délai de démarrage max (secondes)
-    // ──────────────────────────────────────────────────────────
-
-    // Retourne 'X' ou 'Y' aléatoirement
-    const randomAxis = () => (Math.random() < 0.5 ? 'X' : 'Y');
-
-    // Retourne un délai aléatoire en ms entre [min, max] secondes
-    const randomDelay = (min: number, max: number) =>
-      (min + Math.random() * (max - min)) * 1000;
-
-    document.querySelectorAll<HTMLElement>('.polygone').forEach((cell) => {
-      const inner    = cell.querySelector<HTMLElement>('.polygone-inner');
-      const backFace = cell.querySelector<HTMLElement>('.polygone-back');
-      if (!inner || !backFace) return;
-
-      // ── État local de la cellule ───────────────────────────
-      // isFlipped : true = face arrière visible
-      let isFlipped  = false;
-      // currentAxis : axe utilisé pour le flip en cours
-      //   → conservé pour l'animation retour afin de rester sur le même axe
-      let currentAxis = randomAxis();
-
-      // Initialisation : pose la face arrière pré-retournée sur l'axe courant
-      // (backface-visibility:hidden empêche de la voir tant que l'inner n'est pas retourné)
-      backFace.style.transform = `rotate${currentAxis}(180deg)`;
-
-      // Durée de la transition CSS sur l'élément inner
-      inner.style.transition = `transform ${FLIP_DURATION}s ease`;
-
-      // ── Fonction de flip ────────────────────────────────────
-      const doFlip = () => {
-        if (!isFlipped) {
-          // ── Front → Back ───────────────────────────────────
-          // Choisit un nouvel axe aléatoire pour ce cycle de flip
-          currentAxis = randomAxis();
-
-          // Met à jour la pré-rotation de la face arrière AVANT d'animer,
-          // pour qu'elle soit déjà positionnée sur le bon axe
-          backFace.style.transform = `rotate${currentAxis}(180deg)`;
-
-          // Anime l'inner de 0° → 180° sur l'axe choisi, révélant la face arrière
-          inner.style.transform = `rotate${currentAxis}(180deg)`;
-          isFlipped = true;
-        } else {
-          // ── Back → Front ───────────────────────────────────
-          // Retour sur le même axe que l'aller pour une animation cohérente
-          inner.style.transform = '';
-          isFlipped = false;
-          // Le prochain flip choisira un nouvel axe (côté Front → Back)
-        }
-      };
-
-      // ── Planification récursive ─────────────────────────────
-      // Chaque appel attend un délai aléatoire, exécute un flip, puis se replanifie.
-      // Utiliser setTimeout récursif (plutôt que setInterval) permet de recalculer
-      // le délai après chaque flip, donnant un rythme organique et imprévisible.
-      const scheduleFlip = () => {
-        const interval = randomDelay(FLIP_INTERVAL_MIN, FLIP_INTERVAL_MAX);
-        setTimeout(() => {
-          doFlip();
-          scheduleFlip(); // replanifie avec un nouveau délai aléatoire
-        }, interval);
-      };
-
-      // ── Délai de démarrage aléatoire ────────────────────────
-      // Désynchronise les polygones entre eux au chargement de la page
-      setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
-    });
-  
-  });
-</script>

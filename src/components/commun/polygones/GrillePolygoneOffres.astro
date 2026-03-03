@@ -1,0 +1,124 @@
+---
+import PolygoneFlip from "./PolygoneFlip.astro";
+// import Polygone from "./Polygone.astro";
+import PolygoneStatic from "./PolygoneStatic.astro";
+---
+
+<div class="hex-grid" data-rows="3" data-cols="6" data-ratio="0.50">
+
+<PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-web"/>
+<PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
+<PolygoneFlip frontText="Optimisation" backText="Back Texte" videoUrl="/src/assets/videos/test.mp4" color="-ia"/>
+
+
+  <!-- <svg class="polygone" width="110.851" height="128" viewBox="-55.425 -64 110.851 128" xmlns="http://www.w3.org/2000/svg">
+    <use href="#hex" />
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#2C5F8A" font-size="12">Texte du svg</text>
+  </svg> -->
+
+  <PolygoneFlip frontText="Sécurité" backText="Solution Web" color="-web" />
+  <PolygoneFlip frontText="Analyse" backText="Intelligence Artificielle" color="-ia" />
+  <PolygoneFlip frontText="Paie SILAE" imageUrl="/src/assets/images/test.png" color="-metier" />
+  <PolygoneFlip frontText="Android" videoUrl="/src/assets/videos/test.mp4" color="-app" />
+  <PolygoneStatic frontText="Optimisation"  color="-ia" />
+
+  
+  <PolygoneStatic frontText="Oddo" color="-metier" />
+  <PolygoneStatic frontText="WeCERT" color="-web" />
+  <PolygoneStatic frontText="Domaine" videoUrl="/src/assets/images/test.png" color="-ia" />
+
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+</div>
+
+<style lang="scss">
+  .hex-grid {
+    display: grid;
+    margin-bottom: -64px;
+    transform: translate(-55.425px, -32px);
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+  }
+
+
+</style>
+
+
+<script>
+document.addEventListener("astro:page-load", () => {
+  // // ── Paramètres ────────────────────────────────────────────
+  // const COLS        = 4;     // nombre de colonnes d'hexagones
+  // const ROWS        = 8;     // nombre de lignes d'hexagones
+  // const EMPTY_RATIO = 0.50;  // proportion de cellules vides (0 → 1)
+  // // ──────────────────────────────────────────────────────────
+
+  const grids = document.querySelectorAll('.hex-grid');
+
+  grids.forEach((grid) => {
+    if (!grid) return;
+
+   // ── Paramètres ────────────────────────────────────────────
+    const COLS        = grid.dataset.cols;  
+    const ROWS        = grid.dataset.rows;
+    const EMPTY_RATIO = grid.dataset.ratio;
+   // ──────────────────────────────────────────────────────────
+
+
+  
+    // Récupérer les SVG déjà présents dans le DOM
+    const svgs = Array.from(grid.querySelectorAll('.polygone'));
+  
+    // Définir les tracks CSS
+    // +2 : les lignes paires sont décalées d'une demi-cellule, leur dernier hex
+    // occupe la colonne (COLS*2+2), il faut donc au moins ce nombre de tracks.
+    const trackCols = COLS * 2 + 2;
+    grid.style.gridTemplateColumns = `repeat(${trackCols}, 55.425px)`;
+    const rowHeights = Array.from({ length: ROWS }, (_, i) =>
+      i === ROWS - 1 ? '128px' : '96px'
+    );
+    grid.style.gridTemplateRows = rowHeights.join(' ');
+  
+    // Construire toutes les positions possibles
+    const positions = [];
+    for (let row = 1; row <= ROWS; row++) {
+      const isEven = row % 2 === 0;
+      for (let col = 1; col <= COLS; col++) {
+        const colStart = isEven
+          ? (col - 1) * 2 + 2
+          : (col - 1) * 2 + 1;
+        positions.push({ row, colStart });
+      }
+    }
+  
+    // Mélange aléatoire des positions (Fisher-Yates)
+    for (let i = positions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [positions[i], positions[j]] = [positions[j], positions[i]];
+    }
+  
+    // Nombre de cellules visibles
+    const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
+  
+    // Assigner chaque SVG existant à une position
+    svgs.forEach((svg, i) => {
+      if (i >= positions.length) {
+        // Plus de positions que de SVG : cacher les surplus
+        svg.style.display = 'none';
+        return;
+      }
+      const { row, colStart } = positions[i];
+      svg.style.gridColumn = `${colStart} / ${colStart + 2}`;
+      svg.style.gridRow    = String(row);
+      // Masquer les SVG qui tombent sur une cellule "vide"
+      svg.style.visibility = i < visibleCount ? 'visible' : 'hidden';
+    });
+
+  });
+
+});
+</script>

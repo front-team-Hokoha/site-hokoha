@@ -1,0 +1,37 @@
+---
+// import PolygoneFlip from "./PolygoneFlip.astro";
+
+import PolygoneStatic from "./PolygoneStatic.astro";
+---
+
+<div class="hex-grid" data-rows="3" data-cols="8" data-ratio="0.20">
+  <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
+  <PolygoneStatic color="-nohting" />
+  <PolygoneStatic imageUrl="/src/assets/images/test.jpg"/>
+  <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+  <PolygoneStatic color="-nothing" />
+</div>
+
+<style lang="scss">
+  .hex-grid {
+    display: grid;
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+  }
+</style>
+
