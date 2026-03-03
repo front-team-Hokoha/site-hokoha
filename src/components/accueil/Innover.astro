@@ -1,0 +1,138 @@
+---
+import Revealtext from "../../animations/RevealText.astro";
+---
+
+
+
+<section class="inoverCtnr">
+
+
+   
+    
+    <Revealtext>
+        <h2>
+            « [Notre] seul but est de bien faire »
+        </h2>
+    </Revealtext>  
+    <div class="oka-data -lg">Ernõ Rubik - Inventeur du Rubik's Cube</div>
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+    
+<p>Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.</p>
+
+
+  <div class="zoom-word oka-h -giant" data-zoom-trigger>
+      inn<svg class="o-circle" data-zoom-circle viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" /></svg>ver.
+  </div>
+
+</section>
+
+
+
+
+<style lang="scss">
+
+  .inoverCtnr{
+    position:sticky;
+    top: 0; 
+    z-index: 0;
+    overflow: hidden;
+    height:110dvh;
+    margin-bottom:70dvh;
+
+    text-align: center;
+  }
+
+  .oka-data {
+    display:inline-block;
+  }
+
+  .zoom-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // --circle-offset-em : distance du bord gauche du mot au centre du cercle, en em
+    // recalculée en JS à chaque frame
+    transform: translate(
+      calc(-1 * var(--circle-offset-em, 0) * 1em),
+      -50%
+    );
+    cursor: default;
+    white-space: nowrap;
+    text-wrap: nowrap;
+
+ 
+  }
+
+  .o-circle {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    vertical-align: middle;
+    margin-bottom: 0.0em;
+    margin-right: -0.02em;
+
+    polygon {
+      fill: var(--oka-color-fg, #0a0a0a);
+    }
+  }
+
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const word = document.querySelector<HTMLElement>("[data-zoom-trigger]");
+  const circle = document.querySelector<HTMLElement>("[data-zoom-circle]");
+
+  if (word && circle) {
+    const updateOffset = () => {
+      const fontSize = parseFloat(getComputedStyle(word).fontSize);
+      const wordRect = word.getBoundingClientRect();
+      const circleRect = circle.getBoundingClientRect();
+      const offsetPx = circleRect.left + circleRect.width / 2 - wordRect.left;
+      word.style.setProperty("--circle-offset-em", String(offsetPx / fontSize));
+    };
+
+    // Recalcul à chaque frame pendant que le fontSize grandit
+    gsap.ticker.add(updateOffset);
+    updateOffset();
+
+    const startFontSize = parseFloat(getComputedStyle(word).fontSize);
+
+    // Le polygone est centré à 50vw/50vh via le CSS transform
+    // maxDist = distance du centre du viewport au coin le plus éloigné
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const maxDist = Math.hypot(vw / 2, vh / 2);
+
+    // Le polygone est inscrit dans un cercle de rayon = 0.56em / 2
+    const circleEmRatio = 0.46;
+    const endFontSize = maxDist / (circleEmRatio / 2);
+
+    gsap.to(word, {
+      fontSize: endFontSize,
+      ease: "power2.in",
+      
+      scrollTrigger: {
+        trigger: word,
+        start: "top 60%",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(circle, {
+      rotation: 120,
+      ease: "none",
+      transformOrigin: "50% 50%",
+      scrollTrigger: {
+        trigger: word,
+        start: "top 60%",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+  }
+</script>

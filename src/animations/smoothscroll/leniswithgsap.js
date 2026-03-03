@@ -1,7 +1,6 @@
 // Initializes smooth scrolling with Lenis and integrates it with GSAP's ScrollTrigger.
 // Function to set up smooth scrolling.
 import Lenis from '@studio-freight/lenis'
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,7 +10,7 @@ export function initLenis() {
    
   // Initialize Lenis for smooth scroll effects. Lerp value controls the smoothness.
   const lenis = new Lenis({
-    lerp: 0.16, // Adjust this value for smoother or snappier scroll (0.1 is default).
+    lerp: 0.08, // Adjust this value for smoother or snappier scroll (0.1 is default).
     smooth: true,
 		direction: 'vertical',
     smoothTouch: false,    

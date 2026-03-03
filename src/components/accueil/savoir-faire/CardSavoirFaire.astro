@@ -1,13 +1,17 @@
 ---
-import ImageSavoirFaire from "../savoir-faire/ImageSavoirFaire.astro";
-
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }));
 
----
 
+/* 
+   Liste de cartes de savoir-faire. 
+   Chaque carte est positionnée de manière sticky, 
+   avec un top qui s'ajuste dynamiquement en fonction de la hauteur cumulée des titres des cartes précédentes.
+*/
+---
 {savoirFaires.map((savoirFaire) => (
    <article class="oka-savoir-faire__card">
       <div class="content">
+         
          <div class="oka-savoir-faire__card-content">
             <span class="oka-data -sm">
                {savoirFaire.frontmatter.subtitle}
@@ -30,13 +34,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
 
 
          <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+         <div class="oka-spacer  -xxl" aria-hidden="true"></div>
       </div>
-
-
-         {/* <ImageSavoirFaire 
-            imagePath={savoirFaire.frontmatter.src}
-            altText={savoirFaire.frontmatter.alt}
-         /> */}
 
    </article>
   
@@ -46,8 +45,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
 <style lang="scss">
   .oka-savoir-faire__card {
       position: sticky;
-      top: 10rem;
-
+      top: 8rem;
+   
       background-color: var(--oka-color-layer-floor-0);
    }
 

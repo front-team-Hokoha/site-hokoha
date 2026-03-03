@@ -37,7 +37,7 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 		
 			<main class="layout-app__main oka-surface">
 				<!-- Contenu principal -->
-                <div class="oka-appWrap -fluid">
+                <div class="oka-appWrap -full">
 					
 					<slot />
  				</div>
@@ -47,7 +47,7 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
 			<!-- Grid Preview -->
             <div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
-                <div class="oka-app-wrap -fluid" style="height:100%">
+                <div class="oka-app-wrap -full" style="height:100%">
                     <div class="grid-bg-fx__grid flex-grid ">
         
                         <div class="col col-1"></div>
@@ -83,6 +83,17 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
 
 <style>
+
+	.oka-surface {
+		--oka-color-layer-floor-0 : hsla(224, 44%, 95%, 0.14);
+	}
+
+
+	body {
+		background-color: hsla(224, 44%, 95%, 0.324) !important;
+		color: var(--oka-color-fg);
+	}
+
 
 	/* ==== Test ==== */
 
