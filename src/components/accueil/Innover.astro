@@ -6,9 +6,7 @@ import Revealtext from "../../animations/RevealText.astro";
 
 <section class="inoverCtnr">
 
-
-   
-    
+  <div >
     <Revealtext>
         <h2>
             « [Notre] seul but est de bien faire »
@@ -16,12 +14,13 @@ import Revealtext from "../../animations/RevealText.astro";
     </Revealtext>  
     <div class="oka-data -lg">Ernõ Rubik - Inventeur du Rubik's Cube</div>
     <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-    
-<p>Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.</p>
+      
+    <p>Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.</p>
 
 
-  <div class="zoom-word oka-h -giant" data-zoom-trigger>
-      inn<svg class="o-circle" data-zoom-circle viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" /></svg>ver.
+    <div class="zoom-word oka-h -giant" data-zoom-trigger>
+        inn<svg class="o-circle" data-zoom-circle viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" /></svg>ver.
+    </div>
   </div>
 
 </section>
@@ -35,11 +34,12 @@ import Revealtext from "../../animations/RevealText.astro";
     position:sticky;
     top: 0; 
     z-index: 0;
-    overflow: hidden;
-    height:110dvh;
-    margin-bottom:70dvh;
+    //overflow: hidden;
+    height:100dvh;
+    margin-bottom:60dvh;
 
     text-align: center;
+
   }
 
   .oka-data {
@@ -108,7 +108,7 @@ import Revealtext from "../../animations/RevealText.astro";
     const maxDist = Math.hypot(vw / 2, vh / 2);
 
     // Le polygone est inscrit dans un cercle de rayon = 0.56em / 2
-    const circleEmRatio = 0.46;
+    const circleEmRatio = 0.40;
     const endFontSize = maxDist / (circleEmRatio / 2);
 
     gsap.to(word, {

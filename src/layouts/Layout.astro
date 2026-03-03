@@ -85,10 +85,12 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 <style>
 
 	.oka-surface {
-		--oka-color-layer-floor-0 : hsla(224, 44%, 95%, 0.14);
+		--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
 	}
 
-
+	html {
+		overflow-x: hidden; /*requis pour Zoom Innover */
+	}
 	body {
 		background-color: hsla(224, 44%, 95%, 0.324) !important;
 		color: var(--oka-color-fg);

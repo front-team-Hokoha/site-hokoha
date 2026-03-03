@@ -32,11 +32,11 @@ $oka-brand-heading-line-height-giant: $oka-lineheight-xxxxl ; // 8.5;
 
 // POSTER ---------------------------------
 $oka-brand-heading-font-size-poster: $oka-fontsize-xxxl ; // 5.61;
-$oka-brand-heading-line-height-poster: $oka-lineheight-xxxl ; // 6.5;
+$oka-brand-heading-line-height-poster: $oka-lineheight-xxl ; // 6.5;
 
 // XXL ---------------------------------
 $oka-brand-heading-font-size-xxl: $oka-fontsize-xxl ; // 4.209;
-$oka-brand-heading-line-height-xxl: $oka-lineheight-xxl ; // 5;
+$oka-brand-heading-line-height-xxl: $oka-lineheight-xl ; // 5;
 
 // XL -H1----------------------------------
 $oka-brand-heading-font-size-xl: $oka-fontsize-xl ; // 3.157; 
@@ -302,7 +302,7 @@ $oka-brand-heading-line-height-xs: $oka-lineheight-xxs ; //1;
     line-height: clamp(
         calc(var(--oka-typo-brand-heading-md-line-height) * 1px),  
         1.5em, 
-        calc(var(--oka-typo-brand-heading-giant-line-height) * 1px)
+        calc(var(--oka-typo-brand-heading-xl-line-height) * 1px)
         );
 
     // desktop -> XXL

@@ -77,7 +77,11 @@ const { frontText = 'Front', backText = 'Back' } = Astro.props;
 </style>
 
 <script>
-  (function () {
+
+  document.addEventListener("astro:page-load", () => {
+ 
+
+
     // ── Paramètres ────────────────────────────────────────────
     const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
     const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
@@ -151,5 +155,6 @@ const { frontText = 'Front', backText = 'Back' } = Astro.props;
       // Désynchronise les polygones entre eux au chargement de la page
       setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
     });
-  })();
+  
+  });
 </script>

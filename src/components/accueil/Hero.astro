@@ -1,11 +1,16 @@
 ---
 import Revealtext from "../../animations/RevealText.astro";
+import Hexagone from "../../components/commun/polygones/PolygonesWhite.astro";
+
 ---
 
 <section class="flex-grid sok-hero">
    <div class="col col-1"></div>
-   <div class="col col-10">
-         
+   <div class="col col-8">
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+
+ 
+
       <Revealtext>
          <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
       </Revealtext>
@@ -22,14 +27,73 @@ import Revealtext from "../../animations/RevealText.astro";
          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
         <div class="oka-spinner"></div>
       </button>
+
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+   
+
+      <div class="sok-offres">
+         <div class="sok-offres__item">
+            <span class="oka-data -xs -crop">01</span>
+            <span class="oka-h -md">Solutions Web</span>
+         </div>
+         <hr class="oka-divider" aria-hidden="true">
+         <div class="sok-offres__item">
+            <span class="oka-data -xs -crop">02</span>
+            <span class="oka-h -md">Logiciels Métiers</span>
+         </div>
+         <hr class="oka-divider" aria-hidden="true">
+         <div class="sok-offres__item">
+            <span class="oka-data -xs -crop">03</span>
+            <span class="oka-h -md">Application Mobile</span>
+         </div>
+         <hr class="oka-divider" aria-hidden="true">
+         <div class="sok-offres__item">
+            <span class="oka-data -xs -crop">04</span>
+            <span class="oka-h -md">Intelligence Artificielle</span>
+         </div>
+         <hr class="oka-divider" aria-hidden="true">
+         <div class="sok-offres__item">
+            <span class="oka-data -xs -crop">05</span>
+            <span class="oka-h -md">Objets Connectées</span>
+         </div>
+      </div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+
+   </div>
+    <div class="col col-1"></div>
+   <div class="col col-6">
+      <div class="hexa">
+         <Hexagone />
+      </div>
    </div>
    
+
+
+
 </section>
 
 <style lang="scss">
    .sok-hero {
+       position:relative;
+      top: 0;
       //height: 40dvh;
       //margin-bottom:8rem; 
+   }
+
+   .hexa{
+      position:sticky;
+      top: 0;
+   }
+
+   .sok-offres{
+      position:sticky;
+      top: 14rem;
    }
 
 </style>

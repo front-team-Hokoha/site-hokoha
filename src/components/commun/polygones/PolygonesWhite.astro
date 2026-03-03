@@ -98,7 +98,7 @@ import Polygone from "./Polygone.astro"
 
 
 <script>
-  (function () {
+document.addEventListener("astro:page-load", () => {
     // ── Paramètres ────────────────────────────────────────────
     const COLS        = 4;     // nombre de colonnes d'hexagones
     const ROWS        = 8;     // nombre de lignes d'hexagones
@@ -155,5 +155,5 @@ import Polygone from "./Polygone.astro"
       // Masquer les SVG qui tombent sur une cellule "vide"
       svg.style.visibility = i < visibleCount ? 'visible' : 'hidden';
     });
-  })();
+  });
 </script>
