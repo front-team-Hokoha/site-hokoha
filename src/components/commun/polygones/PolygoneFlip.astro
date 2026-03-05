@@ -48,9 +48,7 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
-    svg {
-      overflow: visible;
-    }
+
   }
 </style>
 
@@ -59,13 +57,12 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
   document.addEventListener("astro:page-load", () => {
  
 
-
     // ── Paramètres ────────────────────────────────────────────
     const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
     const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
-    const FLIP_DURATION     = 0.7; // durée de l'animation de flip (secondes)
-    const DELAY_MIN         = 1;   // délai de démarrage min (secondes)
-    const DELAY_MAX         = 4;   // délai de démarrage max (secondes)
+    const FLIP_DURATION     = 0.5; // durée de l'animation de flip (secondes)
+    const DELAY_MIN         = 2;   // délai de démarrage min (secondes)
+    const DELAY_MAX         = 6;   // délai de démarrage max (secondes)
     // ──────────────────────────────────────────────────────────
 
     // Retourne 'X' ou 'Y' aléatoirement

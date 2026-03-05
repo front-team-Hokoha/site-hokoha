@@ -10,11 +10,11 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
  
-
+      <div class="static -md">
       <Revealtext>
          <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
       </Revealtext>
-
+      </div>
       <p class="oka-text -lg">
          Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
          cras. Dui nec amet mauris tempor interdum facilisi eget.
@@ -66,7 +66,10 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
    </div>
-    <div class="col col-1"></div>
+    <div class="col col-1">
+      <!-- <GrilleVierge /> -->
+
+    </div>
    <div class="col col-6">
       <div class="hexa">
          <GrilleVierge />
@@ -88,6 +91,12 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       top: 0;
       //height: 40dvh;
       //margin-bottom:8rem; 
+   }
+
+
+   .static{
+      position:sticky;
+      top: 0;
    }
 
    .hexa{
