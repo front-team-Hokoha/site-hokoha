@@ -1,0 +1,164 @@
+---
+---
+
+<div class="morph morph-1">
+   <i class="fa-solid fa-arrow-left">fef</i>
+</div>
+<div class="morph morph-2"></div>
+<div class="morph morph-3"></div>
+
+<style lang="scss" define:vars>
+   .morph {
+      position: absolute;
+		width: calc(110.851px );
+		height: calc(128px );
+      // clip-path: polygon(0% 25%, 50% 0%, 99% 25%, 99% 75%, 50% 99%, 0% 75%);
+      clip-path: polygon(
+         50% 0%,     /* sommet haut */
+         100% 25%,   /* coin haut droit */
+         100% 75%,   /* coin bas droit */
+         50% 100%,   /* sommet bas */
+         0% 75%,     /* coin bas gauche */
+         0% 25%      /* coin haut gauche */
+      );
+
+
+      // mix-blend-mode: difference;
+      // will-change: transform;
+      // backface-visibility: hidden;
+      
+   }
+
+   .morph-1 {
+      top: 15%;
+      left: 15%;
+      background-color: rgb(238, 54, 21);
+   }
+
+   .morph-2 {
+      bottom: 15%;
+      right: 15%;
+      background-color: rgb(56, 23, 243);
+   }
+
+   .morph-3 {
+      bottom: 15%;
+      left: 15%;
+      background-color: rgb(8, 122, 8);
+      opacity: 0;
+   }
+</style>
+
+<script>
+   import { gsap } from "gsap";
+   import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   document.addEventListener('astro:page-load', () => {
+      const hex = document.querySelector(".morph");
+
+      const h = hex.offsetHeight;
+      const w = hex.offsetWidth;
+
+      const halfW = w / 2;
+      const halfH = h / 2;
+      const vertical = h * 0.75;
+         
+
+      // ===== Animation au scroll pour la première carte =====
+      gsap.to('.morph-1', {
+         top: "50%",
+         left: "50%",
+         transform: `translate(-50%, -${h}px)`,
+         duration: .3,
+         ease: "power2.inOut",
+         scrollTrigger: {
+            trigger: ".card-1",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true,
+         },
+      });
+
+      gsap.to('.morph-2', {
+         bottom: "50%",
+         right: "50%",
+         transform: `translate(${w}px, ${vertical}px)`,
+         duration: .3,
+         ease: "power2.inOut",
+         scrollTrigger: {
+            trigger: ".card-1",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true,
+         },
+      });
+
+      // ===== Animation au scroll pour la deuxième carte =====
+      gsap.to('.morph-3', {
+         bottom: "50%",
+         left: "50%",
+         transform: `translate(-${w}px, ${vertical}px)`,
+         opacity: 1,
+         duration: .3,
+         ease: "power2.inOut",
+         scrollTrigger: {
+            trigger: ".card-2",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true,
+         },
+      });
+
+      // ===== Animation au scroll pour la troisième carte =====
+      gsap.to('.morph-1', {
+         top: "50%",
+         left: "50%",
+         transform: `translateY(-160px)`,
+         duration: .3,
+         ease: "power2.inOut",
+         scrollTrigger: {
+            trigger: ".card-3",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true,
+         },
+      });
+
+      // gsap.to('.morph-2', {
+      //    bottom: "50%",
+      //    right: "50%",
+      //    transform: `translate(${w}px, ${vertical}px)`,
+      //    duration: .3,
+      //    ease: "power2.inOut",
+      //    scrollTrigger: {
+      //       trigger: ".card-3",
+      //       start: "top 20%",
+      //       end: "bottom 80%",
+      //       toggleActions: "play none reverse none",
+      //       // markers: true,
+      //    },
+      // });
+
+      // gsap.to('.morph-3', {
+      //    bottom: "50%",
+      //    left: "60%",
+      //    transform: `translate(-${w}px, ${vertical}px)`,
+      //    opacity: 1,
+      //    duration: .3,
+      //    ease: "power2.inOut",
+      //    scrollTrigger: {
+      //       trigger: ".card-3",
+      //       start: "top 20%",
+      //       end: "bottom 80%",
+      //       toggleActions: "play none reverse none",
+      //       // markers: true,
+      //    },
+      // });
+   })
+</script>

@@ -76,5 +76,17 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
 
   const ro = new ResizeObserver(updateStickyTops);
   document.querySelectorAll('.oka-savoir-faire__card-content').forEach((el) => ro.observe(el));
+
+
+  //  ajouter une class pour chaque carte pour les animations au scroll
+	function addClassToCards() {
+    const cards = document.querySelectorAll<HTMLElement>('.oka-savoir-faire__card');
+
+		cards.forEach((card, index) => {
+				card.classList.add(`card-${index + 1}`)
+		});
+	}
+
+	addClassToCards();
 </script>
 
