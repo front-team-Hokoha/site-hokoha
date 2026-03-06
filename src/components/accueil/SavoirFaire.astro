@@ -1,7 +1,6 @@
 ---
 import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
 import Revealtext from "../../animations/RevealText.astro";
-import MorphWrapper from "./savoir-faire/MorphWrapperSavoirFaire.astro";
 import Morph from "./savoir-faire/MorphSavoirFaire.astro";
 ---
 <hr class="oka-divider" aria-hidden="true">
@@ -28,9 +27,9 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
   <div class="col col-5 oka-savoir-faire__top">
     <div class="stiktop">
 
-      <MorphWrapper>
+      <div class="oka-morph-wrapper">
         <Morph>
-      </MorphWrapper>
+      </div>
 
     </div>
   </div>
@@ -69,5 +68,12 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
     top: 7rem;
   }
 
+  .oka-morph-wrapper {
+    position: relative;
+    background-color: var(--oka-color-bg-minimal);
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+  }
 
 </style>
