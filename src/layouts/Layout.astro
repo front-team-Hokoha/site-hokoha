@@ -10,6 +10,15 @@ import Footer from "../components/commun/Footer.astro";
 // import LocalScripts from "../components/commun/LocalScripts.astro"
 
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
+import { string } from "astro:schema";
+
+
+interface Props {
+	title: string;
+	// description?:  string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!-- ===== HTML ===== -->
@@ -18,10 +27,11 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Hokoha - Lorem Ipsum</title>
+		<title>{title}</title>
 		<ClientRouter />
 		
 
@@ -34,7 +44,6 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 		<div id="root" class="layout-app">
 			<Header />
 			
-		
 			<main class="layout-app__main oka-surface">
 				<!-- Contenu principal -->
                 <div class="oka-appWrap -full">

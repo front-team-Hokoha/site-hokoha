@@ -27,16 +27,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		position: relative;
 		height: 128px;
 		width: 110.851px;
-		// clip-path: polygon(0% 25%, 50% 0%, 99% 25%, 99% 75%, 50% 99%, 0% 75%);
-		// clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-		clip-path: polygon(
-         50% 0%,     /* sommet haut */
-         100% 25%,   /* coin haut droit */
-         100% 75%,   /* coin bas droit */
-         50% 100%,   /* sommet bas */
-         0% 75%,     /* coin bas gauche */
-         0% 25%      /* coin haut gauche */
-      );
+		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 		
 		display: flex;
 		justify-content: center;
