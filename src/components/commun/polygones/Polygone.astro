@@ -28,13 +28,17 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		height: 128px;
 		width: 110.851px;
 		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		//   clip-path: path("M50% 0 Q54% 0 57% 4% L96% 22% Q100% 25% 100% 29% L100% 71% Q100% 75% 96% 78% L57% 96% Q54% 100% 50% 100% L43% 96% L4% 78% Q0% 75% 0% 71% L0% 29% Q0% 25% 4% 22% L43% 4% Q46% 0 50% 0 Z");
 		
 		display: flex;
 		justify-content: center;
 		align-items: center;
 
 		background-size: cover;
-		background-color: white;
+		background-color: rgb(255, 255, 255, 0.10);
+		backdrop-filter: blur(90%);
+		outline: 2px dotted white;
+		padding: 2px;
 
 		.polygone-text {
 			color: #2C5F8A;

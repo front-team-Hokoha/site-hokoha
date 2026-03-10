@@ -8,12 +8,14 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
    <div class="col col-1"></div>
    <div class="col col-8">
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
- 
+      <img class="sok-logokoha" src="/src/assets/images/logokoha.svg" alt="logo Hokoha">
+
       <div class="static -md">
-      <Revealtext>
-         <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
-      </Revealtext>
+         <Revealtext>
+            <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
+         </Revealtext>
       </div>
       <p class="oka-text -lg">
          Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
@@ -22,7 +24,7 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 
       <div class="oka-spacer  -lg" aria-hidden="true"></div>
   
-      <button class="oka-bt -lg -outlined   ">
+      <button class="oka-bt -lg -solid   ">
          <div class="oka-bt__lbl">call to action</div>
          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
         <div class="oka-spinner"></div>
@@ -87,11 +89,35 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 
 <style lang="scss">
    .sok-hero {
-       position:relative;
-      top: 0;
-      //height: 40dvh;
-      //margin-bottom:8rem; 
+      position:relative;
+      // top: 0;
+      background: linear-gradient(
+         to bottom,
+         var(--sok-color-bg-darkest) 20%,
+         var(--sok-color-bg-blue-800) 50%,
+         var(--sok-color-bg-blue-400) 65%,
+         var(--sok-color-bg-blue-800) 80%,
+         var(--sok-color-bg-darkest) 100%,
+      );
+
+      &::before {
+         position: absolute;
+         content: "";
+         top: -30%;
+         left: -30vw;
+         // transform-origin: center;
+         transform: rotate(20deg);
+         width: 40vw;
+         height: 150%;
+         background: radial-gradient(#3753AA, #162144);
+         mix-blend-mode: color-dodge;
+      }
    }
+
+   .oka-h, .oka-text, .oka-data {
+      color: var(--sok-color-white);
+   }
+
 
 
    .static{
@@ -107,6 +133,13 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
    .sok-offres{
       position:sticky;
       top: 14rem;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin: 1rem 0;
+      }
    }
 
 </style>
