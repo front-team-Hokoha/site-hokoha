@@ -5,10 +5,14 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 ---
 
 <section class="flex-grid sok-hero">
+   <div class="sok-grid-img">
+      <img src="/src/assets/images/8pt.svg" alt="">
+   </div>
+
    <div class="col col-1"></div>
-   <div class="col col-8">
+   <div class="col col-7">
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+      <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
 
       <img class="sok-logokoha" src="/src/assets/images/logokoha.svg" alt="logo Hokoha">
 
@@ -22,7 +26,7 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
          cras. Dui nec amet mauris tempor interdum facilisi eget.
       </p>
 
-      <div class="oka-spacer  -lg" aria-hidden="true"></div>
+      <div class="oka-spacer  -md" aria-hidden="true"></div>
   
       <button class="oka-bt -lg -solid   ">
          <div class="oka-bt__lbl">call to action</div>
@@ -34,30 +38,30 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
    
 
-      <div class="sok-offres">
+      <div class="sok-offres col col-12">
          <div class="sok-offres__item">
             <span class="oka-data -xs -crop">01</span>
-            <span class="oka-h -md">Solutions Web</span>
+            <span class="oka-h -md sok-offres__text">Solutions Web</span>
          </div>
          <hr class="oka-divider" aria-hidden="true">
          <div class="sok-offres__item">
             <span class="oka-data -xs -crop">02</span>
-            <span class="oka-h -md">Logiciels Métiers</span>
+            <span class="oka-h -md sok-offres__text">Logiciels Métiers</span>
          </div>
          <hr class="oka-divider" aria-hidden="true">
          <div class="sok-offres__item">
             <span class="oka-data -xs -crop">03</span>
-            <span class="oka-h -md">Application Mobile</span>
+            <span class="oka-h -md sok-offres__text">Application Mobile</span>
          </div>
          <hr class="oka-divider" aria-hidden="true">
          <div class="sok-offres__item">
             <span class="oka-data -xs -crop">04</span>
-            <span class="oka-h -md">Intelligence Artificielle</span>
+            <span class="oka-h -md sok-offres__text">Intelligence Artificielle</span>
          </div>
          <hr class="oka-divider" aria-hidden="true">
          <div class="sok-offres__item">
-            <span class="oka-data -xs -crop">05</span>
-            <span class="oka-h -md">Objets Connectées</span>
+            <span class="oka-data -xs -crop">05</span> 
+            <span class="oka-h -md sok-offres__text">Objets Connectées</span>
          </div>
       </div>
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
@@ -72,7 +76,7 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       <!-- <GrilleVierge /> -->
 
     </div>
-   <div class="col col-6">
+   <div class="col col-5">
       <div class="hexa">
          <GrilleVierge />
          <GrilleOffres />
@@ -90,35 +94,36 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 <style lang="scss">
    .sok-hero {
       position:relative;
-      // top: 0;
-      background: linear-gradient(
-         to bottom,
-         var(--sok-color-bg-darkest) 20%,
-         var(--sok-color-bg-blue-800) 50%,
-         var(--sok-color-bg-blue-400) 65%,
-         var(--sok-color-bg-blue-800) 80%,
-         var(--sok-color-bg-darkest) 100%,
-      );
+      background-color: var(--sok-color-bg-strong);
+      z-index: 90;
+
+      & > * {
+         z-index: 99;
+      }
 
       &::before {
          position: absolute;
          content: "";
-         top: -30%;
-         left: -30vw;
-         // transform-origin: center;
-         transform: rotate(20deg);
-         width: 40vw;
-         height: 150%;
-         background: radial-gradient(#3753AA, #162144);
-         mix-blend-mode: color-dodge;
+         top: 64px;
+         left: 0;
+         width: 100vw;
+         height: 40vh;
+         background: linear-gradient(
+            var(--sok-color-bg-blue-500), 
+            var(--sok-color-bg-blue-600) 20%,
+            var(--sok-color-bg-blue-700) 45%,
+            var(--sok-color-bg-blue-800) 65%,
+            var(--sok-color-bg-strong) 100%
+         );
+         z-index: 91;
       }
+
+      
    }
 
    .oka-h, .oka-text, .oka-data {
-      color: var(--sok-color-white);
+      color: var(--sok-color-fg-on_surface);
    }
-
-
 
    .static{
       position:sticky;
@@ -135,11 +140,40 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
       top: 14rem;
 
       &__item {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        margin: 1rem 0;
+         display: flex;
+         align-items: center;
+         gap: 2rem;
+         margin: 1rem 0;
+
+         .sok-offres__text {
+            color:var(--sok-color-fg-on_surface);
+            transition: all .150s ease-out;
+            cursor: pointer;
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background: linear-gradient(to left, var(--sok-color-bg-blue-600), var(--sok-color-bg-blue-300));
+            background-clip: text;
+            -webkit-background-clip: text;
+           
+            &:hover {
+               color: transparent;
+               background-size: 100% 100%;
+            }
+         }
       }
    }
+
+   .sok-grid-img {
+      position: absolute;
+      top: 70vh;
+
+   }
+
+   .oka-divider {
+      // background-color: rgba(255, 255, 255, .25);
+   }
+
+   // ==== Offres =====
+
 
 </style>

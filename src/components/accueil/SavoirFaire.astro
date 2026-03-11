@@ -3,59 +3,63 @@ import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
 import Revealtext from "../../animations/RevealText.astro";
 import Morph from "./savoir-faire/MorphSavoirFaire.astro";
 ---
-<hr class="oka-divider" aria-hidden="true">
+<div class="sok-container">
 
-<section class="flex-grid">
-  <div class="col col-1"></div>
-  <div class="col col-10">
-     <Revealtext>
-      <h1>
-          Lorem ipsum dolor sit amet consectetur. Lorem risus molestie posuere
-          turpis tincidunt vestibulum cursus.
-      </h1>
+  <hr class="oka-divider" aria-hidden="true">
+
+  <section class="flex-grid sok-section">
+    <div class="col col-1"></div>
+    <div class="col col-10">
+      <Revealtext>
+        <h1>
+            Lorem ipsum dolor sit amet <span class="sok-text-color">consectetur</span>. Lorem risus molestie posuere
+            turpis tincidunt <span class="sok-text-color">vestibulum</span> cursus.
+        </h1>
       </Revealtext>
-  </div>
-  <div class="col col-5"></div>
-</section>
-
-<div class="oka-spacer  -xl" aria-hidden="true"></div>
-
-<section class="flex-grid oka-savoir-faire__content">
-
-
-  <div class="col col-1"></div>
-  <div class="col col-5 oka-savoir-faire__top">
-    <div class="stiktop">
-
-      <div class="oka-morph-wrapper">
-        <Morph>
-      </div>
-
     </div>
-  </div>
+    <div class="col col-5"></div>
+  </section>
 
-  <div class="col col-1"></div>
-  <div class="col col-9 oka-savoir-faire__list">
-    <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <CardSavoirFaire />
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <hr class="oka-divider" aria-hidden="true">
-  </div>
-</section>
+  <div class="oka-spacer  -xl" aria-hidden="true"></div>
+
+  <section class="flex-grid oka-savoir-faire__content sok-section">
 
 
+    <div class="col col-1"></div>
+    <div class="col col-5 oka-savoir-faire__top">
+      <div class="stiktop">
+
+        <div class="oka-morph-wrapper">
+          <Morph>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col col-1"></div>
+    <div class="col col-9 oka-savoir-faire__list">
+      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <CardSavoirFaire />
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+        <hr class="oka-divider" aria-hidden="true">
+    </div>
+  </section>
+
+</div>
 
 
 
 
 <style lang="scss">
-
+  .sok-section {
+    background-color: var(--sok-color-bg-strong);
+  }
 
   .oka-savoir-faire{
     position: sticky;
@@ -76,4 +80,17 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
     overflow: hidden;
   }
 
+  .sok-container {
+    margin: 0 1rem;
+    // background-color: red;
+    border-top-left-radius: 3.5rem;
+    border-top-right-radius: 3.5rem;
+  }
+
+  .sok-text-color {
+    color: transparent;
+    background: linear-gradient(to left, var(--sok-color-fg-blue-800), var(--sok-color-fg-blue-600), var(--sok-color-fg-blue-300));
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
 </style>

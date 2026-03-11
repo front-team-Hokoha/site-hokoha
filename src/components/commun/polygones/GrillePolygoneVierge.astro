@@ -2,7 +2,7 @@
 import PolygoneStatic from "./PolygoneStatic.astro";
 ---
 
-<div class="hex-grid -hidden" data-rows="2" data-cols="4" data-ratio="0.10">
+<div class="hex-grid -hidden" data-rows="2" data-cols="3" data-ratio="0.30">
   <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
   <PolygoneStatic />
   <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
@@ -24,6 +24,7 @@ import PolygoneStatic from "./PolygoneStatic.astro";
 <style lang="scss">
   .hex-grid {
     display: grid;
+    gap: 1px;
     /* colonnes et lignes définies par le script */
 
     svg {

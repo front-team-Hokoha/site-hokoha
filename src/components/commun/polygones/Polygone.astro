@@ -8,17 +8,18 @@ interface Props {
 }
 const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
+<div class="polygon-container">
+	<div class={`polygon-shape ${color ?? ''}`}  style={imageUrl ? `background-image: url(${imageUrl});` : undefined}>
+		{(!imageUrl || videoUrl) && (
+			<span class="polygon-text">{frontText}</span>
+		)}
 
-<div class={`polygon-shape ${color ?? ''}`}  style={imageUrl ? `background-image: url(${imageUrl});` : undefined}>
-	{(!imageUrl || videoUrl) && (
-		<span class="polygon-text">{frontText}</span>
-	)}
-
-	{videoUrl && (
-		<video autoplay muted loop>
-			<source src={videoUrl} type="video/mp4">
-		</video>
-	)}
+		{videoUrl && (
+			<video autoplay muted loop>
+				<source src={videoUrl} type="video/mp4">
+			</video>
+		)}
+	</div>
 </div>
 
 <style lang="scss">
@@ -27,18 +28,13 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		position: relative;
 		height: 128px;
 		width: 110.851px;
-		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-		//   clip-path: path("M50% 0 Q54% 0 57% 4% L96% 22% Q100% 25% 100% 29% L100% 71% Q100% 75% 96% 78% L57% 96% Q54% 100% 50% 100% L43% 96% L4% 78% Q0% 75% 0% 71% L0% 29% Q0% 25% 4% 22% L43% 4% Q46% 0 50% 0 Z");
-		
+		// clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		clip-path: path("M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z");
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
 		background-size: cover;
-		background-color: rgb(255, 255, 255, 0.10);
-		backdrop-filter: blur(90%);
-		outline: 2px dotted white;
-		padding: 2px;
+		background-color: rgba(255, 255, 255, 0.39);
 
 		.polygone-text {
 			color: #2C5F8A;
@@ -79,10 +75,6 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 	.-objet {
 		background-color: rgb(80, 171, 20);
 		color: black
-	}
-
-	.-nothing {
-		background-color: white;
 	}
 
 	.-stroke {
