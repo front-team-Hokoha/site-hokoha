@@ -1,54 +1,70 @@
-<section class="flex-grid">
-
-  <div class="col col-1"></div>
-  
-  <div class="col col-14">
-    <!-- <h2 class="sok-offres__title">
-      Pour vos produits, vos services et vos process.
-    </h2> -->
-
-
-    <div class="sok-offres__item">
-      <span class="oka-data -xs -crop">01</span>
-      <span class="oka-h -md">Solutions Web</span>
-    </div>
-    <hr class="oka-divider" aria-hidden="true">
-    <div class="sok-offres__item">
-      <span class="oka-data -xs -crop">02</span>
-      <span class="oka-h -md">Logiciels Métiers</span>
-    </div>
-    <hr class="oka-divider" aria-hidden="true">
-    <div class="sok-offres__item">
-      <span class="oka-data -xs -crop">03</span>
-      <span class="oka-h -md">Application Mobile</span>
-    </div>
-    <hr class="oka-divider" aria-hidden="true">
-    <div class="sok-offres__item">
-      <span class="oka-data -xs -crop">04</span>
-      <span class="oka-h -md">Intelligence Artificielle</span>
-    </div>
-    <hr class="oka-divider" aria-hidden="true">
-    <div class="sok-offres__item">
-      <span class="oka-data -xs -crop">05</span>
-      <span class="oka-h -md">Objets Connectées</span>
-    </div>
-
+<div class="sok-offres col col-16">
+  <div class="sok-offres__item">
+    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+    <span class="oka-data -xs -crop">01</span>
+    <span class="oka-h -sm -center">Solutions Web</span>
   </div>
-
-</section>
-
-
-
+  <hr class="oka-divider" aria-hidden="true">
+  <div class="sok-offres__item">
+    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+    <span class="oka-data -xs -crop">02</span>
+    <span class="oka-h -sm -center">Logiciels Métiers</span>
+  </div>
+  <hr class="oka-divider" aria-hidden="true">
+  <div class="sok-offres__item">
+    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+    <span class="oka-data -xs -crop">03</span>
+    <span class="oka-h -sm -center">Application Mobile</span>
+  </div>
+  <hr class="oka-divider" aria-hidden="true">
+  <div class="sok-offres__item">
+    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+    <span class="oka-data -xs -crop">04</span>
+    <span class="oka-h -sm -center">Intelligence Artificielle</span>
+  </div>
+  <hr class="oka-divider" aria-hidden="true">
+  <div class="sok-offres__item">
+    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+    <span class="oka-data -xs -crop">05</span>
+    <span class="oka-h -sm -center">Objets Connectées</span>
+  </div>
+</div>
 
 
 <style lang="scss">
+  .oka-h {
+    padding: 0;
+  }
+
+  .oka-h, .oka-text, .oka-data {
+    color: var(--sok-color-fg-on_surface);
+  }
 
   .sok-offres {
+    position:sticky;
+    top: 14rem;
 
     &__item {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 2rem;
+      padding: 1rem 0;
+      overflow: hidden;
+      cursor: pointer;
+
+      & > .sok-arrow {
+        margin-left: -4rem;
+        // transition: margin .15s ease-in-out;
+        transition: margin .15s cubic-bezier(.63,.78,.25,1);
+      }
+
+      &:hover > .sok-arrow {
+        margin-left: 2rem;
+      }
     }
+  }
+
+  .oka-divider {
+    // background-color: rgba(255, 255, 255, .25);
   }
 </style>

@@ -9,6 +9,25 @@ interface Props {
 const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
 <div class="polygon-container">
+	<div class="polygon-stroke">
+		<svg class="-dotted" viewBox="0 0 110.851 128">
+			<defs>
+				<clipPath id="clipHex">
+					<path d="M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z"/>
+				</clipPath>
+			</defs>
+
+			<g clip-path="url(#clipHex)">
+				<path
+					d="M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z"
+					fill="none"
+					stroke="rgba(255, 255, 255, 0.25)"
+					stroke-width="3"
+				/>
+			</g>
+		</svg>
+	</div>
+
 	<div class={`polygon-shape ${color ?? ''}`}  style={imageUrl ? `background-image: url(${imageUrl});` : undefined}>
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
@@ -23,18 +42,55 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 </div>
 
 <style lang="scss">
+	.polygon-container {
+		position: relative;
+		// height: 128px;
+		// width: 110.851px;
+		width: 100%;
+		height: 100%;
+		z-index: 90;
+
+		& > * {
+			z-index: 90
+		}
+	}
+
+	.polygon-stroke {
+		position: absolute;
+		content: "";
+		inset: 0;
+		z-index: 99;
+
+		& > svg path {
+			shape-rendering: crispEdges;
+  			vector-effect: non-scaling-stroke;
+		}
+
+		& > .-dotted path {
+			stroke-dasharray: 4 4;
+		}
+
+		& > .-solid path {
+			stroke-dasharray: 0;
+		}
+
+		& > .-none path {
+			stroke-width: 0;
+			stroke-dasharray: 0;
+		}
+	}
 
   .polygon-shape {
 		position: relative;
-		height: 128px;
-		width: 110.851px;
-		// clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		width: 100%;
+		height: 100%;
 		clip-path: path("M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z");
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		background-size: cover;
-		background-color: rgba(255, 255, 255, 0.39);
+		background-color: rgba(255, 255, 255, 0.03);
+		overflow: hidden;
 
 		.polygone-text {
 			color: #2C5F8A;
@@ -53,27 +109,27 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 	}
 
 	.-web {
-		background-color: rgb(15, 36, 230);
+		background-color: var(--sok-color-bg-blue-800);
 		color: white
 	}
 
 	.-metier {
-		background-color: rgb(255, 162, 0);
-		color: black
+		background-color: var(--sok-color-bg-blue-600);
+		color: white
 	}
 
 	.-app {
-		background-color: rgb(28, 168, 100);
-		color: white
+		background-color: var(--sok-color-bg-blue-400);
+		color: black
 	}
 
 	.-ia {
-		background-color: rgb(38, 112, 208);
-		color: white
+		background-color: var(--sok-color-bg-blue-200);
+		color: blac
 	}
 
 	.-objet {
-		background-color: rgb(80, 171, 20);
+		background-color: var(--sok-color-bg-blue-100);
 		color: black
 	}
 
@@ -86,5 +142,4 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		height: 100%;
 		object-fit: cover;
 	}
-
 </style>

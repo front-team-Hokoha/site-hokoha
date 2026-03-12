@@ -88,9 +88,9 @@ document.addEventListener("astro:page-load", () => {
     // +2 : les lignes paires sont décalées d'une demi-cellule, leur dernier hex
     // occupe la colonne (COLS*2+2), il faut donc au moins ce nombre de tracks.
     const trackCols = COLS * 2 + 2;
-    grid.style.gridTemplateColumns = `repeat(${trackCols}, 55.425px)`;
+    grid.style.gridTemplateColumns = `repeat(${trackCols}, 55.425px)`; // taille non variable
     const rowHeights = Array.from({ length: ROWS }, (_, i) =>
-      i === ROWS - 1 ? '128px' : '96px'
+      i === ROWS - 1 ? '128px' : '96px' // taille non variable
     );
     grid.style.gridTemplateRows = rowHeights.join(' ');
   
