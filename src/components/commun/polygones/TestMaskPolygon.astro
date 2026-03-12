@@ -1,0 +1,43 @@
+---
+import PolygoneStatic from "./PolygoneStaticMask.astro";
+import PolygoneFlip from "./PolygoneFlip.astro";
+
+const { visible } = Astro.props
+---
+
+<div class={`hex-grid -hidden ${visible}`} data-rows="5" data-cols="4" data-ratio="0">
+  <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneFlip color=""/>
+  <PolygoneFlip color=""/>
+  <PolygoneStatic color="-masque"/>
+
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-masque"/>
+</div>
+
+<style lang="scss">
+  .hex-grid {
+    display: grid;
+    gap: 1px;
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+
+    &.-hidden {
+      visibility: hidden;
+    }
+  }
+</style>
+

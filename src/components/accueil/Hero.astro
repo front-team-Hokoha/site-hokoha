@@ -3,6 +3,7 @@ import Offres from "./Offres.astro";
 import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
+import TestMaskPolygon from "../commun/polygones/TestMaskPolygon.astro"
 ---
 
 <section class="flex-grid sok-hero">
@@ -60,6 +61,16 @@ import Revealtext from "../../animations/RevealText.astro";
          <GrilleVierge />
       </div>
    </div>
+
+   <div class="test-mask">
+      <div class="mask-img"></div>
+      <!-- <img class="mask-img" src="/src/assets/images/test.jpg" alt=""> -->
+      <div class="masque">
+         <TestMaskPolygon visible="" />
+
+         <div class="mask-form"></div>
+      </div>
+   </div>
 </section>
 
 <style lang="scss">
@@ -109,5 +120,35 @@ import Revealtext from "../../animations/RevealText.astro";
    .sok-grid-img {
       position: absolute;
       top: 70vh;
+   }
+
+   .test-mask {
+      position: relative;
+      overflow: hidden;
+      width: 400px;
+      height: 400px;
+      border: 2px solid red;
+      background: white;
+   }
+
+
+   .mask-img {
+      background-image: url("/src/assets/images/test.jpg");
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen; 
+      z-index: 99;
+   }
+
+   .masque {
+      position: absolute;
+      inset: 0;
+   }
+
+   .mask-form {
+      position: absolute;
+      width: 300px;
+      height: 100px;
+      background-color: #000;
    }
 </style>
