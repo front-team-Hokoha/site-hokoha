@@ -5,25 +5,16 @@
 <script>
    import { gsap } from "gsap";
 
-   const tl = gsap.timeline();
-   const maskContainer = document.querySelector('.maskContainer');
-   console.log(maskContainer);
-   
-   const polygons = maskContainer.querySelectorAll('.polygone[visibility="visible"]');
+   function maskAnimation(polygons: string, amount: number, from: string, axis: "x" | "y") {
+      // const polygons = maskContainer.querySelectorAll('.-visible');
 
-   // Settings
-   const amount = 2; // durée totale en seconde de l'animation
-   const from = "start"; // valeur possible : "start", "center", "end", "edges" ou "random"
-   const axis = "x"; // valeur possible : "x" ou "y"
-
-   function maskAnimation(amount: number, from: string, axis: "x" | "y") {
-      tl.to(polygons, {
+      gsap.to(polygons, {
          scale: 0.1,
          rotate: 360,
          ease: "power2.out",
          stagger: {
             amount: amount,
-            grid: [5, 4],
+            grid: "auto",
             from: from,
             axis: axis,
          },
@@ -31,6 +22,20 @@
    }
 
    document.addEventListener("astro:page-load", () => {
-      maskAnimation(amount, from, axis);
+
+      const tl = gsap.timeline();
+      const maskContainer = document.querySelector('.maskContainer');
+      console.log(maskContainer);
+      
+      const polygons = maskContainer.querySelectorAll('.-visible');
+      console.log(polygons);
+      
+
+      // Settings
+      const amount = 2; // durée totale en seconde de l'animation
+      const from = "start"; // valeur possible : "start", "center", "end", "edges" ou "random"
+      const axis = "y"; // valeur possible : "x" ou "y"
+      
+      maskAnimation(polygons, amount, from, axis);
    });
 </script>
