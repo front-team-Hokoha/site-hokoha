@@ -1,7 +1,7 @@
 ---
 import Revealtext from "../../animations/RevealText.astro";
-import Hexagone from "../../components/commun/polygones/PolygonesWhite.astro";
-
+import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
+import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 ---
 
 <section class="flex-grid sok-hero">
@@ -10,18 +10,18 @@ import Hexagone from "../../components/commun/polygones/PolygonesWhite.astro";
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
  
-
+      <div class="static -md">
       <Revealtext>
          <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
       </Revealtext>
-
+      </div>
       <p class="oka-text -lg">
          Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
          cras. Dui nec amet mauris tempor interdum facilisi eget.
       </p>
 
       <div class="oka-spacer  -lg" aria-hidden="true"></div>
-      <!-- TODO Créer un component Call to action -->
+  
       <button class="oka-bt -lg -outlined   ">
          <div class="oka-bt__lbl">call to action</div>
          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
@@ -66,12 +66,19 @@ import Hexagone from "../../components/commun/polygones/PolygonesWhite.astro";
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
    </div>
-    <div class="col col-1"></div>
+    <div class="col col-1">
+      <!-- <GrilleVierge /> -->
+
+    </div>
    <div class="col col-6">
       <div class="hexa">
-         <Hexagone />
+         <GrilleVierge />
+         <GrilleOffres />
+         <GrilleVierge />
       </div>
    </div>
+
+
    
 
 
@@ -84,6 +91,12 @@ import Hexagone from "../../components/commun/polygones/PolygonesWhite.astro";
       top: 0;
       //height: 40dvh;
       //margin-bottom:8rem; 
+   }
+
+
+   .static{
+      position:sticky;
+      top: 0;
    }
 
    .hexa{

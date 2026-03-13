@@ -1,0 +1,34 @@
+---
+import PolygoneStatic from "./PolygoneStatic.astro";
+---
+
+<div class="hex-grid" data-rows="2" data-cols="4" data-ratio="0.10">
+  <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
+  <PolygoneStatic />
+  <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+</div>
+
+<style lang="scss">
+  .hex-grid {
+    display: grid;
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+  }
+</style>
+
