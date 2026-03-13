@@ -52,27 +52,22 @@ import RevealMask from "../../animations/RevealMask.astro";
 
    </div>
     <div class="col col-1"></div>
-   <!-- <div class="col col-5">
+   <div class="col col-5">
       <div class="hexa">
          <GrilleVierge />
          <GrilleOffres />
          <GrilleVierge />
       </div>
-   </div> -->
+   </div>
 
    <!-- === mask de polygone pour les images === -->
-   <div class="sok-mask-container">
+   <!-- <div class="sok-mask-container">
       <div class="sok-mask-img"></div>
       
       <RevealMask>
          <TestMaskPolygon addClass="maskContainer" />
       </RevealMask>
-
-      <!-- <div class="sok-mask">
-         <TestMaskPolygon addClass="" />
-         <div class="mask-form"></div>
-      </div> -->
-   </div>
+   </div> -->
 </section>
 
 <style lang="scss">
@@ -130,6 +125,7 @@ import RevealMask from "../../animations/RevealMask.astro";
       width: 400px;
       height: 400px;
       border: 2px solid red;
+      /* Background de couleur blanc obligatoire pour ne pas voir l'image de fond */
       background: white;
    }
 

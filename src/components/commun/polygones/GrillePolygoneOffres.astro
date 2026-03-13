@@ -107,10 +107,10 @@ document.addEventListener("astro:page-load", () => {
     }
   
     // Mélange aléatoire des positions (Fisher-Yates)
-    for (let i = positions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [positions[i], positions[j]] = [positions[j], positions[i]];
-    }
+    // for (let i = positions.length - 1; i > 0; i--) {
+    //   const j = Math.floor(Math.random() * (i + 1));
+    //   [positions[i], positions[j]] = [positions[j], positions[i]];
+    // }
   
     // Nombre de cellules visibles
     const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
