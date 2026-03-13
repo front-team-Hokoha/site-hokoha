@@ -4,6 +4,7 @@ import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
 import TestMaskPolygon from "../commun/polygones/TestMaskPolygon.astro"
+import RevealMask from "../../animations/RevealMask.astro";
 ---
 
 <section class="flex-grid sok-hero">
@@ -62,14 +63,18 @@ import TestMaskPolygon from "../commun/polygones/TestMaskPolygon.astro"
       </div>
    </div>
 
-   <div class="test-mask">
-      <div class="mask-img"></div>
-      <!-- <img class="mask-img" src="/src/assets/images/test.jpg" alt=""> -->
-      <div class="masque">
-         <TestMaskPolygon visible="" />
+   <!-- === mask de polygone pour les images === -->
+   <div class="sok-mask-container">
+      <div class="sok-mask-img"></div>
+      
+      <RevealMask>
+         <TestMaskPolygon addClass="maskContainer" />
+      </RevealMask>
 
+      <!-- <div class="sok-mask">
+         <TestMaskPolygon addClass="" />
          <div class="mask-form"></div>
-      </div>
+      </div> -->
    </div>
 </section>
 
@@ -122,7 +127,7 @@ import TestMaskPolygon from "../commun/polygones/TestMaskPolygon.astro"
       top: 70vh;
    }
 
-   .test-mask {
+   .sok-mask-container {
       position: relative;
       overflow: hidden;
       width: 400px;
@@ -131,24 +136,32 @@ import TestMaskPolygon from "../commun/polygones/TestMaskPolygon.astro"
       background: white;
    }
 
-
-   .mask-img {
-      background-image: url("/src/assets/images/test.jpg");
+   .sok-mask-img {
+      background-image: url("/src/assets/images/test2.jpg");
       position: absolute;
       inset: 0;
       mix-blend-mode: screen; 
       z-index: 99;
    }
 
-   .masque {
+   .sok-mask {
       position: absolute;
       inset: 0;
    }
 
-   .mask-form {
-      position: absolute;
-      width: 300px;
-      height: 100px;
-      background-color: #000;
-   }
+   // .mask-form {
+   //    position: absolute;
+   //    width: 300px;
+   //    height: 100px;
+   //    background-color: #000;
+   // }
 </style>
+
+
+<script>
+	import { gsap } from "gsap";
+	import { SplitText } from "gsap/SplitText";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(SplitText, ScrollTrigger);
+</script>

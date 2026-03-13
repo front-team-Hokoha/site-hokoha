@@ -1,28 +1,32 @@
 ---
-import PolygoneStatic from "./PolygoneStaticMask.astro";
+import PolygoneStatic from "./PolygoneStatic.astro";
 import PolygoneFlip from "./PolygoneFlip.astro";
 
-const { visible } = Astro.props
+const { addClass } = Astro.props
 ---
 
-<div class={`hex-grid -hidden ${visible}`} data-rows="5" data-cols="4" data-ratio="0">
-  <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneFlip color=""/>
-  <PolygoneFlip color=""/>
-  <PolygoneStatic color="-masque"/>
+<div class={`hex-grid -hidden ${addClass}`} data-rows="5" data-cols="4" data-ratio="0.10">
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
 
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
-  <PolygoneStatic color="-masque"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
 </div>
 
 <style lang="scss">
