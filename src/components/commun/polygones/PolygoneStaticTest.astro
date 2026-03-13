@@ -1,0 +1,50 @@
+---
+import Shape from "./Shape.astro";
+
+interface Props {
+  frontText?: string;
+  backText?:  string;
+  color?: string;
+	videoUrl?: string;
+	imageUrl?: string;
+}
+const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
+---
+
+<div class="polygone">
+  <div class="polygone-inner">
+
+    <!-- Face avant -->
+    <div class="polygone-face polygone-front">
+      <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl}  color={color}/>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  .polygone {
+    width: 110.851px;
+    height: 128px;
+  }
+</style>
+
+<style lang="scss">
+  .polygone {
+    perspective: 800px;
+  }
+
+  .polygone-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .polygone-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+</style>

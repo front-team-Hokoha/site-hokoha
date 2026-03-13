@@ -1,5 +1,5 @@
 ---
-import Polygone from "./Polygone.astro";
+import Shape from "./Shape.astro";
 
 interface Props {
   frontText?: string;
@@ -12,34 +12,20 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
 
 <div class="polygone">
-  <div class="polygone-inner">
-
-    <!-- Face avant -->
-    <div class="polygone-face polygone-front">
-      <Polygone frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl}  color={color}/>
-    </div>
-  </div>
+  <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl}  color={color}/>
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
   .polygone {
-    perspective: 800px;
     width: 110.851px;
     height: 128px;
-  }
 
-  .polygone-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
+    &.-visible {
+      visibility: visible;
+    }
 
-  .polygone-face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    &.-hidden {
+      visibility: hidden;
+    }
   }
-
 </style>

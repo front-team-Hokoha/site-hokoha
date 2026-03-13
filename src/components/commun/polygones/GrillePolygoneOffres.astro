@@ -107,10 +107,10 @@ document.addEventListener("astro:page-load", () => {
     }
   
     // Mélange aléatoire des positions (Fisher-Yates)
-    for (let i = positions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [positions[i], positions[j]] = [positions[j], positions[i]];
-    }
+    // for (let i = positions.length - 1; i > 0; i--) {
+    //   const j = Math.floor(Math.random() * (i + 1));
+    //   [positions[i], positions[j]] = [positions[j], positions[i]];
+    // }
   
     // Nombre de cellules visibles
     const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
@@ -126,7 +126,15 @@ document.addEventListener("astro:page-load", () => {
       svg.style.gridColumn = `${colStart} / ${colStart + 2}`;
       svg.style.gridRow    = String(row);
       // Masquer les SVG qui tombent sur une cellule "vide"
-      svg.style.visibility = i < visibleCount ? 'visible' : 'hidden';
+      let polygonModifier = null;
+
+      if (i < visibleCount) {
+        polygonModifier = '-visible';
+      } else {
+        polygonModifier = '-hidden';
+      }
+      // svg.style.visibility = i < visibleCount ? 'visible' : 'hidden';
+      svg.classList.add(polygonModifier);
     });
 
   });
