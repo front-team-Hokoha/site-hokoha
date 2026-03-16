@@ -3,7 +3,16 @@
 ---
 
 
-<div class="col col-14 oka-grid240 oka-avantages oka-darkMode oka-surface">
-
+<div class="oka-avantages col col-14 oka-grid240 oka-darkMode oka-surface">
    <slot />
 </div>
+
+<style lang="scss">
+   .oka-avantages {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+   }
+</style>

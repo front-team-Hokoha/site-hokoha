@@ -1,7 +1,10 @@
 ---
+// ===== Layout =====
 import Layout from '../layouts/Layout.astro';
-import Projets from '../components/realisations/Projets.astro';
+// ===== Composants d'animations =====
 import RevealText from '../animations/RevealText.astro';
+// ===== Componsants de la page =====
+import Projets from '../components/realisations/Projets.astro';
 import Diversite from '../components/realisations/Diversite.astro';
 ---
 
@@ -9,9 +12,10 @@ import Diversite from '../components/realisations/Diversite.astro';
     <!-- ===== Hero Section ===== -->
     <section class="flex-grid">
       <div class="col col-1"></div>
-      <div class="col col-10">
+      <div class="col col-8">
+        <div class="oka-spacer -xl"></div>
         <RevealText>
-          <h1 class="oka-h -giant">Lorem ipsum ac a scelerisquealiquam fames.</h1>
+          <h1 class="oka-h -xl">Lorem ipsum ac a scelerisquealiquam fames.</h1>
         </RevealText>
 
         <p class="oka-text -lg">
@@ -29,3 +33,10 @@ import Diversite from '../components/realisations/Diversite.astro';
     <!-- ===== Diversités ===== -->
     <Diversite />
 </Layout>
+
+
+<style lang="scss">
+  .-xl {
+    padding-top: 0
+  }
+</style>
