@@ -2,7 +2,7 @@
 
 
 <!-- HEADER -->
-<header class="layout-app__header oka-appbar oka-darkMode sok-header">
+<header class="layout-app__header oka-appbar ---oka-darkMode sok-header">
   
   <div class="oka-appbar__row oka-app-wrap-fluid">
     <section class="oka-appbar__left" style="flex-shrink:1;padding-right:1rem;padding-bottom:0.5rem; padding-left: 0; padding-top:0.25rem"> 
@@ -16,22 +16,22 @@
 	<section class="oka-appbar__right -hiden">
 
 		
-			<a class="oka-bt " href="/">
+			<a class="oka-bt -ghost" href="/">
 				<div class="oka-bt__lbl">Accueil</div>
 			</a>
 	
 		
-			<a class="oka-bt " href="methodologie">
+			<a class="oka-bt -ghost" href="methodologie">
 				<div class="oka-bt__lbl">Méthodologie</div>
 			</a>
 		
 		
-			<a class="oka-bt " href="realisations">
+			<a class="oka-bt -ghost" href="realisations">
 				<div class="oka-bt__lbl">Réalisations</div>
 			</a>
 		
 		
-			<a class="oka-bt " href="equipe">
+			<a class="oka-bt -ghost" href="equipe">
 				<div class="oka-bt__lbl">Équipe</div>
 			</a>
 		
@@ -54,10 +54,11 @@
 
 <style lang="scss">
 	.sok-header {
+		position:relative;
 		// display: flex;
 		// justify-content: space-around;
 		// padding: 20px;
-		background-color: var(--sok-color-bg-blue-500)
+		background-color: transparent; //var(--sok-color-bg-blue-500)
 	}
 
 	// .-hiden {

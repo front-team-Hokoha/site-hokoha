@@ -1,34 +1,76 @@
-<div class="sok-offres col col-16">
-  <div class="sok-offres__item">
-    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-    <span class="oka-data -xs -crop">01</span>
-    <span class="oka-h -sm -center">Solutions Web</span>
+---
+import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
+import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
+import { hexHeight, hexWidth } from "../../utils/hexConfig";
+---
+
+<section class="oka-darkMode oka-surface">
+   
+
+  <div class="flex-grid">
+
+    <div class="col col-16" >
+
+
+      <!-- ===== Offres ===== -->
+      
+  <div class="sok-offres">
+    <div class="sok-offres__item">
+      <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+      <span class="oka-data -xs -crop">01</span>
+      <span class="oka-h -sm -center">Solutions Web</span>
+    </div>
+   
+    
+    <div class="sok-offres__item">
+      <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+      <span class="oka-data -xs -crop">02</span>
+      <span class="oka-h -sm -center">Logiciels Métiers</span>
+    </div>
+    
+    
+    <div class="sok-offres__item">
+      <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+      <span class="oka-data -xs -crop">03</span>
+      <span class="oka-h -sm -center">Application Mobile</span>
+    </div>
+   
+    
+    <div class="sok-offres__item">
+      <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+      <span class="oka-data -xs -crop">04</span>
+      <span class="oka-h -sm -center">Intelligence Artificielle</span>
+    </div>
+    
+    
+    <div class="sok-offres__item">
+      <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+      <span class="oka-data -xs -crop">05</span>
+      <span class="oka-h -sm -center">Objets Connectées</span>
+    </div>
   </div>
-  <hr class="oka-divider" aria-hidden="true">
-  <div class="sok-offres__item">
-    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-    <span class="oka-data -xs -crop">02</span>
-    <span class="oka-h -sm -center">Logiciels Métiers</span>
+
+
+      <GrilleVierge  rows="3"/>
+
+  
+      <GrilleOffres />
+      <GrilleVierge />
+    </div>
+
   </div>
-  <hr class="oka-divider" aria-hidden="true">
-  <div class="sok-offres__item">
-    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-    <span class="oka-data -xs -crop">03</span>
-    <span class="oka-h -sm -center">Application Mobile</span>
-  </div>
-  <hr class="oka-divider" aria-hidden="true">
-  <div class="sok-offres__item">
-    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-    <span class="oka-data -xs -crop">04</span>
-    <span class="oka-h -sm -center">Intelligence Artificielle</span>
-  </div>
-  <hr class="oka-divider" aria-hidden="true">
-  <div class="sok-offres__item">
-    <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-    <span class="oka-data -xs -crop">05</span>
-    <span class="oka-h -sm -center">Objets Connectées</span>
-  </div>
-</div>
+
+
+<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+
+  
+  <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+  <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+  <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+</section>
+
 
 
 <style lang="scss">
@@ -40,12 +82,27 @@
     color: var(--sok-color-fg-on_surface);
   }
 
+
+
+  .flex-grid{
+    position: sticky;
+    top: 6rem;
+  }
+
+
   .sok-offres {
+
+     height: calc(var(--hex-height) * 1);
+     margin-bottom: calc(var(--hex-height) * -2);
     position:sticky;
-    top: 14rem;
+    top: 0rem;
+
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
 
     &__item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 2rem;
       padding: 1rem 0;
@@ -64,7 +121,5 @@
     }
   }
 
-  .oka-divider {
-    // background-color: rgba(255, 255, 255, .25);
-  }
+
 </style>

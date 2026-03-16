@@ -5,6 +5,7 @@
 
 <style lang="scss">
 	.reveal-text {
+		// border:1px solid red !important;
 		&.-hidden {
 			visibility: hidden;	
 		}
@@ -21,6 +22,7 @@
 
 	// Charger les éléments dès que la page est chargée
 	document.addEventListener("astro:page-load", () => {
+
 		const revealtextes = document.querySelectorAll(".reveal-text");
 
 		// Vérifie si les components Revealtext existent sur la page

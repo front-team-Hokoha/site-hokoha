@@ -1,4 +1,7 @@
 ---
+import { hexPath, hexHeight, hexWidth } from '../../../utils/hexConfig';
+
+
 interface Props {
 	frontText?: string;
 	backText?:  string;
@@ -8,27 +11,27 @@ interface Props {
 }
 const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
-<div class="polygone-container">
+<div class="polygone-container" style={`--polygon-height: ${hexHeight}px; --polygon-width: ${hexWidth}px;`}>
 	<div class="polygon-stroke">
-		<svg class="-dotted" viewBox="0 0 110.851 128">
+		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`}>
 			<defs>
 				<clipPath id="clipHex">
-					<path d="M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z"/>
+					<path d={hexPath}/>
 				</clipPath>
 			</defs>
 
 			<g clip-path="url(#clipHex)">
 				<path
-					d="M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z"
+					d={hexPath}
 					fill="none"
-					stroke="rgba(255, 255, 255, 0.25)"
+					stroke="rgba(255, 255, 255, 0.15)"
 					stroke-width="3"
 				/>
 			</g>
 		</svg>
 	</div>
 
-	<div class={`polygon-shape ${color ?? ''}`}  style={imageUrl ? `background-image: url(${imageUrl});` : undefined}>
+	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: path('${hexPath}');${imageUrl ? ` background-image: url(${imageUrl});` : ''}`}>
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
 		)}
@@ -44,8 +47,8 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 <style lang="scss">
 	.polygone-container {
 		position: relative;
-		height: 128px;
-		width: 110.851px;
+		height: var(--polygon-height);
+		width: var(--polygon-width);
 		// width: 100%;
 		// height: 100%;
 		z-index: 90;
@@ -84,7 +87,6 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		position: relative;
 		width: 100%;
 		height: 100%;
-		clip-path: path("M 47 4 Q 55.425 0 63 4 L 102 28 Q 110.851 32 110.851 40 L 110.851 88 Q 110.851 96 102 100 L 63 124 Q 55.425 128 47 124 L 8 100 Q 0 96 0 88 L 0 40 Q 0 32 8 28 Z");
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -147,3 +149,37 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		background-color: rgb(0, 0, 0);
 	}
 </style>
+
+<script>
+import { getHexSize } from '../../../utils/hexConfig';
+
+function updateShape(container: HTMLElement) {
+  const { width, height, path } = getHexSize(window.innerWidth);
+
+  container.style.setProperty('--polygon-height', `${height}px`);
+  container.style.setProperty('--polygon-width',  `${width}px`);
+
+  const svg = container.querySelector('svg');
+  if (svg) {
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.querySelectorAll('path').forEach(p => p.setAttribute('d', path));
+  }
+
+  const shape = container.querySelector<HTMLElement>('.polygon-shape');
+  if (shape) {
+    const bg = shape.style.backgroundImage;
+    shape.style.cssText = `clip-path: path('${path}');${bg ? ` background-image: ${bg};` : ''}`;
+  }
+}
+
+document.addEventListener('astro:page-load', () => {
+  const containers = document.querySelectorAll<HTMLElement>('.polygone-container');
+  containers.forEach(updateShape);
+
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => containers.forEach(updateShape), 100);
+  });
+});
+</script>

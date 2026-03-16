@@ -1,9 +1,14 @@
 ---
 import PolygoneFlip from "./PolygoneFlip.astro";
 import PolygoneStatic from "./PolygoneStatic.astro";
+
+import { hexHeight, hexWidth } from "../../../utils/hexConfig";
+
+
+
 ---
 
-<div class="hex-grid -hidden" data-rows="3" data-cols="4" data-ratio="0.3">
+<div class="hex-grid -hidden" data-rows="3" data-cols="10" data-ratio="0.3" data-hex-width={hexWidth} data-hex-height={hexHeight} >
 
   <PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-web"/>
   <PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
@@ -22,7 +27,7 @@ import PolygoneStatic from "./PolygoneStatic.astro";
   <PolygoneStatic frontText="WeCERT" color="-web" />
   <PolygoneStatic frontText="Domaine" videoUrl="/src/assets/images/test.png" color="-ia" />
 
-  <PolygoneStatic />
+  <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
   <PolygoneStatic />
   <PolygoneStatic />
   <PolygoneStatic />
@@ -36,12 +41,12 @@ import PolygoneStatic from "./PolygoneStatic.astro";
   <PolygoneStatic />
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
   .hex-grid {
     display: grid;
-    margin-bottom: -64px;
+    margin-bottom: calc(var(--hex-height) / -4); // compense le translateY appliqué aux hexagones pour éviter les coupures
     //transform: translate(-55.425px, -32px); // cas grille supérieure sur nb row impair
-    transform: translate( 0, -32px); // cas grille supérieure sur nb row pair
+    transform: translate( 0, calc(var(--hex-height) / -4)); // cas grille supérieure sur nb row pair
     gap: 1px;
     /* colonnes et lignes définies par le script */
 
@@ -55,89 +60,67 @@ import PolygoneStatic from "./PolygoneStatic.astro";
 
 
 <script>
-document.addEventListener("astro:page-load", () => {
-  // // ── Paramètres ────────────────────────────────────────────
-  // const COLS        = 4;     // nombre de colonnes d'hexagones
-  // const ROWS        = 8;     // nombre de lignes d'hexagones
-  // const EMPTY_RATIO = 0.50;  // proportion de cellules vides (0 → 1)
-  // // ──────────────────────────────────────────────────────────
+import { getHexSize } from '../../../utils/hexConfig';
 
+function layoutGrid(grid: HTMLElement) {
+  const COLS        = Number(grid.dataset.cols);
+  const ROWS        = Number(grid.dataset.rows);
+  const EMPTY_RATIO = Number(grid.dataset.ratio);
+  const { width: hexWidth, height: hexHeight } = getHexSize(window.innerWidth);
 
-  const grids = document.querySelectorAll('.hex-grid');
+  // Mettre à jour les CSS custom properties pour le SCSS
+  document.body.style.setProperty('--hex-height', `${hexHeight}px`);
+  document.body.style.setProperty('--hex-width',  `${hexWidth}px`);
 
-  
-  grids.forEach((grid) => {
-    // Afficher les Grilles lors du chargement de la page
-    grid.classList.remove("-hidden");
+  const svgs = Array.from(grid.querySelectorAll<HTMLElement>('.polygone'));
 
+  const trackCols = COLS * 2 + 2;
+  grid.style.gridTemplateColumns = `repeat(${trackCols}, ${hexWidth / 2}px)`;
+  const rowHeights = Array.from({ length: ROWS }, (_, i) =>
+    i === ROWS - 1 ? `${hexHeight}px` : `${hexHeight * 0.75}px`
+  );
+  grid.style.gridTemplateRows = rowHeights.join(' ');
 
-    if (!grid) return;
-
-   // ── Paramètres ────────────────────────────────────────────
-    const COLS        = grid.dataset.cols;  
-    const ROWS        = grid.dataset.rows;
-    const EMPTY_RATIO = grid.dataset.ratio;
-   // ──────────────────────────────────────────────────────────
-
-
-  
-    // Récupérer les SVG déjà présents dans le DOM
-    const svgs = Array.from(grid.querySelectorAll('.polygone'));
-  
-    // Définir les tracks CSS
-    // +2 : les lignes paires sont décalées d'une demi-cellule, leur dernier hex
-    // occupe la colonne (COLS*2+2), il faut donc au moins ce nombre de tracks.
-    const trackCols = COLS * 2 + 2;
-    grid.style.gridTemplateColumns = `repeat(${trackCols}, 55.425px)`; // taille non variable
-    const rowHeights = Array.from({ length: ROWS }, (_, i) =>
-      i === ROWS - 1 ? '128px' : '96px' // taille non variable
-    );
-    grid.style.gridTemplateRows = rowHeights.join(' ');
-  
-    // Construire toutes les positions possibles
-    const positions = [];
-    for (let row = 1; row <= ROWS; row++) {
-      const isEven = row % 2 === 0;
-      for (let col = 1; col <= COLS; col++) {
-        const colStart = isEven
-          ? (col - 1) * 2 + 2
-          : (col - 1) * 2 + 1;
-        positions.push({ row, colStart });
-      }
+  const positions: { row: number; colStart: number }[] = [];
+  for (let row = 1; row <= ROWS; row++) {
+    const isEven = row % 2 === 0;
+    for (let col = 1; col <= COLS; col++) {
+      const colStart = isEven ? (col - 1) * 2 + 2 : (col - 1) * 2 + 1;
+      positions.push({ row, colStart });
     }
-  
-    // Mélange aléatoire des positions (Fisher-Yates)
-    // for (let i = positions.length - 1; i > 0; i--) {
-    //   const j = Math.floor(Math.random() * (i + 1));
-    //   [positions[i], positions[j]] = [positions[j], positions[i]];
-    // }
-  
-    // Nombre de cellules visibles
-    const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
-  
-    // Assigner chaque SVG existant à une position
-    svgs.forEach((svg, i) => {
-      if (i >= positions.length) {
-        // Plus de positions que de SVG : cacher les surplus
-        svg.style.display = 'none';
-        return;
-      }
-      const { row, colStart } = positions[i];
-      svg.style.gridColumn = `${colStart} / ${colStart + 2}`;
-      svg.style.gridRow    = String(row);
-      // Masquer les SVG qui tombent sur une cellule "vide"
-      let polygonModifier = null;
+  }
 
-      if (i < visibleCount) {
-        polygonModifier = '-visible';
-      } else {
-        polygonModifier = '-hidden';
-      }
-      // svg.style.visibility = i < visibleCount ? 'visible' : 'hidden';
-      svg.classList.add(polygonModifier);
-    });
+  // Mélange aléatoire des positions (Fisher-Yates)
+  for (let i = positions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [positions[i], positions[j]] = [positions[j], positions[i]];
+  }
 
+  const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
+
+  svgs.forEach((svg, i) => {
+    if (i >= positions.length) { svg.style.display = 'none'; return; }
+    const { row, colStart } = positions[i];
+    svg.style.gridColumn = `${colStart} / ${colStart + 2}`;
+    svg.style.gridRow    = String(row);
+    svg.classList.remove('-visible', '-hidden');
+    svg.classList.add(i < visibleCount ? '-visible' : '-hidden');
+  });
+}
+
+document.addEventListener("astro:page-load", () => {
+  const grids = document.querySelectorAll<HTMLElement>('.hex-grid');
+
+  grids.forEach((grid) => {
+    grid.classList.remove("-hidden");
+    layoutGrid(grid);
   });
 
+  // Recalcul responsive au redimensionnement (debounce 100ms)
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => grids.forEach(layoutGrid), 100);
+  });
 });
 </script>

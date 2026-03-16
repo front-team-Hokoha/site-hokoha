@@ -7,6 +7,7 @@ import Revealtext from "../../animations/RevealText.astro";
 <section class="inoverCtnr oka-darkMode oka-surface">
 
   <div >
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
     <Revealtext>
         <h2>
             « [Notre] seul but est de bien faire »
@@ -15,10 +16,9 @@ import Revealtext from "../../animations/RevealText.astro";
     <div class="oka-data -lg">Ernõ Rubik - Inventeur du Rubik's Cube</div>
     <div class="oka-spacer  -xxl" aria-hidden="true"></div>
       
-    <p>Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.</p>
+<div class="oka-h -giant">&</div>
 
-
-    <div class="zoom-word oka-h -giant" data-zoom-trigger>
+    <div class="zoom-word oka-h" data-zoom-trigger>
         inn<svg class="o-circle" data-zoom-circle viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" /></svg>ver.
     </div>
   </div>
@@ -45,8 +45,18 @@ import Revealtext from "../../animations/RevealText.astro";
     display:inline-block;
   }
 
+  .oka-h.-giant {
+    font-size: 50rem;
+    color: #1f2129;
+    z-index: -1;
+    position: absolute;
+
+  }
+
+
   .zoom-word {
     position: absolute;
+    z-index: 2;
     top: 50%;
     left: 50%;
     // --circle-offset-em : distance du bord gauche du mot au centre du cercle, en em
@@ -60,6 +70,8 @@ import Revealtext from "../../animations/RevealText.astro";
     text-wrap: nowrap;
     z-index: -99;
 
+    font-size:20rem;
+
  
   }
 
@@ -72,7 +84,7 @@ import Revealtext from "../../animations/RevealText.astro";
     margin-right: -0.02em;
 
     polygon {
-      fill: var(--oka-color-fg, #0a0a0a);
+      fill: #fff;
     }
   }
 
@@ -124,7 +136,7 @@ import Revealtext from "../../animations/RevealText.astro";
     });
 
     gsap.to(circle, {
-      rotation: 120,
+      //rotation: 120,
       ease: "none",
       transformOrigin: "50% 50%",
       scrollTrigger: {

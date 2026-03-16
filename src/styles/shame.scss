@@ -2,7 +2,18 @@
 
 
 :root {
+
+
+
+
+
     --space-xxl : var(--space-2xl);
+
+
+    --polygon-height: 128px;
+    --polygon-width: 110.851px;
+
+
 }
 
 /* revue par Hokoha
@@ -19,3 +30,28 @@
     --oka-badge-color : pink;
 }
 
+
+/* Grid 8pt */
+
+.flex-grid-bg-fx, 
+.grid-bg-fx,
+.oka-spacer {
+// mix-blend-mode: normal;
+      // mix-blend-mode: multiply;
+      // mix-blend-mode: screen;
+      // mix-blend-mode: overlay;
+      // mix-blend-mode: darken;
+      // mix-blend-mode: lighten;
+       mix-blend-mode: color-dodge;
+       //mix-blend-mode: color-burn;
+       //mix-blend-mode: hard-light;
+       //mix-blend-mode: soft-light;
+      // mix-blend-mode: difference;
+      // mix-blend-mode: exclusion;
+      // mix-blend-mode: hue;
+      // mix-blend-mode: saturation;
+       //mix-blend-mode: color;
+      // mix-blend-mode: luminosity;
+      // mix-blend-mode: plus-lighter;
+      // mix-blend-mode: plus-darker;
+}

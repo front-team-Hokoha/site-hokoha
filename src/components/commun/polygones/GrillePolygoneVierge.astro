@@ -1,11 +1,37 @@
 ---
 import PolygoneStatic from "./PolygoneStatic.astro";
+import { hexHeight, hexWidth } from "../../../utils/hexConfig";
+
+interface Props {
+  rows?: string;
+  cols?:  string;
+  ratio?: string;
+}
+
+const { rows, cols, ratio } = Astro.props;
 ---
 
-<div class="hex-grid -hidden" data-rows="2" data-cols="3" data-ratio="0.30">
+<div class="hex-grid -hidden" 
+data-rows={rows ?? 1} 
+data-cols={cols ?? 16} 
+data-ratio={ratio ?? 0.5} 
+data-hex-width={hexWidth} 
+data-hex-height={hexHeight}
+style="margin-left:calc(var(--hex-width) / -2)">
   <!-- <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" color="-ia" /> -->
   <PolygoneStatic />
-  <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+
+
+
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+
+
   <PolygoneStatic />
   <PolygoneStatic />
   <PolygoneStatic />
@@ -15,7 +41,13 @@ import PolygoneStatic from "./PolygoneStatic.astro";
   <PolygoneStatic />
   <PolygoneStatic />
   <PolygoneStatic />
+
   <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+  <PolygoneStatic />
+
+    <PolygoneStatic />
   <PolygoneStatic />
   <PolygoneStatic />
   <PolygoneStatic />
