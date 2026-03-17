@@ -16,6 +16,21 @@ export function initLenis() {
     smoothTouch: false,    
   })
 
+  // Bridge ScrollTrigger to use Lenis' scroll position instead of native scroll.
+  // Required for ScrollTrigger pin/snap features to work correctly alongside Lenis.
+  ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+      if (arguments.length) {
+        lenis.scrollTo(value, { immediate: true });
+      }
+      return lenis.scroll;
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+    pinType: document.body.style.transform ? "transform" : "fixed"
+  });
+
   // Sync ScrollTrigger with Lenis' scroll updates.
   lenis.on('scroll', ScrollTrigger.update);
 
@@ -26,6 +41,9 @@ export function initLenis() {
 
   // Turn off GSAP's default lag smoothing to avoid conflicts with Lenis.
   gsap.ticker.lagSmoothing(0);
+
+  // Recalculate all ScrollTrigger positions after the proxy is set.
+  ScrollTrigger.refresh();
 
 }
 

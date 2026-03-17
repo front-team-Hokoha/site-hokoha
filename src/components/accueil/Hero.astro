@@ -10,7 +10,7 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 
 
-<section class="sok-hero oka-darkMode">
+<section class="sok-hero oka-darkMode hgo-s">
    
 
    <div class="sok-hero_ray" aria-hidden="true"></div>
@@ -20,8 +20,8 @@ import RevealMask from "../../animations/RevealMask.astro";
 
    <div class="flex-grid">
       <div class="col col-2"></div>
-      <div class="col col-12">
-         <div class="oka-flex -vrt -center-top -gap-xs">
+      <div class="col col-8">
+         <!-- <div class="oka-flex  -center-top -gap-xs"> -->
             <div class="oka-spacer  -xxl" aria-hidden="true"></div>
             
             <Revealtext>
@@ -46,7 +46,7 @@ import RevealMask from "../../animations/RevealMask.astro";
                <div class="oka-spinner"></div>
             </button>
 
-         </div>
+         <!-- </div> -->
 
          <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div>
          <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
@@ -54,20 +54,10 @@ import RevealMask from "../../animations/RevealMask.astro";
          
       </div>
 
-      <div class="col col-2"></div>
-      
-   </div>
-
-
-   <div class="flex-grid">
-      <div class="col col-16">
-         <div class="hexa">
-            <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-
-            <!-- <GrilleVierge /> -->
-      
-         </div>
+      <div class="col col-6">
+         <GrilleVierge rows="4" cols="3"/> 
       </div>
+      
    </div>
 
 
@@ -77,13 +67,13 @@ import RevealMask from "../../animations/RevealMask.astro";
 
    .sok-logokoha{
       width: auto;
-      height: 6rem;
+      height: 4rem;
    }
 
 
 
    .oka-h, .oka-text{
-      text-align: center;
+      //text-align: center;
    }
 
 
@@ -93,12 +83,13 @@ import RevealMask from "../../animations/RevealMask.astro";
       top:0;
       width:100dvw;
       height:100%;
+      opacity: 0.5;
       //transform: rotate(14deg);
       //transform-origin: top right ;
 
       background-image: 
          radial-gradient(
-            ellipse at top,
+            ellipse at left top,
             var(--sok-color-bg-blue-500) 0%,
             var(--sok-color-bg-blue-700) 40%,
             transparent 60%
@@ -118,11 +109,12 @@ import RevealMask from "../../animations/RevealMask.astro";
 
       // mix-blend-mode: normal;
       // mix-blend-mode: multiply;
-      mix-blend-mode: screen;
+      //mix-blend-mode: screen;
       // mix-blend-mode: overlay;
       // mix-blend-mode: darken;
       // mix-blend-mode: lighten;
-       mix-blend-mode: color-dodge;
+      
+      mix-blend-mode: color-dodge;
       // mix-blend-mode: color-burn;
       // mix-blend-mode: hard-light;
       // mix-blend-mode: soft-light;
@@ -144,8 +136,11 @@ import RevealMask from "../../animations/RevealMask.astro";
 
       min-height : 80dvh;
 
-      margin-top: -5rem;
-      padding-top: 5rem;
+      // margin-top: -5rem;
+      // padding-top: 5rem;
+
+      margin:1rem;
+      border-radius : 0.5rem;
 
       margin-bottom: calc(var(--hex-height) / -4); 
       // margin:1rem;
@@ -169,7 +164,7 @@ import RevealMask from "../../animations/RevealMask.astro";
          var(--sok-color-bg-blue-600) 8%,
          var(--sok-color-bg-blue-700) 16%,
          var(--sok-color-bg-blue-800) 24%,
-         var(--sok-color-bg-strong) 50%
+         var(--sok-color-bg-strong) 70%
          );
       //background-attachment: fixed;
      
@@ -182,6 +177,7 @@ import RevealMask from "../../animations/RevealMask.astro";
    }
 
    .sok-8ptgrid {
+      display: none;
       position: absolute;
       inset: 0;
       width: 33dvw;

@@ -8,7 +8,7 @@ import Footer from "../components/commun/Footer.astro";
 
 
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
-import { string } from "astro:schema"; // déprécié
+import { string } from "astro:schema";
 
 
 interface Props {
@@ -42,7 +42,7 @@ const { title } = Astro.props;
 		<div id="root" class="layout-app">
 			<Header />
 			
-			<main class="layout-app__main oka-surface">
+			<main class="layout-app__main">
 				<!-- Contenu principal -->
                 <div class="oka-appWrap -full">
 					
@@ -98,7 +98,12 @@ const { title } = Astro.props;
 	}
 
 	body {
-		background-color: var(--oka-color-layer-underground) !important;
+	
+		background-color: var(--oka-color-neutral-900) !important;
+	}
+
+	.layout-app__main {
+		background-color: var(--oka-color-neutral-900);
 	}
 
 </style>
@@ -107,7 +112,7 @@ const { title } = Astro.props;
 
 <!-- <LocalScripts /> -->
 <Smoothscroll />
-
+<!-- <ScrollSnap /> -->
 
 
 
