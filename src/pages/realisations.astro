@@ -4,13 +4,17 @@ import Layout from '../layouts/Layout.astro';
 // ===== Composants d'animations =====
 import RevealText from '../animations/RevealText.astro';
 // ===== Componsants de la page =====
-import Projets from '../components/realisations/Projets.astro';
+import Projets from '../components/realisations/ProjetsTest.astro';
 import Diversite from '../components/realisations/Diversite.astro';
+import Avantages from "../components/commun/Avantages.astro";
+import Fidelite from "../components/commun/avantages/Fidelite.astro";
+import Forfait from "../components/commun/avantages/Forfait.astro";
+import Garantie from "../components/commun/avantages/Garantie.astro";
 ---
 
-  <Layout title="Page Réalisations">
+  <Layout title="Page Réacomponents/lisations">
     <!-- ===== Hero Section ===== -->
-    <section class="flex-grid">
+    <section class="flex-grid sok-realisations">
       <div class="col col-1"></div>
       <div class="col col-8">
         <div class="oka-spacer -xl"></div>
@@ -23,20 +27,37 @@ import Diversite from '../components/realisations/Diversite.astro';
           tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
         </p>
       </div>
-    </section>
 
-    <!-- ===== Réalisations Section -->
-    <Projets />
+      <!-- ===== Réalisations Section -->
+      <Projets />
+    </section>
 
     <div class="oka-spacer -xl"></div>
     
     <!-- ===== Diversités ===== -->
     <Diversite />
+          
+    <div class="oka-spacer -lg" aria-hidden="true"></div>
+
+    <Avantages>
+        <Forfait />
+        <Garantie />
+        <Fidelite />
+    </Avantages>
 </Layout>
 
 
 <style lang="scss">
   .-xl {
     padding-top: 0
+  }
+
+
+  .sok-realisations {
+    position: relative;
+    z-index: 99;
+
+    background-color: var(--sok-color-surface);
+    border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
   }
 </style>

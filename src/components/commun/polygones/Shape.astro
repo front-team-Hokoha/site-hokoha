@@ -9,6 +9,7 @@ interface Props {
 	color?: string;
 	videoUrl?: string;
 	imageUrl?: string;
+	addClass?: string;
 }
 const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
@@ -101,6 +102,13 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		background-size: cover;
 		background-color: rgba(255, 255, 255, 1);
 		overflow: hidden;
+
+		// Modifier pour changer la disposition des éléments
+		.polygon-shape.-pos-bottom {
+			justify-content: space-between;
+			align-items: end;
+			padding: 1rem;
+		}
 
 		.polygone-text {
 			color: #2C5F8A;
