@@ -1,6 +1,7 @@
 ---
-import { hexPath, hexHeight, hexWidth } from '../../../utils/hexConfig';
+import { hexPath, hexHeight, hexWidth, hexNormPathLg } from '../../../utils/hexConfig';
 
+const clipId = `clip-${Math.random().toString(36).slice(2)}`;
 
 interface Props {
 	frontText?: string;
@@ -11,6 +12,13 @@ interface Props {
 }
 const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+	<defs>
+		<clipPath id={clipId} clipPathUnits="objectBoundingBox">
+			<path d={hexNormPathLg}/>
+		</clipPath>
+	</defs>
+</svg>
 <div class="polygone-container" style={`--polygon-height: ${hexHeight}px; --polygon-width: ${hexWidth}px;`}>
 	<div class="polygon-stroke">
 		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`}>
@@ -31,7 +39,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		</svg>
 	</div>
 
-	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: path('${hexPath}');${imageUrl ? ` background-image: url(${imageUrl});` : ''}`}>
+	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: url(#${clipId});${imageUrl ? ` background-image: url(${imageUrl});` : ''}`}>
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
 		)}
@@ -91,7 +99,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		justify-content: center;
 		align-items: center;
 		background-size: cover;
-		background-color: rgba(255, 255, 255, 0.03);
+		background-color: rgba(255, 255, 255, 1);
 		overflow: hidden;
 
 		.polygone-text {

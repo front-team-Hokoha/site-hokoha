@@ -40,11 +40,20 @@ const { title } = Astro.props;
 	<!-- </head> -->
 	<body>
 		<div id="root" class="layout-app">
+
+			<div class="sok-hero_ray" aria-hidden="true"></div>
+
+			<div class="sok-8ptgrid" aria-hidden="true"></div>
+			<div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
+
+
+
+
 			<Header />
 			
 			<main class="layout-app__main">
 				<!-- Contenu principal -->
-                <div class="oka-appWrap -full">
+                <div class="oka-appWrap -FFfull">
 					
 					<slot />
  				</div>
@@ -54,7 +63,7 @@ const { title } = Astro.props;
 
 			<!-- Grid Preview -->
             <div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
-                <div class="oka-app-wrap -full" style="height:100%">
+                <div class="oka-app-wrap -FFfull" style="height:100%">
                     <div class="grid-bg-fx__grid flex-grid ">
         
                         <div class="col col-1"></div>
@@ -86,7 +95,17 @@ const { title } = Astro.props;
 </html>
 
 <!-- ===== Styles ===== -->
-<style>
+<style lang="scss" is:global>
+
+
+	:root {
+
+
+		--sok-color-surface: hsl(225, 40%, 98%);
+		--sok-radius-section: 1rem;
+
+		--oka-radius-button : 0.25rem;
+	}
 
 	.oka-surface {
 		--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
@@ -99,13 +118,112 @@ const { title } = Astro.props;
 
 	body {
 	
-		background-color: var(--oka-color-neutral-900) !important;
+		background-color: var(--oka-color-neutral-700) !important;
 	}
 
 	.layout-app__main {
-		background-color: var(--oka-color-neutral-900);
+		background-color: var(--oka-color-neutral-700);
 	}
 
+
+
+	body:after{
+	
+    content: "";
+   	position: fixed;;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    padding: 0;
+    opacity: 1;
+    font-size: 8px;
+    background-repeat: repeat-y;
+    background-size: 100% 0.5rem;
+    background-image: linear-gradient(to bottom, var(--oka-color-primary-800, var(--oka-color-primary-800)) 0, rgba(255, 255, 255, 0) 1px);
+    line-height: 0;
+    line-height: 0;
+    pointer-events: none;
+
+	}
+
+
+	.sok-hero_ray{
+      position:fixed;
+      top:0;
+      width:100dvw;
+      height:100dvh;
+    //   opacity: 0.25;
+      //transform: rotate(14deg);
+      //transform-origin: top right ;
+
+      background-image: 
+         radial-gradient(
+            ellipse at left top,
+       
+			var(--oka-color-neutral-900) 0%,
+			var(--oka-color-neutral-900) 20%,
+            var(--sok-color-bg-blue-500) 25%,
+            transparent 60%
+         )
+         //,
+         // linear-gradient(
+         //    var(--sok-color-bg-strong),
+         //    var(--sok-color-bg-blue-600) 46dvh,
+         //    var(--sok-color-bg-blue-500) 50dvh,
+         //    var(--sok-color-bg-blue-600) 56dvh,
+         //    var(--sok-color-bg-strong) 80dvh
+         // )
+         ;
+      
+      background-attachment: fixed;
+
+
+      // mix-blend-mode: normal;
+      // mix-blend-mode: multiply;
+      // mix-blend-mode: screen;
+      // mix-blend-mode: overlay;
+      // mix-blend-mode: darken;
+      // mix-blend-mode: lighten;
+      
+      mix-blend-mode: color-dodge;
+      // mix-blend-mode: color-burn;
+      // mix-blend-mode: hard-light;
+      // mix-blend-mode: soft-light;
+      // mix-blend-mode: difference;
+      // mix-blend-mode: exclusion;
+      // mix-blend-mode: hue;
+      // mix-blend-mode: saturation;
+      // mix-blend-mode: color;
+      // mix-blend-mode: luminosity;
+      // mix-blend-mode: plus-lighter;
+      // mix-blend-mode: plus-darker;
+
+   }
+
+
+   .sok-8ptgrid {
+      display: none;
+      position: fixed;
+      //left : 0dvw;
+      //top : 30dvh;
+      width: 1dvw;
+      height: 100dvh;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+         to bottom,
+         rgba(88, 125, 223, 0.5) 0px,
+         rgba(88, 125, 223, 0.5) 8px,
+         transparent 8px,
+         transparent 16px
+      );
+
+      &.-secondary {
+         width: 3dvw;
+         height: 30dvh;
+      }
+   }
 </style>
 
 

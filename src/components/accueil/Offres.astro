@@ -4,16 +4,25 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 import { hexHeight, hexWidth } from "../../utils/hexConfig";
 ---
 
-<section class="sok-offre oka-darkMode oka-surface hgo-snap">
+<section class="sok-offre">
    
 
   <div class="flex-grid">
 
-    <div class="col col-2" ></div>
+    <div class="col col-1" ></div>
 
-    <div class="col col-5" > 
+    <div class="col col-7" > 
 
-      <div class="oka-spacer -xl  " aria-hidden="true"></div>
+
+      
+      <button class="oka-bt -lg -solid   ">
+          <div class="oka-bt__lbl">call to action</div>
+          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
+          <div class="oka-spinner"></div>
+      </button>
+    
+
+      <hr class="oka-divider -strong -lg" aria-hidden="true">
 
       <!-- ===== Offres ===== -->
     
@@ -22,44 +31,47 @@ import { hexHeight, hexWidth } from "../../utils/hexConfig";
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">01</span>
-          <span class="oka-h -md -secondary ">Solutions Web</span>
+          <span class="oka-h -lg -secondary ">Solutions Web</span>
         </div>
       
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">02</span>
-          <span class="oka-h -md -secondary ">Logiciels Métiers</span>
+          <span class="oka-h -lg -secondary ">Logiciels Métiers</span>
         </div>
         
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">03</span>
-          <span class="oka-h -md -secondary ">Application Mobile</span>
+          <span class="oka-h -lg -secondary ">Application Mobile</span>
         </div>
       
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">04</span>
-          <span class="oka-h -md -secondary -center">Intelligence Artificielle</span>
+          <span class="oka-h -lg -secondary -center">Intelligence Artificielle</span>
         </div>
         
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">05</span>
-          <span class="oka-h -md -secondary -center">Objets Connectées</span>
+          <span class="oka-h -lg -secondary -center">Objets Connectées</span>
         </div>
       </div>
 
 
 
     </div>
-    <div class="col col-5" >
+
+    <div class="col col-1" ></div>
+
+    <div class="col col-7" >
       <GrilleOffres />
-      <GrilleVierge  rows="2"/>
+      <GrilleVierge  rows="2" cols="3"/>
     </div>
 
   </div>
@@ -80,8 +92,11 @@ import { hexHeight, hexWidth } from "../../utils/hexConfig";
 <style lang="scss">
 
   .sok-offre{
-      margin:1rem;
-      border-radius : 0.5rem;
+    position:relative;
+      z-index: 1;
+      margin:0;
+      border-radius : 0 0  var(--sok-radius-section)  var(--sok-radius-section);
+      background-color: var(--sok-color-surface);
 
   }
 
@@ -91,7 +106,7 @@ import { hexHeight, hexWidth } from "../../utils/hexConfig";
   }
 
   .oka-h, .oka-text, .oka-data {
-    color: var(--sok-color-fg-on_surface);
+    //color: var(--sok-color-fg-on_surface);
   }
 
 
@@ -111,11 +126,15 @@ import { hexHeight, hexWidth } from "../../utils/hexConfig";
     top: 0rem;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0rem;
+
+
+
 
     &__item {
+      flex-shrink:0;
       display: inline-flex;
       align-items: center;
       gap: 2rem;

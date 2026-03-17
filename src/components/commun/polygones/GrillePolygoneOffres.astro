@@ -8,7 +8,7 @@ import { hexHeight, hexWidth } from "../../../utils/hexConfig";
 
 ---
 
-<div class="hex-grid -hidden" data-rows="3" data-cols="10" data-ratio="0.3" data-hex-width={hexWidth} data-hex-height={hexHeight} >
+<div class="hex-grid -hidden" data-rows="4" data-cols="3" data-ratio="0.1" data-hex-width={hexWidth} data-hex-height={hexHeight} >
 
   <PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-web"/>
   <PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
@@ -44,9 +44,6 @@ import { hexHeight, hexWidth } from "../../../utils/hexConfig";
 <style lang="scss" is:global>
   .hex-grid {
     display: grid;
-    margin-bottom: calc(var(--hex-height) / -4); // compense le translateY appliqué aux hexagones pour éviter les coupures
-    //transform: translate(-55.425px, -32px); // cas grille supérieure sur nb row impair
-    transform: translate( 0, calc(var(--hex-height) / -4)); // cas grille supérieure sur nb row pair
     gap: 1px;
     /* colonnes et lignes définies par le script */
 
@@ -74,19 +71,13 @@ function layoutGrid(grid: HTMLElement) {
 
   const svgs = Array.from(grid.querySelectorAll<HTMLElement>('.polygone'));
 
-  const trackCols = COLS * 2 + 2;
-  grid.style.gridTemplateColumns = `repeat(${trackCols}, ${hexWidth / 2}px)`;
-  const rowHeights = Array.from({ length: ROWS }, (_, i) =>
-    i === ROWS - 1 ? `${hexHeight}px` : `${hexHeight * 0.75}px`
-  );
-  grid.style.gridTemplateRows = rowHeights.join(' ');
+  grid.style.gridTemplateColumns = `repeat(${COLS}, ${hexWidth}px)`;
+  grid.style.gridTemplateRows = `repeat(${ROWS}, ${hexHeight}px)`;
 
-  const positions: { row: number; colStart: number }[] = [];
+  const positions: { row: number; col: number }[] = [];
   for (let row = 1; row <= ROWS; row++) {
-    const isEven = row % 2 === 0;
     for (let col = 1; col <= COLS; col++) {
-      const colStart = isEven ? (col - 1) * 2 + 2 : (col - 1) * 2 + 1;
-      positions.push({ row, colStart });
+      positions.push({ row, col });
     }
   }
 
@@ -100,8 +91,8 @@ function layoutGrid(grid: HTMLElement) {
 
   svgs.forEach((svg, i) => {
     if (i >= positions.length) { svg.style.display = 'none'; return; }
-    const { row, colStart } = positions[i];
-    svg.style.gridColumn = `${colStart} / ${colStart + 2}`;
+    const { row, col } = positions[i];
+    svg.style.gridColumn = String(col);
     svg.style.gridRow    = String(row);
     svg.classList.remove('-visible', '-hidden');
     svg.classList.add(i < visibleCount ? '-visible' : '-hidden');

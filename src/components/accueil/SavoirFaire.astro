@@ -10,6 +10,7 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
   <section class="flex-grid sok-section">
     <div class="col col-1"></div>
     <div class="col col-10">
+      <div class="oka-spacer  -xxl" aria-hidden="true"></div>
       <Revealtext>
         <h1>
             Lorem ipsum dolor sit amet <span class="sok-text-color">consectetur</span>. Lorem risus molestie posuere
@@ -57,8 +58,23 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
 
 
 <style lang="scss">
+
+
+
+  .sok-container {
+    position: relative;
+    z-index: 1;
+    margin: 1rem 0;
+    // background-color: red;
+    border-radius: var(--sok-radius-section);
+    background-color: #fff;
+  }
+
+
+
   .sok-section {
     // background-color: var(--sok-color-bg-strong);
+   
   }
 
   .oka-savoir-faire{
@@ -80,13 +96,6 @@ import Morph from "./savoir-faire/MorphSavoirFaire.astro";
     overflow: hidden;
   }
 
-  .sok-container {
-    margin: 0 1rem;
-    // background-color: red;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: #fff;
-  }
 
   .sok-text-color {
     color: var(--sok-color-fg-blue-500);

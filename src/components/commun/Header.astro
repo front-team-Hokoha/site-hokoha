@@ -2,10 +2,14 @@
 
 
 <!-- HEADER -->
-<header class="layout-app__header oka-appbar ---oka-darkMode sok-header">
+
+<div class=" oka-appWrap">
+
+<header class="layout-app__header  oka-appbar ---oka-darkMode sok-header">
   
-  <div class="oka-appbar__row oka-app-wrap-fluid">
-    <section class="oka-appbar__left" style="flex-shrink:1;padding-right:1rem;padding-bottom:0.5rem; padding-left: 0; padding-top:0.25rem"> 
+  <div class="oka-appbar__row ">
+	
+    <section class="oka-appbar__left" style="flex-shrink:1;"> 
 		<a href="/">
 			<img class="sok-logokoha" src="/src/assets/images/logokoha-2.svg" alt="logo Hokoha">
 		</a>
@@ -47,7 +51,7 @@
   </div>
 </header>
 
-
+</div>
 
 
 
@@ -58,14 +62,16 @@
 		// display: flex;
 		// justify-content: space-around;
 		// padding: 20px;
-		background-color: transparent; //var(--sok-color-bg-blue-500)
-		margin: 1rem;
+		background-color: var(--oka-color-neutral-950);
+		border-radius: var(--sok-radius-section);
+		margin: 1rem 0 0.5rem 0;
+		padding: 0.5rem 1rem;
     	//border: 1px solid red;
 	}
 
-	// .-hiden {
-	// 	display: none;
-	// }
+	.sok-logokoha{
+		height: 2.5rem;
+	}
 </style>
 
 

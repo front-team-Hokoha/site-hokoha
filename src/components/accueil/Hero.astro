@@ -10,41 +10,34 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 
 
-<section class="sok-hero oka-darkMode hgo-s">
+<section class="sok-hero">
    
 
-   <div class="sok-hero_ray" aria-hidden="true"></div>
-   <div class="sok-8ptgrid" aria-hidden="true"></div>
-   <div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
+  
 
 
    <div class="flex-grid">
-      <div class="col col-2"></div>
-      <div class="col col-8">
+      <div class="col col-1"></div>
+      <div class="col col-7">
          <!-- <div class="oka-flex  -center-top -gap-xs"> -->
+            <div class="oka-spacer  -lg" aria-hidden="true"></div>
             <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-            
             <Revealtext>
-               <img class="sok-logokoha"  src="/src/assets/images/logokoha.svg" alt="logo Hokoha">
+               <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
             </Revealtext>
 
             <Revealtext>
-               <h1 class="oka-h -xxl">Développement Informatique</h1>
+               <h1 class="oka-h -xl">Développement Informatique sur-mesure.</h1>
             </Revealtext>
 
-            <div class="oka-spacer  -md" aria-hidden="true"></div>
+            <div class="oka-spacer  -sm" aria-hidden="true"></div>
             <p class="oka-text -lg">
                Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
-               cras. <br/>Dui nec amet mauris tempor interdum facilisi eget.
+               cras. Dui nec amet mauris tempor interdum facilisi eget.
             </p>
 
-            <div class="oka-spacer  -md" aria-hidden="true"></div>
+            <div class="oka-spacer  -sm" aria-hidden="true"></div>
       
-            <button class="oka-bt -lg -solid   ">
-               <div class="oka-bt__lbl">call to action</div>
-               <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-               <div class="oka-spinner"></div>
-            </button>
 
          <!-- </div> -->
 
@@ -53,9 +46,9 @@ import RevealMask from "../../animations/RevealMask.astro";
       
          
       </div>
-
-      <div class="col col-6">
-         <GrilleVierge rows="4" cols="3"/> 
+      <div class="col col-1"></div>
+      <div class="col col-7">
+         <!-- <GrilleVierge rows="3" cols="2"/>  -->
       </div>
       
    </div>
@@ -67,7 +60,7 @@ import RevealMask from "../../animations/RevealMask.astro";
 
    .sok-logokoha{
       width: auto;
-      height: 4rem;
+      height: 56px;
    }
 
 
@@ -78,75 +71,19 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 
 
-   .sok-hero_ray{
-      position:absolute;
-      top:0;
-      width:100dvw;
-      height:100%;
-      opacity: 0.5;
-      //transform: rotate(14deg);
-      //transform-origin: top right ;
-
-      background-image: 
-         radial-gradient(
-            ellipse at left top,
-            var(--sok-color-bg-blue-500) 0%,
-            var(--sok-color-bg-blue-700) 40%,
-            transparent 60%
-         )
-         //,
-         // linear-gradient(
-         //    var(--sok-color-bg-strong),
-         //    var(--sok-color-bg-blue-600) 46dvh,
-         //    var(--sok-color-bg-blue-500) 50dvh,
-         //    var(--sok-color-bg-blue-600) 56dvh,
-         //    var(--sok-color-bg-strong) 80dvh
-         // )
-         ;
-      
-      //background-attachment: fixed;
-
-
-      // mix-blend-mode: normal;
-      // mix-blend-mode: multiply;
-      // mix-blend-mode: screen;
-      // mix-blend-mode: overlay;
-      // mix-blend-mode: darken;
-      // mix-blend-mode: lighten;
-      
-      mix-blend-mode: color-dodge;
-      // mix-blend-mode: color-burn;
-      // mix-blend-mode: hard-light;
-      // mix-blend-mode: soft-light;
-      // mix-blend-mode: difference;
-      // mix-blend-mode: exclusion;
-      // mix-blend-mode: hue;
-      // mix-blend-mode: saturation;
-      // mix-blend-mode: color;
-      // mix-blend-mode: luminosity;
-      // mix-blend-mode: plus-lighter;
-      // mix-blend-mode: plus-darker;
-
-   }
+   
 
 
 
    .sok-hero {
       position:relative;
+      z-index: 1;
 
-      min-height : 80dvh;
+      margin:0;
+      border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
 
-      // margin-top: -5rem;
-      // padding-top: 5rem;
-
-      margin:1rem;
-      border-radius : 0.5rem;
-
-      margin-bottom: calc(var(--hex-height) / -4); 
-      // margin:1rem;
-      // border-radius : 2rem;
-
-      background-color: var(--sok-color-bg-strong);
+      background-color: var(--sok-color-surface);
+      
       // background-image: linear-gradient(
       //    var(--sok-color-bg-strong),
       //    var(--sok-color-bg-blue-800) 30dvh,
@@ -159,13 +96,13 @@ import RevealMask from "../../animations/RevealMask.astro";
       //    var(--sok-color-bg-strong) 80dvh
       //    );
 
-      background-image: linear-gradient(
-         var(--sok-color-bg-blue-500) ,
-         var(--sok-color-bg-blue-600) 8%,
-         var(--sok-color-bg-blue-700) 16%,
-         var(--sok-color-bg-blue-800) 24%,
-         var(--sok-color-bg-strong) 70%
-         );
+      // background-image: linear-gradient(
+      //    var(--sok-color-bg-blue-500) ,
+      //    var(--sok-color-bg-blue-600) 8%,
+      //    var(--sok-color-bg-blue-700) 16%,
+      //    var(--sok-color-bg-blue-800) 24%,
+      //    var(--sok-color-bg-strong) 70%
+      //    );
       //background-attachment: fixed;
      
    }
@@ -176,56 +113,8 @@ import RevealMask from "../../animations/RevealMask.astro";
       top: 0;
    }
 
-   .sok-8ptgrid {
-      display: none;
-      position: absolute;
-      inset: 0;
-      width: 33dvw;
-      height: 40dvh;
-      pointer-events: none;
-      background-image: repeating-linear-gradient(
-         to bottom,
-         rgba(255, 255, 255, 0.05) 0px,
-         rgba(255, 255, 255, 0.05) 8px,
-         transparent 8px,
-         transparent 16px
-      );
 
-      &.-secondary {
-         width: 63dvw;
-         height: 30dvh;
-      }
-   }
-
-   // .sok-mask-container {
-   //    position: relative;
-   //    overflow: hidden;
-   //    width: 400px;
-   //    height: 400px;
-   //    border: 2px solid red;
-   //    /* Background de couleur blanc obligatoire pour ne pas voir l'image de fond */
-   //    background: white;
-   // }
-
-   // .sok-mask-img {
-   //    background-image: url("/src/assets/images/test2.jpg");
-   //    position: absolute;
-   //    inset: 0;
-   //    mix-blend-mode: screen; 
-   //    z-index: 99;
-   // }
-
-   // .sok-mask {
-   //    position: absolute;
-   //    inset: 0;
-   // }
-
-   // .mask-form {
-   //    position: absolute;
-   //    width: 300px;
-   //    height: 100px;
-   //    background-color: #000;
-   // }
+  
 </style>
 
 
