@@ -1,0 +1,94 @@
+---
+// import Projet from "./Projet.astro"
+import Projet from "./ProjetTest.astro"
+import PolygoneStatic from "../commun/polygones/PolygoneStatic.astro";
+---
+
+<section class="flex-grid">
+   <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+   <div class="col col-1"></div>
+
+   <div class="col col-10 oka-grid240 -gap-sm">
+      
+      <Projet>
+         <PolygoneStatic color="-app" addClass="sok-shape"/>
+
+         <h2 class="oka-h -secondary -xl">#00</h2>
+         <h3 class="oka-h -sm">WeCERT</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-web" addClass="sok-shape"/>
+
+         <h2 class="oka-h -secondary -xl">#33</h2>
+         <h3 class="oka-h -sm">Hugo</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-metier" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#53</h2>
+         <h3 class="oka-h -sm">Pegase</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-app" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#20</h2>
+         <h3 class="oka-h -sm">Travel</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-metier" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#51</h2>
+         <h3 class="oka-h -sm">Ramses</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-web" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#33</h2>
+         <h3 class="oka-h -sm">Hugo</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-ia" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#53</h2>
+         <h3 class="oka-h -sm">Pegase</h3>
+      </Projet>
+
+      <Projet>
+         <PolygoneStatic color="-app" addClass="sok-shape"/>
+         <h2 class="oka-h -secondary -xl">#00</h2>
+         <h3 class="oka-h -sm">WeCERT</h3>
+      </Projet>
+   </div>
+</section>
+
+<div class="oka-spacer  -xl" aria-hidden="true"></div>
+
+
+<style lang="scss">
+   // @use "../../styles/oka-design-system/1-bases/ripple/ripple.scss" as *;  
+
+
+
+   .oka-grid240 {
+      // gap: 0;
+      position: relative
+   }
+
+   * {
+      color : #fff;
+   }
+
+</style>
+
+<style lang="scss" is:global>
+   .sok-shape {
+      border:0px solid red;
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: -1;
+   }
+
+</style>

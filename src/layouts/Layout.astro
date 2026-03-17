@@ -43,9 +43,6 @@ const { title } = Astro.props;
 
 			<div class="sok-hero_ray" aria-hidden="true"></div>
 
-			<div class="sok-8ptgrid" aria-hidden="true"></div>
-			<div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
-
 
 
 
@@ -126,80 +123,47 @@ const { title } = Astro.props;
 	}
 
 
-
+    // 8pt Grid 
 	body:after{
-	
-    content: "";
-   	position: fixed;;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    padding: 0;
-    opacity: 1;
-    font-size: 8px;
-    background-repeat: repeat-y;
-    background-size: 100% 0.5rem;
-    background-image: linear-gradient(to bottom, var(--oka-color-primary-800, var(--oka-color-primary-800)) 0, rgba(255, 255, 255, 0) 1px);
-    line-height: 0;
-    line-height: 0;
-    pointer-events: none;
+
+        content: "";
+        position: fixed;;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        padding: 0;
+        opacity: 1;
+        font-size: 8px;
+        background-repeat: repeat-y;
+        background-size: 100% 0.5rem;
+        background-image: linear-gradient(to bottom, var(--oka-color-primary-800, var(--oka-color-primary-800)) 0, rgba(255, 255, 255, 0) 1px);
+        line-height: 0;
+        line-height: 0;
+        pointer-events: none;
 
 	}
 
-
+    // Ray de lumière bleue
 	.sok-hero_ray{
       position:fixed;
       top:0;
       width:100dvw;
       height:100dvh;
-    //   opacity: 0.25;
-      //transform: rotate(14deg);
-      //transform-origin: top right ;
 
       background-image: 
-         radial-gradient(
+        radial-gradient(
             ellipse at left top,
        
 			var(--oka-color-neutral-900) 0%,
 			var(--oka-color-neutral-900) 20%,
             var(--sok-color-bg-blue-500) 25%,
             transparent 60%
-         )
-         //,
-         // linear-gradient(
-         //    var(--sok-color-bg-strong),
-         //    var(--sok-color-bg-blue-600) 46dvh,
-         //    var(--sok-color-bg-blue-500) 50dvh,
-         //    var(--sok-color-bg-blue-600) 56dvh,
-         //    var(--sok-color-bg-strong) 80dvh
-         // )
-         ;
+        );
       
       background-attachment: fixed;
-
-
-      // mix-blend-mode: normal;
-      // mix-blend-mode: multiply;
-      // mix-blend-mode: screen;
-      // mix-blend-mode: overlay;
-      // mix-blend-mode: darken;
-      // mix-blend-mode: lighten;
-      
       mix-blend-mode: color-dodge;
-      // mix-blend-mode: color-burn;
-      // mix-blend-mode: hard-light;
-      // mix-blend-mode: soft-light;
-      // mix-blend-mode: difference;
-      // mix-blend-mode: exclusion;
-      // mix-blend-mode: hue;
-      // mix-blend-mode: saturation;
-      // mix-blend-mode: color;
-      // mix-blend-mode: luminosity;
-      // mix-blend-mode: plus-lighter;
-      // mix-blend-mode: plus-darker;
-
    }
 
 

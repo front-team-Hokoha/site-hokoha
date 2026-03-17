@@ -12,14 +12,17 @@ const { addClass, srcImage, altImage } = Astro.props;
 </article>
 
 <style lang="scss">
+
    .oka-projet {
       position: relative;
-      border: 1px solid var(--oka-color-bd-strong);
       aspect-ratio: 1/1;
       margin-left: -1px;
       margin-bottom: -1px;
-      border-radius: .5rem;
       overflow: hidden;
+
+      border-radius: .5rem;
+      border: 1px solid var(--oka-color-bd-strong);
+      
       // cursor: pointer;
 
       &__img {

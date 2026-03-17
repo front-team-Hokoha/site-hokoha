@@ -7,12 +7,13 @@ interface Props {
   color?: string;
 	videoUrl?: string;
 	imageUrl?: string;
+  addClass?: string;
 }
-const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
+const { frontText, backText = 'Back', videoUrl, imageUrl, color, addClass } = Astro.props;
 ---
 
-<div class="polygone">
-  <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl}  color={color}/>
+<div class={`polygone${addClass ? ` ${addClass}` : ''}`}>
+  <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color}/>
 </div>
 
 <style lang="scss" is:global>
