@@ -7,53 +7,47 @@ import Projet from "./Projet.astro"
 
    <div class="col col-3"></div>
 
-   <div class="col col-10 oka-grid240">
-      <Projet >
-         <h2>0 1- Projet</h2>
-         <h3>Solution web</h3>
-         <a href="#"></a>
+   <div class="col col-10 oka-grid240 -gap-sm">
+      <Projet srcImage="/src/assets/realisations/XX - Hibou/hibou.jpeg" altImage="">
+         <a href="#">
+         </a>
+            <h2 class="oka-h -md fg-on_surface">XX- Projet</h2>
+            <h3 class="oka-h -sm">Solution web</h3>
+         </Projet>
+
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">02 - Projet</h2>
+         <h3 class="oka-h -sm">Logiciel métier</h3>
       </Projet>
 
-      <Projet>
-         <h2>02 - Projet</h2>
-         <h3>Logiciel métier</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">03 - Projet</h2>
+         <h3 class="oka-h -sm">Application mobile</h3>
       </Projet>
 
-      <Projet>
-         <h2>03 - Projet</h2>
-         <h3>Application mobile</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">04 - Projet</h2>
+         <h3 class="oka-h -sm">Intelligence artificiel</h3>
       </Projet>
 
-      <Projet>
-         <h2>04 - Projet</h2>
-         <h3>Intelligence artificiel</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">05 - Projet</h2>
+         <h3 class="oka-h -sm">Objet connecté</h3>
       </Projet>
 
-      <Projet>
-         <h2>05 - Projet</h2>
-         <h3>Objet connecté</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">06 - Projet</h2>
+         <h3 class="oka-h -sm">Logiciel métier</h3>
       </Projet>
 
-      <Projet>
-         <h2>06 - Projet</h2>
-         <h3>Logiciel métier</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">07-Projet</h2>
+         <h3 class="oka-h -sm">Solution web</h3>
       </Projet>
 
-      <Projet>
-         <h2>07-Projet</h2>
-         <h3>Solution web</h3>
-         <a href="#"></a>
-      </Projet>
-
-      <Projet>
-         <h2>08-Projet</h2>
-         <h3>Solution web</h3>
-         <a href="#"></a>
+      <Projet srcImage="/src/assets/images/test.jpg" altImage="">
+         <h2 class="oka-h -md">08-Projet</h2>
+         <h3 class="oka-h -sm">Solution web</h3>
       </Projet>
    </div>
 </section>
@@ -62,8 +56,13 @@ import Projet from "./Projet.astro"
 <style lang="scss">
    // @use "../../styles/oka-design-system/1-bases/ripple/ripple.scss" as *;  
 
+   .oka-h {
+      color: var(--sok-color-fg-on_surface);
+   }
+
    .oka-grid240 {
-      gap: 0;
+      // gap: 0;
+      position: relative
    }
 
    a {
