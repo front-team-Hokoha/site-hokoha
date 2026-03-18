@@ -1,6 +1,7 @@
 ---
 import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
+import Revealtext from "../../animations/RevealText.astro";
 ---
 
 <section class="sok-offre">
@@ -10,18 +11,37 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 
     <div class="col col-1" ></div>
 
-    <div class="col col-7" > 
+    <div class="col col-8" >
+      <GrilleOffres />
+
+      <div class="oka-spacer -xl " aria-hidden="true"></div>
+      <Revealtext>
+        <h1>
+            Lorem ipsum dolor sit amet <span class="sok-text-color">consectetur</span>.
+     
+          <button class="oka-bt -lg -solid   ">
+            <div class="oka-bt__lbl">call to action</div>
+            <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
+            <div class="oka-spinner"></div>
+         </button>
+   
+        </h1>
+      </Revealtext>
+
+      <div class="oka-spacer  -lg" aria-hidden="true"></div>
+      
+      <div class="oka-spacer -xl " aria-hidden="true"></div>
+    </div>
+
+    <div class="col col-1" ></div>
+    <div class="col col-5" > 
 
 
       
-      <button class="oka-bt -lg -solid   ">
-          <div class="oka-bt__lbl">call to action</div>
-          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-          <div class="oka-spinner"></div>
-      </button>
+   
     
 
-      <hr class="oka-divider -strong -lg" aria-hidden="true">
+      <div class="oka-spacer -md " aria-hidden="true"></div>
 
       <!-- ===== Offres ===== -->
     
@@ -30,48 +50,49 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">01</span>
-          <span class="oka-h -lg -secondary ">Solutions Web</span>
+          <span class="oka-h -md -secondary ">Solutions Web</span>
         </div>
-      
+        
+        <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">02</span>
-          <span class="oka-h -lg -secondary ">Logiciels Métiers</span>
+          <span class="oka-h -md -secondary ">Logiciels Métiers</span>
         </div>
         
-        
+        <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
+
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">03</span>
-          <span class="oka-h -lg -secondary ">Application Mobile</span>
+          <span class="oka-h -md -secondary ">Application Mobile</span>
         </div>
       
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">04</span>
-          <span class="oka-h -lg -secondary -center">Intelligence Artificielle</span>
+          <span class="oka-h -md -secondary -center">Intelligence Artificielle</span>
         </div>
         
         
         <div class="sok-offres__item">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">05</span>
-          <span class="oka-h -lg -secondary -center">Objets Connectées</span>
+          <span class="oka-h -md -secondary -center">Objets Connectées</span>
         </div>
       </div>
 
+
+      
 
 
     </div>
 
     <div class="col col-1" ></div>
 
-    <div class="col col-7" >
-      <GrilleOffres />
-      <GrilleVierge  rows="2" cols="3"/>
-    </div>
+   
 
   </div>
 

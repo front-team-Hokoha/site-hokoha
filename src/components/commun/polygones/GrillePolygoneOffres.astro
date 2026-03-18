@@ -3,7 +3,7 @@ import PolygoneFlip from "./PolygoneFlip.astro";
 import PolygoneStatic from "./PolygoneStatic.astro";
 ---
 
-<div class="hex-grid -hidden" data-rows="4" data-cols="3" data-ratio="0.1">
+<div class="hex-grid -hidden" data-rows="3" data-cols="4" data-ratio="0.2">
 
   <PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-web"/>
   <PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
@@ -39,8 +39,13 @@ import PolygoneStatic from "./PolygoneStatic.astro";
 <style lang="scss" is:global>
   .hex-grid {
     display: grid;
-    gap: 1px;
+    gap: 2px;
+    margin-bottom:2px;
     /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
 
     &.-hidden {
 			visibility: hidden;	
