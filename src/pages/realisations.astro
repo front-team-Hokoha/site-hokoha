@@ -7,6 +7,7 @@ import RevealText from '../animations/RevealText.astro';
 import Projets from '../components/realisations/ProjetsTest.astro';
 import Diversite from '../components/realisations/Diversite.astro';
 import Avantages from "../components/commun/Avantages.astro";
+import Avantage from "../components/commun/Avantage.astro";
 import Fidelite from "../components/commun/avantages/Fidelite.astro";
 import Forfait from "../components/commun/avantages/Forfait.astro";
 import Garantie from "../components/commun/avantages/Garantie.astro";
@@ -39,11 +40,14 @@ import Garantie from "../components/commun/avantages/Garantie.astro";
           
     <div class="oka-spacer -lg" aria-hidden="true"></div>
 
-    <Avantages>
-        <Forfait />
-        <Garantie />
-        <Fidelite />
-    </Avantages>
+    <section class="oka-sec-avantages">
+      <Avantages>
+        <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
+        <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
+        <Avantage subtitle="fidélitée client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
+      </Avantages>
+    </section>
+
 </Layout>
 
 
@@ -52,11 +56,17 @@ import Garantie from "../components/commun/avantages/Garantie.astro";
     padding-top: 0
   }
 
-
   .sok-realisations {
     position: relative;
     z-index: 99;
 
+    background-color: var(--sok-color-surface);
+    border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
+  }
+
+  .oka-sec-avantages {
+    position: relative;
+    z-index: 1;
     background-color: var(--sok-color-surface);
     border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
   }

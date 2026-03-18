@@ -1,0 +1,44 @@
+---
+import PolygoneStatic from "./polygones/PolygoneStatic.astro"
+
+const { title, subtitle, text} = Astro.props
+---
+
+<article class="oka-avantage">
+   <PolygoneStatic color="-web" addClass="sok-shape -revert"/>
+
+   <h4 class="oka-h -md">{subtitle}</h4>
+   <h3 class="oka-h -xl">{title}</h3>
+
+   <p class="oka-text">
+      {text}
+   </p>
+</article>
+
+<style lang="scss">
+   .oka-text {
+    text-align: center;
+   }
+
+   .oka-avantage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      // overflow: hidden;
+      // background: green;
+
+      & > * {
+         z-index: 99;
+         pointer-events: none;
+      }
+
+      // .sok-shape {
+      //    inset: 0;
+      //    z-index: 1;
+      //    transform: rotateY(-180deg);
+      // }
+   }
+</style>

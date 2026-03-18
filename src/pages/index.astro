@@ -7,6 +7,7 @@ import Offres from "../components/accueil/Offres.astro";
 import SavoirFaire from "../components/accueil/SavoirFaire.astro";
 import Entreprise from "../components/accueil/Entreprise.astro";
 import Avantages from '../components/commun/Avantages.astro';
+import Avantage from '../components/commun/Avantage.astro';
 import Innover from '../components/accueil/Innover.astro';
 ---
 
@@ -21,5 +22,11 @@ import Innover from '../components/accueil/Innover.astro';
 	
 <Innover />
 	<Entreprise />
-	<Avantages />
+
+	<Avantages>
+		<Avantage subtitle="acccompagnement" title="360°" text="Lorem ipsum dolor sit amet consectetur." />
+      <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
+      <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
+      <Avantage subtitle="satisfaction client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
+	</Avantages>
 </Layout>

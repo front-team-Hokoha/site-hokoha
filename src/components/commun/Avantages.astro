@@ -1,9 +1,4 @@
----
-
----
-
-
-<div class="oka-avantages col col-14 oka-grid240 oka-darkMode oka-surface">
+<div class="oka-avantages col col-14 oka-grid240 oka-darkMode">
    <slot />
 </div>
 
@@ -11,8 +6,9 @@
    .oka-avantages {
       display: flex;
       gap: 1rem;
-      justify-content: center;
-      align-items: center;
       width: 100%;
+      aspect-ratio: 4 / 3;
+      height: auto;
+      // max-height: clamp(250px, 50vh, 350px);
    }
 </style>
