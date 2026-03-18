@@ -11,7 +11,7 @@ interface Props {
 const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
 
-<div class="polygone -flip">
+<div class="polygone -flip" >
   <div class="flip-inner">
 
     <!-- Face avant -->
@@ -30,6 +30,7 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
 <style lang="scss">
   .-flip {
     perspective: 800px;
+    aspect-ratio: var(--polygone-aspect-ratio);
   }
 
   .flip-inner {

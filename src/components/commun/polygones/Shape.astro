@@ -1,5 +1,12 @@
 ---
-import { hexPath, hexHeight, hexWidth, hexNormPathLg } from '../../../utils/hexConfig';
+
+
+// Description du "polygone"
+export const hexHeight = 133.8;
+export const hexWidth  = 178.68;
+export const hexPath   = "M 178.89 127.3 V 6.93 C 178.89 3.21 175.89 0.21 172.19 0.21 H 39.7 C 37.91 0.21 36.2 0.93 34.94 2.19 L 2.16 35.16 C 0.91 36.41 0.21 38.11 0.21 39.89 V 127.3 C 0.21 131.01 3.21 134.01 6.93 134.01 H 172.19 C 175.89 134.01 178.89 131.01 178.89 127.3 Z";
+export const hexNormPathLg = "M 1 0.94993 V 0.05172 C 1 0.02396 0.98323 0.00157 0.96257 0.00157 H 0.22192 C 0.21193 0.00157 0.20236 0.00694 0.19531 0.01634 L 0.01208 0.26238 C 0.00509 0.27172 0.00117 0.28439 0.00117 0.29767 V 0.94993 C 0.00117 0.97761 0.01794 1 0.03875 1 H 0.96257 C 0.98323 1 1 0.97761 1 0.94993 Z";
+
 
 const aspectRatio = `${hexWidth} / ${hexHeight}`;
 
@@ -22,7 +29,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		</clipPath>
 	</defs>
 </svg>
-<div class="polygone-container" style={`aspect-ratio: ${aspectRatio};`}>
+<div class="polygone-container">
 	<div class="polygon-stroke">
 		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
 			<path
@@ -47,11 +54,20 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 	</div>
 </div>
 
+
+<style is:global>
+	body {
+		--polygone-aspect-ratio:  178.68 / 133.8;
+	}
+</style>
+
+
 <style lang="scss">
 	.polygone-container {
 		position: relative;
-		width: 100%;
 		z-index: 90;
+		width: 100%;
+		aspect-ratio: var(--polygone-aspect-ratio);
 
 		& > * {
 			z-index: 90

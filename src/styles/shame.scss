@@ -9,8 +9,8 @@
 
     --space-xxl : var(--space-2xl);
 
+    // rpas de gouttière, pour pouvoir aligner les polygones 
 
-    
 
 
 
@@ -55,4 +55,10 @@
       // mix-blend-mode: luminosity;
       // mix-blend-mode: plus-lighter;
       // mix-blend-mode: plus-darker;
+}
+
+
+
+.flex-grid {
+        --grid-gap-x: 0rem !important;
 }
