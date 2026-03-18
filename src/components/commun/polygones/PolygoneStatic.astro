@@ -9,17 +9,17 @@ interface Props {
 	imageUrl?: string;
   modifier?: string;
 }
+
 const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = Astro.props;
 ---
 
-<div class={`polygone${modifier ? ` ${modifier}` : ''}`}>
+<div class={`polygone ${modifier ? ` ${modifier}` : ''}`}>
   <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color}/>
 </div>
 
 <style lang="scss" is:global>
   .polygone {
-      border:0px solid red;
-     
+    border:0px solid red;
 
     &.-visible {
       visibility: visible;
@@ -34,10 +34,10 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = As
     }
 
     &.-isBackground {
-        position: absolute;
-        content: "";
-        inset: 0;
-        z-index: -1;
-      }
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: -1;
+    }
   }
 </style>
