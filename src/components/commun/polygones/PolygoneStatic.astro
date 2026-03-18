@@ -19,10 +19,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = As
 <style lang="scss" is:global>
   .polygone {
       border:0px solid red;
-      position: absolute;
-      content: "";
-      inset: 0;
-      z-index: -1;
+     
 
     &.-visible {
       visibility: visible;
@@ -35,5 +32,12 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = As
     &.-revert {
       transform: rotateY(-180deg);
     }
+
+    &.-isBackground {
+        position: absolute;
+        content: "";
+        inset: 0;
+        z-index: -1;
+      }
   }
 </style>
