@@ -1,18 +1,22 @@
----
 
----
+<section>
+   <div class="oka-spacer -xl" aria-hidden="true"></div>
 
+   <div class="flex-grid">
+      <div class="col col-1"></div>
+      <div class="oka-avantages col col-14 oka-darkMode">
+         <div class="oka-flex">
+            <slot />
+         </div>
+      </div>
+   </div>
 
-<div class="oka-avantages col col-14 oka-grid240 oka-darkMode oka-surface">
-   <slot />
-</div>
+   <div class="oka-spacer -xl" aria-hidden="true"></div> 
+</section>
+
 
 <style lang="scss">
-   .oka-avantages {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
+   section {
+      background-color: var(--sok-color-surface-dark);
    }
 </style>

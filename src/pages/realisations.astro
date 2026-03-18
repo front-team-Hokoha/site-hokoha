@@ -4,60 +4,61 @@ import Layout from '../layouts/Layout.astro';
 // ===== Composants d'animations =====
 import RevealText from '../animations/RevealText.astro';
 // ===== Componsants de la page =====
-import Projets from '../components/realisations/ProjetsTest.astro';
+import Projets from '../components/realisations/Projets.astro';
 import Diversite from '../components/realisations/Diversite.astro';
 import Avantages from "../components/commun/Avantages.astro";
-import Fidelite from "../components/commun/avantages/Fidelite.astro";
-import Forfait from "../components/commun/avantages/Forfait.astro";
-import Garantie from "../components/commun/avantages/Garantie.astro";
+import Avantage from "../components/commun/Avantage.astro";
+import Footer from '../components/commun/Footer.astro';
 ---
 
   <Layout title="Page Réacomponents/lisations">
     <!-- ===== Hero Section ===== -->
-    <section class="flex-grid sok-realisations">
-      <div class="col col-1"></div>
-      <div class="col col-8">
-        <div class="oka-spacer -xl"></div>
-        <RevealText>
-          <h1 class="oka-h -xl">Lorem ipsum ac a scelerisquealiquam fames.</h1>
-        </RevealText>
+    <section class="flex-grid">
+      
+      <div class="flex-grid">
+        <div class="col col-1"></div>
+        <div class="col col-8">
+          <div class="oka-spacer -xxl"></div>
+          <RevealText>
+            <h1 class="oka-h -xl">Lorem ipsum ac a scelerisquealiquam fames.</h1>
+          </RevealText>
 
-        <p class="oka-text -lg">
-          Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
-          tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
-        </p>
+          <p class="oka-text -lg">
+            Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
+            tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
+          </p>
+
+        </div>
       </div>
 
-      <!-- ===== Réalisations Section -->
+      <div class="oka-spacer  -md" aria-hidden="true"></div>
+     
+      <!-- ===== Réalisations Section ===== -->
       <Projets />
+
+      <div class="oka-spacer  -xl" aria-hidden="true"></div>
+
     </section>
 
-    <div class="oka-spacer -xl"></div>
+
     
     <!-- ===== Diversités ===== -->
     <Diversite />
           
-    <div class="oka-spacer -lg" aria-hidden="true"></div>
-
+    
     <Avantages>
-        <Forfait />
-        <Garantie />
-        <Fidelite />
+      <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
+      <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
+      <Avantage subtitle="fidélitée client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
     </Avantages>
+
+    <div slot="Footer">
+      <Footer modifier="-grey"/>
+    </div>
 </Layout>
 
-
-<style lang="scss">
-  .-xl {
-    padding-top: 0
-  }
-
-
-  .sok-realisations {
-    position: relative;
-    z-index: 99;
-
-    background-color: var(--sok-color-surface);
-    border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
-  }
+<style>
+section {
+  border-radius: var(--sok-radius-section) var(--sok-radius-section) 0 0  ;
+}
 </style>

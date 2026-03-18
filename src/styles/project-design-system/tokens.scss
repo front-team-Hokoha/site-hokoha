@@ -1,31 +1,20 @@
 :root {
-  // ===== Background =====
-  --sok-color-bg-blue-200: #B0D8FFFF;
-  --sok-color-bg-blue-300: #8AC5FFFF;
-  --sok-color-bg-blue-400: #3399FFFF;
-  --sok-color-bg-blue-500: #0080FFFF;
-  --sok-color-bg-blue-600: #0074E8FF;
-  --sok-color-bg-blue-700: #005BB5FF;
-  --sok-color-bg-blue-800: #00468CFF;
-  --sok-color-bg-blue-900: #00366BFF;
-  --sok-color-bg-grey-300: #FAF9FCFF;
-  // --sok-color-bg-strong: #001522FF;
-  --sok-color-bg-strong: #040719FF;
-  --sok-color-bg-on_surface: #FFFFFFFF;
-  // ===== Foreground =====
-  --sok-color-fg-blue-200: #B0D8FFFF;
-  --sok-color-fg-blue-300: #8AC5FFFF;
-  --sok-color-fg-blue-400: #3399FFFF;
-  --sok-color-fg-blue-500: #0080FFFF;
-  --sok-color-fg-blue-600: #0074E8FF;
-  --sok-color-fg-blue-700: #005BB5FF;
-  --sok-color-fg-blue-800: #00468CFF;
-  --sok-color-fg-blue-900: #00366BFF;
-  --sok-color-fg-grey-300: #FAF9FCFF;
-  // --sok-color-fg-strong: #001522FF;
-  --sok-color-fg-strong: #040719FF; 
-  --sok-color-fg-on_surface: #FFFFFFFF;
+  // ===== Primary =====
+  --sok-color-primary-lighter: var(--oka-color-primary-400);
+  --sok-color-primary-light: var(--oka-color-primary-500);
+  --sok-color-primary: var(--oka-color-primary-600);
+  --sok-color-primary-dark: var(--oka-color-primary-700);
+  --sok-color-primary-darker: var(--oka-color-primary-800);
+  --sok-color-primary-darkest: var(--oka-color-primary-900);
+
+
+  // ===== Surface =====
+  --sok-color-surface: rgba(255, 255, 255, 1);
+  --sok-color-surface-dark: hsl(225, 40%, 97%);
+
   // ===== Layer =====
 
   // ===== Border =====
+    --sok-radius-section: 1rem;
+		--oka-radius-button : 0.25rem;
 }
