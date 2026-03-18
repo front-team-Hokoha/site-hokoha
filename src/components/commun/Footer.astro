@@ -1,108 +1,118 @@
-<div class="oka-spacer -md" aria-hidden="true"></div>
+---
+const { modifier } = Astro.props;
+---
 
-<footer class="oka-footer oka-lightMode oka-surface _ctnr-inline oka-wrap oka-wrap--md -center flex-grid">
-  <div class="col col-1"></div>
-  <div class="col col-14">
 
-    <div class="oka-footer__main oka-cols -two">
-      <div class="oka-footer__contact">
-        <p class="oka-text -lg col col-10">
-          Lorem ipsum dolor sit amet consectetur. Lorem risus molestie posuere
-          turpis tincidunt vestibulum cursus.
-        </p>
-
-        <div class="oka-spacer -sm" aria-hidden="true"></div>
-
-      <button class="oka-bt -lg -outlined">
-          <div class="oka-bt__lbl">call to action</div>
-          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-          <div class="oka-spinner"></div>
-        </button>
-
-        <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
-      </div>
-
-      <nav class="oka-footer__nav oka-cols -three -Z">
-        <!-- Liste 1 -->
-        <ul class="oka-footer__list">
-          <li>
-            <h3 class="oka-h -sm">Navigation</h3>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Méthodologie</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Réalisations</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Équipe</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Contact</a>
-          </li>
-        </ul>
-
-        <!-- Liste 2 -->
-        <ul class="oka-footer__list">
-          <li>
-            <h3 class="oka-h -sm">Services</h3>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Solutions web</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Logiciels métiers</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Application mobile</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Lorem ipsum</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Lorem ipsum</a>
-          </li>
-        </ul>
-
-        <!-- Liste 3 -->
-        <ul class="oka-footer__list">
-          <li>
-            <h3 class="oka-h -sm">Légale</h3>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Mentions légales</a>
-          </li>
-
-          <li>
-            <a class="oka-link" href="#">Lorem ipsum</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
+<div class="oka-appWrap">
+  <footer class={`oka-footer oka-lightMode oka-surface _ctnr-inline" ${modifier}`}>
     <div class="oka-spacer -md" aria-hidden="true"></div>
-    <hr class="oka-divider" aria-hidden="true">
-    <div class="oka-spacer -md" aria-hidden="true"></div>
+  
+    <div class="flex-grid">
+      <div class="col col-1"></div>
+      <div class="col col-14">
     
-    <div class="sig-container">
-      <div class="sig-content">
-        <span class="oka-h -xxl signature">HOKOHA</span>
+        <div class="oka-footer__main oka-cols -two">
+          <div class="oka-footer__contact">
+            <p class="oka-text -lg col col-10">
+              Lorem ipsum dolor sit amet consectetur. Lorem risus molestie posuere
+              turpis tincidunt vestibulum cursus.
+            </p>
+    
+            <div class="oka-spacer -sm" aria-hidden="true"></div>
+    
+          <button class="oka-bt -lg -outlined">
+              <div class="oka-bt__lbl">call to action</div>
+              <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
+              <div class="oka-spinner"></div>
+            </button>
+    
+            <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
+          </div>
+    
+          <nav class="oka-footer__nav oka-cols -three -Z">
+            <!-- Liste 1 -->
+            <ul class="oka-footer__list">
+              <li>
+                <h3 class="oka-h -sm">Navigation</h3>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Méthodologie</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Réalisations</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Équipe</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Contact</a>
+              </li>
+            </ul>
+    
+            <!-- Liste 2 -->
+            <ul class="oka-footer__list">
+              <li>
+                <h3 class="oka-h -sm">Services</h3>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Solutions web</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Logiciels métiers</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Application mobile</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Lorem ipsum</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Lorem ipsum</a>
+              </li>
+            </ul>
+    
+            <!-- Liste 3 -->
+            <ul class="oka-footer__list">
+              <li>
+                <h3 class="oka-h -sm">Légale</h3>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Mentions légales</a>
+              </li>
+    
+              <li>
+                <a class="oka-link" href="#">Lorem ipsum</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+    
+        <div class="oka-spacer -md" aria-hidden="true"></div>
+        <hr class="oka-divider" aria-hidden="true">
+        <div class="oka-spacer -md" aria-hidden="true"></div>
+        
+        <div class="sig-container">
+          <div class="sig-content">
+            <span class="oka-h -xxl signature">HOKOHA</span>
+          </div>
+        </div>
       </div>
+    
+      <div class="col col-1"></div>
+  
     </div>
-  </div>
-
-  <div class="col col-1"></div>
-</footer>
+  </footer>
+</div>
 
 <style lang="scss">
   ul {
@@ -114,23 +124,23 @@
     text-decoration: none;
     cursor: pointer;
   }
-
+  
   .oka-footer {
     position: relative;
-    // bottom: -30vh;
-    width: 100%;
+    z-index: 1;
     overflow: hidden;
-
+    
+    
     .sig-container {
       // width: 100%;
       display: flex;
       justify-content: center;
       align-items: start;
       margin-bottom: -10%;
-
+      
       .sig-content {
         // overflow: hidden;
-  
+        
         .signature {
           padding: 0;
           font-size: clamp(80px, 22vw, 460px);
@@ -142,7 +152,10 @@
           text-align: center;
         }
       }
-    }
-  
+    } 
+  }
+
+  .oka-footer.-grey {
+    background-color: var(--sok-color-surface-dark);
   }
 </style>

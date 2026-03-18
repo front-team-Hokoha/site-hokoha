@@ -50,7 +50,10 @@ const { title } = Astro.props;
  				</div>
 			</main>
 
-			<Footer />
+
+			<slot name="Footer">
+				<Footer />
+			</slot>
 
 			<!-- Grid Preview -->
 			<div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
@@ -87,18 +90,10 @@ const { title } = Astro.props;
 <style lang="scss" is:global>
 
 
-	:root {
 
-
-		--sok-color-surface: hsl(225, 40%, 98%);
-		--sok-radius-section: 1rem;
-
-		--oka-radius-button : 0.25rem;
-	}
-
-	.oka-surface {
-		--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
-	}
+	// .oka-surface {
+	// 	--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
+	// }
 
 	html {
 	
@@ -156,7 +151,7 @@ const { title } = Astro.props;
        
 			var(--oka-color-neutral-900) 0%,
 			var(--oka-color-neutral-900) 20%,
-            var(--sok-color-bg-blue-500) 25%,
+            var(--sok-color-primary) 25%,
             transparent 60%
         );
       

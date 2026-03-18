@@ -9,57 +9,58 @@ import PolygoneStatic from "../commun/polygones/PolygoneStatic.astro";
 
    <div class="col col-1"></div>
 
-   <div class="col col-10 oka-grid240 -gap-sm">
-      
-      <Projet>
-         <PolygoneStatic color="-app" modifier="-isBackground"/>
-
-         <h2 class="oka-h -secondary -xl">#00</h2>
-         <h3 class="oka-h -sm">WeCERT</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-web"  modifier="-isBackground"/>
-
-         <h2 class="oka-h -secondary -xl">#33</h2>
-         <h3 class="oka-h -sm">Hugo</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-metier"  modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#53</h2>
-         <h3 class="oka-h -sm">Pegase</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-app" modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#20</h2>
-         <h3 class="oka-h -sm">Travel</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-metier"  modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#51</h2>
-         <h3 class="oka-h -sm">Ramses</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-web"  modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#33</h2>
-         <h3 class="oka-h -sm">Hugo</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-ia"  modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#53</h2>
-         <h3 class="oka-h -sm">Pegase</h3>
-      </Projet>
-
-      <Projet>
-         <PolygoneStatic color="-app"  modifier="-isBackground"/>
-         <h2 class="oka-h -secondary -xl">#00</h2>
-         <h3 class="oka-h -sm">WeCERT</h3>
-      </Projet>
+   <div class="col col-10">
+      <div class="oka-grid240">         
+         <Projet>
+            <PolygoneStatic color="-web" modifier="-isBackground"/>
+   
+            <h2 class="oka-h -secondary -xl">#00</h2>
+            <h3 class="oka-h -sm">WeCERT</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-metier"  modifier="-isBackground"/>
+   
+            <h2 class="oka-h -secondary -xl">#33</h2>
+            <h3 class="oka-h -sm">Hugo</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-app"  modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#53</h2>
+            <h3 class="oka-h -sm">Pegase</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-ia" modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#20</h2>
+            <h3 class="oka-h -sm">Travel</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-objet"  modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#51</h2>
+            <h3 class="oka-h -sm">Ramses</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-web"  modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#33</h2>
+            <h3 class="oka-h -sm">Hugo</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-metier"  modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#53</h2>
+            <h3 class="oka-h -sm">Pegase</h3>
+         </Projet>
+   
+         <Projet>
+            <PolygoneStatic color="-app"  modifier="-isBackground"/>
+            <h2 class="oka-h -secondary -xl">#00</h2>
+            <h3 class="oka-h -sm">WeCERT</h3>
+         </Projet>
+      </div>
    </div>
 </section>
 
@@ -71,8 +72,13 @@ import PolygoneStatic from "../commun/polygones/PolygoneStatic.astro";
 
    .oka-grid240 {
       // gap: 0;
-      position: relative
+      position: relative;
+      column-gap: 1rem;
    }
+
+   // .sok-columns {
+   //    grid-template-columns: repeat(3, 1fr);
+   // }
 
    * {
       color : #fff;
