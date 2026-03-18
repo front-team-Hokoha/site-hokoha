@@ -1,14 +1,11 @@
-<div class="oka-avantages col col-14 oka-grid240 oka-darkMode">
-   <slot />
-</div>
 
-<style lang="scss">
-   .oka-avantages {
-      display: flex;
-      gap: 1rem;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      height: auto;
-      // max-height: clamp(250px, 50vh, 350px);
-   }
-</style>
+<section>
+   <div class="flex-grid">
+      <div class="col col-1"></div>
+      <div class="oka-avantages col col-14 oka-darkMode">
+         <div class="oka-flex">
+            <slot />
+         </div>
+      </div>
+   </div>
+</section>

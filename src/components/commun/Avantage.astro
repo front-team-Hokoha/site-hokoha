@@ -5,7 +5,7 @@ const { title, subtitle, text} = Astro.props
 ---
 
 <article class="oka-avantage">
-   <PolygoneStatic color="-web" addClass="sok-shape -revert"/>
+   <PolygoneStatic color="-web" modifier="-revert"/>
 
    <h4 class="oka-h -md">{subtitle}</h4>
    <h3 class="oka-h -xl">{title}</h3>
@@ -27,6 +27,7 @@ const { title, subtitle, text} = Astro.props
       justify-content: center;
       align-items: center;
       flex: 1;
+      aspect-ratio: var(--polygone-aspect-ratio);
       // overflow: hidden;
       // background: green;
 
@@ -35,10 +36,5 @@ const { title, subtitle, text} = Astro.props
          pointer-events: none;
       }
 
-      // .sok-shape {
-      //    inset: 0;
-      //    z-index: 1;
-      //    transform: rotateY(-180deg);
-      // }
    }
 </style>

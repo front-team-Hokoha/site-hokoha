@@ -7,18 +7,22 @@ interface Props {
   color?: string;
 	videoUrl?: string;
 	imageUrl?: string;
-  addClass?: string;
+  modifier?: string;
 }
-const { frontText, backText = 'Back', videoUrl, imageUrl, color, addClass } = Astro.props;
+const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = Astro.props;
 ---
 
-<div class={`polygone${addClass ? ` ${addClass}` : ''}`}>
+<div class={`polygone${modifier ? ` ${modifier}` : ''}`}>
   <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color}/>
 </div>
 
 <style lang="scss" is:global>
   .polygone {
-    
+      border:0px solid red;
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: -1;
 
     &.-visible {
       visibility: visible;
@@ -26,6 +30,10 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color, addClass } = As
 
     &.-hidden {
       visibility: hidden;
+    }
+
+    &.-revert {
+      transform: rotateY(-180deg);
     }
   }
 </style>

@@ -1,67 +1,69 @@
 ---
-const { addClass, srcImage, altImage } = Astro.props;
+// ===== Composants de la page =====
+const { addClass = "", srcImage, altImage } = Astro.props;
 ---
 
-<article class={`oka-projet oka-flex  ${addClass}`}>
-   <img class="oka-projet__img" src={srcImage} alt={altImage}>
+<a href="#">
 
-   <!-- Cache le contenu gra- -->
-   <div class="oka-projet__content">
+   <div class="sok-8ptgrid" aria-hidden="true"></div>
+	<div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
+
+   <article class={`oka-projet oka-flex  ${addClass}`}>
       <slot />
-   </div>
-</article>
+   </article>
+</a>
+
+
 
 <style lang="scss">
+   a {
+      text-decoration: none;
+
+      a:visited {
+         color: transparent;
+      }
+   }
 
    .oka-projet {
       position: relative;
-      aspect-ratio: 1/1;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      aspect-ratio: 4/3;
       margin-left: -1px;
       margin-bottom: -1px;
-      overflow: hidden;
+      padding: 0.5rem 1rem;
 
-      border-radius: .5rem;
-      border: 1px solid var(--oka-color-bd-strong);
-      
-      // cursor: pointer;
+      cursor: pointer;
 
-      &__img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-      }
-
-      &__content {
-         position: absolute;
-         content: "";
-         inset: 0;
-         width: 100%;
-         height: 100%;
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-         background-color: rgba(0, 0, 0, 0.5);
-         opacity: 0;
-         transition: opacity .25s ease-out;
+      & > * {
          z-index: 99;
-      }
+         pointer-events: none;
 
-      // a:hover > .oka-projet > &__content {
-      //    opacity: 1;
-      // }
-      
-      .oka-projet:hover > &__content {
-         opacity: 1;
       }
+   }
 
-      .oka-projet a {
-         // position: absolute;
-         // top: 0;
-         // left: 0;
-         // width: 100%;
-         // height: 100%;
-         // background-color: purple
+   .sok-8ptgrid {
+      //display: none;
+      position: absolute;
+      //left : 0dvw;
+      //top : 30dvh;
+      width: 1dvw;
+      height: 100dvh;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+         to bottom,
+         rgba(88, 125, 223, 0.5) 0px,
+         rgba(88, 125, 223, 0.5) 8px,
+         transparent 8px,
+         transparent 16px
+      );
+
+      &.-secondary {
+         width: 3dvw;
+         height: 30dvh;
       }
    }
 </style>
