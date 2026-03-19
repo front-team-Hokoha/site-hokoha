@@ -1,8 +1,185 @@
 ---
 // ===== Layout =====
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+// ===== Componsants de la page =====
+import ImageSok from "../components/commun/ImageSok.astro";
+import Footer from '../components/commun/Footer.astro';
+// ===== Composants d'animations =====
+import RevealText from "../animations/RevealText.astro";
+import RevealBox from "../animations/RevealBox.astro";
 ---
 
 <Layout title="Page Équipe">
-    <h1>Page Équipe</h1>
+   <!-- ===== Section Histoire ===== -->
+  <section class="-ctnr-inline">
+    <div class="flex-grid">
+      <div class="oka-spacer -xl"></div>
+      
+      <div class="col col-1"></div>
+
+      <div class="col col-14">
+        <RevealText>
+            <h1 class="oka-h -xl">
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+               inventore, ex ducimus assumenda cupiditate consequatur libero
+               corporis id.
+            </h1>
+        </RevealText>
+
+        <div class="oka-spacer -xl"></div>
+
+        <div class="oka-cols -two">
+            <div class="sok-gerants">
+               <article class="sok-gerants__card">
+                  <figure class="sok-gerants__img">
+                     <ImageSok imagePath="/src/assets/images/equipe/gerants/Laurent-Costaouec.png" altText="kevin" />
+                  </figure>
+
+                  <div class="sok-gerants__infos">
+                     <h3 class="oka-h -sm">Laurent Costaouec</h3>
+                     <span class="oka-text -lg">Co-Fondateur / Co-Gérant</span>
+                  </div>
+               </article>
+
+               <article class="sok-gerants__card">
+                  <figure class="sok-gerants__img">
+                     <ImageSok imagePath="/src/assets/images/equipe/gerants/Franck-Hortala.png" altText="kevin" />
+                  </figure>
+
+                  <div class="sok-gerants__infos">
+                     <h3 class="oka-h -sm">Frank Hortola</h3>
+                     <span class="oka-text -lg">Co-Fondateur / Co-Gérant</span>
+                  </div>
+               </article>
+
+               <article class="sok-gerants__card">
+                  <figure class="sok-gerants__img">
+                     <ImageSok imagePath="/src/assets/images/equipe/gerants/Yann-Lorgueilleux.png" altText="kevin" />
+                  </figure>
+
+                  <div class="sok-gerants__infos">
+                     <h3 class="oka-h -sm">Yann Lorgueilleux</h3>
+                     <span class="oka-text -lg">Co-Gérant</span>
+                  </div>
+               </article>
+            </div>
+
+            <p class="oka-text -lg">
+               Lorem ipsum dolor sit amet consectetur. Dui gravida bibendum tempus
+               egestas. Tempor suscipit ligula rutrum sed. Eu lectus consequat ut
+               imperdiet non. Aliquam nunc enim sed potenti facilisi id dolor
+               facilisis sagittis.
+            </p>
+        </div>
+
+        <div class="oka-spacer -xl"></div>
+
+      </div>
+    </div>
+  </section>
+
+   <!-- ===== Section Histoire ===== -->
+  <section class="-ctnr-inline">
+      <div class="flex-grid">
+         <div class="oka-spacer -xl"></div>
+         <div class="col col-1"></div>
+
+         <div class="col col-14">
+            <!-- === Partie équipe === -->
+            <div class="oka-cols -two">
+               <div>
+                  <RevealText>
+                     <h2 class="oka-h">Lorem ipsum phasellus scelerisque sed in pulvinar a ac.</h2>
+                  </RevealText>
+
+                  <p class="oka-text -lg">
+                     Lorem ipsum dolor sit amet consectetur. Dui justo morbi ac eget. 
+                     Maecenas tempus vulputate euismod odio faucibus elementum enim cras vivamus. 
+                     Aliquet venenatis turpis ac diam. Elit pellentesque eget sociis egestas. 
+                     Dapibus donec enim cursus in elit nisl viverra.
+                  </p>
+
+                  <div class="oka-spacer -sm"></div>
+
+                  <button class="oka-bt -lg">
+                     <div class="oka-bt__lbl">call to action</div>
+                     <div class="oka-spinner"></div>
+                  </button>
+               </div>
+
+               <figure class="sok-equipe__img">
+                  <ImageSok imagePath="/src/assets/images/equipe/equipe.jpg" altText="photo de l'équipe Hokoha" />
+               </figure>
+            </div>
+
+            <div class="oka-spacer -xl"></div>
+
+            <!-- === Partie "formation" === -->
+            <div class="oka-cols -two">
+               <div class="sok-hommage">
+                  <h2 class="oka-h -lg">Lorem ipsum et elementum viverra</h2>
+                  <p class="oka-text -md">
+                     John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.
+                  </p>
+               </div>
+
+               <div class="sok-formation">
+                  <RevealText>
+                     <h2 class="oka-h">Lorem ipsum phasellus scelerisque sed in pulvinar a ac.</h2>
+                  </RevealText>
+
+                  <p class="oka-text -lg">
+                     Lorem ipsum dolor sit amet consectetur. Dui justo morbi ac eget. 
+                     Maecenas tempus vulputate euismod odio faucibus elementum enim cras vivamus. 
+                     Aliquet venenatis turpis ac diam. Elit pellentesque eget sociis egestas. 
+                     Dapibus donec enim cursus in elit nisl viverra.
+                  </p>
+
+                  <div class="oka-spacer -sm"></div>
+
+                  <button class="oka-bt -lg">
+                     <div class="oka-bt__lbl">call to action</div>
+                     <div class="oka-spinner"></div>
+                  </button>
+               </div>
+            </div>
+         </div>
+
+         <div class="oka-spacer -xl"></div>
+      </div>
+  </section>
+
+   <div slot="Footer">
+      <Footer modifier="-grey"/>
+   </div>
 </Layout>
+
+<style lang="scss">
+   .sok-gerants {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      &__img {
+         // width: 400px;
+         height: 150px;
+         aspect-ratio: 4 / 3;
+         margin: 0;
+         border: 2px solid red
+      }
+   }
+
+   .sok-equipe__img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 1rem;
+   }
+
+   .sok-hommage {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+   }
+</style>
