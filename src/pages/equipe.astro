@@ -2,11 +2,16 @@
 // ===== Layout =====
 import Layout from "../layouts/Layout.astro";
 // ===== Componsants de la page =====
+import HeroContent from "../components/équipe/HeroContent.astro";
+import HistoireContent from "../components/équipe/HistoireContent.astro";
+import EquipeContent from "../components/équipe/EquipeContent.astro";
+import FormationContent from "../components/équipe/FormationContent.astro";
 import ImageSok from "../components/commun/ImageSok.astro";
 import Footer from '../components/commun/Footer.astro';
 // ===== Composants d'animations =====
 import RevealText from "../animations/RevealText.astro";
 import RevealBox from "../animations/RevealBox.astro";
+import HommageContent from "../components/équipe/HommageContent.astro";
 ---
 
 <Layout title="Page Équipe">
@@ -18,13 +23,15 @@ import RevealBox from "../animations/RevealBox.astro";
       <div class="col col-1"></div>
 
       <div class="col col-14">
-        <RevealText>
+        <!-- <RevealText>
             <h1 class="oka-h -xl">
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
                inventore, ex ducimus assumenda cupiditate consequatur libero
                corporis id.
             </h1>
-        </RevealText>
+        </RevealText> -->
+
+        <HeroContent />
 
         <div class="oka-spacer -xl"></div>
 
@@ -64,12 +71,14 @@ import RevealBox from "../animations/RevealBox.astro";
                </article>
             </div>
 
-            <p class="oka-text -lg">
+            <HistoireContent />
+
+            <!-- <p class="oka-text -lg">
                Lorem ipsum dolor sit amet consectetur. Dui gravida bibendum tempus
                egestas. Tempor suscipit ligula rutrum sed. Eu lectus consequat ut
                imperdiet non. Aliquam nunc enim sed potenti facilisi id dolor
                facilisis sagittis.
-            </p>
+            </p> -->
         </div>
 
         <div class="oka-spacer -xl"></div>
@@ -88,16 +97,8 @@ import RevealBox from "../animations/RevealBox.astro";
             <!-- === Partie équipe === -->
             <div class="oka-cols -two">
                <div>
-                  <RevealText>
-                     <h2 class="oka-h">Lorem ipsum phasellus scelerisque sed in pulvinar a ac.</h2>
-                  </RevealText>
-
-                  <p class="oka-text -lg">
-                     Lorem ipsum dolor sit amet consectetur. Dui justo morbi ac eget. 
-                     Maecenas tempus vulputate euismod odio faucibus elementum enim cras vivamus. 
-                     Aliquet venenatis turpis ac diam. Elit pellentesque eget sociis egestas. 
-                     Dapibus donec enim cursus in elit nisl viverra.
-                  </p>
+                  
+                  <EquipeContent />
 
                   <div class="oka-spacer -sm"></div>
 
@@ -117,14 +118,18 @@ import RevealBox from "../animations/RevealBox.astro";
             <!-- === Partie "formation" === -->
             <div class="oka-cols -two">
                <div class="sok-hommage">
-                  <h2 class="oka-h -lg">Lorem ipsum et elementum viverra</h2>
+                  <HommageContent />
+
+                  <!-- <h2 class="oka-h -lg">Lorem ipsum et elementum viverra</h2>
                   <p class="oka-text -md">
                      John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.       John D.
-                  </p>
+                  </p> -->
                </div>
 
                <div class="sok-formation">
-                  <RevealText>
+                  <FormationContent />
+
+                  <!-- <RevealText>
                      <h2 class="oka-h">Lorem ipsum phasellus scelerisque sed in pulvinar a ac.</h2>
                   </RevealText>
 
@@ -132,7 +137,7 @@ import RevealBox from "../animations/RevealBox.astro";
                      Lorem ipsum dolor sit amet consectetur. Dui justo morbi ac eget. 
                      Maecenas tempus vulputate euismod odio faucibus elementum enim cras vivamus. 
                      Aliquet venenatis turpis ac diam. Elit pellentesque eget sociis egestas. 
-                     Dapibus donec enim cursus in elit nisl viverra.
+                     Dapibus donec enim cursus in elit nisl viverra. -->
                   </p>
 
                   <div class="oka-spacer -sm"></div>

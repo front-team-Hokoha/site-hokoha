@@ -1,0 +1,17 @@
+---
+// ===== Composants d'animations =====
+import RevealText from "../../animations/RevealText.astro"
+
+// ==== Import du fichier Markdown
+import * as hommageContent from "../../contenus/equipe/hommage-content.md";
+---
+
+<RevealText>
+   <h2 class="oka-h">
+      {hommageContent.frontmatter.title}
+   </h2>
+</RevealText>
+
+<p class="oka-text -lg">
+   {hommageContent.rawContent()}
+</p>
