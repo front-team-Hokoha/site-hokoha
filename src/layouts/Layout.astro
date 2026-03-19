@@ -109,7 +109,9 @@ const { title } = Astro.props;
 
 	body {
 	
-		background-color: var(--oka-color-neutral-800) !important;
+		// background-color: var(--oka-color-neutral-800) !important;
+      	background-color: var(--sok-color-surface);
+
 	}
 
 	section {
@@ -119,7 +121,8 @@ const { title } = Astro.props;
 	}
 
 	.layout-app__main {
-		background-color: var(--oka-color-neutral-800);
+		// background-color: var(--oka-color-neutral-800);
+		background-color: var(--sok-color-surface-dark);
 	}
 
 
@@ -138,7 +141,7 @@ const { title } = Astro.props;
         font-size: 8px;
         background-repeat: repeat-y;
         background-size: 100% 0.25rem;
-        background-image: linear-gradient(to bottom, var(--oka-color-neutral-900, var(--oka-color-neutral-900)) 0, rgba(255, 255, 255, 0) 1px);
+        background-image: linear-gradient(to bottom, var(--oka-color-neutral-100, var(--oka-color-neutral-100)) 0, rgba(255, 255, 255, 0) 1px);
         line-height: 0;
         line-height: 0;
         pointer-events: none;
@@ -146,25 +149,25 @@ const { title } = Astro.props;
 	}
 
     // Ray de lumière bleue
-	.sok-hero_ray{
-      position:fixed;
-      top:0;
-      width:300dvw;
-      height:100dvh;
+	// .sok-hero_ray{
+   //    position:fixed;
+   //    top:0;
+   //    width:300dvw;
+   //    height:100dvh;
 
-      background-image: 
-        radial-gradient(
-            ellipse at right top,
+   //    background-image: 
+   //      radial-gradient(
+   //          ellipse at right top,
        
-			var(--oka-color-neutral-900) 0%,
-			var(--oka-color-neutral-900) 10%,
-            var(--sok-color-primary) 25%,
-            transparent 60%
-        );
+	// 		var(--oka-color-neutral-900) 0%,
+	// 		var(--oka-color-neutral-900) 10%,
+   //          var(--sok-color-primary) 25%,
+   //          transparent 60%
+   //      );
       
-      background-attachment: fixed;
-      //mix-blend-mode: color-dodge;
-   }
+   //    background-attachment: fixed;
+   //    //mix-blend-mode: color-dodge;
+   // }
 
 
    .sok-8ptgrid {
