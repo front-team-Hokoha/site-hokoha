@@ -4,8 +4,14 @@ import { ClientRouter } from "astro:transitions";
 // ===== Components =====
 import Header from "../components/commun/Header.astro";
 import Footer from "../components/commun/Footer.astro";
+
+
+
 import Appearup from '../animations/AppearUp.astro';
+import Appeargroup from '../animations/AppearGroup.astro';
+import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
+
 import { string } from "astro:schema";
 
 
@@ -103,17 +109,17 @@ const { title } = Astro.props;
 
 	body {
 	
-		background-color: var(--oka-color-neutral-700) !important;
+		background-color: var(--oka-color-neutral-800) !important;
 	}
 
 	section {
 		position: relative;
-      z-index: 1;
-      background-color: var(--sok-color-surface);
+      	z-index: 1;
+      	background-color: var(--sok-color-surface);
 	}
 
 	.layout-app__main {
-		background-color: var(--oka-color-neutral-700);
+		background-color: var(--oka-color-neutral-800);
 	}
 
 
@@ -121,7 +127,7 @@ const { title } = Astro.props;
 	body:after{
 
         content: "";
-        position: fixed;;
+        position: fixed;
         width: 100%;
         top: 0;
         bottom: 0;
@@ -131,8 +137,8 @@ const { title } = Astro.props;
         opacity: 1;
         font-size: 8px;
         background-repeat: repeat-y;
-        background-size: 100% 0.5rem;
-        background-image: linear-gradient(to bottom, var(--oka-color-primary-800, var(--oka-color-primary-800)) 0, rgba(255, 255, 255, 0) 1px);
+        background-size: 100% 0.25rem;
+        background-image: linear-gradient(to bottom, var(--oka-color-neutral-900, var(--oka-color-neutral-900)) 0, rgba(255, 255, 255, 0) 1px);
         line-height: 0;
         line-height: 0;
         pointer-events: none;
@@ -143,21 +149,21 @@ const { title } = Astro.props;
 	.sok-hero_ray{
       position:fixed;
       top:0;
-      width:100dvw;
+      width:300dvw;
       height:100dvh;
 
       background-image: 
         radial-gradient(
-            ellipse at left top,
+            ellipse at right top,
        
 			var(--oka-color-neutral-900) 0%,
-			var(--oka-color-neutral-900) 20%,
+			var(--oka-color-neutral-900) 10%,
             var(--sok-color-primary) 25%,
             transparent 60%
         );
       
       background-attachment: fixed;
-      mix-blend-mode: color-dodge;
+      //mix-blend-mode: color-dodge;
    }
 
 
@@ -189,6 +195,8 @@ const { title } = Astro.props;
 <!-- <LocalScripts /> -->
 <Smoothscroll />
 <Appearup />
+<Appeargroup />
+<FadeIn />
 <!-- <ScrollSnap /> -->
 
 

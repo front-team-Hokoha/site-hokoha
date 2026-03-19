@@ -40,6 +40,7 @@
 
 
             const startPosition = window.matchMedia("(max-width: 768px)").matches ? "top 90%" : "top 70%";
+            const dataDelay = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
 
             //Animation d'apparition au scroll
             gsap.to(element, {
@@ -47,7 +48,7 @@
                 filter: "blur(0px)", 
                 transform: "translateY(0px)", // Retour à la position initiale
                 duration: 0.5,
-                delay: delayIncrement, // Ajoute le délai calculé
+                delay: delayIncrement + dataDelay, // Ajoute le délai calculé + data-delay manuel
                 ease: "power2.out",
                 scrollTrigger: {
                 trigger: element,

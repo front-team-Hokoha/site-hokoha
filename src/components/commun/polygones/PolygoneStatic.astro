@@ -13,7 +13,7 @@ interface Props {
 const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = Astro.props;
 ---
 
-<div class={`polygone ${modifier ? ` ${modifier}` : ''}`} data-appearup >
+<div class={`polygone ${modifier ? ` ${modifier}` : ''}`}  >
   <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color}/>
 </div>
 
