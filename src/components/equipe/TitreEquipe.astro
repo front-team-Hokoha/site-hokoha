@@ -1,0 +1,11 @@
+---
+// ===== Composants d'animations =====
+import RevealText from "../../animations/RevealText.astro"
+
+// ==== Import du fichier Markdown
+import * as titreEquipe from "../../contenus/equipe/titre-equipe.md";
+---
+
+<RevealText>
+   <h2 class="oka-h" set:html={titreEquipe.rawContent()}></h2>
+</RevealText>

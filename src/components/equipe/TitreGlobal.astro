@@ -3,12 +3,9 @@
 import RevealText from "../../animations/RevealText.astro"
 
 // ==== Import du fichier Markdown
-import * as heroContent from "../../contenus/equipe/hero-content.md";
+import * as titreGlobal from "../../contenus/equipe/titre-global.md";
 ---
 
-
 <RevealText>
-   <h1 class="oka-h -xl">
-      {heroContent.rawContent()}
-   </h1>
+   <h1 class="oka-h -xl" set:html={titreGlobal.rawContent()}></h1>
 </RevealText>
