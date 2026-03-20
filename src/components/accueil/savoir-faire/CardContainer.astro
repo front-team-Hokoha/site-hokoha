@@ -1,17 +1,24 @@
 ---
-import TestCard from "./TestCard.astro";
+import CardSavoirFaire from "./CardSavoirFaire.astro";
 ---
 
-<div>
-   <TestCard />
+<div class="sok-card-container">
+   <CardSavoirFaire />
+   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
+   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
+   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
+   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
 </div>
 
 
 <style lang="scss">
-   div {
+   .sok-card-container {
       display: flex;
+      width: 100%;
+      // height: ;
       gap: 10px;
       overflow-x: scroll;
-      background: red;
+      scroll-behavior: smooth;
+      // scrollbar-width: none;
    }
 </style>

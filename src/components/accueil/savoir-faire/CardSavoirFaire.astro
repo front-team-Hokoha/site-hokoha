@@ -1,6 +1,7 @@
 ---
-const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }));
-
+const savoirFaires = Object.values(
+  import.meta.glob("../../../contenus/savoir-faires/*.md", { eager: true }),
+);
 
 /* 
    Liste de cartes de savoir-faire. 
@@ -8,81 +9,131 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
    avec un top qui s'ajuste dynamiquement en fonction de la hauteur cumulée des titres des cartes précédentes.
 */
 ---
-{savoirFaires.map((savoirFaire) => (
-   <article class="sok-card">
-      {/* corriger ça plus tard */}
-      <div class="content flex-grid">
-         <div class="oka-spacer  -md" aria-hidden="true"></div>
 
-         <div class="col col-1"></div>
+{
+  savoirFaires.map((savoirFaire) => (
+    <article class="sok-card">
+      <div class="flex-grid">
+        {/* <div class="oka-spacer  -md" aria-hidden="true" /> */}
 
-         <div class="col col-13">
-         <div class="sok-card__card-content">
-            <span class="oka-data -md -strong">
-               {savoirFaire.frontmatter.subtitle}
-            </span>
-            <div class="oka-spacer -sm" aria-hidden="true"></div>
+        <div class="col col-16 sok-card__wrapper">
+          <div class="sok-card__side-text">
+            <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
-            <h3 class="oka-h -lg">
-               {savoirFaire.frontmatter.title}
-            </h3>
-         </div>
+            <span class="oka-data -md -strong">NOS SAVOIR-FAIRE</span>
+          </div>
 
-         <div class="sok-card__card-text" set:html={savoirFaire.rawContent()}>
-            {/* <savoirFaire.Content /> */}
-         </div>
+          <div class="sok-card__content">
+            <div class="oka-spacer -md" aria-hidden="true" />
 
+            <h3 class="oka-h -lg">{savoirFaire.frontmatter.title}</h3>
 
-         <div class="oka-spacer -md" aria-hidden="true"></div>
-         
-         <button class="oka-bt -outlined">
-           {/* <div class="oka-bt__ico"><i class="fa fa-heart"></i></div> */}
-           <div class="oka-bt__lbl">En savoir plus</div>
-           <div class="oka-spinner"></div>
-         </button>
+            {/* la fonction rawContent permet d'afficher le contenu du .md sans ajouter de balise html dans le DOM */}
+            <p class="oka-text -md" set:html={savoirFaire.rawContent()}></p>
 
-         </div>
-         
+            <div class="oka-spacer -md" aria-hidden="true" />
 
-         <div class="oka-spacer  -md" aria-hidden="true"></div>
+            <button class="oka-bt -outlined">
+              {/* <div class="oka-bt__ico"><i class="fa fa-heart"></i></div> */}
+              <div class="oka-bt__lbl">En savoir plus</div>
+              <div class="oka-spinner" />
+            </button>
+
+            <div class="oka-spacer -md" aria-hidden="true" />
+          </div>
+
+          {/* <figure class="sok-card__content-img">
+            <img
+              src={savoirFaire.frontmatter.src}
+              alt={savoirFaire.frontmatter.alt}
+            />
+          </figure> */}
+        </div>
       </div>
+    </article>
+  ))
+}
 
-   </article>
-  
-))}
-
-
-<style lang="scss">
-   .oka-text {
-      color: red;
-   }
-
-  .sok-card {
-      position: sticky;
-      top: 8rem;
-   
-      background-color: var(--oka-color-layer-floor-0);
-
-      border: 1px solid var(--oka-color-bd-minimal);
-      border-radius: .5rem;
-   }
-
-   .contenu {
-      max-width : 400px;
-   }
-  
+<style is:global>
+  .pin-spacer {
+    background-color: var(--sok-color-surface-dark);
+  }
 </style>
 
+<style lang="scss">
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .flex-grid {
+    height: 100%;
+  }
+
+  .sok-card {
+    position: sticky;
+    min-width: 600px;
+    overflow: hidden;
+    background-color: var(--oka-color-layer-floor-0);
+    border: 1px solid var(--oka-color-bd-minimal);
+    border-radius: 0.5rem;
+
+    &:nth-child(1) {left: 0;}
+    &:nth-child(2) {left: 4rem;}
+    &:nth-child(3) {left: 8rem;}
+    &:nth-child(4) {left: 12rem;}
+
+    &__wrapper {
+      display: flex;
+      gap: 2rem;
+
+      .sok-card__side-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 4rem;
+        height: 100%;
+        padding: 1rem 0;
+        border-right: 1px solid var(--sok-color-surface-dark);
+
+        & > * {
+          writing-mode: sideways-lr;
+        }
+      }
+
+      .sok-card__content-img {
+        // width: 45%;
+        height: 100%;
+        margin: 0;
+      }
+
+      .sok-card__content {
+        // display: ;
+        // width: 55%;
+      }
+    }
+  }
+</style>
+
+{/* ===== Vanilla ===== */}
 <script>
   function updateStickyTops() {
-    const cards = document.querySelectorAll<HTMLElement>('.oka-savoir-faire__card');
+    const cards = document.querySelectorAll<HTMLElement>(
+      ".oka-savoir-faire__card",
+    );
     const BASE_TOP_REM = 8;
-    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const rootFontSize = parseFloat(
+      getComputedStyle(document.documentElement).fontSize,
+    );
     let cumulativeOffset = 0;
 
     cards.forEach((card) => {
       card.style.top = `calc(${BASE_TOP_REM}rem + ${cumulativeOffset}px)`;
-      const header = card.querySelector<HTMLElement>('.oka-savoir-faire__card-content');
+      const header = card.querySelector<HTMLElement>(
+        ".oka-savoir-faire__card-content",
+      );
       if (header) {
         cumulativeOffset += header.getBoundingClientRect().height;
       }
@@ -92,18 +143,61 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
   updateStickyTops();
 
   const ro = new ResizeObserver(updateStickyTops);
-  document.querySelectorAll('.oka-savoir-faire__card-content').forEach((el) => ro.observe(el));
-
+  document
+    .querySelectorAll(".oka-savoir-faire__card-content")
+    .forEach((el) => ro.observe(el));
 
   //  ajouter une class pour chaque carte pour les animations au scroll
-	function addClassToCards() {
-    const cards = document.querySelectorAll<HTMLElement>('.oka-savoir-faire__card');
+  function addClassToCards() {
+    const cards = document.querySelectorAll<HTMLElement>(
+      ".oka-savoir-faire__card",
+    );
 
-		cards.forEach((card, index) => {
-				card.classList.add(`card-${index + 1}`)
-		});
-	}
+    cards.forEach((card, index) => {
+      card.classList.add(`card-${index + 1}`);
+    });
+  }
 
-	addClassToCards();
+  addClassToCards();
 </script>
 
+{/* ===== GSAP ===== */}
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // let cards = utils.toArray('.sok-card');
+  const cardContainer = document.querySelector(".sok-card-container");
+  const cards = document.querySelectorAll(".sok-card");
+
+  // gsap.to(cards, {
+  //    xPercent: -100 * (cards.length - 2.3),
+  //    // ease: "power2.inOut",
+  //    scrollTrigger: {
+  //       trigger: ".sok-section-two",
+  //       pin: true,
+  //       // pinSpacing: true,
+  //       scrub: 1,
+  //       start: "top 30%",
+  //       // end: "bottom 80%",
+  //       // end: "+=1000",
+  //       end: () => "+=" + cardContainer.offsetWidth,
+  //       markers: true,
+  //    }
+  // });
+
+  // gsap.to(cards, {
+  // x: () => -(cards.scrollWidth - window.innerWidth),
+  // ease: "none",
+  // scrollTrigger: {
+  //    trigger: ".sok-container-card",
+  //    start: "top top",
+  //    end: () => "+=" + cards.scrollWidth,
+  //    scrub: true,
+  //    pin: true,
+  //    anticipatePin: 1
+  // }
+  // });
+</script>

@@ -1,9 +1,9 @@
 ---
+// ===== Componsants de la page =====
 import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
-import Revealtext from "../../animations/RevealText.astro";
-import Morph from "./savoir-faire/MorphSavoirFaire.astro";
 import CardContainer from "./savoir-faire/CardContainer.astro";
-import TestCard from "./savoir-faire/TestCard.astro";
+// ===== Composants d'animations =====
+import Revealtext from "../../animations/RevealText.astro";
 ---
 <div class="sok-container hgo-snap">
 
@@ -12,67 +12,62 @@ import TestCard from "./savoir-faire/TestCard.astro";
   <section class="flex-grid sok-section">
     <div class="col col-1"></div>
     <div class="col col-12">
+      
       <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-      <Revealtext>
-        <h1>
-            Lorem ipsum dolor sit <span class="sok-text-color">amet consectetur</span>. 
-            <br> 
-            Urna lacus viverra senectus at. 
-        </h1>
-      </Revealtext>
+      
+      <div class="">
+        <Revealtext>
+          <span class="oka-text -sm -strong">NOTRE SAVOIR-FAIRE</span>
+        </Revealtext>
+        
+        <div class="oka-spacer -md" aria-hidden="true"></div>
 
-      <p class="oka-text -lg">
-          Lorem ipsum dolor sit amet consectetur. Nunc egestas sed porttitor egestas 
-          enim risus ullamcorper id smper. Commodo ultricies netus eu morbi eget scelerisque.        
-      </p>
+        <Revealtext>
+          <h1>
+              Lorem ipsum dolor sit <span class="sok-text-color">amet consectetur</span>. 
+              <br> 
+              Urna lacus viverra senectus at. 
+          </h1>
+        </Revealtext>
+
+        <p class="oka-text -lg">
+            Lorem ipsum dolor sit amet consectetur. Nunc egestas sed porttitor egestas 
+            enim risus ullamcorper id smper. Commodo ultricies netus eu morbi eget scelerisque.        
+        </p>
+      </div>
     </div>
-    <div class="col col-5"></div>
+    <!-- <div class="col col-5"></div> -->
 
     <div class="oka-spacer  -xl" aria-hidden="true"></div>
   </section>
 
 
-  <section class="flex-grid oka-savoir-faire__content sok-section">
-
-
-    <div class="col col-1"></div>
-    <div class="col col-5 oka-savoir-faire__top">
-      <div class="stiktop">
-
-        <div class="oka-morph-wrapper">
-          <Morph>
-        </div>
-
-      </div>
+  <section class="flex-grid sok-section sok-section-two">
+    <div class="col col-16 oka-savoir-faire__list">
+      <CardContainer>
+        <CardSavoirFaire />
+      </CardContainer>
     </div>
 
-    <div class="col col-1"></div>
-    <div class="col col-9 oka-savoir-faire__list">
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-
+    <!-- backup test -->
+    <!-- <div class="col col-1"></div> -->
+    <!-- <div class="col col-16 oka-savoir-faire__list">
       <CardContainer>
-        <TestCard />
+        <CardSavoirFaire />
       </CardContainer>
-      <!-- <CardSavoirFaire /> -->
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
+
+      <CardSavoirFaire />
       <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
       <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
       <hr class="oka-divider" aria-hidden="true">
-    </div>
+    </div> -->
   </section>
 
 </div>
 
 
 
-
 <style lang="scss">
-
-
 
   .sok-container {
     position: relative;
@@ -83,20 +78,12 @@ import TestCard from "./savoir-faire/TestCard.astro";
     background-color: #fff;
   }
 
-
-
   .sok-section {
     background-color: var(--sok-color-surface-dark);
    
   }
 
-  .oka-savoir-faire{
-    position: sticky;
-    top: 8rem;
-  }
-
-
-  .stiktop{
+  .stiktop {
     position: sticky;
     top: 7rem;
   }

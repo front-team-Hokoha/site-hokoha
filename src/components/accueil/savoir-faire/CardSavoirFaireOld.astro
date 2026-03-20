@@ -10,7 +10,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
 ---
 {savoirFaires.map((savoirFaire) => (
    <article class="sok-card">
-      <div class="flex-grid">
+      {/* corriger ça plus tard */}
+      <div class="content flex-grid">
          <div class="oka-spacer  -md" aria-hidden="true"></div>
 
          <div class="col col-1"></div>
@@ -58,7 +59,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/savoir-fa
 
   .sok-card {
       position: sticky;
-      left: 8rem;
+      top: 8rem;
    
       background-color: var(--oka-color-layer-floor-0);
 
