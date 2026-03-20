@@ -1,0 +1,9 @@
+---
+// ===== Composants d'animations =====
+import RevealText from "../../animations/RevealText.astro"
+
+// ==== Import du fichier Markdown
+import * as paragrapheEquipe from "../../contenus/equipe/paragraphe-equipe.md";
+---
+
+<p class="oka-text -lg" set:html={paragrapheEquipe.rawContent()}></p>
