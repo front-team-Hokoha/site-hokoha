@@ -15,6 +15,7 @@
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { getStartPosition } from "./animationConfig.js";
     
     gsap.registerPlugin(ScrollTrigger);
   
@@ -24,12 +25,12 @@
 
         elements.forEach((element) => {
 
-            const startPosition = window.matchMedia("(max-width: 768px)").matches ? "top 90%" : "top 70%";
+            const startPosition = getStartPosition(element);
             const delay = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
 
             gsap.to(element, {
                 opacity: 1,
-                duration: 0.6,
+                duration: 6,
                 delay,
                 ease: "power2.out",
                 scrollTrigger: {

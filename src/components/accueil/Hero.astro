@@ -1,6 +1,7 @@
 ---
 import Offres from "./Offres.astro";
-import GrilleIntro from "../../components/commun/polygones/GrillePolygoneIntro.astro";
+import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
+import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
 import RevealMask from "../../animations/RevealMask.astro";
@@ -12,15 +13,13 @@ import RevealMask from "../../animations/RevealMask.astro";
 <section class="sok-hero">
    
 
-  
-
-
-   <div class="flex-grid"  data-appearUp data-delay="0.1">
+   <div class="flex-grid">
       <div class="col col-1"></div>
       <div class="col col-12">
-         <!-- <div class="oka-flex  -center-top -gap-xs"> -->
+         
           
             <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+
             <Revealtext>
                <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
             </Revealtext>
@@ -30,7 +29,7 @@ import RevealMask from "../../animations/RevealMask.astro";
             </Revealtext>
 
             <div class="oka-spacer  -sm" aria-hidden="true"></div>
-            <p class="oka-text -lg" data-delay="1.2">
+            <p class="oka-text -lg" data-delay="0.5">
                Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
                cras. Dui nec amet mauris tempor interdum facilisi eget.
             </p>
@@ -45,14 +44,52 @@ import RevealMask from "../../animations/RevealMask.astro";
       
    </div>
 
+
    <div class="flex-grid">
       <div class="col col-1">
       
       </div>
-      <div class="col col-14"><GrilleIntro cols="7"  /></div>
+      <div class="col col-14">
+         <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
+      </div>
    </div>
 
+
+
+   <div class="flex-grid" >
+
+    <div class="col col-1" ></div>
+
+    <div class="col col-5" > 
+
+      <div class="oka-spacer -xl " aria-hidden="true"></div>
+      
+      <Revealtext>
+        <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+      </Revealtext>
+
+    </div>
+
+    <div class="col col-1" ></div>
+
+    <div class="col col-8" >
+    
+      <div class="stiktop">
+         <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
+     
+      </div>
+
+    </div>
+
+  </div>
+
+   <div class="oka-spacer -xl " aria-hidden="true"></div>
+
 </section>
+
+
+
+
 
 <style lang="scss">
 
@@ -71,6 +108,12 @@ import RevealMask from "../../animations/RevealMask.astro";
       width: auto;
       height: 56px;
    }
+
+   .oka-text.-lg{
+      max-width: 840px;
+     
+   }
+
 
 </style>
 

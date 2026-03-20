@@ -17,6 +17,7 @@
 	import { gsap } from "gsap";
 	import { SplitText } from "gsap/SplitText";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	import { getStartPosition } from "./animationConfig.js";
 
 	gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -32,7 +33,7 @@
 		revealtextes.forEach((revealtext) => {
 			ScrollTrigger.create({
 				trigger: revealtext,
-				start: "top 80%",
+				start: getStartPosition(revealtext),
 				once: true,
 				// markers: true,
 				onEnter: () => {

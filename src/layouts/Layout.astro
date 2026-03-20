@@ -8,6 +8,7 @@ import Footer from "../components/commun/Footer.astro";
 
 
 import Appearup from '../animations/AppearUp.astro';
+import Appeardown from '../animations/AppearDown.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
@@ -108,10 +109,7 @@ const { title } = Astro.props;
 	}
 
 	body {
-	
-		// background-color: var(--oka-color-neutral-800) !important;
-      	background-color: var(--sok-color-surface);
-
+      	background-color: var(--sok-color-underground);
 	}
 
 	section {
@@ -122,7 +120,7 @@ const { title } = Astro.props;
 
 	.layout-app__main {
 		// background-color: var(--oka-color-neutral-800);
-		background-color: var(--sok-color-surface-dark);
+		background-color: var(--sok-color-underground);
 	}
 
 
@@ -191,6 +189,25 @@ const { title } = Astro.props;
          height: 30dvh;
       }
    }
+
+
+
+   // Elargie la largeur utile
+	@media (min-width: 1440px) {
+		.oka-appWrap:not(.-fluid), .oka-app-wrap:not(.-fluid) {
+			max-width: 102.5rem;
+			padding-right: 2rem;
+			padding-left: 2rem;
+		}
+	}
+
+	.flex-grid-bg-fx__grid > *, .grid-bg-fx__grid > * {
+
+		background-color: transparent !important;
+		opacity: 0.5;
+		border-right: 1px solid var(--oka-color-bd-spec-subtle);
+	}
+
 </style>
 
 
@@ -198,6 +215,7 @@ const { title } = Astro.props;
 <!-- <LocalScripts /> -->
 <Smoothscroll />
 <Appearup />
+<Appeardown />
 <Appeargroup />
 <FadeIn />
 <!-- <ScrollSnap /> -->

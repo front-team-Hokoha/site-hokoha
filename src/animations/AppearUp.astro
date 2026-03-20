@@ -8,7 +8,6 @@
     
     :global([data-appearup]) {
         opacity: 0;
-        filter: blur(4px);
         transform: translateY(30px);  
     }
 </style>
@@ -17,6 +16,7 @@
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { getStartPosition } from "./animationConfig.js";
     
     gsap.registerPlugin(ScrollTrigger);
   
@@ -39,21 +39,21 @@
             previousTop = rect.top;
 
 
-            const startPosition = window.matchMedia("(max-width: 768px)").matches ? "top 90%" : "top 70%";
+            const startPosition = getStartPosition(element);
             const dataDelay = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
 
             //Animation d'apparition au scroll
             gsap.to(element, {
                 opacity: 1,
-                filter: "blur(0px)", 
                 transform: "translateY(0px)", // Retour à la position initiale
                 duration: 0.5,
                 delay: delayIncrement + dataDelay, // Ajoute le délai calculé + data-delay manuel
                 ease: "power2.out",
                 scrollTrigger: {
-                trigger: element,
-                start:  startPosition, // Position dynamique selon la taille de l'écran
-                toggleActions: "play none none none"
+                    trigger: element,
+                    start:  startPosition, // Position dynamique selon la taille de l'écran
+                    toggleActions: "play none none none",
+                    //markers: true,
                 }
             });
         });

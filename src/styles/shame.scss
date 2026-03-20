@@ -3,18 +3,9 @@
 
 :root {
 
-
-
-
-
     --space-xxl : var(--space-2xl);
 
     // rpas de gouttière, pour pouvoir aligner les polygones 
-
-
-
-
-
 }
 
 /* revue par Hokoha
@@ -61,4 +52,8 @@
 
 .flex-grid {
         --grid-gap-x: 0rem !important;
+}
+
+.oka-appWrap {
+    z-index:1;
 }
