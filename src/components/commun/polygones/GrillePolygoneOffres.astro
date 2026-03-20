@@ -3,24 +3,29 @@ import PolygoneFlip from "./PolygoneFlip.astro";
 import PolygoneStatic from "./PolygoneStatic.astro";
 ---
 
-<div class="hex-grid -hidden" data-rows="3" data-cols="4" data-ratio="0.2" data-appearUp>
+<div id="grilleTagsOffres" class="hex-grid -hidden" data-rows="4" data-cols="4" data-ratio="0.2" data-appeargroup>
 
   <PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-web"/>
-  <PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
-  <PolygoneFlip frontText="Optimisation" backText="Back Texte" videoUrl="/src/assets/videos/test.mp4" color="-ia"/>
-
-
   <PolygoneFlip frontText="Sécurité" backText="Solution Web" color="-web" />
-  <PolygoneFlip frontText="Analyse" backText="Intelligence Artificielle" color="-ia" />
+  <PolygoneStatic frontText="WeCERT" color="-web" />
+
+
+
+
+  <PolygoneFlip frontText="Paie SILAE" backText="Back Texte" imageUrl="/src/assets/images/test.png" color="-metier"/>
   <PolygoneFlip frontText="Paie SILAE" imageUrl="/src/assets/images/test.png" color="-metier" />
+  <PolygoneStatic frontText="Oddo" color="-metier" />
+  
+  
   <PolygoneFlip frontText="Android" videoUrl="/src/assets/videos/test.mp4" color="-app" />
   
-  <PolygoneStatic frontText="Optimisation"  color="-ia" />
-
-
-  <PolygoneStatic frontText="Oddo" color="-metier" />
-  <PolygoneStatic frontText="WeCERT" color="-web" />
+  
+  
+  
+  <PolygoneFlip frontText="Optimisation" backText="Back Texte" videoUrl="/src/assets/videos/test.mp4" color="-ia"/>
+  <PolygoneFlip frontText="Analyse" backText="Intelligence Artificielle" color="-ia" />
   <PolygoneStatic frontText="Domaine" videoUrl="/src/assets/images/test.png" color="-ia" />
+  <PolygoneStatic frontText="Optimisation"  color="-ia" />
 
   <PolygoneStatic imageUrl="/src/assets/images/test2.jpg"/>
   <PolygoneStatic />
@@ -50,6 +55,20 @@ import PolygoneStatic from "./PolygoneStatic.astro";
     &.-hidden {
 			visibility: hidden;	
 		}
+  }
+
+  .polygone {
+    transition: opacity 0.4s ease, filter 0.4s ease;
+
+    &.-offre-active {
+      opacity: 1;
+      filter: none;
+    }
+
+    &.-offre-dim {
+      opacity: 0.2;
+      filter: grayscale(1);
+    }
   }
 
 </style>
@@ -104,6 +123,29 @@ document.addEventListener("astro:page-load", () => {
     layoutGrid(grid);
   });
 
+
+
+
+  // Réaction aux événements ScrollTrigger depuis Offres.astro
+  document.addEventListener("offre:enter", (e) => {
+    const { offre } = (e as CustomEvent).detail;
+    // Mettre en avant les polygones de l'offre active, atténuer les autres
+    document.querySelectorAll<HTMLElement>('.polygone').forEach((poly) => {
+      if (poly.classList.contains(`-${offre}`)) {
+        // poly.classList.add('-offre-active');
+        // poly.classList.remove('-offre-dim');
+      } else {
+        // poly.classList.add('-offre-dim');
+        // poly.classList.remove('-offre-active');
+      }
+    });
+  });
+
+  document.addEventListener("offre:leave", () => {
+    document.querySelectorAll<HTMLElement>('.polygone').forEach((poly) => {
+      poly.classList.remove('-offre-active', '-offre-dim');
+    });
+  });
 
 });
 </script>

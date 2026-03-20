@@ -4,93 +4,85 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 import Revealtext from "../../animations/RevealText.astro";
 ---
 
-<section class="sok-offre">
-   
 
-  <div class="flex-grid" data-appearUp data-delay="3.1">
+
+<section id="offres" class="sok-offre">
+
+  <div class="oka-spacer -xl " aria-hidden="true"></div>
+
+
+  <div class="flex-grid" >
 
     <div class="col col-1" ></div>
 
     <div class="col col-5" > 
 
-      <div class="oka-spacer -md " aria-hidden="true"></div>
+
+      
+      
 
       <!-- ===== Offres ===== -->
-    
-      <div class="sok-offres">
+      <div class="sok-offres" >
 
-        <div class="sok-offres__item">
+  
+        <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">01</span>
-          <span class="oka-h -md -secondary ">Solutions Web</span>
+          <span class="oka-h -md -zzzsecondary ">Solutions Web</span>
         </div>
         
-        <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
+
         
-        <div class="sok-offres__item">
+        <div class="sok-offres__item" data-offre="metier" data-zzzzappearup data-offset-lg="top 30%">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">02</span>
-          <span class="oka-h -md -secondary ">Logiciels Métiers</span>
+          <span class="oka-h -md -zzzsecondary ">Logiciels Métiers</span>
         </div>
         
         <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
 
-        <div class="sok-offres__item">
+        <div class="sok-offres__item" data-offre="app" data-zzzzappearup data-offset-lg="top 30%">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">03</span>
-          <span class="oka-h -md -secondary ">Application Mobile</span>
+          <span class="oka-h -md -zzzsecondary ">Application Mobile</span>
         </div>
       
         
-        <div class="sok-offres__item">
+        <div class="sok-offres__item" data-offre="ia" data-zzzzappearup data-offset-lg="top 30%">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">04</span>
-          <span class="oka-h -md -secondary -center">Intelligence Artificielle</span>
+          <span class="oka-h -md -zzzsecondary -center">Intelligence Artificielle</span>
         </div>
         
         
-        <div class="sok-offres__item">
+        <div class="sok-offres__item" data-offre="iot" data-zzzzappearup data-offset-lg="top 30%">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
           <span class="oka-data -xs -crop">05</span>
-          <span class="oka-h -md -secondary -center">Objets Connectées</span>
+          <span class="oka-h -md -zzzsecondary -center">Objets Connectées</span>
         </div>
       </div>
 
 
-      
-
-
+      <div style="height:calc( 6 * 400px); border:0px solid red;" ></div>
     </div>
 
 
-      <div class="col col-1" ></div>
+    <div class="col col-1" ></div>
 
     <div class="col col-8" >
-      <GrilleOffres />
-
-      <div class="oka-spacer -xl " aria-hidden="true"></div>
-      <Revealtext>
-        <h1> Lorem ipsum dolor sit amet <span class="sok-text-color">consectetur</span>. </h1>
-      </Revealtext>
-
-      <div class="oka-spacer  -lg" aria-hidden="true"></div>
       
-      <div class="oka-spacer -xl " aria-hidden="true"></div>
-    </div>
-
-    <div class="col col-1" ></div>
+      
+      <GrilleOffres />
     
 
-    <div class="col col-1" ></div>
+
+    </div>
+
+    
 
    
-
   </div>
 
-
-<div class="oka-spacer  -xxl" aria-hidden="true"></div>
-<div class="oka-spacer  -xxl" aria-hidden="true"></div>
-<div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
 <!--   
   <div class="oka-spacer  -xxl" aria-hidden="true"></div>
@@ -100,10 +92,81 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
 
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+
+    // ===== Pin #offres jusqu'à #fin =====
+    ScrollTrigger.create({
+      trigger: "#offres",
+      start: "top top",
+      endTrigger: "#fin",
+      end: "top bottom",
+      /*end: () => {
+        const grille = document.querySelector("#grilleTagsOffres");
+       
+        if (!grille) return "top top";
+        // Lors du refresh GSAP (scroll=0), getBoundingClientRect().bottom
+        // === distance depuis le haut de la page, soit le bas de #grilleTagsOffres
+        return `top ${grille.getBoundingClientRect().bottom}px`;
+      },
+      */
+      pin: true,
+      pinSpacing: false,
+      // markers: true,
+    });
+
+
+
+    const offres = document.querySelectorAll<HTMLElement>("[data-offre]");
+
+    // Distance de scroll virtuelle entre chaque déclenchement (en px)
+    const OFFRE_SCROLL_STEP = 400;
+
+    offres.forEach((offre, index) => {
+      ScrollTrigger.create({
+        trigger: offre,
+        //markers: true,
+        
+        
+        // Décale virtuellement le trigger sans modifier le DOM :
+        // item 0 → center, item 1 → 300px plus tard, item 2 → 600px plus tard…
+        start: `top+=${index * OFFRE_SCROLL_STEP}px 40%`,
+       
+       
+        onEnter: () => {
+          const offreId = offre.dataset.offre;
+
+          offre.classList.add("-active");
+
+          console.log("Entré dans l'offre :", offreId);
+          document.dispatchEvent(
+            new CustomEvent("offre:enter", { detail: { offre: offreId } })
+          );
+        },
+        onLeaveBack: () => {
+          const offreId = offre.dataset.offre;
+          document.dispatchEvent(
+            new CustomEvent("offre:leave", { detail: { offre: offreId } })
+          );
+        },
+      });
+    });
+  });
+</script>
+
+
+
 <style lang="scss">
 
   .sok-offre{
-    position:relative;
+      position:relative;
       z-index: 1;
       margin:0;
       border-radius : 0 0  var(--sok-radius-section)  var(--sok-radius-section);
@@ -123,45 +186,78 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
   .flex-grid{
-    position: sticky;
-    top: 6rem;
+    // position: sticky;
+    // top: 8rem;
   }
 
 
   .sok-offres {
 
 
-    position:sticky;
-    top: 0rem;
+    //position:sticky;
+    //top: 0rem;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 0rem;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: flex-start;
+    // gap: 0rem;
 
 
 
 
     &__item {
+
+      height:5rem;
+
       flex-shrink:0;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 2rem;
       padding: 1rem 0;
       overflow: hidden;
+
+      opacity: 0.3;
+      translate: -3rem 0px;
+
+      pointer-events: none;
       cursor: pointer;
 
+
+      &.-active {
+        opacity: 1;
+        translate: 0px 0px;
+         pointer-events: all;
+      }
+
       & > .sok-arrow {
-        margin-left: -4rem;
+        margin-left: -8rem;
+        zoom:0.5;
         // transition: margin .15s ease-in-out;
         transition: margin .15s cubic-bezier(.63,.78,.25,1);
       }
 
+      &.-active > .sok-arrow,
       &:hover > .sok-arrow {
-        margin-left: 2rem;
+        margin-left: -1rem;
       }
     }
   }
 
 
 </style>
+
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+
+
+  
+  }
+);
+</script>

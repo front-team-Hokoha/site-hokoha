@@ -8,10 +8,12 @@ const { elTrigger } = Astro.props;
 
 <script>
    import { gsap } from "gsap";
+   import { getStartPosition } from "./animationConfig.js";
 
    document.addEventListener("astro:page-load", () => {
       const maskContainer = document.querySelector('.maskContainer');
       const polygons = maskContainer.querySelectorAll('.-visible');
+      const entrepriseEl = document.querySelector('.oka-entreprise');
 
       // Source - GSAP/Stagger : https://codepen.io/GreenSock/pen/gyWrPO
       // var tl = gsap.timeline({repeat: -1, repeatDelay: 0.5});
@@ -19,11 +21,11 @@ const { elTrigger } = Astro.props;
          // repeat: -1, 
          // repeatDelay: 0.5,
          scrollTrigger: {
-            trigger: ".oka-entreprise",
-            start: "top 70%",
+            trigger: entrepriseEl,
+            start: getStartPosition(entrepriseEl),
             // end: "bottom 20%",
             toggleActions: "play none reverse none",
-            markers: true
+            //markers: true
          }
       });
 
