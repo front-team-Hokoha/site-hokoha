@@ -1,10 +1,8 @@
 ---
-subtitle: 'NOTRE SAVOIR-FAIRE'
 title: 'Concevoir des interfaces ergonomiques & esthétiques.'
-src: '/src/assets/images/test.png'
+tag: 'Concevoir'
+src: '/src/assets/images/test.jpg'
 alt: 'texte alternatif'
 ---
-
-Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.
 
 Lorem ipsum dolor sit amet consectetur. Mus tristique aliquet nunc amet nullam et quis. Massa dictum lacus malesuada scelerisque nisi mi magna.
