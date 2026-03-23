@@ -1,0 +1,1 @@
+Secteurs d’activités diversifiée
