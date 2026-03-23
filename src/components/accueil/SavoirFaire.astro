@@ -5,11 +5,8 @@ import CardContainer from "./savoir-faire/CardContainer.astro";
 // ===== Composants d'animations =====
 import Revealtext from "../../animations/RevealText.astro";
 ---
-<div class="sok-container hgo-snap" id="fin">
-
-  <hr class="oka-divider" aria-hidden="true">
-
-  <section class="flex-grid sok-section">
+<div class="sok-container hgo-snap" id="finSavoirFaire">
+  <section class="flex-grid sok-section sok-savoirefaire">
     <div class="col col-1"></div>
     <div class="col col-12">
       
@@ -36,36 +33,18 @@ import Revealtext from "../../animations/RevealText.astro";
         </p>
       </div>
     </div>
-    <!-- <div class="col col-5"></div> -->
 
     <div class="oka-spacer  -xl" aria-hidden="true"></div>
-  </section>
 
-
-  <section class="flex-grid sok-section sok-section-two">
     <div class="col col-16 oka-savoir-faire__list">
       <CardContainer>
         <CardSavoirFaire />
       </CardContainer>
     </div>
 
-    <!-- backup test -->
-    <!-- <div class="col col-1"></div> -->
-    <!-- <div class="col col-16 oka-savoir-faire__list">
-      <CardContainer>
-        <CardSavoirFaire />
-      </CardContainer>
-
-      <CardSavoirFaire />
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <hr class="oka-divider" aria-hidden="true">
-    </div> -->
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
   </section>
-
 </div>
-
-
 
 <style lang="scss">
 
@@ -73,19 +52,13 @@ import Revealtext from "../../animations/RevealText.astro";
     position: relative;
     z-index: 1;
     margin: 1rem 0;
-    // background-color: red;
     border-radius: var(--sok-radius-section);
     background-color: #fff;
   }
 
   .sok-section {
-    background-color: var(--sok-color-surface-dark);
-   
-  }
-
-  .stiktop {
-    position: sticky;
-    top: 7rem;
+    background-color: var(--sok-color-underground);
+    overflow: hidden;
   }
 
   .oka-morph-wrapper {
@@ -95,7 +68,6 @@ import Revealtext from "../../animations/RevealText.astro";
     aspect-ratio: 1/1;
     overflow: hidden;
   }
-
 
   .sok-text-color {
     color: var(--sok-color-primary);
