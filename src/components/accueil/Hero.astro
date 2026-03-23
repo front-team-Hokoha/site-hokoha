@@ -5,14 +5,13 @@ import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
 import RevealMask from "../../animations/RevealMask.astro";
+
+// ==== Import du fichier Markdown
+import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
 ---
-
-
-
 
 <section class="sok-hero">
    
-
    <div class="flex-grid">
       <div class="col col-1"></div>
       <div class="col col-12">
@@ -29,10 +28,7 @@ import RevealMask from "../../animations/RevealMask.astro";
             </Revealtext>
 
             <div class="oka-spacer  -sm" aria-hidden="true"></div>
-            <p class="oka-text -lg" data-delay="0.5">
-               Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
-               cras. Dui nec amet mauris tempor interdum facilisi eget.
-            </p>
+            <p class="oka-text -lg" data-delay="0.5" set:html={paragrapheHero.rawContent()}></p>
 
             <div class="oka-spacer  -lg" aria-hidden="true"></div>
            
@@ -41,9 +37,7 @@ import RevealMask from "../../animations/RevealMask.astro";
       <div class="col col-1">
          <!-- <GrilleIntro cols="2" /> -->
       </div>
-      
    </div>
-
 
    <div class="flex-grid">
       <div class="col col-1">
@@ -53,8 +47,6 @@ import RevealMask from "../../animations/RevealMask.astro";
          <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
       </div>
    </div>
-
-
 
    <div class="flex-grid" >
 
@@ -87,10 +79,6 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 </section>
 
-
-
-
-
 <style lang="scss">
 
    .sok-hero {
@@ -113,7 +101,6 @@ import RevealMask from "../../animations/RevealMask.astro";
       max-width: 840px;
      
    }
-
 
 </style>
 
