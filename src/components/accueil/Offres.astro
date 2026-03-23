@@ -102,11 +102,11 @@ import Revealtext from "../../animations/RevealText.astro";
 
   document.addEventListener("astro:page-load", () => {
 
-    // ===== Pin #offres jusqu'à #fin =====
+    // ===== Pin #offres jusqu'à #finSavoirFaire =====
     ScrollTrigger.create({
       trigger: "#offres",
       start: "top top",
-      endTrigger: "#fin",
+      endTrigger: "#finSavoirFaire",
       end: "top bottom",
       /*end: () => {
         const grille = document.querySelector("#grilleTagsOffres");

@@ -1,6 +1,9 @@
 ---
 import RevealMask from "../../animations/RevealMask.astro";
 import PolygoneMask from "../commun/polygones/PolygoneMask.astro";
+
+// ==== Import du fichier Markdown
+import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
 ---
 
 
@@ -15,7 +18,7 @@ import PolygoneMask from "../commun/polygones/PolygoneMask.astro";
 
     <div class="oka-cols -two">
         <div class="oka-entreprise__content">
-        <h2 class="oka-h -lg">Pour vos produits, vos services et vos process.</h2>
+        <h2 class="oka-h -lg" set:html={titreEntreprise.rawContent()}></h2>
 
         <ul class="oka-entreprise__list">
           <li class="oka-presentation__item">
