@@ -34,7 +34,9 @@ import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
               </RevealText>
             </div>
 
-            <div set:html={paragrapheHero.rawContent()}></div>
+            <div>
+              <paragrapheHero.Content />
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +60,9 @@ import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
-            <div class="text-wrapper" set:html={paragraphe.rawContent()}></div>
+            <div class="text-wrapper">
+              <paragraphe.Content />
+            </div>
 
             <div class="image-container">
               <ImageSok imagePath="/src/assets/images/realisations/Hibou/image-1.jpeg" altText="photo de l'équipe Hokoha" />

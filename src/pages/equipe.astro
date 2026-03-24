@@ -1,23 +1,25 @@
 ---
 // ===== Layout =====
 import Layout from "../layouts/Layout.astro";
+
 // ===== Componsants de la page =====
-import TitreGlobal from "../components/equipe/TitreGlobal.astro";
-import ParagrapheHistoire from "../components/equipe/ParagrapheHistoire.astro";
-
-import TitreEquipe from "../components/equipe/TitreEquipe.astro";
-import ParagrapheEquipe from "../components/equipe/ParagrapheEquipe.astro";
-
-
-import TitreFormation from "../components/equipe/TitreFormation.astro";
-import ParagrapheFormation from "../components/equipe/ParagrapheFormation.astro";
-
-import TitreHommage from "../components/equipe/TitreHommage.astro";
-import ParagrapheHommage from "../components/equipe/ParagrapheHommage.astro";
 import ImageSok from "../components/commun/ImageSok.astro";
 import Footer from '../components/commun/Footer.astro';
-// ===== Composants d'animations =====
 
+// ===== Composants d'animations =====
+import RevealText from "../animations/RevealText.astro"
+// ===== Fichiers Markdown =====
+import * as titreGlobal from "../contenus/equipe/titre-global.md";
+import * as paragrapheHistoire from "../contenus/equipe/paragraphe-histoire.md";
+
+import * as titreEquipe from "../contenus/equipe/titre-equipe.md";
+import * as paragrapheEquipe from "../contenus/equipe/paragraphe-equipe.md";
+
+import * as titreFormation from "../contenus/equipe/titre-formation.md";
+import * as paragrapheFormation from "../contenus/equipe/paragraphe-formation.md";
+
+import * as titreHommage from "../contenus/equipe/titre-hommage.md";
+import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
 ---
 
 <Layout title="Page Équipe">
@@ -30,7 +32,9 @@ import Footer from '../components/commun/Footer.astro';
 
       <div class="col col-14">
 
-        <TitreGlobal />
+        <RevealText>
+            <titreGlobal.Content />
+        </RevealText>
 
         <div class="oka-spacer -xl"></div>
 
@@ -70,7 +74,7 @@ import Footer from '../components/commun/Footer.astro';
                </article>
             </div>
 
-            <ParagrapheHistoire />
+            <paragrapheHistoire.Content />
         </div>
 
         <div class="oka-spacer -xl"></div>
@@ -89,9 +93,11 @@ import Footer from '../components/commun/Footer.astro';
             <!-- === Partie équipe === -->
             <div class="oka-cols -two">
                <div>
-                  
-                  <TitreEquipe />
-                  <ParagrapheEquipe />
+                  <RevealText>
+                     <titreEquipe.Content />
+                  </RevealText>
+
+                  <paragrapheEquipe.Content />
 
                   <div class="oka-spacer -sm"></div>
 
@@ -111,13 +117,19 @@ import Footer from '../components/commun/Footer.astro';
             <!-- === Partie "formation" === -->
             <div class="oka-cols -two">
                <div class="sok-hommage">
-                  <TitreHommage />
-                  <ParagrapheHommage />
+                  <RevealText>
+                     <titreHommage.Content />
+                  </RevealText>
+
+                  <paragrapheHommage.Content />
                </div>
 
                <div class="sok-formation">
-                  <TitreFormation />
-                  <ParagrapheFormation />
+                  <RevealText>
+                     <titreFormation.Content />
+                  </RevealText>
+
+                  <paragrapheFormation.Content />
 
                   <div class="oka-spacer -sm"></div>
 

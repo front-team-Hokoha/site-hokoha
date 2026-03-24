@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
 import RevealText from '../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-import * as titreHero from "../contenus/contact/titre-hero.md"
+import * as titreContact from "../contenus/contact/titre-contact.md"
 ---
 
 <Layout title="Page Contact">
@@ -18,7 +18,7 @@ import * as titreHero from "../contenus/contact/titre-hero.md"
 
             <div class="col col-14">
                <RevealText>
-                  <h1 class="oka-h -xl" set:html={titreHero.rawContent()}></h1>
+                  <titreContact.Content />   
                </RevealText>
 
                <div class="oka-spacer -xl" aria-hidden="true"></div>

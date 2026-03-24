@@ -24,10 +24,10 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
         <div class="oka-spacer -md" aria-hidden="true"></div>
 
         <Revealtext>
-          <h1 set:html={titreSavoirFaire.rawContent()}></h1>
+          <titreSavoirFaire.Content />
         </Revealtext>
 
-        <p class="oka-text -lg" set:html={paragrapheSavoirFaire.rawContent()}></p>
+        <paragrapheSavoirFaire.Content />
       </div>
     </div>
 
@@ -44,7 +44,6 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
 </div>
 
 <style lang="scss">
-
   .sok-container {
     position: relative;
     z-index: 1;

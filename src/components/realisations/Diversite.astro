@@ -1,5 +1,7 @@
 ---
-// ===== Import du fichier Markdown =====
+// ===== Composants d'animations =====
+import RevealText from '../../animations/RevealText.astro';
+// ===== Fichiers Markdown =====
 import * as titreDiversite from "../../contenus/realisations/titre-diversite.md"
 import * as paragrapheDiversite from "../../contenus/realisations/paragraphe-diversite.md"
 ---
@@ -8,10 +10,11 @@ import * as paragrapheDiversite from "../../contenus/realisations/paragraphe-div
    <div class="col col-1"></div>
 
    <div class="col col-8">
-      <h2 class="oka-t -lg" set:html={titreDiversite.rawContent()}></h2>
-      <div class="col col-15">
-         <p class="oka-text -lg" set:html={paragrapheDiversite.rawContent()}></p>
-      </div>
+      <RevealText>
+         <titreDiversite.Content />
+      </RevealText>
+
+      <paragrapheDiversite.Content />
 
       <div class="oka-spacer -md" aria-hidden="true"></div>
 

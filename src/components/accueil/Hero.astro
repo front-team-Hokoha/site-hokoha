@@ -6,7 +6,7 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 import Revealtext from "../../animations/RevealText.astro";
 import RevealMask from "../../animations/RevealMask.astro";
 
-// ==== Import du fichier Markdown
+// ===== Fichiers Markdown =====
 import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
 ---
 
@@ -28,7 +28,8 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
             </Revealtext>
 
             <div class="oka-spacer  -sm" aria-hidden="true"></div>
-            <p class="oka-text -lg" data-delay="0.5" set:html={paragrapheHero.rawContent()}></p>
+
+            <paragrapheHero.Content/>
 
             <div class="oka-spacer  -lg" aria-hidden="true"></div>
            
@@ -97,10 +98,10 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
       height: 56px;
    }
 
-   .oka-text.-lg{
-      max-width: 840px;
+   // .oka-text.-lg{
+   //    max-width: 840px;
      
-   }
+   // }
 
 </style>
 

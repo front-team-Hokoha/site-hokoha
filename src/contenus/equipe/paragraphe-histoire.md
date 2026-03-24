@@ -1,1 +1,3 @@
+<p class="oka-text -lg">
 Lorem ipsum dolor sit amet consectetur. Dui gravida bibendum tempus egestas. Tempor suscipit ligula rutrum sed. Eu lectus consequat ut imperdiet non. Aliquam nunc enim sed potenti facilisi id dolor facilisis sagittis.
+</p>
