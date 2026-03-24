@@ -11,7 +11,7 @@ import ImageSok from '../components/commun/ImageSok.astro';
 import RevealText from '../animations/RevealText.astro';
 ---
 
-<Layout title="Page cas client">
+<Layout title="Projet Hibou">
    <!-- ===== Hero Section ===== -->
   <div class="oka-appWrap">
     <section class="_ctnr-inline"> 
@@ -24,19 +24,18 @@ import RevealText from '../animations/RevealText.astro';
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
-            <div>
+            <div class="text-wrapper">
               <RevealText>
-                <h1 class="oka-h -xl">XX - Projet</h1>
+                <h1 class="oka-h -xl">22 - Hibou</h1>
               </RevealText>
             </div>
-    
+
             <p class="oka-text -lg">
               Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
               tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
             </p>
+    
           </div>
-
-          <div class="oka-spacer -md"></div>
         </div>
       </div>
     </section>
@@ -45,38 +44,37 @@ import RevealText from '../animations/RevealText.astro';
   <div class="oka-appWrap">
     <section class="_ctnr-inline">
       <div class="oka-spacer -xl" aria-hidden="true"></div>
+      <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
       
       <div class="flex-grid">
         <div class="col col-1"></div>
   
         <div class="col col-14">
           <div class="video-container">
-            <VideoSok srcVideo="/src/assets/videos/Hercule.mp4" typeVideo="mp4" ctrlVideo="controls" playVideo="autoplay"/>
+            <VideoSok srcVideo="/src/assets/images/realisations/Hibou/Hibou.mp4" typeVideo="mp4"/>
           </div>
 
           <div class="oka-spacer -xl" aria-hidden="true"></div>
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
-          <div class="oka-cols -two -gap">
-            <p class="oka-text -lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non tenetur neque accusantium. Hic, soluta ipsa, esse quidem aperiam obcaecati nostrum doloremque ratione nobis, incidunt ut explicabo error exercitationem distinctio.
-            </p>
-
-            <!-- <p class="oka-text -lg">
-              Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
-              tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
-            </p> -->
+          <div class="oka-cols -two">
+            <div class="text-wrapper">
+              <p class="oka-text -lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non tenetur neque accusantium. 
+                Hic, soluta ipsa, esse quidem aperiam obcaecati nostrum doloremque ratione nobis, 
+                incidunt ut explicabo error exercitationem distinctio.
+              </p>
+            </div>
 
             <div class="image-container">
-              <ImageSok src="/src/assets/images/realisations/XX - Hibou/hibou.jpeg" alt="image du projet"/>
+              <ImageSok imagePath="/src/assets/images/realisations/Hibou/image-1.jpeg" altText="photo de l'équipe Hokoha" />
             </div>
           </div>
         </div>
       </div>
       
-      
-      <div class="oka-spacer -xxl" aria-hidden="true"></div>
-      <div class="oka-spacer -xxl" aria-hidden="true"></div>
+      <div class="oka-spacer -xl" aria-hidden="true"></div>
+      <div class="oka-spacer -xl" aria-hidden="true"></div>
     </section>
   </div>
   
@@ -100,24 +98,23 @@ import RevealText from '../animations/RevealText.astro';
 </Layout>
 
 <style lang="scss">
+  .text-wrapper {
+    display: flex;
+    align-items: end;
+    margin-right: 7rem;
+  }
+
   .video-container {
     width: 100%;
     aspect-ratio: 16/9;
-    // background-color: red;
-    border: 1px solid var(--oka-color-bd-minimal);
     border-radius: .5rem;
     overflow: hidden;
   }
 
   .image-container {
-    background-color:  red;
     width: 100%;
     aspect-ratio: 4/3;
     border-radius: .5rem;
     overflow: hidden;
-  }
-
-  .-gap p{
-    margin-right: 50px;
   }
 </style>

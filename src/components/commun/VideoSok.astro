@@ -2,8 +2,8 @@
 const { srcVideo, typeVideo } = Astro.props
 ---
 
-<video controls=false>
-   <source src={srcVideo} type={`type="video/${typeVideo}"`} />
+<video controls preload="metadata">
+   <source src={srcVideo} type={`video/${typeVideo}`} />
 </video>
 
 <style lang="scss">
