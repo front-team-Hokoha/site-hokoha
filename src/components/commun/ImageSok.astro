@@ -1,6 +1,9 @@
 ---
+// Composant Astro
 import { Image } from "astro:assets";
 
+// imagePath : chemin de l'image
+// altText : texte alternatif
 const { imagePath, altText } = Astro.props;
 
 // Import synchrone des images
@@ -20,7 +23,7 @@ if (!image) {
 }
 ---
 
-<!-- Attention : ne pas nommer le composant Image mais ImageSok lors de l'importation pour ne pas créer de conflit avec le composant Image nati -->
+<!-- Attention : nommez le composant "ImageSok" lors de l'importation pour ne pas créer de conflit avec le composant Image natif -->
 <Image
   src={image}
   alt={altText}
