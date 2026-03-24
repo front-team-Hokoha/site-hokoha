@@ -5,6 +5,9 @@ import Layout from '../layouts/Layout.astro';
 
 // ===== Composants d'animations =====
 import RevealText from '../animations/RevealText.astro';
+
+// ===== Fichiers Markdown =====
+import * as titreHero from "../contenus/contact/titre-hero.md"
 ---
 
 <Layout title="Page Contact">
@@ -15,9 +18,7 @@ import RevealText from '../animations/RevealText.astro';
 
             <div class="col col-14">
                <RevealText>
-                  <h1 class="oka-h -xl">
-                     Lorem ipsum dolor sit amet consectetur. Sodales faucibus et malesuada
-                  </h1>
+                  <h1 class="oka-h -xl" set:html={titreHero.rawContent()}></h1>
                </RevealText>
 
                <div class="oka-spacer -xl" aria-hidden="true"></div>
