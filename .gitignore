@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 .yarn
 yarn.lock
+
+# documentation
+documentation/
