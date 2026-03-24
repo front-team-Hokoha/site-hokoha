@@ -9,6 +9,10 @@ import ImageSok from '../components/commun/ImageSok.astro';
 // ===== Composants d'animations =====
 // import RevealText from '../../animations/RevealText.astro';
 import RevealText from '../animations/RevealText.astro';
+
+// ===== Fichiers Markdown =====
+import * as paragrapheHero from "../contenus/projets/hibou/paragraphe-hero.md"
+import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
 ---
 
 <Layout title="Projet Hibou">
@@ -30,11 +34,7 @@ import RevealText from '../animations/RevealText.astro';
               </RevealText>
             </div>
 
-            <p class="oka-text -lg">
-              Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed
-              tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
-            </p>
-    
+            <div set:html={paragrapheHero.rawContent()}></div>
           </div>
         </div>
       </div>
@@ -58,13 +58,7 @@ import RevealText from '../animations/RevealText.astro';
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
-            <div class="text-wrapper">
-              <p class="oka-text -lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non tenetur neque accusantium. 
-                Hic, soluta ipsa, esse quidem aperiam obcaecati nostrum doloremque ratione nobis, 
-                incidunt ut explicabo error exercitationem distinctio.
-              </p>
-            </div>
+            <div class="text-wrapper" set:html={paragraphe.rawContent()}></div>
 
             <div class="image-container">
               <ImageSok imagePath="/src/assets/images/realisations/Hibou/image-1.jpeg" altText="photo de l'équipe Hokoha" />
