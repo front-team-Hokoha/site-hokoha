@@ -1,0 +1,78 @@
+---
+/*
+direction : permet de définir la direction du défilement du marquee
+
+valeur possible :
+   -normal : de la gauche vers la droite
+   -reverse : de la droite vers la gauche
+*/
+const { direction } = Astro.props;
+---
+
+<div class="sok-marquee" >
+   <div class={`sok-marquee__content ${direction}`}>
+      <slot />
+   </div>
+</div>
+
+<style lang="scss">
+   .sok-marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+
+      &__content {
+         display: flex;
+         align-items: center;
+         gap: 4rem;
+         width: max-content;
+         overflow: hidden;
+
+         // ===== Modifiers =====
+         // Direction du marquee
+         &.-normal {
+            animation: marquee 40s linear 0s infinite;
+         }
+
+         &.-reverse {
+            animation: marquee-reverse 40s linear 0s infinite;
+         }
+
+         // Mets en pause l'animation de défilement au survol 
+         // &:hover {
+         //    animation-play-state: paused;
+         // }
+      }
+   }
+
+   // ==== Animation du Marquee =====
+   // De la gauche vers la droite
+   @keyframes marquee {
+      0% {
+         transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+         -webkit-transform: translateX(-50%);
+      }
+      
+      100% {
+         transform: translateX(0);
+         -moz-transform: translateX(0);
+         -webkit-transform: translateX(0);
+      }
+   }
+
+   // De la droite vers la gauche
+   @keyframes marquee-reverse {
+      0% {
+         transform: translateX(0);
+         -moz-transform: translateX(0);
+         -webkit-transform: translateX(0);
+      }
+      
+      100% {
+         transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+         -webkit-transform: translateX(-50%);
+      }
+   }
+</style>

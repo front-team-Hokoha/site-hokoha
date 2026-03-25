@@ -1,0 +1,73 @@
+---
+// ===== Composants de la page =====
+import ImageSok from '../ImageSok.astro';
+
+/*
+modifier : permet d'ajouter des class CSS pour modifier sok-item
+valeur possible :
+   -rowD : afficher le contenu de sok-item en ligne
+   -colD : afficher le contenu de sok-item en colonne
+   -no-image : masque l'élément image pour afficher uniquement du texte
+   -no-text : masque le contenu textuel pour afficher uniquement l'image
+
+srcImage et altImage : permettent d'ajouter la source de l'image ainsi que son texte alternatif
+
+texte : permet d'ajouter du texte associé à l'image | ex : logo.png + nom du logo
+        ajout également le texte dans un balise aria-label pour l'a11c
+
+hidden : permet de cacher ou non des éléments pour les liseuses (accessibilité)
+         par défaut à true, ajouter false pour définir les éléments à ne pas lire par les liseuses
+*/
+
+const { 
+   modifier, 
+   srcImage, 
+   altImage, 
+   texte, 
+   hidden = true 
+} = Astro.props
+---
+
+<div class={`sok-item ${modifier}`} aria-label={texte} aria-hidden={hidden}>
+   <img class="sok-item__image" src={srcImage} alt={altImage}>
+
+   <span class="sok-item__text oka-data -lg -strong" set:html={texte}></span>
+</div>
+
+<style lang="scss">
+   .sok-item {
+      display: flex;
+      align-items: center;
+
+      &__image {
+         width: 80px;
+         height: 80px;
+         object-fit: contain;
+         user-select: none;
+      }
+
+      &__text {
+         white-space: nowrap;
+         user-select: none;
+      }
+
+      // ===== Modifiers =====
+      // Orientation du contenu en ligne ou colonne
+      &.-rowD {
+         gap: .5rem;
+      }
+
+      &.-colD {
+         flex-direction: column;
+      }
+
+      // Masquer le texte ou l'image
+      &.-no-image img {
+         display: none;
+      }
+
+      &.-no-text span {
+         display: none;
+      }
+   }
+</style>
