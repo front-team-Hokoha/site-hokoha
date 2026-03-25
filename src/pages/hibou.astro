@@ -30,14 +30,22 @@ import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
-            <div class="text-wrapper">
-              <RevealText>
-                <h1 class="oka-h -xl">22 - Hibou</h1>
-              </RevealText>
+            <div class="sok-t-wrapper -first">
+              <div class="sok-t-content">
+                <RevealText>
+                  <h1 class="oka-h -xl">22 - Hibou</h1>
+                </RevealText>
+              </div>
             </div>
 
-            <div>
-              <paragrapheHero.Content />
+            <div class="sok-t-wrapper -second">
+              <div class="sok-t-content">
+
+                <div class="sok-t-paragraph">
+                  <paragrapheHero.Content />
+                </div>
+                
+              </div>
             </div>
           </div>
 
@@ -65,8 +73,14 @@ import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
           <div class="oka-spacer -xl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
-            <div class="text-wrapper">
-              <paragraphe.Content />
+            <div class="sok-t-wrapper -third">
+              <div class="sok-t-content">
+
+                <div class="sok-t-paragraph">
+                  <paragraphe.Content />
+                </div>
+
+              </div>
             </div>
 
             <div class="image-container">
@@ -162,10 +176,36 @@ import * as paragraphe from "../contenus/projets/hibou/paragraphe.md"
 </Layout>
 
 <style lang="scss">
-  .text-wrapper {
+  .sok-t-wrapper {
     display: flex;
-    align-items: end;
-    margin-right: 7rem;
+
+    .sok-t-content,
+    .sok-t-paragraph {
+        width: 100%;
+    }
+
+    .sok-t-content {
+        max-width: 700px;
+    }
+
+    .sok-t-paragraph {
+        max-width: 680px;
+    }
+
+    // Titre Hero
+    &.-first {
+      align-items: end;
+    }
+
+    // Paragraph Hero
+    &.-second {
+      justify-content: end;
+    }
+
+    // Paragraph projet
+    &.-third {
+      align-items: end;
+    }
   }
 
   .video-container {

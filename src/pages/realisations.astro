@@ -17,19 +17,22 @@ import * as titreHero from "../contenus/realisations/titre-hero.md"
 import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md"
 ---
 
-  <Layout title="Page Réacomponents/lisations">
+  <Layout title="Page Réalisations">
     <!-- ===== Hero Section ===== -->
     <section class="flex-grid">
-      
       <div class="flex-grid">
         <div class="col col-1"></div>
         <div class="col col-8">
           <div class="oka-spacer -xxl"></div>
+
           <RevealText>
             <titreHero.Content/>
           </RevealText>
 
-          <paragrapheHero.Content/>
+          <div class="sok-t-paragraph">
+            <paragrapheHero.Content/>
+          </div>
+
         </div>
       </div>
 
@@ -59,8 +62,13 @@ import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md"
     </div>
 </Layout>
 
-<style>
-section {
-  border-radius: var(--sok-radius-section) var(--sok-radius-section) 0 0  ;
-}
+<style lang="scss">
+  section {
+    border-radius: var(--sok-radius-section) var(--sok-radius-section) 0 0  ;
+  }
+
+  .sok-t-paragraph {
+    width: 100%;
+    max-width: 680px;
+  }
 </style>

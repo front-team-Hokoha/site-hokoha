@@ -27,7 +27,9 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
           <titreSavoirFaire.Content />
         </Revealtext>
 
-        <paragrapheSavoirFaire.Content />
+        <div class="sok-t-paragraph">
+          <paragrapheSavoirFaire.Content />
+        </div>
       </div>
     </div>
 
@@ -63,5 +65,11 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
     width: 100%;
     aspect-ratio: 1/1;
     overflow: hidden;
+  }
+
+  // Text Wrapper 
+  .sok-t-paragraph {
+    width: 100%;
+    max-width: 680px;
   }
 </style>

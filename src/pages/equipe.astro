@@ -74,7 +74,13 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
                </article>
             </div>
 
-            <paragrapheHistoire.Content />
+            <div class="sok-t-wrapper -first">
+   
+               <div class="sok-t-paragraph">
+                  <paragrapheHistoire.Content />
+               </div>
+
+            </div>
         </div>
 
         <div class="oka-spacer -xl"></div>
@@ -92,19 +98,23 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
          <div class="col col-14">
             <!-- === Partie équipe === -->
             <div class="oka-cols -two">
-               <div>
-                  <RevealText>
-                     <titreEquipe.Content />
-                  </RevealText>
+               <div class="sok-t-wrapper">
 
-                  <paragrapheEquipe.Content />
+                     <RevealText>
+                        <titreEquipe.Content />
+                     </RevealText>
+   
+                     <div class="sok-t-paragraph">
+                        <paragrapheEquipe.Content />
+                     </div>
+   
+                     <div class="oka-spacer -sm"></div>
+   
+                     <button class="oka-bt -lg">
+                        <div class="oka-bt__lbl">call to action</div>
+                        <div class="oka-spinner"></div>
+                     </button>
 
-                  <div class="oka-spacer -sm"></div>
-
-                  <button class="oka-bt -lg">
-                     <div class="oka-bt__lbl">call to action</div>
-                     <div class="oka-spinner"></div>
-                  </button>
                </div>
 
                <figure class="sok-equipe__img">
@@ -116,27 +126,35 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
 
             <!-- === Partie "formation" === -->
             <div class="oka-cols -two">
-               <div class="sok-hommage">
-                  <RevealText>
-                     <titreHommage.Content />
-                  </RevealText>
+               <div class="sok-t-wrapper -third">
 
-                  <paragrapheHommage.Content />
+                     <RevealText>
+                        <titreHommage.Content />
+                     </RevealText>
+
+                     <div class="sok-t-paragraph">
+                        <paragrapheHommage.Content />
+                     </div>
+
                </div>
 
-               <div class="sok-formation">
-                  <RevealText>
-                     <titreFormation.Content />
-                  </RevealText>
+               <div class="sok-t-wrapper -fourth">
 
-                  <paragrapheFormation.Content />
+                     <RevealText>
+                        <titreFormation.Content />
+                     </RevealText>
 
-                  <div class="oka-spacer -sm"></div>
+                     <div class="sok-t-paragraph">
+                        <paragrapheFormation.Content />
+                     </div>
 
-                  <button class="oka-bt -lg">
-                     <div class="oka-bt__lbl">call to action</div>
-                     <div class="oka-spinner"></div>
-                  </button>
+                     <div class="oka-spacer -sm"></div>
+
+                     <button class="oka-bt -lg">
+                        <div class="oka-bt__lbl">call to action</div>
+                        <div class="oka-spinner"></div>
+                     </button>
+
                </div>
             </div>
          </div>
@@ -150,7 +168,33 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
    </div>
 </Layout>
 
+
 <style lang="scss">
+   .sok-t-wrapper {  // Wrapper pour les éléments textuels
+      display: flex;
+      flex-direction: column;
+
+      // Paragraphe Histoire
+      &.-first {
+        justify-content: end;
+      }
+
+      // Partie Hommage
+      &.-third {  
+         align-items: end;
+      }
+
+      // Partie Formation
+      &.-fourth {
+        justify-content: end;
+      }
+   }
+
+   .sok-t-paragraph {
+      max-width: 680px;
+      width: 100%;
+   }
+
    .sok-gerants {
       display: flex;
       flex-direction: column;
@@ -167,15 +211,11 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
 
    .sok-equipe__img {
       width: 100%;
+      max-width: 700px;
       height: auto;
       aspect-ratio: 16/9;
+      margin: 0 0 0 auto;
       overflow: hidden;
       border-radius: 1rem;
-   }
-
-   .sok-hommage {
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
    }
 </style>
