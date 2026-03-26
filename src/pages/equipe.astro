@@ -75,11 +75,9 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
             </div>
 
             <div class="sok-t-wrapper -first">
-   
                <div class="sok-t-paragraph">
                   <paragrapheHistoire.Content />
                </div>
-
             </div>
         </div>
 
@@ -99,7 +97,7 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
             <!-- === Partie équipe === -->
             <div class="oka-cols -two">
                <div class="sok-t-wrapper">
-
+                  <div class="sok-t-content">
                      <RevealText>
                         <titreEquipe.Content />
                      </RevealText>
@@ -114,7 +112,7 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
                         <div class="oka-bt__lbl">call to action</div>
                         <div class="oka-spinner"></div>
                      </button>
-
+                  </div>
                </div>
 
                <figure class="sok-equipe__img">
@@ -127,7 +125,7 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
             <!-- === Partie "formation" === -->
             <div class="oka-cols -two">
                <div class="sok-t-wrapper -third">
-
+                  <div class="sok-t-content">
                      <RevealText>
                         <titreHommage.Content />
                      </RevealText>
@@ -135,11 +133,11 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
                      <div class="sok-t-paragraph">
                         <paragrapheHommage.Content />
                      </div>
-
+                  </div>
                </div>
 
                <div class="sok-t-wrapper -fourth">
-
+                  <div class="sok-t-content">
                      <RevealText>
                         <titreFormation.Content />
                      </RevealText>
@@ -154,6 +152,7 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
                         <div class="oka-bt__lbl">call to action</div>
                         <div class="oka-spinner"></div>
                      </button>
+                  </div>
 
                </div>
             </div>
@@ -172,7 +171,6 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
 <style lang="scss">
    .sok-t-wrapper {  // Wrapper pour les éléments textuels
       display: flex;
-      flex-direction: column;
 
       // Paragraphe Histoire
       &.-first {
