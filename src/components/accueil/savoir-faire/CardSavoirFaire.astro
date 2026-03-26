@@ -111,50 +111,6 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 </style>
 
-{/* ===== Vanilla ===== */}
-<script>
-  function updateStickyTops() {
-    const cards = document.querySelectorAll<HTMLElement>(
-      ".oka-savoir-faire__card",
-    );
-    const BASE_TOP_REM = 8;
-    const rootFontSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize,
-    );
-    let cumulativeOffset = 0;
-
-    cards.forEach((card) => {
-      card.style.top = `calc(${BASE_TOP_REM}rem + ${cumulativeOffset}px)`;
-      const header = card.querySelector<HTMLElement>(
-        ".oka-savoir-faire__card-content",
-      );
-      if (header) {
-        cumulativeOffset += header.getBoundingClientRect().height;
-      }
-    });
-  }
-
-  updateStickyTops();
-
-  const ro = new ResizeObserver(updateStickyTops);
-  document
-    .querySelectorAll(".oka-savoir-faire__card-content")
-    .forEach((el) => ro.observe(el));
-
-  //  ajouter une class pour chaque carte pour les animations au scroll
-  function addClassToCards() {
-    const cards = document.querySelectorAll<HTMLElement>(
-      ".oka-savoir-faire__card",
-    );
-
-    cards.forEach((card, index) => {
-      card.classList.add(`card-${index + 1}`);
-    });
-  }
-
-  addClassToCards();
-</script>
-
 {/* ===== GSAP ===== */}
 <script>
   import { gsap } from "gsap";
