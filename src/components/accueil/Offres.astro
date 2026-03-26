@@ -4,94 +4,82 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 import Revealtext from "../../animations/RevealText.astro";
 ---
 
-
-
-<section id="offres" class="sok-offre">
-
-  <div class="oka-spacer -xl " aria-hidden="true"></div>
-
-
-  <div class="flex-grid" >
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-5" > 
-
-
-      
-      
-
-      <!-- ===== Offres ===== -->
-      <div class="sok-offres" >
-
+<div class="oka-appWrap">
+  <section id="offres" class="sok-offre">
   
-        <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
-          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-          <span class="oka-data -xs -crop">01</span>
-          <span class="oka-h -md -zzzsecondary ">Solutions Web</span>
+    <div class="oka-spacer -xl " aria-hidden="true"></div>
+  
+    <div class="flex-grid" >
+  
+      <div class="col col-1" ></div>
+  
+      <div class="col col-5" > 
+  
+        <!-- ===== Offres ===== -->
+        <div class="sok-offres" >
+  
+    
+          <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+            <span class="oka-data -xs -crop">01</span>
+            <span class="oka-h -md -zzzsecondary ">Solutions Web</span>
+          </div>
+          
+  
+          
+          <div class="sok-offres__item" data-offre="metier" data-zzzzappearup data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+            <span class="oka-data -xs -crop">02</span>
+            <span class="oka-h -md -zzzsecondary ">Logiciels Métiers</span>
+          </div>
+          
+          <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
+  
+          <div class="sok-offres__item" data-offre="app" data-zzzzappearup data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+            <span class="oka-data -xs -crop">03</span>
+            <span class="oka-h -md -zzzsecondary ">Application Mobile</span>
+          </div>
+        
+          
+          <div class="sok-offres__item" data-offre="ia" data-zzzzappearup data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+            <span class="oka-data -xs -crop">04</span>
+            <span class="oka-h -md -zzzsecondary -center">Intelligence Artificielle</span>
+          </div>
+          
+          
+          <div class="sok-offres__item" data-offre="iot" data-zzzzappearup data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
+            <span class="oka-data -xs -crop">05</span>
+            <span class="oka-h -md -zzzsecondary -center">Objets Connectées</span>
+          </div>
         </div>
-        
-
-        
-        <div class="sok-offres__item" data-offre="metier" data-zzzzappearup data-offset-lg="top 30%">
-          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-          <span class="oka-data -xs -crop">02</span>
-          <span class="oka-h -md -zzzsecondary ">Logiciels Métiers</span>
-        </div>
-        
-        <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
-
-        <div class="sok-offres__item" data-offre="app" data-zzzzappearup data-offset-lg="top 30%">
-          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-          <span class="oka-data -xs -crop">03</span>
-          <span class="oka-h -md -zzzsecondary ">Application Mobile</span>
-        </div>
-      
-        
-        <div class="sok-offres__item" data-offre="ia" data-zzzzappearup data-offset-lg="top 30%">
-          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-          <span class="oka-data -xs -crop">04</span>
-          <span class="oka-h -md -zzzsecondary -center">Intelligence Artificielle</span>
-        </div>
-        
-        
-        <div class="sok-offres__item" data-offre="iot" data-zzzzappearup data-offset-lg="top 30%">
-          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
-          <span class="oka-data -xs -crop">05</span>
-          <span class="oka-h -md -zzzsecondary -center">Objets Connectées</span>
-        </div>
+  
+  
+        <div style="height:calc( 6 * 400px); border:0px solid red;" ></div>
       </div>
-
-
-      <div style="height:calc( 6 * 400px); border:0px solid red;" ></div>
+  
+  
+      <div class="col col-1" ></div>
+  
+      <div class="col col-8" >
+        
+        
+        <GrilleOffres />
+  
+      </div>
+  
+     
     </div>
-
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-8" >
-      
-      
-      <GrilleOffres />
-    
-
-
-    </div>
-
-    
-
-   
-  </div>
-
-
-<!--   
-  <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-  <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-  <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
-</section>
-
-
-
+  
+  
+  <!--   
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
+  </section>
+</div>
 
 
 <script>
@@ -160,7 +148,6 @@ import Revealtext from "../../animations/RevealText.astro";
     });
   });
 </script>
-
 
 
 <style lang="scss">

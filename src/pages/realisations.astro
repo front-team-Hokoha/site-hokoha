@@ -18,44 +18,48 @@ import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md"
 ---
 
   <Layout title="Page Réalisations">
-    <!-- ===== Hero Section ===== -->
-    <section class="flex-grid">
-      <div class="flex-grid">
-        <div class="col col-1"></div>
-        <div class="col col-8">
-          <div class="oka-spacer -xxl"></div>
-
-          <RevealText>
-            <titreHero.Content/>
-          </RevealText>
-
-          <div class="sok-t-paragraph">
-            <paragrapheHero.Content/>
+    <div class="oka-appWrap">
+      <!-- ===== Hero Section ===== -->
+      <section class="flex-grid">
+        <div class="flex-grid">
+          <div class="col col-1"></div>
+          <div class="col col-8">
+            <div class="oka-spacer -xxl"></div>
+  
+            <RevealText>
+              <titreHero.Content/>
+            </RevealText>
+  
+            <div class="sok-t-paragraph">
+              <paragrapheHero.Content/>
+            </div>
+  
           </div>
-
         </div>
-      </div>
-
-      <div class="oka-spacer  -md" aria-hidden="true"></div>
-     
-      <!-- ===== Réalisations Section ===== -->
-      <Projets />
-
-      <div class="oka-spacer  -xl" aria-hidden="true"></div>
-
-    </section>
-
-
+  
+        <div class="oka-spacer  -md" aria-hidden="true"></div>
+       
+        <!-- ===== Réalisations Section ===== -->
+        <Projets />
+  
+        <div class="oka-spacer  -xl" aria-hidden="true"></div>
+  
+      </section>
+    </div>
     
     <!-- ===== Diversités ===== -->
-    <Diversite />
+    <div class="oka-appWrap">
+      <Diversite />
+    </div>
           
-    
-    <Avantages>
-      <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
-      <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
-      <Avantage subtitle="fidélitée client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
-    </Avantages>
+    <!-- ===== Avantages ===== -->
+    <div class="oka-appWrap">
+      <Avantages>
+        <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
+        <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
+        <Avantage subtitle="fidélitée client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
+      </Avantages>
+    </div>
 
     <div slot="Footer">
       <Footer modifier="-grey"/>

@@ -10,76 +10,78 @@ import RevealMask from "../../animations/RevealMask.astro";
 import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
 ---
 
-<section class="sok-hero">
+<div class="oka-appWrap">
+   <section class="sok-hero">
+      
+      <div class="flex-grid">
+         <div class="col col-1"></div>
    
-   <div class="flex-grid">
-      <div class="col col-1"></div>
-
-      <div class="col col-14">
-         <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-
-         <Revealtext>
-            <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
-         </Revealtext>
-
-         <Revealtext>
-            <h1 class="oka-h -xxl">Développement <br> Informatique sur-mesure.</h1>
-         </Revealtext>
-
-         <div class="oka-spacer  -sm" aria-hidden="true"></div>
-
-         <div class="sok-t-paragraph">
-            <paragrapheHero.Content/>
+         <div class="col col-14">
+            <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+   
+            <Revealtext>
+               <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
+            </Revealtext>
+   
+            <Revealtext>
+               <h1 class="oka-h -xxl">Développement <br> Informatique sur-mesure.</h1>
+            </Revealtext>
+   
+            <div class="oka-spacer  -sm" aria-hidden="true"></div>
+   
+            <div class="sok-t-paragraph">
+               <paragrapheHero.Content/>
+            </div>
+   
+            <div class="oka-spacer  -lg" aria-hidden="true"></div>
+              
          </div>
-
-         <div class="oka-spacer  -lg" aria-hidden="true"></div>
-           
+       
+         <div class="col col-1">
+            <!-- <GrilleIntro cols="2" /> -->
+         </div>
       </div>
-    
-      <div class="col col-1">
-         <!-- <GrilleIntro cols="2" /> -->
+   
+      <div class="flex-grid">
+         <div class="col col-1">
+         
+         </div>
+         <div class="col col-14">
+            <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
+         </div>
       </div>
-   </div>
-
-   <div class="flex-grid">
-      <div class="col col-1">
-      
-      </div>
-      <div class="col col-14">
-         <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
-      </div>
-   </div>
-
-   <div class="flex-grid" >
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-5" > 
-
+   
+      <div class="flex-grid" >
+   
+       <div class="col col-1" ></div>
+   
+       <div class="col col-5" > 
+   
+         <div class="oka-spacer -xl " aria-hidden="true"></div>
+         
+         <Revealtext>
+           <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+         </Revealtext>
+   
+       </div>
+   
+       <div class="col col-1" ></div>
+   
+       <div class="col col-8" >
+       
+         <div class="stiktop">
+            <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
+        
+         </div>
+   
+       </div>
+   
+     </div>
+   
       <div class="oka-spacer -xl " aria-hidden="true"></div>
-      
-      <Revealtext>
-        <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
-      </Revealtext>
-
-    </div>
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-8" >
-    
-      <div class="stiktop">
-         <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
-     
-      </div>
-
-    </div>
-
-  </div>
-
-   <div class="oka-spacer -xl " aria-hidden="true"></div>
-
-</section>
+   
+   </section>
+</div>
 
 <style lang="scss">
 
