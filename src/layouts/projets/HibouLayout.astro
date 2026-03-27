@@ -3,6 +3,7 @@
 // import Layout from '../../layouts/Layout.astro';
 import Layout from '../../layouts/Layout.astro';
 // ===== Composants de la page =====
+import MediaWrapper from '../../components/commun/MediaWrapper.astro';
 import VideoSok from '../../components/commun/VideoSok.astro';
 import ImageSok from '../../components/commun/ImageSok.astro';
 import Marquee from '../../components/commun/marquee/Marquee.astro';
@@ -64,9 +65,10 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
         <div class="col col-1"></div>
   
         <div class="col col-14">
-          <div class="video-container">
+          <MediaWrapper ratio="16/9">
+            <!-- <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup.jpg" altText="photo de l'équipe Hokoha" /> -->
             <VideoSok srcVideo="/src/assets/videos/realisations/Hibou/Hibou.mp4" typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
-          </div>
+          </MediaWrapper>
 
           <div class="oka-spacer -xl" aria-hidden="true"></div>
           <div class="oka-spacer -xl" aria-hidden="true"></div>
@@ -82,9 +84,9 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
               </div>
             </div>
 
-            <div class="image-container">
-              <ImageSok imagePath="/src/assets/images/realisations/Hibou/image-1.jpeg" altText="photo de l'équipe Hokoha" />
-            </div>
+            <MediaWrapper ratio="3/2">
+              <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-2.jpg" altText="photo de l'équipe Hokoha" />
+            </MediaWrapper>
           </div>
         </div>
       </div>
@@ -199,17 +201,8 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
     }
   }
 
-  .video-container {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: .5rem;
-    overflow: hidden;
-  }
-
-  .image-container {
-    width: 100%;
-    aspect-ratio: 3/2;
-    border-radius: .5rem;
+  // empêche le marquee de dépasser de la dernière section
+  section:last-child {
     overflow: hidden;
   }
 </style>
