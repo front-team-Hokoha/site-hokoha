@@ -2,6 +2,7 @@
 // ===== Layout =====
 import Layout from '../layouts/Layout.astro';
 // ===== Componsants de la page =====
+import MediaWrapper from '../components/commun/MediaWrapper.astro';
 
 // ===== Composants d'animations =====
 import RevealText from '../animations/RevealText.astro';
@@ -46,34 +47,34 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
                   <form class="sok-form" action="#">
                      <div class="sok-form__input-container">
                         <div class="l-form-row sok-form__input-wrapper">
-                           <label class="oka-label-lg" for="form-prenom">Prénom*</label>
-                           <input type="text" name="form-prenom" id="form-prenom" placeholder="John" required>
+                           <label class="oka-label-lg" for="form-prenom">Prénom</label>
+                           <input class="oka-input -full" type="text" name="form-prenom" id="form-prenom" placeholder="John" required>
                         </div>
    
                         <div class="l-form-row sok-form__input-wrapper">
-                           <label class="oka-label-lg" for="form-nom">Nom*</label>
-                           <input type="text" name="form-nom" id="form-nom" placeholder="Doe" required>
+                           <label class="oka-label-lg" for="form-nom">Nom</label>
+                           <input class="oka-input -full" type="text" name="form-nom" id="form-nom" placeholder="Doe" required>
                         </div>
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
-                        <label class="oka-label-lg" for="form-email">Email*</label>
-                        <input type="email" name="form-email" id="form-email" placeholder="email@domaine.com" required>
+                        <label class="oka-label-lg" for="form-email">Email</label>
+                        <input class="oka-input -full" type="email" name="form-email" id="form-email" placeholder="email@domaine.com" required>
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
-                        <label class="oka-label-lg" for="form-societe">Société</label>
-                        <input type="text" name="form-societe" id="form-societe" placeholder="votre société">
+                        <label class="oka-label-lg" for="form-societe">Société (facultatif)</label>
+                        <input class="oka-input -full" type="text" name="form-societe" id="form-societe" placeholder="votre société">
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
-                        <label class="oka-label-lg" for="form-tel">Téléphone*</label>
-                        <input type="tel" name="form-tel" id="form-tel" placeholder="01 23 45 67 89" required>
+                        <label class="oka-label-lg" for="form-tel">Téléphone</label>
+                        <input class="oka-input -full" type="tel" name="form-tel" id="form-tel" placeholder="01 23 45 67 89" required>
                      </div>
 
                      <div class="l-form-row sok-form__textarea-wrapper">
                         <label class="oka-label-lg" for="form-message">Message</label>
-                        <textarea name="form-message" id="form-message" placeholder="message" required></textarea>
+                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="message" required></textarea>
                      </div>
 
                       <button class="oka-bt " type="submit">
@@ -93,8 +94,10 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
    <!-- Carte -->
    <div class="oka-appWrap -full">
       <section class="flex-grid">
-         <div class="col col-16 sok-carte">
-				<iframe src="https://cartes.app/?allez=19 Rue Eugène Messmer, 53000 Laval|n12719760100|-0.76814|48.05663#14.35/48.05702/-0.76298" aria-label="Carte"></iframe>
+         <div class="col col-16">
+            <MediaWrapper ratio="2.5/1">
+               <iframe src="https://cartes.app/?allez=19 Rue Eugène Messmer, 53000 Laval|n12719760100|-0.76814|48.05663#14.35/48.05702/-0.76298" aria-label="Carte"></iframe>
+            </MediaWrapper>
          </div>
 
          <div class="oka-spacer -xl" aria-hidden="true"></div>
@@ -113,20 +116,32 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
    // Formulaire
    label {
       margin-bottom: 1rem;
-      font-weight: 600;
+      font-weight: bold;
    }
 
    input, textarea {
-      width: 100%;
-      max-width: 546px;
+      padding: 1rem;
+
+      // Style
+      border: none;
+      border-bottom: 2px solid var(--oka-color-fg);
+      border-radius: 0;
+      box-shadow: none;
+      font-family: sans-serif;
+
+      &::placeholder{
+         font-style: normal;
+         color: var(--oka-color-fg);
+      }
    }
 
    .sok-form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
       width: 100%;
-      max-width: 546px;
+      max-width: 600px;
       margin: 0 auto;
 
       &__input-container,
@@ -146,19 +161,18 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
 
       &__textarea-wrapper {
          flex-direction: column;
+
+         & textarea {
+            min-height: 120px;
+         }
       }
    }
 
    // Carte
-   .sok-carte {
+   iframe {
       width: 100%;
-      height: 670px;
-
-      & iframe {
-         width: 100%;
-         height: 100%;
-         border: none;
-         outline: none;
-      }
+      height: 100%;
+      border: none;
+      outline: none;
    }
 </style>
