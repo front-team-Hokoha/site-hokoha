@@ -1,6 +1,7 @@
 ---
 title: 'Développer & interconnecter vos outils.'
 tag: 'Développer'
+num: '01'
 src: '/src/assets/images/test.jpg'
 alt: 'texte alternatif'
 ---

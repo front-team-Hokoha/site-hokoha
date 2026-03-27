@@ -1,7 +1,10 @@
 ---
 // ===== Layout =====
-// import Layout from '../../layouts/Layout.astro';
 import Layout from '../../layouts/Layout.astro';
+
+// ===== GLobalStyles =====
+import GlobalStyles from '../../components/commun/GlobalStyles.astro';
+
 // ===== Composants de la page =====
 import MediaWrapper from '../../components/commun/MediaWrapper.astro';
 import VideoSok from '../../components/commun/VideoSok.astro';
@@ -10,7 +13,6 @@ import Marquee from '../../components/commun/marquee/Marquee.astro';
 import MarqueeItem from '../../components/commun/marquee/MarqueeItem.astro';
 
 // ===== Composants d'animations =====
-// import RevealText from '../../animations/RevealText.astro';
 import RevealText from '../../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
@@ -181,18 +183,15 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
   </div>
 </Layout>
 
+<!-- === GobalStyles === -->
+<GlobalStyles/>
+
 <style lang="scss">
   .-two {
     gap: 2rem
   }
 
   .sok-t-wrapper {
-    display: flex;
-
-    .sok-t-paragraph {
-      width: 100%;
-      max-width: 680px;
-    }
 
     // Titre Hero
     &.-first {

@@ -2,6 +2,9 @@
 // ===== Layout =====
 import Layout from "../layouts/Layout.astro";
 
+// ===== GLobalStyles =====
+import GlobalStyles from '../components/commun/GlobalStyles.astro';
+
 // ===== Componsants de la page =====
 import MediaWrapper from '../components/commun/MediaWrapper.astro';
 import ImageSok from "../components/commun/ImageSok.astro";
@@ -179,15 +182,15 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
   </div>
 </Layout>
 
+<!-- === GobalStyles === -->
+<GlobalStyles/>
+
 <style lang="scss">
   .-two {
     gap: 2rem
   }
 
   .sok-t-wrapper {
-    // Wrapper pour les éléments textuels
-    display: flex;
-
     // Paragraphe Histoire
     &.-first {
       justify-content: end;
@@ -206,11 +209,6 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
     &.-fourth {
       justify-content: end;
     }
-  }
-
-  .sok-t-paragraph {
-    max-width: 680px;
-    width: 100%;
   }
 
   .sok-gerants {
