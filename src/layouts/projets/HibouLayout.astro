@@ -28,24 +28,18 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
 
         <div class="col col-14">
           <div class="oka-spacer -xxl" aria-hidden="true"></div>
-          <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
+          <div class="oka-spacer -xxl" aria-hidden="true"></div>
 
           <div class="oka-cols -two">
             <div class="sok-t-wrapper -first">
-              <div class="sok-t-content">
-                <RevealText>
-                  <h1 class="oka-h -xl">22 - Hibou</h1>
-                </RevealText>
-              </div>
+              <RevealText>
+                <h1 class="oka-h -xl">22 - Hibou</h1>
+              </RevealText>
             </div>
 
             <div class="sok-t-wrapper -second">
-              <div class="sok-t-content">
-
-                <div class="sok-t-paragraph">
-                  <paragrapheHero.Content />
-                </div>
-                
+              <div class="sok-t-paragraph">
+                <paragrapheHero.Content />
               </div>
             </div>
           </div>
@@ -75,18 +69,29 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
 
           <div class="oka-cols -two">
             <div class="sok-t-wrapper -third">
-              <div class="sok-t-content">
-
-                <div class="sok-t-paragraph">
-                  <paragraphe.Content />
-                </div>
-
+              <div class="sok-t-paragraph">
+                <paragraphe.Content />
               </div>
             </div>
 
             <MediaWrapper ratio="3/2">
+              <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-1.jpg" altText="photo de l'équipe Hokoha" />
+            </MediaWrapper>
+          </div>
+
+          <div class="oka-spacer -xl" aria-hidden="true"></div>
+          <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+          <div class="oka-cols -two">
+            <MediaWrapper ratio="3/2">
               <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-2.jpg" altText="photo de l'équipe Hokoha" />
             </MediaWrapper>
+
+            <div class="sok-t-wrapper -fourth">
+              <div class="sok-t-paragraph">
+                <paragraphe.Content />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -177,6 +182,10 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
 </Layout>
 
 <style lang="scss">
+  .-two {
+    gap: 2rem
+  }
+
   .sok-t-wrapper {
     display: flex;
 
@@ -196,7 +205,8 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
     }
 
     // Paragraph projet
-    &.-third {
+    &.-third,
+    &.-fourth {
       align-items: end;
     }
   }

@@ -180,6 +180,10 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
 </Layout>
 
 <style lang="scss">
+  .-two {
+    gap: 2rem
+  }
+
   .sok-t-wrapper {
     // Wrapper pour les éléments textuels
     display: flex;
@@ -192,6 +196,10 @@ import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
     // Partie Hommage
     &.-third {
       align-items: end;
+
+      .sok-t-paragraph {
+        max-width: 500px;
+      }
     }
 
     // Partie Formation
