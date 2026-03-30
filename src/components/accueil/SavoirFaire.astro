@@ -4,12 +4,13 @@ import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
 import CardContainer from "./savoir-faire/CardContainer.astro";
 // ===== Composants d'animations =====
 import Revealtext from "../../animations/RevealText.astro";
+
+// ==== Import du fichier Markdown
+import * as titreSavoirFaire from "../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
+import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
 ---
-<div class="sok-container hgo-snap" id="fin">
-
-  <hr class="oka-divider" aria-hidden="true">
-
-  <section class="flex-grid sok-section">
+<div class="sok-container hgo-snap oka-appWrap -fluid" id="finSavoirFaire">
+  <section class="flex-grid sok-section sok-savoirefaire">
     <div class="col col-1"></div>
     <div class="col col-12">
       
@@ -23,69 +24,39 @@ import Revealtext from "../../animations/RevealText.astro";
         <div class="oka-spacer -md" aria-hidden="true"></div>
 
         <Revealtext>
-          <h1>
-              Lorem ipsum dolor sit <span class="sok-text-color">amet consectetur</span>. 
-              <br> 
-              Urna lacus viverra senectus at. 
-          </h1>
+          <titreSavoirFaire.Content />
         </Revealtext>
 
-        <p class="oka-text -lg">
-            Lorem ipsum dolor sit amet consectetur. Nunc egestas sed porttitor egestas 
-            enim risus ullamcorper id smper. Commodo ultricies netus eu morbi eget scelerisque.        
-        </p>
+        <div class="sok-t-paragraph">
+          <paragrapheSavoirFaire.Content />
+        </div>
       </div>
     </div>
-    <!-- <div class="col col-5"></div> -->
 
-    <div class="oka-spacer  -xl" aria-hidden="true"></div>
-  </section>
+    <div class="oka-spacer  -lg" aria-hidden="true"></div>
 
-
-  <section class="flex-grid sok-section sok-section-two">
-    <div class="col col-16 oka-savoir-faire__list">
+    <div class="oka-savoir-faire__list">
       <CardContainer>
         <CardSavoirFaire />
       </CardContainer>
     </div>
 
-    <!-- backup test -->
-    <!-- <div class="col col-1"></div> -->
-    <!-- <div class="col col-16 oka-savoir-faire__list">
-      <CardContainer>
-        <CardSavoirFaire />
-      </CardContainer>
-
-      <CardSavoirFaire />
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <div class="stiktop oka-spacer  -xxl" aria-hidden="true"></div>
-      <hr class="oka-divider" aria-hidden="true">
-    </div> -->
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
   </section>
-
 </div>
 
-
-
 <style lang="scss">
-
   .sok-container {
     position: relative;
     z-index: 1;
     margin: 1rem 0;
-    // background-color: red;
     border-radius: var(--sok-radius-section);
     background-color: #fff;
   }
 
   .sok-section {
-    background-color: var(--sok-color-surface-dark);
-   
-  }
-
-  .stiktop {
-    position: sticky;
-    top: 7rem;
+    background-color: var(--sok-color-underground);
+    overflow: hidden;
   }
 
   .oka-morph-wrapper {
@@ -94,10 +65,5 @@ import Revealtext from "../../animations/RevealText.astro";
     width: 100%;
     aspect-ratio: 1/1;
     overflow: hidden;
-  }
-
-
-  .sok-text-color {
-    color: var(--sok-color-primary);
   }
 </style>

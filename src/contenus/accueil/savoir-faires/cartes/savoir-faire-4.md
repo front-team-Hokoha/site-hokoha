@@ -1,6 +1,7 @@
 ---
-title: 'Concevoir des interfaces ergonomiques & esthétiques.'
-tag: 'Concevoir'
+title: 'Intégrer des fonctionnalités innovantes.'
+tag: 'Innover'
+num: '04'
 src: '/src/assets/images/test.jpg'
 alt: 'texte alternatif'
 ---

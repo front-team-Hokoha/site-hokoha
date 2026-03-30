@@ -1,14 +1,13 @@
 ---
 // ===== Composants de la page =====
-const { addClass = "", srcImage, altImage } = Astro.props;
+const { linkRedirection = "#" } = Astro.props;
 ---
 
-<a href="#">
-
+<a href={linkRedirection}>
    <div class="sok-8ptgrid" aria-hidden="true"></div>
 	<div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
 
-   <article class={`oka-projet oka-flex  ${addClass}`}>
+   <article class="oka-projet oka-flex">
       <slot />
    </article>
 </a>

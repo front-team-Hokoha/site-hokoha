@@ -1,13 +1,17 @@
 ---
 // ===== Layout =====
 import Layout from '../layouts/Layout.astro';
-// ===== Components =====
+
+// ===== GLobalStyles =====
+import GlobalStyles from '../components/commun/GlobalStyles.astro';
+
+// ===== Componsants de la page =====
 import Hero from "../components/accueil/Hero.astro";
 import Offres from "../components/accueil/Offres.astro";
 import SavoirFaire from "../components/accueil/SavoirFaire.astro";
 import Entreprise from "../components/accueil/Entreprise.astro";
-import Avantages from '../components/commun/Avantages.astro';
-import Avantage from '../components/commun/Avantage.astro';
+import Avantages from '../components/commun/avantages/Avantages.astro';
+import Avantage from '../components/commun/avantages/Avantage.astro';
 import Innover from '../components/accueil/Innover.astro';
 ---
 
@@ -18,16 +22,20 @@ import Innover from '../components/accueil/Innover.astro';
 	<!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 	<div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
 	<SavoirFaire />
-	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
 	
-<!-- <Innover /> -->
- 
+	<!-- <Innover />	 -->
+
 	<Entreprise />
 
-	<Avantages>
-		<Avantage subtitle="acccompagnement" title="360°" text="Lorem ipsum dolor sit amet consectetur." />
-      <Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
-      <Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
-      <Avantage subtitle="satisfaction client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
-	</Avantages>
+	<div class="oka-appWrap">
+		<Avantages>
+			<Avantage subtitle="acccompagnement" title="360°" text="Lorem ipsum dolor sit amet consectetur." />
+			<Avantage subtitle="développement au" title="forfait" text="Lorem ipsum dolor sit amet consectetur." />
+			<Avantage subtitle="une garantie" title="à vie" text="Lorem ipsum dolor sit amet consectetur." />
+			<Avantage subtitle="satisfaction client" title="100%" text="Lorem ipsum dolor sit amet consectetur." />
+		</Avantages>
+	</div>
 </Layout>
+
+<!-- === GobalStyles === -->
+<GlobalStyles/>

@@ -1,8 +1,178 @@
 ---
 // ===== Layout =====
 import Layout from '../layouts/Layout.astro';
+// ===== Componsants de la page =====
+import MediaWrapper from '../components/commun/MediaWrapper.astro';
+
+// ===== Composants d'animations =====
+import RevealText from '../animations/RevealText.astro';
+
+// ===== Fichiers Markdown =====
+import * as titreContact from "../contenus/contact/titre-contact.md"
 ---
 
 <Layout title="Page Contact">
-    <h1>Page Contact</h1>
+   <div class="oka-appWrap">
+      <section class="_ctnr-inline">
+         <div class="flex-grid">
+            <div class="oka-spacer -xxl" aria-hidden="true"></div>
+
+            <div class="col col-1"></div>
+
+            <div class="col col-14">
+               <RevealText>
+                  <titreContact.Content />   
+               </RevealText>
+
+               <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+               <div class="oka-cols -two">
+                  <div class="sok-infos">
+                     <div class="sok-infos__content">
+                        <span class="oka-text -md">Téléphone :</span>
+                        <h3 class="oka-h -md">+33 2 43 49 75 18</h3>
+                     </div>
+
+                     <div class="sok-infos__content">
+                        <span class="oka-text -md">Email :</span>
+                        <h3 class="oka-h-md">contact@hokoha.com</h3>
+                     </div>
+
+                     <div class="sok-infos__content">
+                        <span class="oka-text -md">Adresse :</span>
+                        <h3 class="oka-h -md">19 rue Eugène Messmer <br> Laval, 53000</h3>
+                     </div>
+                  </div>
+
+                  <form class="sok-form" action="#">
+                     <div class="sok-form__input-container">
+                        <div class="l-form-row sok-form__input-wrapper">
+                           <label class="oka-label-lg" for="form-prenom">Prénom</label>
+                           <input class="oka-input -full" type="text" name="form-prenom" id="form-prenom" placeholder="John" required>
+                        </div>
+   
+                        <div class="l-form-row sok-form__input-wrapper">
+                           <label class="oka-label-lg" for="form-nom">Nom</label>
+                           <input class="oka-input -full" type="text" name="form-nom" id="form-nom" placeholder="Doe" required>
+                        </div>
+                     </div>
+
+                     <div class="l-form-row sok-form__input-wrapper">
+                        <label class="oka-label-lg" for="form-email">Email</label>
+                        <input class="oka-input -full" type="email" name="form-email" id="form-email" placeholder="email@domaine.com" required>
+                     </div>
+
+                     <div class="l-form-row sok-form__input-wrapper">
+                        <label class="oka-label-lg" for="form-societe">Société (facultatif)</label>
+                        <input class="oka-input -full" type="text" name="form-societe" id="form-societe" placeholder="votre société">
+                     </div>
+
+                     <div class="l-form-row sok-form__input-wrapper">
+                        <label class="oka-label-lg" for="form-tel">Téléphone</label>
+                        <input class="oka-input -full" type="tel" name="form-tel" id="form-tel" placeholder="01 23 45 67 89" required>
+                     </div>
+
+                     <div class="l-form-row sok-form__textarea-wrapper">
+                        <label class="oka-label-lg" for="form-message">Message</label>
+                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="message" required></textarea>
+                     </div>
+
+                      <button class="oka-bt " type="submit">
+                           <span class="oka-bt__lbl">Envoyer</span>
+                     </button>
+                  </form>
+               </div>
+
+            </div>
+
+         </div>
+
+         <div class="oka-spacer -xl" aria-="true"></div>
+      </section>
+   </div>
+
+   <!-- Carte -->
+   <div class="oka-appWrap -full">
+      <section class="flex-grid">
+         <div class="col col-16">
+            <MediaWrapper ratio="2.5/1">
+               <iframe src="https://cartes.app/?allez=19 Rue Eugène Messmer, 53000 Laval|n12719760100|-0.76814|48.05663#14.35/48.05702/-0.76298" aria-label="Carte"></iframe>
+            </MediaWrapper>
+         </div>
+
+         <div class="oka-spacer -xl" aria-hidden="true"></div>
+      </section>
+   </div>
+
 </Layout>
+
+<style lang="scss">
+   .sok-infos {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+   }
+
+   // Formulaire
+   label {
+      margin-bottom: 1rem;
+      font-weight: bold;
+   }
+
+   input, textarea {
+      padding: 1rem;
+
+      // Style
+      border: none;
+      border-bottom: 2px solid var(--oka-color-fg);
+      border-radius: 0;
+      box-shadow: none;
+      font-family: sans-serif;
+
+      &::placeholder{
+         font-style: normal;
+         color: var(--oka-color-fg);
+      }
+   }
+
+   .sok-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+
+      &__input-container,
+      &__input-wrapper,
+      &__textarea-wrapper {
+         width: 100%;
+      }
+
+      &__input-container,
+      &__textarea-wrapper {
+         display: flex;
+      }
+
+      &__input-container {
+         gap: 1rem;
+      }
+
+      &__textarea-wrapper {
+         flex-direction: column;
+
+         & textarea {
+            min-height: 120px;
+         }
+      }
+   }
+
+   // Carte
+   iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+   }
+</style>

@@ -4,26 +4,20 @@ import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge
 import Revealtext from "../../animations/RevealText.astro";
 ---
 
-
 <div class="oka-appWrap">
   <section id="offres" class="sok-offre">
-
+  
     <div class="oka-spacer -xl " aria-hidden="true"></div>
-
-
+  
     <div class="flex-grid" >
-
+  
       <div class="col col-1" ></div>
-
+  
       <div class="col col-5" > 
-
-
-        
-        
-
+  
         <!-- ===== Offres ===== -->
         <div class="sok-offres" >
-
+  
     
           <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
@@ -31,7 +25,7 @@ import Revealtext from "../../animations/RevealText.astro";
             <span class="oka-h -md -zzzsecondary ">Solutions Web</span>
           </div>
           
-
+  
           
           <div class="sok-offres__item" data-offre="metier" data-zzzzappearup data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
@@ -40,7 +34,7 @@ import Revealtext from "../../animations/RevealText.astro";
           </div>
           
           <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
-
+  
           <div class="sok-offres__item" data-offre="app" data-zzzzappearup data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">03</span>
@@ -61,22 +55,31 @@ import Revealtext from "../../animations/RevealText.astro";
             <span class="oka-h -md -zzzsecondary -center">Objets Connectées</span>
           </div>
         </div>
-
+  
+  
         <div style="height:calc( 6 * 400px); border:0px solid red;" ></div>
       </div>
-
+  
+  
       <div class="col col-1" ></div>
-
+  
       <div class="col col-8" >
         
+        
         <GrilleOffres />
-      
+  
       </div>
+  
+     
     </div>
+  
+  
+  <!--   
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+    <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
   </section>
-
 </div>
-
 
 
 <script>
@@ -87,11 +90,11 @@ import Revealtext from "../../animations/RevealText.astro";
 
   document.addEventListener("astro:page-load", () => {
 
-    // ===== Pin #offres jusqu'à #fin =====
+    // ===== Pin #offres jusqu'à #finSavoirFaire =====
     ScrollTrigger.create({
       trigger: "#offres",
       start: "top top",
-      endTrigger: "#fin",
+      endTrigger: "#finSavoirFaire",
       end: "top bottom",
       /*end: () => {
         const grille = document.querySelector("#grilleTagsOffres");
@@ -145,7 +148,6 @@ import Revealtext from "../../animations/RevealText.astro";
     });
   });
 </script>
-
 
 
 <style lang="scss">
@@ -230,19 +232,3 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
 </style>
-
-
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('astro:page-load', () => {
-
-
-  
-  }
-);
-</script>
