@@ -1,16 +1,23 @@
 ---
 /*
+modifier : permet d'ajouter des class CSS pour modifier sok-item
+   valeur possible :
+      -rowD : afficher le contenu de sok-item en ligne
+      -colD : afficher le contenu de sok-item en colonne
+      -no-image : masque l'élément image pour afficher uniquement du texte
+      -no-text : masque le contenu textuel pour afficher uniquement l'image
+
 direction : permet de définir la direction du défilement du marquee
 
 valeur possible :
    -normal : de la gauche vers la droite
    -reverse : de la droite vers la gauche
 */
-const { direction } = Astro.props;
+const { direction, modifier } = Astro.props;
 ---
 
 <div class="sok-marquee" >
-   <div class={`sok-marquee__content ${direction}`}>
+   <div class={`sok-marquee__content ${direction} ${modifier}`}>
       <slot />
    </div>
 </div>
@@ -73,6 +80,38 @@ const { direction } = Astro.props;
          transform: translateX(-50%);
          -moz-transform: translateX(-50%);
          -webkit-transform: translateX(-50%);
+      }
+   }
+</style>
+
+<!-- ===== Style Global - Modifiers du Marquee ===== -->
+<style lang="scss" is:global>
+   // ===== Modifiers =====
+   // Orientation du contenu en ligne ou colonne des éléments du MarqueeItem
+   .-colD {
+      border: 2px solid red;
+      
+      .sok-item {
+         flex-direction: column;
+      }
+   }
+
+   .-rowD {
+      .sok-item {
+         gap: .5rem;
+      }
+   }
+
+   // Masquer le texte ou l'image
+   .-no-image {
+      .sok-item img {
+         display: none;
+      }
+   }
+
+   .-no-text {
+      .sok-item span {
+         display: none;
       }
    }
 </style>
