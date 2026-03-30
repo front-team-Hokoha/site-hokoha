@@ -29,13 +29,14 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 	</defs>
 </svg>
 <div class="polygone-container">
+	<!-- ATTENTION : pas gérer -->
 	<div class="polygon-stroke">
 		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
 			<path
 				d={hexPath}
 				fill="none"
 				stroke="rgba(0, 0, 0, 0)"
-				stroke-width="3"
+				stroke-width="1"
 			/>
 		</svg>
 	</div>

@@ -1,5 +1,6 @@
 ---
 import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
+import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
 import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
 ---
@@ -7,7 +8,35 @@ import Revealtext from "../../animations/RevealText.astro";
 <div class="oka-appWrap">
   <section id="offres" class="sok-offre">
   
-    <div class="oka-spacer -xl " aria-hidden="true"></div>
+     <div class="flex-grid" >
+   
+         <div class="col col-1" ></div>
+   
+         <div class="col col-5" > 
+      
+            <div class="oka-spacer -xl " aria-hidden="true"></div>
+            
+            <!-- <Revealtext>
+            <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+            </Revealtext> -->
+      
+         </div>
+   
+         <div class="col col-1" ></div>
+   
+         <div class="col col-8" >
+         
+            <div class="stiktop">
+               <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
+         
+            </div>
+      
+         </div>
+      </div> 
+
+
+
+
   
     <div class="flex-grid" >
   
@@ -17,7 +46,8 @@ import Revealtext from "../../animations/RevealText.astro";
   
         <!-- ===== Offres ===== -->
         <div class="sok-offres" >
-  
+          
+          <!-- <div class="oka-spacer -xl " aria-hidden="true"></div> -->
     
           <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
@@ -120,22 +150,38 @@ import Revealtext from "../../animations/RevealText.astro";
     offres.forEach((offre, index) => {
       ScrollTrigger.create({
         trigger: offre,
-        //markers: true,
+        markers: true,
         
         
         // Décale virtuellement le trigger sans modifier le DOM :
         // item 0 → center, item 1 → 300px plus tard, item 2 → 600px plus tard…
         start: `top+=${index * OFFRE_SCROLL_STEP}px 40%`,
-       
+        end: `top+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 40%`,
        
         onEnter: () => {
           const offreId = offre.dataset.offre;
 
           offre.classList.add("-active");
+          offre.classList.add("-display");
 
           console.log("Entré dans l'offre :", offreId);
           document.dispatchEvent(
             new CustomEvent("offre:enter", { detail: { offre: offreId } })
+          );
+        },
+        onEnterBack: () => {
+          const offreId = offre.dataset.offre;
+          offre.classList.add("-active");
+         
+          document.dispatchEvent(
+            new CustomEvent("offre:enter", { detail: { offre: offreId } })
+          );
+        },
+        onLeave: () => {
+          const offreId = offre.dataset.offre;
+          offre.classList.remove("-active");
+          document.dispatchEvent(
+            new CustomEvent("offre:leave", { detail: { offre: offreId } })
           );
         },
         onLeaveBack: () => {
@@ -209,11 +255,16 @@ import Revealtext from "../../animations/RevealText.astro";
       pointer-events: none;
       cursor: pointer;
 
+    &.-display {
+        opacity: 1;
+        pointer-events: all;
+        translate: 0px 0px;
+      }
 
       &.-active {
         opacity: 1;
-        translate: 0px 0px;
-         pointer-events: all;
+        translate: 30px 0px;
+        
       }
 
       & > .sok-arrow {
