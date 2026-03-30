@@ -11,7 +11,7 @@ interface Props {
 const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 ---
 
-<div class={`polygone -flip  ${color}`}>
+<div class={`polygone -flip jsFlipAuto  ${color}`}>
   <div class="flip-inner">
 
     <!-- Face avant -->
@@ -27,7 +27,7 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
   .-flip {
     perspective: 800px;
     aspect-ratio: var(--polygone-aspect-ratio);
@@ -69,7 +69,7 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
     const randomDelay = (min: number, max: number) =>
       (min + Math.random() * (max - min)) * 1000;
 
-    document.querySelectorAll<HTMLElement>('.-flip').forEach((cell) => {
+    document.querySelectorAll<HTMLElement>('.jsFlipAuto').forEach((cell) => {
       const inner    = cell.querySelector<HTMLElement>('.flip-inner');
       const backFace = cell.querySelector<HTMLElement>('.flip-back');
       if (!inner || !backFace) return;

@@ -1,26 +1,27 @@
 ---
 import PolygoneFlip from "./PolygoneFlip.astro";
+import PolygoneFlipProg from "./PolygoneFlipProg.astro";
 import PolygoneStatic from "./PolygoneStatic.astro";
 ---
 
 <div id="grilleTagsOffres" class="hex-grid -hidden" data-rows="4" data-cols="4" data-ratio="0.2" data-appeargroup>
 
-  <PolygoneFlip frontText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" color="-web"/>
-  <PolygoneFlip frontText="Sécurité" backText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
-  <PolygoneStatic frontText="Solution Web" color="-web" />
+  <PolygoneFlipProg backText="Solution Web" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" colorBack="-web"/>
+  <PolygoneFlipProg backText="Sécurité" backText="Solution Web" colorBack="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
+  <PolygoneFlipProg backText="Solution Web" type="-web" />
 
 
 
@@ -131,6 +132,7 @@ function layoutGrid(grid: HTMLElement) {
 function layoutGridOffre(grid: HTMLElement) {
   const COLS = Number(grid.dataset.cols);
   const ROWS = Number(grid.dataset.rows);
+  const DELAY = 0.2;
 
   grid.style.gridTemplateColumns = `repeat(${COLS}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${ROWS}, auto)`;
@@ -149,6 +151,7 @@ function layoutGridOffre(grid: HTMLElement) {
       const col = (index % COLS) + 1;
       svg.style.gridColumn = String(col);
       svg.style.gridRow    = String(row);
+      svg.dataset.delay = String(index + DELAY);
     });
   });
 }

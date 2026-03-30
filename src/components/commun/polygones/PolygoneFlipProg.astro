@@ -1,0 +1,112 @@
+---
+import Shape from "./Shape.astro";
+
+interface Props {
+  type?:  string;
+  frontText?: string;
+  backText?:  string;
+  colorFront?: string;
+  colorBack?: string;
+	videoUrl?: string;
+	imageUrl?: string;
+}
+const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorFront = "transparent", colorBack } = Astro.props;
+---
+
+<div class={`polygone -flip jsFlipProg ${type}`}>
+  <div class="flip-inner">
+
+    <!-- Face avant -->
+    <div class="flip-face flip-front">
+      <Shape frontText={frontText}  colorFront={colorFront}/>
+    </div>
+
+    <!-- Face arrière -->
+    <div class="flip-face flip-back">
+      <Shape backText={backText} videoUrl={videoUrl} imageUrl={imageUrl} colorBack={colorBack}/>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+  document.addEventListener("astro:page-load", () => {
+ 
+
+    // ── Paramètres ────────────────────────────────────────────
+    const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
+    const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
+    const FLIP_DURATION     = 0.5; // durée de l'animation de flip (secondes)
+    const DELAY_MIN         = 2;   // délai de démarrage min (secondes)
+    const DELAY_MAX         = 6;   // délai de démarrage max (secondes)
+    // ──────────────────────────────────────────────────────────
+
+    // Retourne 'X' ou 'Y' aléatoirement
+    const randomAxis = () => (Math.random() < 0.5 ? 'X' : 'Y');
+
+    // Retourne un délai aléatoire en ms entre [min, max] secondes
+    const randomDelay = (min: number, max: number) =>
+      (min + Math.random() * (max - min)) * 1000;
+
+    document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((cell) => {
+      const inner    = cell.querySelector<HTMLElement>('.flip-inner');
+      const backFace = cell.querySelector<HTMLElement>('.flip-back');
+      if (!inner || !backFace) return;
+
+      // ── État local de la cellule ───────────────────────────
+      // isFlipped : true = face arrière visible
+      let isFlipped  = false;
+      // currentAxis : axe utilisé pour le flip en cours
+      //   → conservé pour l'animation retour afin de rester sur le même axe
+      let currentAxis = randomAxis();
+
+      // Initialisation : pose la face arrière pré-retournée sur l'axe courant
+      // (backface-visibility:hidden empêche de la voir tant que l'inner n'est pas retourné)
+      backFace.style.transform = `rotate${currentAxis}(180deg)`;
+
+      // Durée de la transition CSS sur l'élément inner
+      inner.style.transition = `transform ${FLIP_DURATION}s ease`;
+
+      // ── Fonction de flip ────────────────────────────────────
+      const doFlip = () => {
+        if (!isFlipped) {
+          // ── Front → Back ───────────────────────────────────
+          // Choisit un nouvel axe aléatoire pour ce cycle de flip
+          currentAxis = randomAxis();
+
+          // Met à jour la pré-rotation de la face arrière AVANT d'animer,
+          // pour qu'elle soit déjà positionnée sur le bon axe
+          backFace.style.transform = `rotate${currentAxis}(180deg)`;
+
+          // Anime l'inner de 0° → 180° sur l'axe choisi, révélant la face arrière
+          inner.style.transform = `rotate${currentAxis}(180deg)`;
+          isFlipped = true;
+        } else {
+          // ── Back → Front ───────────────────────────────────
+          // Retour sur le même axe que l'aller pour une animation cohérente
+          inner.style.transform = '';
+          isFlipped = false;
+          // Le prochain flip choisira un nouvel axe (côté Front → Back)
+        }
+      };
+
+    });
+
+    // Réaction aux événements ScrollTrigger depuis Offres.astro
+    document.addEventListener("offre:enter", (e) => {
+      const { offre } = (e as CustomEvent).detail;
+      // alert(`Offre entrée : ${offre}`);
+      // Mettre en avant les polygones de l'offre active, masquer les autres
+      document.querySelectorAll<HTMLElement>('#grilleTagsOffres .polygone').forEach((poly) => {
+        if (poly.classList.contains(`-${offre}`)) {
+          doFlip();
+        } else {
+          poly.classList.add('-offre-inactive');
+          poly.classList.remove('-offre-active');
+        }
+      });
+    });
+  
+  });
+</script>
