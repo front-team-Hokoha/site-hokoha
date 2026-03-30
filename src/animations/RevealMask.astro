@@ -23,14 +23,15 @@ const { elTrigger } = Astro.props;
          scrollTrigger: {
             trigger: entrepriseEl,
             start: getStartPosition(entrepriseEl),
-            // end: "bottom 20%",
+            // start: "top 80%",
+            end: "bottom 50%",
             toggleActions: "play none reverse none",
-            //markers: true
+            markers: true,
          }
       });
 
-      tl.from(polygons, {
-         opacity: 0,
+      tl.to(polygons, {
+         opacity: 1,
          // rotation: 260,
          ease: "power2.inOut",
          stagger: distributeByPosition({
