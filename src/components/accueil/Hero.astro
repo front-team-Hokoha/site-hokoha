@@ -9,84 +9,84 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 
 
+<div class="oka-appWrap">
+   <section class="sok-hero">
+      
 
-<section class="sok-hero">
-   
+      <div class="flex-grid">
+         <div class="col col-1"></div>
+         <div class="col col-12">
+            
+            
+               <div class="oka-spacer  -xxl" aria-hidden="true"></div>
 
-   <div class="flex-grid">
-      <div class="col col-1"></div>
-      <div class="col col-12">
+               <Revealtext>
+                  <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
+               </Revealtext>
+
+               <Revealtext>
+                  <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
+               </Revealtext>
+
+               <div class="oka-spacer  -sm" aria-hidden="true"></div>
+               <p class="oka-text -lg" data-delay="0.5">
+                  Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
+                  cras. Dui nec amet mauris tempor interdum facilisi eget.
+               </p>
+
+               <div class="oka-spacer  -lg" aria-hidden="true"></div>
+            
+         </div>
+      
+         <div class="col col-1">
+            <!-- <GrilleIntro cols="2" /> -->
+         </div>
          
-          
-            <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-
-            <Revealtext>
-               <img class="sok-logokoha"  src="/src/assets/images/logokoha-dark.png" alt="logo Hokoha">
-            </Revealtext>
-
-            <Revealtext>
-               <h1 class="oka-h -xxl">Développement Informatique sur-mesure.</h1>
-            </Revealtext>
-
-            <div class="oka-spacer  -sm" aria-hidden="true"></div>
-            <p class="oka-text -lg" data-delay="0.5">
-               Lorem ipsum dolor sit amet consectetur. Urna fringilla dui quis a vitae
-               cras. Dui nec amet mauris tempor interdum facilisi eget.
-            </p>
-
-            <div class="oka-spacer  -lg" aria-hidden="true"></div>
-           
       </div>
-    
-      <div class="col col-1">
-         <!-- <GrilleIntro cols="2" /> -->
+
+
+      <div class="flex-grid">
+         <div class="col col-1">
+         
+         </div>
+         <div class="col col-14">
+            <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
+         </div>
       </div>
+
+
+
+      <div class="flex-grid" >
+
+      <div class="col col-1" ></div>
+
+      <div class="col col-5" > 
+
+         <div class="oka-spacer -xl " aria-hidden="true"></div>
+         
+         <Revealtext>
+         <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+         </Revealtext>
+
+      </div>
+
+      <div class="col col-1" ></div>
+
+      <div class="col col-8" >
       
-   </div>
-
-
-   <div class="flex-grid">
-      <div class="col col-1">
+         <div class="stiktop">
+            <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
       
+         </div>
+
       </div>
-      <div class="col col-14">
-         <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
-      </div>
+
    </div>
-
-
-
-   <div class="flex-grid" >
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-5" > 
 
       <div class="oka-spacer -xl " aria-hidden="true"></div>
-      
-      <Revealtext>
-        <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
-      </Revealtext>
 
-    </div>
-
-    <div class="col col-1" ></div>
-
-    <div class="col col-8" >
-    
-      <div class="stiktop">
-         <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
-     
-      </div>
-
-    </div>
-
-  </div>
-
-   <div class="oka-spacer -xl " aria-hidden="true"></div>
-
-</section>
-
+   </section>
+</div>
 
 
 
@@ -97,7 +97,7 @@ import RevealMask from "../../animations/RevealMask.astro";
       position:relative;
       z-index: 2;
 
-      margin:0;
+      margin-bottom:0;
       border-radius : var(--sok-radius-section)  var(--sok-radius-section) 0 0;
 
       background-color: var(--sok-color-surface);
