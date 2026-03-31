@@ -73,7 +73,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     overflow: hidden;
     background-color: var(--oka-color-layer-floor-0);
     border: 1px solid var(--oka-color-bd-minimal);
-    border-radius: 0.5rem;
+    // border-radius: 0.5rem;
+
+    margin-right: -1px;
+    overflow: hidden;
 
     &__wrapper {
       display: flex;
@@ -106,8 +109,24 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         flex-direction: column;
         justify-content: center;
         align-items: start;
+        // test
+        overflow: hidden;
+        box-sizing: border-box;
+        overflow: hidden;
+        will-change: width;
+
+        // .sok-card__content  > * {
+        //   min-width: 0;
+        // }
+
+
+        // .oka-h {
+        //   min-width: 542px;
+        //   max-width: 542px;
+        // }
 
         .sok-card__paragraph {
+          min-width: 440px;
           max-width: 440px;
         }
       }
@@ -127,23 +146,46 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     const cards = document.querySelector(".sok-card-container");
 
     const totalWidth = cards.scrollWidth;
-    const screenWidth = window.innerWidth;
+    // const screenWidth = window.innerWidth;
 
-    const scrollDistance = totalWidth - screenWidth;
+    // const scrollDistance = totalWidth - screenWidth;
 
-    gsap.to(cards, {
-      x: -scrollDistance,
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".sok-savoirefaire",
-        start: "top top",
+        start: "top -5%",
         end: () => `+=${totalWidth}`,
-        scrub: 1,
+        scrub: true,
         pin: true,
         anticipatePin: 1,
-        invalidateOnRefresh: true,
-        // snap: 1 / (cards.children.length - 1),
-        // markers: true,
       }
     });
+
+    const sokCards = document.querySelectorAll('.sok-card');
+
+    sokCards.forEach((sokCard, i) => {
+      const rightContent = sokCard.querySelector(".sok-card__content");
+  
+      tl.to(rightContent, {
+        width: 0,
+        duration: 1,
+      });
+
+    })
+
+    // gsap.to(cards, {
+    //   x: -scrollDistance,
+    //   scrollTrigger: {
+    //     trigger: ".sok-savoirefaire",
+    //     start: "top top",
+    //     end: () => `+=${totalWidth}`,
+    //     scrub: 1,
+    //     pin: true,
+    //     anticipatePin: 1,
+    //     invalidateOnRefresh: true,
+    //     // snap: 1 / (cards.children.length - 1),
+    //     // markers: true,
+    //   }
+    // });
   });
 </script>
