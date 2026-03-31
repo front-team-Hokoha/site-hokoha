@@ -1,114 +1,115 @@
 ---
 import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
 import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
-import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 import Revealtext from "../../animations/RevealText.astro";
 ---
 
-<div class="oka-appWrap">
-  <section id="offres" class="sok-offre">
+<div class="oka-appWrap -fluid">
+
+  <section id="offres" class="sok-offre" >
   
-     <div class="flex-grid" >
-   
-         <div class="col col-1" ></div>
-   
-         <div class="col col-5" > 
-      
-            <div class="oka-spacer -xl " aria-hidden="true"></div>
-            
-            <!-- <Revealtext>
-            <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
-            </Revealtext> -->
-      
-         </div>
+
+     <div class="flex-grid">
+
+         <div class="col col-6" ></div>
    
          <div class="col col-1" ></div>
    
          <div class="col col-8" >
-         
-            <div class="stiktop">
                <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
-         
-            </div>
-      
          </div>
       </div> 
-
 
 
 
   
     <div class="flex-grid" >
   
-      <div class="col col-1" ></div>
+      <!-- <div class="col col-1" ></div> -->
   
-      <div class="col col-5" > 
+      <div class="col col-6" > 
   
         <!-- ===== Offres ===== -->
         <div class="sok-offres" >
           
-          <!-- <div class="oka-spacer -xl " aria-hidden="true"></div> -->
-    
-          <div class="sok-offres__item" data-offre="web" data-zzzzappearup data-offset-lg="top 30%">
+           <hr class="oka-divider  -sm -end  " aria-hidden="true">
+
+
+          <div class="sok-offres__item" data-offre="web"  data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">01</span>
-            <span class="oka-h -md -zzzsecondary ">Solutions Web</span>
+            <span class="oka-h -md">Solutions Web</span>
           </div>
           
   
           
-          <div class="sok-offres__item" data-offre="metier" data-zzzzappearup data-offset-lg="top 30%">
+          <div class="sok-offres__item" data-offre="metier" data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">02</span>
-            <span class="oka-h -md -zzzsecondary ">Logiciels Métiers</span>
+            <span class="oka-h -md">Logiciels Métiers</span>
           </div>
           
-          <!-- <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
-  
-          <div class="sok-offres__item" data-offre="app" data-zzzzappearup data-offset-lg="top 30%">
+          
+          <div class="sok-offres__item" data-offre="app" data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">03</span>
-            <span class="oka-h -md -zzzsecondary ">Application Mobile</span>
+            <span class="oka-h -md">Application Mobile</span>
           </div>
         
           
-          <div class="sok-offres__item" data-offre="ia" data-zzzzappearup data-offset-lg="top 30%">
+          <div class="sok-offres__item" data-offre="ia"  data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">04</span>
-            <span class="oka-h -md -zzzsecondary -center">Intelligence Artificielle</span>
+            <span class="oka-h -md">Intelligence Artificielle</span>
           </div>
           
           
-          <div class="sok-offres__item" data-offre="iot" data-zzzzappearup data-offset-lg="top 30%">
+          <div class="sok-offres__item" data-offre="iot" data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg">
             <span class="oka-data -xs -crop">05</span>
-            <span class="oka-h -md -zzzsecondary -center">Objets Connectées</span>
+            <span class="oka-h -md">Objets Connectées</span>
           </div>
         </div>
   
-  
-        <div style="height:calc( 6 * 400px); border:0px solid red;" ></div>
+        <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div>
+        
       </div>
-  
   
       <div class="col col-1" ></div>
   
       <div class="col col-8" >
-        
-        
         <GrilleOffres />
-  
+
+        <div class="oka-spacer  -xl" aria-hidden="true"></div>
+
+        <button class="oka-bt -outlined -lg " >
+          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
+          <div class="oka-bt__lbl">Consulter une réalisation</div>
+          <div class="oka-spinner"></div>
+        </button>
+
+
       </div>
   
-     
     </div>
-  
-  
-  <!--   
-    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-    <div class="oka-spacer  -xxl" aria-hidden="true"></div>
-    <div class="oka-spacer  -xxl" aria-hidden="true"></div> -->
+
   </section>
+  
+  <!-- Contenu après le pin : visible une fois que #offres se dépine -->
+  <div class="oka-appWrap -fluid" >
+    <div class="flex-grid">
+      <div class="col col-7"></div>
+      <div class="col col-8">
+          <div class="oka-spacer -xl" aria-hidden="true"></div>
+          <Revealtext>          
+            <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+          </Revealtext>
+          <div class="oka-spacer -xxl" aria-hidden="true" id="finOffres"></div>
+      </div>
+    </div>
+  </div>
+  
+
 </div>
 
 
@@ -120,43 +121,36 @@ import Revealtext from "../../animations/RevealText.astro";
 
   document.addEventListener("astro:page-load", () => {
 
-    // ===== Pin #offres jusqu'à #finSavoirFaire =====
+
+   
     ScrollTrigger.create({
       trigger: "#offres",
       start: "top top",
-      endTrigger: "#finSavoirFaire",
+      endTrigger: "#finOffres",
       end: "top bottom",
-      /*end: () => {
-        const grille = document.querySelector("#grilleTagsOffres");
-       
-        if (!grille) return "top top";
-        // Lors du refresh GSAP (scroll=0), getBoundingClientRect().bottom
-        // === distance depuis le haut de la page, soit le bas de #grilleTagsOffres
-        return `top ${grille.getBoundingClientRect().bottom}px`;
-      },
-      */
-      pin: true,
+      
+      pin: true,  // ===== Pin #offres jusqu'à #finOffres =====
       pinSpacing: false,
-      // markers: true,
+      markers: true,
+
     });
 
 
 
-    const offres = document.querySelectorAll<HTMLElement>("[data-offre]");
+    const OFFRES = document.querySelectorAll<HTMLElement>("[data-offre]");
+    const OFFRE_SCROLL_STEP = 400; // Distance de scroll virtuelle entre chaque déclenchement (en px)
 
-    // Distance de scroll virtuelle entre chaque déclenchement (en px)
-    const OFFRE_SCROLL_STEP = 400;
 
-    offres.forEach((offre, index) => {
+    OFFRES.forEach((offre, index) => {
       ScrollTrigger.create({
         trigger: offre,
-        markers: true,
+        //markers: true,
         
         
-        // Décale virtuellement le trigger sans modifier le DOM :
-        // item 0 → center, item 1 → 300px plus tard, item 2 → 600px plus tard…
+        // Décale virtuellement le trigger suivant OFFRE_SCROLL_STEP:
+        // item 0 , item 1 → 400px plus tard, item 2 → 800px plus tard…
         start: `top+=${index * OFFRE_SCROLL_STEP}px 40%`,
-        end: `top+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 40%`,
+        end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 40%`,
        
         onEnter: () => {
           const offreId = offre.dataset.offre;
@@ -177,6 +171,7 @@ import Revealtext from "../../animations/RevealText.astro";
             new CustomEvent("offre:enter", { detail: { offre: offreId } })
           );
         },
+
         onLeave: () => {
           const offreId = offre.dataset.offre;
           offre.classList.remove("-active");
@@ -184,14 +179,17 @@ import Revealtext from "../../animations/RevealText.astro";
             new CustomEvent("offre:leave", { detail: { offre: offreId } })
           );
         },
+
         onLeaveBack: () => {
           const offreId = offre.dataset.offre;
+          offre.classList.remove("-active");
           document.dispatchEvent(
             new CustomEvent("offre:leave", { detail: { offre: offreId } })
           );
         },
       });
     });
+
   });
 </script>
 
@@ -212,35 +210,14 @@ import Revealtext from "../../animations/RevealText.astro";
     padding: 0;
   }
 
-  .oka-h, .oka-text, .oka-data {
-    //color: var(--sok-color-fg-on_surface);
-  }
-
-
-
-  .flex-grid{
-    // position: sticky;
-    // top: 8rem;
-  }
 
 
   .sok-offres {
 
 
-    //position:sticky;
-    //top: 0rem;
-
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: flex-start;
-    // gap: 0rem;
-
-
-
-
     &__item {
 
-      height:5rem;
+      height:4rem;
 
       flex-shrink:0;
       display: flex;
@@ -250,10 +227,13 @@ import Revealtext from "../../animations/RevealText.astro";
       overflow: hidden;
 
       opacity: 0.3;
-      translate: -3rem 0px;
+      translate: 0rem 0px;
 
       pointer-events: none;
-      cursor: pointer;
+      //cursor: pointer;
+      //border-top: 1px solid var(--oka-color-bd-subtle);
+
+
 
     &.-display {
         opacity: 1;
@@ -262,21 +242,26 @@ import Revealtext from "../../animations/RevealText.astro";
       }
 
       &.-active {
+
+        //flex-direction: row-reverse;
         opacity: 1;
         translate: 30px 0px;
         
       }
 
       & > .sok-arrow {
-        margin-left: -8rem;
+        margin-left: 2rem;
         zoom:0.5;
         // transition: margin .15s ease-in-out;
+        opacity: 0;
         transition: margin .15s cubic-bezier(.63,.78,.25,1);
       }
 
-      &.-active > .sok-arrow,
-      &:hover > .sok-arrow {
-        margin-left: -1rem;
+      &.-active > .sok-arrow {
+        margin-left: 4rem;
+        margin-right: 4rem;
+        opacity: 1;
+
       }
     }
   }

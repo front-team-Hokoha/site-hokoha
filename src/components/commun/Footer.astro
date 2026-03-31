@@ -3,8 +3,8 @@ const { modifier } = Astro.props;
 ---
 
 
-<div class="oka-appWrap">
-  <footer class={`oka-footer oka-lightMode oka-surface _ctnr-inline" ${modifier}`}>
+<div class="oka-appWrap -fluid ">
+  <footer class={`oka-footer oka-darkMode oka-surface _ctnr-inline" ${modifier}`}>
     <div class="oka-spacer -md" aria-hidden="true"></div>
   
     <div class="flex-grid">
@@ -83,7 +83,7 @@ const { modifier } = Astro.props;
             <!-- Liste 3 -->
             <ul class="oka-footer__list">
               <li>
-                <h3 class="oka-h -sm">Légale</h3>
+                <h4 class="oka-h -sm">Légale</h4>
               </li>
     
               <li>
@@ -150,6 +150,7 @@ const { modifier } = Astro.props;
           // transform: translateX(-50%);
           white-space: nowrap;
           text-align: center;
+          opacity: 0.1;
         }
       }
     } 

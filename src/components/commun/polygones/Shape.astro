@@ -14,12 +14,11 @@ const clipId = `clip-${Math.random().toString(36).slice(2)}`;
 
 interface Props {
 	frontText?: string;
-	backText?:  string;
 	color?: string;
 	videoUrl?: string;
 	imageUrl?: string;
 }
-const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
+const { frontText, videoUrl, imageUrl, color } = Astro.props;
 ---
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 	<defs>
@@ -112,8 +111,11 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 		justify-content: center;
 		align-items: center;
 		background-size: cover;
-		background-color: rgba(255, 255, 255, 1);
+		background-color: rgba(255, 255, 255, 0);
 		overflow: hidden;
+
+		font-size: 13px;
+		text-transform: uppercase;
 
 		// Modifier pour changer la disposition des éléments
 		.polygon-shape.-pos-bottom {
@@ -122,11 +124,7 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 			padding: 1rem;
 		}
 
-		.polygone-text {
-			color: #2C5F8A;
-			font-size: 12px;
-			text-align: center;
-		}
+	
 
 		video {
 			position: absolute;
@@ -136,21 +134,22 @@ const { frontText, backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
 			height: 100%;
 			object-fit: cover;
 		}
+		
 	}
 
 	.-web {
 		background-color: var(--sok-color-primary-darker);
-		color: var(--sok-color-fg-on_surface);
+		color: #fff;
 	}
 
 	.-metier {
 		background-color: var(--sok-color-primary-dark);
-		color: var(--sok-color-fg-on_surface);
+		color: #fff;
 	}
 
 	.-app {
 		background-color: var(--sok-color-primary);
-		color: var(--sok-color-fg-on_surface);
+		color: #fff;
 	}
 
 	.-ia {

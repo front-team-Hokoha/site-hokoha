@@ -10,7 +10,7 @@ interface Props {
 	videoUrl?: string;
 	imageUrl?: string;
 }
-const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorFront = "transparent", colorBack } = Astro.props;
+const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "transparent", colorBack } = Astro.props;
 ---
 
 <div class={`polygone -flip jsFlipProg ${type}`}>
@@ -18,12 +18,12 @@ const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorF
 
     <!-- Face avant -->
     <div class="flip-face flip-front">
-      <Shape frontText={frontText}  colorFront={colorFront}/>
+      <Shape frontText={frontText}  color={colorFront}/>
     </div>
 
     <!-- Face arrière -->
     <div class="flip-face flip-back">
-      <Shape backText={backText} videoUrl={videoUrl} imageUrl={imageUrl} colorBack={colorBack}/>
+      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={imageUrl} color={colorBack}/>
     </div>
 
   </div>
@@ -35,19 +35,10 @@ const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorF
  
 
     // ── Paramètres ────────────────────────────────────────────
-    const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
-    const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
     const FLIP_DURATION     = 0.5; // durée de l'animation de flip (secondes)
-    const DELAY_MIN         = 2;   // délai de démarrage min (secondes)
-    const DELAY_MAX         = 6;   // délai de démarrage max (secondes)
+
     // ──────────────────────────────────────────────────────────
 
-    // Retourne 'X' ou 'Y' aléatoirement
-    const randomAxis = () => (Math.random() < 0.5 ? 'X' : 'Y');
-
-    // Retourne un délai aléatoire en ms entre [min, max] secondes
-    const randomDelay = (min: number, max: number) =>
-      (min + Math.random() * (max - min)) * 1000;
 
     document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((cell) => {
       const inner    = cell.querySelector<HTMLElement>('.flip-inner');
@@ -59,7 +50,7 @@ const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorF
       let isFlipped  = false;
       // currentAxis : axe utilisé pour le flip en cours
       //   → conservé pour l'animation retour afin de rester sur le même axe
-      let currentAxis = randomAxis();
+      let currentAxis = 'X';
 
       // Initialisation : pose la face arrière pré-retournée sur l'axe courant
       // (backface-visibility:hidden empêche de la voir tant que l'inner n'est pas retourné)
@@ -72,9 +63,6 @@ const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorF
       const doFlip = () => {
         if (!isFlipped) {
           // ── Front → Back ───────────────────────────────────
-          // Choisit un nouvel axe aléatoire pour ce cycle de flip
-          currentAxis = randomAxis();
-
           // Met à jour la pré-rotation de la face arrière AVANT d'animer,
           // pour qu'elle soit déjà positionnée sur le bon axe
           backFace.style.transform = `rotate${currentAxis}(180deg)`;
@@ -87,23 +75,34 @@ const { type, frontText = 'Front', backText = 'Back', videoUrl, imageUrl, colorF
           // Retour sur le même axe que l'aller pour une animation cohérente
           inner.style.transform = '';
           isFlipped = false;
-          // Le prochain flip choisira un nouvel axe (côté Front → Back)
+        
         }
       };
 
+      // fonction pour forcer un retour à la face avant (sans changer d'axe)
+      const doUnflip = () => {
+        if (isFlipped) {
+          inner.style.transform = '';
+          isFlipped = false;
+        }
+      };
+
+      // attache les fonctions de flip/unflip à l'instance DOM de la cellule pour pouvoir les appeler depuis l'extérieur
+      (cell as any).doFlip   = () => setTimeout(doFlip,   parseFloat(cell.dataset.delay ?? '0') * 1000);
+      (cell as any).doUnflip = () => setTimeout(doUnflip, parseFloat(cell.dataset.delay ?? '0') * 1000);
     });
+
 
     // Réaction aux événements ScrollTrigger depuis Offres.astro
     document.addEventListener("offre:enter", (e) => {
       const { offre } = (e as CustomEvent).detail;
-      // alert(`Offre entrée : ${offre}`);
+
       // Mettre en avant les polygones de l'offre active, masquer les autres
       document.querySelectorAll<HTMLElement>('#grilleTagsOffres .polygone').forEach((poly) => {
         if (poly.classList.contains(`-${offre}`)) {
-          doFlip();
+          (poly as any).doFlip?.();
         } else {
-          poly.classList.add('-offre-inactive');
-          poly.classList.remove('-offre-active');
+          (poly as any).doUnflip?.();
         }
       });
     });
