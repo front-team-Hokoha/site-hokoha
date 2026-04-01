@@ -17,8 +17,9 @@ interface Props {
 	color?: string;
 	videoUrl?: string;
 	imageUrl?: string;
+	strokeType?: string
 }
-const { frontText, videoUrl, imageUrl, color } = Astro.props;
+const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 ---
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 	<defs>
@@ -30,7 +31,7 @@ const { frontText, videoUrl, imageUrl, color } = Astro.props;
 <div class="polygone-container">
 	<!-- ATTENTION : pas gérer -->
 	<div class="polygon-stroke">
-		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
+		<svg class={strokeType} viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
 			<path
 				d={hexPath}
 				fill="none"
