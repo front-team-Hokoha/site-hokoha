@@ -9,8 +9,9 @@ interface Props {
   colorBack?: string;
 	videoUrl?: string;
 	imageUrl?: string;
+  strokeType?: string;
 }
-const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "transparent", colorBack } = Astro.props;
+const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "transparent", colorBack, strokeType = "-none" } = Astro.props;
 ---
 
 <div class={`polygone -flip jsFlipProg ${type}`}>
@@ -18,7 +19,7 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
 
     <!-- Face avant -->
     <div class="flip-face flip-front">
-      <Shape frontText={frontText}  color={colorFront}/>
+      <Shape frontText={frontText}  color={colorFront} strokeType={strokeType}/>
     </div>
 
     <!-- Face arrière -->
