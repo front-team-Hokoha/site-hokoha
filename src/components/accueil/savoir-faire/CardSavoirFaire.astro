@@ -1,11 +1,5 @@
 ---
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
-
-/* 
-   Liste de cartes de savoir-faire. 
-   Chaque carte est positionnée de manière sticky, 
-   avec un top qui s'ajuste dynamiquement en fonction de la hauteur cumulée des titres des cartes précédentes.
-*/
 ---
 
 {
@@ -19,23 +13,30 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
             <span class="oka-data -lg -strong">{savoirFaire.frontmatter.num}</span>
           </div>
 
-          <div class="sok-card__content">
-            <h3 class="oka-h -lg">{savoirFaire.frontmatter.title}</h3>
+          <div class="sok-card__content-wrapper">
+            <div class="oka-spacer -inline -md" aria-hidden="true"></div>
 
-            {/* rawContent permet d'afficher le contenu du .md sans ajouter de balise html dans le DOM */}
-            <p class="oka-text -md sok-card__paragraph">
-              {savoirFaire.rawContent()}
-            </p>
+            <div class="sok-card__content">
+              <h3 class="oka-h -lg" set:html={savoirFaire.frontmatter.title}></h3>
 
-            <div class="oka-spacer -md" aria-hidden="true" />
+              {/* rawContent permet d'afficher le contenu du .md sans ajouter de balise html dans le DOM */}
+              {/* enblober la balise p dans un sok-t-paragraph */}
+              <div class="sok-t-paragraph">
+                <p class="oka-text -md">
+                  {savoirFaire.rawContent()}
+                </p>
+              </div>
 
-            <button class="oka-bt -outlined">
-              <div class="oka-bt__lbl">En savoir plus</div>
-            </button>
+              <div class="oka-spacer -md" aria-hidden="true" />
+
+              <button class="oka-bt -outlined">
+                <div class="oka-bt__lbl">En savoir plus</div>
+              </button>
+            </div>
           </div>
 
           {/* en cas d'utilisation d'une image */}
-          {/* Englober la balise image dans le composant MediaWrapper */}
+          {/* Englober l'image dans le composant MediaWrapper et remplacer img par ImageSok */}
 
           {/* <figure class="sok-card__content-img">
             <img
@@ -66,18 +67,18 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 
   .sok-card {
-    min-width: 320px;
+    // À AMÉLIORER
     max-width: 640px;
+
     height: 360px;
-    flex-shrink: 0;
     overflow: hidden;
+    margin-right: -1px;
     background-color: var(--oka-color-layer-floor-0);
     border: 1px solid var(--oka-color-bd-minimal);
-    border-radius: 0.5rem;
+    // border-radius: 0.5rem;
 
     &__wrapper {
       display: flex;
-      gap: 2rem;
       height: 100%;
 
       .sok-card__side-text {
@@ -85,8 +86,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        width: 4rem;
-        height: 100%;
+        width: 4.5rem;
         padding: 1rem 0;
         border-right: 1px solid var(--oka-color-bd-minimal);
 
@@ -95,23 +95,32 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         }
       }
 
+      .sok-card__content-wrapper {
+        display: flex;
+
+        .sok-card__content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: start;
+
+          // À AMÉLIORER
+          .oka-h {
+            min-width: 542px;
+          }
+
+          .sok-t-paragraph {
+            max-width: 440px;
+          }
+        }
+      }
+
+      // Image des cartes
       // .sok-card__content-img {
       //   width: 45%;
       //   height: 100%;
       //   margin: 0;
       // }
-
-      .sok-card__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-
-        .sok-card__paragraph {
-          max-width: 440px;
-        }
-      }
-
     }
   }
 </style>
@@ -126,24 +135,50 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   document.addEventListener("astro:page-load", () => {
     const cards = document.querySelector(".sok-card-container");
 
+    if (!cards) return;
+
     const totalWidth = cards.scrollWidth;
-    const screenWidth = window.innerWidth;
 
-    const scrollDistance = totalWidth - screenWidth;
-
-    gsap.to(cards, {
-      x: -scrollDistance,
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".sok-savoirefaire",
-        start: "top top",
+        start: "top -5%", // Commence un peu plus tôt
         end: () => `+=${totalWidth}`,
-        scrub: 1,
+        scrub: true,
         pin: true,
         anticipatePin: 1,
-        invalidateOnRefresh: true,
-        // snap: 1 / (cards.children.length - 1),
-        // markers: true,
       }
     });
+
+    const sokCards = document.querySelectorAll('.sok-card');
+
+    sokCards.forEach((sokCard) => {
+      const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
+
+      tl.to(rightContent, {
+        width: 0,
+        duration: 1
+      });
+    })
+
+
+    // Ancien code
+    // const screenWidth = window.innerWidth;
+    // const scrollDistance = totalWidth - screenWidth;
+
+    // gsap.to(cards, {
+    //   x: -scrollDistance,
+    //   scrollTrigger: {
+    //     trigger: ".sok-savoirefaire",
+    //     start: "top top",
+    //     end: () => `+=${totalWidth}`,
+    //     scrub: 1,
+    //     pin: true,
+    //     anticipatePin: 1,
+    //     invalidateOnRefresh: true,
+    //     // snap: 1 / (cards.children.length - 1),
+    //     // markers: true,
+    //   }
+    // });
   });
 </script>
