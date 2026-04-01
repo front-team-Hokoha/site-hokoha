@@ -8,10 +8,13 @@ import MediaWrapper from '../components/commun/MediaWrapper.astro';
 import RevealText from '../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-import * as titreContact from "../contenus/contact/titre-contact.md"
+import * as titreContact from "../contenus/contact/titre-contact.md";
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
-<Layout title="Page Contact">
+<Layout title="Page Contact" description={descContent}>
    <div class="oka-appWrap">
       <section class="_ctnr-inline">
          <div class="flex-grid">
@@ -87,7 +90,7 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
 
          </div>
 
-         <div class="oka-spacer -xl" aria-="true"></div>
+         <div class="oka-spacer -xl" aria-hidden="true"></div>
       </section>
    </div>
 

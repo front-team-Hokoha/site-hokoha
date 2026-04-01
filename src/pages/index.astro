@@ -13,9 +13,12 @@ import Entreprise from "../components/accueil/Entreprise.astro";
 import Avantages from '../components/commun/avantages/Avantages.astro';
 import Avantage from '../components/commun/avantages/Avantage.astro';
 import Innover from '../components/accueil/Innover.astro';
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
-<Layout title="Page Accueil">
+<Layout title="Page Accueil" description={descContent}>
 	<Hero />
 	<Offres />
 	
