@@ -15,11 +15,10 @@ const clipId = `clip-${Math.random().toString(36).slice(2)}`;
 interface Props {
 	frontText?: string;
 	color?: string;
-	strokeType?: string;
 	videoUrl?: string;
 	imageUrl?: string;
 }
-const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
+const { frontText, videoUrl, imageUrl, color } = Astro.props;
 ---
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 	<defs>
@@ -31,19 +30,13 @@ const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 <div class="polygone-container">
 	<!-- ATTENTION : pas gérer -->
 	<div class="polygon-stroke">
-		<svg class={strokeType} viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
+		<svg class="-dotted" viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
 			<path
 				d={hexPath}
 				fill="none"
+				stroke="rgba(0, 0, 0, 0)"
 				stroke-width="1"
 			/>
-
-			<!-- <path
-				d={hexPath}
-				fill="none"
-				stroke="rgba(0, 0, 0, 0)"
-				stroke-width="3"
-			/> -->
 		</svg>
 	</div>
 
@@ -98,7 +91,6 @@ const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 
 		& > .-dotted path {
 			stroke-dasharray: 4 4;
-			stroke: var(--sok-color-primary-darker);
 		}
 
 		& > .-solid path {
