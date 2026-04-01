@@ -1,23 +1,47 @@
----
-// import CardSavoirFaire from "./CardSavoirFaire.astro";
----
-
 <div class="sok-card-container">
    <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
+   <div class="oka-spacer -lg -inline" aria-hidden="true"></div>
+
    <slot/>
-   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
-   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
-   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
-   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
+
+   <div class="sok-card">
+      <h3 class="oka-h -lg">L'ADN Hokoha</h3>
+
+      <div class="sok-t-paragraph">
+         <p class="oka-text -md">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, minus! Quidem, corrupti vitae deserunt reprehenderit natus dolorum illo. Fugit, ea.
+         </p>
+      </div>
+
+      <div class="oka-spacer -md" aria-hidden="true" />
+
+      <button class="oka-bt -outlined">
+         <div class="oka-bt__lbl">En savoir plus</div>
+      </button>
+   </div>
+   
 </div>
 
 
 <style lang="scss">
    .sok-card-container {
       display: flex;
-      width: 100%;
-      margin-left: 4rem;
       width: max-content;
-      // gap: -2rem;
+
+      .sok-card {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: start;
+
+         width: 640px;
+         padding-left: 2rem;
+         background-color: var(--oka-color-layer-floor-0);
+         border: 1px solid var(--oka-color-bd-minimal);
+         
+         .sok-t-paragraph {
+            max-width: 440px;
+         }
+      }
    }
 </style>
