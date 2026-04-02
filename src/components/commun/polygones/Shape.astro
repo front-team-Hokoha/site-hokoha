@@ -35,8 +35,7 @@ const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 			<path
 				d={hexPath}
 				fill="none"
-				stroke="rgba(0, 0, 0, 0)"
-				stroke-width="1"
+				stroke-width="2"
 			/>
 		</svg>
 	</div>
@@ -89,13 +88,15 @@ const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 			shape-rendering: crispEdges;
   			vector-effect: non-scaling-stroke;
 		}
-
+		
 		& > .-dotted path {
 			stroke-dasharray: 4 4;
+			stroke: rgba(0, 0, 0, 1)
 		}
-
+		
 		& > .-solid path {
 			stroke-dasharray: 0;
+			stroke: rgba(0, 0, 0, 1)
 		}
 
 		& > .-none path {
