@@ -24,9 +24,12 @@ import * as paragrapheFormation from "../contenus/equipe/paragraphe-formation.md
 
 import * as titreHommage from "../contenus/equipe/titre-hommage.md";
 import * as paragrapheHommage from "../contenus/equipe/paragraphe-hommage.md";
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
-<Layout title="Page Équipe">
+<Layout title="Page Équipe" description={descContent}>
   <div class="oka-appWrap">
     <!-- ===== Section Histoire ===== -->
     <section class="_ctnr-inline">

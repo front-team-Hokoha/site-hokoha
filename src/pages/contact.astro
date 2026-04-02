@@ -8,10 +8,13 @@ import MediaWrapper from '../components/commun/MediaWrapper.astro';
 import RevealText from '../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-import * as titreContact from "../contenus/contact/titre-contact.md"
+import * as titreContact from "../contenus/contact/titre-contact.md";
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
-<Layout title="Page Contact">
+<Layout title="Page Contact" description={descContent}>
    <div class="oka-appWrap">
       <section class="_ctnr-inline">
          <div class="flex-grid">
@@ -48,33 +51,33 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
                      <div class="sok-form__input-container">
                         <div class="l-form-row sok-form__input-wrapper">
                            <label class="oka-label-lg" for="form-prenom">Prénom</label>
-                           <input class="oka-input -full" type="text" name="form-prenom" id="form-prenom" placeholder="John" required>
+                           <input class="oka-input -full" type="text" name="form-prenom" id="form-prenom" placeholder="John" pattern="^[A-Za-zÀ-ÿ' -]{2,50}$" required>
                         </div>
    
                         <div class="l-form-row sok-form__input-wrapper">
                            <label class="oka-label-lg" for="form-nom">Nom</label>
-                           <input class="oka-input -full" type="text" name="form-nom" id="form-nom" placeholder="Doe" required>
+                           <input class="oka-input -full" type="text" name="form-nom" id="form-nom" placeholder="Doe" pattern="^[A-Za-zÀ-ÿ' -]{2,50}$" required>
                         </div>
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
                         <label class="oka-label-lg" for="form-email">Email</label>
-                        <input class="oka-input -full" type="email" name="form-email" id="form-email" placeholder="email@domaine.com" required>
+                        <input class="oka-input -full" type="email" name="form-email" id="form-email" placeholder="email@domaine.com" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" required>
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
                         <label class="oka-label-lg" for="form-societe">Société (facultatif)</label>
-                        <input class="oka-input -full" type="text" name="form-societe" id="form-societe" placeholder="votre société">
+                        <input class="oka-input -full" type="text" name="form-societe" id="form-societe" placeholder="votre société" pattern="^(?!\s*$).{1,1000}$">
                      </div>
 
                      <div class="l-form-row sok-form__input-wrapper">
                         <label class="oka-label-lg" for="form-tel">Téléphone</label>
-                        <input class="oka-input -full" type="tel" name="form-tel" id="form-tel" placeholder="01 23 45 67 89" required>
+                        <input class="oka-input -full" type="tel" name="form-tel" id="form-tel" placeholder="01 23 45 67 89" pattern="^\+?[0-9\s\-().]{8,20}$" required>
                      </div>
 
                      <div class="l-form-row sok-form__textarea-wrapper">
                         <label class="oka-label-lg" for="form-message">Message</label>
-                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="message" required></textarea>
+                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="message" maxlength="1000" required>Votre message</textarea>
                      </div>
 
                       <button class="oka-bt " type="submit">
@@ -87,7 +90,7 @@ import * as titreContact from "../contenus/contact/titre-contact.md"
 
          </div>
 
-         <div class="oka-spacer -xl" aria-="true"></div>
+         <div class="oka-spacer -xl" aria-hidden="true"></div>
       </section>
    </div>
 

@@ -16,11 +16,14 @@ import Footer from '../components/commun/Footer.astro';
 import RevealText from '../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-import * as titreHero from "../contenus/realisations/titre-hero.md"
-import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md"
+import * as titreHero from "../contenus/realisations/titre-hero.md";
+import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md";
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
-  <Layout title="Page Réalisations">
+  <Layout title="Page Réalisations" description={descContent}>
     <div class="oka-appWrap">
       <!-- ===== Hero Section ===== -->
       <section class="flex-grid">
@@ -64,9 +67,9 @@ import * as paragrapheHero from "../contenus/realisations/paragraphe-hero.md"
       </Avantages>
     </div>
 
-    <div slot="Footer">
+    <!-- <div slot="Footer">
       <Footer modifier="-grey"/>
-    </div>
+    </div> -->
 </Layout>
 
 <!-- === GobalStyles === -->

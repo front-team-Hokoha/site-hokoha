@@ -26,4 +26,4 @@ pnpm-debug.log*
 yarn.lock
 
 # documentation
-documentation/
+# documentation/
