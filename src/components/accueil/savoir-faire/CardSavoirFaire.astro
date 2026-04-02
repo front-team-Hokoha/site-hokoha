@@ -1,4 +1,9 @@
 ---
+// ===== Composants utilisés =====
+import ImageSok from "../../commun/ImageSok.astro";
+import MediaWrapper from "../../commun/MediaWrapper.astro";
+
+// ===== Fichiers Markdown =====
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
 ---
 
@@ -6,54 +11,52 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   savoirFaires.map((savoirFaire) => (
     <article class="sok-card">
 
-        <div class="sok-card__wrapper">
+        <div class="sok-card__container">
           <div class="sok-card__side-text">
             <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
             <span class="oka-data -lg -strong">{savoirFaire.frontmatter.num}</span>
           </div>
 
-          <div class="sok-card__content-wrapper">
-            <div class="oka-spacer -inline -md" aria-hidden="true"></div>
+          <div class="sok-card__wrapper">
+            <div class="sok-card__content-wrapper">
+              <div class="oka-spacer -inline -md" aria-hidden="true"></div>
 
-            <div class="sok-card__content">
-              <h3 class="oka-h -lg" set:html={savoirFaire.frontmatter.title}></h3>
+              <div class="sok-card__content">
+                <h3 class="oka-h -lg" set:html={savoirFaire.frontmatter.title}></h3>
 
-              {/* rawContent permet d'afficher le contenu du .md sans ajouter de balise html dans le DOM */}
-              {/* enblober la balise p dans un sok-t-paragraph */}
-              <div class="sok-t-paragraph">
-                <p class="oka-text -md">
-                  {savoirFaire.rawContent()}
-                </p>
+                {/* rawContent permet d'afficher le contenu du .md sans ajouter de balise html dans le DOM */}
+                <div class="sok-t-paragraph">
+                  <p class="oka-text -md">
+                    {savoirFaire.rawContent()}
+                  </p>
+                </div>
+
+                <div class="oka-spacer -md" aria-hidden="true" />
+
+                <button class="oka-bt -outlined">
+                  <div class="oka-bt__lbl">En savoir plus</div>
+                </button>
               </div>
-
-              <div class="oka-spacer -md" aria-hidden="true" />
-
-              <button class="oka-bt -outlined">
-                <div class="oka-bt__lbl">En savoir plus</div>
-              </button>
             </div>
+
+            <figure class="sok-card__image-wrapper">
+              <img src={savoirFaire.frontmatter.src}alt={savoirFaire.frontmatter.alt}/>
+            </figure> 
+
+              {/* remplacer content=img par ça : à améliorer en cs d'utilisation */}
+              {/* Englober l'image dans le composant MediaWrapper et remplacer img par ImageSok */}
+
+              {/* <MediaWrapper ratio="1/1">
+                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
+                <img src={savoirFaire.frontmatter.src} alt={savoirFaire.frontmatter.alt} />
+              </MediaWrapper> */}
           </div>
-
-          {/* en cas d'utilisation d'une image */}
-          {/* Englober l'image dans le composant MediaWrapper et remplacer img par ImageSok */}
-
-          {/* <figure class="sok-card__content-img">
-            <img
-              src={savoirFaire.frontmatter.src}
-              alt={savoirFaire.frontmatter.alt}
-            />
-          </figure> */}
         </div>
+
     </article>
   ))
 }
-
-<style is:global>
-  .pin-spacer {
-    background-color: var(--sok-color-underground);
-  }
-</style>
 
 <style lang="scss">
   img {
@@ -67,18 +70,15 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 
   .sok-card {
-    // À AMÉLIORER
-    max-width: 640px;
-
     height: 360px;
     overflow: hidden;
     margin-right: -1px;
     background-color: var(--oka-color-layer-floor-0);
     border: 1px solid var(--oka-color-bd-minimal);
-    // border-radius: 0.5rem;
 
-    &__wrapper {
+    &__container {
       display: flex;
+      width: max-content;
       height: 100%;
 
       .sok-card__side-text {
@@ -95,6 +95,11 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         }
       }
 
+      .sok-card__wrapper {
+        display: flex;
+        width: 100%;
+      }
+
       .sok-card__content-wrapper {
         display: flex;
 
@@ -103,10 +108,12 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
           flex-direction: column;
           justify-content: center;
           align-items: start;
+          max-width: 500px;
 
           // À AMÉLIORER
           .oka-h {
-            min-width: 542px;
+            min-width: 500px;
+            width: 100%;
           }
 
           .sok-t-paragraph {
@@ -116,11 +123,12 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
       }
 
       // Image des cartes
-      // .sok-card__content-img {
-      //   width: 45%;
-      //   height: 100%;
-      //   margin: 0;
-      // }
+      .sok-card__image-wrapper {
+        min-width: 400px;
+        max-width: 400px;
+        aspect-ratio: 1/1;
+        margin: 0;
+      }
     }
   }
 </style>
@@ -142,7 +150,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".sok-savoirefaire",
-        start: "top -5%", // Commence un peu plus tôt
+        start: "top top", // Commence un peu plus tôt
         end: () => `+=${totalWidth}`,
         scrub: true,
         pin: true,
@@ -153,7 +161,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     const sokCards = document.querySelectorAll('.sok-card');
 
     sokCards.forEach((sokCard) => {
-      const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
+      const rightContent = sokCard.querySelector(".sok-card__wrapper");
 
       tl.to(rightContent, {
         width: 0,
