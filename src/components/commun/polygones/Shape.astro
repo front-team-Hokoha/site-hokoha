@@ -46,7 +46,7 @@ const { frontText, videoUrl, imageUrl, color } = Astro.props;
 		)}
 
 		{videoUrl && (
-			<video autoplay muted loop>
+			<video autoplay muted loop aria-hidden="true">
 				<source src={videoUrl} type="video/mp4">
 			</video>
 		)}
