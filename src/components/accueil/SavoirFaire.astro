@@ -1,7 +1,9 @@
 ---
 // ===== Componsants de la page =====
-import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
+// import CardSavoirFaire from "./savoir-faire/test/CardSavoirFaireV.astro"
+// import CardContainer from "./savoir-faire/test/CardContainerV.astro";
 import CardContainer from "./savoir-faire/CardContainer.astro";
+import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro";
 // ===== Composants d'animations =====
 import Revealtext from "../../animations/RevealText.astro";
 
@@ -34,15 +36,21 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
           <paragrapheSavoirFaire.Content />
         </div>
       </div>
-    </div>
 
-    <div class="oka-spacer  -lg" aria-hidden="true"></div>
 
-    <div class="oka-savoir-faire__list">
+      <div class="oka-spacer  -lg" aria-hidden="true"></div>
+  
       <CardContainer>
         <CardSavoirFaire />
       </CardContainer>
     </div>
+
+
+    <!-- <div class="oka-savoir-faire__list">
+      <CardContainer>
+        <CardSavoirFaire />
+      </CardContainer>
+    </div> -->
 
     <div class="oka-spacer  -xxl" aria-hidden="true"></div>
   </section>

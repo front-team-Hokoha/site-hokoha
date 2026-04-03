@@ -1,0 +1,94 @@
+---
+// ===== Componsants de la page =====
+import CardSavoirFaire from "./CardSavoirFaireT.astro"
+import CardContainer from "./CardContainerT.astro";
+// ===== Composants d'animations =====
+import Revealtext from "../../../../animations/RevealText.astro";
+
+// ==== Import du fichier Markdown
+import * as titreSavoirFaire from "../../../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
+import * as paragrapheSavoirFaire from "../../../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
+---
+
+
+<div class="sok-container hgo-snap oka-appWrap -fluid" >
+  <section class="_ctnr-inline sok-section sok-savoirfaire">
+    <div class="flex-grid">
+      <!-- <div class="oka-spacer -lg" aria-hidden="true"></div> -->
+
+      <div class="col col-16">
+        <div class="oka-cols -two">
+          <div class="sok-savoirfaire__content">
+            <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
+            
+            <div>
+              <span class="oka-text -sm -strong">NOTRE SAVOIR-FAIRE</span>
+              
+              <div class="oka-spacer -md" aria-hidden="true"></div>
+      
+              <Revealtext>
+                <!-- <titreSavoirFaire.Content /> -->
+
+                <h2 class="oka-h -lg">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit 
+                  similique dolore eius iusto accusantium.
+                </h2>
+              </Revealtext>
+      
+              <!-- <div class="sok-t-paragraph">
+                <paragrapheSavoirFaire.Content />
+              </div> -->
+            </div>
+
+            <div>
+              <span class="oka-text -strong -lg">“Notre seul but est de faire bien”</span>
+
+              <p class="oka-text -sm">Ernő Rubik - Inventeur du Rubik’s Cube</p>
+            </div>
+
+          </div>
+    
+          <CardContainer>
+            <CardSavoirFaire />
+          </CardContainer>
+        </div>
+      </div>
+
+      <!-- <div class="oka-spacer -lg" aria-hidden="true"></div> -->
+    </div>
+  </section>
+</div>
+
+<style lang="scss">
+  .sok-container {
+    position: relative;
+    z-index: 1;
+    margin: 1rem 0;
+    background-color: #fff;
+    border-radius: var(--sok-radius-section);
+  }
+
+  .sok-section {
+    overflow: hidden;
+    z-index: 99;
+    background-color: var(--sok-color-underground);
+  }
+
+  .oka-morph-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--oka-color-bg-minimal);
+  }
+
+  .sok-savoirfaire__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100dvh;
+    padding: 4rem;
+    background-color: var(--sok-color-underground);
+    border: 1px solid var(--oka-color-bd-minimal); 
+  }
+</style>

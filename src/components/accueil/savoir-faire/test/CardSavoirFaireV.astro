@@ -1,10 +1,10 @@
 ---
 // ===== Composants utilisés =====
-import ImageSok from "../../commun/ImageSok.astro";
-import MediaWrapper from "../../commun/MediaWrapper.astro";
+import ImageSok from "../../../commun/ImageSok.astro";
+import MediaWrapper from "../../../commun/MediaWrapper.astro";
 
 // ===== Fichiers Markdown =====
-const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
+const savoirFaires = Object.values(import.meta.glob("../../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
 ---
 
 {
@@ -13,9 +13,9 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
         <div class="sok-card__container">
           <div class="sok-card__side-text">
-            <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
+            <span class="oka-text -lg -strong">{savoirFaire.frontmatter.num}</span>
 
-            <span class="oka-data -lg -strong">{savoirFaire.frontmatter.num}</span>
+            <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
           </div>
 
           <div class="sok-card__wrapper">
@@ -43,14 +43,6 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
             <figure class="sok-card__image-wrapper">
               <img src={savoirFaire.frontmatter.src}alt={savoirFaire.frontmatter.alt}/>
             </figure> 
-
-              {/* remplacer content=img par ça : à améliorer en cs d'utilisation */}
-              {/* Englober l'image dans le composant MediaWrapper et remplacer img par ImageSok */}
-
-              {/* <MediaWrapper ratio="1/1">
-                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
-                <img src={savoirFaire.frontmatter.src} alt={savoirFaire.frontmatter.alt} />
-              </MediaWrapper> */}
           </div>
         </div>
 
@@ -66,11 +58,11 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 
   .flex-grid {
-    height: 100%;
+    // height: 100%;
   }
 
   .sok-card {
-    height: 360px;
+    max-width: 1008px;
     overflow: hidden;
     margin-right: -1px;
     background-color: var(--oka-color-layer-floor-0);
@@ -78,26 +70,28 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
     &__container {
       display: flex;
+      flex-direction: column;
       width: max-content;
-      height: 100%;
+      // height: 100%;
 
       .sok-card__side-text {
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        width: 4.5rem;
-        padding: 1rem 0;
-        border-right: 1px solid var(--oka-color-bd-minimal);
+        height: 4.5rem;
+        width: 100%;
+        padding: 1rem;
+        border-bottom: 1px solid var(--oka-color-bd-minimal);
 
-        & > * {
-          writing-mode: sideways-lr;
-        }
+        // & > * {
+        //   writing-mode: sideways-lr;
+        // }
       }
 
       .sok-card__wrapper {
         display: flex;
         width: 100%;
+        overflow: hidden;
       }
 
       .sok-card__content-wrapper {
@@ -145,16 +139,17 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
     if (!cards) return;
 
-    const totalWidth = cards.scrollWidth;
+    const totalHeight = cards.scrollHeight;
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".sok-savoirefaire",
-        start: "top top",
-        end: () => `+=${totalWidth}`,
+        start: "top top", 
+        end: () => `+=${totalHeight}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
+        markers: true
       }
     });
 
@@ -164,10 +159,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
       const rightContent = sokCard.querySelector(".sok-card__wrapper");
 
       tl.to(rightContent, {
-        width: 0,
+        height: 0,
         duration: 1
       }, i);
-    })
+    });
 
 
     // Ancien code
