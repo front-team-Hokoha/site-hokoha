@@ -2,7 +2,7 @@
 title: 'Sécuriser & fiabiliser vos systèmes.'
 tag: 'Sécuriser'
 num: '02'
-src: '/src/assets/images/test.jpg'
+src: '/src/assets/images/ambiance/test-2.png'
 alt: 'texte alternatif'
 ---
 

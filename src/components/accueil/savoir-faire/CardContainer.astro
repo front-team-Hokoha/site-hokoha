@@ -1,47 +1,68 @@
 <div class="sok-card-container">
-   <div class="oka-spacer -xxl -inline" aria-hidden="true"></div>
-   <div class="oka-spacer -lg -inline" aria-hidden="true"></div>
-
-   <slot/>
-
-   <div class="sok-card">
-      <h3 class="oka-h -lg">L'ADN Hokoha</h3>
-
-      <div class="sok-t-paragraph">
-         <p class="oka-text -md">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, minus! Quidem, corrupti vitae deserunt reprehenderit natus dolorum illo. Fugit, ea.
-         </p>
-      </div>
-
-      <div class="oka-spacer -md" aria-hidden="true" />
-
-      <button class="oka-bt -outlined">
-         <div class="oka-bt__lbl">En savoir plus</div>
-      </button>
+   <div class="sok-card-wrapper">
+      <slot/>
    </div>
-   
 </div>
 
-
 <style lang="scss">
+   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
    .sok-card-container {
       display: flex;
-      width: max-content;
+      width: 100%;
+      border-top: 1px solid var(--oka-color-bd-minimal);
+      border-bottom: 1px solid var(--oka-color-bd-minimal);
 
-      .sok-card {
+      @include breakpoint(lg) {
+         height: 100%;
+      }
+      
+      .sok-card-wrapper {
          display: flex;
          flex-direction: column;
-         justify-content: center;
-         align-items: start;
+         width: 100%;
+         height: 100%;
 
-         width: 640px;
-         padding-left: 2rem;
-         background-color: var(--oka-color-layer-floor-0);
-         border: 1px solid var(--oka-color-bd-minimal);
-         
-         .sok-t-paragraph {
-            max-width: 440px;
+         @include breakpoint(lg) {
+            width: auto;
+            flex-direction: row;
          }
       }
    }
 </style>
+
+<!-- Ancien code : Ne pas supprimer, peut être utile -->
+<!-- <script>
+   import { gsap } from "gsap";
+   import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   document.addEventListener("astro:page-load", () => {
+      const container = document.querySelector(".sok-card-container");
+      const cardsWrapper = document.querySelector(".sok-card-wrapper");
+
+      if (!cardsWrapper || !container) return;
+
+      const totalWidth = cardsWrapper.scrollWidth;
+      const containerWidth = container.offsetWidth;
+      
+      const scrollDistance = totalWidth - containerWidth;
+   
+
+      gsap.to(cardsWrapper, {
+         x: -scrollDistance,
+         ease: "none",
+         scrollTrigger: {
+            trigger: ".sok-savoirfaire",
+            start: "top top",
+            end: `+=${scrollDistance}`,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            markers: true
+         }
+      });
+   });
+</script> -->

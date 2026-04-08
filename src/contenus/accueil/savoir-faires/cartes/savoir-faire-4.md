@@ -2,7 +2,7 @@
 title: 'Intégrer des fonctionnalités innovantes.'
 tag: 'Innover'
 num: '04'
-src: '/src/assets/images/test.jpg'
+src: '/src/assets/images/ambiance/test-4.png'
 alt: 'texte alternatif'
 ---
 
