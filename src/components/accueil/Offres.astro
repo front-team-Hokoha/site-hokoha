@@ -6,7 +6,7 @@ import Revealtext from "../../animations/RevealText.astro";
 
 <div class="oka-appWrap -fluid">
 
-  <section id="offres" class="sok-offre">
+  <section  class="sok-offre"  id="offres">
   
 
      <div class="flex-grid">
@@ -71,7 +71,7 @@ import Revealtext from "../../animations/RevealText.astro";
           </div>
         </div>
   
-        <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div>
+        <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
         
       </div>
   
@@ -104,12 +104,11 @@ import Revealtext from "../../animations/RevealText.astro";
           <Revealtext>          
             <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
           </Revealtext>
-          <div class="oka-spacer -xxl" aria-hidden="true" id="finOffres"></div>
+          <div class="oka-spacer -xxl" aria-hidden="true" ></div>
       </div>
     </div>
   </div>
   
-
 </div>
 
 
@@ -126,11 +125,11 @@ import Revealtext from "../../animations/RevealText.astro";
     ScrollTrigger.create({
       trigger: "#offres",
       start: "top top",
-      endTrigger: "#finOffres",
-      end: "top bottom",
+
+      end: "+=2000", // Durée virtuelle du pin (en px)   (5 offres × 400px)
       
       pin: true,  // ===== Pin #offres jusqu'à #finOffres =====
-      pinSpacing: false,
+      //pinSpacing: false,
       markers: true,
 
     });
