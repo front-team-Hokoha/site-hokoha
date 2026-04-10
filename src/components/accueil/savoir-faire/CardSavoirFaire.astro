@@ -7,54 +7,150 @@
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
 ---
 
-{
-  savoirFaires.map((savoirFaire) => (
-    <article class="sok-card">
-      <div class="sok-card__container">
+{savoirFaires.map((savoirFaire) => (
+  <article class="sok-card">
+    <div class="flex-grid sok-card__container">
 
-        <div class="sok-card__side-text">
+      {/* bandeau */}
+      <div class="col col-4" id="side-wrapper">
+        <div class="sok-card__side">
           <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
           <span class="oka-data -lg -strong">
             {savoirFaire.frontmatter.num}
           </span>
         </div>
+      </div>
 
-        <div class="sok-card__wrapper">
+      <div class="col col-4" id="card-content-wrapper">
+        <div class="flex-grid">
 
-          <div class="sok-card__inner">
-            <div class="sok-card__content">
-              {/* <div class="oka-spacer -xl" aria-hidden="true" /> */}
+          <div class="sok-card__content-wrapper">
 
-              <h3 class="oka-h -xl" set:html={savoirFaire.frontmatter.title} />
+            <div class="col col-4" id="texts-wrapper">
+              <div class="sok-card__content">
+                {/* <div class="oka-spacer -md" aria-hidden="true" /> */}
 
-              <div class="sok-t-paragraph">
-                <p class="oka-text -md">{savoirFaire.rawContent()}</p>
+                <h3 class="oka-h -xl" set:html={savoirFaire.frontmatter.title} />
+
+                <div class="sok-t-paragraph">
+                  <p class="oka-text -md">{savoirFaire.rawContent()}</p>
+                </div>
+
+                <div class="oka-spacer -md" aria-hidden="true" />
+
+                <button class="oka-bt -outlined">
+                  <div class="oka-bt__lbl">En savoir plus</div>
+                </button>
               </div>
-
-              <div class="oka-spacer -md" aria-hidden="true" />
-
-              <button class="oka-bt -outlined">
-                <div class="oka-bt__lbl">En savoir plus</div>
-              </button>
             </div>
 
-            <figure class="sok-card__image-inner">
-              <img
-                src={savoirFaire.frontmatter.src}
-                alt={savoirFaire.frontmatter.alt}
-              />
-            </figure>
+            <div class="col col-4" id="image-wrapper">
+              <div class="oka-spacer -xl" aria-hidden="true" />
+
+              <figure class="sok-card__image-inner">
+                <img src={savoirFaire.frontmatter.src} alt={savoirFaire.frontmatter.alt} />
+              </figure> 
+
+              {/* <div class="oka-spacer -md" aria-hidden="true" />  */}
+            </div>
+
           </div>
 
         </div>
 
       </div>
-    </article>
-  ))
-}
+
+    </div>
+  </article>
+))}
 
 <style lang="scss">
+  @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
+
+  .sok-card {
+    margin-bottom: -1px;
+    border: 1px solid var(--oka-color-bd-minimal);
+    
+    .sok-card__container {
+      gap: 0;
+
+      @include breakpoint(lg) {
+        height: 65vh;
+        overflow: hidden;
+      }
+
+      // ===== Bandeau latéral =====
+      .sok-card__side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--oka-color-bd-minimal);
+    
+        .oka-h {
+          padding: 0
+        }
+      }
+  
+      // ===== Contenu des cartes =====
+      .sok-card__content-wrapper {
+        padding: 1rem;
+
+        @include breakpoint(sm) {
+          padding: 20rem;
+        }
+
+        .sok-card__content {
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: center;
+          // align-items: flex-start;
+    
+          .oka-h {
+            width: 100%;
+            max-width: 740px;
+
+            // @include breakpoint(md) {
+            // }
+
+            @include breakpoint(lg) {
+              min-width: 740px;
+            }
+          }
+    
+          .sok-t-paragraph {
+            width: 100%;
+            max-width: 480px;
+            text-align: justify;
+
+            @include breakpoint(md) {
+              text-align: start;
+              min-width: 480px;
+            }
+          }
+        }
+
+        // ===== Image =====
+        .sok-card__image-inner {
+          height: 25vh;
+          width: 100%;
+          margin: 0;
+      
+          & img {
+            // display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+  }
+</style>
+
+<!-- <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
 
   .sok-card {
@@ -175,9 +271,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
       }
     }
   }
-</style>
+</style> -->
 
 <!-- <script>
+
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -269,3 +366,36 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     }
   });
 </script> -->
+
+
+<script>
+document.addEventListener('astro:page-load', () => {
+  const sideWrapper = document.getElementById('side-wrapper');
+  const cardContentWrapper = document.getElementById('card-content-wrapper');
+  const textsContentWrapper = document.getElementById('texts-wrapper');
+  const imageWrapper = document.getElementById('image-wrapper');
+
+  // if (!sideWrapper || !cardContentWrapper || !textsContentWrapper || !imageWrapper) return;
+
+  
+  updateClass();
+  window.addEventListener('resize', updateClass);
+  
+  function updateClass() {
+    const viewportWidth = window.innerWidth;
+
+    if (viewportWidth > 767) {
+      sideWrapper?.classList.replace("col-4" ,"col-1");
+      cardContentWrapper?.classList.replace("col-4" ,"col-15");
+      textsContentWrapper?.classList.replace("col-4" ,"col-11");
+      // imageWrapper?.classList.replace("col-4" ,"toto");
+
+    } else {
+      sideWrapper?.classList.replace("col-1" ,"col-4");
+      cardContentWrapper?.classList.replace("col-15" ,"col-4");
+      textsContentWrapper?.classList.replace("col-11" ,"col-4");
+      // imageWrapper?.classList.replace("col-5" ,"col-4");
+    }
+  }
+})
+</script>
