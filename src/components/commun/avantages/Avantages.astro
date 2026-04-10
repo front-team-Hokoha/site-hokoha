@@ -1,40 +1,9 @@
-<div class="oka-appWrap -fluid">
-   
-   <section class="flex-grid">
-      <div class="oka-spacer -xl" aria-hidden="true"></div>
-
-      <div class="col col-1"></div>
-      
-      <div class="col col-14">
-         <h2 class="oka-h -xl">
-            Lorem ipsum dolor sit amet consectetur. 
-            Elementum magna odio
-         </h2>
-
-         <div class="oka-spacer -lg" aria-hidden="true"></div>
-
-
-         <div class="sok-avantages">
-            <slot />
-         </div>
-      </div>
-      <div class="oka-spacer -xl" aria-hidden="true"></div> 
-   </section>
-   
+<div class="sok-avantages">
+   <slot />
 </div>
-
 
 <style lang="scss">
    @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
-   
-   section {
-      background-color: var(--sok-color-underground);
-   }
-
-   h2 {
-      width: 100%;
-      max-width: 900px;
-   }
 
    .sok-avantages {
       display: grid;
@@ -46,7 +15,7 @@
       }
 
       @include breakpoint(lg) {
-         grid-template-columns: repeat(4, 1fr);
+         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
       }
    }
 </style>
