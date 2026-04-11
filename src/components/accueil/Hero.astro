@@ -1,9 +1,7 @@
 ---
 // ===== Composants de la page =====
-import Offres from "./Offres.astro";
+import Grid from "../../components/commun/grid.astro";
 import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
-import GrilleOffres from "../../components/commun/polygones/GrillePolygoneOffres.astro";
-import GrilleVierge from "../../components/commun/polygones/GrillePolygoneVierge.astro";
 
 // ===== Composants d'animations =====
 import Revealtext from "../../animations/RevealText.astro";
@@ -13,9 +11,18 @@ import RevealMask from "../../animations/RevealMask.astro";
 import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
 ---
 
-<div class="oka-appWrap -fluid">
+
+
+
+
+
+<div class="oka-appWrap -full">
    <section class="sok-hero">
       
+      
+
+      <Grid />
+
       <div class="flex-grid">
          <div class="col col-1"></div>
    
@@ -53,37 +60,11 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
             <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "1.5" }} />
          </div>
       </div>
-   
-      <!-- <div class="flex-grid" >
-   
-         <div class="col col-1" ></div>
-   
-         <div class="col col-5" > 
-      
-            <div class="oka-spacer -xl " aria-hidden="true"></div>
-            
-            <Revealtext>
-            <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
-            </Revealtext>
-      
-         </div>
-   
-         <div class="col col-1" ></div>
-   
-         <div class="col col-8" >
-         
-            <div class="stiktop">
-               <GrilleIntro cols="4" rows="2" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
-         
-            </div>
-      
-         </div>
-      </div> -->
-   
-      <!-- <div class="oka-spacer -xl " aria-hidden="true"></div> -->
-   
+
    </section>
 </div>
+
+
 
 <style lang="scss">
 
@@ -102,6 +83,8 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
       width: auto;
       height: 56px;
    }
+
+
 </style>
 
 
