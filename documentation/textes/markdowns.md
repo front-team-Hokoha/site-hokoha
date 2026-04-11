@@ -1,4 +1,4 @@
-# Utilisation des Markdown
+# Utilisation des Markdown pour les textes des pages
 Des fichiers Markdown sont utilisés pour contenir les textes de chaque page du site, et sont intégrés dans des **pages** ou **componsant** `.astro`.
 
 ## Sommaire

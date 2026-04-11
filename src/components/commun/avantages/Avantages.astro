@@ -1,21 +1,21 @@
-<section>
-   <div class="oka-spacer -xl" aria-hidden="true"></div>
-
-   <div class="flex-grid">
-      <div class="col col-1"></div>
-      <div class="oka-avantages col col-14 oka-darkMode">
-         <div class="oka-flex">
-            <slot />
-         </div>
-      </div>
-   </div>
-
-   <div class="oka-spacer -xl" aria-hidden="true"></div> 
-</section>
-
+<div class="sok-avantages">
+   <slot />
+</div>
 
 <style lang="scss">
-   section {
-      background-color: var(--sok-color-underground);
+   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
+   .sok-avantages {
+      display: grid;
+      gap: 1rem;
+      height: auto;
+      
+      @include breakpoint(sm) {
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoint(lg) {
+         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
    }
 </style>
