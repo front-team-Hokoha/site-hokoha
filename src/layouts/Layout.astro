@@ -1,4 +1,7 @@
 ---
+// ===== TODO SEO =====
+// TODO: Créer /public/og-image.jpg — image de partage réseaux sociaux (format recommandé : 1200×630px)
+
 // ===== Transitions =====
 import { ClientRouter } from "astro:transitions"; 
 // ===== Components =====
@@ -13,15 +16,15 @@ import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
-import { string } from "astro:schema";
-
 
 interface Props {
 	title: string;
-	description?:  string;
+	description: string;
+	image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image = '/og-image.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!-- ===== HTML ===== -->
@@ -29,12 +32,27 @@ const { title, description } = Astro.props;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
 		<meta name="description" content={description}>
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		<meta property="og:locale" content="fr_FR" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, Astro.site)} />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 		<ClientRouter />
 		
 
@@ -204,6 +222,13 @@ const { title, description } = Astro.props;
 		border-right: 1px solid var(--oka-color-bd-spec-subtle);
 	}
 
+
+// Requis quand on integre du contenu .md 
+	
+.oka-text.-lg p{
+	font-size: 1.125rem !important;
+	line-height: 1.75rem !important;
+}
 </style>
 
 

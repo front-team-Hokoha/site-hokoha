@@ -35,11 +35,11 @@ import Revealtext from "../../animations/RevealText.astro";
      <div class="flex-grid">
 
         <div class="col col-1" ></div>
-        <div class="col col-6" ></div>
+        <div class="col col-5" ></div>
    
         <div class="col col-1" ></div>
    
-        <div class="col col-7" >
+        <div class="col col-8" >
               <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
         </div>
       </div> 
@@ -47,9 +47,11 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
   
-    <div class="flex-grid" style="position:absolute; ">
+    <div class="flex-grid">
   
-      <div class="col col-4" > 
+      <!-- <div class="col col-1" ></div> -->
+  
+      <div class="col col-6" > 
   
         <!-- ===== Offres ===== -->
         <div class="sok-offres" >
@@ -60,51 +62,10 @@ import Revealtext from "../../animations/RevealText.astro";
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
             <span class="oka-data -xs -crop">01</span>
             <h3 class="oka-h -md">Solutions Web</h3>
+            <p>Pargraphe seo : Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, vel doloribus deleniti nesciunt molestias sit obcaecati fugit est quia non dolore unde vero voluptatum? Odit eveniet deleniti labore laboriosam pariatur.</p>
           </div>
           
-        </div>
   
-        <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
-        
-      </div>
-  
-      <div class="col col-3" >
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
-      </div>
-  
-      <!-- <div class="col col-1" ></div> -->
-
-
-      <div class="col col-8" >
-        <GrilleOffres />
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
-
-        <button class="oka-bt -outlined -lg " >
-          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-          <div class="oka-bt__lbl">Consultez nos Réalisations</div>
-          <div class="oka-spinner"></div>
-        </button>
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
-      </div>
-  
-    </div>
-
-
-
-
-
-
-<div class="flex-grid" style="position:absolute; ">
-  
-      <!-- <div class="col col-1" ></div> -->
-  
-      <div class="col col-4" > 
-  
-        <!-- ===== Offres ===== -->
-        <div class="sok-offres" >
-          
           
           <div class="sok-offres__item" data-offre="metier" data-offset-lg="top 30%">
             <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
@@ -113,15 +74,32 @@ import Revealtext from "../../animations/RevealText.astro";
           </div>
           
           
+          <div class="sok-offres__item" data-offre="app" data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">03</span>
+            <h3 class="oka-h -md">Application Mobile</h3>
+          </div>
+        
+          
+          <div class="sok-offres__item" data-offre="ia"  data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">04</span>
+            <h3 class="oka-h -md">Intelligence Artificielle</h3>
+          </div>
+          
+          
+          <div class="sok-offres__item" data-offre="iot" data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">05</span>
+            <h3 class="oka-h -md">Objets Connectées</h3>
+          </div>
         </div>
   
         <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
         
       </div>
   
-      <div class="col col-3" >
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
-      </div>
+      <div class="col col-1" ></div>
   
       <div class="col col-8" >
         <GrilleOffres />
@@ -138,14 +116,6 @@ import Revealtext from "../../animations/RevealText.astro";
       </div>
   
     </div>
-
-
-
-
-
-
-
-  
 
   </section>
   
