@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro';
 import GlobalStyles from '../components/commun/GlobalStyles.astro';
 
 // ===== Componsants de la page =====
+import Grid from "../components/commun/grid.astro";
 import Hero from "../components/accueil/Hero.astro";
 import Offres from "../components/accueil/Offres.astro";
 import SavoirFaire from "../components/accueil/SavoirFaire.astro";
@@ -19,6 +20,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
 <Layout title="Page Accueil" description={descContent}>
+	<!-- <Grid /> -->
 	<Hero />
 	<Offres />
 	

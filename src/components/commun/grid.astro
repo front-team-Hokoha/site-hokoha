@@ -10,23 +10,36 @@
     <div class="col col-1" ></div>
     <div class="col col-1" ></div>
 
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1" >
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1" >
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
     <div class="col col-1"></div>
     <div class="col col-1"></div>
-    <div class="col col-1" ></div>
-    <div class="col col-1" ></div>
-
-    <div class="col col-1"></div>
-    <div class="col col-1"></div>
-    <div class="col col-1" ></div>
-    <div class="col col-1" ></div>
 
 </div>
 
 <style>
 
 .grid-bg-fx__grid{
+
     display: flex;
     position: absolute;
+    z-index: 10;
     top: 0;
     bottom: 0;
     right: 0rem;
@@ -35,10 +48,35 @@
 
    
 .grid-bg-fx__grid > * {
+    position: relative;
+
+    perspective: 150px;
 
     background-color: transparent !important;
     opacity: 0.5;
     border-right: 1px solid var(--oka-color-bd-primary-minimal);
+    border:none;
 }
+
+
+
+.persp{
+    position: absolute;
+    z-index: 2  ;
+    top: -10dvh;
+    right: 0;
+    width: 200dvw;
+    height: 300dvh;
+ 
+
+    border-radius: 3rem;
+    border: 1px solid var(--oka-color-bd-primary);
+    /* transform: perspective(500px) rotateY(189deg); */
+    transform: skewY(10deg);
+
+    /* transform: rotateX(0deg) rotateY(26deg);*/
+    transform-style: preserve-3d; 
+}
+
 
 </style>

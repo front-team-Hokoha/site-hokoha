@@ -1,7 +1,16 @@
 ---
 import GrilleOffres from "../../components/accueil/offres/GrilleOffres.astro";
+import GrilleOffresWeb from "../../components/accueil/offres/GrilleOffresWeb.astro";
+import GrilleOffresMetier from "../../components/accueil/offres/GrilleOffresMetier.astro";
+import GrilleOffresApp from "../../components/accueil/offres/GrilleOffresApp.astro";
+import GrilleOffresIot from "../../components/accueil/offres/GrilleOffresIot.astro";
+import GrilleOffresAi from "../../components/accueil/offres/GrilleOffresAi.astro";
+
 import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
 import Revealtext from "../../animations/RevealText.astro";
+
+import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
+
 ---
 
 <div class="oka-appWrap -full">
@@ -9,84 +18,57 @@ import Revealtext from "../../animations/RevealText.astro";
 
    <!-- Contenu après le pin : visible une fois que #offres se dépine -->
   <section class="sok-section">
-    <div class="oka-appWrap -full" >
+
       <div class="flex-grid">
-        <div class="col col-7">
-          <h2 class="oka-data -xs">Titre seo sur les offres</h2>
-        </div>
-        <div class="col col-8">
+        <div class="col col-1"></div>
+        <div class="col col-6"></div>
+        <div class="col col-8" >
+            <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />  
             <div class="oka-spacer -xxl" aria-hidden="true"></div>
-            <Revealtext>          
-              <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
-            </Revealtext>
-            <div class="oka-spacer -xxl" aria-hidden="true" ></div>
-        </div>
-      </div>
-    </div>
+          </div>
+      </div> 
+
   </section>
 
 
 
 
 
-  <section  class="sok-offre"  id="offres">
+  <section  class="sok-offres"  id="offres">
   
-
-     <div class="flex-grid">
-
-        <div class="col col-1" ></div>
-        <div class="col col-6" ></div>
-   
-        <div class="col col-1" ></div>
-   
-        <div class="col col-7" >
-              <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
-        </div>
-      </div> 
-
-
-
-  
-    <div class="flex-grid" style="position:absolute; ">
-  
-      <div class="col col-4" > 
-  
-        <!-- ===== Offres ===== -->
-        <div class="sok-offres" >
-          
-          
-
-          <div class="sok-offres__item" data-offre="web"  data-offset-lg="top 30%">
-            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-            <span class="oka-data -xs -crop">01</span>
-            <h3 class="oka-h -md">Solutions Web</h3>
-          </div>
-          
-        </div>
-  
-        <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
+    <div class="sok-offres__intro flex-grid">
+      <div class="col col-7">
         
       </div>
+      <div class="col col-8">
+          <div class="oka-spacer -lg" aria-hidden="true"></div>
+          <Revealtext>     
+            <h2 class="oka-data -xs">Titre seo sur les offres</h2>     
+            <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+          </Revealtext>
+          <div class="oka-spacer -lg" aria-hidden="true" ></div>
+      </div>
+    </div>
+
+
+
+    
+
+
+
+    <!-- none  -->
+    <div class="sok-offre -background flex-grid ">
   
-      <div class="col col-3" >
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+      <div class="col col-4"></div>
+  
+      <div class="col col-3">
+        <div class="sok-offre__detail">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        </div>  
       </div>
   
-      <!-- <div class="col col-1" ></div> -->
-
-
-      <div class="col col-8" >
+      <div class="col col-8">
         <GrilleOffres />
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
-
-        <button class="oka-bt -outlined -lg " >
-          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-          <div class="oka-bt__lbl">Consultez nos Réalisations</div>
-          <div class="oka-spinner"></div>
-        </button>
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
       </div>
   
     </div>
@@ -94,47 +76,31 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
 
-
-
-<div class="flex-grid" style="position:absolute; ">
-  
-      <!-- <div class="col col-1" ></div> -->
+    <!-- WEB  -->
+    <div class="sok-offre flex-grid">
   
       <div class="col col-4" > 
-  
-        <!-- ===== Offres ===== -->
-        <div class="sok-offres" >
-          
-          
-          <div class="sok-offres__item" data-offre="metier" data-offset-lg="top 30%">
-            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-            <span class="oka-data -xs -crop">02</span>
-            <h3 class="oka-h -md">Logiciels Métiers</h3>
-          </div>
-          
-          
+
+        <div class="sok-offre__item" data-offre="web"  data-offset-lg="top 30%">
+          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+          <span class="oka-data -xs -crop">01</span>
+          <h3 class="oka-h -md">Solutions Web</h3>
         </div>
-  
-        <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
-        
+
       </div>
   
       <div class="col col-3" >
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        <div class="sok-offre__detail">
+          <p>
+            Elle répond à différents besoins : gestion interne (ERP, CRM, outils collaboratifs), services en ligne (réservation, e-commerce, espace client) et automatisation de processus.
+
+Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous les secteurs. Un levier efficace pour améliorer la productivité, l’expérience utilisateur et soutenir votre croissance.
+          </p>
+        </div>
       </div>
-  
+
       <div class="col col-8" >
-        <GrilleOffres />
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
-
-        <button class="oka-bt -outlined -lg " >
-          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
-          <div class="oka-bt__lbl">Consultez nos Réalisations</div>
-          <div class="oka-spinner"></div>
-        </button>
-
-        <div class="oka-spacer  -xl" aria-hidden="true"></div>
+        <GrilleOffresWeb />
       </div>
   
     </div>
@@ -142,16 +108,122 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
 
+    <!-- METIER  -->
 
+    <div class="sok-offre flex-grid">
 
+      <div class="col col-4" > 
 
+        <div class="sok-offre__item" data-offre="metier" data-offset-lg="top 30%">
+          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+          <span class="oka-data -xs -crop">02</span>
+          <h3 class="oka-h -md">Logiciels Métiers</h3>
+        </div>
+        
+      </div>
   
+      <div class="col col-3" >
+        <div class="sok-offre__detail">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        </div>
+      </div>
+  
+      <div class="col col-8" >
 
+        <GrilleOffresMetier />
+
+      </div>
+    </div>
+
+
+    <!-- APP -->
+
+    <div class="sok-offre flex-grid">
+  
+      <div class="col col-4" > 
+
+        <div class="sok-offre__item" data-offre="app" data-offset-lg="top 30%">
+          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+          <span class="oka-data -xs -crop">02</span>
+          <h3 class="oka-h -md">App</h3>
+        </div>
+  
+      </div>
+  
+      <div class="col col-3" >
+        <div class="sok-offre__detail">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        </div>
+      </div>
+  
+      <div class="col col-8" >
+        <GrilleOffresApp />
+      </div>
+    </div>
+
+
+
+    <!-- AI -->
+
+    <div class="sok-offre flex-grid">
+  
+      <div class="col col-4" > 
+          
+        <div class="sok-offre__item" data-offre="ia" data-offset-lg="top 30%">
+          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+          <span class="oka-data -xs -crop">02</span>
+          <h3 class="oka-h -md">AI</h3>
+        </div>
+          
+      </div>
+  
+      <div class="col col-3" >
+        <div class="sok-offre__detail">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        </div>
+      </div>
+  
+      <div class="col col-8" >
+        <GrilleOffresAi />
+      </div>
+    </div>
+
+
+    <!-- IOT -->
+
+    <div class="sok-offre flex-grid">
+  
+      <div class="col col-4" > 
+          
+        <div class="sok-offre__item" data-offre="iot" data-offset-lg="top 30%">
+          <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+          <span class="oka-data -xs -crop">02</span>
+          <h3 class="oka-h -md">IOT</h3>
+        </div>
+          
+      </div>
+  
+      <div class="col col-3" >
+        <div class="sok-offre__detail">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+        </div>
+      </div>
+  
+      <div class="col col-8" >
+        <GrilleOffresIot />
+      </div>
+    </div>
+    
   </section>
   
  
   
 </div>
+
+
+
+
+
 
 
 <script>
@@ -164,40 +236,43 @@ import Revealtext from "../../animations/RevealText.astro";
 
 
    
+    const OFFRES = document.querySelectorAll<HTMLElement>("[data-offre]");
+    const OFFRE_SCROLL_STEP = 400; // Distance de scroll virtuelle entre chaque déclenchement (en px)
+
     ScrollTrigger.create({
       trigger: "#offres",
       start: "top top",
 
-      end: "+=2000", // Durée virtuelle du pin (en px)   (5 offres × 400px)
+      // +1 pour donner au dernier item son espace complet avant le dépingage
+      end: `+=${(OFFRES.length + 1) * OFFRE_SCROLL_STEP}`,
       
       pin: true,  // ===== Pin #offres jusqu'à #finOffres =====
       //pinSpacing: false,
-      markers: true,
+      //markers: true,
 
     });
 
 
-
-    const OFFRES = document.querySelectorAll<HTMLElement>("[data-offre]");
-    const OFFRE_SCROLL_STEP = 400; // Distance de scroll virtuelle entre chaque déclenchement (en px)
-
-
     OFFRES.forEach((offre, index) => {
+
+      const offreId = offre.dataset.offre;
+      const sectionOffre = offre.closest(".sok-offre") as HTMLElement;
+      
       ScrollTrigger.create({
         trigger: offre,
         //markers: true,
         
-        
+
         // Décale virtuellement le trigger suivant OFFRE_SCROLL_STEP:
         // item 0 , item 1 → 400px plus tard, item 2 → 800px plus tard…
-        start: `top+=${index * OFFRE_SCROLL_STEP}px 40%`,
-        end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 40%`,
+        start: `top+=${index * OFFRE_SCROLL_STEP}px 60%`,
+        end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 60%`,
        
         onEnter: () => {
-          const offreId = offre.dataset.offre;
 
           offre.classList.add("-active");
           offre.classList.add("-display");
+          sectionOffre.classList.add("-active");
 
           console.log("Entré dans l'offre :", offreId);
           document.dispatchEvent(
@@ -205,25 +280,30 @@ import Revealtext from "../../animations/RevealText.astro";
           );
         },
         onEnterBack: () => {
-          const offreId = offre.dataset.offre;
+          // const offreId = offre.dataset.offre;
           offre.classList.add("-active");
-         
+          sectionOffre.classList.add("-active");
+
           document.dispatchEvent(
             new CustomEvent("offre:enter", { detail: { offre: offreId } })
           );
         },
 
         onLeave: () => {
-          const offreId = offre.dataset.offre;
+          // const offreId = offre.dataset.offre;
           offre.classList.remove("-active");
+          sectionOffre.classList.remove("-active");
+
           document.dispatchEvent(
             new CustomEvent("offre:leave", { detail: { offre: offreId } })
           );
         },
 
         onLeaveBack: () => {
-          const offreId = offre.dataset.offre;
+          // const offreId = offre.dataset.offre;
           offre.classList.remove("-active");
+          sectionOffre.classList.remove("-active");
+          
           document.dispatchEvent(
             new CustomEvent("offre:leave", { detail: { offre: offreId } })
           );
@@ -237,7 +317,7 @@ import Revealtext from "../../animations/RevealText.astro";
 
 <style lang="scss">
   
-  .sok-offre,
+  .sok-offres,
   .sok-section {
       position:relative;
       z-index: 1;
@@ -248,18 +328,34 @@ import Revealtext from "../../animations/RevealText.astro";
   }
 
 
+  .sok-offres__intro {
+    background-color: var(--oka-color-layer-floor-0);
+  }
+
   .oka-h {
     padding: 0;
   }
 
 
 
-  .sok-offres {
+  .sok-offre {
+
+    position: absolute;
+    width: 100%;
+    min-height: 100dvh;
+    
+
+    &.-background {
+      background: var(--oka-color-layer-floor-0);
+    }
 
 
     &__item {
 
-      height:4rem;
+      --sokOffre-item-height: 4rem;
+      
+
+      height: var(--sokOffre-item-height);
 
       flex-shrink:0;
       display: flex;
@@ -272,40 +368,77 @@ import Revealtext from "../../animations/RevealText.astro";
       translate: 0rem 0px;
 
       pointer-events: none;
-      //cursor: pointer;
-      //border-top: 1px solid var(--oka-color-bd-subtle);
 
 
+      &[data-offre="web"] {
+        position: absolute;
+        top: calc(0 * var(--sokOffre-item-height));
+      }
+      &[data-offre="metier"] {
+        position: absolute;
+        top: calc(1 * var(--sokOffre-item-height));
+      }
+       &[data-offre="app"] {
+        position: absolute;
+        top: calc(2 * var(--sokOffre-item-height));
+      }
+      &[data-offre="ia"] {
+        position: absolute;
+        top: calc(3 * var(--sokOffre-item-height));
+      }
+      &[data-offre="iot"] {
+        position: absolute;
+        top: calc(4 * var(--sokOffre-item-height));
+      }
 
-    &.-display {
+
+      &.-display {
         opacity: 1;
         pointer-events: all;
         translate: 0px 0px;
       }
 
-      &.-active {
 
+      .-active & {
         //flex-direction: row-reverse;
         opacity: 1;
-        translate: 30px 0px;
+        translate: 8px 0px;
         
       }
 
       & > .sok-arrow {
-        margin-left: 2rem;
+        margin-left: -2rem;
         zoom:0.5;
         // transition: margin .15s ease-in-out;
         opacity: 0;
         transition: margin .15s cubic-bezier(.63,.78,.25,1);
+
+        .-active & {
+          margin-left: -1.05rem;
+          margin-right:1rem;
+          opacity: 1;
+        }
+
+
       }
 
-      &.-active > .sok-arrow {
-        margin-left: 4rem;
-        margin-right: 4rem;
-        opacity: 1;
-
-      }
     }
+    &__detail {
+      padding-right: 2rem;
+      opacity: 0;
+      transition: opacity 1s ease 1.35s;
+
+
+      .-active & {
+        opacity: 1;
+      }
+
+
+      p {
+        padding-top:8rem;
+        border-top:2px solid var(--oka-color-fg);
+      }
+    }  
   }
 
 
