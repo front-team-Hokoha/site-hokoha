@@ -8,11 +8,12 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 ---
 
 {savoirFaires.map((savoirFaire) => (
+
   <article class="sok-card">
     <div class="flex-grid sok-card__container">
 
       {/* bandeau */}
-      <div class="col col-4" id="side-wrapper">
+      <div class="col col-4 side-wrapper">
         <div class="sok-card__side">
           <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
@@ -22,12 +23,12 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         </div>
       </div>
 
-      <div class="col col-4" id="card-content-wrapper">
-        <div class="flex-grid">
+      <div class="col col-4 card-content-wrapper">
+        <div class="flex-grid -h">
 
           <div class="sok-card__content-wrapper">
 
-            <div class="col col-4" id="texts-wrapper">
+            <div class="col col-4 texts-wrapper">
               <div class="sok-card__content">
                 {/* <div class="oka-spacer -md" aria-hidden="true" /> */}
 
@@ -45,8 +46,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
               </div>
             </div>
 
-            <div class="col col-4" id="image-wrapper">
-              <div class="oka-spacer -xl" aria-hidden="true" />
+            <div class="col col-4 image-wrapper">
+              <div class="oka-spacer -xl -spacing" aria-hidden="true" />
 
               <figure class="sok-card__image-inner">
                 <img src={savoirFaire.frontmatter.src} alt={savoirFaire.frontmatter.alt} />
@@ -58,15 +59,26 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
           </div>
 
         </div>
-
       </div>
 
     </div>
   </article>
+
+  
 ))}
 
 <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
+  
+  .-spacing {
+    @include breakpoint(md) {
+      display: none;
+    }
+  }
+
+  .-h {
+    height: 100%;
+  }
 
   .sok-card {
     margin-bottom: -1px;
@@ -75,8 +87,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     .sok-card__container {
       gap: 0;
 
-      @include breakpoint(lg) {
-        height: 65vh;
+      @include breakpoint(md) {
+        min-height: 65vh;
         overflow: hidden;
       }
 
@@ -88,6 +100,22 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         padding: 1rem;
         border-bottom: 1px solid var(--oka-color-bd-minimal);
     
+        @include breakpoint(md) {
+          flex-direction: column;
+          height: 100%;
+          padding: 2rem 1rem;          
+          border-right: 1px solid var(--oka-color-bd-minimal);
+          border-bottom: none;
+        }
+
+        & > * {
+          writing-mode: horizontal-tb;
+
+          @include breakpoint(md) {
+            writing-mode: sideways-lr;
+          }
+        }
+
         .oka-h {
           padding: 0
         }
@@ -98,29 +126,27 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         padding: 1rem;
 
         @include breakpoint(sm) {
-          padding: 20rem;
+          // padding: 20rem;
+          padding: 2rem;
+        }
+
+        @include breakpoint(md) {
+          display: flex;
         }
 
         .sok-card__content {
-          // display: flex;
-          // flex-direction: column;
-          // justify-content: center;
-          // align-items: flex-start;
     
           .oka-h {
             width: 100%;
-            max-width: 740px;
-
-            // @include breakpoint(md) {
-            // }
+            // max-width: 740px;
+            max-width: 605px;
 
             @include breakpoint(lg) {
-              min-width: 740px;
+              // min-width: 740px;
             }
           }
     
           .sok-t-paragraph {
-            width: 100%;
             max-width: 480px;
             text-align: justify;
 
@@ -133,12 +159,15 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
         // ===== Image =====
         .sok-card__image-inner {
-          height: 25vh;
           width: 100%;
+          height: clamp(225px, 25vh, 300px);
           margin: 0;
+
+          @include breakpoint(md) {
+            height: 100%;
+          }
       
           & img {
-            // display: none;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -149,6 +178,70 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
   }
 </style>
+
+
+<script>
+document.addEventListener('astro:page-load', () => {
+  const sideWrappers = document.querySelectorAll('.side-wrapper');
+  const cardContentWrappers = document.querySelectorAll('.card-content-wrapper');
+  const textsContentWrappers = document.querySelectorAll('.texts-wrapper');
+  const imageWrappers = document.querySelectorAll('.image-wrapper');
+  
+  updateClasses();
+  // Surveille si la fenêtre est redimensionnée
+  window.addEventListener('resize', updateClasses)
+
+  function updateClasses() {
+    const viewportWidth = window.innerWidth;
+    
+    if (viewportWidth >= 1024) {
+      resizeLargeDevice();
+    } else if ((viewportWidth >= 768) && (viewportWidth < 1024)) {
+      resizeMediumDevice();
+    } else {
+      resizeSmallDevice();
+    }
+  }
+
+  // Retirer les classes précédentes
+  function removeAllClasses(el: Element) {
+    el.classList.remove('col-8', 'col-1', 'col-13', 'col-9', 'col-4');
+  }
+
+  // Viewport : inférieur à 768px
+  function resizeSmallDevice() {
+    [sideWrappers, cardContentWrappers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach(el => {
+      removeAllClasses(el);
+      el.classList.add('col-4');
+    }));
+  }
+
+  // Viewport : supérieur ou égale à 768px et inférieur à 1024px
+  function resizeMediumDevice() {
+    [sideWrappers, cardContentWrappers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach(el => {
+      removeAllClasses(el);
+      el.classList.add('col-8');
+    }));
+  }
+
+  // Viewport : supérieur ou égale à 1024px
+  function resizeLargeDevice() {
+    [sideWrappers, cardContentWrappers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach((el, i) => {
+      removeAllClasses(el);     
+    }));
+
+    sideWrappers.forEach(sideWrapper => sideWrapper.classList.add('col-1'));
+    cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.add('col-13'));
+    textsContentWrappers.forEach(textsContentWrapper => textsContentWrapper.classList.add('col-9'));
+    imageWrappers.forEach(imageWrapper => imageWrapper.classList.add('col-4'));
+  }    
+})
+</script>
+
+
 
 <!-- <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
@@ -273,6 +366,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 </style> -->
 
+
+<!-- GSAP -->
 <!-- <script>
 
   import { gsap } from "gsap";
@@ -315,7 +410,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
           pin: true,
           pinSpacing: false,
           anticipatePin: 1,
-         // markers: true,
+          // markers: true,
         },
       });
     
@@ -366,36 +461,3 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     }
   });
 </script> -->
-
-
-<script>
-document.addEventListener('astro:page-load', () => {
-  const sideWrapper = document.getElementById('side-wrapper');
-  const cardContentWrapper = document.getElementById('card-content-wrapper');
-  const textsContentWrapper = document.getElementById('texts-wrapper');
-  const imageWrapper = document.getElementById('image-wrapper');
-
-  // if (!sideWrapper || !cardContentWrapper || !textsContentWrapper || !imageWrapper) return;
-
-  
-  updateClass();
-  window.addEventListener('resize', updateClass);
-  
-  function updateClass() {
-    const viewportWidth = window.innerWidth;
-
-    if (viewportWidth > 767) {
-      sideWrapper?.classList.replace("col-4" ,"col-1");
-      cardContentWrapper?.classList.replace("col-4" ,"col-15");
-      textsContentWrapper?.classList.replace("col-4" ,"col-11");
-      // imageWrapper?.classList.replace("col-4" ,"toto");
-
-    } else {
-      sideWrapper?.classList.replace("col-1" ,"col-4");
-      cardContentWrapper?.classList.replace("col-15" ,"col-4");
-      textsContentWrapper?.classList.replace("col-11" ,"col-4");
-      // imageWrapper?.classList.replace("col-5" ,"col-4");
-    }
-  }
-})
-</script>

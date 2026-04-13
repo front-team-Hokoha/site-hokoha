@@ -65,17 +65,22 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
   </section>
 </div>
 
-<div class="oka-appWrap -fluid">      
-  <div class="flex-grid">
-    <div class="col col-16">
-      <CardSavoirFaire />
-    </div>
-  </div>
+<div class="oka-appWrap -fluid">  
+  <section class="sok-section-card">
+    <!-- <div class="flex-grid">
+      <div class="col col-16"> -->
+  
+        <div class="sok-card-container">
+          <CardSavoirFaire />
+        </div>
+  
+      <!-- </div>
+    </div> -->
+  </section>    
 </div>
 
 <style lang="scss">
   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
-
   .-spacing {
     @include breakpoint(md) {
       display: none;
@@ -99,6 +104,13 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
         justify-content: end;
         align-items: end;
       }
+    }
+  }
+
+  // Container des cartes
+  .sok-card-container {
+    @include breakpoint(md) {
+      display: flex;
     }
   }
 
