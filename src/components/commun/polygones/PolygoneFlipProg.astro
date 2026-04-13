@@ -94,12 +94,14 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
     });
 
 
+
+    
     // Réaction aux événements ScrollTrigger depuis Offres.astro
     document.addEventListener("offre:enter", (e) => {
       const { offre } = (e as CustomEvent).detail;
 
       // Mettre en avant les polygones de l'offre active, masquer les autres
-      document.querySelectorAll<HTMLElement>('#grilleTagsOffres .polygone').forEach((poly) => {
+      document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((poly) => {
         if (poly.classList.contains(`-${offre}`)) {
           (poly as any).doFlip?.();
         } else {

@@ -56,4 +56,10 @@
 
 .oka-appWrap {
     z-index:1;
+
+    &.-full {
+        width:100% !important;
+        max-width: none !important;
+        padding:0 !important;
+    }
 }
