@@ -20,8 +20,7 @@ import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
   <section class="sok-section">
 
       <div class="flex-grid">
-        <div class="col col-1"></div>
-        <div class="col col-6"></div>
+        <div class="col col-8"></div>
         <div class="col col-8" >
             <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />  
             <div class="oka-spacer -xxl" aria-hidden="true"></div>
@@ -37,10 +36,10 @@ import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
   <section  class="sok-offres"  id="offres">
   
     <div class="sok-offres__intro flex-grid">
-      <div class="col col-7">
+      <div class="col col-8">
         
       </div>
-      <div class="col col-8">
+      <div class="col col-7">
           <div class="oka-spacer -lg" aria-hidden="true"></div>
           <Revealtext>     
             <h2 class="oka-data -xs">Titre seo sur les offres</h2>     
@@ -61,9 +60,9 @@ import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
   
       <div class="col col-4"></div>
   
-      <div class="col col-3">
+      <div class="col col-4">
         <div class="sok-offre__detail">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+          <p></p>
         </div>  
       </div>
   
@@ -79,11 +78,17 @@ import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
     <!-- WEB  -->
     <div class="sok-offre flex-grid">
   
-      <div class="col col-4" > 
-
-        <div class="sok-offre__item" data-offre="web"  data-offset-lg="top 30%">
+      <div class="col col-1" >
+        <div class="sok-offre__indic -web">
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-          <span class="oka-data -xs -crop">01</span>
+          <span class="sok-num oka-data -xs -crop">01</span>
+        </div>
+      </div>
+      
+      
+      <div class="col col-3" >
+
+        <div class="sok-offre__item -web" data-offre="web"  data-offset-lg="top 30%">
           <h3 class="oka-h -md">Solutions Web</h3>
         </div>
 
@@ -99,6 +104,9 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
         </div>
       </div>
 
+
+      <div class="col col-1" ></div>
+
       <div class="col col-8" >
         <GrilleOffresWeb />
       </div>
@@ -112,11 +120,17 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
 
     <div class="sok-offre flex-grid">
 
-      <div class="col col-4" > 
 
-        <div class="sok-offre__item" data-offre="metier" data-offset-lg="top 30%">
+      <div class="col col-1">
+        <div class="sok-offre__indic -metier" >
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-          <span class="oka-data -xs -crop">02</span>
+          <span class="sok-num oka-data -xs -crop">02</span>
+        </div>
+      </div>
+
+
+      <div class="col col-3" > 
+        <div class="sok-offre__item -metier" data-offre="metier" data-offset-lg="top 30%">
           <h3 class="oka-h -md">Logiciels Métiers</h3>
         </div>
         
@@ -128,6 +142,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
         </div>
       </div>
   
+      <div class="col col-1" ></div>
+
       <div class="col col-8" >
 
         <GrilleOffresMetier />
@@ -139,15 +155,18 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
     <!-- APP -->
 
     <div class="sok-offre flex-grid">
-  
-      <div class="col col-4" > 
 
-        <div class="sok-offre__item" data-offre="app" data-offset-lg="top 30%">
+      <div class="col col-1">
+        <div class="sok-offre__indic -app" >
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-          <span class="oka-data -xs -crop">02</span>
+          <span class="sok-num oka-data -xs -crop">03</span>
+        </div>
+      </div>
+  
+      <div class="col col-3" > 
+        <div class="sok-offre__item -app"  data-offre="app" data-offset-lg="top 30%">
           <h3 class="oka-h -md">App</h3>
         </div>
-  
       </div>
   
       <div class="col col-3" >
@@ -156,6 +175,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
         </div>
       </div>
   
+      <div class="col col-1"></div>
+
       <div class="col col-8" >
         <GrilleOffresApp />
       </div>
@@ -166,12 +187,17 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
     <!-- AI -->
 
     <div class="sok-offre flex-grid">
-  
-      <div class="col col-4" > 
-          
-        <div class="sok-offre__item" data-offre="ia" data-offset-lg="top 30%">
+
+      <div class="col col-1" >   
+        <div class="sok-offre__indic -ia" >
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-          <span class="oka-data -xs -crop">02</span>
+          <span class="sok-num oka-data -xs -crop">04</span>
+        </div>
+      </div>
+  
+      <div class="col col-3" > 
+          
+        <div class="sok-offre__item -ia" data-offre="ia" data-offset-lg="top 30%">
           <h3 class="oka-h -md">AI</h3>
         </div>
           
@@ -183,6 +209,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
         </div>
       </div>
   
+      <div class="col col-1"></div>
+
       <div class="col col-8" >
         <GrilleOffresAi />
       </div>
@@ -193,11 +221,17 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
 
     <div class="sok-offre flex-grid">
   
-      <div class="col col-4" > 
-          
-        <div class="sok-offre__item" data-offre="iot" data-offset-lg="top 30%">
+
+      <div class="col col-1">
+        <div class="sok-offre__indic -iot" >
           <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
-          <span class="oka-data -xs -crop">02</span>
+          <span class="sok-num oka-data -xs -crop">05</span>
+        </div>
+      </div>
+
+      <div class="col col-3" > 
+          
+        <div class="sok-offre__item -iot" data-offre="iot" data-offset-lg="top 30%">
           <h3 class="oka-h -md">IOT</h3>
         </div>
           
@@ -208,6 +242,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
         </div>
       </div>
+
+      <div class="col col-1"></div>
   
       <div class="col col-8" >
         <GrilleOffresIot />
@@ -340,6 +376,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
 
   .sok-offre {
 
+    --sokOffre-item-height: 4rem;
+
     position: absolute;
     width: 100%;
     min-height: 100dvh;
@@ -352,7 +390,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
 
     &__item {
 
-      --sokOffre-item-height: 4rem;
+      
       
 
       height: var(--sokOffre-item-height);
@@ -370,28 +408,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
       pointer-events: none;
 
 
-      &[data-offre="web"] {
-        position: absolute;
-        top: calc(0 * var(--sokOffre-item-height));
-      }
-      &[data-offre="metier"] {
-        position: absolute;
-        top: calc(1 * var(--sokOffre-item-height));
-      }
-       &[data-offre="app"] {
-        position: absolute;
-        top: calc(2 * var(--sokOffre-item-height));
-      }
-      &[data-offre="ia"] {
-        position: absolute;
-        top: calc(3 * var(--sokOffre-item-height));
-      }
-      &[data-offre="iot"] {
-        position: absolute;
-        top: calc(4 * var(--sokOffre-item-height));
-      }
-
-
+    
       &.-display {
         opacity: 1;
         pointer-events: all;
@@ -423,10 +440,59 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
       }
 
     }
+
+
+
+      .-web {
+        position: absolute;
+        top: calc(0 * var(--sokOffre-item-height));
+      }
+      .-metier {
+        position: absolute;
+        top: calc(1 * var(--sokOffre-item-height));
+      }
+       .-app {
+        position: absolute;
+        top: calc(2 * var(--sokOffre-item-height));
+      }
+      .-ia {
+        position: absolute;
+        top: calc(3 * var(--sokOffre-item-height));
+      }
+      .-iot {
+        position: absolute;
+        top: calc(4 * var(--sokOffre-item-height));
+      }
+
+
+    &__indic {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      height: var(--sokOffre-item-height);
+      
+      
+      opacity: 0.3;
+      pointer-events: none;
+
+      .-active & {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .sok-arrow {
+        zoom:0.5;
+      }
+    }
+
+
+
+
     &__detail {
-      padding-right: 2rem;
+      padding-right: 0rem;
       opacity: 0;
-      transition: opacity 1s ease 1.35s;
+      transition: opacity 0.35s ease 0.75s;
 
 
       .-active & {
@@ -435,8 +501,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
 
 
       p {
-        padding-top:8rem;
-        border-top:2px solid var(--oka-color-fg);
+        //padding-top:1.5rem;
+        //border-top:2px solid var(--oka-color-fg);
       }
     }  
   }

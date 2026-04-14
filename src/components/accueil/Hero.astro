@@ -39,7 +39,7 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
    
             <div class="oka-spacer  -sm" aria-hidden="true"></div>
    
-            <div class="sok-t-paragraph oka-text -lg" data-delay="0.5">
+            <div class="sok-hero__chapeau" data-delay="0.5">
                <paragrapheHero.Content />
             </div>
    
@@ -53,7 +53,7 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
       </div>
    
       <div class="flex-grid">
-         <div class="col col-1">
+         <div class="col col-2">
          
          </div>
          <div class="col col-14">
@@ -66,7 +66,9 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
 
 
 
-<style lang="scss">
+<style lang="scss" is:global>
+
+   @use "../../styles/oka-design-system/2-elements/typography-brand/texts/texts.scss" as *;
 
    .sok-hero {
       position:relative;
@@ -85,7 +87,17 @@ import * as paragrapheHero from "../../contenus/accueil/hero/paragraphe-hero.md"
    }
 
 
+
+   .sok-hero__chapeau p {
+      @extend %oka-text-lg;
+      max-width: 840px;
+   }
+
+
 </style>
+
+
+
 
 
 <script>
