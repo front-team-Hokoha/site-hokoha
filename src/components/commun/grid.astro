@@ -1,15 +1,9 @@
 <div class="grid-bg-fx__grid flex-grid ">
 
-    <div class="col col-1"></div>
-    <div class="col col-1"></div>
-    <div class="col col-1" ></div>
-    <div class="col col-1" ></div>
 
-    <div class="col col-1"></div>
-    <div class="col col-1"></div>
-    <div class="col col-1" ></div>
-    <div class="col col-1" ></div>
-
+<div class="col col-1" >
+        <div class="persp"></div>
+    </div>
     <div class="col col-1">
         <div class="persp"></div>
     </div>
@@ -28,12 +22,28 @@
     <div class="col col-1">
         <div class="persp"></div>
     </div>
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
+    <div class="col col-1">
+        <div class="persp"></div>
+    </div>
+
+
+
     <div class="col col-1"></div>
     <div class="col col-1"></div>
+    <div class="col col-1" ></div>
+    <div class="col col-1" ></div>
+
+    <div class="col col-1"></div>
+    <div class="col col-1"></div>
+    <div class="col col-1" ></div>
+    
 
 </div>
 
-<style>
+<style lang="scss">
 
 .grid-bg-fx__grid{
 
@@ -63,19 +73,26 @@
 .persp{
     position: absolute;
     z-index: 2  ;
-    top: -10dvh;
-    right: 0;
+    top: -4dvh;
+    left: 0;
     width: 200dvw;
     height: 300dvh;
  
+    //pointer-events: all;
 
     border-radius: 3rem;
-    border: 1px solid var(--oka-color-bd-primary);
+    border: 1px solid var(--oka-color-bd-primary-subtle);
     /* transform: perspective(500px) rotateY(189deg); */
-    transform: skewY(10deg);
+    transform: skewY(-6deg);
 
     /* transform: rotateX(0deg) rotateY(26deg);*/
     transform-style: preserve-3d; 
+
+
+    &:hover {
+        //border-color: var(--oka-color-bd-primary-minimal) !important;
+        //background: var(--oka-color-bd-primary-minimal) !important;
+    }
 }
 
 

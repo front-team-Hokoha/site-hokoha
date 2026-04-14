@@ -113,6 +113,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- ===== Styles ===== -->
 <style lang="scss" is:global>
 
+	@use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
+  
+
 	// .oka-surface {
 	// 	--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
 	// }
@@ -128,9 +132,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 	section {
 		position: relative;
-      	z-index: 1;
-      	background-color: var(--sok-color-surface);
+      	// z-index: 1;
+      	// background-color: var(--sok-color-surface);
 	}
+
+
+	
 
 	.layout-app__main {
 		// background-color: var(--oka-color-neutral-800);
@@ -202,6 +209,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
          width: 3dvw;
          height: 30dvh;
       }
+   }
+
+
+
+   .oka-appWrap.-full {
+	
+		padding : 0 1rem !important;
+
+		@include breakpoint(md) {
+			padding:0 !important;
+		}
+
+
    }
 
 

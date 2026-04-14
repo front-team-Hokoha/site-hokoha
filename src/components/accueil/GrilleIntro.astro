@@ -39,3 +39,21 @@ data-ratio={ratio ?? 0.1}
 
 
 </div>
+
+
+<style>
+
+
+@media (max-width: 1024px) {
+
+  .hex-grid {
+    grid-template-columns: repeat(3, 1fr) !important; 
+    grid-template-rows: repeat(3, auto) !important;
+
+    > *  {
+      grid-area: auto / auto / auto / auto !important;
+
+    }
+  }
+}
+</style>
