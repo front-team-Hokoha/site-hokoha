@@ -10,74 +10,69 @@ import Revealtext from "../../animations/RevealText.astro";
 import * as titreSavoirFaire from "../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
 import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
 ---
-
-
-<div class="sok-container hgo-snap oka-appWrap -fluid" >
-  <section class="_ctnr-inline sok-savoirfaire">
-    <div class="flex-grid">
-
-      <!-- <div class="col col-1" aria-hidden="true"></div> -->
-      
-      <div class="col col-16">
-        <div class="flex-grid sok-savoirfaire__wrapper">
-          <div class="col col-1" aria-hidden="true"></div>
+<!-- <div class="oka-appWrap -full"> -->
+  <!-- <section class="sok-sf" id="sok-sf"> -->
+  
+    <div class="hgo-snap oka-appWrap -fluid" >
+      <section class="_ctnr-inline sok-savoirfaire">
+        <div class="flex-grid">
           
-          <div class="col col-14 sok-savoirfaire__content-container">
-            <div class="flex-grid -center">
-
-              <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
-                <div class="sok-savoirfaire__titles">
-                  <span class="oka-text -sm -strong">NOTRE SAVOIR-FAIRE</span>
-                  
-                  <div class="oka-spacer -sm" aria-hidden="true"></div>
-                  
-                  <Revealtext>
-                    <titreSavoirFaire.Content />
-                  </Revealtext>
-          
-                  <!-- <div class="sok-t-paragraph">
-                    <paragrapheSavoirFaire.Content />
-                  </div> -->
-                </div>
-              </div>
-
-              <!-- <div class="col col-1" aria-hidden="true"></div> -->
-
-              <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
-                <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
-
-                <div class="sok-savoirfaire__quote">
-                  <span class="oka-text -strong -lg">“Notre seul but est de faire bien”</span>
+          <div class="col col-16">
+            <div class="flex-grid sok-savoirfaire__wrapper">
+              <div class="col col-1" aria-hidden="true"></div>
+              
+              <div class="col col-14 sok-savoirfaire__content-container">
+                <div class="flex-grid -center">
     
-                  <p class="oka-text -sm">Ernő Rubik - Inventeur du Rubik’s Cube</p>
-
-                  <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
+                  <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
+                    <div class="sok-savoirfaire__titles">
+                      <span class="oka-text -sm -strong">NOTRE SAVOIR-FAIRE</span>
+                      
+                      <div class="oka-spacer -sm" aria-hidden="true"></div>
+                      
+                      <Revealtext>
+                        <titreSavoirFaire.Content />
+                      </Revealtext>
+              
+                      <!-- <div class="sok-t-paragraph">
+                        <paragrapheSavoirFaire.Content />
+                      </div> -->
+                    </div>
+                  </div>
+    
+                  <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
+                    <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
+    
+                    <div class="sok-savoirfaire__quote">
+                      <span class="oka-text -strong -lg">“Notre seul but est de faire bien”</span>
+        
+                      <p class="oka-text -sm">Ernő Rubik - Inventeur du Rubik’s Cube</p>
+    
+                      <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
               
             </div>
-          </div>
+          </div>      
           
-        </div>
-      </div>      
-      
-    </div>    
-  </section>
-</div>
-
-<div class="oka-appWrap -fluid">  
-  <section class="sok-section-card">
-    <!-- <div class="flex-grid">
-      <div class="col col-16"> -->
-  
+        </div>    
+      </section>
+    </div>
+    
+    <div class="oka-appWrap -fluid">  
+      <section class="sok-savoirfaire__cards">
         <div class="sok-card-container">
           <CardSavoirFaire />
         </div>
-  
-      <!-- </div>
-    </div> -->
-  </section>    
-</div>
+      </section>    
+    </div>
+  <!-- </section> -->
+
+<!-- </div> -->
+
 
 <style lang="scss">
   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
@@ -91,7 +86,7 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
     
     &__wrapper {
       @include breakpoint(md) {
-        min-height: 35vh;
+        min-height: 40vh;
         align-items: center;
         border: 1px solid var(--oka-color-bd-minimal);
         
@@ -111,86 +106,7 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
   .sok-card-container {
     @include breakpoint(md) {
       display: flex;
+      // overflow: hidden;
     }
   }
-
-  // back up css
-  // .oka-cols.-two {
-  //   gap: 0;
-  // }
-
-  // .-h {
-  //   @include breakpoint(lg) {
-  //     display: none;
-  //   }
-  // }
-
-  // .sok-container {
-  //   position: relative;
-  //   z-index: 1;
-  //   margin: 1rem 0;
-  //   background-color: #fff;
-  //   border-radius: var(--sok-radius-section);
-  // }
-
-  // .sok-section {
-  //   overflow: hidden;
-  //   z-index: 99;
-  //   background-color: var(--sok-color-underground);
-  // }
-
-  // .sok-savoirfaire__wrapper {
-  //     @include breakpoint(lg) {
-  //       display: flex;
-  //       flex-direction: column;
-  //       height: 100dvh;
-  //     }
-
-  //   .sok-savoirfaire__content {
-  //     display: flex;
-  //     flex-direction: column;
-  //     padding: 2rem;
-  //     padding-top: 0;
-  //     background-color: var(--sok-color-underground);
-  //     border: 1px solid var(--oka-color-bd-minimal); 
-      
-  //     @include breakpoint(800px) {
-  //       justify-content: start;
-  //     }
-      
-  //     @include breakpoint(lg) {
-  //       flex-direction: row;
-  //       align-items: end;
-  //       gap: 2rem;
-  //       padding-top: 2rem;
-  //     }
-
-  //     .sok-savoirfaire__titles {
-  //       @include breakpoint(lg) {
-  //         flex: 1
-  //       }
-  //     }
-
-  //     .sok-savoirfaire__quote {
-  //       @include breakpoint(lg) {
-  //         display: flex;
-  //         flex-direction: column;
-  //         justify-content: end;
-  //         align-items: end;
-  //         flex: 1;
-  //       }
-  //     }
-
-  //   }
-  // }
-
-  // Unused
-  // .oka-morph-wrapper {
-  //   position: relative;
-  //   overflow: hidden;
-  //   width: 100%;
-  //   aspect-ratio: 1/1;
-  //   background-color: var(--oka-color-bg-minimal);
-  // }
-
 </style>
