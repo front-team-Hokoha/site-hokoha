@@ -72,11 +72,12 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
   .sok-card {
     // width: calc((100dvw / 16) * 13);
-    // min-width: calc((100dvw / 16) * 13);
-    // max-width: calc((100dvw / 16) * 13);
     // flex: 0 0 calc((100dvw / 16) * 12);
     // margin-bottom: -1px;
     border: 1px solid var(--oka-color-bd-minimal);
+    position: relative;
+    z-index: 99;
+    background-color: var(--oka-color-layer-floor-0);
     
     .sok-card__container {
       gap: 0;
@@ -84,7 +85,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
       @include breakpoint(md) {
         display: flex;
         overflow: hidden;
-        min-height: 60vh;
+        min-height: 65vh;
       }
 
       // ===== Bandeau latéral =====
@@ -167,7 +168,6 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
           }
         }
 
-        
         // ===== Image =====
         .image-wrapper {
           @include breakpoint(md) {
@@ -270,19 +270,27 @@ document.addEventListener('astro:page-load', () => {
     const lastIndex = sokCards.length - 1;
     const lastCard = sokCards[lastIndex];
   
-    // Récupération de la taille de viewport
-    const viewportWidth = window.innerWidth;
+    screenResized();
+    window.addEventListener('resize', screenResized);
+
     
     // Animation pour les tablettes et laptop
-    if (viewportWidth >= 768 && viewportWidth < 1024) {
-      smallAndMediumDevices();
-    } else if (viewportWidth >= 1024) {
-      largeDevices();
+    function screenResized() {
+      const viewportWidth = window.innerWidth;
+
+      // Supprime les anciens ScrollTrigger
+      // ScrollTrigger.getAll().forEach(t => t.kill());
+      // gsap.killTweensOf("*");
+
+      if (viewportWidth >= 768 && viewportWidth < 1024) {
+        mediumDevices();
+      } else if (viewportWidth >= 1024) {
+        largeDevices();
+      }
+      // Récupération de la taille de viewport
     }
 
-    function smallAndMediumDevices() {
-      console.log("small or medium device : " + viewportWidth);
-  
+    function mediumDevices() {  
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".sok-savoirfaire__cards",
@@ -313,13 +321,11 @@ document.addEventListener('astro:page-load', () => {
     }
   
     function largeDevices() {
-      console.log("large divice : " + viewportWidth);
-      
-      const totalWidth = cardsWrapper?.scrollWidth;
+      const totalWidth = cardsWrapper.scrollWidth;
       
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".sok-savoirfaire__cards",
+          trigger: ".sok-sf",
           start: "top top",
           end: () => `+=${totalWidth}`,
           scrub: true,
@@ -333,11 +339,11 @@ document.addEventListener('astro:page-load', () => {
       sokCards.forEach((sokCard, i) => {
         if (i === lastIndex) return;
         const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
-          
+        
         if (rightContent) {
           tl.to(rightContent, {
             width: 0,
-            flexBasis: 0,
+            // flexBasis: 0,
             duration: 1,
             // ease: "power1.inOut"
           }, i);
