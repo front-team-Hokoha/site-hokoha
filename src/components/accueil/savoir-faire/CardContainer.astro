@@ -1,34 +1,33 @@
-<div class="sok-card-container">
-   <div class="sok-card-wrapper">
-      <slot/>
-   </div>
-</div>
+<slot />
 
 <style lang="scss">
    @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
 
-   .sok-card-container {
-      display: flex;
-      width: 100%;
-      border-top: 1px solid var(--oka-color-bd-minimal);
-      border-bottom: 1px solid var(--oka-color-bd-minimal);
 
-      @include breakpoint(lg) {
-         height: 100%;
-      }
+
+   // backup code
+   // .sok-card-container {
+   //    display: flex;
+   //    width: 100%;
+   //    border-top: 1px solid var(--oka-color-bd-minimal);
+   //    border-bottom: 1px solid var(--oka-color-bd-minimal);
+
+   //    @include breakpoint(lg) {
+   //       height: 100%;
+   //    }
       
-      .sok-card-wrapper {
-         display: flex;
-         flex-direction: column;
-         width: 100%;
-         height: 100%;
+   //    .sok-card-wrapper {
+   //       display: flex;
+   //       flex-direction: column;
+   //       width: 100%;
+   //       height: 100%;
 
-         @include breakpoint(lg) {
-            width: auto;
-            flex-direction: row;
-         }
-      }
-   }
+   //       @include breakpoint(lg) {
+   //          width: auto;
+   //          flex-direction: row;
+   //       }
+   //    }
+   // }
 </style>
 
 <!-- Ancien code : Ne pas supprimer, peut être utile -->

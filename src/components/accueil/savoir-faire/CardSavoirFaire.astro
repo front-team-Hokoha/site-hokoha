@@ -7,25 +7,27 @@
 const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", { eager: true }));
 ---
 
-{
-  savoirFaires.map((savoirFaire) => (
-    <article class="sok-card">
-      <div class="sok-card__container">
+{savoirFaires.map((savoirFaire) => (
 
-        <div class="sok-card__side-text">
+  <article class="sok-card">
+    <div class="flex-grid sok-card__container">
+
+      {/* bandeau */}
+      <div class="col col-8 side-wrapper">
+        <div class="sok-card__side">
           <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
           <span class="oka-data -lg -strong">
             {savoirFaire.frontmatter.num}
           </span>
         </div>
+      </div>
 
-        <div class="sok-card__wrapper">
+      <div class="col col-8 card-content-container">
+        <div class="flex-grid sok-card__content-wrapper">
 
-          <div class="sok-card__inner">
+          <div class="col col-8 texts-wrapper">
             <div class="sok-card__content">
-              {/* <div class="oka-spacer -xl" aria-hidden="true" /> */}
-
               <h3 class="oka-h -xl" set:html={savoirFaire.frontmatter.title} />
 
               <div class="sok-t-paragraph">
@@ -38,153 +40,227 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
                 <div class="oka-bt__lbl">En savoir plus</div>
               </button>
             </div>
+          </div>
+
+          <div class="col col-8 image-wrapper">
+            <div class="oka-spacer -xl -spacing" aria-hidden="true" />
 
             <figure class="sok-card__image-inner">
-              <img
-                src={savoirFaire.frontmatter.src}
-                alt={savoirFaire.frontmatter.alt}
-              />
-            </figure>
+              <img src={savoirFaire.frontmatter.src} alt={savoirFaire.frontmatter.alt} />
+            </figure> 
           </div>
 
         </div>
-
       </div>
-    </article>
-  ))
-}
+
+    </div>
+  </article>
+))}
 
 <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
+  
+  :root {
+    --col-size: calc(100dvw / 16);
+  }
+
+  .-spacing {
+    @include breakpoint(md) {
+      display: none;
+    }
+  }
 
   .sok-card {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    margin-right: 0px;
-    background-color: var(--oka-color-underground);
+    // width: calc((100dvw / 16) * 13);
+    // flex: 0 0 calc((100dvw / 16) * 12);
+    // margin-bottom: -1px;
     border: 1px solid var(--oka-color-bd-minimal);
-    border-top: none;
+    position: relative;
+    z-index: 99;
+    background-color: var(--oka-color-layer-floor-0);
     
-    @include breakpoint(lg) {
-      width: auto;
-      border-right: none;
-    }
+    .sok-card__container {
+      gap: 0;
 
-    &__container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-
-      @include breakpoint(lg) {
-        flex-direction: row;
-      }
-    }
-
-    // ===== Texte vertical =====
-    .sok-card__side-text {
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--oka-color-bd-minimal);
-      
-      @include breakpoint(sm) {
+      @include breakpoint(md) {
         display: flex;
-      }
-      
-      @include breakpoint(lg) {
-        flex-direction: column;
-        width: 5rem;
-        padding: 2rem 0;
-        border-bottom: none;
-        border-right: 1px solid var(--oka-color-bd-minimal);
-      }
-
-      & > * {
-        writing-mode: horizontal-tb;
-
-        @include breakpoint(lg) {
-          writing-mode: sideways-lr;
-        }
-      }
-    }
-
-    // ===== Contenu des cartes =====
-    &__wrapper {
-      .sok-card__inner {
-        display: flex;
-        flex-direction: column;
         overflow: hidden;
-        height: 100%;
-        gap: 2rem;
-        padding: 2rem;
-        
-        @include breakpoint(lg) {
+        min-height: 65vh;
+      }
+
+      // ===== Bandeau latéral =====
+      .side-wrapper {
+        @include breakpoint(md) {
+          flex: 0 0 calc(var(--col-size) * 1);
+        }
+
+        .sok-card__side {
+          display: flex;
           justify-content: space-between;
-          gap: 0;
-          padding: 2rem;
+          align-items: center;
+          padding: 1rem;
+          border-bottom: 1px solid var(--oka-color-bd-minimal);
+      
+          @include breakpoint(md) {
+            flex-direction: column;
+            height: 100%;
+            padding: 2rem 0rem;          
+            border-right: 1px solid var(--oka-color-bd-minimal);
+            border-bottom: none;
+          }
+  
+          & > * {
+            writing-mode: horizontal-tb;
+  
+            @include breakpoint(md) {
+              writing-mode: sideways-lr;
+            }
+          }
+  
+          .oka-h {
+            padding: 0
+          }
         }
       }
 
-      .sok-card__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-  
-        .oka-h {
-          width: 100%;
+      // ===== Contenu des cartes =====
+      .sok-card__content-wrapper {
+        
+        @include breakpoint(md) {
+          display: flex;
+          height: 100%;
+        }
+        
+        .texts-wrapper {
+          padding: 1rem;
 
           @include breakpoint(md) {
-            max-width: 740px;
+            flex: 0 0 calc(var(--col-size) * 5);
+            margin: 2rem;
+            padding: 0;
           }
 
           @include breakpoint(lg) {
-            min-width: 740px;
+            flex: 0 0 calc(var(--col-size) * 6);
+          }
+
+          .sok-card__content {
+
+            .oka-h {
+              width: 100%;
+              // max-width: 740px;
+              // max-width: 605px;
+  
+              @include breakpoint(lg) {
+                // min-width:  605px;
+              }
+            }
+      
+            .sok-t-paragraph {
+              max-width: 480px;
+              text-align: justify;
+              
+              @include breakpoint(md) {
+                // min-width: 480px;
+                text-align: start;
+              }
+            }
           }
         }
-  
-        .sok-t-paragraph {
-          width: 100%;
-          text-align: justify;
 
+        // ===== Image =====
+        .image-wrapper {
           @include breakpoint(md) {
-            text-align: start;
-            min-width: 440px;
-            max-width: 440px;
+            flex: 0 0 calc(var(--col-size) * 3);
+            margin: 2rem;
           }
-        }
-      }
 
-      // ===== Image =====
-      .sok-card__image-inner {
-        width: 100%;
-        max-width: 100%;
-        height: 25dvh;
-        margin: 0;
+          .sok-card__image-inner {
+            width: 100%;
+            height: clamp(225px, 25vh, 300px);
+            margin: 0;
+            padding: 1rem;
   
-  
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
+            @include breakpoint(md) {
+              height: 100%;
+              padding: 0;          
+            }
+        
+            & img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
         }
       }
     }
   }
 </style>
 
+
 <script>
+document.addEventListener('astro:page-load', () => {
+  const cardContainers = document.querySelectorAll('.sok-card__container');
+  const sideWrappers = document.querySelectorAll('.side-wrapper');
+  const cardContentContainers = document.querySelectorAll('.card-content-container');
+  const cardContentWrappers = document.querySelectorAll('.sok-card__content-wrapper');
+  const textsContentWrappers = document.querySelectorAll('.texts-wrapper');
+  const imageWrappers = document.querySelectorAll('.image-wrapper');
+  
+  updateClasses();
+  // Surveille si la fenêtre est redimensionnée
+  window.addEventListener('resize', updateClasses)
+
+  function updateClasses() {
+    const viewportWidth = window.innerWidth;
+    
+    if (viewportWidth >= 1024) {
+      resizeLargerDevice();
+    } else {
+      resizeSmallerDevice();
+    }
+  }
+
+  // Viewport : inférieur à 1024px
+  function resizeSmallerDevice() {
+    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach(el => {
+      removeAllClasses(el);
+      el.classList.add('col-8');
+      cardContainers.forEach(cardContainer => cardContainer.classList.add('flex-grid'));
+      cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.add('flex-grid'));
+    }));
+  }
+
+  // Viewport : supérieur ou égale à 1024px
+  function resizeLargerDevice() {
+    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach((el, i) => {
+      removeAllClasses(el);     
+    }));
+
+    cardContainers.forEach(cardContainer => cardContainer.classList.remove('flex-grid'));
+    cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.remove('flex-grid'));
+  }    
+
+  // Retirer les classes précédentes
+  function removeAllClasses(el: Element) {
+    el.classList.remove('col-8', 'col-1', 'col-12', 'col-9', 'col-4');
+  }
+})
+</script>
+
+<!-- GSAP -->
+<script>
+
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
   
   document.addEventListener("astro:page-load", () => {
-    const cardsWrapper = document.querySelector(".sok-card-wrapper");
+    const cardsWrapper = document.querySelector(".sok-card-container");
     if (!cardsWrapper) return;
     // Récupération de toutes les cartes
     const sokCards = document.querySelectorAll(".sok-card");
@@ -194,23 +270,30 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     const lastIndex = sokCards.length - 1;
     const lastCard = sokCards[lastIndex];
   
-    // Récupération de la taille de viewport
-    const viewportWidth = window.innerWidth;
+    screenResized();
+    window.addEventListener('resize', screenResized);
+
     
     // Animation pour les tablettes et laptop
-    if (viewportWidth >= 800 && viewportWidth < 1280) {
-      smallAndMediumDevices();
+    function screenResized() {
+      const viewportWidth = window.innerWidth;
 
-    } else if (viewportWidth >= 1280) {
-      largeDevices();
+      // Supprime les anciens ScrollTrigger
+      // ScrollTrigger.getAll().forEach(t => t.kill());
+      // gsap.killTweensOf("*");
+
+      if (viewportWidth >= 768 && viewportWidth < 1024) {
+        mediumDevices();
+      } else if (viewportWidth >= 1024) {
+        largeDevices();
+      }
+      // Récupération de la taille de viewport
     }
 
-    function smallAndMediumDevices() {
-      console.log("small or medium device : " + viewportWidth);
-  
+    function mediumDevices() {  
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".sok-savoirfaire",
+          trigger: ".sok-savoirfaire__cards",
           start: "top top",
           endTrigger: lastCard, // S'arrête à la dernière carte
           end: "bottom bottom", 
@@ -218,14 +301,14 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
           pin: true,
           pinSpacing: false,
           anticipatePin: 1,
-         // markers: true,
+          markers: true,
         },
       });
     
       // Animation pour toute les cartes sauf la dernière
       sokCards.forEach((sokCard, i) => {
         if (i === lastIndex) return;
-        const rightContent = sokCard.querySelector(".sok-card__wrapper");
+        const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
   
         if (rightContent) {
           tl.to(rightContent, {
@@ -238,29 +321,29 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     }
   
     function largeDevices() {
-      console.log("large divice : " + viewportWidth);
-      
       const totalWidth = cardsWrapper.scrollWidth;
+      
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".sok-savoirfaire",
+          trigger: ".sok-sf",
           start: "top top",
           end: () => `+=${totalWidth}`,
           scrub: true,
           pin: true,
           anticipatePin: 1,
-          //markers: true,
+          markers: true,
         },
       });
   
       // Animation pour toute les cartes sauf la dernière
       sokCards.forEach((sokCard, i) => {
         if (i === lastIndex) return;
-        const rightContent = sokCard.querySelector(".sok-card__wrapper");
-  
+        const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
+        
         if (rightContent) {
           tl.to(rightContent, {
             width: 0,
+            // flexBasis: 0,
             duration: 1,
             // ease: "power1.inOut"
           }, i);
