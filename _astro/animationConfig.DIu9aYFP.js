@@ -1,0 +1,1 @@
+const o={sm:"top 90%",lg:"top 90%"};function i(t){return window.matchMedia("(max-width: 768px)").matches?t?.dataset?.offsetSm??o.sm:t?.dataset?.offsetLg??o.lg}export{i as g};
