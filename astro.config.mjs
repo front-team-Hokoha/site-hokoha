@@ -5,8 +5,8 @@ import { defineConfig } from 'astro/config'; // Déprécié
 export default defineConfig({
    site: 'https://www.hokoha.com', 
 
-   base: '/repo-name/',  // Le nom du dépôt GitHub
-       output: 'static',     // Production en mode site statique
+   base: '/site-hokoha/',  // Le nom du dépôt GitHub
+   output: 'static',     // Production en mode site statique
 
    devToolbar: {
       enabled: false
