@@ -3,7 +3,7 @@ name: Deploy Astro to GitHub Pages
 on:
   push:
     branches:
-      - feat/deploiment  # Ou une autre branche que vous souhaitez utiliser
+      - master  # Ou une autre branche que vous souhaitez utiliser
 
 jobs:
   deploy:
