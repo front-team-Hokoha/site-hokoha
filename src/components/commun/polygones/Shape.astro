@@ -20,6 +20,9 @@ interface Props {
 	strokeType?: string
 }
 const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
+
+const images = import.meta.glob('/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,webp}', { eager: true, import: 'default' });
+const resolvedImageUrl = imageUrl ? ((images[imageUrl] as any)?.src ?? imageUrl) : undefined;
 ---
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 	<defs>
@@ -40,7 +43,7 @@ const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 		</svg>
 	</div>
 
-	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: url(#${clipId});${imageUrl ? ` background-image: url(${imageUrl});` : ''}`}>
+	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: url(#${clipId});${resolvedImageUrl ? ` background-image: url(${resolvedImageUrl});` : ''}`}>
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
 		)}

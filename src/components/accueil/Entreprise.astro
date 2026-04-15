@@ -8,6 +8,7 @@ import RevealMask from "../../animations/RevealMask.astro";
 
 // ===== Fichiers Markdown =====
 import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
+import digitalArrow from '../../assets/images/digital-arrow.svg';
 ---
 <div class="oka-appWrap -fluid">
   <section class="oka-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
@@ -28,17 +29,17 @@ import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entrep
   
           <ul class="oka-entreprise__list">
             <li class="oka-presentation__item">
-              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
               <span class="oka-h -sm">Création en mars 2017</span>
             </li>
   
             <li class="oka-presentation__item">
-              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
               <span class="oka-h -sm">9 Personnes</span>
             </li>
   
             <li class="oka-presentation__item">
-              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
               <span class="oka-h -sm">Basée à Laval</span>
             </li>
           </ul>
