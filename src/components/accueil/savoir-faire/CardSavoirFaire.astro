@@ -198,7 +198,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 </style>
 
-
+<!-- Changement des colonnes des cartes -->
 <script>
 document.addEventListener('astro:page-load', () => {
   const cardContainers = document.querySelectorAll('.sok-card__container');
@@ -278,16 +278,19 @@ document.addEventListener('astro:page-load', () => {
     function screenResized() {
       const viewportWidth = window.innerWidth;
 
-      // Supprime les anciens ScrollTrigger
-      // ScrollTrigger.getAll().forEach(t => t.kill());
-      // gsap.killTweensOf("*");
+      // Supprime les précédents ScrollTrigger pour éviter les conflits
+      // Désactive temporairement les précédents ScrollTrigger pour éviter les conflits
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      gsap.killTweensOf("*");
 
       if (viewportWidth >= 768 && viewportWidth < 1024) {
-        mediumDevices();
+        // mediumDevices();
+        console.log("toto");
+        
+        
       } else if (viewportWidth >= 1024) {
         largeDevices();
       }
-      // Récupération de la taille de viewport
     }
 
     function mediumDevices() {  
@@ -296,7 +299,7 @@ document.addEventListener('astro:page-load', () => {
           trigger: ".sok-savoirfaire__cards",
           start: "top top",
           endTrigger: lastCard, // S'arrête à la dernière carte
-          end: "bottom bottom", 
+          end: "bottom 80%", 
           scrub: true,
           pin: true,
           pinSpacing: false,
@@ -321,7 +324,7 @@ document.addEventListener('astro:page-load', () => {
     }
   
     function largeDevices() {
-      const totalWidth = cardsWrapper.scrollWidth;
+      const totalWidth = cardsWrapper?.scrollWidth;
       
       const tl = gsap.timeline({
         scrollTrigger: {
