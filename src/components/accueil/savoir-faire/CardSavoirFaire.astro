@@ -77,7 +77,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
     border: 1px solid var(--oka-color-bd-minimal);
     position: relative;
     z-index: 99;
-    background-color: var(--oka-color-layer-floor-0);
+    // background-color: var(--oka-color-layer-floor-0);
     
     .sok-card__container {
       gap: 0;
@@ -222,6 +222,18 @@ document.addEventListener('astro:page-load', () => {
     }
   }
 
+  
+  // Viewport : supérieur ou égale à 1024px
+  function resizeLargerDevice() {
+    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
+    .forEach(group => group.forEach((el, i) => {
+      removeAllClasses(el);     
+    }));
+    
+    cardContainers.forEach(cardContainer => cardContainer.classList.remove('flex-grid'));
+    cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.remove('flex-grid'));
+  }    
+  
   // Viewport : inférieur à 1024px
   function resizeSmallerDevice() {
     [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
@@ -232,21 +244,10 @@ document.addEventListener('astro:page-load', () => {
       cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.add('flex-grid'));
     }));
   }
-
-  // Viewport : supérieur ou égale à 1024px
-  function resizeLargerDevice() {
-    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
-    .forEach(group => group.forEach((el, i) => {
-      removeAllClasses(el);     
-    }));
-
-    cardContainers.forEach(cardContainer => cardContainer.classList.remove('flex-grid'));
-    cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.remove('flex-grid'));
-  }    
-
+  
   // Retirer les classes précédentes
   function removeAllClasses(el: Element) {
-    el.classList.remove('col-8', 'col-1', 'col-12', 'col-9', 'col-4');
+    el.classList.remove('col-8');
   }
 })
 </script>
