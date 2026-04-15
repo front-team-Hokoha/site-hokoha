@@ -279,14 +279,12 @@ document.addEventListener('astro:page-load', () => {
       const viewportWidth = window.innerWidth;
 
       // Supprime les précédents ScrollTrigger pour éviter les conflits
-      // Désactive temporairement les précédents ScrollTrigger pour éviter les conflits
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      gsap.killTweensOf("*");
+      // ScrollTrigger.getAll().forEach(t => t.kill());
+      // gsap.killTweensOf("*");
 
       if (viewportWidth >= 768 && viewportWidth < 1024) {
         // mediumDevices();
         console.log("toto");
-        
         
       } else if (viewportWidth >= 1024) {
         largeDevices();
@@ -299,7 +297,7 @@ document.addEventListener('astro:page-load', () => {
           trigger: ".sok-savoirfaire__cards",
           start: "top top",
           endTrigger: lastCard, // S'arrête à la dernière carte
-          end: "bottom 80%", 
+          end: "bottom bottom", 
           scrub: true,
           pin: true,
           pinSpacing: false,
