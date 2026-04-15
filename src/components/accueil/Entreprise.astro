@@ -11,84 +11,211 @@ import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entrep
 import digitalArrow from '../../assets/images/digital-arrow.svg';
 ---
 <div class="oka-appWrap -fluid">
-  <section class="oka-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
+  <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
     
-    <div class="col col-1"></div>
-  
-    <div class="col col-14">
-      <div class="oka-spacer -lg" aria-hidden="true"></div>
-      <div class="oka-spacer -lg" aria-hidden="true"></div>
-  
-      <div class="oka-cols -two">
-          <div class="oka-entreprise__content">
-          <RevealText>
-            <titreEntreprise.Content />
-          </RevealText>
-  
-          <div class="oka-spacer -lg" aria-hidden="true"></div>
-  
-          <ul class="oka-entreprise__list">
-            <li class="oka-presentation__item">
-              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
-              <span class="oka-h -sm">Création en mars 2017</span>
-            </li>
-  
-            <li class="oka-presentation__item">
-              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
-              <span class="oka-h -sm">9 Personnes</span>
-            </li>
-  
-            <li class="oka-presentation__item">
-              <img class="sok-arrow" src={digitalArrow.src} alt="flèche" aria-hidden="true">
-              <span class="oka-h -sm">Basée à Laval</span>
-            </li>
-          </ul>
-        </div>
-  
-        <div class="sok-mask-container">
-            <div class="sok-mask-img"></div>
-            
-            <RevealMask>
-              <PolygoneMask addClass="maskContainer" />
-            </RevealMask>
-        </div>
-      </div>
+    <div class="flex-grid">
+      <div class="col col-1"></div>
       
-      <div class="oka-spacer -lg" aria-hidden="true"></div>
-      <div class="oka-spacer -lg" aria-hidden="true"></div>
+      <div class="col col-14">  
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+    
+        <div class="flex-grid">
+          <div class="col col-4 col--sm-5 col--md-9">
+            <div class="sok-entreprise__content-wrapper">
+              <div class="sok-entreprise__content">
+                <RevealText>
+                    <h1 class="oka-h -xl" set:html={titreEntreprise.rawContent()}>
+                      <!-- <titreEntreprise.Content /> -->
+                    </h1>
+                </RevealText>
+                
+                <div class="oka-spacer -sm" aria-hidden="true"></div>
+    
+                <div class="sok-t-paragraph">
+                  <p class="oka-text -lg">Lorem ipsum dolor sit amet consectetur. Malesuada aenean proin odio pellentesque id varius tortor. Neque mattis facilisis mauris odio id duis morbi volutpat. Nisi sed etiam tempus ac pellentesque dui et nibh massa.</p>
+                </div>
+              </div>
+      
+              <div class="oka-spacer -md" aria-hidden="true"></div>
+      
+              <div class="sok-entreprise__infos">
+                <h3 class="oka-h -sm -secondary">Depuis la création en 2017</h3>
+
+                <div class="sok-entreprise__datas">
+                  <div class="sok-entreprise__data">
+                    <h4 class="oka-h -lg"><span data-key-one>50</span>+</h4>
+                    <p class="oka-text -strong -xs">Projets réalisés</p>
+                  </div>
+
+                  <!-- Séparateur entre les chiffres clés -->
+                  <div class="sok-divider" aria-hidden="true"></div>
+        
+                  <div class="sok-entreprise__data">
+                    <h4 class="oka-h -lg"><span data-key-two>20</span>M+</h4>
+                    <p class="oka-text -strong -xs">Lignes de code</p>
+                  </div>
+        
+                  <!-- Séparateur entre les chiffres clés -->
+                  <div class="sok-divider" aria-hidden="true"></div>
+
+                  <div class="sok-entreprise__data">
+                    <h4 class="oka-h -lg" data-key-three>9</h4>
+                    <p class="oka-text -strong -xs">Personnes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+
+          </div>
+
+          <div class="col col-4 col--sm-3 col--md-5">
+            <div class="sok-mask-container">
+              <div class="oka-spacer -md" aria-hidden="true"></div>
+
+              <div class="sok-mask-img"></div>
+              
+              <!-- <RevealMask>
+                <PolygoneMask addClass="maskContainer" />
+              </RevealMask> -->
+            </div> 
+          </div>
+        </div>
+        
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+      </div>
     </div>
-  
-    <div class="col col-1"></div>
+
   </section>
 </div>
 
-<style>
-
-  ul {
-    list-style-type: none;
+<style lang="scss">
+  @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+  
+  .sok-entreprise__content-wrapper {
+    height: 100%;
+    align-content: center;
+    
+    .sok-entreprise__content {
+      .oka-h.-xl {
+        font-size: clamp(1rem, 3.5dvh, 2.5rem);
+        line-height: clamp(1.35rem, 4.5dvh, 3.25rem);
+      }
+      
+      .sok-t-paragraph {
+        width: 100%;
+        max-width: 480px;
+        text-align: justify;
+        
+        @include breakpoint(xs) {
+          text-align: start;
+        }
+  
+        @include breakpoint(lg) {
+          text-align: start;
+          max-width: 640px;
+        }
+      }
+    }
   }
 
+  // Les chffres clés
+  .sok-entreprise__infos {
+    .oka-h.-sm {
+      padding: 0;
+    }
+
+    .sok-entreprise__datas {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; 
+      
+      .sok-entreprise__data {
+        padding: 1rem 1.5rem;
+  
+        @include breakpoint(sm) {
+          padding: 1.5rem 2rem;
+        }
+  
+        .oka-h {
+          // padding: 0;
+        }
+
+        .oka-text.-xs {
+          color: var(--oka-color-fg-subtle)
+        }
+      }
+
+      // Séparateur entre les chiffres clés
+      .sok-divider {
+        width: 1px;
+        height: 8vh;
+        background: var(--oka-color-bd-minimal);
+      }
+    }
+  }
+
+  // Image de la section
   .sok-mask-container {
     position: relative;
     overflow: hidden;
     width: 100%;
+    min-height: 50vh;
     height: 100%;
     /* Background de couleur blanc obligatoire pour ne pas voir l'image de fond */
-    background: white;
+    background: black; // white
+    
+    .sok-mask-img {
+      background-image: url("/src/assets/images/equipe/d2.jpg");
+      background-size: cover;
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen; 
+      z-index: 99;
+    }
   }
-
-  .sok-mask-img {
-    background-image: url("/src/assets/images/test2.jpg");
-    background-size: cover;
-    position: absolute;
-    inset: 0;
-    mix-blend-mode: screen; 
-    z-index: 99;
-  }
-
-  .sok-mask {
-    position: absolute;
-    inset: 0;
-  }
-
 </style>
+
+<!-- GSAP / Animation des chiffres clés -->
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('astro:page-load', () => {
+    const dataOne = document.querySelector('[data-key-one]');
+    const dataTwo = document.querySelector('[data-key-two]');
+    const dataThree = document.querySelector('[data-key-three]');
+  
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sok-entreprise",
+        start: "top 40%",
+        toggleActions: "play none none none",
+        // markers: true,
+      }
+    });
+
+    ScrollTrigger.create({
+      trigger: "",
+      start: "",
+      markers: true
+    })
+
+    tl.from(dataOne, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}) // snap : arrondi les décimales
+      .from(dataTwo, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}, "-=0.75")
+      .from(dataThree, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}, "-=1.75")
+  });
+
+  // const items = document.querySelectorAll(".data");
+
+  // gsap.from(items, {
+  //   textContent: 0,
+  //   duration: 4,
+  //   ease: Power1.easeIn,
+  //   snap: { textContent: 1 },
+  //   stagger: 1,
+  //   // onUpdate: textContent.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+  // });
+</script>
