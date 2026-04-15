@@ -1,0 +1,59 @@
+---
+import { string } from "astro:schema";
+import PolygoneFlip from "../commun/polygones/PolygoneFlip.astro";
+import PolygoneStatic from "../commun/polygones/PolygoneStatic.astro";
+
+interface Props {
+  rows?: string;
+  cols?:  string;
+  ratio?: string;
+  dataAttrs?: Record<string, string>;
+}
+const { rows, cols, ratio, dataAttrs } = Astro.props;
+
+---
+
+<div class="hex-grid -hidden" 
+data-rows={rows ?? 1} 
+data-cols={cols ?? 4} 
+data-ratio={ratio ?? 0.1}
+{...dataAttrs && Object.fromEntries(Object.entries(dataAttrs).map(([key, value]) => [`data-${key}`, value]))}
+
+>
+  <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" />
+
+  
+  <PolygoneStatic imageUrl="/src/assets/images/ambiance/trame-video.jpg" />
+  
+  <PolygoneStatic imageUrl="/src/assets/images/environnement/developpement.jpg" />
+  <PolygoneStatic imageUrl="/src/assets/images/environnement/uxdesign.jpg" />
+
+
+
+  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" color="-web"  />
+  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test2.jpg" color="-metier"/>
+  <PolygoneFlip frontText="" videoUrl="/src/assets/videos/test.mp4" color="-app" />
+  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" color="-web"/>
+  <PolygoneFlip frontText="" backText=""  color="-metier"/>
+  
+
+
+</div>
+
+
+<style>
+
+
+@media (max-width: 1024px) {
+
+  .hex-grid {
+    grid-template-columns: repeat(3, 1fr) !important; 
+    grid-template-rows: repeat(3, auto) !important;
+
+    > *  {
+      grid-area: auto / auto / auto / auto !important;
+
+    }
+  }
+}
+</style>

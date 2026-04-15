@@ -1,0 +1,65 @@
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener('astro:page-load', () => {
+  const sections = gsap.utils.toArray('.hgo-snap');
+  if (sections.length < 2) return;
+
+  sections.forEach((section) => {
+    const sectionH = section.offsetHeight;
+    const viewportH = window.innerHeight;
+    const overflow = Math.max(0, sectionH - viewportH);
+
+    if (overflow > 0) {
+      // Section plus haute que le viewport :
+      // Pin + animation vers le haut pour reveler le contenu (scroll interne).
+      gsap.fromTo(
+        section,
+        { y: 0 },
+        {
+          y: -overflow,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: `+=${overflow}`,
+            pin: true,
+            scrub: true,
+            pinSpacing: true,
+            scroller: document.body,
+          },
+        }
+      );
+    } else {
+      // Section qui tient dans le viewport :
+      // Pin + snap vers la section suivante au premier scroll.
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        pin: true,
+        pinSpacing: false,
+        scroller: document.body,
+        snap: { snapTo: 1, duration: { min: 0.3, max: 0.8 }, ease: 'power2.inOut' },
+      });
+    }
+  });
+
+  ScrollTrigger.refresh();
+});
+</script>
+
+
+
+<style is:global>
+
+.hgo-snap {
+  min-height: 100vh;
+  
+  border:2px solid red;
+}
+</style>

@@ -1,0 +1,53 @@
+
+---
+
+
+
+---
+
+<style lang="scss">
+
+    :global([data-appeargroup] > *) {
+        opacity: 0;
+        transform: translateY(120px);
+    }
+
+</style>
+
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { getStartPosition } from "./animationConfig.js";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+
+        document.querySelectorAll('[data-appeargroup]').forEach(group => {
+
+            const children = Array.from(group.children);
+            if (children.length === 0) return;
+
+            const startPosition = getStartPosition(group);
+            const dataDelay = group.dataset.delay ? parseFloat(group.dataset.delay) : 0;
+
+            const timeline = gsap.timeline({
+                delay: dataDelay,
+                scrollTrigger: {
+                    trigger: group,
+                    start: startPosition,
+                    toggleActions: "play none none none"
+                }
+            });
+
+            children.forEach((child, i) => {
+                timeline.to(child, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.25
+                }, i === 0 ? undefined : "-=0.15");
+            });
+        });
+    });
+</script>

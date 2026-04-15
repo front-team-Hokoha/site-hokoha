@@ -1,0 +1,68 @@
+<div class="sok-card-container">
+   <div class="sok-card-wrapper">
+      <slot/>
+   </div>
+</div>
+
+<style lang="scss">
+   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
+   .sok-card-container {
+      display: flex;
+      width: 100%;
+      border-top: 1px solid var(--oka-color-bd-minimal);
+      border-bottom: 1px solid var(--oka-color-bd-minimal);
+
+      @include breakpoint(lg) {
+         height: 100%;
+      }
+      
+      .sok-card-wrapper {
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         height: 100%;
+
+         @include breakpoint(lg) {
+            width: auto;
+            flex-direction: row;
+         }
+      }
+   }
+</style>
+
+<!-- Ancien code : Ne pas supprimer, peut être utile -->
+<!-- <script>
+   import { gsap } from "gsap";
+   import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   document.addEventListener("astro:page-load", () => {
+      const container = document.querySelector(".sok-card-container");
+      const cardsWrapper = document.querySelector(".sok-card-wrapper");
+
+      if (!cardsWrapper || !container) return;
+
+      const totalWidth = cardsWrapper.scrollWidth;
+      const containerWidth = container.offsetWidth;
+      
+      const scrollDistance = totalWidth - containerWidth;
+   
+
+      gsap.to(cardsWrapper, {
+         x: -scrollDistance,
+         ease: "none",
+         scrollTrigger: {
+            trigger: ".sok-savoirfaire",
+            start: "top top",
+            end: `+=${scrollDistance}`,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            markers: true
+         }
+      });
+   });
+</script> -->

@@ -1,0 +1,93 @@
+---
+// ===== Composants de la page =====
+import PolygoneMask from "../commun/polygones/PolygoneMask.astro";
+
+// ===== Composants d'animation =====
+import RevealText from "../../animations/RevealText.astro";
+import RevealMask from "../../animations/RevealMask.astro"; 
+
+// ===== Fichiers Markdown =====
+import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
+---
+<div class="oka-appWrap -fluid">
+  <section class="oka-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
+    
+    <div class="col col-1"></div>
+  
+    <div class="col col-14">
+      <div class="oka-spacer -lg" aria-hidden="true"></div>
+      <div class="oka-spacer -lg" aria-hidden="true"></div>
+  
+      <div class="oka-cols -two">
+          <div class="oka-entreprise__content">
+          <RevealText>
+            <titreEntreprise.Content />
+          </RevealText>
+  
+          <div class="oka-spacer -lg" aria-hidden="true"></div>
+  
+          <ul class="oka-entreprise__list">
+            <li class="oka-presentation__item">
+              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <span class="oka-h -sm">Création en mars 2017</span>
+            </li>
+  
+            <li class="oka-presentation__item">
+              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <span class="oka-h -sm">9 Personnes</span>
+            </li>
+  
+            <li class="oka-presentation__item">
+              <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+              <span class="oka-h -sm">Basée à Laval</span>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="sok-mask-container">
+            <div class="sok-mask-img"></div>
+            
+            <RevealMask>
+              <PolygoneMask addClass="maskContainer" />
+            </RevealMask>
+        </div>
+      </div>
+      
+      <div class="oka-spacer -lg" aria-hidden="true"></div>
+      <div class="oka-spacer -lg" aria-hidden="true"></div>
+    </div>
+  
+    <div class="col col-1"></div>
+  </section>
+</div>
+
+<style>
+
+  ul {
+    list-style-type: none;
+  }
+
+  .sok-mask-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /* Background de couleur blanc obligatoire pour ne pas voir l'image de fond */
+    background: white;
+  }
+
+  .sok-mask-img {
+    background-image: url("/src/assets/images/test2.jpg");
+    background-size: cover;
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: screen; 
+    z-index: 99;
+  }
+
+  .sok-mask {
+    position: absolute;
+    inset: 0;
+  }
+
+</style>

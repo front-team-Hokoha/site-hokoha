@@ -1,0 +1,85 @@
+
+// ====================================================
+//  POPOVER
+/*
+| 6.0.0 | 16/12/2025 | Compatible WCAG  |
+||||
+| 5.0.0 | 24/05/2025 | Compatible design token 5  |
+||||
+| 3.0.0   | 02/10/20 | création    |
+*/
+
+@use "../../1-bases/shadows/shadows" as *;
+
+// Tokens popovers
+:root {
+
+
+    --oka-popover-bg : var(--oka-color-layer-floor-0 , var(--color-1--darkest));
+    --oka-popover-bd :  var(--oka-color-bd-minimal , var(--color-1--light));
+    --oka-popover-radius : var(--oka-radius-container, 0);
+
+    --oka-popover-minWidt : 340px;
+    --oka-popover-maxWidt : 480px
+}
+// Ombres
+
+
+.oka-popover{
+
+    position: relative;
+    display: inline-block; // permet de positionner le popover relativement 
+
+    // Bouton d'ouverture
+    &__button{
+        cursor:help;
+        user-select: none;
+    }
+
+   
+    // Popover
+    .oka-collapse {
+
+        position: absolute;
+        top:0;
+       
+        z-index: var(--oka-elevation-popover , 4000);
+
+        min-width : var(--oka-popover-minWidth , 340px);
+        max-width : var(--oka-popover-maxWidth , 680px);
+
+
+        flex-direction: column;
+
+        padding: 1rem;
+
+        background: var(--oka-popover-bg);
+                
+        border : 1px solid var(--oka-popover-bd);
+        border-radius: var(--oka-popover-radius);
+        
+        color: var(--oka-color-fg);
+
+        @include shadow-4;
+
+
+        // Supprime les interactions sur tous les elements contenu
+        pointer-events:none;
+
+
+        .-left  &{
+            left:0;
+        }
+        .-right  &{
+            right:0;
+        }
+
+        // reactive les interactions sur les elements interactifs
+        a,button,label,input,select,textarea,[tabindex="0"] {
+            user-select: all;
+            pointer-events:all; 
+        }
+    } 
+}
+
+

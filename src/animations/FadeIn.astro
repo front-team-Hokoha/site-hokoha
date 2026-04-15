@@ -1,0 +1,44 @@
+---
+
+
+
+---
+
+<style>
+    
+    :global(.oka-text) {
+        opacity: 0;
+    }
+</style>
+
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { getStartPosition } from "./animationConfig.js";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+        
+        const elements = document.querySelectorAll('.oka-text');
+
+        elements.forEach((element) => {
+
+            const startPosition = getStartPosition(element);
+            const delay = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
+
+            gsap.to(element, {
+                opacity: 1,
+                duration: 6,
+                delay,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: startPosition,
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+    });
+</script>

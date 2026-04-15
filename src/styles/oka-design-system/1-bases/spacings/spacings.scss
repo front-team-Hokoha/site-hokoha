@@ -1,0 +1,83 @@
+
+/** 
+// SPACINGS
+| 5.0.1 | 16/06/2025 | utilisation de spacings responsive |
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+| 4.0.0 | 20/04/2023 | Nomage du fichier  |
+| 3.1.1  | 06/09/2021 | Ajout !important au class utilitaires |
+| 3.1.0  | 03/06/2021 | Nommage des modifiers Taille |
+| 1.0.0 | 28/02/2021 | Utilitaires d'empilement (u-stack--lg) |
+
+*/
+
+@use "../../0-abstracts/breakpoints/breakpoints" as *;
+
+
+:root {
+    --space-xs : 0.25rem;
+    --space-sm : 0.5rem;
+    --space-md : 1rem;
+    --space-lg : 1.5rem;
+    --space-xl : 2.5rem;
+    --space-2xl : 4rem;
+    --space-3xl : 6.5rem;
+    --space-4xl : 11rem;
+
+    @include breakpoint(sm) {
+        --space-xs : 0.25rem;
+        --space-sm : 0.5rem;
+        --space-md : 1rem;
+        --space-lg : 1.5rem;
+        --space-xl : 3rem;
+        --space-2xl : 4.5rem;
+        --space-3xl : 8rem;
+        --space-4xl : 14rem;
+    }
+    @include breakpoint(md) {
+        --space-xs : 0.25rem;
+        --space-sm : 0.5rem;
+        --space-md : 1rem;
+        --space-lg : 2rem;
+        --space-xl : 4rem;
+        --space-2xl : 6rem;
+        --space-3xl : 9rem;
+        --space-4xl : 15rem;
+    }
+    @include breakpoint(lg) {
+        --space-xs : 0.5rem;
+        --space-sm : 1rem;
+        --space-md : 2rem;
+        --space-lg : 3rem;
+        --space-xl : 6rem;
+        --space-2xl : 8rem;
+        --space-3xl : 12rem;
+        --space-4xl : 18rem;
+    }
+    @include breakpoint(xl) {
+        --space-xs : 0.5rem;
+        --space-sm : 1rem;
+        --space-md : 2rem;
+        --space-lg : 3.5rem;
+        --space-xl : 6rem;
+        --space-2xl : 9rem;
+        --space-3xl : 14rem;
+        --space-4xl : 22rem;
+    }
+}
+
+
+
+
+// Deprecated depuis v5.0.1
+:root {
+  --space:         1rem;
+  --space--xs:     0.25rem;
+  --space--sm:     0.5rem;
+  --space--md:     1rem;
+  --space--lg:     1.5rem;
+  --space--xl:     2rem;
+  --space--xxl:    3.5rem;
+  --space--xxxl:   7rem;
+  --space--xxxxl:  14rem;
+
+}

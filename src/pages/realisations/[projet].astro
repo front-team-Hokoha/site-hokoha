@@ -1,0 +1,24 @@
+---
+// ===== Layout =====
+import DefaultLayout from "../../layouts/Layout.astro";
+import HibouLayout from "../../layouts/projets/HibouLayout.astro";
+
+export function getStaticPaths() {
+   return [
+      { params: { projet: "hibou" } },
+      { params: { projet: "travel" } },
+      { params: { projet: "ramses" } },
+      { params: { projet: "wecert" } },
+      { params: { projet: "pegase" } },
+      { params: { projet: "hugo" } },
+   ];
+}
+
+const { projet } = Astro.params;
+const layouts = { hibou: HibouLayout };
+const Layout = layouts[projet] || DefaultLayout;
+---
+
+<Layout title={projet}>
+   <h1>{projet}</h1>
+</Layout>

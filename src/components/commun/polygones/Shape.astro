@@ -1,0 +1,187 @@
+---
+
+
+// Description du "polygone"
+export const hexHeight = 133.8;
+export const hexWidth  = 178.68;
+export const hexPath   = "M 178.89 127.3 V 6.93 C 178.89 3.21 175.89 0.21 172.19 0.21 H 39.7 C 37.91 0.21 36.2 0.93 34.94 2.19 L 2.16 35.16 C 0.91 36.41 0.21 38.11 0.21 39.89 V 127.3 C 0.21 131.01 3.21 134.01 6.93 134.01 H 172.19 C 175.89 134.01 178.89 131.01 178.89 127.3 Z";
+export const hexNormPathLg = "M 1 0.94993 V 0.05172 C 1 0.02396 0.98323 0.00157 0.96257 0.00157 H 0.22192 C 0.21193 0.00157 0.20236 0.00694 0.19531 0.01634 L 0.01208 0.26238 C 0.00509 0.27172 0.00117 0.28439 0.00117 0.29767 V 0.94993 C 0.00117 0.97761 0.01794 1 0.03875 1 H 0.96257 C 0.98323 1 1 0.97761 1 0.94993 Z";
+
+
+const aspectRatio = `${hexWidth} / ${hexHeight}`;
+
+const clipId = `clip-${Math.random().toString(36).slice(2)}`;
+
+interface Props {
+	frontText?: string;
+	color?: string;
+	videoUrl?: string;
+	imageUrl?: string;
+	strokeType?: string
+}
+const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
+---
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+	<defs>
+		<clipPath id={clipId} clipPathUnits="objectBoundingBox">
+			<path d={hexNormPathLg}/>
+		</clipPath>
+	</defs>
+</svg>
+<div class="polygone-container">
+	<!-- ATTENTION : pas gérer -->
+	<div class="polygon-stroke">
+		<svg class={strokeType} viewBox={`0 0 ${hexWidth} ${hexHeight}`} preserveAspectRatio="none">
+			<path
+				d={hexPath}
+				fill="none"
+				stroke-width="2"
+			/>
+		</svg>
+	</div>
+
+	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: url(#${clipId});${imageUrl ? ` background-image: url(${imageUrl});` : ''}`}>
+		{(!imageUrl || videoUrl) && (
+			<span class="polygon-text">{frontText}</span>
+		)}
+
+		{videoUrl && (
+			<video autoplay muted loop aria-hidden="true">
+				<source src={videoUrl} type="video/mp4">
+			</video>
+		)}
+	</div>
+</div>
+
+
+<style is:global>
+	body {
+		--polygone-aspect-ratio:  178.68 / 133.8;
+	}
+</style>
+
+
+<style lang="scss">
+	.polygone-container {
+		position: relative;
+		z-index: 90;
+		width: 100%;
+		aspect-ratio: var(--polygone-aspect-ratio);
+
+		& > * {
+			z-index: 90
+		}
+	}
+
+	.polygon-stroke {
+		position: absolute;
+		content: "";
+		inset: 0;
+		z-index: 99;
+
+		& > svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		& > svg path {
+			shape-rendering: crispEdges;
+  			vector-effect: non-scaling-stroke;
+		}
+		
+		& > .-dotted path {
+			stroke-dasharray: 4 4;
+			stroke: rgba(0, 0, 0, 1)
+		}
+		
+		& > .-solid path {
+			stroke-dasharray: 0;
+			stroke: rgba(0, 0, 0, 1)
+		}
+
+		& > .-none path {
+			stroke-width: 0;
+			stroke-dasharray: 0;
+		}
+	}
+
+  .polygon-shape {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-size: cover;
+		background-color: rgba(255, 255, 255, 0);
+		overflow: hidden;
+
+		font-size: 13px;
+		text-transform: uppercase;
+
+		// Modifier pour changer la disposition des éléments
+		.polygon-shape.-pos-bottom {
+			justify-content: space-between;
+			align-items: end;
+			padding: 1rem;
+		}
+
+	
+
+		video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+	}
+
+	.-web {
+		background-color: var(--sok-color-primary-darker);
+		color: #fff;
+	}
+
+	.-metier {
+		background-color: var(--sok-color-primary-dark);
+		color: #fff;
+	}
+
+	.-app {
+		background-color: var(--sok-color-primary);
+		color: #fff;
+	}
+
+	.-ia {
+		background-color: var(--sok-color-primary-light);
+		color: var(--sok-color-fg-on_surface);
+	}
+
+	.-iot {
+		background-color: var(--sok-color-primary-lighter);
+		color: var(--sok-color-fg-strong);
+	}
+
+	.-default {
+		background-color: rgba(88, 125, 223, 0.06);
+		color: var(--sok-color-fg-strong);
+	}
+
+
+	.-stroke {
+		border: 1px solid #2C5F8A;
+	}
+
+	.-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.-mask {
+		background-color: rgb(0, 0, 0);
+	}
+</style>
+

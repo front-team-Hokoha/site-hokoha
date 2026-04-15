@@ -1,0 +1,23 @@
+//
+// TYPOGRAPHY System--------------------------------------
+/*
+| 5.0.0 | 13/09/2025 | Intégration des Icones FontAwesome |
+| 4.0.0 |  |  |
+*/
+
+// BASE - FONTS PRODUCTIVES
+
+@use "../fonts/font-ibm-plex-sans-v8-latin" as *;
+
+$system-font-family :  'IBM Plex Sans'  , sans-serif  ;
+$system-font-baseline : 0.125;
+
+$system-font-weight-light : 300;
+$system-font-weight-regular : 400;
+$system-font-weight-strong : 600 ;
+
+$system-letter-spacing: -0.002em;
+$system-word-spacing: 0;
+
+
+

@@ -1,0 +1,48 @@
+/*
+
+| 5.0.0 | 23/05/2025 | compatible design tokens 5 figma |
+*/
+
+
+/*https://medium.com/codyhouse/create-your-design-system-part-2-grid-layout-aa961d59b8d6 */
+
+$gap-horizontal: 1rem;
+$gap-vertical: $gap-horizontal;
+
+// This mixin is used to initialize the grid container (with display grid) and set the grid gap (which is the free space between two adjacent items).
+// We have included the CSS Grid code inside a @supports rule to target browsers that support the Grid (leaving out also the browsers that support the old CSS Grid specification, like IE 11).
+@mixin grid {
+    
+    // fallback for IE
+    &::before, &::after {
+       content: '';
+       display: table;
+    }
+
+    &::after {
+       clear: both;
+    }
+
+    > * {
+       float: left;
+       margin-right: $gap-horizontal;
+       margin-bottom: $gap-vertical;
+    }
+
+    @supports(grid-area: auto) {
+        display: grid;
+        grid-column-gap: var(--grid-gap-x) ; //$gap-horizontal;
+        grid-row-gap: var(--grid-gap-y) ; //$gap-vertical;
+
+        // overwrite  des effets du FallBack IE
+        &::after, &::before {
+          content: none;
+        }
+
+        > * {
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+    }
+}
+

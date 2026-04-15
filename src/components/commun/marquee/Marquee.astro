@@ -1,0 +1,117 @@
+---
+/*
+modifier : permet d'ajouter des class CSS pour modifier sok-item
+   valeur possible :
+      -rowD : afficher le contenu de sok-item en ligne
+      -colD : afficher le contenu de sok-item en colonne
+      -no-image : masque l'élément image pour afficher uniquement du texte
+      -no-text : masque le contenu textuel pour afficher uniquement l'image
+
+direction : permet de définir la direction du défilement du marquee
+
+valeur possible :
+   -normal : de la gauche vers la droite
+   -reverse : de la droite vers la gauche
+*/
+const { direction = "-normal", modifier } = Astro.props;
+---
+
+<div class="sok-marquee" >
+   <div class={`sok-marquee__content ${direction} ${modifier}`}>
+      <slot />
+   </div>
+</div>
+
+<style lang="scss">
+   .sok-marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+
+      &__content {
+         display: flex;
+         align-items: center;
+         gap: 4rem;
+         width: max-content;
+         overflow: hidden;
+
+         // ===== Modifiers =====
+         // Direction du marquee
+         &.-normal {
+            animation: marquee 40s linear 0s infinite;
+         }
+
+         &.-reverse {
+            animation: marquee-reverse 40s linear 0s infinite;
+         }
+
+         // Mets en pause l'animation de défilement au survol 
+         // &:hover {
+         //    animation-play-state: paused;
+         // }
+      }
+   }
+
+   // ==== Animation du Marquee =====
+   // De la gauche vers la droite
+   @keyframes marquee {
+      0% {
+         transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+         -webkit-transform: translateX(-50%);
+      }
+      
+      100% {
+         transform: translateX(0);
+         -moz-transform: translateX(0);
+         -webkit-transform: translateX(0);
+      }
+   }
+
+   // De la droite vers la gauche
+   @keyframes marquee-reverse {
+      0% {
+         transform: translateX(0);
+         -moz-transform: translateX(0);
+         -webkit-transform: translateX(0);
+      }
+      
+      100% {
+         transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+         -webkit-transform: translateX(-50%);
+      }
+   }
+</style>
+
+<!-- ===== Style Global - Modifiers du Marquee ===== -->
+<style lang="scss" is:global>
+   // ===== Modifiers =====
+   // Orientation du contenu en ligne ou colonne des éléments du MarqueeItem
+   .-colD {
+      border: 2px solid red;
+      
+      .sok-item {
+         flex-direction: column;
+      }
+   }
+
+   .-rowD {
+      .sok-item {
+         gap: .5rem;
+      }
+   }
+
+   // Masquer le texte ou l'image
+   .-no-image {
+      .sok-item img {
+         display: none;
+      }
+   }
+
+   .-no-text {
+      .sok-item span {
+         display: none;
+      }
+   }
+</style>

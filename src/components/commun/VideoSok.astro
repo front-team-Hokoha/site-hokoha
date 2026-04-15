@@ -1,0 +1,17 @@
+---
+// srcVideo : chemin de la video ex : /src/assets/videos/test.mp4
+// typeVideo : type de video ex : mp4, mov, avi, etc
+
+const { srcVideo, typeVideo, thumbnail } = Astro.props
+---
+
+<video controls preload="metadata" poster={thumbnail}>
+   <source src={srcVideo} type={`video/${typeVideo}`} />
+</video>
+
+<style lang="scss">
+   video {
+      width: 100%;
+      height: 100%;
+   }
+</style>

@@ -1,0 +1,282 @@
+---
+import GrilleOffres from "../../components/accueil/offres/GrilleOffres.astro";
+import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
+import Revealtext from "../../animations/RevealText.astro";
+---
+
+<div class="oka-appWrap -full">
+
+
+   <!-- Contenu après le pin : visible une fois que #offres se dépine -->
+  <section class="sok-section">
+    <div class="oka-appWrap -full" >
+      <div class="flex-grid">
+        <div class="col col-7">
+          <h2 class="oka-data -xs">Titre seo sur les offres</h2>
+        </div>
+        <div class="col col-8">
+            <div class="oka-spacer -xxl" aria-hidden="true"></div>
+            <Revealtext>          
+              <div class="oka-h -xl -secondary">Nous intervenons sur vos produits, vos services, vos process.</div>
+            </Revealtext>
+            <div class="oka-spacer -xxl" aria-hidden="true" ></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section  class="sok-offre"  id="offres">
+  
+
+     <div class="flex-grid">
+
+        <div class="col col-1" ></div>
+        <div class="col col-5" ></div>
+   
+        <div class="col col-1" ></div>
+   
+        <div class="col col-8" >
+              <GrilleIntro cols="4" rows="1" dataAttrs={{ appearGroup: "", delay: "2.5" }} />
+        </div>
+      </div> 
+
+
+
+  
+    <div class="flex-grid">
+  
+      <!-- <div class="col col-1" ></div> -->
+  
+      <div class="col col-6" > 
+  
+        <!-- ===== Offres ===== -->
+        <div class="sok-offres" >
+          
+          
+
+          <div class="sok-offres__item" data-offre="web"  data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">01</span>
+            <h3 class="oka-h -md">Solutions Web</h3>
+            <p>Pargraphe seo : Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, vel doloribus deleniti nesciunt molestias sit obcaecati fugit est quia non dolore unde vero voluptatum? Odit eveniet deleniti labore laboriosam pariatur.</p>
+          </div>
+          
+  
+          
+          <div class="sok-offres__item" data-offre="metier" data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">02</span>
+            <h3 class="oka-h -md">Logiciels Métiers</h3>
+          </div>
+          
+          
+          <div class="sok-offres__item" data-offre="app" data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">03</span>
+            <h3 class="oka-h -md">Application Mobile</h3>
+          </div>
+        
+          
+          <div class="sok-offres__item" data-offre="ia"  data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">04</span>
+            <h3 class="oka-h -md">Intelligence Artificielle</h3>
+          </div>
+          
+          
+          <div class="sok-offres__item" data-offre="iot" data-offset-lg="top 30%">
+            <img class="sok-arrow" src="/src/assets/images/digital-arrow.svg" alt="flèche" aria-hidden="true">
+            <span class="oka-data -xs -crop">05</span>
+            <h3 class="oka-h -md">Objets Connectées</h3>
+          </div>
+        </div>
+  
+        <!-- <div id="scrollEntretoise" style="height:calc( 5 * 400px); border:0px dotted red;" ></div> -->
+        
+      </div>
+  
+      <div class="col col-1" ></div>
+  
+      <div class="col col-8" >
+        <GrilleOffres />
+
+        <div class="oka-spacer  -xl" aria-hidden="true"></div>
+
+        <button class="oka-bt -outlined -lg " >
+          <div class="oka-bt__ico"><i class="fa fa-arrow-right"></i></div>
+          <div class="oka-bt__lbl">Consultez nos Réalisations</div>
+          <div class="oka-spinner"></div>
+        </button>
+
+        <div class="oka-spacer  -xl" aria-hidden="true"></div>
+      </div>
+  
+    </div>
+
+  </section>
+  
+ 
+  
+</div>
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+
+
+   
+    ScrollTrigger.create({
+      trigger: "#offres",
+      start: "top top",
+
+      end: "+=2000", // Durée virtuelle du pin (en px)   (5 offres × 400px)
+      
+      pin: true,  // ===== Pin #offres jusqu'à #finOffres =====
+      //pinSpacing: false,
+      //markers: true,
+
+    });
+
+
+
+    const OFFRES = document.querySelectorAll<HTMLElement>("[data-offre]");
+    const OFFRE_SCROLL_STEP = 400; // Distance de scroll virtuelle entre chaque déclenchement (en px)
+
+
+    OFFRES.forEach((offre, index) => {
+      ScrollTrigger.create({
+        trigger: offre,
+        //markers: true,
+        
+        
+        // Décale virtuellement le trigger suivant OFFRE_SCROLL_STEP:
+        // item 0 , item 1 → 400px plus tard, item 2 → 800px plus tard…
+        start: `top+=${index * OFFRE_SCROLL_STEP}px 40%`,
+        end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 40%`,
+       
+        onEnter: () => {
+          const offreId = offre.dataset.offre;
+
+          offre.classList.add("-active");
+          offre.classList.add("-display");
+
+          console.log("Entré dans l'offre :", offreId);
+          document.dispatchEvent(
+            new CustomEvent("offre:enter", { detail: { offre: offreId } })
+          );
+        },
+        onEnterBack: () => {
+          const offreId = offre.dataset.offre;
+          offre.classList.add("-active");
+         
+          document.dispatchEvent(
+            new CustomEvent("offre:enter", { detail: { offre: offreId } })
+          );
+        },
+
+        onLeave: () => {
+          const offreId = offre.dataset.offre;
+          offre.classList.remove("-active");
+          document.dispatchEvent(
+            new CustomEvent("offre:leave", { detail: { offre: offreId } })
+          );
+        },
+
+        onLeaveBack: () => {
+          const offreId = offre.dataset.offre;
+          offre.classList.remove("-active");
+          document.dispatchEvent(
+            new CustomEvent("offre:leave", { detail: { offre: offreId } })
+          );
+        },
+      });
+    });
+
+  });
+</script>
+
+
+<style lang="scss">
+  
+  .sok-offre,
+  .sok-section {
+      position:relative;
+      z-index: 1;
+      margin:0;
+      border-radius : 0 0  var(--sok-radius-section)  var(--sok-radius-section);
+      background-color: var(--oka-color-layer-floor-0);
+
+  }
+
+
+  .oka-h {
+    padding: 0;
+  }
+
+
+
+  .sok-offres {
+
+
+    &__item {
+
+      height:4rem;
+
+      flex-shrink:0;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      overflow: hidden;
+
+      opacity: 0.3;
+      translate: 0rem 0px;
+
+      pointer-events: none;
+      //cursor: pointer;
+      //border-top: 1px solid var(--oka-color-bd-subtle);
+
+
+
+    &.-display {
+        opacity: 1;
+        pointer-events: all;
+        translate: 0px 0px;
+      }
+
+      &.-active {
+
+        //flex-direction: row-reverse;
+        opacity: 1;
+        translate: 30px 0px;
+        
+      }
+
+      & > .sok-arrow {
+        margin-left: 2rem;
+        zoom:0.5;
+        // transition: margin .15s ease-in-out;
+        opacity: 0;
+        transition: margin .15s cubic-bezier(.63,.78,.25,1);
+      }
+
+      &.-active > .sok-arrow {
+        margin-left: 4rem;
+        margin-right: 4rem;
+        opacity: 1;
+
+      }
+    }
+  }
+
+
+</style>

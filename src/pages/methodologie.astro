@@ -1,0 +1,11 @@
+---
+// ===== Layout =====
+import Layout from '../layouts/Layout.astro';
+
+// Props pour le conteu de meta:description
+const { descContent = "lorem ipsum" } = Astro.props;
+---
+
+<Layout title="Page Méthodologie" description={descContent}>
+    <h1>Page Méthodologie</h1>
+</Layout>

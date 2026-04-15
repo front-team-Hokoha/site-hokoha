@@ -1,0 +1,26 @@
+/** ==================================================
+* Page Header
+
+| 1.0.0    | 09/09/2025 | Intégration des spécificités de page header |
+
+*/
+
+.lyt-pageHeader{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    flex-wrap: wrap;
+
+    // Règle commune pour tous les enfants directs
+    > * {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    &__data{
+        flex-grow: 1;
+    }
+}

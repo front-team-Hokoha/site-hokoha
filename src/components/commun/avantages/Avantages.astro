@@ -1,0 +1,21 @@
+<div class="sok-avantages">
+   <slot />
+</div>
+
+<style lang="scss">
+   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
+   .sok-avantages {
+      display: grid;
+      gap: 1rem;
+      height: auto;
+      
+      @include breakpoint(sm) {
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoint(lg) {
+         grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+   }
+</style>

@@ -1,0 +1,34 @@
+:root {
+    --oka-nav-height             : 2.5rem ;
+    --oka-nav-border-width       : 1px ;
+    --oka-nav-border-radius      : 0.25rem ;
+
+    --oka-nav-color-bg-default : var(--???);
+    --oka-nav-color-fg-default : var(--???);
+    --oka-nav-color-bd-default : var(--???);
+
+    --oka-nav-color-bg-hover : var(--???);
+    --oka-nav-color-fg-hover : var(--???);
+    --oka-nav-color-bd-hover : var(--???);
+
+    --oka-nav-color-bg-active : var(--???);
+    --oka-nav-color-fg-active : var(--???);
+    --oka-nav-color-bd-active : var(--???);
+
+    --oka-nav-color-bg-disabled : var(--???);
+    --oka-nav-color-fg-disabled : var(--???);
+    --oka-nav-color-bd-disabled : var(--???);
+
+
+    --oka-nav-color-secondary-bg-default : var(--???);
+    --oka-nav-color-secondary-fg-default : var(--???);
+    --oka-nav-color-secondary-bd-default : var(--???);
+
+    --oka-nav-color-secondary-bg-hover : var(--???);
+    --oka-nav-color-secondary-fg-hover : var(--???);
+    --oka-nav-color-secondary-bd-hover : var(--???);
+
+    --oka-nav-color-secondary-bg-active : var(--???);
+    --oka-nav-color-secondary-fg-active : var(--???);
+    --oka-nav-color-secondary-bd-active : var(--???);
+}

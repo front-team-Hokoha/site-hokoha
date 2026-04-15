@@ -1,0 +1,20 @@
+:root {
+  // ===== Primary =====
+  --sok-color-primary-lighter: var(--oka-color-primary-400);
+  --sok-color-primary-light: var(--oka-color-primary-500);
+  --sok-color-primary: var(--oka-color-primary-600);
+  --sok-color-primary-dark: var(--oka-color-primary-700);
+  --sok-color-primary-darker: var(--oka-color-primary-800);
+  --sok-color-primary-darkest: var(--oka-color-primary-900);
+
+
+  // ===== Surface =====
+  --sok-color-surface: rgba(255, 255, 255, 1);
+  --sok-color-underground: hsl(225, 40%, 97%);
+
+  // ===== Layer =====
+
+  // ===== Border =====
+    --sok-radius-section: 0;
+		--oka-radius-button : 0.25rem;
+}

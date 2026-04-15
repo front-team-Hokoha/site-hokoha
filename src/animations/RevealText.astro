@@ -1,0 +1,82 @@
+<div class="reveal-text -hidden">
+  <slot />
+</div>
+
+
+<style lang="scss">
+	.reveal-text {
+		// border:1px solid red !important;
+		&.-hidden {
+			visibility: hidden;	
+		}
+	}
+</style>
+
+
+<script>
+	import { gsap } from "gsap";
+	import { SplitText } from "gsap/SplitText";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	import { getStartPosition } from "./animationConfig.js";
+
+	gsap.registerPlugin(SplitText, ScrollTrigger);
+
+	// Charger les éléments dès que la page est chargée
+	document.addEventListener("astro:page-load", () => {
+
+		const revealtextes = document.querySelectorAll(".reveal-text");
+
+		// Vérifie si les components Revealtext existent sur la page
+		if (!revealtextes.length) return;
+
+		// Créer une animation de reveal lors du scroll pour chaque Revealtext
+
+
+
+
+		revealtextes.forEach((revealtext) => {
+
+			// Fixer la hauteur du container à l'init pour éviter les flashs de layout
+			revealtext.style.height = revealtext.offsetHeight + "px";
+
+			ScrollTrigger.create({
+				trigger: revealtext,
+				start: getStartPosition(revealtext),
+				once: true,
+				// markers: true,
+				onEnter: () => {
+					// Affiche les éléments
+					revealtext.classList.remove("-hidden");
+
+					// Créer une animation de split pour chaques lignes
+					SplitText.create(revealtext, {
+						type: "lines",
+						autoSplit: true,
+						mask: "lines",
+						onSplit: (self) => {
+							// Ajouter du padding pour les descendantes (p, q, g, y, j...)
+							// compensé par un margin négatif pour ne pas décaler le layout
+							self.lines.forEach((line) => {
+								const wrapper = line.parentElement;
+								if (wrapper) {
+									wrapper.style.paddingBottom = "0.25em";
+									wrapper.style.marginBottom = "-0.25em";
+								}
+							});
+
+							return gsap.from(self.lines, {
+								// TROUVE LA HAUTEUR DE LA LIGNE POUR DÉPLACER LES LIGNES EN DESSOUS
+								y: self.lines[0]?.offsetHeight * 1.25  ?? 60,
+
+								autoAlpha: 0,
+								stagger: 0.15,
+								duration: 0.75,
+								ease: "power2.out",
+							});
+						},
+					});
+				},
+			});
+		});
+	});
+</script>

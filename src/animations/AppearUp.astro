@@ -1,0 +1,62 @@
+---
+
+
+
+---
+
+<style>
+    
+    :global([data-appearup]) {
+        opacity: 0;
+        transform: translateY(30px);  
+    }
+</style>
+
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { getStartPosition } from "./animationConfig.js";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    document.addEventListener("astro:page-load", () => {
+        
+        const elements = document.querySelectorAll('[data-appearup]');
+        let previousTop = null;
+        let delayIncrement = 0;
+    
+        elements.forEach((element) => {
+
+            const rect = element.getBoundingClientRect();
+        
+            // Vérifie si l'élément est sur la même ligne que le précédent
+            if (previousTop !== null && rect.top === previousTop) {
+                delayIncrement += 0.2; // Ajoute un délai de 0.2s pour chaque élément sur la même ligne
+            } else {
+                delayIncrement = 0; // Réinitialise le délai quand l'élément est sur une nouvelle ligne
+            }
+            previousTop = rect.top;
+
+
+            const startPosition = getStartPosition(element);
+            const dataDelay = element.dataset.delay ? parseFloat(element.dataset.delay) : 0;
+
+            //Animation d'apparition au scroll
+            gsap.to(element, {
+                opacity: 1,
+                transform: "translateY(0px)", // Retour à la position initiale
+                duration: 0.5,
+                delay: delayIncrement + dataDelay, // Ajoute le délai calculé + data-delay manuel
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start:  startPosition, // Position dynamique selon la taille de l'écran
+                    toggleActions: "play none none none",
+                    //markers: true,
+                }
+            });
+        });
+    });
+  </script>
+  

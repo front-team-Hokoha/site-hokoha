@@ -1,0 +1,132 @@
+---
+import PolygoneFlipProg from "../../commun/polygones/PolygoneFlipProg.astro";
+---
+
+<div id="grilleTagsNone" class="sok-offre__grid hex-grid -hidden" data-rows="3" data-cols="4" data-ratio="0.2" data-appeargroup>
+
+  <!-- Poly par default -->
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none"  />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none"  />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" />
+  <PolygoneFlipProg type="-none" colorFront="-default" /> 
+
+</div>
+
+
+
+<style lang="scss" is:global>
+  .hex-grid {
+    display: grid;
+    gap: 2px;
+    margin-bottom:2px;
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+
+    &.-hidden {
+			visibility: hidden;	
+		}
+  }
+
+  .polygone {
+    transition: opacity 0.4s ease, filter 0.4s ease;
+  }
+
+  .sok-offre__grid{
+    position: relative;
+    z-index: 2;
+  }
+
+
+  // Responsive uniquement Mobile
+  @media (max-width: 1024px) {
+
+    .sok-offre__grid {
+      grid-template-columns: repeat(3, 1fr) !important; 
+      grid-template-rows: repeat(4, auto) !important;
+
+      > *  {
+        grid-area: auto / auto / auto / auto !important;
+
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+</style>
+
+
+<script>
+function layoutGrid(grid: HTMLElement) {
+  const COLS        = Number(grid.dataset.cols);
+  const ROWS        = Number(grid.dataset.rows);
+  const EMPTY_RATIO = Number(grid.dataset.ratio);
+  const DELAY = 0.035;
+
+  const svgs = Array.from(grid.querySelectorAll<HTMLElement>('.polygone'));
+
+  grid.style.gridTemplateColumns = `repeat(${COLS}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${ROWS}, auto)`;
+
+
+  const positions: { row: number; col: number }[] = [];
+  for (let row = 1; row <= ROWS; row++) {
+    for (let col = 1; col <= COLS; col++) {
+      positions.push({ row, col });
+    }
+  }
+
+  // Mélange aléatoire des positions (Fisher-Yates)
+  for (let i = positions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [positions[i], positions[j]] = [positions[j], positions[i]];
+  }
+
+  // Masque un nombre de polygones proportionnel à EMPTY_RATIO
+  const visibleCount = Math.round(positions.length * (1 - EMPTY_RATIO));
+
+  svgs.forEach((svg, i) => {
+    if (i >= positions.length) { svg.style.display = 'none'; return; }
+    const { row, col } = positions[i];
+    svg.style.gridColumn = String(col);
+    svg.style.gridRow    = String(row);
+    svg.classList.remove('-visible', '-hidden');
+    svg.classList.add(i < visibleCount ? '-visible' : '-hidden');
+    svg.dataset.delay = String(i * DELAY);
+  });
+}
+
+
+
+
+
+// Attendre que la page soit complètement chargée
+document.addEventListener("astro:page-load", () => {
+
+  const grids = document.querySelectorAll<HTMLElement>('.hex-grid');
+  
+  // Appliquer la mise en page à chaque grille
+  grids.forEach((grid) => {
+    
+    grid.classList.remove("-hidden");
+    layoutGrid(grid);
+  });
+
+
+});
+</script>

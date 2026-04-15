@@ -1,0 +1,68 @@
+---
+// ===== Composants de la page =====
+const { linkRedirection = "#" } = Astro.props;
+---
+
+<a href={linkRedirection}>
+   <div class="sok-8ptgrid" aria-hidden="true"></div>
+	<div class="sok-8ptgrid -secondary" aria-hidden="true"></div>
+
+   <article class="oka-projet oka-flex">
+      <slot />
+   </article>
+</a>
+
+
+
+<style lang="scss">
+   a {
+      text-decoration: none;
+
+      a:visited {
+         color: transparent;
+      }
+   }
+
+   .oka-projet {
+      position: relative;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      aspect-ratio: 4/3;
+      margin-left: -1px;
+      margin-bottom: -1px;
+      padding: 0.5rem 1rem;
+
+      cursor: pointer;
+
+      & > * {
+         z-index: 99;
+         pointer-events: none;
+
+      }
+   }
+
+   .sok-8ptgrid {
+      //display: none;
+      position: absolute;
+      //left : 0dvw;
+      //top : 30dvh;
+      width: 1dvw;
+      height: 100dvh;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+         to bottom,
+         rgba(88, 125, 223, 0.5) 0px,
+         rgba(88, 125, 223, 0.5) 8px,
+         transparent 8px,
+         transparent 16px
+      );
+
+      &.-secondary {
+         width: 3dvw;
+         height: 30dvh;
+      }
+   }
+</style>

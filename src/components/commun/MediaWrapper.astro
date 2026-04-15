@@ -1,0 +1,42 @@
+---
+/* 
+MediaWrapper sert englober une image ou une video et de lui assigner 
+n'importe quelle taille en grâce à l'ajout d'un ratio
+
+ratio : permet d'utiliser n'importe quel ratio pour des images et vidéos
+radius : permet d'ajouter des arrondis aux bordures
+   valeur possible :
+      none : 0
+      sm : 0.5 rem / 8px
+      md : 1rem / 16px
+*/
+
+const { ratio, radius = "none" } = Astro.props
+---
+
+<div class="media-wrapper" style={`aspect-ratio: ${ratio}`} data-radius={radius}>
+   <slot />
+</div>
+
+
+<style lang="scss">
+   .media-wrapper {
+      width: 100%;
+      border-radius: .5rem;
+      overflow: hidden;
+
+      // Border-radius
+      &[data-radius="none"] {
+         border-radius: 0;
+      }
+
+      &[data-radius="sm"] {
+         border-radius: 0.5rem;
+      }
+
+      &[data-radius="md"] {
+         border-radius: 1rem;
+      }
+   }
+</style>
+

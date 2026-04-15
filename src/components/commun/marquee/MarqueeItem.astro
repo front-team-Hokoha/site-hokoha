@@ -1,0 +1,43 @@
+---
+/*
+srcImage et altImage : permettent d'ajouter la source de l'image ainsi que son texte alternatif
+
+texte : permet d'ajouter du texte associé à l'image | ex : logo.png + nom du logo
+        ajout également le texte dans un balise aria-label pour l'a11c
+
+hidden : permet de cacher ou non des éléments pour les liseuses (accessibilité)
+         par défaut à true, ajouter false pour définir les éléments à ne pas lire par les liseuses
+*/
+
+const { 
+   srcImage, 
+   altImage, 
+   texte, 
+   hidden = true 
+} = Astro.props
+---
+
+<div class="sok-item" aria-label={texte} aria-hidden={hidden}>
+   <img class="sok-item__image" src={srcImage} alt={altImage}>
+
+   <span class="sok-item__text oka-data -lg -strong" set:html={texte}></span>
+</div>
+
+<style lang="scss">
+   .sok-item {
+      display: flex;
+      align-items: center;
+
+      &__image {
+         width: 3rem;
+         height: 3rem;
+         object-fit: contain;
+         user-select: none;
+      }
+
+      &__text {
+         white-space: nowrap;
+         user-select: none;
+      }
+   }
+</style>

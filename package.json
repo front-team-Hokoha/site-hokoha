@@ -1,0 +1,19 @@
+{
+  "name": "site-hokoha",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "astro": "^6.0.5",
+    "gsap": "^3.14.2"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.97.3"
+  }
+}

@@ -1,0 +1,35 @@
+
+
+
+/*
+Inspiration
+https://designsystem.digital.gov/utilities
+*/
+
+
+//@import "gap/gap.4.0.0";
+
+//--------------------------------------
+// SCROLL
+@use "scroll/scroll.4.0.0" as *;
+
+
+
+@use "skeuomorphisme" as *;
+
+//---------------------------------------
+._ctnr-inline{
+    container-type: inline-size;
+}
+
+//---------------------------------------
+// Largeurs 
+._with-xs {
+    width : var(--oka-breakpoint-xs);
+}
+._with-sm {
+    width : var(--oka-breakpoint-sm);
+}
+._with-md {
+    width : var(--oka-breakpoint-md);
+}

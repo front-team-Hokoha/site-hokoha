@@ -1,0 +1,47 @@
+<div class="reveal-box -hidden">
+  <slot />
+</div>
+
+<style lang="scss">
+  .reveal-box {
+    border: 0px dotted red;
+
+    &.-hidden {
+      // visibility: hidden;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+  import { getStartPosition } from "./animationConfig.js";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Charger les éléments dès que la page est chargée
+  document.addEventListener("astro:page-load", () => {
+    const revealBoxes = document.querySelectorAll(".reveal-box");
+
+    // Vérifie si les components Revealtext existent sur la page
+    if (!revealBoxes.length) return;
+
+    // Créer une animation de reveal lors du scroll pour chaque Revealtext
+    revealBoxes.forEach((revealBox) => {
+      const children = revealBox.querySelectorAll("[data-reveal]");
+      gsap.from(children, {
+        scrollTrigger: {
+            trigger: revealBox,
+            start: getStartPosition(revealBox),
+            once: true,
+            // markers: true,
+        },
+         y: 100,
+         autoAlpha: 0,
+         stagger: 0.15,
+         duration: 0.6,
+         ease: "power2.out",
+         });
+    });
+  });
+</script>

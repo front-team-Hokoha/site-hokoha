@@ -1,0 +1,117 @@
+---
+---
+
+<div class="morph morph-1">
+   <i class="fa-solid fa-arrow-left"></i>
+</div>
+<div class="morph morph-2"></div>
+<div class="morph morph-3"></div>
+
+<style lang="scss" define:vars>
+   .morph {
+      position: absolute;
+		width: calc(110.851px);
+		height: calc(128px);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+      // mix-blend-mode: difference;
+      // will-change: transform;
+      // backface-visibility: hidden;
+   }
+
+   .morph-1 {
+      top: 15%;
+      left: 15%;
+      background-color: rgb(238, 54, 21);
+   }
+
+   .morph-2 {
+      bottom: 15%;
+      right: 15%;
+      background-color: rgb(56, 23, 243);
+   }
+
+   .morph-3 {
+      bottom: 15%;
+      left: 15%;
+      background-color: rgb(8, 122, 8);
+      opacity: 0;
+   }
+</style>
+
+<script>
+   import { gsap } from "gsap";
+   import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   document.addEventListener('astro:page-load', () => {
+      const morph = document.querySelector(".morph");
+
+      const h = morph.offsetHeight;
+      const w = morph.offsetWidth;
+      // const halfW = w / 2;
+      // const halfH = h / 2;
+      const vertical = h * 0.75;
+         
+
+      // ===== Animation au scroll des morphs =====
+      // === ScrollTrigger - Première cartee ===
+      const tl1 = gsap.timeline({
+         scrollTrigger: {
+            trigger: ".card-1",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true
+         }
+      });
+
+      tl1.to('.morph-1', { top: "50%", left: "50%", xPercent: -50, y: -h, duration: .3, ease: "power2.inOut" })
+         .to('.morph-2', { bottom: "50%", right: "50%", x: w, y: vertical, duration: .3, ease: "power2.inOut" }, "<")
+      
+      // === ScrollTrigger - Deuxième carte ===
+      const tl2 = gsap.timeline({
+         scrollTrigger: {
+            trigger: ".card-2",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true
+         }
+      });
+
+      tl2.to('.morph-3', {opacity: 1, bottom: "50%", left: "50%", x: -w, y: vertical, duration: .3, ease: "power2.inOut" })
+   
+
+      // === ScrollTrigger - Troisième carte ===
+      const tl3 = gsap.timeline({
+         scrollTrigger: {
+            trigger: ".card-3",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true
+         }
+      });
+
+      tl3.to(".morph-1", { y: -160, duration: .3, ease: "power2.inOut" })
+         .to(".morph-2", { x: 160, y: 128, duration: .3, ease: "power2.inOut" }, "<")
+         .to(".morph-3", { x: -160, y: 128, duration: .3, ease: "power2.inOut" }, "<");
+
+      // === ScrollTrigger - Quatrième carte ===
+      const tl4 = gsap.timeline({
+         scrollTrigger: {
+            trigger: ".card-4",
+            start: "top 20%",
+            end: "bottom 80%",
+            toggleActions: "play none reverse none",
+            // markers: true
+         }
+      });
+
+      tl4.to(".morph-1", { backgroundColor:"#6CB4EE" , rotate: 1080, duration: .75, ease: "power2.inOut" })
+         .to(".morph-2", { backgroundColor:"#5A4FCF" , rotate: 1080, duration: .75, ease: "power2.inOut" }, "<")
+         .to(".morph-3", { backgroundColor:"#03C03C" , rotate: 1080, duration: .75, ease: "power2.inOut" }, "<")
+   })
+</script>

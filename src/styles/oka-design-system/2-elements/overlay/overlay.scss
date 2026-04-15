@@ -1,0 +1,30 @@
+
+/** OKA OVERLAY 
+
+| 6.0.0 | 03/12/2025 | Création  |
+
+*/
+
+
+// 6.0.0 Overlay
+.oka-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--oka-color-layer-overlay, var(--oka-color-app-bg-overlay));
+    border:none;
+
+    cursor: default;
+    z-index: 0;
+
+}
+
+.oka-overlay[aria-expanded="false"] {
+    display: none;
+}
+
+.oka-overlay.-invisible {
+    background: transparent;
+}

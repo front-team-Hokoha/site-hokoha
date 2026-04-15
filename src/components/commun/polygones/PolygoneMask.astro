@@ -1,0 +1,56 @@
+---
+import PolygoneStatic from "./PolygoneStatic.astro";
+import PolygoneFlip from "./PolygoneFlip.astro";
+
+const { addClass } = Astro.props
+---
+
+<div class={`hex-grid -hidden ${addClass}`} data-rows="4" data-cols="4" data-ratio="0">
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+  <PolygoneStatic color="-mask"/>
+
+</div>
+
+<style lang="scss">
+  .hex-grid {
+    display: grid;
+    gap: 1px;
+    /* colonnes et lignes définies par le script */
+
+    svg {
+      overflow: visible; // permet au stroke de ne pas être rogné par le viewport SVG
+    }
+
+    &.-hidden {
+      visibility: hidden;
+    }
+  }
+</style>
+
