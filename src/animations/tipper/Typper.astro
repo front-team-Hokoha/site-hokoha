@@ -1,0 +1,137 @@
+---
+/**
+ * Typper — Animation d'apparition lettre par lettre
+ *
+ * Props :
+ *   text  {string}  — Texte à animer (requis)
+ *   id      {string}   — Identifiant optionnel pour le déclenchement programmatique
+ *   manual  {boolean}  — Si true, désactive le déclenchement au scroll (programmatique uniquement)
+ *
+ * Déclenchement au scroll (défaut) :
+ *   L'animation se lance quand l'élément entre dans le viewport.
+ *   Configurable via data-offset-sm / data-offset-lg (ex: data-offset-lg="top 30%").
+ *
+ * Déclenchement programmatique :
+ *   // Anime un tipper par son id
+ *   document.dispatchEvent(new CustomEvent('tipper:play', { detail: { id: 'mon-id' } }));
+ *
+ *   // Anime tous les tippers de la page (non-manual uniquement si filtre non précisé)
+ *   document.dispatchEvent(new CustomEvent('tipper:play'));
+ *
+ * Exemple :
+ *   <Typper text="Bonjour le monde" />                          // scroll
+ *   <Typper id="titre-hero" text="Bonjour le monde" />          // scroll + programmatique
+ *   <Typper id="titre-hero" manual text="Bonjour le monde" />   // programmatique uniquement
+ */
+interface Props {
+    text: string;
+    id?: string;
+    manual?: boolean;
+}
+
+const { text, id, manual } = Astro.props;
+---
+
+<span class="tipper -hidden" set:html={text} data-tipper-id={id} data-tipper-manual={manual ? 'true' : undefined}></span>
+
+
+<script>
+import { gsap } from 'gsap';
+import { SplitText } from 'gsap/SplitText';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getStartPosition } from '../animationConfig.js';
+
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+function animateTipper(tipper: HTMLElement) {
+    if (!tipper.classList.contains('-hidden') && tipper.dataset.tipperPlayed) return;
+    tipper.dataset.tipperPlayed = '1';
+    tipper.classList.remove('-hidden');
+
+    SplitText.create(tipper, {
+        type: 'words,chars',
+        wordsClass: 'word',
+        charsClass: 'char',
+        onSplit(self) {
+            self.chars.forEach((char, i) => {
+                gsap.fromTo(
+                    char,
+                    { opacity: 0 },
+                    {
+                        opacity: 1,
+                        duration: 0.05,
+                        delay: i * 0.02,
+                        ease: 'none',
+                        onStart() {
+                            gsap.set(char, { '--opa': 1 });
+                        },
+                        onComplete() {
+                            gsap.to(char, { '--opa': 0, duration: 0.1 });
+                        },
+                    }
+                );
+            });
+        },
+    });
+}
+
+document.addEventListener('astro:page-load', () => {
+    const tippers = document.querySelectorAll<HTMLElement>('.tipper');
+    if (!tippers.length) return;
+
+    // Déclenchement au scroll (ignoré si data-tipper-manual="true")
+    tippers.forEach((tipper) => {
+        if (tipper.dataset.tipperManual === 'true') return;
+        ScrollTrigger.create({
+            trigger: tipper,
+            start: getStartPosition(tipper),
+            once: true,
+            onEnter: () => animateTipper(tipper),
+        });
+    });
+
+    // Déclenchement programmatique via : document.dispatchEvent(new CustomEvent('tipper:play', { detail: { id: 'mon-id' } }))
+    // Sans detail.id → anime tous les tippers de la page
+    document.addEventListener('tipper:play', (e: Event) => {
+        const id = (e as CustomEvent).detail?.id;
+        tippers.forEach((tipper) => {
+            if (!id || tipper.dataset.tipperId === id) {
+                animateTipper(tipper);
+            }
+        });
+    });
+});
+</script>
+
+
+<style lang="scss" is:global>
+    .tipper {
+        font-kerning: none;
+        position: relative;
+
+        &.-hidden {
+            visibility: hidden;
+        }
+    }
+
+    .tipper .word {
+        white-space: nowrap;
+    }
+
+    .tipper .char {
+        position: relative;
+        opacity: 0;
+        --opa: 0;
+
+        &::after {
+            content: '';
+            width: 3px;
+            top: -0.5rem;
+            left: 0;
+            position: absolute;
+            opacity: var(--opa);
+            background: var(--oka-color-app-fg-secondary);
+            height: 1rem;
+        }
+    }
+</style>
