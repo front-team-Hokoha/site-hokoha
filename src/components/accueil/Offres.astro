@@ -8,8 +8,9 @@ import GrilleOffresAi from "../../components/accueil/offres/GrilleOffresAi.astro
 
 import GrilleIntro from "../../components/accueil/GrilleIntro.astro";
 import Revealtext from "../../animations/RevealText.astro";
+import Typper from "../../animations/tipper/Typper.astro";
 
-import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
+// import PolygoneFlipProg from "../commun/polygones/PolygoneFlipProg.astro";
 import digitalArrow from '../../assets/images/digital-arrow.svg';
 ---
 
@@ -36,8 +37,8 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
   <section  class="sok-offres"  id="offres">
   
     <div class="sok-offres__intro flex-grid">
-      <div class="col col-8">
-        
+      <div class="col col-1">
+
       </div>
       <div class="col col-7">
           <div class="oka-spacer -lg" aria-hidden="true"></div>
@@ -97,9 +98,10 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
       <div class="sok-offre__colDetail col col-4 col--md-3" >
         <div class="sok-offre__detail">
           <p>
-            Elle répond à différents besoins : gestion interne (ERP, CRM, outils collaboratifs), services en ligne (réservation, e-commerce, espace client) et automatisation de processus.
-
-Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous les secteurs. Un levier efficace pour améliorer la productivité, l’expérience utilisateur et soutenir votre croissance.
+            <Typper id="typper-web-1" manual text="Elle répond à différents besoins : gestion interne (ERP, CRM, outils collaboratifs), services en ligne (réservation, e-commerce, espace client) et automatisation de processus." />
+          </p>
+          <p>
+            <Typper id="typper-web-2" manual text="Flexible et accessible depuis tout appareil connecté, elle s'adapte à tous les secteurs. Un levier efficace pour améliorer la productivité, l'expérience utilisateur et soutenir votre croissance." />
           </p>
         </div>
       </div>
@@ -138,7 +140,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
   
       <div class="sok-offre__colDetail col col-4 col--md-3" >
         <div class="sok-offre__detail">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+          <p><Typper id="typper-metier-1" manual text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum." /></p>
         </div>
       </div>
   
@@ -171,7 +173,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
   
       <div class="col col-3" >
         <div class="sok-offre__detail">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+          <p><Typper id="typper-app-1" manual text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum." /></p>
         </div>
       </div>
   
@@ -205,7 +207,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
   
       <div class="sok-offre__colDetail col col-3" >
         <div class="sok-offre__detail">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+          <p><Typper id="typper-ia-1" manual text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum." /></p>
         </div>
       </div>
   
@@ -239,7 +241,7 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
   
       <div class="sok-offre__colDetail col col-3" >
         <div class="sok-offre__detail">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum.</p>
+          <p><Typper id="typper-iot-1" manual text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum." /></p>
         </div>
       </div>
 
@@ -311,9 +313,8 @@ Flexible et accessible depuis tout appareil connecté, elle s’adapte à tous l
           sectionOffre.classList.add("-active");
 
           console.log("Entré dans l'offre :", offreId);
-          document.dispatchEvent(
-            new CustomEvent("offre:enter", { detail: { offre: offreId } })
-          );
+          document.dispatchEvent( new CustomEvent("offre:enter", { detail: { offre: offreId } }) );
+          document.dispatchEvent(new CustomEvent('tipper:play', { detail: { id: `typper-${offreId}-1` } }));
         },
         onEnterBack: () => {
           // const offreId = offre.dataset.offre;
