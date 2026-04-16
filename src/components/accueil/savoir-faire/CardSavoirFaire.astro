@@ -10,10 +10,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 {savoirFaires.map((savoirFaire) => (
 
   <article class="sok-card">
-    <div class="flex-grid sok-card__container">
+    <div class="sok-card__container">
 
       {/* bandeau */}
-      <div class="col col-8 side-wrapper">
+      <div class="side-wrapper">
         <div class="sok-card__side">
           <h3 class="oka-h -md">{savoirFaire.frontmatter.tag}</h3>
 
@@ -23,10 +23,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         </div>
       </div>
 
-      <div class="col col-8 card-content-container">
-        <div class="flex-grid sok-card__content-wrapper">
+      <div class="card-content-container">
+        <div class="sok-card__content-wrapper">
 
-          <div class="col col-8 texts-wrapper">
+          <div class="texts-wrapper">
             <div class="sok-card__content">
               <h3 class="oka-h -xl" set:html={savoirFaire.frontmatter.title} />
 
@@ -42,7 +42,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
             </div>
           </div>
 
-          <div class="col col-8 image-wrapper">
+          <div class="image-wrapper">
             <div class="oka-spacer -xl -spacing" aria-hidden="true" />
 
             <figure class="sok-card__image-inner">
@@ -61,7 +61,10 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints" as *;  
   
   :root {
+    // Sert à calculer la taille d'une ou plusieurs colonne par rapport au viewport
+    // 1 col = calc((100dvw / 16) * 1)
     --col-size: calc(100dvw / 16);
+
   }
 
   .-spacing {
@@ -71,25 +74,25 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 
   .sok-card {
-    // width: calc((100dvw / 16) * 13);
-    // flex: 0 0 calc((100dvw / 16) * 12);
-    // margin-bottom: -1px;
-    border: 1px solid var(--oka-color-bd-minimal);
     position: relative;
     z-index: 99;
+    // margin-bottom: -1px;
     // background-color: var(--oka-color-layer-floor-0);
-    
+    border: 1px solid var(--oka-color-bd-minimal);
+
     .sok-card__container {
+      overflow: hidden;
       gap: 0;
 
       @include breakpoint(md) {
         display: flex;
-        overflow: hidden;
         min-height: 65vh;
       }
 
       // ===== Bandeau latéral =====
       .side-wrapper {
+        flex: 0 0 calc(var(--col-size) * 8);
+
         @include breakpoint(md) {
           flex: 0 0 calc(var(--col-size) * 1);
         }
@@ -132,6 +135,7 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
         }
         
         .texts-wrapper {
+          flex: 0 0 calc(var(--col-size) * 8);
           padding: 1rem;
 
           @include breakpoint(md) {
@@ -170,6 +174,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
 
         // ===== Image =====
         .image-wrapper {
+          flex: 0 0 calc(var(--col-size) * 8);
+
           @include breakpoint(md) {
             flex: 0 0 calc(var(--col-size) * 3);
             margin: 2rem;
@@ -198,63 +204,8 @@ const savoirFaires = Object.values(import.meta.glob("../../../contenus/accueil/s
   }
 </style>
 
-<!-- Changement des colonnes des cartes -->
-<script>
-document.addEventListener('astro:page-load', () => {
-  const cardContainers = document.querySelectorAll('.sok-card__container');
-  const sideWrappers = document.querySelectorAll('.side-wrapper');
-  const cardContentContainers = document.querySelectorAll('.card-content-container');
-  const cardContentWrappers = document.querySelectorAll('.sok-card__content-wrapper');
-  const textsContentWrappers = document.querySelectorAll('.texts-wrapper');
-  const imageWrappers = document.querySelectorAll('.image-wrapper');
-  
-  updateClasses();
-  // Surveille si la fenêtre est redimensionnée
-  window.addEventListener('resize', updateClasses)
-
-  function updateClasses() {
-    const viewportWidth = window.innerWidth;
-    
-    if (viewportWidth >= 1024) {
-      resizeLargerDevice();
-    } else {
-      resizeSmallerDevice();
-    }
-  }
-
-  
-  // Viewport : supérieur ou égale à 1024px
-  function resizeLargerDevice() {
-    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
-    .forEach(group => group.forEach((el, i) => {
-      removeAllClasses(el);     
-    }));
-    
-    cardContainers.forEach(cardContainer => cardContainer.classList.remove('flex-grid'));
-    cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.remove('flex-grid'));
-  }    
-  
-  // Viewport : inférieur à 1024px
-  function resizeSmallerDevice() {
-    [sideWrappers, cardContentContainers, textsContentWrappers, imageWrappers]
-    .forEach(group => group.forEach(el => {
-      removeAllClasses(el);
-      el.classList.add('col-8');
-      cardContainers.forEach(cardContainer => cardContainer.classList.add('flex-grid'));
-      cardContentWrappers.forEach(cardContentWrapper => cardContentWrapper.classList.add('flex-grid'));
-    }));
-  }
-  
-  // Retirer les classes précédentes
-  function removeAllClasses(el: Element) {
-    el.classList.remove('col-8');
-  }
-})
-</script>
-
 <!-- GSAP -->
 <script>
-
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -273,7 +224,6 @@ document.addEventListener('astro:page-load', () => {
   
     screenResized();
     window.addEventListener('resize', screenResized);
-
     
     // Animation pour les tablettes et laptop
     function screenResized() {
