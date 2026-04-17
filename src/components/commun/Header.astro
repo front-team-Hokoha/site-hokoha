@@ -1,5 +1,5 @@
 ---
-import logokoha2 from '../../assets/images/logokoha-2.svg';
+import logokoha2 from '../../assets/images/logokoha-picto-light.svg';
 ---
 
 <!-- HEADER -->
@@ -15,7 +15,7 @@ import logokoha2 from '../../assets/images/logokoha-2.svg';
 
 		<div class="oka-appbar__right -hiden">
 			<div class="sok-toggle">
-				menu
+				<i class="fa-thin fa-bars"></i>
 			</div>
 
 			<nav class="sok-navbar">
@@ -58,6 +58,8 @@ import logokoha2 from '../../assets/images/logokoha-2.svg';
 		z-index: 99;
 	}
 
+	i { font-size: 1.5rem }
+
 	// Masque certains oka-spacer
 	.-spacing {
 		@include breakpoint(md) {
@@ -77,14 +79,15 @@ import logokoha2 from '../../assets/images/logokoha-2.svg';
 		left: 0;
 		right: 0;
 		z-index: 99;
-		width: 100%;
-		background-color: var(--oka-color-layer-floor-0); // var(--oka-color-neutral-50);
 		margin:  0 0 0 0;
 		padding: 0.5rem 1rem;
+		width: 100%;
+		background-color: var(--oka-color-layer-floor-0); // var(--oka-color-neutral-50);
+		border-bottom: 1px solid var(--oka-color-bd-minimal);
 	}
 
 	.sok-logokoha{
-		height: 3.125rem;
+		height: 2.5rem;
 	}
 
 	// ==== Navbar ====
@@ -108,12 +111,12 @@ import logokoha2 from '../../assets/images/logokoha-2.svg';
 		padding: 0rem 2rem;
 		background-color: var(--oka-color-layer-floor-0);
 		border-radius: 0 0 10px 10px;
-		box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,0.1);
-		transform: translateY(-150%);
+		// box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,0.1);
+		transform: translateY(-120%);
 		transition: all .5s ease-out;
 
 		&.active {
-			transform: translateY(0);
+			transform: translateY(-1%);
 		}
 
 		@include breakpoint(md) {
