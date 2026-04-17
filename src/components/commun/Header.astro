@@ -3,96 +3,94 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 ---
 
 <!-- HEADER -->
-<div class="oka-appWrap -fluid" data-appeardown data-delay="0">
+<header class="layout-app__header  oka-appbar -oka-darkMode sok-header">
 
-	<header class="layout-app__header  oka-appbar -oka-darkMode sok-header">
+	<div class="oka-appbar__row ">
 
-		<div class="oka-appbar__row ">
+		<div class="oka-appbar__left" style="flex-shrink:1;"> 
+			<a href="/">
+				<img class="sok-logokoha" src={logokoha2.src} alt="logo Hokoha">
+			</a>
+		</div>
 
-			<div class="oka-appbar__left" style="flex-shrink:1;"> 
-				<a href="/">
-					<img class="sok-logokoha" src={logokoha2.src} alt="logo Hokoha">
-				</a>
+		<div class="oka-appbar__right -hiden">
+			<div class="sok-toggle">
+				menu
 			</div>
 
-		
+			<nav class="sok-navbar">
 
-			<div class="oka-appbar__right -hiden">
-				<div class="sok-toggle">
-					menu
+				<div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
+
+				<div class="sok-navbar__items">
+					<a class="oka-h" href="/" aria-label="lien vers la page d'accueil">Accueil</a>
+			
+					<a class="oka-h" href="/methodologie" aria-label="lien vers la page méthodologie">Méthodologie</a>
+				
+					<a class="oka-h" href="/realisations" aria-label="lien vers la page réalisations">Réalisations</a>
+				
+					<a class="oka-h" href="/equipe" aria-label="lien vers la page équipe">Équipe</a>
 				</div>
-
-				<nav class="sok-navbar">
-
-					<div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
-
-
-					<div class="sok-navbar__items">
-						<a class="oka-h -lg" href="/" aria-label="lien vers la page d'accueil">Accueil</a>
 				
-						<a class="oka-h -lg" href="/methodologie" aria-label="lien vers la page méthodologie">Méthodologie</a>
-					
-						<a class="oka-h -lg" href="/realisations" aria-label="lien vers la page réalisations">Réalisations</a>
-					
-						<a class="oka-h -lg" href="/equipe" aria-label="lien vers la page équipe">Équipe</a>
-					</div>
+				<div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
 				
-					
-					<div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
-					
-					<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
-						<div class="oka-bt__lbl">Contact</div>
-					</a>
+				<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
+					<div class="oka-bt__lbl">Contact</div>
+				</a>
 
-					<div class="oka-spacer -md -spacing" aria-hidden="true"></div>
-				</nav>
-			</div>
-	</div>
-	
-	</header>
-
+				<div class="oka-spacer -md -spacing" aria-hidden="true"></div>
+			</nav>
+		</div>
 </div>
 
+</header>
+
+<!-- emêche l'animation du header en JavaScript  -->
+<!-- <div class="oka-appWrap -fluid" data-appeardown data-delay="0">
+</div> -->
 
 <style lang="scss">
   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
-	// Retrait du transform : empêche l'affichage du menu sur mobile/tablet	
+	
+  // Retrait du transform : empêche l'affichage du menu sur mobile/tablet	
   .oka-appWrap {
 		transform: none !important;
+		z-index: 99;
 	}
 
-	body.no-scroll {
-		overflow: hidden;
-	}
+	// Masque certains oka-spacer
 	.-spacing {
 		@include breakpoint(md) {
 			display: none
 		}
 	}
+	
+	// Empêche de scroller lorsque la menu est ouvert
+	body.no-scroll {
+		overflow: hidden;
+	}
 
 	// ===== Header =====
 	.sok-header {
-		position:  relative;
-		// z-index: 99;
-		// display: flex;
-		// justify-content: space-around;
-		// padding: 20px;
-		background-color: rgb(255, 255, 255); //var(--oka-color-neutral-50);
+		position:  fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 99;
+		width: 100%;
+		background-color: var(--oka-color-layer-floor-0); // var(--oka-color-neutral-50);
 		margin:  0 0 0 0;
 		padding: 0.5rem 1rem;
 	}
 
 	.sok-logokoha{
-		// height: 2.5rem;
 		height: 3.125rem;
-		z-index: 99;
 	}
 
 	// ==== Navbar ====
 	.sok-toggle  {
 		display: block;
 		cursor: pointer;
-		z-index: 99;
 
 		@include breakpoint(md) {
 			display: none;
@@ -101,21 +99,21 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 	}
 
 	.sok-navbar {
-		position: fixed;
+		position: absolute;
 		top: 4rem;
 		left: 0;
-		z-index: 99;
+		right: 0;
+		z-index: -1;
 		width: 100%;
 		padding: 0rem 2rem;
 		background-color: var(--oka-color-layer-floor-0);
 		border-radius: 0 0 10px 10px;
-		// transform: translateX(0);
-		transform: translateX(-110%);
-		transition: transform .2s ease-out;
-		background: red;
+		box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,0.1);
+		transform: translateY(-150%);
+		transition: all .5s ease-out;
 
 		&.active {
-			transform: translateX(0);
+			transform: translateY(0);
 		}
 
 		@include breakpoint(md) {
@@ -123,15 +121,19 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 			display: flex;
 			align-items: center;
 			gap: 2rem;
+			z-index: 1; // important por pouvoir cliquer sur les liens
 			width: auto;
 			padding: 0;
+			background-color: transparent;
+			box-shadow: none;
+			transform: translateY(0);
+			transition: none;
 		}
 
 		&__items {
 			display: flex;
 			flex-direction: column;
 			gap: .5rem;
-			// align-items: flex-start;
 
 			@include breakpoint(md) {
 				flex-direction: row;
@@ -143,10 +145,6 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 				color: unset;
 				text-decoration: none;
 				padding: 0;
-
-				.oka-bt__lbl {
-
-				}
 			}
 		}
 	}
@@ -154,7 +152,12 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener('astro:page-load', () => {
 		const toggle = document.querySelector('.sok-toggle');
 		const navbar = document.querySelector('.sok-navbar');
 		const navLinks = document.querySelectorAll('.sok-navbar__items a');
@@ -169,6 +172,8 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 		// Ajoute ou retire des classes en fonction du viewport
 		toggleClasses();
 		window.addEventListener('resize', toggleClasses);
+		fixedHeader();
+
 	
 		function toggleClasses() {
 			const isDesktop = window.innerWidth >= 1024;
@@ -178,6 +183,28 @@ import logokoha2 from '../../assets/images/logokoha-2-dark.svg';
 				navLink.classList.toggle('-xs', isDesktop);	
 				// navLink.classList.toggle('-secondary', isDesktop);	
 			})
+		}
+
+		// ===== GSAP ===== 
+		// Permet d'afficher et masquer le header lors du scroll
+		// Influence les performances du site ?
+		function fixedHeader() {
+			console.log('gsap');
+			
+			const showAnim = gsap.from('.sok-header', { 
+				yPercent: -100,
+				paused: true,
+				duration: 0.5,
+				ease: "power2"
+			}).progress(1);
+
+			ScrollTrigger.create({
+				start: "top top",
+				end: "max",
+				onUpdate: (self) => {
+					self.direction === -1 ? showAnim.play() : showAnim.reverse()
+				}
+			});
 		}
 	});
 </script>
