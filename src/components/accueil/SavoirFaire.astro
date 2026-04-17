@@ -1,7 +1,6 @@
 ---
 // ===== Componsants de la page =====
 import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
-import CardContainer from "./savoir-faire/CardContainer.astro";
 // import Grid from "../../components/commun/grid.astro";
 // ===== Composants d'animations =====
 import Revealtext from "../../animations/RevealText.astro";
@@ -14,15 +13,15 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
   <section class="sok-sf" id="sok-sf">
   
     <div class="hgo-snap oka-appWrap -fluid">
-      <section class="_ctnr-inline sok-savoirfaire">
-        <div class="flex-grid ">
+      <section class="sok-savoirfaire">
+        <div class="flex-grid">
 
           <div class="col col-16">
             <div class="flex-grid sok-savoirfaire__wrapper">
               <div class="col col-1" aria-hidden="true"></div>
-              
+
               <div class="col col-14 sok-savoirfaire__content-container">
-                <div class="flex-grid -center">
+                <div class="flex-grid">
     
                   <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
                     <div class="sok-savoirfaire__titles">
@@ -86,11 +85,11 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
     
     &__wrapper {
       background-color: var(--oka-color-layer-floor-0);
+      border: 1px solid var(--oka-color-bd-minimal);
 
       @include breakpoint(md) {
         min-height: 35vh;
         align-items: center;
-        border: 1px solid var(--oka-color-bd-minimal);
       }
     }
     

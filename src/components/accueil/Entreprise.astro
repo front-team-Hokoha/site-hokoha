@@ -10,7 +10,7 @@ import RevealMask from "../../animations/RevealMask.astro";
 import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
 import digitalArrow from '../../assets/images/digital-arrow.svg';
 ---
-<div class="oka-appWrap -fluid">
+<div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
     
     <div class="flex-grid">
@@ -150,7 +150,7 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
       .sok-divider {
         width: 1px;
         height: 8vh;
-        background: var(--oka-color-bd-minimal);
+        background-color: var(--oka-color-bd-minimal);
       }
     }
   }
@@ -203,9 +203,9 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
       markers: true
     })
 
-    tl.from(dataOne, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}) // snap : arrondi les décimales
-      .from(dataTwo, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}, "-=0.75")
-      .from(dataThree, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2"}, "-=1.75")
+    tl.from(dataOne, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2.inOut"}) // snap : arrondi les décimales
+      .from(dataTwo, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2.inOut"}, "-=0.75")
+      .from(dataThree, {textContent: 0,snap: 'textContent', duration: 1.75, ease: "power2.inOut"}, "-=0.75")
   });
 
   // const items = document.querySelectorAll(".data");
