@@ -24,7 +24,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
   <Layout title="Page Réalisations" description={descContent}>
-    <div class="oka-appWrap -fluid">
+    <div class="oka-appWrap -fluid oka-lightMode oka-surface">
       <!-- ===== Hero Section ===== -->
       <section class="flex-grid">
         <div class="flex-grid">
@@ -57,7 +57,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
     <Diversite />
           
     <!-- ===== Avantages ===== -->
-    <div class="oka-appWrap -fluid">
+    <div class="oka-appWrap -fluid oka-lightMode oka-surface">
     
       <section class="flex-grid sok-avantages">
         <div class="oka-spacer -xl" aria-hidden="true"></div>
@@ -83,8 +83,6 @@ const { descContent = "lorem ipsum" } = Astro.props;
       </section>
 
     </div>
-    <div class="oka-appWrap">
-    </div>
 
     <!-- <div slot="Footer">
       <Footer modifier="-grey"/>
@@ -94,12 +92,5 @@ const { descContent = "lorem ipsum" } = Astro.props;
 <!-- === GobalStyles === -->
 <GlobalStyles/>
 
-<style lang="scss">
-  section {
-    // border-radius: var(--sok-radius-section) var(--sok-radius-section) 0 0  ;
-  }
-
-  .sok-avantages{
-    background-color: var(--sok-color-underground);
-  }
-</style>
+<!-- <style lang="scss">
+</style> -->
