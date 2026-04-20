@@ -15,7 +15,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
 <Layout title="Page Contact" description={descContent}>
-   <div class="oka-appWrap">
+   <div class="oka-appWrap -fluid oka-lightMode oka-surface">
       <section class="_ctnr-inline">
          <div class="flex-grid">
             <div class="oka-spacer -xxl" aria-hidden="true"></div>
@@ -28,6 +28,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
                </RevealText>
 
                <div class="oka-spacer -xl" aria-hidden="true"></div>
+               <div class="oka-spacer -md" aria-hidden="true"></div>
 
                <div class="oka-cols -two">
                   <div class="sok-infos">
@@ -85,7 +86,6 @@ const { descContent = "lorem ipsum" } = Astro.props;
                      </button>
                   </form>
                </div>
-
             </div>
 
          </div>
@@ -95,7 +95,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
    </div>
 
    <!-- Carte -->
-   <div class="oka-appWrap -full">
+   <div class="oka-appWrap -fluid oka-lightMode oka-surface">
       <section class="flex-grid">
          <div class="col col-16">
             <MediaWrapper ratio="2.5/1">
@@ -110,10 +110,25 @@ const { descContent = "lorem ipsum" } = Astro.props;
 </Layout>
 
 <style lang="scss">
+   @use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+
+   .oka-cols.-two {
+      grid-template-areas: "col2" "col1";
+      gap: 4rem;
+      
+      @include breakpoint(sm) {
+         grid-template-areas: "col1 col2";
+         gap: 1rem;
+      }
+   }
+
    .sok-infos {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
    }
 
    // Formulaire

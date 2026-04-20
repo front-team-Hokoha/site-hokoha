@@ -1,78 +1,313 @@
+---
+import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 
+// ATTENTION : En cas de changement des liens, modifier les Navbar Desktop et Mobile
 ---
-import logokoha2 from '../../assets/images/logokoha-2.svg';
----
+
 <!-- HEADER -->
+<header class="layout-app__header oka-appbar oka-darkMode oka-surface sok-header">
+	<div class="oka-appbar__row">
+		<div class="oka-appbar__left" style="flex-shrink:1;">
+			<a href="/">
+				<img class="sok-logokoha" src={logokohaPicto.src} alt="logo Hokoha" />
+			</a>
+		</div>
 
-<div class=" oka-appWrap -full" data-appeardown data-delay="0">
+    <div class="oka-appbar__right -hiden">
+      <div class="sok-toggle">
+        <i class="fa-thin fa-bars"></i>
+      </div>
 
-<header class="layout-app__header  oka-appbar -oka-darkMode sok-header">
-  
-  <div class="oka-appbar__row ">
-	
-    <div class="oka-appbar__left" style="flex-shrink:1;"> 
-		<a href={import.meta.env.BASE_URL}>
-			<img class="sok-logokoha" src={logokoha2.src} alt="logo Hokoha">
-		</a>
+		<!-- Navigation Desktop -->
+      <nav class="sok-navbar">
+			<div class="sok-navbar__items">
+				<a class="oka-h -xs" href="/" aria-label="lien vers la page d'accueil">
+					Accueil
+				</a>
+
+				<a class="oka-h -xs" href="/methodologie" aria-label="lien vers la page méthodologie">
+					Méthodologie
+				</a>
+
+				<a class="oka-h -xs" href="/realisations" aria-label="lien vers la page réalisations">
+					Réalisations
+				</a>
+
+				<a class="oka-h -xs" href="/equipe" aria-label="lien vers la page équipe">
+					Équipe
+				</a>
+			</div>
+
+			<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
+				<div class="oka-bt__lbl">
+					Contact
+				</div>
+			</a>
+      </nav>
     </div>
-
-    
-
-	<div class="oka-appbar__right -hiden">
-
-		
-			<a class="oka-bt -ghost" href={import.meta.env.BASE_URL} aria-label="lien vers la page d'accueil">
-				<div class="oka-bt__lbl">Accueil</div>
-			</a>
-	
-		
-			<a class="oka-bt -ghost" href={`${import.meta.env.BASE_URL}methodologie`} aria-label="lien vers la page méthodologie">
-				<div class="oka-bt__lbl">Méthodologie</div>
-			</a>
-		
-		
-			<a class="oka-bt -ghost" href={`${import.meta.env.BASE_URL}realisations`} aria-label="lien vers la page réalisations">
-				<div class="oka-bt__lbl">Réalisations</div>
-			</a>
-		
-		
-			<a class="oka-bt -ghost" href={`${import.meta.env.BASE_URL}equipe`} aria-label="lien vers la page équipe">
-				<div class="oka-bt__lbl">Équipe</div>
-			</a>
-		
-		
-			<a class="oka-bt " href={`${import.meta.env.BASE_URL}contact`} aria-label="lien vers la page contact">
-				<div class="oka-bt__lbl">Contact</div>
-			</a>
-		
-	
-	</div>
-
-
   </div>
 </header>
 
+<div class="sok-navbar__mobile-container oka-darkMode oka-surface">
+	<div class="sok-navbar__mobile-overlay"></div>
+	
+	<!-- Navigation mobile -->
+	<nav class="sok-navbar__mobile">
+		<div class="oka-spacer -xl" aria-hidden="true"></div>
+
+		<div class="sok-navbar__items">
+			<a class="oka-h -lg" href="/" aria-label="lien vers la page d'accueil">
+				Accueil
+			</a>
+
+			<a class="oka-h -lg" href="/methodologie" aria-label="lien vers la page méthodologie">
+				Méthodologie
+			</a>
+
+			<a class="oka-h -lg" href={`${import.meta.env.BASE_URL}realisations`} aria-label="lien vers la page réalisations">
+				Réalisations
+			</a>
+
+			<a class="oka-h -lg" href="/equipe" aria-label="lien vers la page équipe">
+				Équipe
+			</a>
+		</div>
+
+		<div class="oka-spacer -xl" aria-hidden="true"></div>
+
+		<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
+			<div class="oka-bt__lbl">
+				Contact
+			</div>
+		</a>
+
+		<div class="oka-spacer -md" aria-hidden="true"></div>
+	</nav>
 </div>
 
-
-
+<!-- emêche l'animation du header en JavaScript  -->
+<!-- 
+<div class="oka-appWrap -fluid" data-appeardown data-delay="0">
+</div> 
+-->
 
 <style lang="scss">
-	.sok-header {
-		position:relative;
-		// display: flex;
-		// justify-content: space-around;
-		// padding: 20px;
-		background-color: #fff ; //var(--oka-color-neutral-50);
-		border-radius: var(--sok-radius-section);
-		margin:  0 0 0 0;
-		padding: 0.5rem 1rem;
-    	//border: 1px solid red;
+	@use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;
+
+	// Retrait du transform : empêche l'affichage du menu sur mobile/tablet
+	// .oka-appWrap {
+	// 	transform: none !important;
+	// 	z-index: 99;
+	// }
+
+	// ==== Base ====
+	a,
+	a:visited {
+		color: unset;
+		text-decoration: none;
+		padding: 0;
 	}
 
-	.sok-logokoha{
+	i {
+		font-size: 1.5rem;
+	}
+
+  // ===== Header =====
+	.sok-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 99;
+		margin: 0;
+		padding: 0.5rem 1rem;
+		width: 100%;
+		background-color: var(--oka-color-layer-floor-0);
+		// border-bottom: 1px solid var(--oka-color-bd-minimal);
+	}
+
+	.sok-logokoha {
 		height: 2.5rem;
+	}
+
+  // ==== Navbar Mobile ====
+	.sok-toggle {
+		display: block;
+		cursor: pointer;
+
+		@include breakpoint(md) {
+			display: none;
+			visibility: hidden;
+			user-select: none;
+		}
+	}
+
+	.sok-navbar__mobile-container {
+		position: relative;
+		
+		@include breakpoint(md) {
+			display: none;
+			visibility: hidden;
+			user-select: none;
+		}
+		
+		.sok-navbar__mobile-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 10;
+			display: none;
+			width: 100%;
+			height: 100vh;
+			background-color: var(--oka-color-layer-overlay);
+
+			&.-visible {
+				display: block;
+			}
+		}
+
+		.sok-navbar__mobile {
+			position: fixed;
+			top: 4rem;
+			left: 0;
+			right: 0;
+			z-index: 50;
+			width: 100%;
+			padding: 0rem 2rem;
+			background-color: var(--oka-color-layer-floor-0);
+			border-radius: 0 0 10px 10px;
+			// box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,0.1);
+			transform: translateY(-125%);
+			transition: all 0.25s ease-out;
+
+			&.active {
+				transform: translateY(0%);
+			}
+
+			.sok-navbar__items {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+		}
+	}
+
+  // ==== Navbar Desktop ====
+	.sok-navbar {
+		display: none;
+		align-items: center;
+		gap: 2rem;
+
+		@include breakpoint(md) {
+			display: flex;
+		}
+
+		.sok-navbar__items {
+			display: flex;
+			flex-direction: row;
+			gap: 2rem;
+		}
 	}
 </style>
 
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener("astro:page-load", () => {
+		const toggle = document.querySelector(".sok-toggle");
+		const navbar = document.querySelector(".sok-navbar__mobile");
+		const menuOverlay = document.querySelector('.sok-navbar__mobile-overlay');
+		const navLinks = document.querySelectorAll(".sok-navbar__items a");
+
+		const body = document.body;	
+		const $body = document.querySelector('body');
+		if (!$body) return;	
+	
+		let scrollPosition = 0;
+
+		toggle?.addEventListener("click", () => {
+			// Affiche le menu mobile au clique du toggle
+			navbar?.classList.toggle("active");
+
+			// bloquer le scroll lors de l'utilisation du menu sur mobile
+			const enableNoScroll = function() {
+				//alert('enableNoScroll')
+				scrollPosition = window.pageYOffset;
+				// console.trace(scrollPosition);
+				$body.style.overflow = 'hidden';
+				$body.style.position = 'fixed';
+				$body.style.top = `-${scrollPosition}px`;
+				$body.style.width = '100%';
+				//
+				body.classList.add('u-noscroll');
+			};
+	
+			const disableNoScroll = function() {
+				//alert('disableNoScroll')
+				$body.style.removeProperty('overflow');
+				$body.style.removeProperty('position');
+				$body.style.removeProperty('top');
+				$body.style.removeProperty('width');
+				window.scrollTo(0, scrollPosition);
+				//
+				body.classList.remove('u-noscroll');
+			};
+
+			if (!menuOverlay?.classList.contains('-visible')) {
+				menuOverlay?.classList.toggle('-visible');
+				enableNoScroll();
+				console.log("l'overlay est visible");
+
+			} else {
+				menuOverlay?.classList.toggle('-visible');
+				disableNoScroll();
+				console.log("l'overlay est invisible");
+			}
+    });
+	 
+
+	// GSAP
+	// Permet d'afficher et masquer le header lors du scroll
+	// Influence les performances du site ?
+	fixedHeader();
+
+	function fixedHeader() {
+		console.log("gsap");
+
+		const showAnim = gsap
+			.from(".sok-header", {
+				yPercent: -100,
+				paused: true,
+				duration: 0.5,
+				ease: "power2",
+			})
+			.progress(1);
+
+			ScrollTrigger.create({
+				start: "top top",
+				end: "max",
+				onUpdate: (self) => {
+				self.direction === -1 ? showAnim.play() : showAnim.reverse();
+				},
+			});
+		}
+	});
+
+	// Ajoute ou retire des classes en fonction du viewport
+	// toggleClasses();
+	// window.addEventListener('resize', toggleClasses);
+
+	// function toggleClasses() {
+	// 	const isDesktop = window.innerWidth >= 1024;
+	
+	// 	navLinks.forEach(navLink => {
+	// 		navLink.classList.toggle('-lg', !isDesktop);
+	// 		navLink.classList.toggle('-xs', isDesktop);
+	// 		// navLink.classList.toggle('-secondary', isDesktop);
+	// 	})
+	// }	
+</script>

@@ -6,6 +6,7 @@ $oka-system-font-path: '/assets/fonts' !default;
 
 // ICONES
 // @import "oka-design-system/1-bases/fonts/fontawesome-v7/scss/solid";
+@use "oka-design-system/1-bases/fonts/fontawesome-v7/scss/solid" as *;
 // @import "oka-design-system/1-bases/fonts/fontawesome-v7/scss/brands";
 // @import "oka-design-system/1-bases/fonts/fontawesome-v7/scss/regular";
 @use "oka-design-system/1-bases/fonts/fontawesome-v7/scss/light" as *;

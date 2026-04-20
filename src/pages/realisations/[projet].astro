@@ -1,7 +1,8 @@
 ---
 // ===== Layout =====
-import DefaultLayout from "../../layouts/Layout.astro";
-import HibouLayout from "../../layouts/projets/HibouLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import Hibou from "../../components/projets/Hibou.astro"
 
 export function getStaticPaths() {
    return [
@@ -15,10 +16,23 @@ export function getStaticPaths() {
 }
 
 const { projet } = Astro.params;
-const layouts = { hibou: HibouLayout };
-const Layout = layouts[projet] || DefaultLayout;
+
+const components = {
+   hibou: Hibou,
+   // travel: Travel,
+   // ramses: Ramses,
+   // wecert: Wecert,
+   // pegase: Pegase,
+   // hugo: Hugo,
+};
+
+const ProjectComponent = components[projet];
 ---
 
 <Layout title={projet}>
-   <h1>{projet}</h1>
+   <!-- Retourne le composant, si il existe -->
+   {ProjectComponent ? <ProjectComponent /> : null}
+   
+   <!-- autre équivalant  -->
+   <!-- {ProjectComponent && <ProjectComponent />} -->
 </Layout>
