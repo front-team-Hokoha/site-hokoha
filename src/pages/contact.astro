@@ -114,9 +114,11 @@ const { descContent = "lorem ipsum" } = Astro.props;
 
    .oka-cols.-two {
       grid-template-areas: "col2" "col1";
+      gap: 4rem;
       
       @include breakpoint(sm) {
          grid-template-areas: "col1 col2";
+         gap: 1rem;
       }
    }
 
