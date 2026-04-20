@@ -1,11 +1,54 @@
-<div class="reveal-text -hidden">
+<!--
+  RevealText — Animation d'apparition de texte ligne par ligne
+
+  Enveloppe n'importe quel contenu textuel dans un conteneur animé au scroll.
+  Chaque ligne apparaît par un glissement vertical avec un léger fondu.
+
+  Usage :
+    <RevealText>
+      <h2>Mon titre</h2>
+      <p>Mon paragraphe</p>
+    </RevealText>
+
+  Data-attributes :
+    data-delay="{number}"      — Délai en secondes avant le lancement de l'animation (défaut : 0)
+                                 ex: data-delay="0.5"
+    data-offset-sm="{string}"  — Position de déclenchement sur mobile (défaut : "top 90%")
+                                 ex: data-offset-sm="top 80%"
+    data-offset-lg="{string}"  — Position de déclenchement sur desktop (défaut : "top 90%")
+                                 ex: data-offset-lg="top 60%"
+
+  Exemple complet :
+    <RevealText data-delay="0.3" data-offset-lg="top 70%">
+      <h2>Titre animé</h2>
+    </RevealText>
+-->
+---
+interface Props {
+    'data-delay'?: string;
+    'data-offset-sm'?: string;
+    'data-offset-lg'?: string;
+}
+
+const {
+    'data-delay': delay,
+    'data-offset-sm': offsetSm,
+    'data-offset-lg': offsetLg,
+} = Astro.props;
+---
+
+<div
+    class="reveal-text -hidden"
+    data-delay={delay}
+    data-offset-sm={offsetSm}
+    data-offset-lg={offsetLg}
+>
   <slot />
 </div>
 
 
 <style lang="scss">
 	.reveal-text {
-		// border:1px solid red !important;
 		&.-hidden {
 			visibility: hidden;	
 		}
@@ -30,10 +73,6 @@
 		if (!revealtextes.length) return;
 
 		// Créer une animation de reveal lors du scroll pour chaque Revealtext
-
-
-
-
 		revealtextes.forEach((revealtext) => {
 
 			// Fixer la hauteur du container à l'init pour éviter les flashs de layout
@@ -65,13 +104,12 @@
 							});
 
 							return gsap.from(self.lines, {
-								// TROUVE LA HAUTEUR DE LA LIGNE POUR DÉPLACER LES LIGNES EN DESSOUS
 								y: self.lines[0]?.offsetHeight * 1.25  ?? 60,
-
 								autoAlpha: 0,
 								stagger: 0.15,
 								duration: 0.75,
 								ease: "power2.out",
+								delay: parseFloat((revealtext as HTMLElement).dataset.delay ?? "0"),
 							});
 						},
 					});
