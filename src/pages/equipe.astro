@@ -30,7 +30,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
 <Layout title="Page Équipe" description={descContent}>
-  <div class="oka-appWrap">
+  <div class="oka-appWrap oka-lightMode oka-surface">
     <!-- ===== Section Histoire ===== -->
     <section class="_ctnr-inline">
       <div class="flex-grid">
@@ -104,11 +104,11 @@ const { descContent = "lorem ipsum" } = Astro.props;
     </section>
   </div>
 
-  <div class="oka-appWrap">
+  <div class="oka-appWrap oka-lightMode oka-surface">
     <!-- ===== Section Histoire ===== -->
     <section class="_ctnr-inline">
       <div class="flex-grid">
-        <div class="oka-spacer -xl"></div>
+        <!-- <div class="oka-spacer -xl"></div> -->
         <div class="col col-1"></div>
 
         <div class="col col-14">
@@ -179,16 +179,27 @@ const { descContent = "lorem ipsum" } = Astro.props;
       </div>
     </section>
   </div>
-
-  <div slot="Footer">
+  
+  <!-- <div slot="Footer">
     <Footer modifier="-grey" />
-  </div>
+  </div> -->
 </Layout>
 
 <!-- === GobalStyles === -->
 <GlobalStyles/>
 
 <style lang="scss">
+    @use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+  
+  // Base
+  .oka-text {
+    text-align: justify;
+
+    @include breakpoint(sm) {
+      text-align: start;
+    }
+  }
+  
   .-two {
     gap: 2rem
   }

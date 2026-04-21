@@ -21,24 +21,24 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 		<!-- Navigation Desktop -->
       <nav class="sok-navbar">
 			<div class="sok-navbar__items">
-				<a class="oka-h -xs" href="/" aria-label="lien vers la page d'accueil">
+				<a class="oka-h -xs" href={import.meta.env.BASE_URL} aria-label="lien vers la page d'accueil">
 					Accueil
 				</a>
 
-				<a class="oka-h -xs" href="/methodologie" aria-label="lien vers la page méthodologie">
+				<a class="oka-h -xs" href={`${import.meta.env.BASE_URL}methodologie`} aria-label="lien vers la page méthodologie">
 					Méthodologie
 				</a>
 
-				<a class="oka-h -xs" href="/realisations" aria-label="lien vers la page réalisations">
+				<a class="oka-h -xs" href={`${import.meta.env.BASE_URL}realisations`} aria-label="lien vers la page réalisations">
 					Réalisations
 				</a>
 
-				<a class="oka-h -xs" href="/equipe" aria-label="lien vers la page équipe">
+				<a class="oka-h -xs" href={`${import.meta.env.BASE_URL}equipe`} aria-label="lien vers la page équipe">
 					Équipe
 				</a>
 			</div>
 
-			<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
+			<a class="oka-bt sok-contact__btn" href={`${import.meta.env.BASE_URL}contact`} aria-label="lien vers la page contact">
 				<div class="oka-bt__lbl">
 					Contact
 				</div>
@@ -56,11 +56,11 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 		<div class="oka-spacer -xl" aria-hidden="true"></div>
 
 		<div class="sok-navbar__items">
-			<a class="oka-h -lg" href="/" aria-label="lien vers la page d'accueil">
+			<a class="oka-h -lg" href={import.meta.env.BASE_URL} aria-label="lien vers la page d'accueil">
 				Accueil
 			</a>
 
-			<a class="oka-h -lg" href="/methodologie" aria-label="lien vers la page méthodologie">
+			<a class="oka-h -lg" href={`${import.meta.env.BASE_URL}methodologie`} aria-label="lien vers la page méthodologie">
 				Méthodologie
 			</a>
 
@@ -68,14 +68,14 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 				Réalisations
 			</a>
 
-			<a class="oka-h -lg" href="/equipe" aria-label="lien vers la page équipe">
+			<a class="oka-h -lg" href={`${import.meta.env.BASE_URL}equipe`} aria-label="lien vers la page équipe">
 				Équipe
 			</a>
 		</div>
 
 		<div class="oka-spacer -xl" aria-hidden="true"></div>
 
-		<a class="oka-bt sok-contact__btn" href="/contact" aria-label="lien vers la page contact">
+		<a class="oka-bt sok-contact__btn" href={`${import.meta.env.BASE_URL}contact`} aria-label="lien vers la page contact">
 			<div class="oka-bt__lbl">
 				Contact
 			</div>

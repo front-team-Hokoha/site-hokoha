@@ -1,6 +1,6 @@
 ---
 // ===== Composants utilisés =====
-// import ImageSok from "../../commun/ImageSok.astro";
+import ImageSok from "../../commun/ImageSok.astro";
 // import MediaWrapper from "../../commun/MediaWrapper.astro";
 
 // ===== Fichiers Markdown =====
@@ -51,10 +51,11 @@ const savoirFaires = Object.values(
               <div class="oka-spacer -xl -spacing" aria-hidden="true" />
 
               <figure class="sok-card__image-inner">
-                <img
+                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
+                {/* <img
                   src={savoirFaire.frontmatter.src}
                   alt={savoirFaire.frontmatter.alt}
-                />
+                /> */}
               </figure>
             </div>
           </div>
