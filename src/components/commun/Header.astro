@@ -219,9 +219,11 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 
 	document.addEventListener("astro:page-load", () => {
 		const toggle = document.querySelector(".sok-toggle");
+		const icon = toggle?.querySelector(".fa-thin");
+
 		const navbar = document.querySelector(".sok-navbar__mobile");
-		const menuOverlay = document.querySelector('.sok-navbar__mobile-overlay');
 		const navLinks = document.querySelectorAll(".sok-navbar__items a");
+		const menuOverlay = document.querySelector('.sok-navbar__mobile-overlay');
 
 		const body = document.body;	
 		const $body = document.querySelector('body');
@@ -232,6 +234,13 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 		toggle?.addEventListener("click", () => {
 			// Affiche le menu mobile au clique du toggle
 			navbar?.classList.toggle("active");
+
+			// Changer l'icône au clique
+			if (icon?.classList.contains('fa-bars')) {
+				icon?.classList.replace('fa-bars', 'fa-times');
+			} else {
+				icon?.classList.replace('fa-times', 'fa-bars');
+			}
 
 			// bloquer le scroll lors de l'utilisation du menu sur mobile
 			const enableNoScroll = function() {
