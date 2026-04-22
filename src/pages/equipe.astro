@@ -91,8 +91,8 @@ const { descContent = "lorem ipsum" } = Astro.props;
               </article>
             </div>
 
-            <div class="sok-t-wrapper -first">
-              <div class="sok-t-paragraph">
+            <div class="sok-content-wrapper -first">
+              <div class="sok-paragraph">
                 <paragrapheHistoire.Content />
               </div>
             </div>
@@ -114,13 +114,13 @@ const { descContent = "lorem ipsum" } = Astro.props;
         <div class="col col-14">
           <!-- === Partie équipe === -->
           <div class="oka-cols -two">
-            <div class="sok-t-wrapper">
-              <div class="sok-t-content">
+            <div class="sok-content-wrapper">
+              <div class="sok-content">
                 <RevealText>
                   <titreEquipe.Content />
                 </RevealText>
 
-                <div class="sok-t-paragraph">
+                <div class="sok-paragraph">
                   <paragrapheEquipe.Content />
                 </div>
 
@@ -142,25 +142,25 @@ const { descContent = "lorem ipsum" } = Astro.props;
 
           <!-- === Partie "formation" === -->
           <div class="oka-cols -two">
-            <div class="sok-t-wrapper -third">
-              <div class="sok-t-content">
+            <div class="sok-content-wrapper -third">
+              <div class="sok-content">
                 <RevealText>
                   <titreHommage.Content />
                 </RevealText>
 
-                <div class="sok-t-paragraph">
+                <div class="sok-paragraph">
                   <paragrapheHommage.Content />
                 </div>
               </div>
             </div>
 
-            <div class="sok-t-wrapper -fourth">
-              <div class="sok-t-content">
+            <div class="sok-content-wrapper -fourth">
+              <div class="sok-content">
                 <RevealText>
                   <titreFormation.Content />
                 </RevealText>
 
-                <div class="sok-t-paragraph">
+                <div class="sok-paragraph">
                   <paragrapheFormation.Content />
                 </div>
 
@@ -204,7 +204,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
     gap: 2rem
   }
 
-  .sok-t-wrapper {
+  .sok-content-wrapper {
     // Paragraphe Histoire
     &.-first {
       justify-content: end;
@@ -214,7 +214,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
     &.-third {
       align-items: end;
 
-      .sok-t-paragraph {
+      .sok-paragraph {
         max-width: 500px;
       }
     }
