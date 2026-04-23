@@ -28,9 +28,10 @@ import RevealText from '../../animations/RevealText.astro';
         <div class="oka-spacer -xxl" aria-hidden="true"></div>
 
         <div class="oka-cols -two">
+
           <div class="sok-content-wrapper -first">
             <RevealText>
-              <h1 class="oka-h -xl">22 - Hibou</h1>
+              <h1 class="oka-h -xl">22 <span class="oka-h -md">Hibou</span></h1>
             </RevealText>
           </div>
 
@@ -39,10 +40,9 @@ import RevealText from '../../animations/RevealText.astro';
               Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
             </p>
           </div>
+
         </div>
-
       </div>
-
     </div>
 
   </section>
@@ -86,17 +86,15 @@ import RevealText from '../../animations/RevealText.astro';
             </li>     
           </ul>
 
-          
           <!-- Contenus -->
           <div class="sok-projet__content-container">
             <div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
-
 
             <div class="sok-projet__content-wrapper">
                <div class="sok-projet__content">
                   <h3 class="oka-h -sm">Contexte</h3>
 
-                  <p class="oka-text -md sok-paragraph">
+                  <p class="oka-text -lg sok-paragraph">
                      Lorem ipsum dolor sit amet consectetur. Blandit tincidunt id mattis at sit donec sagittis commodo aenean. Ullamcorper odio pharetra consectetur fusce et orci facilisi nullam. Morbi velit amet mauris feugiat et elementum gravida. Purus pellentesque dictumst quis faucibus pellentesque. Faucibus nibh sed felis sem nibh augue malesuada erat. In vitae diam arcu at orci et amet.
                   </p>
                </div>
@@ -114,13 +112,13 @@ import RevealText from '../../animations/RevealText.astro';
                   <h3 class="oka-h -sm">Fonctionnalités</h3>
 
                   <div class="sok-projet__text-wrapper">
-                     <p class="oka-text -md sok-paragraph">
+                     <p class="oka-text -lg sok-paragraph">
                         Lorem ipsum dolor sit amet consectetur. At ut enim eu purus nisl. Enim accumsan nisi quam ante. Facilisi egestas amet consectetur neque duis. Varius risus suspendisse orci enim risus lorem commodo vitae vestibulum. Praesent semper morbi vel purus dictumst turpis pellentesque enim nec. Morbi sollicitudin velit donec velit arcu fringilla venenatis ipsum.
                      </p>
    
                      <div class="oka-spacer -md" aria-hidden="true"></div>
    
-                     <p class="oka-text -md sok-paragraph">
+                     <p class="oka-text -lg sok-paragraph">
                         Lorem ipsum dolor sit amet consectetur. Vehicula pellentesque sit molestie sed. Ut semper nunc nisl elementum consequat felis magna malesuada aliquam. A parturient eget molestie morbi interdum. Ultrices leo mattis consequat leo id. Sed nibh sed feugiat nulla odio turpis elementum sed. Ac interdum venenatis gravida lorem viverra velit ante auctor morbi. Ornare amet ac purus nisl etiam eget. Fermentum elementum amet fermentum aliquet pellentesque.
                      </p>
                   </div>
@@ -148,8 +146,6 @@ import RevealText from '../../animations/RevealText.astro';
     <div class="oka-spacer -xl" aria-hidden="true"></div>
   </section>
 </div>
-
-
 
 <!-- Marquee -->
 <!-- <div class="oka-appWrap -fluid oka-lightMode oka-surface">
@@ -204,7 +200,6 @@ import RevealText from '../../animations/RevealText.astro';
       --col-size: calc(100dvw / 16);
    }
 
-
    .oka-appWrap {
 
       @include breakpoint(xs) {
@@ -223,6 +218,14 @@ import RevealText from '../../animations/RevealText.astro';
    }
 
    // Base
+   .oka-h.-xl {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0;
+   }
+
+   // Titres des détails
    .oka-h.-sm {
       padding: 0;
    }
@@ -231,12 +234,11 @@ import RevealText from '../../animations/RevealText.astro';
       padding: 0;
       
       @include breakpoint(md) {
-         // max-width: calc(var(--col-size) * 8);
          width: 100%;
       }
    }
 
-   // Titreet paragraphe d'arrivé
+   // Titre et paragraphe d'arrivé
    .sok-content-wrapper {
 
       // Titre du projet
@@ -249,7 +251,7 @@ import RevealText from '../../animations/RevealText.astro';
       &.-second {
          text-align: justify;
 
-         @include breakpoint(sm) {
+         @include breakpoint(md) {
             justify-content: end;
             text-align: end;
          }
@@ -280,13 +282,6 @@ import RevealText from '../../animations/RevealText.astro';
          @include breakpoint(sm) {
             flex: 0 0 calc(var(--col-size) * 4);
          }
-
-         // .sok-projet__infos-item {
-         //    display: flex;
-         //    align-items: center;
-         //    flex-wrap: wrap;
-         //    gap: 4rem;
-         // }
       }
 
       // Contenu du projet
@@ -309,7 +304,7 @@ import RevealText from '../../animations/RevealText.astro';
 
                @include breakpoint(md) {
                   width: 100%;
-                  max-width: calc(var(--col-size) * 9);
+                  max-width: calc(var(--col-size) * 8);
                   text-align: start;
                }
             }
