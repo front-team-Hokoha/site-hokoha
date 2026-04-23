@@ -1,0 +1,177 @@
+---
+// ===== GLobalStyles =====
+import GlobalStyles from '../../components/commun/GlobalStyles.astro';
+
+// ===== Composants de la page =====
+import MediaWrapper from '../../components/commun/MediaWrapper.astro';
+import VideoSok from '../../components/commun/VideoSok.astro';
+import ImageSok from '../../components/commun/ImageSok.astro';
+import Marquee from '../../components/commun/marquee/Marquee.astro';
+import MarqueeItem from '../../components/commun/marquee/MarqueeItem.astro';
+
+// ===== Composants d'animations =====
+import RevealText from '../../animations/RevealText.astro';
+
+// ===== Fichiers Markdown =====
+import * as paragrapheHero from "../../contenus/projets/hibou/paragraphe-hero.md"
+import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
+---
+
+<!-- ===== Hero ===== -->
+<div class="oka-appWrap -fluid oka-lightMode oka-surface">
+  <section class="_ctnr-inline"> 
+
+    <div class="flex-grid">
+      <div class="col col-1"></div>
+
+      <div class="col col-14">
+        <div class="oka-spacer -xxl" aria-hidden="true"></div>
+        <div class="oka-spacer -xxl" aria-hidden="true"></div>
+
+        <div class="oka-cols -two">
+          <div class="sok-content-wrapper -first">
+            <RevealText>
+              <h1 class="oka-h -xl">22 - Hibou</h1>
+            </RevealText>
+          </div>
+
+          <div class="sok-content-wrapper -second">
+            <div class="sok-paragraph">
+              <paragrapheHero.Content />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+</div>
+
+<div class="oka-appWrap -fluid oka-lightMode oka-surface">
+  <section class="_ctnr-inline">
+    <div class="oka-spacer -xl" aria-hidden="true"></div>
+    
+    <div class="flex-grid">
+      <div class="col col-1"></div>
+
+      <div class="col col-14">
+        <MediaWrapper ratio="16/9" radius="sm">
+          <!-- <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup.jpg" altText="photo de l'équipe Hokoha" /> -->
+          <VideoSok srcVideo="/src/assets/videos/realisations/Hibou/Hibou.mp4" typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
+        </MediaWrapper>
+
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+        <div class="oka-cols -two">
+          <div class="sok-content-wrapper -third">
+            <div class="sok-paragraph">
+              <paragraphe.Content />
+            </div>
+          </div>
+
+          <MediaWrapper ratio="3/2" radius="sm">
+            <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-1.jpg" altText="photo de l'équipe Hokoha" />
+          </MediaWrapper>
+        </div>
+
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+        <div class="oka-spacer -xl" aria-hidden="true"></div>
+
+        <div class="oka-cols -two">
+          <MediaWrapper ratio="3/2" radius="sm">
+            <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-2.jpg" altText="photo de l'équipe Hokoha" />
+          </MediaWrapper>
+
+          <div class="sok-content-wrapper -fourth">
+            <div class="sok-paragraph">
+              <paragraphe.Content />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="oka-spacer -xl" aria-hidden="true"></div>
+    <div class="oka-spacer -xl" aria-hidden="true"></div>
+  </section>
+</div>
+
+<div class="oka-appWrap -fluid oka-lightMode oka-surface">
+  <section>
+    <div class="flex-grid">
+      <div class="col col-1"></div>
+      
+      <div class="col col-14">
+        <RevealText>
+          <h2 class="oka-h -lg">Lorem ipsum dolor sit amet consectetur.</h2>
+        </RevealText>
+        
+        <div class="oka-spacer -lg" aria-hidden="true"></div>
+        
+        <!-- Ajout d'un composant marquee -->
+          <!-- sympfony, php, html, css, js -->
+        <Marquee modifier="-rowD">
+          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML" hidden="false"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript" hidden="false"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql" hidden="false"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP" hidden="false"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony" hidden="false"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS" hidden="false"/>
+
+          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
+
+          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
+          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
+        </Marquee>
+        
+      </div>
+    </div>
+
+    <div class="oka-spacer -xxl" aria-hidden="true"></div>
+  </section>
+</div>
+
+<!-- === GobalStyles === -->
+<GlobalStyles/>
+
+<style lang="scss">
+  .-two {
+    gap: 2rem
+  }
+
+  .sok-content-wrapper {
+
+    // Titre Hero
+    &.-first {
+      align-items: end;
+    }
+
+    // Paragraph Hero
+    &.-second {
+      justify-content: end;
+    }
+
+    // Paragraph projet
+    &.-third,
+    &.-fourth {
+      align-items: end;
+    }
+  }
+
+  // empêche le marquee de dépasser de la dernière section
+  section:last-child {
+    overflow: hidden;
+  }
+</style>

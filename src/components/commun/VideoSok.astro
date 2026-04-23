@@ -5,7 +5,7 @@
 const { srcVideo, typeVideo, thumbnail } = Astro.props
 ---
 
-<video controls preload="metadata" poster={thumbnail}>
+<video autoplay loop muted preload="metadata" poster={thumbnail}>
    <source src={srcVideo} type={`video/${typeVideo}`} />
 </video>
 
