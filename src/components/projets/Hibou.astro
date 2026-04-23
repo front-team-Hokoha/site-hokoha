@@ -64,30 +64,33 @@ import RevealText from '../../animations/RevealText.astro';
         <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
 
         <div class="sok-projet__container">
-          <ul class="sok-projet__infos-list">
-            <li class="sok-projet__infos-item">
-               <h3 class="oka-h -sm">Type</h3>
-               <p class="oka-text">Logiciel métier</p>
-            </li>
+         <div class="sok-projet__sidebar">
+            <ul class="sok-projet__infos-list">
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Type</h3>
+                 <p class="oka-text">Logiciel métier</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Secteur</h3>
+                 <p class="oka-text">Sécurité</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Prestations</h3>
+                 <p class="oka-text">UI/UX, développement</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Année</h3>
+                 <p class="oka-text">20XX</p>
+              </li>     
+            </ul>
+            
+         </div>
 
-            <li class="sok-projet__infos-item">
-               <h3 class="oka-h -sm">Secteur</h3>
-               <p class="oka-text">Sécurité</p>
-            </li>
-
-            <li class="sok-projet__infos-item">
-               <h3 class="oka-h -sm">Prestations</h3>
-               <p class="oka-text">UI/UX, développement</p>
-            </li>
-
-            <li class="sok-projet__infos-item">
-               <h3 class="oka-h -sm">Année</h3>
-               <p class="oka-text">20XX</p>
-            </li>     
-          </ul>
-
-          <!-- Contenus -->
-          <div class="sok-projet__content-container">
+         <!-- Contenus -->
+         <div class="sok-projet__content-container">
             <div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
 
             <div class="sok-projet__content-wrapper">
@@ -206,6 +209,7 @@ import RevealText from '../../animations/RevealText.astro';
          padding: 0 2rem;
       }
 
+      // voir si le paading devrait s'appliquer à partir de 768px
       @include breakpoint(lg) {
          padding: 0 calc(var(--col-size) * 1);
       }
@@ -268,19 +272,28 @@ import RevealText from '../../animations/RevealText.astro';
          flex-direction: row;
       }
 
-      // Informations du projet
-      .sok-projet__infos-list {
-         display: flex;
-         flex-direction: column;
-         gap: 1rem;
-         box-sizing: border-box;
+      .sok-projet__sidebar {
          width: 100%;
-         margin: 0;
-         padding: 0;
-         list-style-type: none;
-
+         
          @include breakpoint(sm) {
-            flex: 0 0 calc(var(--col-size) * 4);
+            flex: 0 0 calc((var(--col-size) * 4)  - .375rem);
+         }
+
+         // Informations du projet
+         .sok-projet__infos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+   
+            @include breakpoint(sm) {
+               position: sticky;
+               top: 6rem;
+               left: 0;
+            }
          }
       }
 
