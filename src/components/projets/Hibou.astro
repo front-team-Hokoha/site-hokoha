@@ -13,8 +13,11 @@ import MarqueeItem from '../../components/commun/marquee/MarqueeItem.astro';
 import RevealText from '../../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-// import * as paragrapheHero from "../../contenus/projets/hibou/paragraphe-hero.md"
-// import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
+// import * as paragrapheHero from "../../contenus/projets/hibou/paragraphe-hero.md";
+// import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md";
+
+// ===== Vidéos ===== 
+import hibouVideo from "../../assets/videos/realisations/Hibou/Hibou.mp4";
 ---
 
 <!-- ===== Hero ===== -->
@@ -57,7 +60,7 @@ import RevealText from '../../animations/RevealText.astro';
       <div class="col col-16">
         <MediaWrapper ratio="16/9" radius="sm">
           <!-- <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup.jpg" altText="photo de l'équipe Hokoha" /> -->
-          <VideoSok srcVideo="/src/assets/videos/realisations/Hibou/Hibou.mp4" typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
+          <VideoSok srcVideo={hibouVideo} typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
         </MediaWrapper>
 
         <div class="oka-spacer -xl" aria-hidden="true"></div>
