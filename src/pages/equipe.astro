@@ -30,7 +30,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
 <Layout title="Page Équipe" description={descContent}>
-  <div class="oka-appWrap oka-lightMode oka-surface">
+  <div class="oka-appWrap -fluid oka-lightMode oka-surface">
     <!-- ===== Section Histoire ===== -->
     <section class="_ctnr-inline">
       <div class="flex-grid">
@@ -104,7 +104,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
     </section>
   </div>
 
-  <div class="oka-appWrap oka-lightMode oka-surface">
+  <div class="oka-appWrap -fluid oka-lightMode oka-surface">
     <!-- ===== Section Histoire ===== -->
     <section class="_ctnr-inline">
       <div class="flex-grid">
@@ -235,7 +235,6 @@ const { descContent = "lorem ipsum" } = Astro.props;
       height: 150px;
       aspect-ratio: 4 / 3;
       margin: 0;
-      border: 2px solid red;
     }
   }
 </style>
