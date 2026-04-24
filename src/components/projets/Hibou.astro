@@ -13,8 +13,11 @@ import MarqueeItem from '../../components/commun/marquee/MarqueeItem.astro';
 import RevealText from '../../animations/RevealText.astro';
 
 // ===== Fichiers Markdown =====
-import * as paragrapheHero from "../../contenus/projets/hibou/paragraphe-hero.md"
-import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
+// import * as paragrapheHero from "../../contenus/projets/hibou/paragraphe-hero.md";
+// import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md";
+
+// ===== Vidéos ===== 
+import hibouVideo from "../../assets/videos/realisations/Hibou/Hibou.mp4";
 ---
 
 <!-- ===== Hero ===== -->
@@ -22,75 +25,126 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
   <section class="_ctnr-inline"> 
 
     <div class="flex-grid">
-      <div class="col col-1"></div>
 
-      <div class="col col-14">
+      <div class="col col-16">
         <div class="oka-spacer -xxl" aria-hidden="true"></div>
         <div class="oka-spacer -xxl" aria-hidden="true"></div>
 
         <div class="oka-cols -two">
-          <div class="sok-t-wrapper -first">
+
+          <div class="sok-content-wrapper -first">
             <RevealText>
-              <h1 class="oka-h -xl">22 - Hibou</h1>
+              <h1 class="oka-h -xl">22 <span class="oka-h -md">Hibou</span></h1>
             </RevealText>
           </div>
 
-          <div class="sok-t-wrapper -second">
-            <div class="sok-t-paragraph">
-              <paragrapheHero.Content />
-            </div>
+          <div class="sok-content-wrapper -second">
+            <p class="sok-paragraph oka-text -lg">
+              Lorem ipsum dolor sit amet consectetur. Commodo dui diam in maecenas sed tincidunt fames bibendum varius. Arcu dolor a amet risus platea lacus.
+            </p>
           </div>
+
         </div>
-
       </div>
-
     </div>
 
   </section>
 </div>
 
+<!-- Contenu -->
 <div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section class="_ctnr-inline">
     <div class="oka-spacer -xl" aria-hidden="true"></div>
     
     <div class="flex-grid">
-      <div class="col col-1"></div>
-
-      <div class="col col-14">
+      <div class="col col-16">
         <MediaWrapper ratio="16/9" radius="sm">
           <!-- <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup.jpg" altText="photo de l'équipe Hokoha" /> -->
-          <VideoSok srcVideo="/src/assets/videos/realisations/Hibou/Hibou.mp4" typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
+          <VideoSok srcVideo={hibouVideo} typeVideo="mp4" thumbnail="/src/assets/images/realisations/Hibou/thumbnail.png"/>
         </MediaWrapper>
 
         <div class="oka-spacer -xl" aria-hidden="true"></div>
-        <div class="oka-spacer -xl" aria-hidden="true"></div>
+        <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
 
-        <div class="oka-cols -two">
-          <div class="sok-t-wrapper -third">
-            <div class="sok-t-paragraph">
-              <paragraphe.Content />
+        <div class="sok-projet__container">
+         <div class="sok-projet__sidebar">
+            <ul class="sok-projet__infos-list">
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Type</h3>
+                 <p class="oka-text">Logiciel métier</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Secteur</h3>
+                 <p class="oka-text">Sécurité</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Prestations</h3>
+                 <p class="oka-text">UI/UX, développement</p>
+              </li>
+  
+              <li class="sok-projet__infos-item">
+                 <h3 class="oka-h -sm">Année</h3>
+                 <p class="oka-text">20XX</p>
+              </li>     
+            </ul>
+            
+         </div>
+
+         <!-- Contenus -->
+         <div class="sok-projet__content-container">
+            <div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
+
+            <div class="sok-projet__content-wrapper">
+               <div class="sok-projet__content">
+                  <h3 class="oka-h -sm">Contexte</h3>
+
+                  <p class="oka-text -lg sok-paragraph">
+                     Lorem ipsum dolor sit amet consectetur. Blandit tincidunt id mattis at sit donec sagittis commodo aenean. Ullamcorper odio pharetra consectetur fusce et orci facilisi nullam. Morbi velit amet mauris feugiat et elementum gravida. Purus pellentesque dictumst quis faucibus pellentesque. Faucibus nibh sed felis sem nibh augue malesuada erat. In vitae diam arcu at orci et amet.
+                  </p>
+               </div>
+
+               <MediaWrapper ratio="3/2" radius="sm">
+                  <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-1.jpg" altText="photo de l'équipe Hokoha" />
+               </MediaWrapper>
             </div>
-          </div>
 
-          <MediaWrapper ratio="3/2" radius="sm">
-            <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-1.jpg" altText="photo de l'équipe Hokoha" />
-          </MediaWrapper>
+            <div class="oka-spacer -xl" aria-hidden="true"></div>
+            <!-- <div class="oka-spacer -xl" aria-hidden="true"></div> -->
+
+            <div class="sok-projet__content-wrapper">
+               <div class="sok-projet__content">
+                  <h3 class="oka-h -sm">Fonctionnalités</h3>
+
+                  <div class="sok-projet__text-wrapper">
+                     <p class="oka-text -lg sok-paragraph">
+                        Lorem ipsum dolor sit amet consectetur. At ut enim eu purus nisl. Enim accumsan nisi quam ante. Facilisi egestas amet consectetur neque duis. Varius risus suspendisse orci enim risus lorem commodo vitae vestibulum. Praesent semper morbi vel purus dictumst turpis pellentesque enim nec. Morbi sollicitudin velit donec velit arcu fringilla venenatis ipsum.
+                     </p>
+   
+                     <div class="oka-spacer -md" aria-hidden="true"></div>
+   
+                     <p class="oka-text -lg sok-paragraph">
+                        Lorem ipsum dolor sit amet consectetur. Vehicula pellentesque sit molestie sed. Ut semper nunc nisl elementum consequat felis magna malesuada aliquam. A parturient eget molestie morbi interdum. Ultrices leo mattis consequat leo id. Sed nibh sed feugiat nulla odio turpis elementum sed. Ac interdum venenatis gravida lorem viverra velit ante auctor morbi. Ornare amet ac purus nisl etiam eget. Fermentum elementum amet fermentum aliquet pellentesque.
+                     </p>
+                  </div>
+               </div>
+
+               <div class="sok-projet__media-wrapper">
+                  <MediaWrapper ratio="3/2" radius="sm">
+                     <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-1.jpg" altText="photo de l'équipe Hokoha" />
+                  </MediaWrapper>
+
+                  <MediaWrapper ratio="3/2" radius="sm">
+                     <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-2.jpg" altText="photo de l'équipe Hokoha" />
+                  </MediaWrapper>
+               </div>
+            </div> 
+          </div>
         </div>
 
-        <div class="oka-spacer -xl" aria-hidden="true"></div>
-        <div class="oka-spacer -xl" aria-hidden="true"></div>
-
-        <div class="oka-cols -two">
-          <MediaWrapper ratio="3/2" radius="sm">
-            <ImageSok imagePath="/src/assets/images/realisations/Hibou/mockup-2.jpg" altText="photo de l'équipe Hokoha" />
-          </MediaWrapper>
-
-          <div class="sok-t-wrapper -fourth">
-            <div class="sok-t-paragraph">
-              <paragraphe.Content />
-            </div>
-          </div>
-        </div>
+        <div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
+        <div class="oka-spacer -xl -spacing" aria-hidden="true"></div>
       </div>
     </div>
     
@@ -99,41 +153,40 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
   </section>
 </div>
 
-<div class="oka-appWrap -fluid oka-lightMode oka-surface">
+<!-- Marquee -->
+<!-- <div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section>
     <div class="flex-grid">
       <div class="col col-1"></div>
       
       <div class="col col-14">
-        <RevealText>
-          <h2 class="oka-h -lg">Lorem ipsum dolor sit amet consectetur.</h2>
-        </RevealText>
+         <RevealText>
+            <h2 class="oka-h -lg">Lorem ipsum dolor sit amet consectetur.</h2>
+         </RevealText>
         
-        <div class="oka-spacer -lg" aria-hidden="true"></div>
+         <div class="oka-spacer -lg" aria-hidden="true"></div>
         
-        <!-- Ajout d'un composant marquee -->
-          <!-- sympfony, php, html, css, js -->
-        <Marquee modifier="-rowD">
-          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML" hidden="false"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript" hidden="false"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql" hidden="false"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP" hidden="false"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony" hidden="false"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS" hidden="false"/>
+         <Marquee modifier="-rowD">
+            <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML" hidden="false"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript" hidden="false"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql" hidden="false"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP" hidden="false"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony" hidden="false"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS" hidden="false"/>
 
-          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
 
-          <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
-          <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/html.png" altImage="HTML" texte="HTML"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Javascript.png" altImage="Javascript" texte="Javascript"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/MySql.png" altImage="MySql" texte="MySql"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/php.png" altImage="PHP" texte="PHP"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/Symfony.png" altImage="Symfony" texte="Symfony"/>
+            <MarqueeItem srcImage="/src/assets/images/technologie/CSS.png" altImage="CSS" texte="CSS"/>
         </Marquee>
         
       </div>
@@ -141,37 +194,147 @@ import * as paragraphe from "../../contenus/projets/hibou/paragraphe.md"
 
     <div class="oka-spacer -xxl" aria-hidden="true"></div>
   </section>
-</div>
+</div> -->
 
 <!-- === GobalStyles === -->
 <GlobalStyles/>
 
 <style lang="scss">
-  .-two {
-    gap: 2rem
-  }
+   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;
 
-  .sok-t-wrapper {
+   :root {
+      --col-size: calc(100dvw / 16);
+   }
 
-    // Titre Hero
-    &.-first {
-      align-items: end;
-    }
+   .oka-appWrap {
 
-    // Paragraph Hero
-    &.-second {
-      justify-content: end;
-    }
+      @include breakpoint(xs) {
+         padding: 0 2rem;
+      }
 
-    // Paragraph projet
-    &.-third,
-    &.-fourth {
-      align-items: end;
-    }
-  }
+      // voir si le paading devrait s'appliquer à partir de 768px
+      @include breakpoint(lg) {
+         padding: 0 calc(var(--col-size) * 1);
+      }
+   }
 
-  // empêche le marquee de dépasser de la dernière section
-  section:last-child {
-    overflow: hidden;
-  }
+   .-spacing {
+      @include breakpoint(sm) {
+         display: none;
+      }
+   }
+
+   // Base
+   .oka-h.-xl {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0;
+   }
+
+   // Titres des détails
+   .oka-h.-sm {
+      padding: 0;
+   }
+
+   .sok-paragraph {
+      padding: 0;
+      
+      @include breakpoint(md) {
+         width: 100%;
+      }
+   }
+
+   // Titre et paragraphe d'arrivé
+   .sok-content-wrapper {
+
+      // Titre du projet
+      &.-first {
+         height: auto;
+         align-items: end;
+      }
+
+      // Paragraphe générale du projet
+      &.-second {
+         text-align: justify;
+
+         @include breakpoint(md) {
+            justify-content: end;
+            text-align: end;
+         }
+      }
+   }
+
+   // Détails du projet
+   .sok-projet__container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      @include breakpoint(sm) {
+         flex-direction: row;
+      }
+
+      .sok-projet__sidebar {
+         width: 100%;
+         
+         @include breakpoint(sm) {
+            flex: 0 0 calc((var(--col-size) * 4)  - .375rem);
+         }
+
+         // Informations du projet
+         .sok-projet__infos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+   
+            @include breakpoint(sm) {
+               position: sticky;
+               top: 6rem;
+               left: 0;
+            }
+         }
+      }
+
+      // Contenu du projet
+      .sok-projet__content-wrapper {
+         width: 100%;
+
+         @include breakpoint(sm) {
+            flex: 0 0 calc(var(--col-size) * 10);
+         }
+
+         .sok-projet__content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-bottom: 3rem;
+   
+            .sok-paragraph {
+               margin-bottom: 0; 
+               text-align: justify;
+
+               @include breakpoint(md) {
+                  width: 100%;
+                  max-width: calc(var(--col-size) * 8);
+                  text-align: start;
+               }
+            }
+         }
+   
+         .sok-projet__media-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            
+            @include breakpoint(md) {
+               flex-direction: row;
+            }
+         }
+      }
+   }
 </style>
