@@ -1,6 +1,7 @@
 ---
 // ===== Composants de la page =====
 import PolygoneMask from "../commun/polygones/PolygoneMask.astro";
+import ImageSok from "../commun/ImageSok.astro";
 
 // ===== Composants d'animation =====
 import RevealText from "../../animations/RevealText.astro";
@@ -9,6 +10,9 @@ import RevealMask from "../../animations/RevealMask.astro";
 // ===== Fichiers Markdown =====
 import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
 import digitalArrow from '../../assets/images/digital-arrow.svg';
+
+// ===== Images =====
+import imgEntreprise from '../../assets/images/equipe/entreprise.jpg'
 ---
 <div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
@@ -31,7 +35,7 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
                 
                 <div class="oka-spacer -sm" aria-hidden="true"></div>
     
-                <div class="sok-t-paragraph">
+                <div class="sok-paragraph">
                   <p class="oka-text -lg">Lorem ipsum dolor sit amet consectetur. Malesuada aenean proin odio pellentesque id varius tortor. Neque mattis facilisis mauris odio id duis morbi volutpat. Nisi sed etiam tempus ac pellentesque dui et nibh massa.</p>
                 </div>
               </div>
@@ -89,7 +93,7 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
   </section>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ bgUrl: `url(${imgEntreprise.src})`}}>
   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   
   .sok-entreprise__content-wrapper {
@@ -97,12 +101,12 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
     align-content: center;
     
     .sok-entreprise__content {
-      .oka-h.-xl {
-        font-size: clamp(1rem, 3.5dvh, 2.5rem);
-        line-height: clamp(1.35rem, 4.5dvh, 3.25rem);
-      }
+      // .oka-h.-xl {
+      //   font-size: clamp(1rem, 3.5dvh, 2.5rem);
+      //   line-height: clamp(1.35rem, 4.5dvh, 3.25rem);
+      // }
       
-      .sok-t-paragraph {
+      .sok-paragraph {
         width: 100%;
         max-width: 480px;
         text-align: justify;
@@ -166,7 +170,8 @@ import digitalArrow from '../../assets/images/digital-arrow.svg';
     background: black; // white
     
     .sok-mask-img {
-      background-image: url("/src/assets/images/equipe/d2.jpg");
+      // background-image: url("/src/assets/images/equipe/entreprise.jpg");
+      background-image: var(--bgUrl);
       background-size: cover;
       position: absolute;
       inset: 0;
