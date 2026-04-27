@@ -48,8 +48,8 @@ const resolvedImage = imageUrl ? (images[imageUrl] as any) : undefined;
 			<Image
 				src={resolvedImage}
 				alt=""
-				widths={[130, 260, 390]}
-				sizes="130px"
+				widths={[160, 320, 480]}
+				sizes="(max-width: 600px) 160px, (max-width: 900px) 320px, 480px"
 				format="webp"
 				quality={75}
 				loading="lazy"
