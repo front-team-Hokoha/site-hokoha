@@ -25,5 +25,7 @@ pnpm-debug.log*
 .yarn
 yarn.lock
 
+*Zone.Identifier
+
 # documentation
 # documentation/
