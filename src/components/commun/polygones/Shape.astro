@@ -1,5 +1,5 @@
 ---
-
+import { Image } from 'astro:assets';
 
 // Description du "polygone"
 export const hexHeight = 133.8;
@@ -22,7 +22,7 @@ interface Props {
 const { frontText, videoUrl, imageUrl, color, strokeType } = Astro.props;
 
 const images = import.meta.glob('/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,webp}', { eager: true, import: 'default' });
-const resolvedImageUrl = imageUrl ? ((images[imageUrl] as any)?.src ?? imageUrl) : undefined;
+const resolvedImage = imageUrl ? (images[imageUrl] as any) : undefined;
 ---
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 	<defs>
@@ -43,7 +43,21 @@ const resolvedImageUrl = imageUrl ? ((images[imageUrl] as any)?.src ?? imageUrl)
 		</svg>
 	</div>
 
-	<div class={`polygon-shape ${color ?? ''}`}  style={`clip-path: url(#${clipId});${resolvedImageUrl ? ` background-image: url(${resolvedImageUrl});` : ''}`}>
+	<div class={`polygon-shape ${color ?? ''}`} style={`clip-path: url(#${clipId});`}>
+		{resolvedImage && (
+			<Image
+				src={resolvedImage}
+				alt=""
+				widths={[160, 320, 640]}
+				sizes="(max-width: 600px) 160px, (max-width: 900px) 320px, 640px"
+				format="webp"
+				quality={75}
+				loading="lazy"
+				class="polygon-image"
+				aria-hidden="true"
+			/>
+		)}
+
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
 		)}
@@ -115,7 +129,6 @@ const resolvedImageUrl = imageUrl ? ((images[imageUrl] as any)?.src ?? imageUrl)
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-size: cover;
 		background-color: rgba(255, 255, 255, 0);
 		overflow: hidden;
 
@@ -131,7 +144,8 @@ const resolvedImageUrl = imageUrl ? ((images[imageUrl] as any)?.src ?? imageUrl)
 
 	
 
-		video {
+		video,
+		:global(.polygon-image) {
 			position: absolute;
 			top: 0;
 			left: 0;
