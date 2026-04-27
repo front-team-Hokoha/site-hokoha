@@ -52,10 +52,6 @@ const savoirFaires = Object.values(
 
               <figure class="sok-card__image-inner">
                 <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
-                {/* <img
-                  src={savoirFaire.frontmatter.src}
-                  alt={savoirFaire.frontmatter.alt}
-                /> */}
               </figure>
             </div>
           </div>
@@ -220,34 +216,115 @@ const savoirFaires = Object.values(
   document.addEventListener("astro:page-load", () => {
     const cardsWrapper = document.querySelector(".sok-card-container");
     if (!cardsWrapper) return;
+
+    const sokCards = document.querySelectorAll(".sok-card");
+    if (!sokCards.length) return;
+
+    const lastIndex = sokCards.length - 1;
+
+    // 🔥 nouvelle API
+    const matchMedia = gsap.matchMedia();
+
+    matchMedia.add("(min-width: 1024px)", () => {
+      console.log("GSAP activé (desktop)");
+
+      const totalWidth = cardsWrapper.scrollWidth;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sok-sf", // Première section de SavoirFaire.astro
+          start: "top top",
+          end: () => `+=${totalWidth}`,
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          // markers: true,
+        },
+      });
+
+      sokCards.forEach((sokCard, i) => {
+        // Rétrécie toutes les cartes sauf la dernière
+        if (i === lastIndex) return;
+
+        const rightContent = sokCard.querySelector(
+          ".sok-card__content-wrapper"
+        );
+
+        if (rightContent) {
+          tl.to(
+            rightContent,
+            {
+              width: 0,
+              duration: 1,
+            },
+            i
+          );
+        }
+      });
+
+      // GPTo
+      // 🧹 cleanup automatique quand on sort du breakpoint
+      return () => {
+        console.log("cleanup desktop");
+
+        tl.kill();
+
+        gsap.set(".sok-card__content-wrapper", {
+          clearProps: "all",
+        });
+      };
+    });
+
+        // GPTo
+    matchMedia.add("(max-width: 1023px)", () => {
+      console.log("mode mobile");
+
+      // reset sécurité
+      gsap.set(".sok-card__content-wrapper", {
+        clearProps: "all",
+      });
+    });
+  });
+</script>
+
+<!-- Ancien script -->
+ <!-- Comporte des bogues avec le resize -->
+<!-- <script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    const cardsWrapper = document.querySelector(".sok-card-container");
+    if (!cardsWrapper) return;
     // Récupération de toutes les cartes
     const sokCards = document.querySelectorAll(".sok-card");
     if (!sokCards.length) return;
 
     // Dernière carte Savoir-Faire
     const lastIndex = sokCards.length - 1;
+    
+    // Variable pour la function mediumDevices plus bas
     const lastCard = sokCards[lastIndex];
     let isActive = false;
 
+    // Ancienne fonction, à adapter en cas d'utilisations des animations pour les tablettes et mobiles
+    
+    screenResized();
+    window.addEventListener("resize", screenResized);
+    
     function screenResized() {
       const isDesktop = window.innerWidth >= 1024;
 
-      // Déclenche la fonction si l'écran >= 1024 et si l'animation n'est pas active
-      if (isDesktop && !isActive) {
+      if (isDesktop) {
         largeDevices();
-        isActive = true;
-      }
-
-      //Retire tous les ScrollTrigger si l'écran < 1024 et si l'animation était active
-      if (!isDesktop && isActive) {
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-        isActive = false;
+      } else {
+        mediumDevices();
       }
     }
 
-    screenResized();
-    window.addEventListener("resize", screenResized);
-
+    // Animation pour les écrans desktop
     function largeDevices() {
       const totalWidth = cardsWrapper?.scrollWidth;
 
@@ -259,7 +336,7 @@ const savoirFaires = Object.values(
           scrub: true,
           pin: true,
           anticipatePin: 1,
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -277,7 +354,6 @@ const savoirFaires = Object.values(
               width: 0,
               // flexBasis: 0,
               duration: 1,
-              // ease: "power1.inOut"
             },
             i,
           );
@@ -285,34 +361,35 @@ const savoirFaires = Object.values(
       });
     }
 
-    // function mediumDevices() {
-    //   const tl = gsap.timeline({
-    //     scrollTrigger: {
-    //       trigger: ".sok-savoirfaire__cards",
-    //       start: "top top",
-    //       endTrigger: lastCard, // S'arrête à la dernière carte
-    //       end: "bottom bottom",
-    //       scrub: true,
-    //       pin: true,
-    //       pinSpacing: false,
-    //       anticipatePin: 1,
-    //       markers: true,
-    //     },
-    //   });
-
-    //   // Animation pour toute les cartes sauf la dernière
-    //   sokCards.forEach((sokCard, i) => {
-    //     if (i === lastIndex) return;
-    //     const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
-
-    //     if (rightContent) {
-    //       tl.to(rightContent, {
-    //         height: 0,
-    //         duration: 1,
-    //         // ease: "power1.inOut"
-    //       }, i);
-    //     }
-    //   });
-    // }
+    // Animation pour les tablettes et mobiles
+    function mediumDevices() {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sok-savoirfaire__cards",
+          start: "top top",
+          endTrigger: lastCard, // S'arrête à la dernière carte
+          end: "bottom bottom",
+          scrub: true,
+          pin: true,
+          pinSpacing: false,
+          anticipatePin: 1,
+          // markers: true,
+        },
+      });
+    
+      // Animation pour toute les cartes sauf la dernière
+      sokCards.forEach((sokCard, i) => {
+        if (i === lastIndex) return;
+        const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
+    
+        if (rightContent) {
+          tl.to(rightContent, {
+            height: 0,
+            duration: 1,
+          }, i);
+        }
+      });
+    }
   });
-</script>
+
+</script> -->

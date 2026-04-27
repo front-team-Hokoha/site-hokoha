@@ -9,10 +9,10 @@ import Revealtext from "../../animations/RevealText.astro";
 import * as titreSavoirFaire from "../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
 import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
 ---
-<div class="oka-appWrap -fluid oka-darkMode oka-surface">
+<div class="oka-appWrap -full oka-darkMode oka-surface">
   <section class="sok-sf" id="sok-sf">
   
-    <div class="hgo-snap oka-appWrap -fluid">
+    <div class="hgo-snap oka-appWrap -fluid -firstWrap">
       <section class="sok-savoirfaire">
         <div class="flex-grid">
 
@@ -61,7 +61,7 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
       </section>
     </div>
     
-    <div class="oka-appWrap -fluid">  
+    <div class="oka-appWrap -fluid -secondWrap">  
       <section class="sok-savoirfaire__cards">
         <div class="sok-card-container">
           <CardSavoirFaire />
@@ -75,6 +75,9 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
 
 <style lang="scss">
   @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+  // oka-appWrap des deux sections
+  .-firstWrap,.-secondWrap { padding: 0; }
+
   .-spacing {
     @include breakpoint(md) {
       display: none;
