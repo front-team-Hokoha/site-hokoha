@@ -15,6 +15,7 @@ import Appeardown from '../animations/AppearDown.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
+import '../styles/main.scss';
 
 
 interface Props {
@@ -120,9 +121,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <style lang="scss" is:global>
 
 
-	@use '../styles/main.scss';
-
-	@use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+	@use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;
 
   
 
