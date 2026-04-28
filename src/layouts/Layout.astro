@@ -127,49 +127,51 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- ===== Styles ===== -->
 <style lang="scss" is:global>
 
-
-	@use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;
-
-
-	html{
-		overflow-x: hidden;
-	}
-
-	body,
-	.layout-app__main {
-		background-color: var(--oka-color-layer-floor-0);
-	}
-
-
-	section {
-		position: relative;
-	}
-    
-
-   .oka-appWrap.-full {
-		padding : 0 1rem !important;
-
-		@include breakpoint(md) {
-			padding:0 !important;
-		}
-}
-
-
 	
 
-	.flex-grid-bg-fx__grid > *, .grid-bg-fx__grid > * {
+    // Ray de lumière bleue
+	// .sok-hero_ray{
+   //    position:fixed;
+   //    top:0;
+   //    width:300dvw;
+   //    height:100dvh;
 
-		background-color: transparent !important;
-		opacity: 0.5;
-		border-right: 1px solid var(--oka-color-bd-spec-subtle);
-	}
+   //    background-image: 
+   //      radial-gradient(
+   //          ellipse at right top,
+       
+	// 		var(--oka-color-neutral-900) 0%,
+	// 		var(--oka-color-neutral-900) 10%,
+   //          var(--sok-color-primary) 25%,
+   //          transparent 60%
+   //      );
+      
+   //    background-attachment: fixed;
+   //    //mix-blend-mode: color-dodge;
+   // }
 
 
-	// Requis quand on integre du contenu .md 
-	.oka-text.-lg p{
-		font-size: 1.125rem !important;
-		line-height: 1.75rem !important;
-	}
+   .sok-8ptgrid {
+      display: none;
+      position: fixed;
+      //left : 0dvw;
+      //top : 30dvh;
+      width: 1dvw;
+      height: 100dvh;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+         to bottom,
+         rgba(88, 125, 223, 0.5) 0px,
+         rgba(88, 125, 223, 0.5) 8px,
+         transparent 8px,
+         transparent 16px
+      );
+
+      &.-secondary {
+         width: 3dvw;
+         height: 30dvh;
+      }
+   }
 
 </style>
 
