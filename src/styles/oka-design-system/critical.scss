@@ -1,0 +1,157 @@
+// Tokens Figma (css variables)
+// @import "design-tokens/variables-global";
+// @import "design-tokens/variables-light";
+// @import "design-tokens/variables-dark";
+
+// @import "../design-tokens/palette";
+@use "../design-tokens/palette"  as *;
+@use  "../design-tokens/static"  as *;
+@use  "../design-tokens/primitive"  as *;
+@use  "../design-tokens/semantic"  as *;
+@use  "../design-tokens/elevations"  as *;
+
+//--------------------------------------
+// TYPO
+// Typo spécifiques du projet (Brand, expressive)
+@use "../typo.scss" as *;
+
+
+
+//--------------------------------------
+// VENDORS
+@use "vendors/plumber-oka" as plumber;
+@use "vendors/plumber-oka-var" as *;
+@use "vendors/normalize" as *;
+
+// --------------------------------------
+// ABSTRACTS
+@use "0-abstracts/breakpoints/breakpoints" as *;
+//@use "0-abstracts/functions-svg" as *;
+
+// --------------------------------------
+// UTILITIES
+@use "1-utilities/oka-utilities" as *;
+
+// BASE / NEUTRONS -----------------------------------
+/* 5 */ @use "1-bases/8ptGrid/8ptGrid" as *;
+/* 5 */ @use "1-bases/animations/animations" as *;
+/* 5 */ @use "1-bases/body/body" as *;
+/* 5 */ @use "1-bases/html/html" as *;
+// /* 5 */ @use "1-bases/icons/icons" as *;
+// /* 5 */ @use "1-bases/ripple/ripple" as *;
+// /* 5 */ @use "1-bases/shadows/shadows" as *;
+/* 5 */ @use "1-bases/spacings/spacings" as *;
+/* 5 a revoir */@use "1-bases/surfaces/surfaces" as *; // ------------------------> A reprendre
+// /* 5 */ @use "1-bases/typo/typo-scale" as *;   
+// /* 5 */ @use "1-bases/typo/typo-system" as *;  
+// /* 5 */ @use "1-bases/user-select/user-select" as *;  
+// /* 5 */ @use "1-bases/visibility/visibility" as *;   
+
+// ELEMENTS / MOLECULES -----------------------------------
+
+// Typographie System
+// /* 5 */ @use "2-elements/typography-system/cta-text/cta-text" as *;
+// /* 5 */ @use "2-elements/typography-system/components-headings/components-headings" as *;
+// /* 5 */ @use "2-elements/typography-system/datas/datas" as *;
+// /* 5 */ @use "2-elements/typography-system/labels/labels" as *;
+/* 5 */ @use "2-elements/typography-system/navs/navs" as *;
+
+// Typographie Marque
+/* 5 */ @use "2-elements/typography-brand/headings/headings" as *;
+/* 5 */ @use "2-elements/typography-brand/texts/texts" as *;
+
+// Elements de Formulaire
+// /* 5 */ @use "2-elements/Forms/checkboxes/checkboxes" as *;
+// /* 5 */ @use "2-elements/Forms/inputs/inputs" as *;
+// /* 5 */ @use "2-elements/Forms/fields/fields" as *;
+// /* 5 */ @use "2-elements/Forms/radios/radios" as *;
+// /* 5 */ @use "2-elements/Forms/ranges/ranges" as *;
+// /* 5 */ @use "2-elements/Forms/selects/selects" as *;
+// /* 5 */ @use "2-elements/Forms/switchs/switchs" as *;
+// /* 5 */ @use "2-elements/Forms/textareas/textareas" as *;
+
+// Elements
+/* 5 */ @use "2-elements/buttons/buttons" as *;
+// /* 5 */ @use "2-elements/collapse/collapse" as *;
+// /* 5 */ @use "2-elements/dividers/dividers" as *;
+// /* 5 */ @use "2-elements/links/links" as *;
+// /* 5 */ @use "2-elements/loaders/loaders" as *;
+// /* 5 */ @use "2-elements/overlay/overlay" as *;
+// /* 5 */ @use "2-elements/spinners/spinners" as *;
+
+// Composants (bundle oka-List)
+// /* 5 */ @use "3-components/pagination/pagination" as *;
+// /* 5 */ @use "3-components/tables/tables" as *;
+
+// LAYOUT BASE
+/* 5 */ @use "4-layouts/app-wrapper/app-wrapper" as *;
+// /* 5 */ @use "4-layouts/cols/cols" as *;
+// /* 5 */ @use "4-layouts/flex/flex" as *;
+// /* 5 */ @use "4-layouts/forms/forms" as *; // !!!!!!!! -> Déplacer vers forms.scss ?????
+// /* 5 */ @use "4-layouts/oka-filters/oka-filters.4.0.0" as *;
+// /* 5 */ @use "4-layouts/grids/grids" as *;
+/* 5 */ @use "4-layouts/grids/flex-grid" as *;
+// /* 5 */ @use "4-layouts/grids/grid-auto" as *;
+// /* 5 */ @use "4-layouts/layout-app/layout-app" as *;
+// /* 5 */ @use "4-layouts/page-header/pageHeader" as *;
+// /* 5 */ @use "4-layouts/wrappers/wrappers" as *;
+
+// Starter ( cookies )
+// /* 5 */ @use "3-components/modals/modals" as *;
+// /* 5 */ @use "3-components/tabsToAccordions/tabsToAccordions" as *;
+
+// @use "4-layouts/oka-cookieBanner/oka-cookieBanner" as *;
+
+// Starter ( page Login )
+// /* 5 */ @use "3-components/credits/credits" as *;
+// /* 5 */ @use "3-components/messages/messages" as *;
+/* 5 */ @use "3-components/spacers/spacers" as *;
+
+
+// /* 5 */ @use "3-components/fields-password/fields-password" as *;
+// /* 5 */ @use "3-components/fields-search/fields-search" as *;
+// /* 5 */ @use "3-components/input-checklist/input-checklist" as *;
+
+// Starter (base section)
+/* 5 */ @use "3-components/appbar/appbar" as *;
+
+
+
+
+//
+// Paramêtrage de la grille
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!  Attention : Duppliquer dans  fichier Cols pour compatibilité Dart
+//
+$nbCol : 16;
+
+$nbCol-on-xsmall  : calc($nbCol / 4 );
+$nbCol-on-small  : calc($nbCol / 2 );
+$nbCol-on-medium : $nbCol;
+$nbCol-on-large  : $nbCol;
+
+$grid-gap-on-xsmall  : 1.5rem;
+$grid-gap-on-small  : 1.5rem;
+$grid-gap-on-medium : 1.5rem;
+$grid-gap-on-large  : 1.5rem;
+
+:root {
+  --grid-columns: #{$nbCol-on-xsmall} ;
+
+  --grid-gap-y: 1rem;
+  --grid-gap-x: #{$grid-gap-on-xsmall}; 
+
+  @include breakpoint(sm) {
+    --grid-columns: #{$nbCol-on-small} ;
+    --grid-gap-x: #{$grid-gap-on-small};
+  }
+  @include breakpoint(md) {
+    --grid-columns: #{$nbCol-on-medium} ;
+    --grid-gap-x: #{$grid-gap-on-medium};
+  }
+  @include breakpoint(lg) {
+    --grid-columns: #{$nbCol-on-large} ;
+    --grid-gap-x: #{$grid-gap-on-large};
+  }
+}
