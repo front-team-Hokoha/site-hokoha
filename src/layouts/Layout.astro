@@ -9,12 +9,15 @@ import Header from "../components/commun/Header.astro";
 import Footer from "../components/commun/Footer.astro";
 
 
-
+// ===== Animations =====
 import Appearup from '../animations/AppearUp.astro';
 import Appeardown from '../animations/AppearDown.astro';
 import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
+
+// ===== Styles Globaux =====
+import '../styles/main.scss';
 
 // import '../styles/main.scss';
 import criticalCss from '../styles/oka-design-system/critical.scss?inline';
@@ -54,6 +57,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={new URL(image, Astro.site)} />
 
+		<!-- Fonts -->
+		<link rel="preload" href={`${import.meta.env.BASE_URL}assets/fonts/inter/InterVariable.woff2`} as="font" type="font/woff2" crossorigin>
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 
@@ -63,13 +69,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" />
 
 		<ClientRouter />
+		
+
+		<style lang="scss" is:global>
+            @import '../styles/main.scss';
+        </style>
 
 	</head>
 	<body>
 		<div id="root" class="layout-app">
-
-			<div class="sok-hero_ray" aria-hidden="true"></div>
-
 
 			<Header />
 			
@@ -85,34 +93,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 			<!-- Grid Preview -->
 			<div class="flex-grid-bg-fx z-index-1 " aria-hidden="true">
-					<div class="oka-app-wrap -full" style="height:100%">
-						<div class="grid-bg-fx__grid flex-grid ">
-		
-							<div class="col col-1"></div>
-							<div class="col col-1"></div>
-							<div class="col col-1" ></div>
-							<div class="col col-1" ></div>
-		
-							<div class="col col-1"></div>
-							<div class="col col-1"></div>
-							<div class="col col-1" ></div>
-							<div class="col col-1" ></div>
-		
-							<div class="col col-1"></div>
-							<div class="col col-1"></div>
-							<div class="col col-1" ></div>
-							<div class="col col-1" ></div>
-		
-							<div class="col col-1"></div>
-							<div class="col col-1"></div>
-							<div class="col col-1" ></div>
-							<div class="col col-1" ></div>
-						</div>
+				<div class="oka-app-wrap -full" style="height:100%">
+					<div class="grid-bg-fx__grid flex-grid ">
+	
+						<div class="col col-1"></div>
+						<div class="col col-1"></div>
+						<div class="col col-1" ></div>
+						<div class="col col-1" ></div>
+	
+						<div class="col col-1"></div>
+						<div class="col col-1"></div>
+						<div class="col col-1" ></div>
+						<div class="col col-1" ></div>
+	
+						<div class="col col-1"></div>
+						<div class="col col-1"></div>
+						<div class="col col-1" ></div>
+						<div class="col col-1" ></div>
+	
+						<div class="col col-1"></div>
+						<div class="col col-1"></div>
+						<div class="col col-1" ></div>
+						<div class="col col-1" ></div>
 					</div>
+				</div>
 			</div>
 		</div>
 	</body>
 </html>
+
+
 
 <!-- ===== Styles ===== -->
 <style lang="scss" is:global>
