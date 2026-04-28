@@ -16,6 +16,9 @@ import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
+// import '../styles/main.scss';
+import criticalCss from '../styles/oka-design-system/critical.scss?inline';
+import mainStylesUrl from '../styles/main.scss?url';
 
 interface Props {
 	title: string;
@@ -53,12 +56,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<ClientRouter />
-		
 
-		<style lang="scss" is:global>
-            @import '../styles/main.scss';
-        </style>
+		<style is:inline set:html={criticalCss}></style>
+
+		<!-- CSS Non-Critique (chargé en priorité basse avec media="print") -->
+		<link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" />
+
+		<ClientRouter />
 
 	</head>
 	<body>
