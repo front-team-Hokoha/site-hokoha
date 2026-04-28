@@ -19,6 +19,9 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 // ===== Styles Globaux =====
 import '../styles/main.scss';
 
+// import '../styles/main.scss';
+import criticalCss from '../styles/oka-design-system/critical.scss?inline';
+import mainStylesUrl from '../styles/main.scss?url';
 
 interface Props {
 	title: string;
@@ -59,9 +62,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		
+
+		<style is:inline set:html={criticalCss}></style>
+
+		<!-- CSS Non-Critique (chargé en priorité basse avec media="print") -->
+		<link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" />
+
 		<ClientRouter />
 		
+
+		<style lang="scss" is:global>
+            @import '../styles/main.scss';
+        </style>
+
 	</head>
 	<body>
 		<div id="root" class="layout-app">
