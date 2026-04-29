@@ -1,18 +1,18 @@
 ---
 // ===== Composants de la page =====
-import PolygoneMask from "../commun/polygones/PolygoneMask.astro";
-import ImageSok from "../commun/ImageSok.astro";
+import PolygoneMask from "../../../components/commun/polygones/PolygoneMask.astro";
+import ImageSok from "../../../components/commun/ImageSok.astro";
 
 // ===== Composants d'animation =====
-import RevealText from "../../animations/RevealText.astro";
-import RevealMask from "../../animations/RevealMask.astro"; 
+import RevealText from "../../../animations/RevealText.astro";
+import RevealMask from "../../../animations/RevealMask.astro"; 
 
 // ===== Fichiers Markdown =====
-import * as titreEntreprise from "../../contenus/accueil/entreprise/titre-entreprise.md"
-import digitalArrow from '../../assets/images/digital-arrow.svg';
+import * as titreEntreprise from "../../../contenus/accueil/entreprise/titre-entreprise.md"
+import digitalArrow from '../../../assets/images/digital-arrow.svg';
 
 // ===== Images =====
-import imgEntreprise from '../../assets/images/equipe/entreprise.jpg'
+import imgEntreprise from '../../../assets/images/equipe/entreprise.jpg'
 ---
 <div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
@@ -94,7 +94,7 @@ import imgEntreprise from '../../assets/images/equipe/entreprise.jpg'
 </div>
 
 <style lang="scss" define:vars={{ bgUrl: `url(${imgEntreprise.src})`}}>
-  @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+  @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   
   .sok-entreprise__content-wrapper {
     height: 100%;

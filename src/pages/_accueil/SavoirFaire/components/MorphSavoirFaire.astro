@@ -46,7 +46,8 @@
    gsap.registerPlugin(ScrollTrigger);
 
    document.addEventListener('astro:page-load', () => {
-      const morph = document.querySelector(".morph");
+      const morph = document.querySelector<HTMLElement>(".morph");
+      if (!morph) return;
 
       const h = morph.offsetHeight;
       const w = morph.offsetWidth;

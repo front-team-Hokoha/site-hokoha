@@ -1,11 +1,11 @@
 ---
 // ===== Composants utilisés =====
-import ImageSok from "../../commun/ImageSok.astro";
+import ImageSok from "../../../../components/commun/ImageSok.astro";
 // import MediaWrapper from "../../commun/MediaWrapper.astro";
 
 // ===== Fichiers Markdown =====
 const savoirFaires = Object.values(
-  import.meta.glob("../../../contenus/accueil/savoir-faires/cartes/*.md", {
+  import.meta.glob<Record<string, any>>("../../../../contenus/accueil/savoir-faires/cartes/*.md", {
     eager: true,
   }),
 );
@@ -62,7 +62,7 @@ const savoirFaires = Object.values(
 }
 
 <style lang="scss">
-  @use "../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
+  @use "../../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
     as *;
 
   :root {

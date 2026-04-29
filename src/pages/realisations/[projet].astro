@@ -2,7 +2,7 @@
 // ===== Layout =====
 import Layout from "../../layouts/Layout.astro";
 
-import Hibou from "../../components/projets/Hibou.astro"
+import Hibou from "./_Projets/components/Hibou.astro"
 
 export function getStaticPaths() {
    return [
@@ -26,10 +26,10 @@ const components = {
    // hugo: Hugo,
 };
 
-const ProjectComponent = components[projet];
+const ProjectComponent = components[projet as keyof typeof components];
 ---
 
-<Layout title={projet}>
+<Layout title={projet || "Projet"} description={`Découvrez en détail notre réalisation pour le projet ${projet}.`}>
    <!-- Retourne le composant, si il existe -->
    {ProjectComponent ? <ProjectComponent /> : null}
    
