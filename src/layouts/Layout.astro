@@ -16,10 +16,8 @@ import Appeargroup from '../animations/AppearGroup.astro';
 import FadeIn from '../animations/FadeIn.astro';
 import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
-// ===== Styles Globaux =====
-import '../styles/main.scss';
 
-// import '../styles/main.scss';
+// ===== Styles =====
 import criticalCss from '../styles/oka-design-system/critical.scss?inline';
 import mainStylesUrl from '../styles/main.scss?url';
 
@@ -70,11 +68,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		<ClientRouter />
 		
-
-		<style lang="scss" is:global>
-            @import '../styles/main.scss';
-        </style>
-
 	</head>
 	<body>
 		<div id="root" class="layout-app">
