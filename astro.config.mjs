@@ -8,6 +8,10 @@ export default defineConfig({
    base: process.env.GITHUB_ACTIONS ? '/site-hokoha/' : '/', // /site-hokoha/ uniquement sur GitHub Pages, '/' en local et en production
    output: 'static',     // Production en mode site statique
 
+   build: {
+      inlineStylesheets: 'always', // Force l'inlining de tous les `<style>` des composants Astro pour éliminer les requêtes render-blocking
+   },
+
    devToolbar: {
       enabled: false
    }

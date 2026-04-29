@@ -12,7 +12,10 @@ import * as titreEntreprise from "../../../contenus/accueil/entreprise/titre-ent
 import digitalArrow from '../../../assets/images/digital-arrow.svg';
 
 // ===== Images =====
-import imgEntreprise from '../../../assets/images/equipe/entreprise.jpg'
+import { getImage } from "astro:assets";
+import imgEntreprise from '../../../assets/images/equipe/entreprise.jpg';
+
+const optimizedBg = await getImage({ src: imgEntreprise, format: 'webp', quality: 75 });
 ---
 <div class="oka-appWrap -fluid oka-lightMode oka-surface">
   <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
@@ -93,7 +96,7 @@ import imgEntreprise from '../../../assets/images/equipe/entreprise.jpg'
   </section>
 </div>
 
-<style lang="scss" define:vars={{ bgUrl: `url(${imgEntreprise.src})`}}>
+<style lang="scss" define:vars={{ bgUrl: `url(${optimizedBg.src})`}}>
   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   
   .sok-entreprise__content-wrapper {
