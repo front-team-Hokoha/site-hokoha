@@ -7,13 +7,13 @@ import GlobalStyles from '../components/commun/GlobalStyles.astro';
 
 // ===== Componsants de la page =====
 import Grid from "../components/commun/grid.astro";
-import Hero from "../components/accueil/Hero.astro";
-import Offres from "../components/accueil/Offres.astro";
-import SavoirFaire from "../components/accueil/SavoirFaire.astro";
-import Entreprise from "../components/accueil/Entreprise.astro";
+import Hero from "./accueil/Hero/Hero.astro";
+import Offres from "./accueil/Offres/Offres.astro";
+import SavoirFaire from "./accueil/SavoirFaire/SavoirFaire.astro";
+import Innover from './accueil/Innover/Innover.astro';
+import Entreprise from "./accueil/Entreprise/Entreprise.astro";
 import Avantages from '../components/commun/avantages/Avantages.astro';
 import Avantage from '../components/commun/avantages/Avantage.astro';
-import Innover from '../components/accueil/Innover.astro';
 
 // Props pour le conteu de meta:description
 const { descContent = "lorem ipsum" } = Astro.props;

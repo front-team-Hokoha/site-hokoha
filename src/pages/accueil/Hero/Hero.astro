@@ -1,0 +1,103 @@
+---
+// ===== Composants de la page =====
+import Grid from "../../../components/commun/grid.astro";
+import GrilleIntro from "./components/GrilleIntro.astro";
+
+// ===== Composants d'animations =====
+import Revealtext from "../../../animations/RevealText.astro";
+import RevealMask from "../../../animations/RevealMask.astro";
+
+// ===== Fichiers Markdown =====
+import * as paragrapheHero from "../../../contenus/accueil/hero/paragraphe-hero.md"
+import logokohaDark from '../../../assets/images/logokoha-dark.png';
+---
+
+
+
+
+
+
+<div class="oka-appWrap -full">
+   <section class="sok-hero">
+      
+      
+
+      <!-- <Grid /> -->
+
+      <div class="flex-grid">
+         <div class="col col-1"></div>
+   
+         <div class="col col-7">
+            <div class="oka-spacer  -xl" aria-hidden="true"></div>
+            <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+   
+            <img class="sok-logokoha"  src={logokohaDark.src} alt="logo Hokoha">
+
+
+            <div class="oka-spacer  -sm" aria-hidden="true"></div>
+
+            <h1 class="oka-h -xxl">
+               Développement Informatique sur-mesure
+            </h1>
+
+
+            <div class="oka-spacer  -sm" aria-hidden="true"></div>
+ 
+
+           
+            <paragrapheHero.Content />
+         
+   
+            <div class="oka-spacer  -lg" aria-hidden="true"></div>
+              
+         </div>
+       
+         <div class="col col-1">
+            <!-- <GrilleIntro cols="2" /> -->
+         </div>
+      </div>
+   
+      <div class="flex-grid">
+         <div class="col col-2">
+         
+         </div>
+         <div class="col col-14">
+            <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "0.4" }} />
+         </div>
+      </div>
+
+   </section>
+</div>
+
+
+
+<style lang="scss" is:global>
+
+   @use "../../../styles/oka-design-system/2-elements/typography-brand/texts/texts.scss" as *;
+
+   .sok-hero {
+      position:relative;
+      z-index: 2;
+
+      margin:0;
+      
+   }
+
+   .sok-logokoha{
+      width: auto;
+      height: 56px;
+   }
+
+
+   .oka-text p,
+   .sok-hero__chapeau p {
+      @extend %oka-text-lg;
+      max-width: 840px;
+   }
+
+
+</style>
+
+
+
+

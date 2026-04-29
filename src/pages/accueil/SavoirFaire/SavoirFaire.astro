@@ -1,13 +1,13 @@
 ---
 // ===== Componsants de la page =====
-import CardSavoirFaire from "./savoir-faire/CardSavoirFaire.astro"
+import CardSavoirFaire from "./components/CardSavoirFaire.astro"
 // import Grid from "../../components/commun/grid.astro";
 // ===== Composants d'animations =====
-import Revealtext from "../../animations/RevealText.astro";
+import Revealtext from "../../../animations/RevealText.astro";
 
 // ==== Import du fichier Markdown
-import * as titreSavoirFaire from "../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
-import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
+import * as titreSavoirFaire from "../../../contenus/accueil/savoir-faires/titre-savoir-faire.md"
+import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/paragraphe-savoir-faire.md"
 ---
 <div class="oka-appWrap -full oka-darkMode oka-surface">
   <section class="sok-sf" id="sok-sf">
@@ -78,7 +78,7 @@ import * as paragrapheSavoirFaire from "../../contenus/accueil/savoir-faires/par
 
 
 <style lang="scss">
-  @use "../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+  @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   // oka-appWrap des deux sections
   .-firstWrap,.-secondWrap { padding: 0; }
 
