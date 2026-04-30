@@ -13,8 +13,11 @@ export function initLenis() {
     lerp: 0.08, // Adjust this value for smoother or snappier scroll (0.1 is default).
     smooth: true,
 		direction: 'vertical',
-    smoothTouch: false,    
+    smoothTouch: false,
   })
+
+  // Expose globally so other scripts can call lenis.stop() / lenis.start()
+  window.lenis = lenis;
 
   // Bridge ScrollTrigger to use Lenis' scroll position instead of native scroll.
   // Required for ScrollTrigger pin/snap features to work correctly alongside Lenis.
