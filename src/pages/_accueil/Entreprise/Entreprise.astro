@@ -17,8 +17,8 @@ import imgEntreprise from '../../../assets/images/equipe/entreprise.jpg';
 
 const optimizedBg = await getImage({ src: imgEntreprise, format: 'webp', quality: 75 });
 ---
-<div class="oka-appWrap -fluid oka-lightMode oka-surface">
-  <section class="sok-entreprise flex-grid oka-lightMode oka-surface _ctnr-inline">
+<div class="oka-appWrap -fluid ">
+  <section class="sok-entreprise flex-grid  _ctnr-inline">
     
     <div class="flex-grid">
       <div class="col col-1"></div>
@@ -97,6 +97,7 @@ const optimizedBg = await getImage({ src: imgEntreprise, format: 'webp', quality
 </div>
 
 <style lang="scss" define:vars={{ bgUrl: `url(${optimizedBg.src})`}}>
+
   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   
   .sok-entreprise__content-wrapper {

@@ -160,89 +160,26 @@ $grid-gap-on-large  : 1.5rem;
   
 }  
 
-	// .oka-surface {
-	// 	--oka-color-layer-floor-0 : hsla(216, 45%, 98%, 1);
-	// }
 
-	html {
-	
-		overflow-x: hidden; /*requis pour Zoom Innover */
+
+html {
+	overflow-x: hidden; /*requis pour Zoom Innover */
+}
+
+body {
+	background-color: var(--sok-color-underground);
+}
+
+section {
+	position: relative;
+}
+
+
+.oka-appWrap.-full {
+	// Padding pour mobile
+	padding : 0 1rem !important;
+
+	@include breakpoint(md) {
+		padding:0 !important;
 	}
-
-	body {
-      	background-color: var(--sok-color-underground);
-	}
-
-	section {
-		position: relative;
-      	// z-index: 1;
-      	// background-color: var(--sok-color-surface);
-	}
-
-
-	
-
-	.layout-app__main {
-		// background-color: var(--oka-color-neutral-800);
-		background-color: var(--sok-color-underground);
-	}
-
-
-    // 8pt Grid 
-	body:after{
-
-        content: "";
-        position: fixed;
-        width: 100%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 0;
-        padding: 0;
-        opacity: 1;
-        font-size: 8px;
-        background-repeat: repeat-y;
-        background-size: 100% 0.25rem;
-        background-image: linear-gradient(to bottom, var(--oka-color-neutral-100, var(--oka-color-neutral-100)) 0, rgba(255, 255, 255, 0) 1px);
-        line-height: 0;
-        line-height: 0;
-        pointer-events: none;
-
-	}
-
-  .oka-appWrap.-full {
-	
-		padding : 0 1rem !important;
-
-		@include breakpoint(md) {
-			padding:0 !important;
-		}
-
-
-   }
-
-
-
-   // Elargie la largeur utile
-	@media (min-width: 1440px) {
-		.oka-appWrap:not(.-fluid), .oka-app-wrap:not(.-fluid) {
-			//max-width: 102.5rem;
-			//padding-right: 2rem;
-			//padding-left: 2rem;
-		}
-	}
-
-	.flex-grid-bg-fx__grid > *, .grid-bg-fx__grid > * {
-
-		background-color: transparent !important;
-		opacity: 0.5;
-		border-right: 1px solid var(--oka-color-bd-spec-subtle);
-	}
-
-
-// Requis quand on integre du contenu .md 
-	
-.oka-text.-lg p{
-	font-size: 1.125rem !important;
-	line-height: 1.75rem !important;
 }
