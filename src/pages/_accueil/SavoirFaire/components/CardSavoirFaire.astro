@@ -18,7 +18,7 @@ const savoirFaires = Object.values(
         {/* bandeau */}
         <div class="side-wrapper">
           <div class="sok-card__side">
-            <h3 class="oka-h -sm -secondary">{savoirFaire.frontmatter.tag}</h3>
+            <div class="oka-h -sm -secondary">{savoirFaire.frontmatter.tag}</div>
 
             <span class="oka-data -sm -strong">
               {savoirFaire.frontmatter.num}
@@ -28,13 +28,22 @@ const savoirFaires = Object.values(
 
         <div class="card-content-container">
           <div class="sok-card__content-wrapper">
+
+            <div class="image-wrapper">
+              <div class="oka-spacer -xl -spacing" aria-hidden="true" />
+
+              <figure class="sok-card__image-inner">
+                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
+              </figure>
+            </div>
+
+
             <div class="texts-wrapper">
               <div class="sok-card__content">
-                <h3
-                  class="oka-h -lg"
+                <h3 class="oka-h -xxl"
                   set:html={savoirFaire.frontmatter.title}
                 />
-
+                <div class="oka-spacer  -md" aria-hidden="true"></div>
                 <div class="sok-paragraph">
                   <p class="oka-text -md">{savoirFaire.rawContent()}</p>
                 </div>
@@ -47,19 +56,51 @@ const savoirFaires = Object.values(
               </div>
             </div>
 
-            <div class="image-wrapper">
-              <div class="oka-spacer -xl -spacing" aria-hidden="true" />
-
-              <figure class="sok-card__image-inner">
-                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
-              </figure>
-            </div>
+            
           </div>
         </div>
       </div>
     </article>
   ))
 }
+
+
+<!-- Conclusion -->
+ <article class="sok-card">
+      <div class="sok-card__container">
+        
+        <div class="card-content-container">
+          <div class="sok-card__content-wrapper">
+
+        
+            <div class="texts-wrapper">
+              <div class="sok-card__content">
+                <h3 class="oka-h -xxl">titre</h3>
+                  
+                <div class="oka-spacer  -md" aria-hidden="true"></div>
+                <div class="sok-paragraph">
+                  <p class="oka-text -md">Para</p>
+                </div>
+
+                <div class="oka-spacer -md" aria-hidden="true" />
+
+                
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+
+
+
+
+
+
 
 <style lang="scss">
   @use "../../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
@@ -82,7 +123,7 @@ const savoirFaires = Object.values(
     z-index: 99;
     // margin-bottom: -1px;
     // background-color: var(--oka-color-layer-floor-0);
-    border: 1px solid var(--oka-color-bd-minimal);
+    border: 0px solid var(--oka-color-bd-minimal);
 
     .sok-card__container {
       overflow: hidden;
@@ -90,15 +131,25 @@ const savoirFaires = Object.values(
 
       @include breakpoint(md) {
         display: flex;
-        min-height: 50vh;
+        min-height: 70dvh;
       }
 
       // ===== Bandeau latéral =====
       .side-wrapper {
-        flex: 0 0 calc(var(--col-size) * 8);
+        display: none;
+        //flex: 0 0 calc(var(--col-size) * 8);
+
+        //background-color: #fff; //var(--oka-color-bg-on_surface);
 
         @include breakpoint(md) {
+          display:block;
           flex: 0 0 calc(var(--col-size) * 1);
+
+          position: relative;
+          z-index: 2;
+          backdrop-filter: blur(4px);
+          background: rgba(0, 0, 0, 0.8);
+          
         }
 
         .sok-card__side {
@@ -117,6 +168,7 @@ const savoirFaires = Object.values(
           }
 
           & > * {
+            color: var(--oka-color-fg-subtle);
             writing-mode: horizontal-tb;
 
             @include breakpoint(md) {
@@ -135,6 +187,9 @@ const savoirFaires = Object.values(
         @include breakpoint(md) {
           display: flex;
           height: 100%;
+
+          margin-left: calc(var(--col-size) * -1);
+          z-index: 0;
         }
 
         .texts-wrapper {
@@ -142,13 +197,17 @@ const savoirFaires = Object.values(
           padding: 1rem;
 
           @include breakpoint(md) {
-            flex: 0 0 calc(var(--col-size) * 5);
-            margin: 2rem;
+            flex: 0 0 calc(var(--col-size) * 8);
+            //margin: 2rem;
             padding: 0;
           }
 
           @include breakpoint(lg) {
-            flex: 0 0 calc(var(--col-size) * 6);
+            flex: 0 0 calc(var(--col-size) * 12);
+
+            padding-top: calc(var(--col-size) * 1);
+            padding-left: calc(var(--col-size) * 0.5);
+            padding-left: calc(var(--col-size) * 0.5);
           }
 
           .sok-card__content {
@@ -179,8 +238,8 @@ const savoirFaires = Object.values(
           flex: 0 0 calc(var(--col-size) * 8);
 
           @include breakpoint(md) {
-            flex: 0 0 calc(var(--col-size) * 3);
-            margin: 2rem;
+            flex: 0 0 calc(var(--col-size) * 1);
+            //margin: 2rem;
           }
 
           .sok-card__image-inner {
@@ -195,6 +254,7 @@ const savoirFaires = Object.values(
             }
 
             & img {
+        
               width: 100%;
               height: 100%;
               object-fit: cover;
@@ -287,109 +347,3 @@ const savoirFaires = Object.values(
   });
 </script>
 
-<!-- Ancien script -->
- <!-- Comporte des bogues avec le resize -->
-<!-- <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener("astro:page-load", () => {
-    const cardsWrapper = document.querySelector(".sok-card-container");
-    if (!cardsWrapper) return;
-    // Récupération de toutes les cartes
-    const sokCards = document.querySelectorAll(".sok-card");
-    if (!sokCards.length) return;
-
-    // Dernière carte Savoir-Faire
-    const lastIndex = sokCards.length - 1;
-    
-    // Variable pour la function mediumDevices plus bas
-    const lastCard = sokCards[lastIndex];
-    let isActive = false;
-
-    // Ancienne fonction, à adapter en cas d'utilisations des animations pour les tablettes et mobiles
-    
-    screenResized();
-    window.addEventListener("resize", screenResized);
-    
-    function screenResized() {
-      const isDesktop = window.innerWidth >= 1024;
-
-      if (isDesktop) {
-        largeDevices();
-      } else {
-        mediumDevices();
-      }
-    }
-
-    // Animation pour les écrans desktop
-    function largeDevices() {
-      const totalWidth = cardsWrapper?.scrollWidth;
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".sok-sf",
-          start: "top top",
-          end: () => `+=${totalWidth}`,
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          // markers: true,
-        },
-      });
-
-      // Animation pour toute les cartes sauf la dernière
-      sokCards.forEach((sokCard, i) => {
-        if (i === lastIndex) return;
-        const rightContent = sokCard.querySelector(
-          ".sok-card__content-wrapper",
-        );
-
-        if (rightContent) {
-          tl.to(
-            rightContent,
-            {
-              width: 0,
-              // flexBasis: 0,
-              duration: 1,
-            },
-            i,
-          );
-        }
-      });
-    }
-
-    // Animation pour les tablettes et mobiles
-    function mediumDevices() {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".sok-savoirfaire__cards",
-          start: "top top",
-          endTrigger: lastCard, // S'arrête à la dernière carte
-          end: "bottom bottom",
-          scrub: true,
-          pin: true,
-          pinSpacing: false,
-          anticipatePin: 1,
-          // markers: true,
-        },
-      });
-    
-      // Animation pour toute les cartes sauf la dernière
-      sokCards.forEach((sokCard, i) => {
-        if (i === lastIndex) return;
-        const rightContent = sokCard.querySelector(".sok-card__content-wrapper");
-    
-        if (rightContent) {
-          tl.to(rightContent, {
-            height: 0,
-            duration: 1,
-          }, i);
-        }
-      });
-    }
-  });
-
-</script> -->

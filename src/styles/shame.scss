@@ -58,3 +58,15 @@
         padding:0 !important;
     }
 }
+
+
+.oka-h.-xxl {
+    --crop-top: -1.5rem;
+    --crop-bottom: -1rem;
+    --plumber-font-size: 3.157rem;
+    --plumber-line-height: 3rem;
+    --plumber-padding-top: 0.347695rem;
+    --plumber-padding-bottom: 0.652305rem;
+    font-size: clamp(var(--oka-typo-brand-heading-md-font-size), 11cqw, var(--oka-typo-brand-heading-giant-font-size));
+    line-height: clamp(var(--oka-typo-brand-heading-md-line-height) * 1px, 1em, var(--oka-typo-brand-heading-xl-line-height) * 1px);
+}

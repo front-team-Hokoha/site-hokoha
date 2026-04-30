@@ -2,7 +2,7 @@
 title: 'Concevoir des interfaces ergonomiques & esthétiques.'
 tag: 'Concevoir'
 num: '03'
-src: '/src/assets/images/ambiance/test-3.png'
+src: '/src/assets/images/ambiance/10693.jpg'
 alt: 'texte alternatif'
 ---
 
