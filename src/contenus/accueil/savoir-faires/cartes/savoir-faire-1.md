@@ -2,7 +2,7 @@
 title: 'Développer & interconnecter vos outils.'
 tag: 'Développer'
 num: '01'
-src: '/src/assets/images/ambiance/test-1.png'
+src: '/src/assets/images/ambiance/10693.jpg'
 alt: 'texte alternatif'
 ---
 

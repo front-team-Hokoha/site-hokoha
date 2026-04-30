@@ -1,5 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+// import Typper from '../../../animations/tipper/Typper.astro';
+
 
 // Description du "polygone"
 export const hexHeight = 133.8;
@@ -60,6 +62,7 @@ const resolvedImage = imageUrl ? (images[imageUrl] as any) : undefined;
 
 		{(!imageUrl || videoUrl) && (
 			<span class="polygon-text">{frontText}</span>
+			// <Typper  text={frontText}/>
 		)}
 
 		{videoUrl && (

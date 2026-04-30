@@ -20,11 +20,22 @@ const { descContent = "lorem ipsum" } = Astro.props;
 ---
 
 <Layout title="Page Accueil" description={descContent}>
-	<Grid />
+	<!-- <Grid /> -->
 	<Hero />
-	<Offres />
+	<Offres /> 
+	<!-- La hauteur des spacer , incide sur le scroll -->
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>	
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
 	
 	<SavoirFaire />
+
+	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
+	
+	
 	
 	<!-- <Innover />	 -->
 

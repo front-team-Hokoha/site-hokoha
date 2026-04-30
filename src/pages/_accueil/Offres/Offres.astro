@@ -34,12 +34,12 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     <div class="sok-offres__intro flex-grid">
       <div class="col col-1"></div>
       <div class="col col-7">
-          <div class="oka-spacer -lg" aria-hidden="true"></div>
+          <div class="oka-spacer -xl" aria-hidden="true"></div>
           <Revealtext>     
             <div class="oka-data -xs">Titre seo sur les offres</div>     
             <h2 class="oka-h -xl -secondary">Nous intervenons sur le développement de vos produits, vos services, vos process.</h2>
           </Revealtext>
-          <div class="oka-spacer -lg" aria-hidden="true" ></div>
+          <div class="oka-spacer -xl" aria-hidden="true" ></div>
       </div>
     </div>
 
@@ -304,6 +304,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         start: "top top",
         end: `+=${(OFFRES.length + 1) * OFFRE_SCROLL_STEP}`,
         pin: true,
+     
       });
 
       OFFRES.forEach((offre, index) => {
@@ -314,6 +315,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
           trigger: offre,
           start: `top+=${index * OFFRE_SCROLL_STEP}px 50%`,
           end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 50%`,
+          //markers: true,
           onEnter: () => {
             offre.classList.add("-active");
             offre.classList.add("-display");
