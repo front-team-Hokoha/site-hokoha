@@ -131,6 +131,13 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
         }
       });
     });
+
+    // Quand on sort d'une offre, tous les polygones doivent unflip
+    document.addEventListener("offre:leave", (e) => {
+      document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((poly) => {
+        (poly as any).doUnflip?.();
+      });
+    });
   
   });
 </script>
