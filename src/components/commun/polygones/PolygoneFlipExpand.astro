@@ -281,6 +281,12 @@ const {
       });
     });
 
+    document.addEventListener("offre:leave", (e) => {
+      document.querySelectorAll<HTMLElement>('.jsFlipExpand').forEach((poly) => {
+        (poly as any).doUnflip?.();
+      });
+    });
+
   });
 </script>
 
