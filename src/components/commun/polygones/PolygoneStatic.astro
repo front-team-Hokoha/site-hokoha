@@ -8,14 +8,15 @@ interface Props {
 	videoUrl?: string;
 	imageUrl?: string;
   modifier?: string;
+  alt?: string;
 }
 
-const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier } = Astro.props;
+const { frontText, backText = 'Back', videoUrl, imageUrl, color, modifier, alt = '' } = Astro.props;
 ---
 
 
 <div class={`polygone ${color} ${modifier}`}  >
-  <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color}/>
+  <Shape frontText={frontText} imageUrl={imageUrl} videoUrl={videoUrl} color={color} alt={alt}/>
 </div>
 
 

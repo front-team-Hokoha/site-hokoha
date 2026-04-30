@@ -1,27 +1,32 @@
 ---
 import Shape from "./Shape.astro";
 
+interface FlipImage {
+  src: string;
+  alt: string;
+}
+
 interface Props {
   frontText?: string;
   backText?:  string;
   color?: string;
 	videoUrl?: string;
-	imageUrl?: string;
+	images?: FlipImage[];
 }
-const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = Astro.props;
+const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } = Astro.props;
 ---
 
-<div class={`polygone -flip jsFlipAuto  ${color}`}>
+<div class={`polygone -flip jsFlipAuto  ${color}`} data-images={JSON.stringify(images)}>
   <div class="flip-inner">
 
     <!-- Face avant -->
     <div class="flip-face flip-front">
-      <Shape frontText={frontText}  color={color}/>
+      <Shape frontText={frontText} imageUrl={images[0]?.src} alt={images[0]?.alt} color={color}/>
     </div>
 
     <!-- Face arrière -->
     <div class="flip-face flip-back">
-      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={imageUrl} color={color}/>
+      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={images[1]?.src || images[0]?.src} alt={images[1]?.alt || images[0]?.alt} color={color}/>
     </div>
 
   </div>
@@ -52,7 +57,6 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
 <script>
 
   document.addEventListener("astro:page-load", () => {
- 
 
     // ── Paramètres ────────────────────────────────────────────
     const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
@@ -69,64 +73,76 @@ const { frontText = 'Front', backText = 'Back', videoUrl, imageUrl, color } = As
     const randomDelay = (min: number, max: number) =>
       (min + Math.random() * (max - min)) * 1000;
 
+    type ImageItem = { src: string; alt?: string };
+
     document.querySelectorAll<HTMLElement>('.jsFlipAuto').forEach((cell) => {
-      const inner    = cell.querySelector<HTMLElement>('.flip-inner');
+      const inner = cell.querySelector<HTMLElement>('.flip-inner');
+      const frontFace = cell.querySelector<HTMLElement>('.flip-front');
       const backFace = cell.querySelector<HTMLElement>('.flip-back');
-      if (!inner || !backFace) return;
 
-      // ── État local de la cellule ───────────────────────────
-      // isFlipped : true = face arrière visible
-      let isFlipped  = false;
-      // currentAxis : axe utilisé pour le flip en cours
-      //   → conservé pour l'animation retour afin de rester sur le même axe
+      if (!inner || !frontFace || !backFace) return;
+
+      const images = JSON.parse(cell.dataset.images || '[]') as ImageItem[];
+      if (images.length === 0) return;
+
+      // états
+      let isFlipped = false;
       let currentAxis = randomAxis();
+      let currentIndex = 0; // image actuellement visible
 
-      // Initialisation : pose la face arrière pré-retournée sur l'axe courant
-      // (backface-visibility:hidden empêche de la voir tant que l'inner n'est pas retourné)
       backFace.style.transform = `rotate${currentAxis}(180deg)`;
-
-      // Durée de la transition CSS sur l'élément inner
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
 
-      // ── Fonction de flip ────────────────────────────────────
-      const doFlip = () => {
-        if (!isFlipped) {
-          // ── Front → Back ───────────────────────────────────
-          // Choisit un nouvel axe aléatoire pour ce cycle de flip
-          currentAxis = randomAxis();
+      const frontImg = cell.querySelector<HTMLImageElement>('.flip-front img');
+      const backImg  = cell.querySelector<HTMLImageElement>('.flip-back img');
 
-          // Met à jour la pré-rotation de la face arrière AVANT d'animer,
-          // pour qu'elle soit déjà positionnée sur le bon axe
-          backFace.style.transform = `rotate${currentAxis}(180deg)`;
+      const get = (i: number) => images[((i % images.length) + images.length) % images.length];
 
-          // Anime l'inner de 0° → 180° sur l'axe choisi, révélant la face arrière
-          inner.style.transform = `rotate${currentAxis}(180deg)`;
-          isFlipped = true;
-        } else {
-          // ── Back → Front ───────────────────────────────────
-          // Retour sur le même axe que l'aller pour une animation cohérente
-          inner.style.transform = '';
-          isFlipped = false;
-          // Le prochain flip choisira un nouvel axe (côté Front → Back)
-        }
+      const setImage = (el: HTMLImageElement | null, item?: ImageItem) => {
+        if (!el || !item) return;
+        el.src = item.src;
+        el.alt = item.alt || '';
       };
 
-      // ── Planification récursive ─────────────────────────────
-      // Chaque appel attend un délai aléatoire, exécute un flip, puis se replanifie.
-      // Utiliser setTimeout récursif (plutôt que setInterval) permet de recalculer
-      // le délai après chaque flip, donnant un rythme organique et imprévisible.
+      const syncFaces = (activeIndex: number) => {
+        setImage(frontImg, get(activeIndex));
+        setImage(backImg, get(activeIndex + 1));
+      };
+
+      // initial
+      syncFaces(currentIndex);
+
+      const doFlip = () => {
+        // prépare nouvel axe
+        currentAxis = randomAxis();
+        backFace.style.transform = `rotate${currentAxis}(180deg)`;
+
+        // lance l'animation (basé sur l'état actuel)
+        if (!isFlipped) {
+          inner.style.transform = `rotate${currentAxis}(180deg)`; // front -> back
+        } else {
+          inner.style.transform = ``; // back -> front
+        }
+
+        // après l'animation, avance l'index et resynchronise les faces
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          isFlipped = !isFlipped;
+          syncFaces(currentIndex);
+        }, FLIP_DURATION * 1000);
+      };
+
+      // boucle aléatoire
       const scheduleFlip = () => {
         const interval = randomDelay(FLIP_INTERVAL_MIN, FLIP_INTERVAL_MAX);
         setTimeout(() => {
           doFlip();
-          scheduleFlip(); // replanifie avec un nouveau délai aléatoire
+          scheduleFlip();
         }, interval);
       };
 
-      // ── Délai de démarrage aléatoire ────────────────────────
-      // Désynchronise les polygones entre eux au chargement de la page
       setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
     });
-  
+
   });
 </script>
