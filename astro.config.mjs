@@ -11,7 +11,7 @@ export default defineConfig({
    build: {
       inlineStylesheets: 'always', // Force l'inlining de tous les `<style>` des composants Astro pour éliminer les requêtes render-blocking
    },
-
+   integrations: [],
    devToolbar: {
       enabled: false
    }
