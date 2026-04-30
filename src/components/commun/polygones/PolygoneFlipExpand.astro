@@ -1,0 +1,360 @@
+---
+/**
+ * PolygoneFlipExpand — variante de PolygoneFlipProg avec expansion au clic.
+ *
+ * Comportement flip scroll : identique à PolygoneFlipProg (écoute "offre:enter").
+ * Comportement clic : anime un overlay position:fixed depuis la bounding rect
+ *   du polygone jusqu'à la bounding rect de la grille parente (.hex-grid),
+ *   puis affiche le contenu détail.
+ *
+ * SEO : detailTitle + detailText sont toujours dans le DOM (visually-hidden),
+ *   lisibles par les crawlers et lecteurs d'écran.
+ *
+ * Props :
+ *   type        — classe CSS du wrapper (ex: "-dev")
+ *   frontText   — texte face avant
+ *   backText    — texte face arrière
+ *   colorFront  — couleur face avant (défaut: transparent)
+ *   colorBack   — couleur face arrière
+ *   strokeType  — variante de trait SVG (défaut: "-none")
+ *   videoUrl    — vidéo face arrière (optionnel)
+ *   imageUrl    — image face arrière (optionnel)
+ *   detailTitle — titre affiché dans l'overlay (aussi indexé en SEO)
+ *   detailText  — texte détail affiché dans l'overlay (aussi indexé en SEO)
+ */
+import Shape from "./Shape.astro";
+
+interface Props {
+  type?: string;
+  frontText?: string;
+  backText?: string;
+  colorFront?: string;
+  colorBack?: string;
+  videoUrl?: string;
+  imageUrl?: string;
+  strokeType?: string;
+  detailTitle?: string;
+  detailText?: string;
+}
+
+const {
+  type,
+  frontText = '',
+  backText = '',
+  videoUrl,
+  imageUrl,
+  colorFront = "transparent",
+  colorBack,
+  strokeType = "-none",
+  detailTitle = '',
+  detailText = '',
+} = Astro.props;
+---
+
+<div
+  class={`polygone -flip jsFlipExpand ${type}`}
+  data-detail-title={detailTitle}
+  data-detail-text={detailText}
+  role="button"
+  tabindex="0"
+  aria-expanded="false"
+  aria-label={detailTitle || frontText || undefined}
+>
+  <div class="flip-inner">
+
+    <!-- Face avant -->
+    <div class="flip-face flip-front">
+      <Shape frontText={frontText} color={colorFront} strokeType={strokeType}/>
+    </div>
+
+    <!-- Face arrière -->
+    <div class="flip-face flip-back">
+      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={imageUrl} color={colorBack}/>
+    </div>
+
+  </div>
+
+  <!-- SEO : toujours dans le DOM, invisible visuellement -->
+  <div class="jsExpandSeoContent">
+    {detailTitle && <h3>{detailTitle}</h3>}
+    {detailText && <p>{detailText}</p>}
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("astro:page-load", () => {
+
+    const FLIP_DURATION   = 0.5;
+    const EXPAND_DURATION = 0.45;
+
+    // ── Singleton overlay ──────────────────────────────────────
+    function getOrCreateOverlay(): HTMLElement {
+      let overlay = document.getElementById('jsExpandOverlay') as HTMLElement | null;
+      if (overlay) return overlay;
+
+      overlay = document.createElement('div');
+      overlay.id = 'jsExpandOverlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.innerHTML = `
+        <button class="jsExpandClose" aria-label="Fermer">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="jsExpandBody">
+          <h3 class="jsExpandTitle"></h3>
+          <p class="jsExpandText"></p>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+
+      // Fermeture : bouton ✕
+      overlay.querySelector('.jsExpandClose')!.addEventListener('click', () => collapseOverlay(overlay!));
+
+      // Fermeture : clic sur le fond de l'overlay
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) collapseOverlay(overlay!);
+      });
+
+      // Fermeture : touche Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay!.dataset.open === 'true') {
+          collapseOverlay(overlay!);
+        }
+      });
+
+      return overlay;
+    }
+
+    function lockScroll() {
+      alert("lock scroll");
+      const lenis = (window as any).lenis;
+      if (lenis?.stop) {
+        lenis.stop();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function unlockScroll() {
+      const lenis = (window as any).lenis;
+      if (lenis?.start) {
+        lenis.start();
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function collapseOverlay(overlay: HTMLElement) {
+      unlockScroll();
+
+      const originCell = document.querySelector<HTMLElement>(`[data-expand-active="true"]`);
+      if (!originCell) {
+        gsap.to(overlay, { opacity: 0, duration: 0.25, onComplete: () => {
+          overlay.dataset.open = 'false';
+          overlay.setAttribute('aria-hidden', 'true');
+        }});
+        return;
+      }
+
+      const polyRect = originCell.getBoundingClientRect();
+      originCell.dataset.expandActive = 'false';
+      originCell.setAttribute('aria-expanded', 'false');
+
+      gsap.to(overlay, {
+        left: polyRect.left,
+        top: polyRect.top,
+        width: polyRect.width,
+        height: polyRect.height,
+        opacity: 0,
+        duration: EXPAND_DURATION,
+        ease: 'power3.in',
+        onComplete: () => {
+          overlay.dataset.open = 'false';
+          overlay.setAttribute('aria-hidden', 'true');
+        },
+      });
+    }
+
+    // ── Initialisation de chaque cellule ──────────────────────
+    document.querySelectorAll<HTMLElement>('.jsFlipExpand').forEach((cell) => {
+      const inner    = cell.querySelector<HTMLElement>('.flip-inner');
+      const backFace = cell.querySelector<HTMLElement>('.flip-back');
+      if (!inner || !backFace) return;
+
+      let isFlipped  = false;
+      let currentAxis = 'X';
+
+      backFace.style.transform = `rotate${currentAxis}(180deg)`;
+      inner.style.transition = `transform ${FLIP_DURATION}s ease`;
+
+      const doFlip = () => {
+        if (!isFlipped) {
+          backFace.style.transform = `rotate${currentAxis}(180deg)`;
+          inner.style.transform = `rotate${currentAxis}(180deg)`;
+          isFlipped = true;
+        } else {
+          inner.style.transform = '';
+          isFlipped = false;
+        }
+      };
+
+      const doUnflip = () => {
+        if (isFlipped) {
+          inner.style.transform = '';
+          isFlipped = false;
+        }
+      };
+
+      (cell as any).doFlip   = () => setTimeout(doFlip,   parseFloat(cell.dataset.delay ?? '0') * 1000);
+      (cell as any).doUnflip = () => setTimeout(doUnflip, parseFloat(cell.dataset.delay ?? '0') * 1000);
+
+      // ── Clic : expand ───────────────────────────────────────
+      const handleExpand = () => {
+        const overlay = getOrCreateOverlay();
+        if (overlay.dataset.open === 'true') return;
+
+        const title = cell.dataset.detailTitle ?? '';
+        const text  = cell.dataset.detailText ?? '';
+        if (!title && !text) return;
+
+        const polyRect  = cell.getBoundingClientRect();
+        const isMobile  = window.innerWidth <= 1024;
+        const grid      = cell.closest<HTMLElement>('.hex-grid');
+        const targetRect = isMobile
+          ? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }
+          : (grid ? grid.getBoundingClientRect() : polyRect);
+
+        // Peuple l'overlay
+        (overlay.querySelector('.jsExpandTitle') as HTMLElement).textContent = title;
+        (overlay.querySelector('.jsExpandText')  as HTMLElement).textContent = text;
+
+        // Positionne immédiatement sur le polygone
+        gsap.set(overlay, {
+          left: polyRect.left,
+          top:  polyRect.top,
+          width: polyRect.width,
+          height: polyRect.height,
+          opacity: 0,
+        });
+
+        overlay.dataset.open = 'true';
+        overlay.setAttribute('aria-hidden', 'false');
+        cell.dataset.expandActive = 'true';
+        cell.setAttribute('aria-expanded', 'true');
+
+        lockScroll();
+
+        // Anime vers la cible (grille desktop / viewport mobile)
+        gsap.to(overlay, {
+          left: targetRect.left,
+          top:  targetRect.top,
+          width: targetRect.width,
+          height: targetRect.height,
+          opacity: 1,
+          duration: EXPAND_DURATION,
+          ease: 'power3.out',
+        });
+      };
+
+      cell.addEventListener('click', handleExpand);
+      cell.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleExpand();
+        }
+      });
+    });
+
+    // ── Réaction aux événements ScrollTrigger depuis Offres.astro ──
+    document.addEventListener("offre:enter", (e) => {
+      const { offre } = (e as CustomEvent).detail;
+      document.querySelectorAll<HTMLElement>('.jsFlipExpand').forEach((poly) => {
+        if (poly.classList.contains(`-${offre}`)) {
+          (poly as any).doFlip?.();
+        } else {
+          (poly as any).doUnflip?.();
+        }
+      });
+    });
+
+  });
+</script>
+
+<style lang="scss" is:global>
+  .jsFlipExpand {
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--sok-color-primary, #3b82f6);
+      outline-offset: 2px;
+    }
+  }
+
+  .jsExpandSeoContent {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  #jsExpandOverlay {
+    position: fixed;
+    z-index: 1000;
+    background-color: var(--oka-color-layer-floor-0, #fff);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &[aria-hidden="true"] {
+      pointer-events: none;
+    }
+
+    &[aria-hidden="false"] {
+      pointer-events: all;
+    }
+  }
+
+  .jsExpandClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--sok-color-fg-strong, #111);
+    z-index: 1;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .jsExpandBody {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .jsExpandTitle {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .jsExpandText {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.6;
+    max-width: 65ch;
+  }
+</style>
