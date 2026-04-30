@@ -1,5 +1,6 @@
 ---
 import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFlipProg.astro";
+import PolygoneFlipExpand from "../../../../components/commun/polygones/PolygoneFlipExpand.astro";
 ---
 
 <div id="grilleTagsWeb" class="sok-offre__grid hex-grid -hidden" data-rows="3" data-cols="4" data-ratio="0.2" data-appeargroup>
@@ -7,7 +8,13 @@ import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFl
   <!-- Polygone Solutions web -->
   <PolygoneFlipProg type="-web" colorBack="-web" imageUrl="/src/assets/images/ambiance/web/image-3.png" />
   <PolygoneFlipProg type="-web" colorBack="-ia" backText="Sécurité" />
-  <PolygoneFlipProg type="-web" colorBack="-metier" backText="Solution Web"/>
+  <PolygoneFlipExpand
+    type="-web"
+    colorBack="-metier"
+    backText="Test expand"
+    detailTitle="Solutions Web sur mesure"
+    detailText="Nous concevons des applications web métier adaptées à vos processus : ERP, CRM, portails clients, outils collaboratifs. Chaque solution est pensée pour s'intégrer à votre infrastructure existante et évoluer avec votre activité. Technologies : React, Next.js, Node.js, PostgreSQL."
+  />
   <PolygoneFlipProg type="-web" colorBack="-web" imageUrl="/src/assets/images/ambiance/web/image-2.jpg"/>
   
   <PolygoneFlipProg type="-web" colorBack="-iot" backText="Solution Web"/>

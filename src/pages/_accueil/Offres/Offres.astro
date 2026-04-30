@@ -436,12 +436,15 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     padding: 0;
   }
 
+
   .sok-offre {
     --sokOffre-item-height: 4rem;
 
     position: absolute;
     width: 100%;
     min-height: 100dvh;
+
+    pointer-events: none; // Les offres ne sont pas interactives tant qu'elles ne sont pas actives )
 
     @media (max-width: 1024px) {
       // responsive Mobile
@@ -454,6 +457,12 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       flex-wrap: nowrap;
       gap: 0rem;
     }
+
+    // état actif de l'offre (lorsqu'elle est ciblée par le scroll)
+    &.-active {
+      pointer-events: all;
+    }
+
 
     // offre de base,
     // sans thème,

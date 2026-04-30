@@ -1,4 +1,26 @@
 ---
+/**
+ * PolygoneFlipProg — polygone deux faces piloté par scroll (section Offres/Programmes).
+ *
+ * Rendu : deux faces superposées (.flip-front / .flip-back) encapsulées dans un .flip-inner.
+ * Chaque face utilise le composant Shape (SVG + texte/vidéo/image optionnels).
+ *
+ * Contrôle :
+ *   - Écoute l'événement custom "offre:enter" (émis par Offres.astro via ScrollTrigger).
+ *   - Si le polygone porte la classe `-{offre}` correspondante → doFlip() : révèle la face arrière.
+ *   - Sinon → doUnflip() : revient à la face avant.
+ *   - doFlip / doUnflip respectent un délai optionnel `data-delay` (secondes) pour les effets en cascade.
+ *
+ * Props :
+ *   type        — classe CSS appliquée au wrapper (ex: "-dev", "-design")
+ *   frontText   — texte face avant
+ *   backText    — texte face arrière
+ *   colorFront  — couleur de remplissage face avant (défaut: transparent)
+ *   colorBack   — couleur de remplissage face arrière
+ *   strokeType  — variante de trait SVG (défaut: "-none")
+ *   videoUrl    — vidéo affichée sur la face arrière (optionnel)
+ *   imageUrl    — image affichée sur la face arrière (optionnel)
+ */
 import Shape from "./Shape.astro";
 
 interface Props {
