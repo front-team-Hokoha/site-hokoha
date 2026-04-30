@@ -25,15 +25,25 @@ data-ratio={ratio ?? 0.1}
   
   <PolygoneStatic imageUrl="/src/assets/images/ambiance/trame-video.jpg" />
   
-  <PolygoneStatic imageUrl="/src/assets/images/environnement/developpement.jpg" />
-  <PolygoneStatic imageUrl="/src/assets/images/environnement/uxdesign.jpg" />
+  <PolygoneStatic imageUrl="/src/assets/images/environnement/developpement.jpg" alt="Développement web"/>
+  <PolygoneStatic imageUrl="/src/assets/images/environnement/uxdesign.jpg" alt="Conception d'expérience utilisateur"/>
 
 
 
-  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" color="-web"  />
-  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test2.jpg" color="-metier"/>
+  <PolygoneFlip frontText="" backText="Back Texte" images={[
+    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"},
+    {src: "/src/assets/images/environnement/uxdesign.jpg", alt: "Environnement de travail"}]}/>
+
+  <PolygoneFlip frontText="" backText="Back Texte" images={[
+    {src: "/src/assets/images/test2.jpg", alt: "dev: Kévin LARUE"},
+    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"}]} color="-metier"/>
+
   <!-- <PolygoneFlip frontText="" videoUrl="/src/assets/videos/test.mp4" color="-app" /> -->
-  <PolygoneFlip frontText="" backText="Back Texte" imageUrl="/src/assets/images/test.jpg" color="-web"/>
+   
+  <!-- <PolygoneFlip frontText="" backText="Back Texte" images={[
+    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"},
+    {src: "/src/assets/images/test2.jpg", alt: "dev: Kévin LARUE"}]} color="-web"/> -->
+
   <PolygoneFlip frontText="" backText=""  color="-metier"/>
   
 
