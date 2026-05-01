@@ -144,7 +144,7 @@ import PictoLight from "./PictoLight.astro";
 			top: -80px;
 			left: 0;
 			right: 0;
-			height: 200px;
+			height: 180px;
 			//background: red;
 		}
 
@@ -209,7 +209,7 @@ import PictoLight from "./PictoLight.astro";
 			//transform: translateY(-125%);
 			transition: max-height 0.35s ease-out;
 
-			max-height : 0; // Permet de ne pas faire bug le transform translateY
+			max-height : 0 ; // Permet de ne pas faire bug le transform translateY
 			overflow: hidden;
 
 			&.active {
@@ -336,6 +336,7 @@ import PictoLight from "./PictoLight.astro";
 			start: "top top",
 			end: "max",
 			onUpdate: (self) => {
+				if ((window as any)._offreScrollActive) return;
 				const currentY = self.scroll();
 				const diff = currentY - lastScrollY;
 				lastScrollY = currentY;

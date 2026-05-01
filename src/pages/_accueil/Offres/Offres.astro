@@ -62,7 +62,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
     <!-- WEB  -->
     <div class="sok-offre flex-grid">
-      <div class="col col-1 oka-show--md">
+      <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -web">
           <img
             class="sok-arrow"
@@ -97,7 +97,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     <!-- METIER  -->
 
     <div class="sok-offre flex-grid">
-      <div class="col col-1 oka-show--md">
+      <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -metier">
           <img
             class="sok-arrow"
@@ -133,7 +133,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     <!-- APP -->
 
     <div class="sok-offre flex-grid">
-      <div class="col col-1 oka-show--md">
+      <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -app">
           <img
             class="sok-arrow"
@@ -167,7 +167,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     <!-- AI -->
 
     <div class="sok-offre flex-grid">
-      <div class="col col-1 oka-show--md">
+      <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -ia">
           <img
             class="sok-arrow"
@@ -201,7 +201,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
     <!-- IOT -->
 
     <div class="sok-offre flex-grid">
-      <div class="col col-1 oka-show--md">
+      <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -iot">
           <img
             class="sok-arrow"
@@ -263,7 +263,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
           trigger: offre,
           start: `top+=${index * OFFRE_SCROLL_STEP}px 30%`,
           end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 30%`,
-          markers: true,
+          //markers: true,
           onEnter: () => {
             offre.classList.add("-active");
             offre.classList.add("-display");
@@ -304,7 +304,11 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
         // Scroll au click sur l'offre
         offre.addEventListener("click", () => {
+          (window as any)._offreScrollActive = true;
           window.scrollTo({ top: st.start + 10, behavior: "smooth" });
+          const reset = () => { (window as any)._offreScrollActive = false; };
+          window.addEventListener("scrollend", reset, { once: true });
+          setTimeout(reset, 1500);
         });
       });
     });
@@ -382,7 +386,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
 
   .sok-offre {
-    --sokOffre-item-height: 5rem;
+    --sokOffre-item-height: 4rem;
 
     position: absolute;
     width: 100%;
@@ -442,10 +446,11 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       transition: all 0.3s ease; // Animation douce entre les états
       translate: 0rem 0px;
 
+      cursor: pointer;
       pointer-events: all;
 
 
-
+      // Filet Hover
       &:after {
           content: "";
           position: absolute;
@@ -453,7 +458,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
           bottom: 2px; /* Place la ligne juste sous le texte */
           width: 100%;
           height: 2px; /* Épaisseur de la ligne */
-          background-color: currentColor; /* Utilise la couleur du texte */
+          background-color: var(--oka-color-fg); /* Utilise la couleur du texte */
           transform: scaleX(0); /* Cache la ligne par défaut */
           transform-origin: bottom right; /* Point de départ de l'animation */
           transition: transform .6s cubic-bezier(.075,.82,.165,1);/* Animation douce */
@@ -466,31 +471,25 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
 
 
-
-
-
-
       &.-display {
         
 
-        pointer-events: all;
-        cursor: pointer;
-        translate: 0px 0px;
+        //pointer-events: all;
+        
+        //translate: 0px 0px;
 
         &:hover {
-          color: var(--oka-color-fg-primary);
-          translate: 4px 0px;
+          //color: var(--oka-color-fg-primary);
+          //translate: 16px 0px;
         }
       }
 
-      .-active & {
-        //flex-direction: row-reverse;
-        opacity: 1;
-        font-weight: bold; // Passe explicitement en gras
-        translate: 8px 0px;
 
+      .-active & {
+        translate: 16px 0px;
       }
 
+      // Titre Texte
       & > h3{
         color: var(--oka-color-fg-subtle);
 
@@ -499,25 +498,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
          }
       }
 
-      
 
-
-
-
-
-      & > .sok-arrow {
-        margin-left: -2rem;
-        zoom: 0.5;
-        // transition: margin .15s ease-in-out;
-        opacity: 0;
-        transition: margin 0.15s cubic-bezier(0.63, 0.78, 0.25, 1);
-
-        .-active & {
-          margin-left: -1.05rem;
-          margin-right: 1rem;
-          opacity: 1;
-        }
-      }
     }
 
     @media (min-width: 1024px) {
@@ -544,19 +525,28 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       }
     }
 
+    &__indicCtnr {
+      position:relative;
+    }
+
+
     &__indic {
       display: flex;
+      
+      justify-content: center;
       align-items: center;
       gap: 0.5rem;
 
+      width:100%;
       height: var(--sokOffre-item-height);
 
       opacity: 0.3;
       pointer-events: none;
 
       .-active & {
+        justify-content: flex-start;
+        flex-direction: row-reverse;
         opacity: 1;
-        pointer-events: all;
       }
 
       .sok-arrow {
