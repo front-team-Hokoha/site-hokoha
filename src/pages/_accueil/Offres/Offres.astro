@@ -36,7 +36,9 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       <div class="col col-7">
           <div class="oka-spacer -xl" aria-hidden="true"></div>
           <Revealtext>     
-            <div class="oka-data -xs">Titre seo sur les offres</div>     
+            <div class="oka-data -xs">
+              <Typper text="NOS OFFRES DE SERVICES." />
+            </div>     
             <h2 class="oka-h -xl -secondary">Nous intervenons sur le développement de vos produits, vos services, vos process.</h2>
           </Revealtext>
           <div class="oka-spacer -xl" aria-hidden="true" ></div>
@@ -45,15 +47,15 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
     <!-- none  -->
     <div class="sok-offre -background flex-grid">
-      <div class="col col-4"></div>
+      <!-- <div class="col col-4"></div>
 
       <div class="col col-4">
         <div class="sok-offre__detail">
           <p></p>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffres />
       </div>
     </div>
@@ -74,36 +76,20 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         </div>
       </div>
 
-      <div class="sok-offre__colTitle col col-4 col--md-3">
+      <div class="sok-offre__colTitle col col-4">
         <div
           class="sok-offre__item -web"
           data-offre="web"
           data-offset-lg="top 30%"
         >
-          <h3 class="oka-h -md">Solutions Web</h3>
+          <h3 class="oka-h -xl">Solutions Web</h3>
         </div>
       </div>
 
-      <div class="sok-offre__detail col col-4 col--md-3">
-        <p>
-          <Typper
-            id="typper-web-1"
-            manual
-            text="Elle répond à différents besoins : gestion interne (ERP, CRM, outils collaboratifs), services en ligne (réservation, e-commerce, espace client) et automatisation de processus."
-          />
-        </p>
-        <p>
-          <Typper
-            id="typper-web-2"
-            manual
-            text="Flexible et accessible depuis tout appareil connecté, elle s'adapte à tous les secteurs. Un levier efficace pour améliorer la productivité, l'expérience utilisateur et soutenir votre croissance."
-          />
-        </p>
-      </div>
 
       <div class="col col-1 oka-show--md"></div>
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffresWeb />
       </div>
     </div>
@@ -125,29 +111,21 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         </div>
       </div>
 
-      <div class="sok-offre__colTitle col col-4 col--md-3">
+      <div class="sok-offre__colTitle col col-4">
         <div
           class="sok-offre__item -metier"
           data-offre="metier"
           data-offset-lg="top 30%"
         >
-          <h3 class="oka-h -md">Logiciels Métiers</h3>
+          <h3 class="oka-h -xl">Logiciels Métiers</h3>
         </div>
       </div>
 
-      <div class="sok-offre__detail col col-4 col--md-3">
-        <p>
-          <Typper
-            id="typper-metier-1"
-            manual
-            text="Lorem ipsum des logiciels métiers dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum."
-          />
-        </p>
-      </div>
+
 
       <div class="col col-1 oka-show--md"></div>
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffresMetier />
       </div>
     </div>
@@ -169,29 +147,19 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         </div>
       </div>
 
-      <div class="sok-offre__colTitle col col-3">
+      <div class="sok-offre__colTitle col col-4">
         <div
           class="sok-offre__item -app"
           data-offre="app"
           data-offset-lg="top 30%"
         >
-          <h3 class="oka-h -md">Applications mobiles</h3>
+          <h3 class="oka-h -xl">Applications mobiles</h3>
         </div>
-      </div>
-
-      <div class="sok-offre__detail col col-3">
-        <p>
-          <Typper
-            id="typper-app-1"
-            manual
-            text="Lorem ipsum des applications mobiles dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum."
-          />
-        </p>
       </div>
 
       <div class="col col-1 oka-show--md"></div>
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffresApp />
       </div>
     </div>
@@ -213,29 +181,19 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         </div>
       </div>
 
-      <div class="sok-offre__colTitle col col-3">
+      <div class="sok-offre__colTitle col col-4">
         <div
           class="sok-offre__item -ia"
           data-offre="ia"
           data-offset-lg="top 30%"
         >
-          <h3 class="oka-h -md">Intelligence Artificielle</h3>
+          <h3 class="oka-h -xl">Intelligence Artificielle</h3>
         </div>
-      </div>
-
-      <div class="sok-offre__detail col col-3">
-        <p>
-          <Typper
-            id="typper-ia-1"
-            manual
-            text="Lorem ipsum de l'intelligence artificielle dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum."
-          />
-        </p>
       </div>
 
       <div class="col col-1 oka-show--md"></div>
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffresAi />
       </div>
     </div>
@@ -257,29 +215,19 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         </div>
       </div>
 
-      <div class="sok-offre__colTitle col col-3">
+      <div class="sok-offre__colTitle col col-4">
         <div
           class="sok-offre__item -iot"
           data-offre="iot"
           data-offset-lg="top 30%"
         >
-          <h3 class="oka-h -md">Internet des Objets</h3>
+          <h3 class="oka-h -xl">Internet des Objets</h3>
         </div>
-      </div>
-
-      <div class="sok-offre__detail col col-3">
-        <p>
-          <Typper
-            id="typper-iot-1"
-            manual
-            text="Lorem ipsum de l'Internet des Objets dolor sit amet consectetur adipisicing elit. Adipisci maiores animi mollitia labore, nulla veniam voluptates consequuntur recusandae. Doloribus molestiae, fuga facere nobis accusantium dignissimos ut architecto suscipit quo laborum."
-          />
-        </p>
       </div>
 
       <div class="col col-1 oka-show--md"></div>
 
-      <div class="col col-8">
+      <div class="col col-10">
         <GrilleOffresIot />
       </div>
     </div>

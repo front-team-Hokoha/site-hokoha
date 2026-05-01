@@ -9,7 +9,10 @@ import RevealMask from "../../../animations/RevealMask.astro";
 
 // ===== Fichiers Markdown =====
 import * as paragrapheHero from "../../../contenus/accueil/hero/paragraphe-hero.md"
-import logokohaDark from '../../../assets/images/logokoha-dark.png';
+
+
+import { Image } from 'astro:assets';
+import logokohaDark from '../../../assets/images/brand/logo_hokoha_developpement_color.png';
 ---
 
 
@@ -28,13 +31,25 @@ import logokohaDark from '../../../assets/images/logokoha-dark.png';
          <div class="col col-1"></div>
    
          <div class="col col-7">
-            <div class="oka-spacer  -xl" aria-hidden="true"></div>
+            <div class="oka-spacer  -xxl oka-hide--md" aria-hidden="true"></div>
+            <div class="oka-spacer  -xl oka-show--md" aria-hidden="true"></div>
+
             <div class="oka-spacer  -xxl" aria-hidden="true"></div>
    
-            <img class="sok-logokoha" src={logokohaDark.src} alt="logo Hokoha" height="3.5rem" width="15rem">
 
+            <Image
+               src={logokohaDark}
+               alt="Logotype : société Hokoha développement informatique"
+               width={340}
+               height={64}
+               format="webp"
+               quality={80}
+               loading="eager"
+               class=""
+               densities={[1, 2]}
+            />
 
-            <div class="oka-spacer  -sm" aria-hidden="true"></div>
+            <div class="oka-spacer  -md" aria-hidden="true"></div>
 
             <h1 class="oka-h -xxl">
                Développement Informatique sur-mesure

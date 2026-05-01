@@ -1,7 +1,7 @@
 
 
 
-
+@use "oka-design-system/0-abstracts/breakpoints/breakpoints" as *;
 
 /* revue par Hokoha
 -------------------------------- */
@@ -55,8 +55,15 @@
     &.-full {
         width:100% !important;
         max-width: none !important;
-        padding:0 !important;
+        padding:1rem !important;
+
+
+        @include breakpoint(md) {
+            padding:0rem !important;
+        }
     }
+
+
 }
 
 

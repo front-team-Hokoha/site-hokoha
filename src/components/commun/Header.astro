@@ -1,7 +1,12 @@
 ---
-import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
+import PictoLight from "./PictoLight.astro";
 
 // ATTENTION : En cas de changement des liens, modifier les Navbar Desktop et Mobile
+
+
+// Images
+
+
 ---
 
 <!-- HEADER -->
@@ -9,8 +14,10 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 	<div class="oka-appbar__row">
 		<div class="oka-appbar__left" style="flex-shrink:1;">
 			<a href="/">
-				<img class="sok-logokoha" src={logokohaPicto.src} alt="logo Hokoha" width="2.5rem" height="2.5rem"/>
 			</a>
+
+			<PictoLight />
+
 		</div>
 
     <div class="oka-appbar__right -hiden">
@@ -53,7 +60,8 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 	
 	<!-- Navigation mobile -->
 	<nav class="sok-navbar__mobile">
-		<div class="oka-spacer -xl" aria-hidden="true"></div>
+		<div class="oka-spacer -xxl" aria-hidden="true"></div>
+		<div class="oka-spacer -xxl" aria-hidden="true"></div>
 
 		<div class="sok-navbar__items">
 			<a class="oka-h -lg" href={import.meta.env.BASE_URL} aria-label="lien vers la page d'accueil">
@@ -73,15 +81,15 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 			</a>
 		</div>
 
-		<div class="oka-spacer -xl" aria-hidden="true"></div>
+		<div class="oka-spacer -xxl" aria-hidden="true"></div>
 
-		<a class="oka-bt sok-contact__btn" href={`${import.meta.env.BASE_URL}contact`} aria-label="lien vers la page contact">
+		<a class="oka-bt -lg sok-contact__btn" href={`${import.meta.env.BASE_URL}contact`} aria-label="lien vers la page contact">
 			<div class="oka-bt__lbl">
 				Contact
 			</div>
 		</a>
 
-		<div class="oka-spacer -md" aria-hidden="true"></div>
+		<div class="oka-spacer -xxl" aria-hidden="true"></div>
 	</nav>
 </div>
 
@@ -115,21 +123,37 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
   // ===== Header =====
 	.sok-header {
 		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
+		top: 1rem;
+		left: 1rem;
+		right: 1rem;
 		z-index: 99;
-		max-width: 100vw;
+
+		width: auto;
 		margin: 0;
-		padding: 0.5rem 1rem;
-		width: 100%;
+		padding: 2.5rem 1rem;
+
 		background-color: var(--oka-color-layer-floor-0);
-		// border-bottom: 1px solid var(--oka-color-bd-minimal);
+		border-radius: 0.5rem;
+
+		// Zone invisible au-dessus du header rétracté 
+		// évite de perdre le hover dans le gap
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: -80px;
+			left: 0;
+			right: 0;
+			height: 200px;
+			//background: red;
+		}
+
+		&:hover {
+			transform: translateY(0) !important;
+			transition: transform 0.3s ease;
+		}
 	}
 
-	.sok-logokoha {
-		height: 2.5rem;
-	}
 
   // ==== Navbar Mobile ====
 	.sok-toggle {
@@ -162,7 +186,9 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 			width: 100%;
 			height: 100vh;
 			// background-color: var(--oka-color-layer-overlay);
-			background-color:  #3636365c;
+			background-color:  var(--oka-color-bg-minimal);
+
+			backdrop-filter: blur(4px);
 
 			&.-visible {
 				display: block;
@@ -171,26 +197,29 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 
 		.sok-navbar__mobile {
 			position: fixed;
-			top: 4rem;
-			left: 0;
-			right: 0;
+			top: 5.5rem;
+			left: 1rem;
+			right: 1rem;
 			z-index: 50;
-			width: 100%;
-			padding: 0rem 2rem;
+			
+			padding: 0 4rem;
 			background-color: var(--oka-color-layer-floor-0);
-			border-radius: 0 0 10px 10px;
+			border-radius: 0 0 0.5rem 0.5rem;
 			// box-shadow: 3px 3px 3px 3px rgba(0, 0, 0,0.1);
-			transform: translateY(-125%);
-			transition: all 0.25s ease-out;
+			//transform: translateY(-125%);
+			transition: max-height 0.35s ease-out;
+
+			max-height : 0; // Permet de ne pas faire bug le transform translateY
+			overflow: hidden;
 
 			&.active {
-				transform: translateY(0%);
+				max-height: 800px;
 			}
 
 			.sok-navbar__items {
 				display: flex;
 				flex-direction: column;
-				gap: 0.5rem;
+				gap: 2rem;
 			}
 		}
 	}
@@ -287,25 +316,48 @@ import logokohaPicto from "../../assets/images/logokoha-picto-light.svg";
 	fixedHeader();
 
 	function fixedHeader() {
-		console.log("gsap");
+		const SCROLL_OFFSET = 480;    // px depuis le top avant que le header puisse se masquer
+		const SCROLL_THRESHOLD = 50;  // px scrollés dans la même direction avant action
+		const HIDE_Y = -88;          // px vers le haut lors du retrait (négatif = vers haut)
+
+		let lastScrollY = 0;
+		let delta = 0;
 
 		const showAnim = gsap
 			.from(".sok-header", {
-				yPercent: -100,
+				y: HIDE_Y,
 				paused: true,
 				duration: 0.5,
 				ease: "power2",
 			})
 			.progress(1);
 
-			ScrollTrigger.create({
-				start: "top top",
-				end: "max",
-				onUpdate: (self) => {
-				self.direction === -1 ? showAnim.play() : showAnim.reverse();
-				},
-			});
-		}
+		ScrollTrigger.create({
+			start: "top top",
+			end: "max",
+			onUpdate: (self) => {
+				const currentY = self.scroll();
+				const diff = currentY - lastScrollY;
+				lastScrollY = currentY;
+
+				if (currentY < SCROLL_OFFSET) {
+					showAnim.play();
+					delta = 0;
+					return;
+				}
+
+				delta += diff;
+
+				if (delta > SCROLL_THRESHOLD) {
+					showAnim.reverse();
+					delta = 0;
+				} else if (delta < -SCROLL_THRESHOLD) {
+					showAnim.play();
+					delta = 0;
+				}
+			},
+		});
+	}
 	});
 
 	// Ajoute ou retire des classes en fonction du viewport
