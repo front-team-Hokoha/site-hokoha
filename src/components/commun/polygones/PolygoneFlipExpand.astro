@@ -291,8 +291,16 @@ const {
 </script>
 
 <style lang="scss" is:global>
-  .jsFlipExpand {
+
+
+  .sok-offre.-active .jsFlipExpand {
     cursor: pointer;
+    pointer-events: auto; // Nécessaire pour que les polygones soient cliquables même si leur parent (.hex-grid) a pointer-events:none
+  }
+
+  .jsFlipExpand {
+   
+    pointer-events: none; // Nécessaire pour que les polygones soient cliquables même si leur parent (.hex-grid) a pointer-events:none
 
     &:focus-visible {
       outline: 2px solid var(--sok-color-primary, #3b82f6);

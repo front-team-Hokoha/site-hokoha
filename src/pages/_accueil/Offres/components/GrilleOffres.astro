@@ -1,8 +1,9 @@
 ---
 import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFlipProg.astro";
+import PolygoneFlip from "../../../../components/commun/polygones/PolygoneFlip.astro";
 ---
 
-<div id="grilleTagsNone" class="sok-offre__grid hex-grid -hidden" data-rows="3" data-cols="5" data-ratio="0.5" data-appeargroup>
+<div id="grilleTagsNone" class="sok-offre__grid hex-grid -hidden" data-rows="3" data-cols="5" data-ratio="0.35" data-appeargroup>
 
   <!-- Poly par default -->
   <PolygoneFlipProg type="-none" colorFront="-default" />
@@ -16,6 +17,10 @@ import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFl
   <PolygoneFlipProg type="-none" colorFront="-default" />
   <PolygoneFlipProg type="-none" colorFront="-default" />
   <PolygoneFlipProg type="-none" colorFront="-default" /> 
+
+  
+
+
 
 </div>
 
@@ -69,6 +74,10 @@ import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFl
     }
   }
 
+
+#grilleTagsNone {
+  z-index: -1;
+}
 </style>
 
 
