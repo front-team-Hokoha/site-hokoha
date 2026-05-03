@@ -10,7 +10,7 @@ import PictoLight from "./PictoLight.astro";
 ---
 
 <!-- HEADER -->
-<header class="layout-app__header oka-appbar oka-darkMode oka-surface sok-header">
+<header class="layout-app__header oka-appbar oka-darkMode oka-surface sok-header header-show">
 	<div class="oka-appbar__row">
 		<div class="oka-appbar__left" style="flex-shrink:1;">
 			<a href="/">
@@ -123,19 +123,26 @@ import PictoLight from "./PictoLight.astro";
   // ===== Header =====
 	.sok-header {
 		position: fixed;
-		top: 1rem;
-		left: 1rem;
-		right: 1rem;
+		top: 0.5rem;
+		left: 0.5rem;
+		right: 0.5rem;
 		z-index: 99;
 
 		width: auto;
 		margin: 0;
-		padding: 2.5rem 1rem;
+		padding: 1rem;
 
 		background-color: var(--oka-color-layer-floor-0);
 		border-radius: 0.5rem;
 
-		// Zone invisible au-dessus du header rétracté 
+		transform: translateY(-88px);
+		transition: transform 0.5s ease;
+
+		&.header-show {
+			transform: translateY(0);
+		}
+
+		// Zone invisible au-dessus du header rétracté
 		// évite de perdre le hover dans le gap
 		&::before {
 			content: '';
@@ -150,7 +157,15 @@ import PictoLight from "./PictoLight.astro";
 
 		&:hover {
 			transform: translateY(0) !important;
-			transition: transform 0.3s ease;
+		}
+
+
+		@include breakpoint(md) {
+			top: 1rem;
+			left: 1rem;
+			right: 1rem;
+
+			padding: 2.5rem 1rem;
 		}
 	}
 
@@ -316,33 +331,25 @@ import PictoLight from "./PictoLight.astro";
 	fixedHeader();
 
 	function fixedHeader() {
-		const SCROLL_OFFSET = 480;    // px depuis le top avant que le header puisse se masquer
-		const SCROLL_THRESHOLD = 50;  // px scrollés dans la même direction avant action
-		const HIDE_Y = -88;          // px vers le haut lors du retrait (négatif = vers haut)
+		const SCROLL_OFFSET = 480; // distance à partir de laquelle le header commence à se cacher
+		const SCROLL_THRESHOLD = 50; // distance de scroll nécessaire pour déclencher l'affichage ou le masquage du header
 
+		const header = document.querySelector(".sok-header");
 		let lastScrollY = 0;
 		let delta = 0;
-
-		const showAnim = gsap
-			.from(".sok-header", {
-				y: HIDE_Y,
-				paused: true,
-				duration: 0.5,
-				ease: "power2",
-			})
-			.progress(1);
 
 		ScrollTrigger.create({
 			start: "top top",
 			end: "max",
 			onUpdate: (self) => {
 				if ((window as any)._offreScrollActive) return;
+
 				const currentY = self.scroll();
 				const diff = currentY - lastScrollY;
 				lastScrollY = currentY;
 
 				if (currentY < SCROLL_OFFSET) {
-					showAnim.play();
+					header?.classList.add("header-show");
 					delta = 0;
 					return;
 				}
@@ -350,10 +357,10 @@ import PictoLight from "./PictoLight.astro";
 				delta += diff;
 
 				if (delta > SCROLL_THRESHOLD) {
-					showAnim.reverse();
+					header?.classList.remove("header-show");
 					delta = 0;
 				} else if (delta < -SCROLL_THRESHOLD) {
-					showAnim.play();
+					header?.classList.add("header-show");
 					delta = 0;
 				}
 			},
@@ -361,17 +368,5 @@ import PictoLight from "./PictoLight.astro";
 	}
 	});
 
-	// Ajoute ou retire des classes en fonction du viewport
-	// toggleClasses();
-	// window.addEventListener('resize', toggleClasses);
 
-	// function toggleClasses() {
-	// 	const isDesktop = window.innerWidth >= 1024;
-	
-	// 	navLinks.forEach(navLink => {
-	// 		navLink.classList.toggle('-lg', !isDesktop);
-	// 		navLink.classList.toggle('-xs', isDesktop);
-	// 		// navLink.classList.toggle('-secondary', isDesktop);
-	// 	})
-	// }	
 </script>

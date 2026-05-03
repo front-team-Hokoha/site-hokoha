@@ -1,7 +1,16 @@
 ---
 // ===== Composants utilisés =====
-import ImageSok from "../../../../components/commun/ImageSok.astro";
+
+import { Image } from 'astro:assets';
+// import ImageSok from "../../../../components/commun/ImageSok.astro";
+// import Revealtext from "../../../../animations/RevealText.astro";
 // import MediaWrapper from "../../commun/MediaWrapper.astro";
+
+
+// Image
+import bandeau from '../../../../assets/images/ambiance/176.jpg';
+
+
 
 // ===== Fichiers Markdown =====
 const savoirFaires = Object.values(
@@ -9,13 +18,16 @@ const savoirFaires = Object.values(
     eager: true,
   }),
 );
+
 ---
 
 {
   savoirFaires.map((savoirFaire) => (
     <article class="sok-card">
       <div class="sok-card__container">
-        {/* bandeau */}
+        
+        
+   
         <div class="side-wrapper">
           <div class="sok-card__side">
             <div class="oka-h -sm -secondary">{savoirFaire.frontmatter.tag}</div>
@@ -23,19 +35,31 @@ const savoirFaires = Object.values(
             <span class="oka-data -sm -strong">
               {savoirFaire.frontmatter.num}
             </span>
+
+
+            <div class="bandeau-image">
+              <Image
+                src={bandeau}
+                alt="Logotype : société Hokoha développement informatique"
+                width={990}
+                height={660}
+                format="webp"
+                quality={80}
+                loading="eager"
+                class=""
+                densities={[1, 2]}
+              />
+            </div>
+
+
+
           </div>
         </div>
 
         <div class="card-content-container">
           <div class="sok-card__content-wrapper">
 
-            <div class="image-wrapper">
-              <div class="oka-spacer -xl -spacing" aria-hidden="true" />
-
-              <figure class="sok-card__image-inner">
-                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
-              </figure>
-            </div>
+            
 
 
             <div class="texts-wrapper">
@@ -56,6 +80,15 @@ const savoirFaires = Object.values(
               </div>
             </div>
 
+
+        <div class="image-wrapper">
+              <div class="oka-spacer -xl -spacing" aria-hidden="true" />
+
+              {/* <figure class="sok-card__image-inner">
+                <ImageSok imagePath={savoirFaire.frontmatter.src} altText={savoirFaire.frontmatter.alt} />
+              </figure> */}
+            </div> 
+
             
           </div>
         </div>
@@ -72,15 +105,32 @@ const savoirFaires = Object.values(
         <div class="card-content-container">
           <div class="sok-card__content-wrapper">
 
-        
+            <div class="bandeau-image conclusion-image-ctnr">
+              <Image
+                src={bandeau}
+                alt="Logotype : société Hokoha développement informatique"
+                width={990}
+                height={660}
+                format="webp"
+                quality={80}
+                loading="eager"
+                class="conclusion-image"
+                densities={[1, 2]}
+              />
+
+            </div>
+
             <div class="texts-wrapper">
               <div class="sok-card__content">
-                <h3 class="oka-h -xxl">titre</h3>
-                  
+               <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+                <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+                <div class="oka-spacer  -xxl" aria-hidden="true"></div>	
+                <div class="oka-spacer  -xxl" aria-hidden="true"></div>
+       
+                <h3 class="oka-h -xxl">“Notre seul but est de faire bien.”</h3>
                 <div class="oka-spacer  -md" aria-hidden="true"></div>
-                <div class="sok-paragraph">
-                  <p class="oka-text -md">Para</p>
-                </div>
+                <p class="oka-text -md">Ernő Rubik - Inventeur du Rubik’s Cube</p>
+       
 
                 <div class="oka-spacer -md" aria-hidden="true" />
 
@@ -131,7 +181,7 @@ const savoirFaires = Object.values(
 
       @include breakpoint(md) {
         display: flex;
-        min-height: 70dvh;
+        min-height: 100dvh; // 30dvh de plus , pour debords après le scroll
       }
 
       // ===== Bandeau latéral =====
@@ -147,17 +197,20 @@ const savoirFaires = Object.values(
 
           position: relative;
           z-index: 2;
-          backdrop-filter: blur(4px);
-          background: rgba(0, 0, 0, 0.8);
+          //backdrop-filter: blur(4px);
+          //background: rgba(0, 0, 0, 0.8);
           
         }
 
         .sok-card__side {
+          position: relative;
           display: flex;
           justify-content: space-between;
           align-items: center;
           padding: 1rem;
           border-bottom: 1px solid var(--oka-color-bd-minimal);
+
+          overflow: hidden; // Requi pour illustr du bandeau
 
           @include breakpoint(md) {
             flex-direction: column;
@@ -168,7 +221,7 @@ const savoirFaires = Object.values(
           }
 
           & > * {
-            color: var(--oka-color-fg-subtle);
+            // color: var(--oka-color-fg-subtle);
             writing-mode: horizontal-tb;
 
             @include breakpoint(md) {
@@ -179,16 +232,32 @@ const savoirFaires = Object.values(
           .oka-h {
             padding: 0;
           }
+
+          .bandeau-image {
+            display: none;
+
+            @include breakpoint(md) {
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: calc(var(--col-size) * 4); // bandeau fait 4 colonnes de large
+              height: 100%;
+              opacity: 0.4;
+              z-index: -1;
+            }
+          }
         }
       }
 
       // ===== Contenu des cartes =====
       .sok-card__content-wrapper {
         @include breakpoint(md) {
+
           display: flex;
           height: 100%;
 
-          margin-left: calc(var(--col-size) * -1);
+       
           z-index: 0;
         }
 
@@ -203,16 +272,16 @@ const savoirFaires = Object.values(
           }
 
           @include breakpoint(lg) {
-            flex: 0 0 calc(var(--col-size) * 12);
+            flex: 0 0 calc(var(--col-size) * 8);
 
             padding-top: calc(var(--col-size) * 1);
-            padding-left: calc(var(--col-size) * 0.5);
-            padding-left: calc(var(--col-size) * 0.5);
+            padding-left: calc(var(--col-size) * 1);
           }
 
           .sok-card__content {
             .oka-h {
               width: 100%;
+              //color: var(--oka-color-fg-subtle);
               // max-width: 740px;
               // max-width: 605px;
 
@@ -238,7 +307,7 @@ const savoirFaires = Object.values(
           flex: 0 0 calc(var(--col-size) * 8);
 
           @include breakpoint(md) {
-            flex: 0 0 calc(var(--col-size) * 1);
+            flex: 0 0 calc(var(--col-size) * 4);
             //margin: 2rem;
           }
 
@@ -264,7 +333,74 @@ const savoirFaires = Object.values(
       }
     }
   }
+
+ 
+
+.sok-card:nth-child(1n) .image-wrapper {
+  @include breakpoint(lg) {
+    flex: 0 0 calc(var(--col-size) * 6) !important;
+  }
+}
+.sok-card:nth-child(2n) .image-wrapper {
+  @include breakpoint(lg) {
+    flex: 0 0 calc(var(--col-size) * 5) !important;
+  }
+}
+.sok-card:nth-child(3n) .image-wrapper {
+  @include breakpoint(lg) {
+    flex: 0 0 calc(var(--col-size) * 4) !important;
+  }
+}
+.sok-card:nth-child(4n) .image-wrapper {
+  @include breakpoint(lg) {
+    flex: 0 0 calc(var(--col-size) * 4) !important;
+  }
+}
+
 </style>
+
+<style lang="scss" global>
+
+
+
+
+  .bandeau-image img {
+    width: 100dvw;
+    height: 100dvh;
+    object-fit: cover;
+    object-position: top;
+
+  }
+
+  // decalage des bandeau images
+  .sok-card:nth-child(2n) .bandeau-image img {
+    margin-left:(calc(var(--col-size) * -1));
+  }
+  .sok-card:nth-child(3n) .bandeau-image img {
+    margin-left:(calc(var(--col-size) * -2));
+  }
+  .sok-card:nth-child(4n) .bandeau-image img {
+    margin-left:(calc(var(--col-size) * -3));
+  }
+
+  .conclusion-image-ctnr {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.4;
+    }
+  
+  .conclusion-image {
+    width: 100dvw;
+    height: auto;
+    margin-left:(calc(var(--col-size) * -4));
+    object-fit: cover;
+    object-position: center;
+    }
+</style>
+
+
+
 
 <!-- GSAP -->
 <script>

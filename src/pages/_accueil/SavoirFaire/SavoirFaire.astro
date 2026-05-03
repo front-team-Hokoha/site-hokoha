@@ -16,11 +16,13 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
   
     <div class="hgo-snap oka-appWrap -fluid -firstWrap">
       <section class="sok-savoirfaire">
-        <div class="flex-grid">
-<PictoLight />
-          <div class="col col-16">
+        <!-- <div class="flex-grid">
+
+          <div class="col col-16"> -->
             <div class="flex-grid sok-savoirfaire__wrapper">
-              <div class="col col-1" aria-hidden="true"></div>
+              <div class="col col-1 pictoCol" aria-hidden="true">
+                <PictoLight />
+              </div>
 
               <div class="col col-14 sok-savoirfaire__content-container">
                 <div class="flex-grid">
@@ -46,14 +48,14 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
                   </div>
     
                   <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
-                    <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
+                    <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
     
                     <!-- <div class="sok-savoirfaire__quote">
                       <span class="oka-text -strong -lg">“Notre seul but est de faire bien”</span>
         
                       <p class="oka-text -sm">Ernő Rubik - Inventeur du Rubik’s Cube</p>
     
-                      <div class="oka-spacer -xl -spacing" aria-hidden="true"></div> 
+                      <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
                     </div> -->
                   </div>
                   
@@ -61,9 +63,9 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
               </div>
               
             </div>
-          </div>      
+          <!-- </div>      
           
-        </div>    
+        </div>     -->
       </section>
     </div>
     
@@ -84,10 +86,9 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
   // oka-appWrap des deux sections
   .-firstWrap,.-secondWrap { padding: 0; }
 
-  .-spacing {
-    @include breakpoint(md) {
-      display: none;
-    }
+  .pictoCol {
+    padding-top: 2.25rem;
+    padding-left: 2.5rem;
   }
   
   .sok-savoirfaire {
@@ -98,7 +99,7 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 
       @include breakpoint(md) {
         min-height: 30dvh;
-        align-items: center;
+        //align-items: top;
       }
     }
     
@@ -118,7 +119,50 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
   .sok-card-container {
     @include breakpoint(md) {
       display: flex;
-      // overflow: hidden;
     }
   }
 </style>
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+
+    // ─── Éléments cibles ────────────────────────────────────────────────────────
+    // #offres   : la section qui va se flouter / rétrécir (au-dessus dans le DOM)
+    // #sok-sf   : la section dont l'entrée déclenche l'effet
+    const offres = document.querySelector<HTMLElement>("#offres");
+    const sokSf  = document.querySelector<HTMLElement>("#sok-sf");
+
+    // Sécurité : si l'un des deux éléments est absent on ne plante pas
+    if (!offres || !sokSf) return;
+
+    // ─── Optimisation GPU ───────────────────────────────────────────────────────
+    // Annonce au navigateur que transform et filter vont changer → layer dédié
+    gsap.set(offres, { willChange: "transform, filter" });
+
+    // ─── Animation liée au scroll (scrub) ───────────────────────────────────────
+    // gsap.timeline + scrollTrigger.scrub = chaque px de scroll = x% d'animation
+    gsap.timeline({
+      scrollTrigger: {
+        trigger : sokSf,         // ScrollTrigger observe #sok-sf
+        start   : "top bottom",  // début : le haut de #sok-sf touche le BAS du viewport
+        end     : "top center",  // fin   : le haut de #sok-sf atteint le CENTRE du viewport
+        scrub   : 1,             // 1 s de lissage entre scroll et animation (0 = instantané)
+        // markers: true,        // ← décommenter pour déboguer les points de déclenchement
+      },
+    })
+    .to(offres, {
+      filter         : "blur(16px)", // flou progressif (pixels)
+      scale          : 0.84,         // légère réduction d'échelle
+      transformOrigin: "center top", // rétrécit depuis le haut de #offres
+      ease           : "none",       // linéaire obligatoire sur un scrub scrubbed timeline
+    });
+
+  });
+</script>
+

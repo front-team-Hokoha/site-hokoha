@@ -1,6 +1,6 @@
 export const ANIMATION_TRIGGER = {
     sm: "top 100%",
-    lg: "top 90%",
+    lg: "top 80%",
 };
 
 /**
