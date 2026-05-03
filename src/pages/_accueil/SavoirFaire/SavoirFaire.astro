@@ -143,7 +143,7 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 
     // ─── Optimisation GPU ───────────────────────────────────────────────────────
     // Annonce au navigateur que transform et filter vont changer → layer dédié
-    gsap.set(offres, { willChange: "transform, filter" });
+    gsap.set(offres, { willChange: "transform, filter, opacity" });
 
     // ─── Animation liée au scroll (scrub) ───────────────────────────────────────
     // gsap.timeline + scrollTrigger.scrub = chaque px de scroll = x% d'animation
@@ -157,8 +157,9 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
       },
     })
     .to(offres, {
-      filter         : "blur(16px)", // flou progressif (pixels)
-      scale          : 0.84,         // légère réduction d'échelle
+      //filter         : "blur(8px)", // flou progressif (pixels)
+      scale          : 0.94,         // légère réduction d'échelle
+      opacity        : 0.13,          // légère diminution d'opacité
       transformOrigin: "center top", // rétrécit depuis le haut de #offres
       ease           : "none",       // linéaire obligatoire sur un scrub scrubbed timeline
     });
