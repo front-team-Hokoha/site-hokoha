@@ -18,7 +18,7 @@ import Smoothscroll from '../animations/smoothscroll/Smoothscroll.astro';
 
 // ===== Styles =====
 import criticalCss from '../styles/oka-design-system/critical.scss?inline';
-import mainStylesUrl from '../styles/main.scss?url';
+//import mainStylesUrl from '../styles/main.scss?url';
 
 interface Props {
 	title: string;
@@ -69,7 +69,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<style is:inline set:html={criticalCss}></style>
 
 		<!-- CSS Non-Critique (chargé en priorité basse avec media="print") -->
-		<link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" />
+		<!-- <link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" /> -->
 
 		<ClientRouter />
 		
