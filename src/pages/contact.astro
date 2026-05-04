@@ -78,7 +78,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 
                      <div class="l-form-row sok-form__textarea-wrapper">
                         <label class="oka-label-lg" for="form-message">Message</label>
-                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="message" maxlength="1000" required>Votre message</textarea>
+                        <textarea class="oka-input -full" name="form-message" id="form-message" placeholder="Votre message" maxlength="1000" required></textarea>
                      </div>
 
                       <button class="oka-bt " type="submit">
@@ -111,6 +111,7 @@ const { descContent = "lorem ipsum" } = Astro.props;
 
 <style lang="scss">
    @use "../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
+   @use "../styles/oka-design-system/2-elements/Forms/inputs/inputs" as *;
 
    .oka-appWrap:last-child {
       padding: 0 !important;
