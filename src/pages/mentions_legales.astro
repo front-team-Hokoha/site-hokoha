@@ -1,0 +1,86 @@
+---
+// ===== Layout =====
+import Layout from '../layouts/Layout.astro';
+
+// ===== GLobalStyles =====
+import GlobalStyles from '../components/commun/GlobalStyles.astro';
+---
+
+<Layout title="Mentions Légales" description="Découvrez les mentions légales de notre site web, incluant les informations sur l'éditeur, l'hébergement, la propriété intellectuelle et les conditions d'utilisation.">
+    <div class="oka-appWrap -fluid oka-lightMode oka-surface">
+    <section class="flex-grid">
+        <div class="oka-spacer -xxl"></div>
+        <div class="col col-4"></div>
+        <div class="col col-8">
+            <h1>Mentions Légales</h1>
+
+            <div class="sok-paragraph">
+
+                <div class="oka-divider -sm -low" aria-hidden="true"></div>
+
+                <section class="sok-legal__section" id="editeur">
+                    <h2>Éditeur</h2>
+                    <p>Le site www.hokoha.com a été conçu et développé par la SARL HOKOHA - 6 rue Eugène Messmer - 53000 Laval, immatriculée au Registre de Commerce et des Sociétés sous le numéro 828 361 832 RCS Laval. Il s'agit d'un site de présentation de notre société à destination de nos clients, fournisseurs ou institutionnels.</p>
+                </section>
+
+                <div class="oka-divider -sm -low" aria-hidden="true"></div>
+
+                <section class="sok-legal__section" id="responsable">
+                    <h2>Responsable éditorial</h2>
+                    <p>M. Lorgueilleux Yann est le responsable éditorial de ce site.</p>
+                </section>
+
+                <div class="oka-divider -sm -low" aria-hidden="true"></div>
+
+                <section class="sok-legal__section" id="propriete">
+                    <h2>Propriété intellectuelle</h2>
+                    <p>Les logos et informations publiées sont la propriété de la société HOKOHA : toute reproduction même partielle devra faire l'objet d'une demande préalable auprès de la société. Les photos et illustrations sont issues du site Pixabay.com et sont sous licence Creative Commons.</p>
+                </section>
+
+                <div class="oka-divider -sm -low" aria-hidden="true"></div>
+
+                <section class="sok-legal__section" id="hebergement">
+                    <h2>Hébergement</h2>
+                    <p>Ce site est hébergé par la société MCT - 19 rue Eugène Messmer - 53000 Laval, France.</p>
+                </section>
+
+                <div class="oka-divider -sm -low" aria-hidden="true"></div>
+
+                <section class="sok-legal__section" id="cnil">
+                    <h2>Données personnelles</h2>
+                    <p>Les informations collectées par ce site font l'objet d'une déclaration auprès de la CNIL sous le n°2053548.</p>
+                </section>
+
+            </div>
+
+        <div class="col col-4"></div>
+        <div class="oka-spacer -lg"></div>
+    </section>
+    </div>
+
+    <style is:global>
+
+        .sok-legal__section h2 {
+            display:flex;
+            align-items:center;
+            margin-bottom: 0.375rem;
+            font-size:1rem;
+            color:var(--oka-color-fg);
+        }
+
+        .sok-legal__section h2::before {
+            display:inline-block;
+            width:0.25rem;
+            height:1.125rem;
+            background: var(--oka-color-bg-primary);
+            border-radius:0.125rem;
+            margin-right:0.5rem;
+            content:"";
+        }
+        
+    </style>
+
+</Layout>
+
+<!-- === GobalStyles === -->
+<GlobalStyles/>
