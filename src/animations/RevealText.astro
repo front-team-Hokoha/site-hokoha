@@ -87,6 +87,33 @@ const {
 					// Affiche les éléments
 					revealtext.classList.remove("-hidden");
 
+					// Si le contenu contient des balises inline (span/strong/em),
+					// éviter le SplitText qui peut splitter le DOM en plusieurs <h2>.
+					const hasInline = revealtext.querySelector('span, strong, em');
+					const delayVal = parseFloat((revealtext as HTMLElement).dataset.delay ?? "0");
+					if (hasInline) {
+						// Animation simple : animer les enfants directs (si présents) ou le container
+						const targets = revealtext.querySelectorAll(':scope > *');
+						if (targets.length) {
+							return gsap.from(targets, {
+								y: 20,
+								autoAlpha: 0,
+								stagger: 0.12,
+								duration: 0.7,
+								ease: "power2.out",
+								delay: delayVal,
+							});
+						} else {
+							return gsap.from(revealtext, {
+								y: 20,
+								autoAlpha: 0,
+								duration: 0.7,
+								ease: "power2.out",
+								delay: delayVal,
+							});
+						}
+					}
+
 					// Créer une animation de split pour chaques lignes
 					SplitText.create(revealtext, {
 						type: "lines",
@@ -109,7 +136,7 @@ const {
 								stagger: 0.15,
 								duration: 0.75,
 								ease: "power2.out",
-								delay: parseFloat((revealtext as HTMLElement).dataset.delay ?? "0"),
+								delay: delayVal,
 							});
 						},
 					});
