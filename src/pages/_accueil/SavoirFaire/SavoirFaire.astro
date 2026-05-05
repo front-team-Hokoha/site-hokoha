@@ -1,12 +1,10 @@
 ---
 // ===== Componsants de la page =====
 import PictoLight from "../../../components/commun/PictoLight.astro";
+import SectionTag from "../../../components/commun/SectionTag.astro";
 
 import CardSavoirFaire from "./components/CardSavoirFaire.astro"
 // import Grid from "../../components/commun/grid.astro";
-import SectionTag from "../../../components/commun/SectionTag.astro";
-
-
 // ===== Composants d'animations =====
 import Revealtext from "../../../animations/RevealText.astro";
 
@@ -17,60 +15,44 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 <div class="oka-appWrap -full oka-darkMode oka-surface">
   <section class="sok-sf" id="sok-sf">
   
-    <div class="hgo-snap oka-appWrap -fluid -firstWrap">
+    <div class="hgo-snap oka-appWrap -fluid">
       <section class="sok-savoirfaire">
-        <!-- <div class="flex-grid">
 
-          <div class="col col-16"> -->
-            <div class="flex-grid sok-savoirfaire__wrapper">
+            <div class="flex-grid">
               <div class="col col-1 pictoCol" aria-hidden="true">
                 <PictoLight />
               </div>
+              <div class="col col-15 valign-bottom" aria-hidden="true">
 
                   <SectionTag text="NOTRE SAVOIR-FAIRE." />
 
-              </div>
+                  </div>
             </div>  
 
 
             <div class="flex-grid sok-savoirfaire__wrapper">
               
               <div class="col col-1" aria-hidden="true"></div>
-              
               <div class="col col-7" aria-hidden="true">
-                  <Revealtext>
-                    <titreSavoirFaire.Content />
-                  </Revealtext>
-                  
-                  <!-- <Revealtext>
-                    <h2 class="oka-h -md -secondary">
-                    Lorem ipsum dolor sit, amet consectetur <span>adipisicing</span> elit 
-                    similique dolore eius iusto accusantium.
-                    </h2>
-                  </Revealtext> -->
-          
+    
+                <Revealtext>
+                  <titreSavoirFaire.Content />
+                </Revealtext>
+              
               </div>
-               
+                 
     
-                  <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
-                    <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
-    
-                    <!-- <div class="sok-savoirfaire__quote">
-                      <span class="oka-text -strong -lg">“Notre seul but est de faire bien”</span>
-        
-                      <p class="oka-text -sm">Ernő Rubik - Inventeur du Rubik’s Cube</p>
-    
-                      <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
-                    </div> -->
+
+              <div class="col col-7" aria-hidden="true">
+                <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
+
+                  <div class="sok-paragraph">
+                    <paragrapheSavoirFaire.Content />
                   </div>
-                  
-                </div>
               </div>
               
             </div>
-          <!-- </div>      
-          
-        </div>     -->
+
       </section>
     </div>
     
@@ -89,21 +71,27 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   // oka-appWrap des deux sections
-  .-firstWrap,.-secondWrap { padding: 0; }
+  //.-firstWrap,.-secondWrap { padding: 0; }
+
+  .valign-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+
 
   .pictoCol {
     padding-top: 2.25rem;
-    padding-left: 2.5rem;
+    padding-left: 1.5rem;
   }
   
   .sok-savoirfaire {
     
     &__wrapper {
-      background-color: var(--oka-color-layer-floor-0);
-      border: 1px solid var(--oka-color-bd-minimal);
+      //background-color: var(--oka-color-layer-floor-0);
+      border-bottom: 1px solid var(--oka-color-bd-minimal);
 
       @include breakpoint(md) {
-        min-height: 35dvh;
+        min-height: 30dvh;
         //align-items: top;
       }
     }
