@@ -1,6 +1,7 @@
 ---
 // ===== Componsants de la page =====
 import PictoLight from "../../../components/commun/PictoLight.astro";
+import SectionTag from "../../../components/commun/SectionTag.astro";
 
 import CardSavoirFaire from "./components/CardSavoirFaire.astro"
 // import Grid from "../../components/commun/grid.astro";
@@ -14,52 +15,47 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 <div class="oka-appWrap -full oka-darkMode oka-surface">
   <section class="sok-sf" id="sok-sf">
   
-    <div class="hgo-snap oka-appWrap -fluid -firstWrap">
+    <div class="hgo-snap oka-appWrap -fluid">
       <section class="sok-savoirfaire">
 
-            <div class="flex-grid sok-savoirfaire__wrapper">
+            <div class="flex-grid">
               <div class="col col-1 pictoCol" aria-hidden="true">
                 <PictoLight />
               </div>
+              <div class="col col-15 valign-bottom" aria-hidden="true">
 
-              <div class="col col-14 sok-savoirfaire__content-container">
-                <div class="flex-grid">
-    
-                  <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
-                    <div class="sok-savoirfaire__titles">
-                      
-                      
-                      <div class="oka-spacer -lg" aria-hidden="true"></div>
-                      
+                  <SectionTag text="NOTRE SAVOIR-FAIRE." />
 
-         
-                      <span class="oka-text -xs ">NOTRE SAVOIR-FAIRE</span>
-               
-
-                      <!-- <titreSavoirFaire.Content /> -->
+                  </div>
+            </div>  
 
 
-                      <Revealtext>
-                        <h2 class="oka-h -lg -secondary">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit 
-                        similique dolore eius iusto accusantium.
-                        </h2>
-                      </Revealtext>
+            <div class="flex-grid sok-savoirfaire__wrapper">
               
-                   
-                    </div>
-                  </div>
-    
-                  <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
-                    <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
+              <div class="col col-1" aria-hidden="true"></div>
 
-                      <div class="sok-paragraph">
-                        <paragrapheSavoirFaire.Content />
-                      </div>
-                    
+              <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
+                
+                <!-- <div class="oka-spacer  -sm" aria-hidden="true"></div> -->
+
+          
+                <!-- <titreSavoirFaire.Content /> -->
+
+                <Revealtext>
+                  <h2 class="oka-h -lg -secondary ">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit 
+                  similique dolore eius iusto accusantium.
+                  </h2>
+                </Revealtext>    
+              </div>
+    
+
+              <div class="col col-7" aria-hidden="true">
+                <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
+
+                  <div class="sok-paragraph">
+                    <paragrapheSavoirFaire.Content />
                   </div>
-                  
-                </div>
               </div>
               
             </div>
@@ -82,21 +78,27 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
 <style lang="scss">
   @use "../../../styles/oka-design-system/0-abstracts/breakpoints/breakpoints" as *;  
   // oka-appWrap des deux sections
-  .-firstWrap,.-secondWrap { padding: 0; }
+  //.-firstWrap,.-secondWrap { padding: 0; }
+
+  .valign-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+
 
   .pictoCol {
     padding-top: 2.25rem;
-    padding-left: 2.5rem;
+    padding-left: 1.5rem;
   }
   
   .sok-savoirfaire {
     
     &__wrapper {
-      background-color: var(--oka-color-layer-floor-0);
-      border: 1px solid var(--oka-color-bd-minimal);
+      //background-color: var(--oka-color-layer-floor-0);
+      border-bottom: 1px solid var(--oka-color-bd-minimal);
 
       @include breakpoint(md) {
-        min-height: 35dvh;
+        min-height: 30dvh;
         //align-items: top;
       }
     }

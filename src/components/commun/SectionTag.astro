@@ -1,0 +1,22 @@
+---
+import Typper from "../../animations/tipper/Typper.astro";
+
+interface Props {
+  text: string;
+  id?: string;
+  manual?: boolean;
+}
+
+const { text, id, manual } = Astro.props;
+---
+
+<div class="oka-data -xs">
+  <Typper {text} {id} {manual} />
+</div>
+
+<style>
+  /* Styles spécifiques au composant SectionTag */
+  .oka-data {
+    color: var(--oka-color-fg-subtle);
+  }
+</style>
