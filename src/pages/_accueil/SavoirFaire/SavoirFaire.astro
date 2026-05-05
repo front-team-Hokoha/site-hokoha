@@ -4,6 +4,9 @@ import PictoLight from "../../../components/commun/PictoLight.astro";
 
 import CardSavoirFaire from "./components/CardSavoirFaire.astro"
 // import Grid from "../../components/commun/grid.astro";
+import SectionTag from "../../../components/commun/SectionTag.astro";
+
+
 // ===== Composants d'animations =====
 import Revealtext from "../../../animations/RevealText.astro";
 
@@ -24,28 +27,30 @@ import * as paragrapheSavoirFaire from "../../../contenus/accueil/savoir-faires/
                 <PictoLight />
               </div>
 
-              <div class="col col-14 sok-savoirfaire__content-container">
-                <div class="flex-grid">
-    
-                  <div class="col col-7 sok-savoirfaire__content" aria-hidden="true">
-                    <div class="sok-savoirfaire__titles">
-                      
-                      
-                      <div class="oka-spacer -lg" aria-hidden="true"></div>
-                      
+                  <SectionTag text="NOTRE SAVOIR-FAIRE." />
+
+              </div>
+            </div>  
 
 
-
-                      <Revealtext>
-                        <span class="oka-text -xs ">NOTRE SAVOIR-FAIRE</span>
-                        <titreSavoirFaire.Content />
-                      </Revealtext>
+            <div class="flex-grid sok-savoirfaire__wrapper">
               
-                      <!-- <div class="sok-paragraph">
-                        <paragrapheSavoirFaire.Content />
-                      </div> -->
-                    </div>
-                  </div>
+              <div class="col col-1" aria-hidden="true"></div>
+              
+              <div class="col col-7" aria-hidden="true">
+                  <Revealtext>
+                    <titreSavoirFaire.Content />
+                  </Revealtext>
+                  
+                  <!-- <Revealtext>
+                    <h2 class="oka-h -md -secondary">
+                    Lorem ipsum dolor sit, amet consectetur <span>adipisicing</span> elit 
+                    similique dolore eius iusto accusantium.
+                    </h2>
+                  </Revealtext> -->
+          
+              </div>
+               
     
                   <div class="col col-7 sok-savoirfaire__quote-wrapper" aria-hidden="true">
                     <div class="oka-spacer -xl oka-hide--md" aria-hidden="true"></div> 
