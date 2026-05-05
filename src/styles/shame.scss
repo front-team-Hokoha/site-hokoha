@@ -77,3 +77,58 @@
     font-size: clamp(var(--oka-typo-brand-heading-md-font-size), 11cqw, var(--oka-typo-brand-heading-giant-font-size));
     line-height: clamp(var(--oka-typo-brand-heading-md-line-height) * 1px, 1em, var(--oka-typo-brand-heading-xl-line-height) * 1px);
 }
+
+
+
+:root {
+    // Sert à calculer la taille d'une ou plusieurs colonne par rapport au viewport
+    // 1 col = calc((100dvw / 16) * 1)
+    --col-size: calc(100dvw / 16);
+  }
+
+// ShowGrid - 8pt grid vertical dans un container
+
+.showGrid {
+    position:relative; /* requis pour showGrid */
+
+}
+
+
+.showGrid:after  /* Div spécifique dans Docs */
+{
+    content   : '';
+    position  : absolute;
+    width:100%;
+
+    top       :0 ;
+    bottom   : 0;
+    left     : 0;
+    z-index   : -1;
+
+    padding   : 0;
+ 
+    opacity   : 0.3   ;
+    font-size: 8px;
+
+    // 8Pt GRILLE VERTICALE
+    background-repeat: repeat-y;
+    background-size: 100% 0.5rem;
+    background-image: linear-gradient(to bottom, var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default)) 0,rgba(255, 255, 255, 0) 1px);
+    line-height: 0;
+
+   
+    /* SQUARE */
+    /*   */
+    background-repeat: repeat;  
+    background-size: calc(var(--col-size) * 1) 16px, calc(var(--col-size) * 1) 16px;
+    background-position:  0px 0px, 0px 0px;
+    background-image: linear-gradient(var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default))  1px, transparent 1px),
+                    linear-gradient(90deg, var(--oka-color-bd-spec-subtle,var(--oka-color-specs-default))  1px, transparent 1px);
+        
+  
+
+    line-height: 0;
+    pointer-events: none;
+}
+
+

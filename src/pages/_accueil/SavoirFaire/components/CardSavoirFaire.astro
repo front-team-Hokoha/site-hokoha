@@ -56,7 +56,7 @@ const savoirFaires = Object.values(
           </div>
         </div>
 
-        <div class="card-content-container">
+        <div class="card-content-container  showGrid">
           <div class="sok-card__content-wrapper">
 
             
@@ -81,7 +81,7 @@ const savoirFaires = Object.values(
             </div>
 
 
-        <div class="image-wrapper">
+          <div class="image-wrapper">
               <div class="oka-spacer -xl -spacing" aria-hidden="true" />
 
               {/* <figure class="sok-card__image-inner">
@@ -99,7 +99,7 @@ const savoirFaires = Object.values(
 
 
 <!-- Conclusion -->
- <article class="sok-card">
+ <article class="sok-card showGrid">
       <div class="sok-card__container">
         
         <div class="card-content-container">
@@ -120,7 +120,7 @@ const savoirFaires = Object.values(
 
             </div>
 
-            <div class="texts-wrapper">
+            <div class="texts-wrapper ">
               <div class="sok-card__content">
                <div class="oka-spacer  -xxl" aria-hidden="true"></div>
                 <div class="oka-spacer  -xxl" aria-hidden="true"></div>
@@ -157,11 +157,7 @@ const savoirFaires = Object.values(
   @use "../../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
     as *;
 
-  :root {
-    // Sert à calculer la taille d'une ou plusieurs colonne par rapport au viewport
-    // 1 col = calc((100dvw / 16) * 1)
-    --col-size: calc(100dvw / 16);
-  }
+
 
 
   .sok-card {

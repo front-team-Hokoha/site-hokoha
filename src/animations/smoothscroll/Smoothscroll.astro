@@ -10,6 +10,11 @@ yarn add @studio-freight/lenis
     import { initLenis } from './leniswithgsap';
     
     document.addEventListener('astro:page-load', () => {
+        // Force le scroll natif à 0 AVANT d'initialiser Lenis.
+        // Lenis lit la position native au démarrage, et ScrollTrigger.refresh()
+        // (appelé dans initLenis) calcule tous les triggers depuis cette position.
+        // Si le scroll n'est pas à 0, tous les triggerStart/End sont décalés.
+        window.scrollTo(0, 0);
         initLenis();
     })
 </script>

@@ -72,7 +72,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link rel="stylesheet" href={mainStylesUrl} media="print" onload="this.onload=null;this.media='all'" />
 
 		<ClientRouter />
-		
+
+		<!--
+			Empêche le browser de restaurer la position de scroll au rechargement.
+			Sans ça, le browser remet le scroll au milieu de la page AVANT que
+			GSAP ScrollTrigger calcule ses positions → tous les triggers sont décalés.
+			Doit être en <head> synchrone pour agir avant tout rendu.
+		-->
+		<script is:inline>
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+		</script>
+
 	</head>
 	<body>
 		<div id="root" class="layout-app">
