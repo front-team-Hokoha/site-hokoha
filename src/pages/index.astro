@@ -22,6 +22,15 @@ const { descContent = "lorem ipsum" } = Astro.props;
 <Layout title="Page Accueil" description={descContent}>
 	<Grid />
 	<Hero />
+
+	<!-- Bouton retour en haut -->
+	<button id="back-to-top" class="back-to-top oka-shadow5 oka-flex -center" aria-label="Retour en haut" type="button">
+		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+			<path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M18 10l-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</button>
+
 	<Offres /> 
 	<!-- La hauteur des spacer , incide sur le scroll -->
 	<div class="oka-spacer  -xxl" aria-hidden="true"></div>
@@ -82,3 +91,108 @@ const { descContent = "lorem ipsum" } = Astro.props;
 		}
    }
 </style>
+
+
+<style is:inline>
+
+	.back-to-top{
+		position: fixed;
+		right: 1.5rem;
+		bottom: 1.5rem;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.5rem;
+		background-color: var(--oka-color-bg-strong);
+		color: var(--oka-color-fg-on_surface);
+		border: none;
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity .28s ease, transform .28s ease;
+		z-index: 9999;
+		pointer-events: none;
+	}
+
+	.back-to-top.-visible { 
+		opacity:1; 
+		pointer-events:auto; 
+	}
+
+	.back-to-top:focus { 
+		outline:2px solid var(--oka-color-bd); 
+	}
+
+	.back-to-top svg{ 
+		display:block; 
+	}
+</style>
+
+<script is:inline data-astro-rerun>
+	(() => {
+		const btn = document.getElementById('back-to-top');
+		if (!btn) return;
+
+		const hero = document.querySelector('.sok-hero');
+		let observer;
+
+		const show = () => { 
+			btn.classList.add('-visible'); 
+			btn.setAttribute('aria-hidden','false'); 
+		};
+		const hide = () => { 
+			btn.classList.remove('-visible'); 
+			btn.setAttribute('aria-hidden','true'); 
+		};
+
+		if (hero && 'IntersectionObserver' in window) {
+			observer = new IntersectionObserver((entries) => {
+				entries.forEach(e => {
+					if (e.isIntersecting) {
+						hide();
+					} else { 
+						show();
+					}
+				});
+			}, { 
+				root: null, 
+				threshold: 0, 
+				rootMargin: '-1px 0px 0px 0px' 
+			});
+			observer.observe(hero);
+		}
+
+		btn.addEventListener('click', () => {
+			if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+				window.lenis.scrollTo(0, {
+					duration: 1,
+					force: true,
+					lock: false
+				});
+				return;
+			}
+
+			if (window.gsap && typeof window.gsap.to === 'function') {
+				try {
+
+					if (window._backToTopTween && window._backToTopTween.kill) {
+						window._backToTopTween.kill();
+					}
+
+					const state = { y: window.scrollY };
+					window._backToTopTween = window.gsap.to(state, {
+						y: 0,
+						duration: 0.8,
+						ease: 'power2.out',
+						onUpdate: () => { 
+							window.scrollTo(0, Math.round(state.y)); 
+						}
+					});
+				} catch (e) {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				}
+			} else {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			}
+		});
+
+	})();
+</script>
