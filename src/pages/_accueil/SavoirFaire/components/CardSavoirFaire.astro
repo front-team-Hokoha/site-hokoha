@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 // import Revealtext from "../../../../animations/RevealText.astro";
 // import MediaWrapper from "../../commun/MediaWrapper.astro";
 
-
+import Cube from "./Cube.jsx";
 // Image
 import bandeau from '../../../../assets/images/ambiance/176.jpg';
 
@@ -127,6 +127,9 @@ const savoirFaires = Object.values(
                 <div class="oka-spacer  -xxl" aria-hidden="true"></div>	
                 <div class="oka-spacer  -xxl" aria-hidden="true"></div>
                 
+                <div class="cube-wrapper">
+                  <Cube client:visible />
+                </div>
        
                 <h3 class="oka-h -xxl">“Notre seul but est de faire bien.”</h3>
                 <div class="oka-spacer  -md" aria-hidden="true"></div>
@@ -147,17 +150,22 @@ const savoirFaires = Object.values(
 
 
 
-
-
-
-
-
-
 <style lang="scss">
   @use "../../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
     as *;
 
 
+
+  .cube-wrapper {
+    position: absolute;
+    top: 0%;
+    left: 80%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    z-index: 10;
+    pointer-events: auto;
+  }
 
 
   .sok-card {
@@ -332,7 +340,7 @@ const savoirFaires = Object.values(
 
 </style>
 
-<style lang="scss" global>
+<style lang="scss" is:global>
 
 
 
