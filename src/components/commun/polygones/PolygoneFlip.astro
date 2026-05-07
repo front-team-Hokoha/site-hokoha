@@ -95,6 +95,14 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
       backFace.style.transform = `rotateY(180deg)`;
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
 
+      // ── Détection mobile ────────────────────────────────────
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        // Sur mobile : affiche la face arrière par défaut (pas de flip auto)
+        isFlipped = true;
+        inner.style.transform = `rotateY(180deg)`;
+      }
+
       const frontImg = cell.querySelector<HTMLImageElement>('.flip-front img');
       const backImg  = cell.querySelector<HTMLImageElement>('.flip-back img');
 
@@ -146,7 +154,10 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
         }, interval);
       };
 
-      setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
+      // Sur mobile : pas de flip automatique, reste toujours en face arrière
+      if (!isMobile) {
+        setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
+      }
     });
 
   });

@@ -82,6 +82,14 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
       // Durée de la transition CSS sur l'élément inner
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
 
+      // ── Détection mobile ────────────────────────────────────
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        // Sur mobile : affiche la face arrière par défaut
+        isFlipped = true;
+        inner.style.transform = `rotateX(180deg)`;
+      }
+
       // ── Fonction de flip ────────────────────────────────────
       const doFlip = () => {
         if (!isFlipped) {
@@ -113,6 +121,12 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
       // attache les fonctions de flip/unflip à l'instance DOM de la cellule pour pouvoir les appeler depuis l'extérieur
       (cell as any).doFlip   = () => setTimeout(doFlip,   parseFloat(cell.dataset.delay ?? '0') * 1000);
       (cell as any).doUnflip = () => setTimeout(doUnflip, parseFloat(cell.dataset.delay ?? '0') * 1000);
+      
+      // Sur mobile : désactive les flips au scroll (reste toujours en position flipped)
+      if (isMobile) {
+        (cell as any).doFlip   = () => {}; // no-op
+        (cell as any).doUnflip = () => {}; // no-op
+      }
     });
 
 

@@ -297,54 +297,6 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         });
       });
     });
-
-    // Mobile : déclenche les animations d'offre au scroll sans pin
-    mm.add("(max-width: 1024px)", () => {
-      OFFRES.forEach((offre) => {
-        const offreId = offre.dataset.offre;
-        const sectionOffre = offre.closest(".sok-offre") as HTMLElement;
-
-        ScrollTrigger.create({
-          trigger: sectionOffre,
-          start: "top 85%",
-          end: "bottom 15%",
-          onEnter: () => {
-            offre.classList.add("-active");
-            offre.classList.add("-display");
-            sectionOffre.classList.add("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:enter", { detail: { offre: offreId } }),
-            );
-            document.dispatchEvent(
-              new CustomEvent("tipper:play", {
-                detail: { id: `typper-${offreId}-1` },
-              }),
-            );
-          },
-          onEnterBack: () => {
-            offre.classList.add("-active");
-            sectionOffre.classList.add("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:enter", { detail: { offre: offreId } }),
-            );
-          },
-          onLeave: () => {
-            offre.classList.remove("-active");
-            sectionOffre.classList.remove("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:leave", { detail: { offre: offreId } }),
-            );
-          },
-          onLeaveBack: () => {
-            offre.classList.remove("-active");
-            sectionOffre.classList.remove("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:leave", { detail: { offre: offreId } }),
-            );
-          },
-        });
-      });
-    });
   });
 </script>
 
