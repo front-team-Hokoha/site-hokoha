@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 // import Revealtext from "../../../../animations/RevealText.astro";
 // import MediaWrapper from "../../commun/MediaWrapper.astro";
 
-
+import Cube from "./Cube.jsx";
 // Image
 import bandeau from '../../../../assets/images/ambiance/176.jpg';
 
@@ -23,7 +23,13 @@ const savoirFaires = Object.values(
 
 {
   savoirFaires.map((savoirFaire) => (
-    <article class="sok-card">
+    <article
+      class="sok-card"
+      id={`savoir-faire-${savoirFaire.frontmatter.num}`}
+      data-sf-target={`savoir-faire-${savoirFaire.frontmatter.num}`}
+      tabindex="0"
+      role="button"
+    >
       <div class="sok-card__container">
         
         
@@ -74,7 +80,7 @@ const savoirFaires = Object.values(
 
                 <div class="oka-spacer -md" aria-hidden="true" />
 
-                <button class="oka-bt -outlined">
+                <button class="oka-bt -outlined" type="button">
                   <div class="oka-bt__lbl">En savoir plus</div>
                 </button>
               </div>
@@ -127,6 +133,9 @@ const savoirFaires = Object.values(
                 <div class="oka-spacer  -xxl" aria-hidden="true"></div>	
                 <div class="oka-spacer  -xxl" aria-hidden="true"></div>
                 
+                <div class="cube-wrapper">
+                  <Cube client:visible />
+                </div>
        
                 <h3 class="oka-h -xxl">“Notre seul but est de faire bien.”</h3>
                 <div class="oka-spacer  -md" aria-hidden="true"></div>
@@ -147,22 +156,31 @@ const savoirFaires = Object.values(
 
 
 
-
-
-
-
-
-
 <style lang="scss">
   @use "../../../../styles/oka-design-system/0-abstracts//breakpoints/breakpoints"
     as *;
 
 
 
+  .cube-wrapper {
+    position: absolute;
+    top: 0%;
+    left: 80%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
 
   .sok-card {
     position: relative;
     z-index: 99;
+
+    &[data-sf-target] {
+      cursor: pointer;
+    }
 
 
     .sok-card__container {
@@ -332,7 +350,7 @@ const savoirFaires = Object.values(
 
 </style>
 
-<style lang="scss" global>
+<style lang="scss" is:global>
 
 
 
@@ -354,6 +372,10 @@ const savoirFaires = Object.values(
   }
   .sok-card:nth-child(4n) .bandeau-image img {
     margin-left:(calc(var(--col-size) * -3));
+  }
+
+  .sok-card[data-sf-target].-active {
+    cursor: default;
   }
 
   .conclusion-image-ctnr {
@@ -389,9 +411,47 @@ const savoirFaires = Object.values(
     const sokCards = document.querySelectorAll(".sok-card");
     if (!sokCards.length) return;
 
-    const lastIndex = sokCards.length - 1;
+    const interactiveCards = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-sf-target]")
+    );
 
-    // 🔥 nouvelle API
+    if (!interactiveCards.length) return;
+
+    const lastIndex = sokCards.length - 1;
+    const activeLastIndex = interactiveCards.length - 1;
+
+    const syncActiveCard = (activeIndex: number) => {
+      interactiveCards.forEach((card, index) => {
+        card.classList.toggle("-active", index === activeIndex);
+      });
+    };
+
+    let scrollTween: gsap.core.Tween | null = null;
+
+    const animateWindowScrollTo = (
+      targetScroll: number,
+      duration = 1.8,
+    ) => {
+      scrollTween?.kill();
+
+      const scrollState = {
+        y: window.scrollY,
+      };
+
+      scrollTween = gsap.to(scrollState, {
+        y: targetScroll,
+        duration,
+        ease: "power2.out",
+        onUpdate: () => {
+          window.scrollTo(0, scrollState.y);
+        },
+        onComplete: () => {
+          window.scrollTo(0, targetScroll);
+        },
+      });
+    };
+
+    // nouvelle API
     const matchMedia = gsap.matchMedia();
 
     matchMedia.add("(min-width: 1024px)", () => {
@@ -407,9 +467,19 @@ const savoirFaires = Object.values(
           scrub: true,
           pin: true,
           anticipatePin: 1,
+          onUpdate: (self) => {
+            const activeIndex = Math.min(
+              activeLastIndex,
+              Math.round(self.progress * activeLastIndex),
+            );
+
+            syncActiveCard(activeIndex);
+          },
           // markers: true,
         },
       });
+
+      syncActiveCard(0);
 
       sokCards.forEach((sokCard, i) => {
         // Rétrécie toutes les cartes sauf la dernière
@@ -418,6 +488,8 @@ const savoirFaires = Object.values(
         const rightContent = sokCard.querySelector(
           ".sok-card__content-wrapper"
         );
+
+        tl.addLabel(`card-${i}`, i);
 
         if (rightContent) {
           // Rétrécissement sans blur
@@ -449,11 +521,30 @@ const savoirFaires = Object.values(
         }
       });
 
+      interactiveCards.forEach((card, index) => {
+        card.onclick = () => {
+          syncActiveCard(index);
+
+          const scrollTrigger = tl.scrollTrigger;
+
+          if (!scrollTrigger) return;
+
+          const targetScroll =
+            typeof scrollTrigger.labelToScroll === "function"
+              ? scrollTrigger.labelToScroll(`card-${index}`)
+              : scrollTrigger.start +
+                (scrollTrigger.end - scrollTrigger.start) *
+                  (activeLastIndex === 0 ? 0 : index / activeLastIndex);
+
+          animateWindowScrollTo(targetScroll, 2.2);
+        };
+
+      });
+
       // GPTo
       // 🧹 cleanup automatique quand on sort du breakpoint
       return () => {
         console.log("cleanup desktop");
-
         tl.kill();
 
         gsap.set(".sok-card__content-wrapper", {
@@ -465,6 +556,17 @@ const savoirFaires = Object.values(
     // GPTo
     matchMedia.add("(max-width: 1023px)", () => {
       console.log("mode mobile");
+
+      syncActiveCard(0);
+
+      interactiveCards.forEach((card) => {
+        card.onclick = () => {
+          const targetScroll = card.getBoundingClientRect().top + window.scrollY;
+
+          animateWindowScrollTo(targetScroll, 1.6);
+        };
+
+      });
 
       // reset sécurité
       gsap.set(".sok-card__content-wrapper", {
