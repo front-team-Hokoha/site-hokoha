@@ -1,39 +1,27 @@
 ---
-/**
- * PolygoneFlipProg — polygone deux faces piloté par scroll (section Offres/Programmes).
- *
- * Rendu : deux faces superposées (.flip-front / .flip-back) encapsulées dans un .flip-inner.
- * Chaque face utilise le composant Shape (SVG + texte/vidéo/image optionnels).
- *
- * Contrôle :
- *   - Écoute l'événement custom "offre:enter" (émis par Offres.astro via ScrollTrigger).
- *   - Si le polygone porte la classe `-{offre}` correspondante → doFlip() : révèle la face arrière.
- *   - Sinon → doUnflip() : revient à la face avant.
- *   - doFlip / doUnflip respectent un délai optionnel `data-delay` (secondes) pour les effets en cascade.
- *
- * Props :
- *   type        — classe CSS appliquée au wrapper (ex: "-dev", "-design")
- *   frontText   — texte face avant
- *   backText    — texte face arrière
- *   colorFront  — couleur de remplissage face avant (défaut: transparent)
- *   colorBack   — couleur de remplissage face arrière
- *   strokeType  — variante de trait SVG (défaut: "-none")
- *   videoUrl    — vidéo affichée sur la face arrière (optionnel)
- *   imageUrl    — image affichée sur la face arrière (optionnel)
- */
 import Shape from "./Shape.astro";
 
 interface Props {
-  type?:  string;
+  type?: string;
   frontText?: string;
-  backText?:  string;
+  backText?: string;
   colorFront?: string;
   colorBack?: string;
-	videoUrl?: string;
-	imageUrl?: string;
-	strokeType?: string
+  videoUrl?: string;
+  imageUrl?: string;
+  strokeType?: string;
 }
-const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "transparent", colorBack, strokeType = "-none" } = Astro.props;
+
+const {
+  type,
+  frontText = "",
+  backText = "",
+  videoUrl,
+  imageUrl,
+  colorFront = "transparent",
+  colorBack,
+  strokeType = "-none",
+} = Astro.props;
 ---
 
 <div class={`polygone -flip jsFlipProg ${type}`}>
@@ -41,117 +29,176 @@ const { type, frontText = '', backText = '', videoUrl, imageUrl, colorFront = "t
 
     <!-- Face avant -->
     <div class="flip-face flip-front">
-      <Shape frontText={frontText}  color={colorFront} strokeType={strokeType}/>
+      <Shape
+        frontText={frontText}
+        color={colorFront}
+        strokeType={strokeType}
+      />
     </div>
 
     <!-- Face arrière -->
     <div class="flip-face flip-back">
-      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={imageUrl} color={colorBack}/>
+      <Shape
+        frontText={backText}
+        videoUrl={videoUrl}
+        imageUrl={imageUrl}
+        color={colorBack}
+      />
     </div>
 
   </div>
 </div>
 
 <script>
-
   document.addEventListener("astro:page-load", () => {
- 
 
-    // ── Paramètres ────────────────────────────────────────────
-    const FLIP_DURATION     = 0.5; // durée de l'animation de flip (secondes)
+    const FLIP_DURATION = 0.5;
 
-    // ──────────────────────────────────────────────────────────
+    const cleanupFns: (() => void)[] = [];
 
+    document.querySelectorAll<HTMLElement>(".jsFlipProg").forEach((cell) => {
 
-    document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((cell) => {
-      const inner    = cell.querySelector<HTMLElement>('.flip-inner');
-      const backFace = cell.querySelector<HTMLElement>('.flip-back');
+      const inner =
+        cell.querySelector<HTMLElement>(".flip-inner");
+
+      const backFace =
+        cell.querySelector<HTMLElement>(".flip-back");
+
       if (!inner || !backFace) return;
 
-      // ── État local de la cellule ───────────────────────────
-      // isFlipped : true = face arrière visible
-      let isFlipped  = false;
-      // currentAxis : axe utilisé pour le flip en cours
-      //   → conservé pour l'animation retour afin de rester sur le même axe
-      let currentAxis = 'X';
+      let isFlipped = false;
+      let currentAxis = "X";
 
-      // Initialisation : pose la face arrière pré-retournée sur l'axe courant
-      // (backface-visibility:hidden empêche de la voir tant que l'inner n'est pas retourné)
-      backFace.style.transform = `rotate${currentAxis}(180deg)`;
+      let flipTimeout: number;
+      let unflipTimeout: number;
 
-      // Durée de la transition CSS sur l'élément inner
-      inner.style.transition = `transform ${FLIP_DURATION}s ease`;
+      backFace.style.transform =
+        `rotate${currentAxis}(180deg)`;
 
-      // ── Détection mobile ────────────────────────────────────
+      inner.style.transition =
+        `transform ${FLIP_DURATION}s ease`;
+
+      inner.style.transform = `rotateX(0deg)`;
+
       const isMobile = window.innerWidth <= 1024;
+
       if (isMobile) {
-        // Sur mobile : affiche la face arrière par défaut
         isFlipped = true;
         inner.style.transform = `rotateX(180deg)`;
       }
 
-      // ── Fonction de flip ────────────────────────────────────
       const doFlip = () => {
+
         if (!isFlipped) {
-          // ── Front → Back ───────────────────────────────────
-          // Met à jour la pré-rotation de la face arrière AVANT d'animer,
-          // pour qu'elle soit déjà positionnée sur le bon axe
-          backFace.style.transform = `rotate${currentAxis}(180deg)`;
 
-          // Anime l'inner de 0° → 180° sur l'axe choisi, révélant la face arrière
-          inner.style.transform = `rotate${currentAxis}(180deg)`;
+          backFace.style.transform =
+            `rotate${currentAxis}(180deg)`;
+
+          inner.style.transform =
+            `rotate${currentAxis}(180deg)`;
+
           isFlipped = true;
-        } else {
-          // ── Back → Front ───────────────────────────────────
-          // Retour sur le même axe que l'aller pour une animation cohérente
-          inner.style.transform = '';
-          isFlipped = false;
-        
         }
       };
 
-      // fonction pour forcer un retour à la face avant (sans changer d'axe)
       const doUnflip = () => {
+
         if (isFlipped) {
-          inner.style.transform = '';
+
+          inner.style.transform =
+            `rotate${currentAxis}(0deg)`;
+
           isFlipped = false;
         }
       };
 
-      // attache les fonctions de flip/unflip à l'instance DOM de la cellule pour pouvoir les appeler depuis l'extérieur
-      (cell as any).doFlip   = () => setTimeout(doFlip,   parseFloat(cell.dataset.delay ?? '0') * 1000);
-      (cell as any).doUnflip = () => setTimeout(doUnflip, parseFloat(cell.dataset.delay ?? '0') * 1000);
-      
-      // Sur mobile : désactive les flips au scroll (reste toujours en position flipped)
+      (cell as any).doFlip = () => {
+
+        clearTimeout(flipTimeout);
+
+        flipTimeout = window.setTimeout(() => {
+          doFlip();
+        }, parseFloat(cell.dataset.delay ?? "0") * 1000);
+      };
+
+      (cell as any).doUnflip = () => {
+
+        clearTimeout(unflipTimeout);
+
+        unflipTimeout = window.setTimeout(() => {
+          doUnflip();
+        }, parseFloat(cell.dataset.delay ?? "0") * 1000);
+      };
+
       if (isMobile) {
-        (cell as any).doFlip   = () => {}; // no-op
-        (cell as any).doUnflip = () => {}; // no-op
+
+        (cell as any).doFlip = () => {};
+        (cell as any).doUnflip = () => {};
       }
+
+      cleanupFns.push(() => {
+        clearTimeout(flipTimeout);
+        clearTimeout(unflipTimeout);
+      });
     });
 
+    // ── EVENTS ─────────────────────────────────
 
+    const enterHandler = (e: Event) => {
 
-    
-    // Réaction aux événements ScrollTrigger depuis Offres.astro
-    document.addEventListener("offre:enter", (e) => {
       const { offre } = (e as CustomEvent).detail;
 
-      // Mettre en avant les polygones de l'offre active, masquer les autres
-      document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((poly) => {
-        if (poly.classList.contains(`-${offre}`)) {
-          (poly as any).doFlip?.();
-        } else {
-          (poly as any).doUnflip?.();
-        }
-      });
-    });
+      document
+        .querySelectorAll<HTMLElement>(".jsFlipProg")
+        .forEach((poly) => {
 
-    // Quand on sort d'une offre, tous les polygones doivent unflip
-    document.addEventListener("offre:leave", (e) => {
-      document.querySelectorAll<HTMLElement>('.jsFlipProg').forEach((poly) => {
-        (poly as any).doUnflip?.();
-      });
-    });
-  
+          if (poly.classList.contains(`-${offre}`)) {
+            (poly as any).doFlip?.();
+          } else {
+            (poly as any).doUnflip?.();
+          }
+        });
+    };
+
+    const leaveHandler = () => {
+
+      document
+        .querySelectorAll<HTMLElement>(".jsFlipProg")
+        .forEach((poly) => {
+          (poly as any).doUnflip?.();
+        });
+    };
+
+    document.addEventListener(
+      "offre:enter",
+      enterHandler
+    );
+
+    document.addEventListener(
+      "offre:leave",
+      leaveHandler
+    );
+
+    // ── CLEANUP ────────────────────────────────
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+
+        document.removeEventListener(
+          "offre:enter",
+          enterHandler
+        );
+
+        document.removeEventListener(
+          "offre:leave",
+          leaveHandler
+        );
+
+        cleanupFns.forEach((fn) => fn());
+
+      },
+      { once: true }
+    );
   });
 </script>

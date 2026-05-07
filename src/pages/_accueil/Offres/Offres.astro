@@ -222,87 +222,146 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "@studio-freight/lenis";
+
+  // déclarations des types pour éviter les erreurs TS 
+  declare global {
+    interface Window {
+      _offreScrollActive?: boolean;
+      lenis?: Lenis;
+    }
+  }
 
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("astro:page-load", () => {
     const OFFRES = document.querySelectorAll<HTMLElement>("[data-offre]");
-    const OFFRE_SCROLL_STEP = 500; // Distance de scroll virtuelle entre chaque déclenchement (en px)
+    const root = document.querySelector("#offres");
 
-    let mm = gsap.matchMedia();
+    if (!OFFRES.length || !root) return;
+
+    const OFFRE_SCROLL_STEP = 500;
+
+    const cleanFunctions: (() => void)[] = [];
+
+    // init scroll Lenis
+    const lenis = new Lenis({
+      lerp: 0.08,
+    });
+
+    window.lenis = lenis;
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((t) => {
+      lenis.raf(t * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // ScrollTrigger.normalizeScroll(true);
+
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1025px)", () => {
-      ScrollTrigger.create({
-        trigger: "#offres",
+
+      // pin global de la section offres
+      const pinTrigger = ScrollTrigger.create({
+        trigger: root,
         start: "top top",
-        end: `+=${(OFFRES.length + 1) * OFFRE_SCROLL_STEP}`,
+        end: () => `+=${(OFFRES.length + 1) * OFFRE_SCROLL_STEP}`,
         pin: true,
-     
+        invalidateOnRefresh: true, // recalcul à chaque refresh pour éviter les décalages
       });
+
+      cleanFunctions.push(() => pinTrigger.kill());
 
       OFFRES.forEach((offre, index) => {
         const offreId = offre.dataset.offre;
-        const sectionOffre = offre.closest(".sok-offre") as HTMLElement;
+        const sectionOffre = offre.closest(".sok-offre");
 
         const st = ScrollTrigger.create({
           trigger: offre,
           start: `top+=${index * OFFRE_SCROLL_STEP}px 30%`,
           end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 30%`,
-          //markers: true,
-          onEnter: () => {
-            offre.classList.add("-active");
-            offre.classList.add("-display");
-            sectionOffre.classList.add("-active");
+          invalidateOnRefresh: true,
 
-            console.log("Entré dans l'offre :", offreId);
-            document.dispatchEvent(
-              new CustomEvent("offre:enter", { detail: { offre: offreId } }),
-            );
-            document.dispatchEvent(
-              new CustomEvent("tipper:play", {
-                detail: { id: `typper-${offreId}-1` },
-              }),
-            );
+          // entrée dans la zone
+          onEnter: () => {
+            offre.classList.add("-active", "-display");
+            sectionOffre?.classList.add("-active");
+
+            document.dispatchEvent(new CustomEvent("offre:enter", { detail: { offre: offreId }}));
+            document.dispatchEvent(new CustomEvent("tipper:play", { detail: { id: `typper-${offreId}-1` }}));
           },
+
+          // retour vers le haut
           onEnterBack: () => {
             offre.classList.add("-active");
-            sectionOffre.classList.add("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:enter", { detail: { offre: offreId } }),
-            );
+            sectionOffre?.classList.add("-active");
+
+            document.dispatchEvent(new CustomEvent("offre:enter", {detail: { offre: offreId }}));
           },
+
+          // sortie vers le bas
           onLeave: () => {
             offre.classList.remove("-active");
-            sectionOffre.classList.remove("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:leave", { detail: { offre: offreId } }),
-            );
+            sectionOffre?.classList.remove("-active");
+
+            document.dispatchEvent(new CustomEvent("offre:leave", {detail: { offre: offreId }}));
           },
+
+          // sortie vers le haut
           onLeaveBack: () => {
             offre.classList.remove("-active");
-            sectionOffre.classList.remove("-active");
-            document.dispatchEvent(
-              new CustomEvent("offre:leave", { detail: { offre: offreId } }),
-            );
-          },
+            sectionOffre?.classList.remove("-active");
+
+            document.dispatchEvent(new CustomEvent("offre:leave", {detail: { offre: offreId }}));
+          }
+
         });
 
-        // Scroll au click sur l'offre
-        offre.addEventListener("click", () => {
-          (window as any)._offreScrollActive = true;
-          window.scrollTo({ top: st.start + 10, behavior: "smooth" });
-          const reset = () => { (window as any)._offreScrollActive = false; };
-          window.addEventListener("scrollend", reset, { once: true });
+        cleanFunctions.push(() => st.kill());
+
+        // on click scroll vers la section 
+        const clickHandler = () => {
+          window._offreScrollActive = true;
+
+          lenis.scrollTo(st.start + 10);
+
+          const reset = () => {
+            window._offreScrollActive = false;
+          };
+
+          lenis.on("scroll", reset);
           setTimeout(reset, 1500);
+        };
+
+        offre.addEventListener("click", clickHandler);
+
+        cleanFunctions.push(() => {
+          offre.removeEventListener("click", clickHandler);
         });
       });
+
+      ScrollTrigger.refresh();
     });
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        cleanFunctions.forEach((fn) => fn());
+        mm.revert();
+
+        lenis.destroy();
+        window.lenis = undefined;
+      },
+      { once: true }
+    );
   });
 </script>
 
 <style lang="scss">
-
-
 
   @media (max-width: 1024px) {
     .sok-offres__intro {

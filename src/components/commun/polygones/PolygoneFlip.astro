@@ -8,25 +8,46 @@ interface FlipImage {
 
 interface Props {
   frontText?: string;
-  backText?:  string;
+  backText?: string;
   color?: string;
-	videoUrl?: string;
-	images?: FlipImage[];
+  videoUrl?: string;
+  images?: FlipImage[];
 }
-const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } = Astro.props;
+
+const {
+  frontText = "Front",
+  backText = "Back",
+  videoUrl,
+  images = [],
+  color,
+} = Astro.props;
 ---
 
-<div class={`polygone -flip jsFlipAuto  ${color}`} data-images={JSON.stringify(images)}>
+<div
+  class={`polygone -flip jsFlipAuto ${color}`}
+  data-images={JSON.stringify(images)}
+>
   <div class="flip-inner">
 
     <!-- Face avant -->
     <div class="flip-face flip-front">
-      <Shape frontText={frontText} imageUrl={images[0]?.src} alt={images[0]?.alt} color={color}/>
+      <Shape
+        frontText={frontText}
+        imageUrl={images[0]?.src}
+        alt={images[0]?.alt}
+        color={color}
+      />
     </div>
 
     <!-- Face arrière -->
     <div class="flip-face flip-back">
-      <Shape frontText={backText} videoUrl={videoUrl} imageUrl={images[1]?.src || images[0]?.src} alt={images[1]?.alt || images[0]?.alt} color={color}/>
+      <Shape
+        frontText={backText}
+        videoUrl={videoUrl}
+        imageUrl={images[1]?.src || images[0]?.src}
+        alt={images[1]?.alt || images[0]?.alt}
+        color={color}
+      />
     </div>
 
   </div>
@@ -43,7 +64,6 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    /* transition définie par le script */
   }
 
   .flip-face {
@@ -55,66 +75,73 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
 </style>
 
 <script>
-
   document.addEventListener("astro:page-load", () => {
 
-    // ── Paramètres ────────────────────────────────────────────
-    const FLIP_INTERVAL_MIN = 3;   // délai min entre deux flips (secondes)
-    const FLIP_INTERVAL_MAX = 8;   // délai max entre deux flips (secondes)
-    const FLIP_DURATION     = 0.5; // durée de l'animation de flip (secondes)
-    const DELAY_MIN         = 2;   // délai de démarrage min (secondes)
-    const DELAY_MAX         = 6;   // délai de démarrage max (secondes)
-    // ──────────────────────────────────────────────────────────
+    // ── Paramètres ─────────────────────────────
+    const FLIP_INTERVAL_MIN = 3;
+    const FLIP_INTERVAL_MAX = 8;
+    const FLIP_DURATION = 0.5;
+    const DELAY_MIN = 2;
+    const DELAY_MAX = 6;
+    // ───────────────────────────────────────────
 
-    // Retourne 'X' ou 'Y' aléatoirement
-    const randomAxis = () => (Math.random() < 0.5 ? 'X' : 'Y');
-
-    // Retourne un délai aléatoire en ms entre [min, max] secondes
     const randomDelay = (min: number, max: number) =>
       (min + Math.random() * (max - min)) * 1000;
 
-    type ImageItem = { src: string; alt?: string };
+    type ImageItem = {
+      src: string;
+      alt?: string;
+    };
 
-    document.querySelectorAll<HTMLElement>('.jsFlipAuto').forEach((cell) => {
-      const inner = cell.querySelector<HTMLElement>('.flip-inner');
-      const frontFace = cell.querySelector<HTMLElement>('.flip-front');
-      const backFace = cell.querySelector<HTMLElement>('.flip-back');
+    const cleanupFns: (() => void)[] = [];
+
+    document.querySelectorAll<HTMLElement>(".jsFlipAuto").forEach((cell) => {
+
+      const inner = cell.querySelector<HTMLElement>(".flip-inner");
+      const frontFace = cell.querySelector<HTMLElement>(".flip-front");
+      const backFace = cell.querySelector<HTMLElement>(".flip-back");
 
       if (!inner || !frontFace || !backFace) return;
 
-      const images = JSON.parse(cell.dataset.images || '[]') as ImageItem[];
-      
-      // Si pas d'images, configure quand même le flip pour le texte
+      const images = JSON.parse(
+        cell.dataset.images || "[]"
+      ) as ImageItem[];
+
       const hasImages = images.length > 0;
 
-      // états
       let isFlipped = false;
-      let currentAxis = 'Y'; // Axe fixe pour une rotation cohérente
-      let currentIndex = 0; // image actuellement visible
+      let currentIndex = 0;
+
+      let scheduleTimeout: number;
+      let flipTimeout: number;
+      let startTimeout: number;
 
       backFace.style.transform = `rotateY(180deg)`;
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
+      inner.style.transform = `rotateY(0deg)`;
 
-      // ── Détection mobile ────────────────────────────────────
-      const isMobile = window.innerWidth <= 1024;
-      if (isMobile) {
-        // Sur mobile : affiche la face arrière par défaut (pas de flip auto)
-        isFlipped = true;
-        inner.style.transform = `rotateY(180deg)`;
-      }
+      const frontImg =
+        cell.querySelector<HTMLImageElement>(".flip-front img");
 
-      const frontImg = cell.querySelector<HTMLImageElement>('.flip-front img');
-      const backImg  = cell.querySelector<HTMLImageElement>('.flip-back img');
+      const backImg =
+        cell.querySelector<HTMLImageElement>(".flip-back img");
 
       const get = (i: number) => {
         if (!hasImages) return undefined;
-        return images[((i % images.length) + images.length) % images.length];
+
+        return images[
+          ((i % images.length) + images.length) % images.length
+        ];
       };
 
-      const setImage = (el: HTMLImageElement | null, item?: ImageItem) => {
+      const setImage = (
+        el: HTMLImageElement | null,
+        item?: ImageItem
+      ) => {
         if (!el || !item) return;
+
         el.src = item.src;
-        el.alt = item.alt || '';
+        el.alt = item.alt || "";
       };
 
       const syncFaces = (activeIndex: number) => {
@@ -124,41 +151,62 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
         }
       };
 
-      // initial
       syncFaces(currentIndex);
 
       const doFlip = () => {
-        // Lance l'animation autour de l'axe Y (fixe)
+
         if (!isFlipped) {
-          inner.style.transform = `rotateY(180deg)`; // front -> back
+          inner.style.transform = `rotateY(180deg)`;
         } else {
-          inner.style.transform = ``; // back -> front
+          inner.style.transform = `rotateY(0deg)`;
         }
 
-        // après l'animation, avance l'index et resynchronise les faces
-        setTimeout(() => {
+        clearTimeout(flipTimeout);
+
+        flipTimeout = window.setTimeout(() => {
+
           if (hasImages) {
             currentIndex = (currentIndex + 1) % images.length;
           }
+
           isFlipped = !isFlipped;
+
           syncFaces(currentIndex);
+
         }, FLIP_DURATION * 1000);
       };
 
-      // boucle aléatoire
       const scheduleFlip = () => {
-        const interval = randomDelay(FLIP_INTERVAL_MIN, FLIP_INTERVAL_MAX);
-        setTimeout(() => {
+
+        const interval = randomDelay(
+          FLIP_INTERVAL_MIN,
+          FLIP_INTERVAL_MAX
+        );
+
+        scheduleTimeout = window.setTimeout(() => {
           doFlip();
           scheduleFlip();
         }, interval);
       };
 
-      // Sur mobile : pas de flip automatique, reste toujours en face arrière
-      if (!isMobile) {
-        setTimeout(scheduleFlip, randomDelay(DELAY_MIN, DELAY_MAX));
-      }
+      startTimeout = window.setTimeout(() => {
+        scheduleFlip();
+      }, randomDelay(DELAY_MIN, DELAY_MAX));
+
+      cleanupFns.push(() => {
+        clearTimeout(scheduleTimeout);
+        clearTimeout(flipTimeout);
+        clearTimeout(startTimeout);
+      });
+
     });
 
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        cleanupFns.forEach((fn) => fn());
+      },
+      { once: true }
+    );
   });
 </script>

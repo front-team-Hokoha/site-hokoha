@@ -196,6 +196,8 @@ const optimizedBg = await getImage({ src: imgEntreprise, format: 'webp', quality
     const dataOne = document.querySelector('[data-key-one]');
     const dataTwo = document.querySelector('[data-key-two]');
     const dataThree = document.querySelector('[data-key-three]');
+
+    if (!dataOne || !dataTwo || !dataThree) return;
   
     const tl = gsap.timeline({
       scrollTrigger: {
