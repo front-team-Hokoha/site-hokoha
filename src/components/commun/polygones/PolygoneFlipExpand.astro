@@ -191,6 +191,14 @@ const {
       backFace.style.transform = `rotate${currentAxis}(180deg)`;
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
 
+      // ── Détection mobile ────────────────────────────────────
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        // Sur mobile : affiche la face arrière par défaut
+        isFlipped = true;
+        inner.style.transform = `rotateX(180deg)`;
+      }
+
       const doFlip = () => {
         if (!isFlipped) {
           backFace.style.transform = `rotate${currentAxis}(180deg)`;
@@ -211,6 +219,12 @@ const {
 
       (cell as any).doFlip   = () => setTimeout(doFlip,   parseFloat(cell.dataset.delay ?? '0') * 1000);
       (cell as any).doUnflip = () => setTimeout(doUnflip, parseFloat(cell.dataset.delay ?? '0') * 1000);
+
+      // Sur mobile : désactive les flips au scroll (reste toujours en position flipped)
+      if (isMobile) {
+        (cell as any).doFlip   = () => {}; // no-op
+        (cell as any).doUnflip = () => {}; // no-op
+      }
 
       // ── Clic : expand ───────────────────────────────────────
       const handleExpand = () => {
