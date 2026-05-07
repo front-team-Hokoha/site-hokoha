@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config'; // Déprécié
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
    site: 'https://www.hokoha.com', 
@@ -11,7 +13,7 @@ export default defineConfig({
    build: {
       inlineStylesheets: 'always', // Force l'inlining de tous les `<style>` des composants Astro pour éliminer les requêtes render-blocking
    },
-   integrations: [],
+   integrations: [react()],
    devToolbar: {
       enabled: false
    }
