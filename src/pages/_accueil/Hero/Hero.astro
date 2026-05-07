@@ -13,18 +13,97 @@ import * as paragrapheHero from "../../../contenus/accueil/hero/paragraphe-hero.
 
 import { Image } from 'astro:assets';
 import logokohaDark from '../../../assets/images/brand/logo_hokoha_developpement_color.png';
+
+const grilleTop = [
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/ambiance/trame-video.jpg"
+  },
+  {
+    type: "static",
+    videoUrl: "/src/assets/videos/test.mp4",
+    alt: "Vidéo de présentation"
+  },
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/environnement/developpement.jpg",
+    alt: "Développement web"
+  },
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/environnement/uxdesign.jpg",
+    alt: "Conception d'expérience utilisateur"
+  },
+  {
+    type: "flip",
+    frontText: "test",
+    backText: "back test",
+    color: "-metier"
+  },
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/test2.jpg",
+    alt: "Développement web"
+  },
+  {
+    type: "flip",
+    frontText: "",
+    backText: "Back Texte",
+    color: "-metier",
+    images: [
+      {
+        src: "/src/assets/images/test2.jpg",
+        alt: "dev: Kévin LARUE"
+      },
+      {
+        src: "/src/assets/images/test.jpg",
+        alt: "dev: Kévin ALONZO"
+      }
+    ]
+  },
+];
+
+const grilleBottom = [
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/environnement/uxdesign.jpg",
+    alt: "Conception UX"
+  },
+  {
+    type: "static",
+    imageUrl: "/src/assets/images/environnement/uxdesign.jpg",
+    alt: "Conception UX"
+  },
+
+  {
+    type: "flip",
+    frontText: "",
+    backText: "Back Texte",
+    color: "-metier",
+    images: [
+      {
+        src: "/src/assets/images/test2.jpg",
+        alt: "dev: Kévin LARUE"
+      },
+      {
+        src: "/src/assets/images/test.jpg",
+        alt: "dev: Kévin ALONZO"
+      }
+    ]
+  },
+
+  {
+    type: "flip",
+    frontText: "test",
+    backText: "back test",
+    color: "-app"
+  }
+];
 ---
-
-
-
-
-
 
 <div class="oka-appWrap -full">
    <section class="sok-hero">
       
-      
-
       <!-- <Grid /> -->
 
       <div class="flex-grid">
@@ -57,11 +136,8 @@ import logokohaDark from '../../../assets/images/brand/logo_hokoha_developpement
 
 
             <div class="oka-spacer  -sm" aria-hidden="true"></div>
- 
-
            
             <paragrapheHero.Content />
-         
    
             <div class="oka-spacer  -lg" aria-hidden="true"></div>
               
@@ -77,7 +153,21 @@ import logokohaDark from '../../../assets/images/brand/logo_hokoha_developpement
          
          </div>
          <div class="col col-14">
-            <GrilleIntro cols="7" dataAttrs={{ appearGroup: "", delay: "0.4" }} />
+             <GrilleIntro cols="7" rows="1" ratio="0" dataAttrs={{ appearGroup: "", delay: "0.4" }} items={grilleTop} />
+         </div>
+      </div>
+
+      <!-- Mobile: GrilleIntro visible only on mobile (oka-show--md) -->
+      <div class="flex-grid oka-show--md">
+         <div class="col col-8"></div>
+         <div class="col col-8">
+            <GrilleIntro
+               cols="4"
+               rows="1"
+               dataAttrs={{ appearGroup: "", delay: "1.5" }}
+               items={grilleBottom}
+            />
+            <div class="oka-spacer -xxl" aria-hidden="true"></div>
          </div>
       </div>
 
