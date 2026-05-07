@@ -8,45 +8,47 @@ interface Props {
   cols?:  string;
   ratio?: string;
   dataAttrs?: Record<string, string>;
+  items?: any[];
 }
-const { rows, cols, ratio, dataAttrs } = Astro.props;
+const { rows, cols, ratio, dataAttrs, items = [] } = Astro.props;
 
 ---
 
 <div class="hex-grid -hidden" 
-data-rows={rows ?? 1} 
-data-cols={cols ?? 4} 
-data-ratio={ratio ?? 0.1}
-{...dataAttrs && Object.fromEntries(Object.entries(dataAttrs).map(([key, value]) => [`data-${key}`, value]))}
-
+  data-rows={rows ?? 1} 
+  data-cols={cols ?? 4} 
+  data-ratio={ratio ?? 0.1}
+  {...dataAttrs && 
+    Object.fromEntries(
+      Object.entries(dataAttrs).map(([key, value]) => [`data-${key}`, value])
+    )
+  }
 >
-  <PolygoneStatic videoUrl="/src/assets/videos/test.mp4" />
 
-  
-  <PolygoneStatic imageUrl="/src/assets/images/ambiance/trame-video.jpg" />
-  
-  <PolygoneStatic imageUrl="/src/assets/images/environnement/developpement.jpg" alt="Développement web"/>
-  <PolygoneStatic imageUrl="/src/assets/images/environnement/uxdesign.jpg" alt="Conception d'expérience utilisateur"/>
+  {items.map((item) => {
 
+    if (item.type === "static") {
+      return (
+        <PolygoneStatic
+          imageUrl={item.imageUrl}
+          videoUrl={item.videoUrl}
+          alt={item.alt}
+        />
+      );
+    }
 
+    if (item.type === "flip") {
+      return (
+        <PolygoneFlip
+          frontText={item.frontText}
+          backText={item.backText}
+          images={item.images}
+          color={item.color}
+        />
+      );
+    }
 
-  <PolygoneFlip frontText="" backText="Back Texte" images={[
-    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"},
-    {src: "/src/assets/images/environnement/uxdesign.jpg", alt: "Environnement de travail"}]}/>
-
-  <PolygoneFlip frontText="" backText="Back Texte" images={[
-    {src: "/src/assets/images/test2.jpg", alt: "dev: Kévin LARUE"},
-    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"}]} color="-metier"/>
-
-  <!-- <PolygoneFlip frontText="" videoUrl="/src/assets/videos/test.mp4" color="-app" /> -->
-   
-  <!-- <PolygoneFlip frontText="" backText="Back Texte" images={[
-    {src: "/src/assets/images/test.jpg", alt: "dev: Kévin ALONZO"},
-    {src: "/src/assets/images/test2.jpg", alt: "dev: Kévin LARUE"}]} color="-web"/> -->
-
-  <PolygoneFlip frontText="" backText=""  color="-metier"/>
-  
-
+  })}
 
 </div>
 

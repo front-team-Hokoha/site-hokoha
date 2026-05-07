@@ -83,20 +83,25 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
       if (!inner || !frontFace || !backFace) return;
 
       const images = JSON.parse(cell.dataset.images || '[]') as ImageItem[];
-      if (images.length === 0) return;
+      
+      // Si pas d'images, configure quand même le flip pour le texte
+      const hasImages = images.length > 0;
 
       // états
       let isFlipped = false;
-      let currentAxis = randomAxis();
+      let currentAxis = 'Y'; // Axe fixe pour une rotation cohérente
       let currentIndex = 0; // image actuellement visible
 
-      backFace.style.transform = `rotate${currentAxis}(180deg)`;
+      backFace.style.transform = `rotateY(180deg)`;
       inner.style.transition = `transform ${FLIP_DURATION}s ease`;
 
       const frontImg = cell.querySelector<HTMLImageElement>('.flip-front img');
       const backImg  = cell.querySelector<HTMLImageElement>('.flip-back img');
 
-      const get = (i: number) => images[((i % images.length) + images.length) % images.length];
+      const get = (i: number) => {
+        if (!hasImages) return undefined;
+        return images[((i % images.length) + images.length) % images.length];
+      };
 
       const setImage = (el: HTMLImageElement | null, item?: ImageItem) => {
         if (!el || !item) return;
@@ -105,28 +110,28 @@ const { frontText = 'Front', backText = 'Back', videoUrl, images = [], color } =
       };
 
       const syncFaces = (activeIndex: number) => {
-        setImage(frontImg, get(activeIndex));
-        setImage(backImg, get(activeIndex + 1));
+        if (hasImages) {
+          setImage(frontImg, get(activeIndex));
+          setImage(backImg, get(activeIndex + 1));
+        }
       };
 
       // initial
       syncFaces(currentIndex);
 
       const doFlip = () => {
-        // prépare nouvel axe
-        currentAxis = randomAxis();
-        backFace.style.transform = `rotate${currentAxis}(180deg)`;
-
-        // lance l'animation (basé sur l'état actuel)
+        // Lance l'animation autour de l'axe Y (fixe)
         if (!isFlipped) {
-          inner.style.transform = `rotate${currentAxis}(180deg)`; // front -> back
+          inner.style.transform = `rotateY(180deg)`; // front -> back
         } else {
           inner.style.transform = ``; // back -> front
         }
 
         // après l'animation, avance l'index et resynchronise les faces
         setTimeout(() => {
-          currentIndex = (currentIndex + 1) % images.length;
+          if (hasImages) {
+            currentIndex = (currentIndex + 1) % images.length;
+          }
           isFlipped = !isFlipped;
           syncFaces(currentIndex);
         }, FLIP_DURATION * 1000);
