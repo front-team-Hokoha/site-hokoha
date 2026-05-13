@@ -7,46 +7,24 @@
  *   du polygone jusqu'à la bounding rect de la grille parente (.hex-grid),
  *   puis affiche le contenu détail.
  *
- * SEO : le contenu détail est toujours dans le DOM (visually-hidden),
- *   lisible par les crawlers et lecteurs d'écran.
- *
- * Contenu de l'overlay :
- *   Passer un module .md importé via detailMd.
- *   Le titre est lu depuis frontmatter.title du markdown.
- *   Le HTML est compilé au build via un <template> inerte lu par le JS au clic.
- *
- *   Exemple d'appel :
- *     import devContent from '../../../contenus/offres/dev.md';
- *     <PolygoneFlipExpand detailMd={devContent} />
+ * SEO : detailTitle + detailText sont toujours dans le DOM (visually-hidden),
+ *   lisibles par les crawlers et lecteurs d'écran.
  *
  * Props :
- *   type       — classe CSS du wrapper (ex: "-dev")
- *   frontText  — texte face avant
- *   backText   — texte face arrière
- *   colorFront — couleur face avant (défaut: transparent)
- *   colorBack  — couleur face arrière
- *   strokeType — variante de trait SVG (défaut: "-none")
- *   videoUrl   — vidéo face arrière (optionnel)
- *   imageUrl   — image face arrière (optionnel)
- *   detailMd   — module markdown importé (frontmatter.title utilisé comme titre)
+ *   type        — classe CSS du wrapper (ex: "-dev")
+ *   frontText   — texte face avant
+ *   backText    — texte face arrière
+ *   colorFront  — couleur face avant (défaut: transparent)
+ *   colorBack   — couleur face arrière
+ *   strokeType  — variante de trait SVG (défaut: "-none")
+ *   videoUrl    — vidéo face arrière (optionnel)
+ *   imageUrl    — image face arrière (optionnel)
+ *   detailTitle — titre affiché dans l'overlay (aussi indexé en SEO)
+ *   detailText  — texte détail affiché dans l'overlay (aussi indexé en SEO)
  */
 import Shape from "./Shape.astro";
 
-/**
- * En Astro 5+, l'import default d'un .md est le composant Content lui-même
- * (une fonction Astro callable), avec frontmatter attaché en propriété statique.
- * Il n'y a plus d'objet wrapper { Content, compiledContent, ... }.
- *
- * Usage à l'appel :
- *   import devMd from './dev.md';
- *   <PolygoneFlipExpand detailMd={devMd} />
- */
-interface MarkdownMod {
-  (props: Record<string, unknown>): any; // le composant est callable
-  frontmatter: Record<string, unknown>;
-}
-
-export interface Props {
+interface Props {
   type?: string;
   frontText?: string;
   backText?: string;
@@ -55,7 +33,8 @@ export interface Props {
   videoUrl?: string;
   imageUrl?: string;
   strokeType?: string;
-  detailMd?: MarkdownMod;
+  detailTitle?: string;
+  detailText?: string;
 }
 
 const {
@@ -67,25 +46,19 @@ const {
   colorFront = "transparent",
   colorBack,
   strokeType = "-none",
-  detailMd,
+  detailTitle = '',
+  detailText = '',
 } = Astro.props;
-
-// Titre issu du frontmatter.title du markdown — utilisé pour aria-label et l'overlay
-const resolvedTitle = (detailMd?.frontmatter?.title as string) || '';
-
-// detailMd est directement le composant — pas de propriété .Content à déréférencer.
-// Cast en any nécessaire : Astro's JSX checker ne reconnaît pas MarkdownMod
-// comme AstroComponentFactory même si le runtime fonctionne correctement.
-const MdContent = detailMd as any;
 ---
 
 <div
   class={`polygone -flip jsFlipExpand ${type}`}
-  data-detail-title={resolvedTitle}
+  data-detail-title={detailTitle}
+  data-detail-text={detailText}
   role="button"
   tabindex="0"
   aria-expanded="false"
-  aria-label={resolvedTitle || frontText || undefined}
+  aria-label={detailTitle || frontText || undefined}
 >
   <div class="flip-inner">
 
@@ -101,33 +74,11 @@ const MdContent = detailMd as any;
 
   </div>
 
-  {/*
-    Template inerte (non rendu visuellement par le navigateur).
-    Stocke le HTML compilé du markdown à la construction du site.
-    Le script JS lit tpl.innerHTML au clic pour peupler l'overlay —
-    évite d'encoder du HTML dans un data-* attr et garantit que
-    le markdown complet (listes, gras, liens…) est disponible.
-    Présent uniquement si detailMd est fourni.
-  */}
-  {detailMd && (
-    <template class="jsExpandTemplate">
-      {resolvedTitle && <h3 class="jsExpandTitle">{resolvedTitle}</h3>}
-      <div class="jsExpandMdBody">
-        {MdContent && <MdContent />}
-      </div>
-    </template>
-  )}
-
-  {/*
-    SEO : contenu toujours présent dans le DOM dès le chargement.
-    Visually-hidden mais indexé par les crawlers et lu par les lecteurs d'écran.
-  */}
-  {detailMd && (
-    <div class="jsExpandSeoContent">
-      {resolvedTitle && <h3>{resolvedTitle}</h3>}
-      <MdContent />
-    </div>
-  )}
+  <!-- SEO : toujours dans le DOM, invisible visuellement -->
+  <div class="jsExpandSeoContent">
+    {detailTitle && <h3>{detailTitle}</h3>}
+    {detailText && <p>{detailText}</p>}
+  </div>
 </div>
 
 <script>
@@ -148,15 +99,16 @@ const MdContent = detailMd as any;
       overlay.setAttribute('role', 'dialog');
       overlay.setAttribute('aria-modal', 'true');
       overlay.setAttribute('aria-hidden', 'true');
-
-      // .jsExpandBody démarre vide : peuplé depuis le <template> inerte à chaque ouverture
       overlay.innerHTML = `
         <button class="jsExpandClose" aria-label="Fermer">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
-        <div class="jsExpandBody"></div>
+        <div class="jsExpandBody">
+          <h3 class="jsExpandTitle"></h3>
+          <p class="jsExpandText"></p>
+        </div>
       `;
       document.body.appendChild(overlay);
 
@@ -174,27 +126,26 @@ const MdContent = detailMd as any;
           collapseOverlay(overlay!);
         }
       });
-  
 
       return overlay;
     }
 
     function lockScroll() {
-  
       const lenis = (window as any).lenis;
-      if (lenis?.stop) lenis.stop();
-      
-
-      // Renfort : overflow direct sur <html> bloque wheel, touch ET clavier.
-      // Lenis scroll sur rootElement (html), pas body — le fallback body.overflow
-      // ne suffit pas quand Lenis est actif.
-      document.documentElement.style.overflow = 'hidden';
+      if (lenis?.stop) {
+        lenis.stop();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function unlockScroll() {
       const lenis = (window as any).lenis;
-      if (lenis?.start) lenis.start();
-      document.documentElement.style.overflow = '';
+      if (lenis?.start) {
+        lenis.start();
+      } else {
+        document.body.style.overflow = '';
+      }
     }
 
     function collapseOverlay(overlay: HTMLElement) {
@@ -280,14 +231,9 @@ const MdContent = detailMd as any;
         const overlay = getOrCreateOverlay();
         if (overlay.dataset.open === 'true') return;
 
-        // Rien à afficher si le <template> markdown est absent
-        const tpl = cell.querySelector<HTMLTemplateElement>('.jsExpandTemplate');
-        if (!tpl) return;
-
-        // Clone le HTML compilé depuis le <template> inerte.
-        // tpl.innerHTML est le HTML brut du fragment — sûr car généré au build.
-        const body = overlay.querySelector<HTMLElement>('.jsExpandBody')!;
-        body.innerHTML = tpl.innerHTML;
+        const title = cell.dataset.detailTitle ?? '';
+        const text  = cell.dataset.detailText ?? '';
+        if (!title && !text) return;
 
         const polyRect  = cell.getBoundingClientRect();
         const isMobile  = window.innerWidth <= 1024;
@@ -295,6 +241,10 @@ const MdContent = detailMd as any;
         const targetRect = isMobile
           ? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight }
           : (grid ? grid.getBoundingClientRect() : polyRect);
+
+        // Peuple l'overlay
+        (overlay.querySelector('.jsExpandTitle') as HTMLElement).textContent = title;
+        (overlay.querySelector('.jsExpandText')  as HTMLElement).textContent = text;
 
         // Positionne immédiatement sur le polygone
         gsap.set(overlay, {
@@ -360,18 +310,10 @@ const MdContent = detailMd as any;
   .sok-offre.-active .jsFlipExpand {
     cursor: pointer;
     pointer-events: auto; // Nécessaire pour que les polygones soient cliquables même si leur parent (.hex-grid) a pointer-events:none
-  
-    &:hover {
-     
-      z-index: 1;
-      transform: translate(0px, -8px) !important;
-      transition: transform 0.13s ease;
-    }
-  
   }
 
   .jsFlipExpand {
-
+   
     pointer-events: none; // Nécessaire pour que les polygones soient cliquables même si leur parent (.hex-grid) a pointer-events:none
 
     &:focus-visible {
@@ -431,24 +373,15 @@ const MdContent = detailMd as any;
     justify-content: center;
   }
 
-  // Titre de l'overlay — h3 injecté depuis le <template> via tpl.innerHTML
   .jsExpandTitle {
     font-size: clamp(1.25rem, 3vw, 2rem);
     margin-bottom: 1rem;
     font-weight: bold;
   }
 
-  // Wrapper du corps markdown : applique une mise en forme de base
-  // aux éléments que le markdown peut générer (p, ul, ol, strong, a…)
-  .jsExpandMdBody {
+  .jsExpandText {
     font-size: clamp(0.875rem, 1.5vw, 1rem);
     line-height: 1.6;
     max-width: 65ch;
-
-    p { margin-bottom: 0.75em; }
-    ul, ol { padding-left: 1.25em; margin-bottom: 0.75em; }
-    li { margin-bottom: 0.25em; }
-    strong { font-weight: 600; }
-    a { text-decoration: underline; }
   }
 </style>
