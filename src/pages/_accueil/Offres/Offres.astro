@@ -183,9 +183,9 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       </div>
     </div>
 
-    <!-- IOT -->
+    <!-- IOT Abandonné-->
 
-    <div class="sok-offre flex-grid">
+    <!-- <div class="sok-offre flex-grid">
       <div class="col col-1 sok-offre__indicCtnr oka-show--md">
         <div class="sok-offre__indic -iot">
           <img
@@ -215,16 +215,16 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
       <div class="col col-10">
         <GrilleOffresIot />
       </div>
-    </div>
+    </div> -->
   </section>
 </div>
 
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import Lenis from "@studio-freight/lenis";
+  import type Lenis from "@studio-freight/lenis";
 
-  // déclarations des types pour éviter les erreurs TS 
+  // déclarations des types pour éviter les erreurs TS
   declare global {
     interface Window {
       _offreScrollActive?: boolean;
@@ -240,24 +240,13 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
     if (!OFFRES.length || !root) return;
 
-    const OFFRE_SCROLL_STEP = 500;
+    const OFFRE_SCROLL_STEP = 400;
 
     const cleanFunctions: (() => void)[] = [];
 
-    // init scroll Lenis
-    const lenis = new Lenis({
-      lerp: 0.08,
-    });
-
-    window.lenis = lenis;
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((t) => {
-      lenis.raf(t * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
+    // Lenis est initialisé globalement par Smoothscroll.astro (window.lenis).
+    // Ne pas créer une seconde instance ici — deux instances = deux tickers GSAP,
+    // deux listeners wheel, et lockScroll ne peut stopper qu'une des deux.
 
     // ScrollTrigger.normalizeScroll(true);
 
@@ -282,9 +271,10 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
         const st = ScrollTrigger.create({
           trigger: offre,
-          start: `top+=${index * OFFRE_SCROLL_STEP}px 30%`,
-          end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 30%`,
+          start: `top+=${index * OFFRE_SCROLL_STEP}px 60%`,
+          end: `bottom+=${index * OFFRE_SCROLL_STEP + OFFRE_SCROLL_STEP}px 60%`,
           invalidateOnRefresh: true,
+          //markers: true,
 
           // entrée dans la zone
           onEnter: () => {
@@ -323,17 +313,17 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
 
         cleanFunctions.push(() => st.kill());
 
-        // on click scroll vers la section 
+        // on click scroll vers la section
         const clickHandler = () => {
           window._offreScrollActive = true;
 
-          lenis.scrollTo(st.start + 10);
+          window.lenis?.scrollTo(st.start + 10);
 
           const reset = () => {
             window._offreScrollActive = false;
           };
 
-          lenis.on("scroll", reset);
+          window.lenis?.on("scroll", reset);
           setTimeout(reset, 1500);
         };
 
@@ -353,8 +343,7 @@ import digitalArrow from "../../../assets/images/digital-arrow.svg";
         cleanFunctions.forEach((fn) => fn());
         mm.revert();
 
-        lenis.destroy();
-        window.lenis = undefined;
+        // Lenis appartient à Smoothscroll.astro — pas de destroy ici
       },
       { once: true }
     );
