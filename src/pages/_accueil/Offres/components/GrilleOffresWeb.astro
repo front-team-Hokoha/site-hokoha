@@ -1,29 +1,29 @@
 ---
 import PolygoneFlipProg from "../../../../components/commun/polygones/PolygoneFlipProg.astro";
 import PolygoneFlipExpand from "../../../../components/commun/polygones/PolygoneFlipExpand.astro";
+import webTestContent from "../../../../contenus/accueil/offre/test.md";
 ---
 
 <div id="grilleTagsWeb" class="sok-offre__grid hex-grid -hidden" data-rows="3" data-cols="5" data-ratio="0.2" data-appeargroup>
 
   <!-- Polygone Solutions web -->
   <PolygoneFlipProg type="-web" colorBack="-web" imageUrl="/src/assets/images/ambiance/web/image-3.png" />
-  <PolygoneFlipProg type="-web" colorBack="-ia" backText="Sécurité" />
+  <PolygoneFlipProg type="-web" colorBack="-ia" backText="Sécurité Authentification SSO" />
   <PolygoneFlipExpand
     type="-web"
     colorBack="-metier"
     backText="Test expand"
-    detailTitle="Solutions Web sur mesure"
-    detailText="Nous concevons des applications web métier adaptées à vos processus : ERP, CRM, portails clients, outils collaboratifs. Chaque solution est pensée pour s'intégrer à votre infrastructure existante et évoluer avec votre activité. Technologies : React, Next.js, Node.js, PostgreSQL."
+    detailMd={webTestContent}
   />
   <PolygoneFlipProg type="-web" colorBack="-web" imageUrl="/src/assets/images/ambiance/web/image-2.jpg"/>
   
-  <PolygoneFlipProg type="-web" colorBack="-iot" backText="Solution Web"/>
-  <PolygoneFlipProg type="-web" colorBack="-app" backText="Solution Web"/>
-  <PolygoneFlipProg type="-web" />
-  <PolygoneFlipProg type="-web" colorBack="-web" backText="Solution Web"/>
+  <PolygoneFlipProg type="-web" colorBack="-iot" backText="Configurateur"/>
+  <PolygoneFlipProg type="-web" colorBack="-app" backText="Streaming Vidéo"/>
+  <PolygoneFlipProg type="-web" colorBack="-app" backText="Cartographie" />
+  <PolygoneFlipProg type="-web" colorBack="-web" backText="Système de paiement"/>
   
   <PolygoneFlipProg type="-web" />
-  <PolygoneFlipProg type="-web" colorBack="-iot" backText="Solution Web"/>
+  <PolygoneFlipProg type="-web" colorBack="-iot" backText="Symfony"/>
   <PolygoneFlipProg type="-web" colorBack="-web" imageUrl="/src/assets/images/ambiance/web/image-1.jpg"/>
   <PolygoneFlipProg type="-web" colorBack="-web" backText="..."/>
   
